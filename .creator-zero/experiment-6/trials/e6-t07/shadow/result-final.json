@@ -1,0 +1,67 @@
+{
+  "verdict": "REPRODUCES",
+  "undetermined_behaviors": [],
+  "divergent_probe_indices": [],
+  "comparison": [
+    {
+      "probe_index": 0,
+      "reference_output": "hello ada",
+      "independent_output": "hello ada",
+      "diverges": false
+    },
+    {
+      "probe_index": 1,
+      "reference_output": "1-2",
+      "independent_output": "1-2",
+      "diverges": false
+    },
+    {
+      "probe_index": 2,
+      "reference_output": "missing: !",
+      "independent_output": "missing: !",
+      "diverges": false
+    },
+    {
+      "probe_index": 3,
+      "reference_output": "abab",
+      "independent_output": "abab",
+      "diverges": false
+    },
+    {
+      "probe_index": 4,
+      "reference_output": "literal {{ name }} stays",
+      "independent_output": "literal {{ name }} stays",
+      "diverges": false
+    },
+    {
+      "probe_index": 5,
+      "reference_output": "value {{w}}",
+      "independent_output": "value {{w}}",
+      "diverges": false
+    },
+    {
+      "probe_index": 6,
+      "reference_output": "{{}} empty",
+      "independent_output": "{{}} empty",
+      "diverges": false
+    },
+    {
+      "probe_index": 7,
+      "reference_output": "{{num1}}",
+      "independent_output": "{{num1}}",
+      "diverges": false
+    },
+    {
+      "probe_index": 8,
+      "reference_output": "no placeholders",
+      "independent_output": "no placeholders",
+      "diverges": false
+    },
+    {
+      "probe_index": 9,
+      "reference_output": "A and  and B",
+      "independent_output": "A and  and B",
+      "diverges": false
+    }
+  ]
+}

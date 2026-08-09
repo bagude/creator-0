@@ -1,0 +1,5 @@
+{
+  "summary": "Implemented encode(d) in pure Python 3 with no imports: for each key/value pair in the mapping's own order, every ';' in the key or value is replaced with backslash-semicolon and every '=' with backslash-equals, the pair is written as key=value, and pairs are joined with ';'; an empty mapping returns the empty string. The spec is silent on the backslash character itself, so backslashes pass through unescaped (recorded in notes.md). I manually traced all ten probes in inputs/probes.json through this exact code and recorded the results in order in outputs.json, then self-checked by re-tracing every probe against encode.py with no discrepancies found.",
+  "files_produced": ["encode.py", "outputs.json", "notes.md"],
+  "model_calls_spent": 0
+}

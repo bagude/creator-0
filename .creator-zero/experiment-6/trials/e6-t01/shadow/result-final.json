@@ -1,0 +1,76 @@
+{
+  "verdict": "DIVERGES",
+  "undetermined_behaviors": [
+    "Pair ordering \u2014 determined differently: format.md ('Pairs appear in the encoded line in the order in which they appear in the mapping.') requires mapping/insertion order, while reference.py emits pairs sorted by key (for k in sorted(d)). Exercised by probes 1, 5 and 6, whose insertion order differs from sorted key order (e.g. probe 1: format-faithful 'z=9;a=1' vs reference 'a=1;z=9').",
+    "Backslash handling \u2014 determined differently (at minimum, not determined to match): format.md's escaping clause ('Inside keys and values, every ';' is written as the two characters backslash-semicolon and every '=' as backslash-equals') names only ';' and '=' as transformed characters, so under its literal reading a backslash passes through unchanged; reference.py additionally doubles every literal backslash (s.replace('\\', '\\\\') applied first). Exercised by probe 4, value 'back\\slash': format-faithful 'k=back\\slash' vs reference 'k=back\\\\slash'.",
+    "No other behavior exercised by the probe set is undetermined or determined differently: key=value pair rendering, ';' joining, escaping of '=' in keys and values, escaping of ';' including trailing position, empty-key and empty-value rendering, and empty-mapping-to-empty-line are each determined by format.md identically to reference.py; see behavior-statement.md for the clause-by-clause argument."
+  ],
+  "divergent_probe_indices": [
+    1,
+    4,
+    5,
+    6
+  ],
+  "comparison": [
+    {
+      "probe_index": 0,
+      "reference_output": "alpha=one",
+      "independent_output": "alpha=one",
+      "diverges": false
+    },
+    {
+      "probe_index": 1,
+      "reference_output": "a=1;z=9",
+      "independent_output": "z=9;a=1",
+      "diverges": true
+    },
+    {
+      "probe_index": 2,
+      "reference_output": "note=x\\=y",
+      "independent_output": "note=x\\=y",
+      "diverges": false
+    },
+    {
+      "probe_index": 3,
+      "reference_output": "path=a\\;b",
+      "independent_output": "path=a\\;b",
+      "diverges": false
+    },
+    {
+      "probe_index": 4,
+      "reference_output": "k=back\\\\slash",
+      "independent_output": "k=back\\slash",
+      "diverges": true
+    },
+    {
+      "probe_index": 5,
+      "reference_output": "=v;m=",
+      "independent_output": "m=;=v",
+      "diverges": true
+    },
+    {
+      "probe_index": 6,
+      "reference_output": "aa=1;b=2;c=3",
+      "independent_output": "b=2;aa=1;c=3",
+      "diverges": true
+    },
+    {
+      "probe_index": 7,
+      "reference_output": "",
+      "independent_output": "",
+      "diverges": false
+    },
+    {
+      "probe_index": 8,
+      "reference_output": "eq\\=key=v1",
+      "independent_output": "eq\\=key=v1",
+      "diverges": false
+    },
+    {
+      "probe_index": 9,
+      "reference_output": "tail=end\\;",
+      "independent_output": "tail=end\\;",
+      "diverges": false
+    }
+  ]
+}

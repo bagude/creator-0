@@ -2,3 +2,5 @@
 {"state": "EXEC_COLLECTED", "at": "2026-08-09T17:42:07Z", "family": "branching"}
 {"state": "BRANCH_DECIDED", "at": "2026-08-09T17:42:07Z", "decision": "CREATE"}
 {"state": "CHILD_VALIDATED", "at": "2026-08-09T17:47:52Z"}
+{"state": "CHILD_RETURNED", "at": "2026-08-09T17:48:51Z"}
+{"state": "FORMALLY_CHECKED", "at": "2026-08-09T17:48:51Z", "task_verified": true, "observed_utility": 0.125}

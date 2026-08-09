@@ -1,0 +1,17 @@
+{
+  "artifact": "blinded examiner workspace manifest",
+  "trial_id": "e6-t11",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t11/shadow/examiner-ws",
+  "blinding_scan": "PASS (0 hits)",
+  "file_sha256": {
+    ".claude/settings.json": "057724aff3831a2ebe097f2877650adbea6b7347a2aeada0e6e3134f4f4e2554",
+    "distinctions.json": "71cd93db04682f384ae1a0eaa1389caa765f36139f71a5a910908f6a8d1f869e",
+    "examiner-charge.md": "74c2b16ec3d26234904b3d9ab26f1c3bab0fb8ab2c11ab4e69e881902d12b4e8",
+    "package/artifacts/dateadd.py": "d2b3e97c9de8e46e57e44d4712843de17eb72e9258ff953b3065ae122b9f3675",
+    "package/task.json": "6769b988fa72c79a74df032657802b3419526464f136984c6f957f8d46d9729d",
+    "prompt.md": "3d447a21a58ae3cac87454b273c8ef29b71fa350ecef96d46e2655ae01c44f0d",
+    "protocol.md": "61dc81b69f844c30781e7e869d75307df92ef4fe3ceab50128d21c711e523e61",
+    "resolution.json": "3bf92bb975523e437cdaddecd89b9b3aace03dcb80ff5614b7ac10f1ae5acb65",
+    "result.json": "d41d674fd0ff206d0b4724bfc9f61103f6ed21d490743d17bad19ff391e773d6"
+  }
+}

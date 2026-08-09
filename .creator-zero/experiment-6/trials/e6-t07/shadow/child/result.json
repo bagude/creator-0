@@ -1,0 +1,1 @@
+{"summary": "Implemented render(p) in render_impl.py: a single-pass regex substitution replacing each {{name}} placeholder (name = [a-z]+) with context[name], or the empty string when absent, inserting values literally without re-scanning, per inputs/render.md.", "files_produced": ["render_impl.py"], "model_calls_spent": 0}

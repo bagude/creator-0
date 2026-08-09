@@ -1,0 +1,23 @@
+{
+  "task_id": "e6-t08",
+  "method": "Read-only hand execution and symbolic tracing of package/artifacts/merge.py against package/task.json, per examiner-charge.md but re-derived from scratch. Unlike the worker (author of the provisional answer), I performed an independent structural enumeration of the domain's boundary classes with fresh witnesses distinct from the worker's [[0,1],[1,2]], plus a loop-invariant argument bounding what overlaps are reachable in merge's output. Components checked: (1) claim reading — task.json forbids i.end >= j.start, so touching output intervals count as violations: PASS. Invariant check: an interval is appended only when s >= out[-1][1], and merges mutate only out[-1], so once a successor is appended the predecessor's end is frozen; every consecutive output pair therefore satisfies i.end <= j.start — strict overlap (>) is unreachable, only equality is, so under a strict-overlap reading the verdict would flip to HOLDS, but the claim as stated uses >=. (2) domain membership of [[0,1],[1,2]] — 2 <= 6 intervals, endpoints in [-10,10], start <= end for each: PASS. (3) mechanical trace — sorted input [[0,1],[1,2]]; out=[[0,1]]; line-8 test 1 < 1 is False; [1,2] appended; returned [[0,1],[1,2]] is already sorted; pair ([0,1],[1,2]) has 1 >= 1: PASS. Independent class search (E-B): touching pair with negative endpoints [[-5,-3],[-3,0]] -> -3 < -3 False -> output [[-5,-3],[-3,0]], -3 >= -3, VIOLATING; zero-width duplicated [[3,3],[3,3]] -> 3 < 3 False -> VIOLATING; zero-width touching a wider interval at its start [[0,0],[0,5]] -> 0 < 0 False -> VIOLATING; at its end [[0,5],[5,5]] -> 5 < 5 False -> VIOLATING; zero-width strictly inside [[0,5],[2,2]] -> 2 < 5 True -> merged [[0,5]], holds; nested [[0,10],[2,5]] -> merged, max keeps 10, holds; positive-width duplicates [[1,4],[1,4]] -> 1 < 4 True -> merged, holds; proper overlap [[0,3],[2,5]] -> merged [[0,5]], holds; empty -> [] (line-3 guard), vacuous; singleton -> loop never runs, vacuous; unsorted [[1,2],[0,1]] -> line 5 sorts, reduces to touching case, VIOLATING. Independent verdict: VIOLATED; the worker's witness is in-domain and mechanically violating; result.json should stand unchanged.",
+  "per_distinction": [
+    {
+      "id": "Q1",
+      "verdict": "CONCUR",
+      "why": "My own control-flow analysis of merge.py agrees that the claim's truth turns exactly on where line 8's strict '<' differs from '<=': touching intervals (prev.end == next.start) and zero-width intervals sharing a boundary point. My independent enumeration of the remaining classes (empty, singleton, proper overlap, nested, positive-width duplicates, unsorted order, negative endpoints) matches the worker's: each holds vacuously, merges correctly, or reduces to the turning classes. One refinement that does not change the analysis: a zero-width interval strictly inside a wider interval ([[0,5],[2,2]]) is merged and holds — only zero-width intervals sharing a boundary point violate, which is how the worker scoped that class."
+    },
+    {
+      "id": "Q2",
+      "verdict": "CONCUR",
+      "why": "My independent trace of [[0,1],[1,2]] through the actual code text reproduces the worker's: sort leaves it unchanged, out=[[0,1]], the line-8 test 1 < 1 is False, [1,2] is appended, and the sorted output [[0,1],[1,2]] contains i=[0,1] before j=[1,2] with i.end = 1 >= 1 = j.start. The input is in-domain. Verdict VIOLATED is correct, and I additionally verified via the loop invariant that no strict overlap (i.end > j.start) is reachable — so the violation genuinely hinges on the '>=' in the claim, exactly as the worker's mechanism states."
+    },
+    {
+      "id": "Q3",
+      "verdict": "CONCUR",
+      "why": "The worker correctly marked Q3 UNRESOLVED: E-B demands a systematic search by a party other than the author of the provisional answer, and the worker session authored that answer, so it could not admissibly resolve Q3 itself. This verification now supplies the missing evidence: I am a separately launched examiner who did not author the provisional answer, and the 'method' field records my systematic class-by-class search of the domain with independent violating witnesses ([[-5,-3],[-3,0]], [[3,3],[3,3]], [[0,0],[0,5]], [[0,5],[5,5]]) beyond the worker's example. Whether this satisfies E-B for the deliverable is for deterministic root integration to decide, as the worker's resolution itself anticipated."
+    }
+  ],
+  "discrepancies": [],
+  "overall": "CONFIRMED"
+}

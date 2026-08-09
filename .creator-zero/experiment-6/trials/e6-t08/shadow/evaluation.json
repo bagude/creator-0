@@ -1,0 +1,122 @@
+{
+  "topology_id": "H-e6-t08-local-independent-verify",
+  "resolved_distinctions": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "unresolved_distinctions": [],
+  "novel_evidence": [
+    "ev-1",
+    "ev-2",
+    "ev-3"
+  ],
+  "duplicate_evidence": [
+    "ev-exam-1"
+  ],
+  "verification_effect": "confirmed",
+  "task_result": "correct",
+  "resource_use": {
+    "model_calls": 2,
+    "child_calls": 0,
+    "model_call_budget": 2,
+    "wall_clock_ms": 274000
+  },
+  "formal_failures": [],
+  "prediction_outcomes": [
+    {
+      "prediction_id": "H-e6-t08-local-independent-verify-pr01",
+      "kind": "resolves",
+      "outcome": "HELD",
+      "why": "Q1 resolved by predicted node resolve-local",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t08-local-independent-verify-pr02",
+      "kind": "resolves",
+      "outcome": "HELD",
+      "why": "Q2 resolved by predicted node resolve-local",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t08-local-independent-verify-pr03",
+      "kind": "resolves",
+      "outcome": "FAILED",
+      "why": "Q3 resolved by 'verify-independent', not predicted node 'resolve-local'",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t08-local-independent-verify-pr04",
+      "kind": "runtime_path",
+      "outcome": "HELD",
+      "why": "completion order consistent with declared causal order",
+      "weight": 1.0,
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t08-local-independent-verify-pr05",
+      "kind": "model_call_budget",
+      "outcome": "HELD",
+      "why": "2 <= 2",
+      "weight": 0.5,
+      "principles": [
+        "P-MINIMALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t08-local-independent-verify-pr06",
+      "kind": "authority_envelope",
+      "outcome": "HELD",
+      "why": "no authority violation observed",
+      "weight": 1.0,
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t08-local-independent-verify-pr07",
+      "kind": "local_sufficiency",
+      "outcome": "HELD",
+      "why": "resolved and verified with zero descendants",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    }
+  ],
+  "observed_value": {
+    "delta_e": 0.875,
+    "cost": 0.6667,
+    "redundancy": 0.25,
+    "governance_risk": 0.0
+  },
+  "observed_utility": -0.0417,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.025,
+      "cost": 0.4167,
+      "redundancy": 0.05,
+      "governance_risk": 0.0
+    },
+    "mean_component_error": 0.122925,
+    "utility_error": 0.3417
+  },
+  "observed_value_operationalized": {
+    "delta_e": 1.0,
+    "cost": 0.25,
+    "redundancy": 0.25,
+    "governance_risk": 0.0
+  },
+  "observed_utility_operationalized": 0.5
+}

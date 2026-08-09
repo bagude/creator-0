@@ -1,0 +1,20 @@
+{
+  "check": "runtime_refinement",
+  "status": "PASS",
+  "formal_relation": "Runtime <= Spec",
+  "counterexample": null,
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-6/trials/e6-t01/shadow/child/execution-ledger.jsonl",
+    "observable events matched: 5",
+    "final reconstructed state: done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=1"
+  ],
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "unmapped_events": [],
+  "detail": {
+    "final_state": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=1",
+    "matched_steps": 5
+  }
+}
