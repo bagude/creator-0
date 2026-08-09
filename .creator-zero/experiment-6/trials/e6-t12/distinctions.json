@@ -1,0 +1,85 @@
+{
+  "task_id": "e6-t12",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "How many responses in artifacts/server.log carry a 5xx status code?",
+      "why_unresolved": "The count exists only implicitly in the raw log; no artifact in the package states the aggregated 5xx total, so it must be derived by classifying each line's status field.",
+      "required_evidence": "A deterministic count of log lines whose status field is in [500,599], reproducible from package/artifacts/server.log alone.",
+      "admissibility_constraints": [
+        "Evidence must be derived from package/artifacts/server.log, the sole available artifact.",
+        "The count must cover every line (one request per line) with no sampling or truncation.",
+        "The task imposes no authorship or access condition: evidence produced by the same process that read the package is admissible."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Which two-digit hour contains the most requests, with ties broken to the earliest hour?",
+      "why_unresolved": "Requests span at least two hours (09 and 10) and no per-hour tally is given anywhere in the package; the winner and possible tie-break application must be computed.",
+      "required_evidence": "A per-hour request histogram over all log lines, plus identification of the maximal hour under the earliest-hour tie-break, reproducible from the log's timestamps.",
+      "admissibility_constraints": [
+        "Evidence must be derived from the timestamps in package/artifacts/server.log.",
+        "The tie-break must be exactly the one stated by the task: on equal counts, the earliest two-digit hour wins.",
+        "No authorship/isolation condition applies; locally produced derivation is admissible."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Which client IP issued the most requests, with ties broken to the lexicographically smallest IP string?",
+      "why_unresolved": "Four distinct IPs appear with similar request volumes; no per-IP tally exists in the package, and whether the lexicographic tie-break is actually needed is unknown until the counts are computed.",
+      "required_evidence": "A per-IP request count over all log lines and selection of the maximum under lexicographic-smallest tie-break, reproducible from the log.",
+      "admissibility_constraints": [
+        "Evidence must be derived from the IP field of package/artifacts/server.log.",
+        "Tie-break must be lexicographic string comparison of the IP as written, per the task statement (E-B: 'the top IP under the stated tie-break').",
+        "No authorship/isolation condition applies; locally produced derivation is admissible."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "What is the longest gap, in whole seconds, between consecutive requests in chronological order?",
+      "why_unresolved": "The log gives absolute timestamps only; the 39 pairwise inter-arrival differences and their maximum are nowhere stated and must be computed.",
+      "required_evidence": "The maximum of the pairwise timestamp differences between consecutive log lines, expressed as an integer number of seconds, reproducible from the log.",
+      "admissibility_constraints": [
+        "Evidence must be derived from consecutive-line timestamp differences in package/artifacts/server.log, which the task declares chronological.",
+        "The result must be reported in whole seconds (E-C: 'the longest inter-request gap in whole seconds').",
+        "No authorship/isolation condition applies; locally produced derivation is admissible."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

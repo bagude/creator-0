@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t12",
+  "estimates": {
+    "local": {
+      "delta_e": 1.0,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "All four distinctions are deterministic aggregations over server.log with no authorship or isolation conditions, so the single worker resolves 4/4 with admissible evidence and every evidence record is first-production (novel). Deterministic governance; no failure concretely expected."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.75,
+      "redundancy": 0.5,
+      "governance_risk": 0.0,
+      "rationale": "The worker alone already satisfies every evidence requirement admissibly (4/4 resolved), so the examiner's re-derivation duplicates roughly half of the total evidence records, dragging the novelty term to about 0.5. No governance failure concretely expected."
+    },
+    "isolated-child": {
+      "delta_e": 0.75,
+      "redundancy": 0.5,
+      "governance_risk": 0.0,
+      "rationale": "No admissibility condition requires causal isolation, so the child (given the log) can only re-derive what the worker fully establishes: 4/4 resolved but roughly half the records are duplicates. Launch runs through the deterministic fresh launcher; no failure concretely expected."
+    },
+    "branching": {
+      "delta_e": 0.95,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "With no isolation requirement in the task, the run-time choice should collapse to the local branch, giving near-local values (4/4 resolved, records mostly novel); small discount for the chance the isolated branch is realized and introduces duplicate records. No governance failure concretely expected."
+    }
+  }
+}
