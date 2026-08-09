@@ -1,0 +1,57 @@
+{
+  "contract": "creator-zero-root",
+  "version": "0.1.0",
+  "experiment": "experiment-1",
+  "max_creator_depth": 0,
+  "allowed_primitives": [
+    "observe",
+    "hypothesize",
+    "test",
+    "act",
+    "verify",
+    "return"
+  ],
+  "allowed_relationships": [
+    "observe",
+    "consult",
+    "request_response",
+    "delegate",
+    "verify",
+    "authorize",
+    "return"
+  ],
+  "canonical_artifacts": [
+    "src/solver.py"
+  ],
+  "authoritative_specification": "docs/solver_spec.md",
+  "protected_read_only": [
+    ".creator-zero/cz.py",
+    ".creator-zero/contracts/root_contract.json",
+    "docs/solver_spec.md",
+    "tests/test_solver.py"
+  ],
+  "harness_root": ".creator-zero/harness",
+  "candidate_dir": ".creator-zero/candidates",
+  "runs_dir": ".creator-zero/runs",
+  "mutation_policy": {
+    "default": "preserve",
+    "mutable_paths": [
+      "src/solver.py"
+    ],
+    "promotion_requires": [
+      "executable_counterexample",
+      "spec_violation_confirmed",
+      "candidate_fixes_counterexample",
+      "regression_suite_green",
+      "no_unrelated_behavior_change_detected"
+    ]
+  },
+  "prohibitions": [
+    "create_child_creator",
+    "modify_root_contract",
+    "modify_deterministic_compiler",
+    "weaken_tests_to_pass",
+    "mutate_without_verified_defect",
+    "treat_model_confidence_as_verification"
+  ]
+}
