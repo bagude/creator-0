@@ -1,0 +1,10 @@
+{
+  "role": "adversarial_searcher",
+  "child_deliverable": "search-result.json",
+  "child_implementation_file": null,
+  "rule": "Let S be the child's search-result.json. (1) If S.found == true: verify mechanically that applying the rules.md factors to S.violating_input yields total_discount = 1.0 - product(active factors) > 0.40; if it does, set result.verdict = 'VIOLATED' and result.violating_input = S.violating_input; if the mechanical check fails, the child evidence is rejected and result.verdict stays PENDING-INTEGRATION. (2) If S.found == false: set result.verdict = 'HOLDS' and result.violating_input = null. (3) result.input_classes_examined = union of the E-A class partition (evidence-EA-input-classes.md) and S.input_classes_examined. No judgment is required: the mapping is fully determined by S.found and the mechanical factor-product check against rules.md.",
+  "expected_contribution": {
+    "Q2": "The child, launched fresh and never exposed to the provisional answer, performs the systematic search over all rule-induced input classes and returns either a concrete violating cart or an impossibility argument, satisfying E-B (search by a non-author of the provisional answer).",
+    "Q3": "Combined with the deterministic rule above, the child's found/violating_input result yields the final verdict and, on VIOLATED, the concrete violating input for result.json, satisfying E-C once the factor product is mechanically re-checked."
+  }
+}

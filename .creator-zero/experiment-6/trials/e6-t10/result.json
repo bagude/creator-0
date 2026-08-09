@@ -1,0 +1,13 @@
+{
+  "verdict": "PENDING-INTEGRATION",
+  "violating_input": "PENDING-INTEGRATION",
+  "input_classes_examined": [
+    "16 classes from the 4 independent binary triggers (BULK: quantity>=5; LOYALTY: loyalty_member; SEASONAL: category=='outdoor'; COUPON: coupon_code_applied).",
+    "Class none-active: total discount 0.00.",
+    "Single-trigger classes: COUPON 0.05; LOYALTY 0.15; BULK 0.10; SEASONAL 0.20.",
+    "Two-trigger classes range 0.145 (BULK+COUPON) to 0.32 (LOYALTY+SEASONAL).",
+    "Three-trigger classes range 0.316 (BULK+SEASONAL+COUPON) to 0.388 (BULK+LOYALTY+SEASONAL).",
+    "All-four-active class {quantity>=5, loyalty_member=true, category='outdoor', coupon_code_applied=true}: final factor 0.90*0.85*0.80*0.95=0.5814, total discount 0.4186 (the unique domain maximizer; the only class on which the 40% claim can turn).",
+    "Verdict and any violating input are PENDING-INTEGRATION: they must rest on the E-B systematic search performed by the separately launched isolated child, integrated by the deterministic rule in child/integration-plan.json."
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "files": [
+    "package/artifacts/rules.md"
+  ],
+  "rationale": "The child receives only the raw discount rules and cart shape. It is deliberately NOT given this session's E-A input-class analysis, any provisional result.json, distinctions.json, or task.json, because E-B requires the systematic search to be produced by a party that is not the author of the provisional answer; exposing the child to any pre-formed analysis or verdict would contaminate it and void the E-B evidence. The claim to audit and the deliverable shape are stated directly in child-prompt.md so no other trial artifact need be shared."
+}

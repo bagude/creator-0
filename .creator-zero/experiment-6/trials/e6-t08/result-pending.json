@@ -1,0 +1,5 @@
+{
+  "summary": "In-session work resolved Q1 (E-A input-class analysis in analysis-EA.md) and Q2 (E-C provisional verdict VIOLATED with in-domain witness [[0,1],[1,2]], traced against merge.py's strict `s < out[-1][1]` comparison); result.json is filled with these values. Q3 (E-B) requires a searching party other than the author of the provisional answer and is assigned to the proposed isolated child (bundle under child/), a causally isolated adversarial_searcher over only package/task.json and package/artifacts/merge.py. Root-executed validation, launch, child-return, and verify-integration apply child/integration-plan.json deterministically; on a FOUND outcome the child's witness replaces the provisional violating_input, otherwise the in-session values stand, with root verification governing the final verdict.",
+  "assigned_distinctions": ["Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

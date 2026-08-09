@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "E-A input-class analysis: partitions the cart domain into 16 classes by the four independent binary rule triggers from rules.md, computes each class's total discount, and identifies the all-four-active class as the unique domain maximizer (0.4186), i.e. the only class on which the 40% claim can turn.",
+    "refs": ["evidence-EA-input-classes.md", "package/artifacts/rules.md"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "Child bundle proposing an isolated, uncontaminated fresh worker to perform the E-B systematic search (adversarial_searcher) over the whole cart domain and return a violating cart or impossibility argument, plus the deterministic integration rule mapping its deliverable to result.json's verdict and violating_input. Authored as an observable proposal; realization/search/integration are root-executed.",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]

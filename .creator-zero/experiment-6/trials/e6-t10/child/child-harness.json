@@ -1,0 +1,65 @@
+{
+  "task_id": "e6-t10-child",
+  "goal": "Independent, systematic search over the cart domain for a cart whose total discount exceeds 40 percent, or an argument that none exists.",
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "nodes": [
+    {
+      "id": "observe-inputs",
+      "primitive": "observe",
+      "tools": ["Read"],
+      "can_create": false,
+      "instructions": "Read the provided rules and the claim to audit. Acquire the discount rules and cart shape."
+    },
+    {
+      "id": "produce-evidence",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Systematically enumerate the input classes induced by the rule triggers over the whole cart domain, compute each class's total discount, and identify whether any class exceeds 0.40. Produce either a concrete violating cart or an impossibility argument."
+    },
+    {
+      "id": "self-check",
+      "primitive": "verify",
+      "tools": ["Read"],
+      "can_create": false,
+      "instructions": "Re-derive the factor product for the decisive class mechanically from the rules and confirm the found/not-found conclusion. Non-authoritative self-check."
+    },
+    {
+      "id": "return-result",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Write the deliverable search-result.json in the exact required shape and the execution ledger."
+    }
+  ],
+  "edges": [
+    {
+      "source": "observe-inputs",
+      "target": "produce-evidence",
+      "relation": "observe",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "produce-evidence",
+      "target": "self-check",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "self-check",
+      "target": "return-result",
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    }
+  ],
+  "freshness": {
+    "fresh_launcher_required": true
+  }
+}

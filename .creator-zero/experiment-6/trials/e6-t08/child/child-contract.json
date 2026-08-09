@@ -1,0 +1,19 @@
+{
+  "contract_id": "K-E6-child-t08",
+  "version": "0.1-e6-child",
+  "allowed_primitives": ["observe", "hypothesize", "verify", "return"],
+  "allowed_relations": ["observe", "verify", "authorize", "return"],
+  "allowed_tools": ["Read", "Write"],
+  "max_children": 0,
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "may_create_creator": false,
+  "may_realize_creation": false,
+  "required_primitives_for_mutation": ["verify"],
+  "protected_rules": [
+    "No child may increase its authority envelope.",
+    "Model output is a proposal, never authorization.",
+    "Mutation-capable topology requires verification.",
+    "The child is terminal: it may not create, delegate, or launch anything."
+  ]
+}

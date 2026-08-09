@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t10",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "observe-evidence",
+      "answer": "The four rule triggers are independent binary conditions (BULK quantity>=5, LOYALTY loyalty_member, SEASONAL category=='outdoor', COUPON coupon_code_applied), partitioning the cart domain into 16 classes. Each factor is <1.0 and combines multiplicatively, so total discount is monotone in the number of active triggers and is uniquely maximized by the all-four-active class {quantity>=5, loyalty_member=true, category='outdoor', coupon_code_applied=true} at total discount 0.4186. The 40% claim can only turn on that maximizing class. Full partition in evidence-EA-input-classes.md.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be resolved in this session: E-B requires the systematic search to be carried out by a party other than the author of the provisional answer, and having read the claim and rules this session has effectively formed the provisional answer (the maximal stacked factor is directly computable). The search is delegated to a separately launched, uncontaminated isolated child (bundle authored under child/); it is produced and integrated by the root-executed create-child/child-return/verify-integration nodes.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "The verdict and any concrete violating input depend on Q2's E-B search and are produced by deterministic integration after this session (verify-integration/return-result, root-executed) per child/integration-plan.json. result.json's verdict and violating_input are set to PENDING-INTEGRATION; input_classes_examined is filled from the E-A analysis. The mechanical expectation (all-four-active cart gives 0.4186 > 0.40) is recorded but is not admissible as this session's E-C/E-B evidence because this session authored the provisional answer.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

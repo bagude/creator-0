@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "propose-child",
+    "description": "E-A analysis: enumeration of the input classes on which the claim's truth could turn, derived from merge.py's control flow — in particular the strict comparison `s < out[-1][1]` on line 8, whose equality boundary (touching intervals, zero-width/repeated points) is exactly misaligned with the claim's non-strict predicate i.end >= j.start. Resolves Q1.",
+    "refs": ["analysis-EA.md", "package/artifacts/merge.py"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "E-C provisional verdict: VIOLATED, with in-domain witness [[0,1],[1,2]] and a line-by-line hand trace of merge.py showing the output [[0,1],[1,2]] whose sorted pair i = [0,1], j = [1,2] has i.end = 1 >= j.start = 1. Resolves Q2 (no authorship restriction on E-C); deterministic root verification governs.",
+    "refs": ["analysis-EA.md", "result.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Child bundle for E-B/Q3: full proposal for a causally isolated adversarial_searcher child (contract attenuated within child-envelope.json; harness from template; standalone prompt that reveals no in-session conclusion; input manifest restricted to package/task.json and package/artifacts/merge.py so the searching party is not the author of the provisional answer; pre-committed deterministic integration rule mapping search-record.json to the final result.json fields and Q3).",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]

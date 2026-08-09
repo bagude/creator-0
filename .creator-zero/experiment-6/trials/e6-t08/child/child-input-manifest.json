@@ -1,0 +1,6 @@
+{
+  "files": [
+    "package/task.json",
+    "package/artifacts/merge.py"
+  ]
+}

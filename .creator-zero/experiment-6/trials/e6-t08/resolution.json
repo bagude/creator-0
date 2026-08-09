@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t08",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "The claim's truth turns on the equality boundary of the strict comparison `s < out[-1][1]` on line 8 of merge.py: (1) touching/adjacent intervals where the next start equals the previous end, and (2) zero-width (point) intervals and repeated points — in both, s == out[-1][1] takes the append branch, leaving a sorted-output pair with i.end == j.start, which the claim's non-strict predicate i.end >= j.start counts as a violation. The remaining classes examined (nested/contained intervals, exact duplicates, proper overlaps, unsorted inputs, empty/singleton lists, negative endpoints) are handled by sorted() on line 5 and max() on line 9 and cannot by themselves make the claim fail. Full analysis in analysis-EA.md.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "VIOLATED. In-domain input [[0,1],[1,2]] (2 <= 6 intervals, integer endpoints in [-10,10], start <= end): sorted() leaves it as [[0,1],[1,2]]; out = [[0,1]]; for (s,e) = (1,2), line 8 tests 1 < 1 which is False, so line 11 appends, returning [[0,1],[1,2]]. In the sorted output the pair i = [0,1] before j = [1,2] has i.end = 1 >= j.start = 1, mechanically violating the claim as stated. Trace in analysis-EA.md; E-C imposes no authorship restriction, so in-session resolution is admissible; deterministic root verification governs.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-C"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be admissibly resolved in this session: E-B requires the systematic search to be carried out by a party other than the author of the provisional answer, and this session authored that answer the moment it read the package. Assigned to the isolated child proposed at propose-child (bundle under child/): a causally isolated adversarial_searcher receiving only package/task.json and package/artifacts/merge.py, producing search-record.json. Root-executed validation, launch, and integration per child/integration-plan.json settle Q3 after this session.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    }
+  ]
+}

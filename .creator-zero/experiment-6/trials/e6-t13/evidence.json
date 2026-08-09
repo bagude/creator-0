@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "propose-child",
+    "description": "E-A input-class analysis: partition of the 1-3 token / 1-3 char domain into C1 (a/b only), C2 (quote only), C3 (backslash only, emitted bare), C4 (backslash + quote, the class the claim turns on), C5 (multi-token adjacency/merge effects), grounded in the actual quoting/escaping behavior of the provided tok.py.",
+    "refs": ["analysis-classes.md", "package/artifacts/tok.py"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "E-C provisional verdict VIOLATED with in-domain counterexample [backslash+quote] and a mechanical index-by-index trace of detokenize then tokenize per tok.py as written, showing round-trip output [backslash] differs from the input.",
+    "refs": ["violation-trace.md", "package/artifacts/tok.py"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Complete child bundle assigning Q3/E-B to a separately launched isolated terminal worker (adversarial_searcher): attenuated child contract within child-envelope.json, child harness from template, standalone prompt, input manifest restricted to package/artifacts/tok.py (excluding this session's analysis and provisional answer to preserve E-B admissibility), and a deterministic integration plan.",
+    "refs": ["child/child-contract.json", "child/child-harness.json", "child/child-prompt.md", "child/child-input-manifest.json", "child/integration-plan.json"]
+  }
+]

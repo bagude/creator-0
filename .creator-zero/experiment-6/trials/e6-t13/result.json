@@ -1,0 +1,11 @@
+{
+  "verdict": "VIOLATED",
+  "violating_input": ["\\\""],
+  "input_classes_examined": [
+    "C1: tokens over {a,b} only — emitted bare by detokenize, no metacharacters; round-trip safe.",
+    "C2: tokens containing double-quote but no backslash — quoted, every quote escaped as \\\"; tokenize decodes each escape correctly; round-trip safe.",
+    "C3: tokens containing backslash but no double-quote — emitted bare (no quote/space/empty trigger); outside quotes tokenize treats backslash as a literal character; round-trip safe within the domain.",
+    "C4: tokens containing both backslash and double-quote — quoted, but detokenize never escapes backslashes; inside quotes tokenize interprets each raw backslash as an escape and consumes the following emitted character (the backslash of an emitted \\\" or the closing quote), corrupting the token. The claim's truth turns on this class; the exhibited violating input [\"\\\\\\\"\"] (token = backslash + quote) round-trips to [\"\\\\\"] (token = single backslash).",
+    "C5: multi-token adjacency — when a C4 token's raw backslash swallows its closing quote, the joining space and subsequent tokens are read inside the still-open quoted region and merge into one token; lists of C1-C3 tokens have no cross-token interaction."
+  ]
+}

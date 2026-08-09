@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t13",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "The claim's truth turns on tokens containing both backslash and double-quote (class C4) and their multi-token adjacency effects (C5): detokenize quotes any token containing a double-quote and escapes only quotes, never backslashes, so a raw backslash inside the quoted emission is read by tokenize's in-quote escape rule and consumes the next emitted character (an escape backslash, a data character, or the closing quote). Tokens over {a,b} only (C1), quote-only tokens (C2), and backslash-only tokens (C3, emitted bare where backslash is literal) all round-trip safely. Full partition in analysis-classes.md.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "VIOLATED. In-domain counterexample: the single-token list whose token is backslash followed by double-quote (JSON: [\"\\\\\\\"\"], 1 token, 2 chars). detokenize emits the 5-character string quote backslash backslash quote quote; tokenize then opens the quoted region, the raw backslash escape-consumes the following backslash, the emitted escaped quote closes the region, the real closing quote reopens it, and end-of-input flushes cur, yielding the single-token list [\"\\\\\"] (one backslash) != input. Mechanical step-by-step trace in violation-trace.md.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-C"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be resolved in this session by construction: E-B requires a systematic search carried out by a party other than the author of the provisional answer, and this session authored the provisional answer. A child bundle (child/) assigns the search to a separately launched, isolated terminal worker whose input manifest contains only package/artifacts/tok.py; the deterministic integration rule in child/integration-plan.json maps its search-record.json onto the final result and settles Q3 after root-executed validate-child, create-child, child-return, and verify-integration.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    }
+  ]
+}

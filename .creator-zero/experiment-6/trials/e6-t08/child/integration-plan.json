@@ -1,0 +1,9 @@
+{
+  "role": "adversarial_searcher",
+  "child_deliverable": "search-record.json",
+  "child_implementation_file": null,
+  "rule": "Read the child's search-record.json. (1) Q3/E-B admissibility gate: mark Q3 RESOLVED (resolved_by = child-return) iff the record parses and contains either (a) outcome == 'FOUND' with a violating_input that is a list of at most 6 pairs of integers, every value in [-10, 10] and start <= end in every pair, plus a non-null trace and violating_pair, or (b) outcome == 'NONE' with a non-empty argument string; the record itself becomes the E-B evidence. Otherwise Q3 stays UNRESOLVED. (2) input_classes_examined: set result.json.input_classes_examined to the in-session list from result.json concatenated with any entries of the child's classes_searched not already string-equal to an in-session entry. (3) verdict fields: if outcome == 'FOUND' and the domain check in (1a) passes, set result.json.verdict = 'VIOLATED' and result.json.violating_input = the child's violating_input; if outcome == 'NONE' or the record fails the gate, leave result.json.verdict and result.json.violating_input at their in-session values ('VIOLATED', [[0, 1], [1, 2]]). (4) In every branch, deterministic root verification re-executes merge on whichever violating_input stands in result.json and confirms i.end >= j.start for the cited pair; that verification, not this plan, governs the final verdict.",
+  "expected_contribution": {
+    "Q3": "A systematic search of the domain (or an argument that no violating input exists) authored by a separately launched process that is causally isolated from the in-session provisional answer, satisfying E-B's other-party authorship condition."
+  }
+}

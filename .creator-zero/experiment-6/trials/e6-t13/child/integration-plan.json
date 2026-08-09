@@ -1,0 +1,9 @@
+{
+  "role": "adversarial_searcher",
+  "child_deliverable": "search-record.json",
+  "child_implementation_file": null,
+  "rule": "Candidate order: (1) the parent's provisional violating_input from result.json / violation-trace.md; (2) the child's search-record.json violating_input when violation_found is true. A candidate CONFIRMS iff it is a list of 1-3 strings, each 1-3 characters over {a, b, double-quote, backslash}, and executing the unmodified package/artifacts/tok.py yields tokenize(detokenize(x)) != x. Final result.json.verdict = 'VIOLATED' iff at least one candidate confirms, else 'HOLDS'. Final result.json.violating_input = the first confirming candidate in the order above, else null. Final result.json.input_classes_examined = the parent's class list (analysis-classes.md) plus any classes in the child's classes_swept not already covered. Q3 resolution: Q3 becomes RESOLVED iff the child session terminated with a well-formed search-record.json whose search_method is non-empty and whose classes_swept jointly cover the domain partition {tokens over a/b only; quote-only tokens; backslash-only tokens; tokens containing both quote and backslash; multi-token adjacency}; otherwise Q3 stays UNRESOLVED. Any disagreement between child verdict and parent provisional verdict is settled solely by the deterministic re-execution above.",
+  "expected_contribution": {
+    "Q3": "A systematic search record over the stated domain (evidence requirement E-B) produced by a separately launched party that did not author the provisional verdict and saw only package/artifacts/tok.py — either exhibiting a violating input or arguing none exists."
+  }
+}

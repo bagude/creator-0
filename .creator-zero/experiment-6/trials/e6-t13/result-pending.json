@@ -1,0 +1,5 @@
+{
+  "summary": "Provisional in-session answer: VIOLATED, with in-domain counterexample [backslash+quote] traced mechanically against tok.py (E-A in analysis-classes.md, E-C in violation-trace.md). Q3/E-B is inadmissible for this session by authorship and is assigned to the proposed isolated child (adversarial_searcher, input manifest restricted to package/artifacts/tok.py). Final verdict, violating_input, and Q3 status are settled by the deterministic integration rule after root-executed validate-child, create-child, child-return, and verify-integration.",
+  "assigned_distinctions": ["Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

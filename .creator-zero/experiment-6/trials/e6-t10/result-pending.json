@@ -1,0 +1,5 @@
+{
+  "summary": "Isolated-child topology for e6-t10. This session resolved Q1 (E-A input-class analysis) locally and authored a full child bundle to obtain the E-B systematic search from a separately launched, uncontaminated process. Q2 (E-B) and Q3 (E-C verdict/violating input) are left UNRESOLVED for root-executed integration because this session, having read the claim and rules, is the author of the provisional answer and cannot admissibly produce the independent search or the resulting verdict. result.json carries PENDING-INTEGRATION for verdict and violating_input; input_classes_examined is filled from E-A.",
+  "assigned_distinctions": ["Q2", "Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

@@ -1,0 +1,14 @@
+{
+  "verdict": "VIOLATED",
+  "violating_input": [[0, 1], [1, 2]],
+  "input_classes_examined": [
+    "Touching/adjacent intervals where one interval's end equals the next interval's start (e.g. [[0,1],[1,2]]): the strict comparison `s < out[-1][1]` on line 8 of merge.py sends the equality case to the append branch, so both intervals survive and the sorted output contains i.end == j.start, satisfying the violation predicate i.end >= j.start",
+    "Zero-width (point) intervals and repeated points (e.g. [[0,0],[0,0]], [[0,0],[0,1]]): the same equality boundary s == out[-1][1] takes the append branch and yields i.end >= j.start",
+    "Nested/contained intervals (e.g. [[0,5],[1,2]]): merged via the max() on line 9, which prevents the accumulated end from shrinking; no violation",
+    "Exact duplicate positive-width intervals (e.g. [[0,1],[0,1]]): start < previous end, so merged; no violation",
+    "Properly overlapping intervals (e.g. [[0,3],[2,5]]): merged normally; no violation",
+    "Unsorted inputs: canonicalized by sorted() on line 5 before the scan; ordering alone cannot produce a violation",
+    "Empty list and singleton lists: return [] or the single interval; no pair (i, j) exists, so trivially no violation",
+    "Negative and mixed-sign endpoints (e.g. [[-2,-1],[-1,0]]): no sign-dependent code path; behaves identically to the corresponding nonnegative class"
+  ]
+}
