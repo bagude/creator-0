@@ -1,0 +1,5 @@
+{
+  "summary": "All 12 W371 answers are derived and recorded in result.json via the spec-faithful right-to-left weighting (first derivation, E-A). The E-B disjoint re-derivation cannot be produced admissibly in this session (it would consult the first derivation's intermediate work), so an isolated fresh child is proposed under child/: it receives only package/artifacts/spec.md and package/artifacts/items.json and re-derives every answer by the whole-identifier congruence test (validate) and left-to-right phase-corrected weighting with congruence solving (compute). Root-executed validate-child, create-child, child-return, verify-integration, and return-result complete the harness; the pre-committed deterministic rule compares the child's 12 answers to result.json item by item and records the agreement map.",
+  "assigned_distinctions": ["Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

@@ -1,0 +1,32 @@
+{
+  "log_path": "/home/user/creator-0/.creator-zero/experiment-6/trials/e6-t06/shadow/exec-session.log",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t06/shadow/exec-ws",
+  "allowed_tools": [
+    "Read",
+    "Write"
+  ],
+  "tool_use_counts": {
+    "Read": 29,
+    "ToolSearch": 1,
+    "Write": 11
+  },
+  "disallowed_tool_uses": [
+    {
+      "tool": "ToolSearch",
+      "id": "toolu_011QRLe52Ub2U6nhMQAbe2eW"
+    }
+  ],
+  "spawn_capable_tool_uses": [],
+  "file_paths_outside_workspace": [],
+  "session_ids_reported": [
+    "413669a4-350e-468f-ad36-c774aadeb1eb"
+  ],
+  "session_result": {
+    "subtype": "success",
+    "is_error": false,
+    "duration_ms": 295520,
+    "num_turns": 42,
+    "total_cost_usd": 2.9164499999999998
+  },
+  "parse_errors": 0
+}

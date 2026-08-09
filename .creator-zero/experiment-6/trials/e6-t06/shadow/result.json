@@ -1,0 +1,17 @@
+{
+  "answers": {
+    "validate:66373197": "VALID",
+    "validate:74193967": "VALID",
+    "validate:92489881": "INVALID",
+    "validate:52874804": "INVALID",
+    "validate:74391491": "VALID",
+    "validate:91324575": "VALID",
+    "validate:15878375": "VALID",
+    "validate:29067655": "INVALID",
+    "compute:479812": "9",
+    "compute:153886": "3",
+    "compute:278381": "3",
+    "compute:027899": "7"
+  },
+  "method": "First derivation (this session, spec-faithful W371): weights 3,7,1 cycle assigned to payload digits from RIGHT to LEFT with the rightmost payload digit receiving weight 3 (left-to-right weight vector [3,1,7,3,1,7,3] for the 7-digit validate payloads, [1,7,3,1,7,3] for the 6-digit compute payloads); S = sum(digit x weight) over the payload; check digit = (10 - (S mod 10)) mod 10. For validate items the identifier's last digit was compared to the check digit computed from the preceding 7-digit payload; for compute items the check digit was computed directly. Every weighted sum was computed digit-by-digit and recomputed in the opposite scan direction before recording (full per-item work in derivation-first.md). A second, disjoint re-derivation (whole-identifier mod-10 congruence test with the check digit at weight 1 for validation; left-to-right phase-corrected weighting with congruence solving (S + c) mod 10 = 0 for computation) is assigned to an isolated fresh child session that receives only spec.md and items.json and none of this session's work; per-item agreement is recorded at root-executed integration per child/integration-plan.json (E-B)."
+}

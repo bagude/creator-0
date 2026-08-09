@@ -1,0 +1,6 @@
+{
+  "topology_id": "H-e6-t11-local-independent-verify",
+  "family": "local-independent-verify",
+  "predictions_hash": "sha256:550f3e145c9183e468016a2cd35647df7dd31e023c5f0c1efbaac263602c966e",
+  "role": "shadow (CONTROL_ONLY, preregistered runner-up)"
+}

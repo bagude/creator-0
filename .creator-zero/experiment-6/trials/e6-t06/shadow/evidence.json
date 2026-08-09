@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Governed observation of the task package: W371 rule read from package/artifacts/spec.md (weights 3,7,1 right-to-left, rightmost payload digit weight 3; check digit (10 - (S mod 10)) mod 10); 8 validate identifiers and 4 compute payloads read from package/artifacts/items.json. Identified Q3 as the isolation-requiring distinction: its E-B non-consultation condition is unsatisfiable by any process that authored the first derivation, so it is assigned to the isolated child.",
+    "refs": ["package/artifacts/spec.md", "package/artifacts/items.json", "distinctions.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "First derivation (E-A) of all 12 answers by spec-faithful right-to-left W371 weighting, with per-item digit-by-digit weighted sums, check digits, and verdicts recorded in derivation-first.md and the method stated in result.json. Each sum was recomputed in the opposite scan direction before recording.",
+    "refs": ["derivation-first.md", "result.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Complete child bundle proposing an isolated fresh worker that re-derives all 12 answers by a disjoint method (whole-identifier mod-10 congruence test for validation; left-to-right phase-corrected weighting with congruence solving for computation) from spec.md and items.json only. The input manifest deliberately excludes derivation-first.md, result.json, and every other product of this session's analysis to satisfy E-B's non-consultation condition; the pre-committed deterministic integration rule records per-item agreement.",
+    "refs": ["child/child-contract.json", "child/child-harness.json", "child/child-prompt.md", "child/child-input-manifest.json", "child/integration-plan.json"]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "verdict": "VIOLATED",
+  "violating_input": [[0, 1], [1, 2]],
+  "input_classes_examined": [
+    "empty list (guard on line 3 returns []; claim holds vacuously)",
+    "singleton list (loop never runs; claim holds vacuously)",
+    "properly overlapping intervals, next.start < prev.end after sorting (merged by line 8; claim holds)",
+    "nested/contained intervals (merged; max on line 9 keeps the outer end; claim holds)",
+    "duplicate positive-width intervals (second copy merged; claim holds)",
+    "touching intervals with prev.end == next.start (strict '<' on line 8 leaves them unmerged; output pair has i.end >= j.start; claim VIOLATED here)",
+    "zero-width intervals sharing a point, e.g. [3,3],[3,3] or [3,3],[3,5] (same strict-comparison behavior; claim VIOLATED here)",
+    "unsorted input (line 5 sorts first; reduces to the classes above)",
+    "negative endpoints (sign plays no role in the comparisons; reduces to the classes above)"
+  ]
+}

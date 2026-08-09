@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "propose-child",
+    "description": "E-A per-probe analysis mapping each of the ten probes to the behavior render.md prescribes, showing the spec determines every exercised behavior and agrees with render.py on all of them, with an explicit completeness argument over the exercised behavior classes (grammar-exact placeholders, missing-name-to-empty, malformed-brace literals, single-pass no-rescan, identity elsewhere).",
+    "refs": ["analysis-EA.md", "package/artifacts/render.md", "package/artifacts/render.py", "package/artifacts/probes.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "decide-topology",
+    "description": "Typed topology decision CREATE with reasons: this session's package access permanently disqualifies it from authoring the E-B artifact, Q3/Q4 depend on that artifact, and K-E6-trial permits exactly one validated, fresh-launched child.",
+    "refs": ["decision.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Complete child bundle for the E-B clean-room implementer: attenuated terminal contract within child-envelope.json, four-node child harness, standalone prompt mentioning only inputs/render.md, input manifest restricted to package/artifacts/render.md (excluding render.py, probes.json, and all worker analysis to preserve E-B admissibility), and a pre-committed deterministic integration rule mapping the child deliverable to result.json.",
+    "refs": ["child/child-contract.json", "child/child-harness.json", "child/child-prompt.md", "child/child-input-manifest.json", "child/integration-plan.json"]
+  }
+]

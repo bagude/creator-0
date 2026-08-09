@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "resolve-local",
+    "description": "E-A input-class analysis grounded in merge.py's control flow: enumerates empty, singleton, properly-overlapping, nested, duplicate, touching, zero-width, unsorted, and negative-endpoint classes, and identifies the strict comparison `s < out[-1][1]` on line 8 as the point the claim's truth turns on (touching and zero-width point-sharing intervals are left unmerged).",
+    "refs": ["analysis.md", "package/artifacts/merge.py"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "resolve-local",
+    "description": "E-C verdict VIOLATED with concrete in-domain input [[0,1],[1,2]] and a line-by-line mechanical trace of the actual merge.py: sorted input, out seeded with [0,1], line 8 tests 1 < 1 = False, [1,2] appended, sorted output [[0,1],[1,2]] contains pair (i=[0,1], j=[1,2]) with i.end = 1 >= 1 = j.start.",
+    "refs": ["analysis.md", "result.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "verify-resolution",
+    "description": "Read-only self-check (non-authoritative): result.json conforms to the deliverable shape in package/task.json; violating input confirmed in-domain (2 intervals, integer endpoints in [-10,10], start <= end); trace re-derived against merge.py and the forbidden pair confirmed; resolution.json validated against resolution-schema.json (required keys, no extra properties, Q3 left UNRESOLVED with empty resolved_by per E-B's authorship constraint). Outcome recorded in execution-ledger.jsonl event evt-3.",
+    "refs": ["result.json", "resolution.json", "package/task.json", "resolution-schema.json", "execution-ledger.jsonl"]
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t08",
+  "topology_id": "local-independent-verify",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "The claim's truth turns on the classes where line 8's strict comparison `s < out[-1][1]` differs from `<=`: touching intervals (prev.end == next.start) and zero-width intervals sharing a point, which the code leaves unmerged. The remaining classes — empty list, singleton, properly overlapping, nested/contained, duplicate positive-width intervals, unsorted order, negative endpoints — either hold vacuously, are merged correctly, or reduce to the above. Full analysis in analysis.md.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "VIOLATED. In-domain input [[0,1],[1,2]]: merge sorts it, seeds out=[[0,1]], then tests 1 < 1 (line 8), which is False, so [1,2] is appended unmerged. The sorted output [[0,1],[1,2]] contains i=[0,1] before j=[1,2] with i.end = 1 >= 1 = j.start, mechanically violating the claim. Trace in analysis.md.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-C"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Not resolvable in this session: E-B requires a systematic search by a party other than the author of the provisional answer, and this session authored that answer. The root-executed verify-independent examiner is charged (examiner-charge.md) to perform the independent search/argument; deterministic integration after this session may settle Q3.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    }
+  ]
+}

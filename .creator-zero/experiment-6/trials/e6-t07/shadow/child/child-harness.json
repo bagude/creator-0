@@ -1,0 +1,61 @@
+{
+  "task_id": "e6-t07-child",
+  "goal": "Implement the placeholder substitution language specified in inputs/render.md as a single python file render_impl.py exposing render(p), working solely from that specification.",
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "nodes": [
+    {
+      "id": "observe-inputs",
+      "primitive": "observe",
+      "tools": ["Read"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "instructions": "Read every file in inputs/. Acquire evidence only; produce nothing yet.",
+      "why_necessary": "The child's deliverable must be derived from its governed inputs alone; evidence acquisition is a distinct causal step."
+    },
+    {
+      "id": "produce-evidence",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "instructions": "Author render_impl.py, a self-contained python-stdlib-only file exposing render(p) with p = {\"template\": str, \"context\": dict}, implementing exactly the specification in inputs/render.md — every clause, and nothing beyond it. Emit the deliverable under a propose ledger event at authoring time.",
+      "why_necessary": "Sole authoring locus of the independent evidence; this is the child's assigned epistemic role."
+    },
+    {
+      "id": "self-check",
+      "primitive": "verify",
+      "tools": ["Read"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "instructions": "Re-read the deliverable against the child task's requirements; record the structural outcome. Non-authoritative.",
+      "why_necessary": "Verify primitive required for a Write-holding topology; the deterministic root verification governs."
+    },
+    {
+      "id": "return-result",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "instructions": "Write result.json (deliverable summary, files produced, model_calls_spent 0), finalize execution-ledger.jsonl with the return event and a terminal complete event.",
+      "why_necessary": "Mandated return locus; without it the evidence never re-enters the governed boundary."
+    }
+  ],
+  "edges": [
+    {"source": "observe-inputs", "target": "produce-evidence", "relation": "observe", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "produce-evidence", "target": "self-check", "relation": "verify", "requires_response": true, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "self-check", "target": "return-result", "relation": "authorize", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false}
+  ],
+  "ledger_contract": {
+    "path": "execution-ledger.jsonl (child workspace root)",
+    "schema": "normalized formal event schema: one JSON object per line with event_id, label, actor, timestamp, artifact_refs, metadata; node executions carry metadata.completes_node",
+    "required_node_execution_events": [
+      {"label": "observe", "actor": "node:observe-inputs", "metadata": {"completes_node": "observe-inputs"}},
+      {"label": "propose", "actor": "node:produce-evidence", "metadata": {"completes_node": "produce-evidence"}},
+      {"label": "verify", "actor": "node:self-check", "metadata": {"completes_node": "self-check"}},
+      {"label": "return", "actor": "node:return-result", "metadata": {"completes_node": "return-result"}}
+    ],
+    "terminal_event": {"label": "complete", "actor": "child"},
+    "optional_events": "non-authority events (observe, propose, validate, consult, reject, persist, reconstruct, return) with actor 'child' are permitted as governance self-loops; tau lines permitted with metadata.reason"
+  }
+}

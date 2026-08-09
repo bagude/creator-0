@@ -1,0 +1,38 @@
+{
+  "task_id": "e6-t06",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "66373197 VALID (S=103, check 7); 74193967 VALID (S=143, check 7); 92489881 INVALID (S=170, check 0 vs last digit 1); 52874804 INVALID (S=154, check 6 vs last digit 4); 74391491 VALID (S=129, check 1); 91324575 VALID (S=115, check 5); 15878375 VALID (S=135, check 5); 29067655 INVALID (S=97, check 3 vs last digit 5). Weights assigned right-to-left, rightmost payload digit weight 3, per spec.md; method stated in result.json (E-A).",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A", "E-C"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "479812 -> 9 (S=101); 153886 -> 3 (S=127); 278381 -> 3 (S=137); 027899 -> 7 (S=133). Weights assigned right-to-left, rightmost payload digit weight 3, check digit (10 - (S mod 10)) mod 10, per spec.md; method stated in result.json (E-A).",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A", "E-C"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION: E-B's non-consultation condition cannot be met by this session, which holds the first derivation's intermediate work in its own context. The proposed isolated child (bundle under child/) re-derives all 12 answers by a disjoint method from spec.md and items.json alone; the per-item agreement comparison is executed deterministically at the root-executed verify-integration node per child/integration-plan.json.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION: exact correctness of all 12 answers is settled only by deterministic root verification against the spec-faithful computation. The first derivation (double-checked per item) and the pending disjoint child re-derivation supply convergence evidence but do not decide E-C.",
+      "evidence_ids": ["ev-2", "ev-3"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

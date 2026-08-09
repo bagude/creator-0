@@ -1,0 +1,38 @@
+{
+  "task_id": "e6-t07",
+  "topology_id": "branching",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "render.md determines the output for every behavior exercised by the ten probes, and every determination agrees with render.py. Per-probe argument in analysis-EA.md: well-formed placeholders (probes 0,1,3,9) substitute per the [a-z]+ grammar; missing names yield the empty string (probes 2,9); malformed brace forms '{{ name }}', '{{}}', '{{num1}}' fail the exact '{{'+[a-z]+'}}' grammar and stay literal, matching the regex's behavior (probes 4,6,7); single-pass no-rescan semantics match re.sub's literal insertion of callable results (probe 5); templates without placeholders pass through unchanged (probe 8). Spec silences (non-string context values, nested brace runs) are not exercised by any probe. Therefore no undetermined and no divergent behavior exists on this probe set, and undetermined_behaviors = [].",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be admissibly produced in this session: E-B requires an author who has never accessed render.py nor any analysis derived from it, and this session read the full package. Assigned to the proposed isolated child (role clean_room_implementer), whose input manifest contains only package/artifacts/render.md; the child bundle awaits root-executed validation, fresh launch, and return.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION: the item-level comparison over probes.json between render.py and the child's render_impl.py is assigned to deterministic root integration under the pre-committed, judgment-free rule in child/integration-plan.json; it cannot exist before the Q2 artifact is returned.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION: by the E-C rule the verdict is DIVERGES iff the integrated Q3 comparison shows a differing output on some probe, else REPRODUCES; the Q1 input is settled (no undetermined/divergent behaviors, undetermined_behaviors = []) but the Q3 input is not yet integrated, so asserting a verdict now would not satisfy E-C.",
+      "evidence_ids": ["ev-1", "ev-3"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

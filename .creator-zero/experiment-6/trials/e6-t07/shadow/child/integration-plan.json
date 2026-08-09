@@ -1,0 +1,11 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "render_impl.py",
+  "child_implementation_file": "render_impl.py",
+  "rule": "Load package/artifacts/probes.json as a list of ten probe objects indexed 0..9. Import render from package/artifacts/render.py as render_ref and render from the child's render_impl.py as render_clean. For each index i compute a_i = render_ref(probes[i]) and b_i = render_clean(probes[i]); divergent = sorted([i for i in 0..9 if a_i != b_i]). Set result.json.divergent_probe_indices = divergent; set result.json.verdict = 'DIVERGES' if divergent is non-empty else 'REPRODUCES'; keep result.json.undetermined_behaviors = [] as carried from the E-A analysis (analysis-EA.md). If the child produced no render_impl.py, or the file fails to import, or it does not expose a callable render(p), or any call raises: leave verdict and divergent_probe_indices as PENDING-INTEGRATION and record integration as failed. No judgment is exercised at integration time.",
+  "expected_contribution": {
+    "Q2": "The child's render_impl.py IS the E-B clean-room implementation: authored solely from render.md, by a fresh-launched process whose input manifest contains only package/artifacts/render.md — never render.py nor any analysis derived from it.",
+    "Q3": "Executing the deterministic comparison rule above over probes.json yields the sorted list of divergent probe indices (possibly empty).",
+    "Q4": "Applying the E-C rule to the Q1 statement (no undetermined/divergent behaviors, undetermined_behaviors = []) and the Q3 comparison fixes the final verdict: DIVERGES iff some probe output differs, else REPRODUCES."
+  }
+}

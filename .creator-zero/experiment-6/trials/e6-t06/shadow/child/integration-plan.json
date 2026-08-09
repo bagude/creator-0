@@ -1,0 +1,10 @@
+{
+  "role": "independent_verifier",
+  "child_deliverable": "child-answers.json",
+  "child_implementation_file": null,
+  "rule": "Parse child-answers.json and read its 'answers' object. Enumerate the 12 keys of result.json 'answers' (8 'validate:<id>' keys, 4 'compute:<payload>' keys). Structural gate: if the child 'answers' object does not contain exactly these 12 keys with values in {'VALID','INVALID','0'..'9'}, E-B is NOT satisfied and Q3 is recorded as unresolved-failed; stop. Otherwise, for each key K compute agreement[K] := (child answers[K] == parent answers[K]), string equality. Record the full per-item agreement map as integration evidence (satisfying E-B's recorded-agreement clause). If all 12 agreement values are true: E-B is satisfied, Q3 resolves to 'both derivations agree on every item', and result.json 'answers' passes through unchanged as the final answer set. If any agreement value is false: E-B's agreement is recorded as failed for exactly the false keys, Q3 resolves to 'derivations disagree on <list of false keys>', result.json 'answers' still passes through unchanged, and the disagreement list is handed to root verification, which alone judges correctness (E-C). No judgment calls: every step is string parsing and equality comparison.",
+  "expected_contribution": {
+    "Q3": "The complete second answer set for all 12 items, produced by a disjoint method (whole-identifier congruence test for validation; left-to-right phase-corrected weighting plus congruence solving for computation) in a fresh session with no access to the first derivation's intermediate work, enabling the recorded per-item agreement comparison.",
+    "Q4": "Supporting (non-authoritative) convergence evidence: agreement of two causally separate disjoint derivations raises confidence in exact correctness, which deterministic root verification finally decides."
+  }
+}

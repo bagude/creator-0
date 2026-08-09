@@ -1,0 +1,5 @@
+{
+  "summary": "Q1 (E-A) is resolved in-session: the per-probe analysis in analysis-EA.md shows render.md determines every behavior exercised by the ten probes and agrees with render.py on all of them, so undetermined_behaviors = []. Q2 (E-B clean-room implementation) is assigned to the proposed isolated child, which receives only package/artifacts/render.md. Q3 (item-level comparison) is assigned to deterministic root integration under the pre-committed rule in child/integration-plan.json. Q4 (E-C verdict) follows deterministically from Q1 and Q3 at integration: DIVERGES iff some probe output differs, else REPRODUCES. result.json fields verdict and divergent_probe_indices are PENDING-INTEGRATION until then.",
+  "assigned_distinctions": ["Q2", "Q3", "Q4"],
+  "integration_rule_ref": "child/integration-plan.json"
+}
