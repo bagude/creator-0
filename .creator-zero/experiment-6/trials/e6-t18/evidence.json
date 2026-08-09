@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Governed observation of the task package: read package/task.json (task statement, deliverable shape, evidence requirements E-A/E-B/E-C), distinctions.json (Q1-Q3), and package/artifacts/network.json (6 nodes, 10 one-way links). Identified Q2 as the isolation-requiring distinction (features.requires_isolation = true): its E-B authorship condition disqualifies this session, which reads the package and authors the first enumeration. Q3 spans sessions and is settled only at root integration.",
+    "refs": ["package/task.json", "package/artifacts/network.json", "distinctions.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "E-A evidence: complete enumeration of all minimum-total-cost S-to-T routes. Exhaustive DFS over simple paths in the acyclic one-way link set found exactly 9 simple S-to-T routes; each has total cost 8 (per-route cost terms recorded), so the minimum cost is 8 and all 9 routes attain it. Method stated alongside the items as E-A requires.",
+    "refs": ["enumeration-a.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Child bundle authored as observable proposal for the E-B evidence: attenuated terminal contract (within K-E6-child-max on every axis), 4-node child harness, standalone prompt specifying deliverable enumeration-b.json and ledger contract, input manifest restricted to package/artifacts/network.json only (excluding enumeration-a.json and all worker analysis, enforcing E-B's causal-separation condition by launch conditions), and pre-committed deterministic integration plan.",
+    "refs": ["child/child-contract.json", "child/child-harness.json", "child/child-prompt.md", "child/child-input-manifest.json", "child/integration-plan.json"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "propose-child",
+    "description": "Partial deliverable and pending-integration record: result.json carries the sorted E-A items and method with complete and flagged fields set to PENDING-INTEGRATION; result-pending.json assigns Q2 and Q3 to the root-executed nodes and references the deterministic integration rule.",
+    "refs": ["result.json", "result-pending.json"]
+  }
+]

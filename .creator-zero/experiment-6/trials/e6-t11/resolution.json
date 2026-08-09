@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t11",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "The domain partitions into eight truth-relevant classes recorded in input-class-analysis.md: C0 the n=0 identity; C1 intra-month advances crossing no boundary; C2 single month-boundary rollovers, one subclass per month exercising each month-length constant, refined with next-to-last-day boundary-approach starts; C3 the February leap distinction (2024 leap vs 2023/2025 non-leap); C4 the Dec 31 -> Jan 1 year rollover for each domain year; C5 multi-month spans up to n=60 (at most two boundaries reachable); C6 the century leap sub-conditions, vacuous in this domain; C7 the parse/format round-trip. Together these exercise every month-length constant, the leap branch both ways, every month-boundary rollover reachable with n <= 60, and the year-boundary rollover within 2023-2025.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "VIOLATED. The shipped DAYS table gives August (index 7) 30 days instead of the true 31. Witness inside the domain: [\"2023-08-30\", 1]. Mechanical trace: add_days('2023-08-30', 1) increments d to 31, compares against _dim(2023, 8) = DAYS[7] = 30, rolls over, and returns '2023-09-01'; the true Gregorian date one day after 2023-08-30 is 2023-08-31. All other classes check out against the true calendar; the defect class also contains e.g. ['2024-08-30', 1] and ['2023-08-01', 30].",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-C"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION. E-B requires a systematic search by a party other than the author of the provisional answer; this session authored that answer, so any in-session search is inadmissible. The search is assigned to the isolated fresh child proposed at propose-child (role adversarial_searcher, receiving only package/artifacts/dateadd.py). Root-executed validate-child, create-child, child-return, and verify-integration settle Q3 per the deterministic rule in child/integration-plan.json.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    }
+  ]
+}

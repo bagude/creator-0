@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t18",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "The minimum total cost from S to T is 8, and ALL nine simple S-to-T routes in network.json attain it: S-A-B-C-D-T, S-A-B-C-T, S-A-B-D-T, S-A-C-D-T, S-A-C-T, S-A-D-T, S-B-C-D-T, S-B-C-T, S-B-D-T (sorted). Method: exhaustive depth-first enumeration of all simple paths over the acyclic one-way link set, with per-route cost sums recorded in enumeration-a.json. The enumeration is complete over the route space by construction (every outgoing link expanded, repeated nodes pruned, DAG structure guarantees termination), satisfying E-A's condition of a complete candidate enumeration with its method stated.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be admissibly resolved in this session: E-B requires a second enumeration produced without access to the first enumeration or any of its intermediate work, and this session authored the first enumeration. The proposed child bundle (child/) enforces causal separation by launch conditions — its input manifest contains only package/artifacts/network.json, excluding enumeration-a.json and all worker analysis. The child's enumeration-b.json, produced by the root-executed create-child/child-return nodes, will constitute the E-B evidence.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be resolved before the E-B enumeration exists. The merged deliverable is pre-committed: the deterministic rule in child/integration-plan.json maps enumeration-a.json and the child's enumeration-b.json to result.json (sorted union as items, singly-found items flagged, complete true only if both item sets are equal and both enumerations claim completeness). result.json currently carries the E-A items with complete and flagged set to PENDING-INTEGRATION; the root-executed verify-integration node settles this distinction.",
+      "evidence_ids": ["ev-4"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

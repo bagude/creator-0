@@ -1,0 +1,10 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "enumeration-b.json",
+  "child_implementation_file": null,
+  "rule": "Let A = the 'items' array of enumeration-a.json and B = the 'items' array of the child's enumeration-b.json (both arrays of route strings). Compute U = sort(dedupe(A union B)) by lexicographic string order. Compute F = [{\"item\": r, \"found_only_by\": \"A\"} for each r in A and not in B] concatenated with [{\"item\": r, \"found_only_by\": \"B\"} for each r in B and not in A], sorted by item. Set result.json fields: items := U; flagged := F; method := 'Union of two independent complete enumerations: E-A (exhaustive DFS over simple paths by worker X-E6, see enumeration-a.json) and E-B (independent enumeration by isolated child with no access to E-A, see child deliverable enumeration-b.json); singly-found items flagged in the flagged field.'; complete := true if and only if set(A) == set(B) AND enumeration-b.json field 'complete' == true AND enumeration-a.json field 'complete' == true, else false. Overwrite result.json with these values verbatim. No judgment is required at any step.",
+  "expected_contribution": {
+    "Q2": "The child's enumeration-b.json IS the second complete enumeration: it is produced by a causally separated fresh process whose input manifest contains only package/artifacts/network.json — the first enumeration (enumeration-a.json), the worker's analysis, and all other trial artifacts are excluded by construction, satisfying E-B's authorship condition through launch conditions rather than assertion.",
+    "Q3": "Applying the deterministic union/flag/completeness rule above to enumeration-a.json and enumeration-b.json at verify-integration produces the merged E-C deliverable and settles whether the completeness claim is jointly supported."
+  }
+}

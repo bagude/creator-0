@@ -1,0 +1,16 @@
+{
+  "items": [
+    "S-A-B-C-D-T",
+    "S-A-B-C-T",
+    "S-A-B-D-T",
+    "S-A-C-D-T",
+    "S-A-C-T",
+    "S-A-D-T",
+    "S-B-C-D-T",
+    "S-B-C-T",
+    "S-B-D-T"
+  ],
+  "method": "E-A: exhaustive depth-first enumeration of all simple S-to-T paths in package/artifacts/network.json (one-way links respected, no node repeated). The link set is acyclic, so the simple-path space is finite; DFS visited all 9 simple routes, every one of which has total cost 8, the minimum. Items above are the E-A enumeration, sorted. The final merged answer (union with the independent E-B enumeration from the isolated child, singly-found items flagged) is produced by the deterministic root integration step per child/integration-plan.json.",
+  "complete": "PENDING-INTEGRATION",
+  "flagged": "PENDING-INTEGRATION"
+}

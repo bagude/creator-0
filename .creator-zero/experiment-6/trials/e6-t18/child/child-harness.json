@@ -1,0 +1,65 @@
+{
+  "task_id": "e6-t18-child",
+  "goal": "Independently enumerate all minimum-total-cost S-to-T routes in network.json from the manifest inputs only",
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "nodes": [
+    {
+      "id": "observe-inputs",
+      "primitive": "observe",
+      "tools": ["Read"],
+      "can_create": false,
+      "instructions": "Read the input files listed in the manifest (package/artifacts/network.json) and the child prompt. Acquire no other inputs."
+    },
+    {
+      "id": "produce-evidence",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Derive the complete set of minimum-total-cost S-to-T routes and author enumeration-b.json in the exact shape given in child-prompt.md, with the method stated."
+    },
+    {
+      "id": "self-check",
+      "primitive": "verify",
+      "tools": ["Read"],
+      "can_create": false,
+      "instructions": "Re-check enumeration-b.json against network.json: every listed route uses only existing one-way links, repeats no node, attains the stated minimum cost, and no qualifying route is missing. Non-authoritative."
+    },
+    {
+      "id": "return-result",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Finalize enumeration-b.json and child-ledger.jsonl as the returned deliverables."
+    }
+  ],
+  "edges": [
+    {
+      "source": "observe-inputs",
+      "target": "produce-evidence",
+      "relation": "observe",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "produce-evidence",
+      "target": "self-check",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "self-check",
+      "target": "return-result",
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    }
+  ],
+  "freshness": {
+    "fresh_launcher_required": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "artifact": "blinded exec workspace manifest",
+  "trial_id": "e6-t16",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t16/primary/exec-ws",
+  "blinding_scan": "PASS (0 hits)",
+  "file_sha256": {
+    ".claude/settings.json": "057724aff3831a2ebe097f2877650adbea6b7347a2aeada0e6e3134f4f4e2554",
+    "child-envelope.json": "b1eeb7c15c7b0f62aaf42f8777eea77e88f407bb39e646c7b7cda662a4852b79",
+    "child-templates/child-contract-template.json": "7209fc7b5d4e87df5d8ad53a8b1edd54290482e1c07f3fff5084879c2e41b2c3",
+    "child-templates/child-harness-template.json": "e82679ecb8ebf94f2a3080a08c3af3392c58f80bcee09661b4f5c195da137672",
+    "contract.json": "6ac49cdd4565175345e0c6a27500c4fa5f53325122f324c0dea9301e9002830d",
+    "distinctions.json": "1bd708d48a69bf5d958bb1ee3417017ae7269f00138f8a4fb4ec406fd9471a1a",
+    "harness.json": "fef10245f9ff08968f037011f258d771ac7310c93eb5f7c9ba6f0ee9c9337947",
+    "package/artifacts/modules.json": "bf64eea8e2d0acc1bc1e3a2a300fcb15df445597a0d1bcbb8a0c10ca86afc97a",
+    "package/task.json": "ef8c71922f08ee80b7f09eff33fc42cd76d4bb6042eecb8f34e60528054f8034",
+    "prompt.md": "effb880790070462d1bb966623fbf6ab94bb87726ed950c0ff89c0ec1098c633",
+    "protocol.md": "9ee45d464d5e265696f1049d50e5eef9f23e589acfeb4d8f49c8be9f523a4ed3",
+    "resolution-schema.json": "0b4b4b0a748bed54c260a5b35e6432cf644a73f97360793ca48f64d2c64d3e1b"
+  }
+}

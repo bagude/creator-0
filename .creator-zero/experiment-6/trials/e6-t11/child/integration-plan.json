@@ -1,0 +1,9 @@
+{
+  "role": "adversarial_searcher",
+  "child_deliverable": "search-report.json",
+  "child_implementation_file": null,
+  "rule": "Parse the child's search-report.json. Define in-domain(d, n) := d parses as YYYY-MM-DD with year in {2023, 2024, 2025} and n is an integer with 0 <= n <= 60. Case 1 — verdict == 'VIOLATION_FOUND' and witnesses contains at least one in-domain pair: mark Q3 RESOLVED (E-B satisfied: systematic search by a distinct fresh process found a violation); final result.json fields: verdict := 'VIOLATED'; violating_input := ['2023-08-30', 1] if that pair appears among the child's in-domain witnesses, otherwise the first in-domain witness in the child's list; input_classes_examined := the classes in the parent's input-class-analysis.md unioned with the child's classes_searched. Case 2 — verdict == 'NO_VIOLATION', witnesses is empty, and no_violation_argument is a non-null non-empty string: mark Q3 RESOLVED (E-B satisfied by the child's no-violation argument); then adjudicate the parent/child conflict mechanically: execute add_days('2023-08-30', 1) from package/artifacts/dateadd.py and compare with an independent Gregorian reference (e.g. Python datetime.date(2023, 8, 30) + timedelta(days=1)); if the outputs differ, the parent verdict stands (verdict := 'VIOLATED', violating_input := ['2023-08-30', 1]); if they match, set verdict := 'HOLDS', violating_input := null. Case 3 — search-report.json missing, unparseable, or matching neither case: Q3 stays UNRESOLVED and the parent's result.json fields are left unchanged. No other judgment is applied.",
+  "expected_contribution": {
+    "Q3": "A systematic, class-structured search of the domain (or a no-violation argument covering it) authored by a separately launched fresh process that is not the author of the provisional answer and that received only package/artifacts/dateadd.py, satisfying E-B's authorship-separation and systematicity conditions."
+  }
+}

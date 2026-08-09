@@ -1,0 +1,14 @@
+{
+  "verdict": "VIOLATED",
+  "violating_input": ["2023-08-30", 1],
+  "input_classes_examined": [
+    "C0: n = 0 identity - loop body never runs; output must equal the re-formatted input",
+    "C1: intra-month advance with no month boundary crossed - exercises only the day-vs-month-length comparison on its false branch",
+    "C2: single month-boundary rollover, one subclass per month (start on the true last day, n = 1), each exercising exactly one month-length constant; refined with boundary-approach starts on the true next-to-last day of each month (n = 1 must NOT roll over), which detects too-short constants",
+    "C3: February leap distinction - 2024-02-28 -> 02-29 -> 03-01 in leap year 2024 versus 2023/2025-02-28 -> 03-01 in non-leap years",
+    "C4: year rollover Dec 31 -> Jan 1 for each domain year 2023, 2024, 2025",
+    "C5: multi-month spans with n up to 60, crossing two consecutive month boundaries (the maximum reachable with n <= 60), exercising sums of adjacent month-length constants including the leap February span",
+    "C6: century leap-rule sub-conditions (y % 100, y % 400) - unreachable from the 2023-2025 domain with n <= 60; the claim's truth cannot turn on them",
+    "C7: ISO parse and zero-padded format round-trip - exercised by every input, correct by inspection"
+  ]
+}

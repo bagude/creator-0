@@ -1,0 +1,5 @@
+{
+  "summary": "In-session work is complete: E-A (input-class partition, Q1) and E-C (provisional verdict VIOLATED with in-domain witness ['2023-08-30', 1], Q2) are resolved and recorded; result.json is fully populated from in-session admissible evidence. E-B (Q3) cannot be produced in-session because this session authored the provisional answer, so a child bundle (role adversarial_searcher, inputs restricted to package/artifacts/dateadd.py) has been proposed. Root-executed validate-child, create-child, child-return, and verify-integration will settle Q3 and confirm or adjudicate the final verdict per the pre-committed deterministic rule.",
+  "assigned_distinctions": ["Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

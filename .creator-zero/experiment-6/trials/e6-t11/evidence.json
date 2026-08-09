@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "propose-child",
+    "description": "Input-class analysis (E-A): written partition of the domain into eight truth-relevant classes C0-C7, with the coverage argument that they exercise every month-length constant, the 2024 leap branch, every month-boundary rollover reachable with n <= 60, and the year-boundary rollover within 2023-2025. Derived at observe-evidence from package/artifacts/dateadd.py; authored at propose-child (the observe node holds Read only).",
+    "refs": ["input-class-analysis.md", "package/artifacts/dateadd.py"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "Provisional verdict (E-C): VIOLATED with in-domain witness [\"2023-08-30\", 1]. The shipped DAYS table has 30 for August (index 7) instead of the true 31; the mechanical trace in input-class-analysis.md section 3 shows add_days('2023-08-30', 1) returns '2023-09-01' while the true Gregorian date is '2023-08-31'. Verdict and witness recorded in result.json.",
+    "refs": ["input-class-analysis.md", "result.json", "package/artifacts/dateadd.py"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Child bundle proposal for E-B / Q3: attenuated terminal child contract, four-node child harness, standalone prompt charging an independent systematic class-structured search, input manifest restricted to package/artifacts/dateadd.py (excluding this session's analysis and verdict to preserve E-B authorship separation and avoid contamination), and the deterministic integration plan (role adversarial_searcher) mapping search-report.json to the final result fields and to Q3's resolution.",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]
