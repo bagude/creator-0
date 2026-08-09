@@ -1,0 +1,42 @@
+{
+  "validation": {
+    "H-e7-p01-local": "PASS",
+    "H-e7-p01-local-independent-examiner": "PASS"
+  },
+  "ranking": [
+    {
+      "topology_id": "H-e7-p01-local",
+      "utility": 0.875,
+      "node_count": 4,
+      "model_calls": 1,
+      "predicted_value": {
+        "delta_e": 1.0,
+        "cost": 0.125,
+        "redundancy": 0.0,
+        "governance_risk": 0.0
+      },
+      "rank": 1
+    },
+    {
+      "topology_id": "H-e7-p01-local-independent-examiner",
+      "utility": 0.15,
+      "node_count": 5,
+      "model_calls": 2,
+      "predicted_value": {
+        "delta_e": 1.0,
+        "cost": 0.25,
+        "redundancy": 0.5,
+        "governance_risk": 0.05
+      },
+      "rank": 2
+    }
+  ],
+  "selected": "H-e7-p01-local",
+  "runner_up": "H-e7-p01-local-independent-examiner",
+  "condition": "B",
+  "theory_version": "candidate-theta-v2",
+  "admissibility": {
+    "H-e7-p01-local": true,
+    "H-e7-p01-local-independent-examiner": true
+  }
+}

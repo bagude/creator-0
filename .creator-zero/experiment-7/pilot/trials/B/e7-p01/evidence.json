@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Read package/artifacts/stock.csv in full: header row (sku,units,price) plus six data rows: p1,19,23.50; p2,9,3.50; p3,9,21.50; p4,5,2.50; p5,6,30.50; p6,2,3.50. This is the sole governed evidence source for Q1-Q3.",
+    "refs": ["package/artifacts/stock.csv"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "resolve-local",
+    "description": "Deterministic summation of the units column over all six data rows, header excluded: 19 + 9 + 9 + 5 + 6 + 2 = 50 (integer). Resolves Q1 / satisfies E-A.",
+    "refs": ["package/artifacts/stock.csv", "resolution.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "resolve-local",
+    "description": "Deterministic computation of sum(units * price) using each row's own values: 19*23.50=446.50, 9*3.50=31.50, 9*21.50=193.50, 5*2.50=12.50, 6*30.50=183.00, 2*3.50=7.00; total 874.00 expressed to exactly two decimal places. Resolves Q2 / satisfies E-B.",
+    "refs": ["package/artifacts/stock.csv", "resolution.json"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "resolve-local",
+    "description": "Identification of the maximum of the units column: 19, attained solely by sku p1 (next highest is 9, shared by p2 and p3). No tie at the maximum, so the stated tie-break (smallest sku, ascending lexicographic order) is not invoked; comparison used units only, price excluded. Resolves Q3 / satisfies E-C.",
+    "refs": ["package/artifacts/stock.csv", "resolution.json"]
+  },
+  {
+    "id": "ev-5",
+    "source_node": "verify-resolution",
+    "description": "Non-authoritative self-check of the resolution against package/task.json deliverable: recomputed total_units (50, integer), total_value (874.00, two decimals) and top_sku_by_units (p1, string); all three match the deliverable shape {total_units: integer, total_value: number, top_sku_by_units: string} and all admissibility constraints in distinctions.json (single-source CSV, all rows included, header excluded, units-only comparison).",
+    "refs": ["package/task.json", "distinctions.json", "resolution.json"]
+  }
+]

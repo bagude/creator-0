@@ -1,0 +1,272 @@
+{
+  "task_id": "e7-p02",
+  "applicable": [
+    {
+      "principle_id": "P-ATTENUATION",
+      "distinction_ids": [],
+      "structural_preconditions": [
+        "creates_child"
+      ],
+      "predicted_topology_effects": [
+        "child contract passes check_attenuation against its parent"
+      ]
+    },
+    {
+      "principle_id": "P-AUTHORITY-SEPARATION",
+      "distinction_ids": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "promote transitions exist only for the gate actor",
+        "act nodes write candidate state only"
+      ]
+    },
+    {
+      "principle_id": "P-AUTHORSHIP-INDEPENDENCE",
+      "distinction_ids": [
+        "Q2"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "adds an independent path with canonical role clean_room_author",
+        "that path's evidence is admissible for CLEAN_ROOM_AUTHORSHIP distinctions (required vector [1, 0, 0, 0])",
+        "cheaper admissible paths dominate costlier ones at equal coverage (saturating value)"
+      ]
+    },
+    {
+      "principle_id": "P-FRESHNESS",
+      "distinction_ids": [],
+      "structural_preconditions": [
+        "creates_child"
+      ],
+      "predicted_topology_effects": [
+        "child creation routes through the deterministic fresh launcher",
+        "launch provenance persists sanitization and identity evidence"
+      ]
+    },
+    {
+      "principle_id": "P-INDEPENDENCE",
+      "distinction_ids": [
+        "Q2"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "adds an isolated fresh child (or independent verifier) node",
+        "child evidence is novel, not a duplicate of parent evidence",
+        "child resolves the assigned distinctions"
+      ]
+    },
+    {
+      "principle_id": "P-LOCALITY",
+      "distinction_ids": [
+        "Q1",
+        "Q4"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "no child creation",
+        "local resolve/verify chain resolves all distinctions",
+        "a counterfactual forced child would duplicate parent evidence"
+      ]
+    },
+    {
+      "principle_id": "P-MINIMALITY",
+      "distinction_ids": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "candidate ranking penalizes node count and redundancy",
+        "no recursion added merely to demonstrate recursion"
+      ]
+    },
+    {
+      "principle_id": "P-PROPOSAL-OBSERVABILITY",
+      "distinction_ids": [
+        "Q2"
+      ],
+      "structural_preconditions": [
+        "creates_child",
+        "mutation"
+      ],
+      "predicted_topology_effects": [
+        "a hypothesize/propose node precedes every create or act node"
+      ]
+    },
+    {
+      "principle_id": "P-STATE-MEDIATED-CONTINUITY",
+      "distinction_ids": [
+        "Q2",
+        "Q3"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "persist/reconstruct transitions around session boundaries",
+        "continuation trace weakly bisimilar to in-process trace"
+      ]
+    },
+    {
+      "principle_id": "P-VERIFY",
+      "distinction_ids": [],
+      "structural_preconditions": [
+        "mutation"
+      ],
+      "predicted_topology_effects": [
+        "verify node downstream of every act node",
+        "verification can observe the candidate artifact"
+      ]
+    }
+  ],
+  "inapplicable_principles": [
+    "P-INDEPENDENT-DECOMPOSITION",
+    "P-METHOD-DISJOINT-VERIFICATION",
+    "P-NONAUTHOR-SEARCH"
+  ],
+  "theory_version": 2,
+  "sources": {
+    "P-ATTENUATION": "deterministic",
+    "P-AUTHORITY-SEPARATION": "deterministic",
+    "P-AUTHORSHIP-INDEPENDENCE": "deterministic",
+    "P-FRESHNESS": "deterministic",
+    "P-INDEPENDENCE": "deterministic",
+    "P-LOCALITY": "deterministic",
+    "P-MINIMALITY": "deterministic",
+    "P-PROPOSAL-OBSERVABILITY": "deterministic",
+    "P-STATE-MEDIATED-CONTINUITY": "deterministic",
+    "P-VERIFY": "deterministic"
+  },
+  "ordered_applicability": [
+    {
+      "principle_id": "P-LOCALITY",
+      "feature_matched_distinctions": [
+        "Q1",
+        "Q4"
+      ],
+      "feature_match_count": 2,
+      "structural_preconditions": [],
+      "always": false,
+      "rank": 1
+    },
+    {
+      "principle_id": "P-STATE-MEDIATED-CONTINUITY",
+      "feature_matched_distinctions": [
+        "Q2",
+        "Q3"
+      ],
+      "feature_match_count": 2,
+      "structural_preconditions": [],
+      "always": false,
+      "rank": 2
+    },
+    {
+      "principle_id": "P-AUTHORSHIP-INDEPENDENCE",
+      "feature_matched_distinctions": [
+        "Q2"
+      ],
+      "feature_match_count": 1,
+      "structural_preconditions": [],
+      "always": false,
+      "rank": 3
+    },
+    {
+      "principle_id": "P-INDEPENDENCE",
+      "feature_matched_distinctions": [
+        "Q2"
+      ],
+      "feature_match_count": 1,
+      "structural_preconditions": [],
+      "always": false,
+      "rank": 4
+    },
+    {
+      "principle_id": "P-PROPOSAL-OBSERVABILITY",
+      "feature_matched_distinctions": [
+        "Q2"
+      ],
+      "feature_match_count": 1,
+      "structural_preconditions": [
+        "topology:creates_child",
+        "topology:mutation"
+      ],
+      "always": false,
+      "rank": 5
+    },
+    {
+      "principle_id": "P-ATTENUATION",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [
+        "topology:creates_child"
+      ],
+      "always": false,
+      "rank": 6
+    },
+    {
+      "principle_id": "P-AUTHORITY-SEPARATION",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [],
+      "always": true,
+      "rank": 7
+    },
+    {
+      "principle_id": "P-FRESHNESS",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [
+        "topology:creates_child"
+      ],
+      "always": false,
+      "rank": 8
+    },
+    {
+      "principle_id": "P-INDEPENDENT-DECOMPOSITION",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [],
+      "always": false,
+      "rank": 9
+    },
+    {
+      "principle_id": "P-METHOD-DISJOINT-VERIFICATION",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [],
+      "always": false,
+      "rank": 10
+    },
+    {
+      "principle_id": "P-MINIMALITY",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [],
+      "always": true,
+      "rank": 11
+    },
+    {
+      "principle_id": "P-NONAUTHOR-SEARCH",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [],
+      "always": false,
+      "rank": 12
+    },
+    {
+      "principle_id": "P-VERIFY",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [
+        "topology:mutation"
+      ],
+      "always": false,
+      "rank": 13
+    }
+  ]
+}

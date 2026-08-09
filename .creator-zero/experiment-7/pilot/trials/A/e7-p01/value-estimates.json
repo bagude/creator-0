@@ -1,0 +1,29 @@
+{
+  "task_id": "e7-p01",
+  "estimates": {
+    "local": {
+      "delta_e": 1.0,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "All three distinctions are deterministic aggregations over a six-row CSV with no authorship or isolation conditions, so a single worker resolves every evidence requirement admissibly; its records are first derivations, hence fully novel with no duplication."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.75,
+      "redundancy": 0.5,
+      "governance_risk": 0.0,
+      "rationale": "The examiner re-derives sums the worker already fully established and no admissibility condition requires an independent origin, so roughly half of all evidence records are duplicates of parent-local evidence, dragging the novelty half of delta_e down while all distinctions still resolve."
+    },
+    "isolated-child": {
+      "delta_e": 0.75,
+      "redundancy": 0.5,
+      "governance_risk": 0.0,
+      "rationale": "Isolation buys nothing here: no evidence requirement demands causal separation, so the child's recomputation of the same aggregates duplicates what the worker can fully establish from the package, yielding duplicate records comparable to the verify family."
+    },
+    "branching": {
+      "delta_e": 0.95,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "With no isolation-requiring distinction, a run-time chooser should realize the local branch and match local's profile; the small discount reflects residual probability that it realizes the isolated branch and incurs duplicate records."
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "task_id": "e7-p02",
+  "estimates": {
+    "Q1": {
+      "value": 0.3,
+      "rationale": "Fully carries E-A, one of three evidence requirements; it is analytical work this process can supply, but the deliverable's undetermined_behaviors field depends entirely on it."
+    },
+    "Q2": {
+      "value": 0.45,
+      "rationale": "The hardest and most binding share of E-B: the clean-room-authored implementation is the one piece no contaminated process can supply, and without it E-B and hence the verdict are unreachable (PENDING-INTEGRATION)."
+    },
+    "Q3": {
+      "value": 0.25,
+      "rationale": "The remaining share of E-B: the probe-level comparison is mechanical once Q2's artifact exists, but it is the step that actually produces the divergent_probe_indices the deliverable requires."
+    },
+    "Q4": {
+      "value": 0.15,
+      "rationale": "Carries E-C alone; a cheap deterministic entailment check, valuable only in that the verdict is inadmissible unless derived from E-A and E-B rather than asserted directly."
+    }
+  }
+}

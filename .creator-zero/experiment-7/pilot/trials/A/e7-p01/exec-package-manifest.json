@@ -1,0 +1,18 @@
+{
+  "artifact": "blinded exec workspace manifest",
+  "trial_id": "e7-p01",
+  "condition": "A",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/87cd2a2d-a4f9-585b-836f-2648df7a6284/scratchpad/e7run/A/e7-p01/primary/exec-ws",
+  "blinding_scan": "PASS (0 hits)",
+  "file_sha256": {
+    ".claude/settings.json": "70e229a4f60582793299a9eea188995a32ff9dd76be628af82ba7b12d864afaa",
+    "contract.json": "6ac49cdd4565175345e0c6a27500c4fa5f53325122f324c0dea9301e9002830d",
+    "distinctions.json": "16d9facb6a2921d2e94c6ef50744d4e485471456903242c727a19b7685baf2db",
+    "harness.json": "bac28b0b0ec95c367749f3678a37cefda5eecb46072cb7ab0121ec4cfad59972",
+    "package/artifacts/stock.csv": "ce7babc2ca452c1ef80e6f4ce5661c769c5bf57c7fe4843dfea7499d55906eb7",
+    "package/task.json": "e59fc2fc512c73ca75d227119cd54bc9fb8e0732fb24db55f81b66c161831fbc",
+    "prompt.md": "effb880790070462d1bb966623fbf6ab94bb87726ed950c0ff89c0ec1098c633",
+    "protocol.md": "9ee45d464d5e265696f1049d50e5eef9f23e589acfeb4d8f49c8be9f523a4ed3",
+    "resolution-schema.json": "0b4b4b0a748bed54c260a5b35e6432cf644a73f97360793ca48f64d2c64d3e1b"
+  }
+}

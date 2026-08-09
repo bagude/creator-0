@@ -1,0 +1,6 @@
+{"state": "PREPARED", "at": "2026-08-09T20:32:55Z", "workspace": "/tmp/claude-0/-home-user-creator-0/87cd2a2d-a4f9-585b-836f-2648df7a6284/scratchpad/e7run/B/e7-p02/primary/exec-ws", "topology": "H-e7-p02-isolated-clean-room-author", "blinding_scan": "PASS"}
+{"state": "EXEC_COLLECTED", "at": "2026-08-09T20:37:29Z", "family": "isolated-clean-room-author"}
+{"state": "CHILD_VALIDATED", "at": "2026-08-09T20:37:30Z"}
+{"state": "CHILD_RETURNED", "at": "2026-08-09T20:38:21Z"}
+{"state": "FORMALLY_CHECKED", "at": "2026-08-09T20:38:22Z", "task_verified": false, "observed_utility": -0.2917}
+{"state": "FORMALLY_CHECKED", "at": "2026-08-09T20:39:02Z", "task_verified": true, "observed_utility": 0.625}

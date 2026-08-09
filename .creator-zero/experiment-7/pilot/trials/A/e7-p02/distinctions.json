@@ -1,0 +1,82 @@
+{
+  "task_id": "e7-p02",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which behaviors exercised by the probes in probes.json does joinspec.md leave undetermined (i.e. for which probe inputs does the spec not fix a unique output of join_items)?",
+      "why_unresolved": "No determinacy analysis of joinspec.md against the probe set exists yet; the spec is short (separator, order, empty-list case) and its coverage of every probe must be established explicitly, including an explicit argument if no undetermined behavior exists.",
+      "required_evidence": "A statement, per behavior exercised by the probes (separator, ordering, empty list, single item), of whether joinspec.md determines the output, with an explicit argument that none is undetermined if that is the finding.",
+      "admissibility_constraints": [
+        "Must cover every behavior exercised by the probe set, per E-A: 'a statement of every behavior on the probe set where joinspec.md either does not determine the output or determines it differently from joiner.py, or an explicit argument that none exists'.",
+        "Analysis of spec determinacy may be authored by a worker that has read the full package; no authorship restriction applies to this analytical component."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What output does joiner.py's join_items produce on each of the six probes in probes.json?",
+      "why_unresolved": "joiner.py has not yet been evaluated or traced over the probe set; its behavior (', '.join(reversed(items))) per probe must be recorded as the reference side of the item-level comparison.",
+      "required_evidence": "A per-probe record of joiner.py's output for every entry of probes.json, obtained by executing or mechanically tracing joiner.py.",
+      "admissibility_constraints": [
+        "Outputs must be item-level over exactly the probes in probes.json, per E-B's requirement of 'an item-level comparison over probes.json'.",
+        "No authorship restriction applies to this side of the comparison: the restriction in E-B binds the author of the joinspec.md implementation, not the party evaluating joiner.py."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "What output does an implementation of joinspec.md, authored solely from joinspec.md by an author who has never accessed joiner.py nor any analysis derived from it, produce on each probe in probes.json?",
+      "why_unresolved": "No such implementation exists in the package, and no process that has read the package can author one admissibly: this session and any similarly-shaped worker have already read joiner.py, so their authorship is permanently disqualified by E-B's access condition.",
+      "required_evidence": "A python file exposing join_items(items), authored by a causally isolated process whose inputs included joinspec.md but excluded joiner.py and any analysis derived from it, plus that implementation's outputs on every probe.",
+      "admissibility_constraints": [
+        "E-B: the implementation must be 'authored solely from joinspec.md, by an author who has never accessed joiner.py nor any analysis derived from it'.",
+        "E-B: 'the implementation must be a python file exposing join_items(items) so the comparison is mechanically reproducible'.",
+        "The isolated author's input bundle must exclude the worker's own conclusions about joiner.py, since those are analysis derived from it."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "Does the verdict (REPRODUCES vs DIVERGES) with its sorted divergent_probe_indices follow from the determinacy statement and the item-level comparison — DIVERGES iff some probe output differs between joiner.py and the clean-room implementation?",
+      "why_unresolved": "The verdict is a derived fact that cannot be settled until the determinacy analysis (Q1), the joiner.py reference outputs (Q2), and the admissible clean-room outputs (Q3) all exist; asserting it earlier would not follow from E-A and E-B as E-C requires.",
+      "required_evidence": "A result.json whose verdict, undetermined_behaviors, and divergent_probe_indices are mechanically entailed by the Q1 statement and the Q2/Q3 per-probe comparison, checkable by the deterministic root step.",
+      "admissibility_constraints": [
+        "E-C: 'the verdict follows from E-A and E-B together: DIVERGES iff the comparison shows a differing output on some probe'.",
+        "divergent_probe_indices must be a sorted list of probe indices (or PENDING-INTEGRATION if the admissible comparison is not yet integrated), matching the deliverable shape."
+      ],
+      "evidence_requirement_refs": ["E-A", "E-C"],
+      "dependencies": ["Q1", "Q2", "Q3"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

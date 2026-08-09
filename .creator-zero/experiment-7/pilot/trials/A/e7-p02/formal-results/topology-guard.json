@@ -1,0 +1,10 @@
+{
+  "check": "topology_guard",
+  "status": "PASS",
+  "violations": [],
+  "launches": {
+    "exec": true,
+    "examiner": false,
+    "child": true
+  }
+}

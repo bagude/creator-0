@@ -1,0 +1,38 @@
+{
+  "task_id": "e7-p02",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "joinspec.md leaves no probe-exercised behavior undetermined. Separator: fixed as ', '. Ordering: fixed as as-given order. Empty list: fixed as the empty string. Single item: fixed as the item itself, since the separator only occurs between consecutive items and a one-item list has none. Explicit argument: each probe output is a total function of separator, order, and the empty boundary case, and the spec fixes all three, so a unique output is determined for every probe. Additionally, per E-A's second clause, ordering is the one behavior the spec determines differently from joiner.py (spec: as given; joiner.py: reversed), affecting probes with >= 2 items (indices 1, 3, 5); whether these become divergent_probe_indices awaits the admissible E-B comparison.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "By mechanical trace of joiner.py's `\", \".join(reversed(items))` over probes.json: index 0 [\"a\"] -> \"a\"; index 1 [\"x\",\"y\"] -> \"y, x\"; index 2 [] -> \"\"; index 3 [\"one\",\"two\",\"three\"] -> \"three, two, one\"; index 4 [\"z\"] -> \"z\"; index 5 [\"b\",\"a\"] -> \"a, b\".",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be resolved in this session: E-B requires the implementation's author to have never accessed joiner.py nor any analysis derived from it, and this session has read the full package, permanently disqualifying its authorship. A child bundle assigning this distinction to a causally isolated fresh worker (inputs: joinspec.md and probes.json only) has been proposed under child/; resolution occurs after root-executed validation, launch, and integration.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Derived fact awaiting Q3: verdict and divergent_probe_indices are mechanically entailed by the Q1 statement plus the Q2/Q3 per-probe comparison under the pre-committed deterministic rule in child/integration-plan.json (DIVERGES iff some probe output differs). Settled by the root-executed verify-integration step; asserting it now would not follow from E-A and E-B as E-C requires.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-A", "E-C"]
+    }
+  ]
+}

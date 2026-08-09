@@ -73,6 +73,13 @@ def child_with_role(view: TrialView, *roles: str,
     if view.child_plan is None or view.child_manifest is None:
         return False, "child bundle incomplete"
     role = str(view.child_plan.get("role", ""))
+    # Experiment 7: canonical role names are declared equivalents of the
+    # E6 vocabulary (preregistration §2 role map, frozen at Phase A)
+    _CANON_TO_E6 = {"clean_room_author": "clean_room_implementer",
+                    "non_author_examiner": "adversarial_searcher",
+                    "method_disjoint_verifier": "independent_verifier",
+                    "independent_decomposer": "independent_decomposer"}
+    role = _CANON_TO_E6.get(role, role)
     if role not in roles:
         return False, f"child role {role!r} not in {roles}"
     files = [str(f) for f in view.child_manifest.get("files", [])]

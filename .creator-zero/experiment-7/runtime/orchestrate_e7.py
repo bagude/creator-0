@@ -43,7 +43,12 @@ def launch(tid: str, cond: str, shadow: bool, kind: str) -> int:
         ("-shadow" if shadow else "")
     if kind == "child" and not (wsp / "prompt.md").exists():
         (wsp / "prompt.md").write_text(
-            (wsp / "child-prompt.md").read_text(encoding="utf-8"),
+            (wsp / "child-prompt.md").read_text(encoding="utf-8")
+            + "\n\n---\nRoot harness note (uniform for every isolated "
+            "process): work only inside your current working directory. "
+            "Write every deliverable file, including your execution "
+            "ledger, into the current working directory itself — never "
+            "into any temporary, scratch, or scratchpad location.\n",
             encoding="utf-8")
     try:
         rec = fresh_launcher.launch_fresh_child(
@@ -66,18 +71,41 @@ def family(tid: str, cond: str, shadow: bool) -> str:
         encoding="utf-8"))["family"]
 
 
+def _wipe_infer(tid: str, cond: str) -> None:
+    import shutil
+    td = trial_dir(tid, cond)
+    wsp = ws(tid, cond, False, "infer-ws")
+    if wsp.exists():
+        shutil.rmtree(wsp)
+    for name in ("infer-launch-provenance.json", "distinctions.json",
+                 "value-estimates.json", "spec-summary.json",
+                 "infer-session-ledger.jsonl", "infer-session.log",
+                 "candidate-ranking.json"):
+        f = td / name
+        if f.exists():
+            f.unlink()
+
+
 def do_infer(tid: str, cond: str) -> tuple[str, bool]:
     td = trial_dir(tid, cond)
     if (td / "candidate-ranking.json").exists():
         return tid, True
-    if not ws(tid, cond, False, "infer-ws").exists():
-        if run([PY, "-m", "runtime.driver", "infer-prepare", tid, cond]):
-            return tid, False
-    if not (td / "infer-launch-provenance.json").exists():
-        if launch(tid, cond, False, "infer"):
-            return tid, False
-    return tid, run([PY, "-m", "runtime.driver", "infer-after", tid,
-                     cond]) == 0
+    for attempt in (1, 2):
+        if not ws(tid, cond, False, "infer-ws").exists():
+            if run([PY, "-m", "runtime.driver", "infer-prepare", tid,
+                    cond]):
+                return tid, False
+        if not (td / "infer-launch-provenance.json").exists():
+            if launch(tid, cond, False, "infer"):
+                return tid, False
+        if run([PY, "-m", "runtime.driver", "infer-after", tid,
+                cond]) == 0:
+            return tid, True
+        if attempt == 1:
+            print(f"== {tid}/{cond}: infer output rejected; one fresh "
+                  "relaunch (preregistered retry-once rule)", flush=True)
+            _wipe_infer(tid, cond)
+    return tid, False
 
 
 def do_exec(tid: str, cond: str, shadow: bool) -> tuple[str, bool]:

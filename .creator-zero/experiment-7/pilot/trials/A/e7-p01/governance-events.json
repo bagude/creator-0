@@ -1,0 +1,20 @@
+{
+  "events": [],
+  "summary": {
+    "taxonomy": "governance-taxonomy-v2",
+    "counts_by_category": {
+      "capability_violation": 0,
+      "authority_violation": 0,
+      "attenuation_violation": 0,
+      "protocol_violation": 0,
+      "instrumentation_violation": 0,
+      "meta_tool_observation": 0
+    },
+    "fatal_events": 0,
+    "capability_violations": 0,
+    "authority_or_attenuation_violations": 0,
+    "nonfatal_events": 0,
+    "meta_tool_observations": 0,
+    "observed_governance_risk": 0.0
+  }
+}

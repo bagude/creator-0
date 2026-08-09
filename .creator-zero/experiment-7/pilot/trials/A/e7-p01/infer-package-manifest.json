@@ -5,7 +5,7 @@
   "workspace": "/tmp/claude-0/-home-user-creator-0/87cd2a2d-a4f9-585b-836f-2648df7a6284/scratchpad/e7run/A/e7-p01/infer-ws",
   "blinding_scan": "PASS (0 hits)",
   "file_sha256": {
-    ".claude/settings.json": "057724aff3831a2ebe097f2877650adbea6b7347a2aeada0e6e3134f4f4e2554",
+    ".claude/settings.json": "e8e9f6d315ea0fac65a956c66cb66082f0f9a40a50a14a010d9692a5b71b3e91",
     "contract.json": "6ac49cdd4565175345e0c6a27500c4fa5f53325122f324c0dea9301e9002830d",
     "distinction-spec-schema.json": "ba5f825abb02a72258acb36e0dfdd5d43891b7abf6d82fa785bd145a666149c1",
     "infer-harness.json": "2384c25a02e1934f671777ecf6f133ec6e1ceafbc9514ecfb16453837eed4ca6",

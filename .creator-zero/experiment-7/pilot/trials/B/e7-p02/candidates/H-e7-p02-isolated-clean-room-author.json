@@ -1,0 +1,383 @@
+{
+  "topology_id": "H-e7-p02-isolated-clean-room-author",
+  "task_id": "e7-p02",
+  "unresolved_distinctions": [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4"
+  ],
+  "principles_invoked": [
+    "P-ATTENUATION",
+    "P-AUTHORITY-SEPARATION",
+    "P-AUTHORSHIP-INDEPENDENCE",
+    "P-FRESHNESS",
+    "P-INDEPENDENCE",
+    "P-LOCALITY",
+    "P-MINIMALITY",
+    "P-PROPOSAL-OBSERVABILITY",
+    "P-STATE-MEDIATED-CONTINUITY",
+    "P-VERIFY"
+  ],
+  "harness_spec_ref": "sha256:148e1b66cb93682bc24bb957712eddbc253e784e0bbe7cfaf750e8b914e79d4b",
+  "harness_spec": {
+    "task_id": "e7-p02",
+    "goal": "Isolated fresh child (canonical role clean_room_author) resolves the typed distinctions of e7-p02",
+    "max_depth": 1,
+    "max_model_calls": 2,
+    "nodes": [
+      {
+        "id": "observe-evidence",
+        "primitive": "observe",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Acquire governed evidence; identify the distinctions requiring isolation."
+      },
+      {
+        "id": "propose-child",
+        "primitive": "hypothesize",
+        "tools": [
+          "Read",
+          "Write"
+        ],
+        "can_create": false,
+        "instructions": "Author the full child bundle (contract, harness, prompt, input manifest, integration plan) as observable proposal."
+      },
+      {
+        "id": "validate-child",
+        "primitive": "verify",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Deterministic validation: attenuation, kernel compilation, manifest containment, freshness preflight. Any failure rejects realization."
+      },
+      {
+        "id": "create-child",
+        "primitive": "create",
+        "tools": [
+          "Bash"
+        ],
+        "can_create": true,
+        "instructions": "Realize the validated child via the deterministic fresh launcher only."
+      },
+      {
+        "id": "child-return",
+        "primitive": "return",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Receive child deliverables into the governed boundary."
+      },
+      {
+        "id": "verify-integration",
+        "primitive": "verify",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Deterministically integrate child evidence per the pre-committed plan and verify the task result."
+      },
+      {
+        "id": "return-result",
+        "primitive": "return",
+        "tools": [
+          "Read",
+          "Write"
+        ],
+        "can_create": false,
+        "instructions": "Return the verified result."
+      }
+    ],
+    "edges": [
+      {
+        "source": "observe-evidence",
+        "target": "propose-child",
+        "relation": "observe",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "propose-child",
+        "target": "validate-child",
+        "relation": "verify",
+        "requires_response": true,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "validate-child",
+        "target": "create-child",
+        "relation": "authorize",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "create-child",
+        "target": "child-return",
+        "relation": "request_response",
+        "requires_response": true,
+        "response_changes_parent_state": true,
+        "transfers_authority": false
+      },
+      {
+        "source": "child-return",
+        "target": "verify-integration",
+        "relation": "verify",
+        "requires_response": true,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "verify-integration",
+        "target": "return-result",
+        "relation": "authorize",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      }
+    ],
+    "freshness": {
+      "fresh_launcher_required": true
+    },
+    "child_role": "clean_room_author",
+    "evidence_provisions": [
+      {
+        "node_id": "observe-evidence",
+        "role": "local_author",
+        "independence": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "provenance_refs": [],
+        "method_family": "",
+        "source": ""
+      },
+      {
+        "node_id": "child-return",
+        "role": "clean_room_author",
+        "independence": [
+          1,
+          0,
+          0,
+          0
+        ],
+        "provenance_refs": [],
+        "method_family": "",
+        "source": ""
+      }
+    ],
+    "admissibility_precheck": true
+  },
+  "resolution_map": {
+    "Q1": "observe-evidence",
+    "Q2": "child-return",
+    "Q3": "observe-evidence",
+    "Q4": "observe-evidence"
+  },
+  "predictions": [
+    {
+      "prediction_id": "H-e7-p02-isolated-clean-room-author-pr01",
+      "topology_id": "H-e7-p02-isolated-clean-room-author",
+      "claim": "distinction Q1 (Which behaviors exercised by the probes in probes.json does joinspec.md fail to ) is resolved by node observe-evidence",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+      "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q1",
+        "node": "observe-evidence"
+      },
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e7-p02-isolated-clean-room-author-pr02",
+      "topology_id": "H-e7-p02-isolated-clean-room-author",
+      "claim": "distinction Q2 (What does an implementation of joinspec.md, authored solely from joinspec.md by ) is resolved by node child-return",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to child-return",
+      "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to child-return",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q2",
+        "node": "child-return"
+      },
+      "principles": [
+        "P-AUTHORSHIP-INDEPENDENCE"
+      ]
+    },
+    {
+      "prediction_id": "H-e7-p02-isolated-clean-room-author-pr03",
+      "topology_id": "H-e7-p02-isolated-clean-room-author",
+      "claim": "distinction Q3 (On which probes in probes.json, if any, does the clean-room implementation's out) is resolved by node observe-evidence",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+      "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q3",
+        "node": "observe-evidence"
+      },
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e7-p02-isolated-clean-room-author-pr04",
+      "topology_id": "H-e7-p02-isolated-clean-room-author",
+      "claim": "distinction Q4 (Is the final verdict (REPRODUCES vs DIVERGES) entailed jointly by the E-A behavi) is resolved by node observe-evidence",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q4 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+      "falsification_condition": "Q4 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q4",
+        "node": "observe-evidence"
+      },
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e7-p02-isolated-clean-room-author-pr05",
+      "topology_id": "H-e7-p02-isolated-clean-room-author",
+      "claim": "runtime realizes the declared causal order",
+      "observable": "execution ledger completes_node sequence",
+      "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'propose-child', 'validate-child', 'create-child', 'child-return', 'verify-integration', 'return-result']",
+      "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+      "weight": 1.0,
+      "kind": "runtime_path",
+      "subject": {
+        "expected_order": [
+          "observe-evidence",
+          "propose-child",
+          "validate-child",
+          "create-child",
+          "child-return",
+          "verify-integration",
+          "return-result"
+        ]
+      },
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e7-p02-isolated-clean-room-author-pr06",
+      "topology_id": "H-e7-p02-isolated-clean-room-author",
+      "claim": "execution uses at most 2 model calls",
+      "observable": "resource_use.model_calls in the runtime record",
+      "success_condition": "model_calls <= 2",
+      "falsification_condition": "model_calls > 2",
+      "weight": 0.5,
+      "kind": "model_call_budget",
+      "subject": {
+        "max": 2
+      },
+      "principles": [
+        "P-MINIMALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e7-p02-isolated-clean-room-author-pr07",
+      "topology_id": "H-e7-p02-isolated-clean-room-author",
+      "claim": "no actor exceeds its authority envelope",
+      "observable": "formal check results over the execution ledger",
+      "success_condition": "zero authority/refinement/attenuation failures",
+      "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+      "weight": 1.0,
+      "kind": "authority_envelope",
+      "subject": {},
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e7-p02-isolated-clean-room-author-pr08",
+      "topology_id": "H-e7-p02-isolated-clean-room-author",
+      "claim": "the child contributes novel evidence not derivable from parent-local evidence",
+      "observable": "evidence records with duplicate_of_parent flags",
+      "success_condition": "at least one child evidence record with duplicate_of_parent=false, attributed to the child",
+      "falsification_condition": "every child evidence record duplicates parent evidence",
+      "weight": 1.0,
+      "kind": "novel_evidence",
+      "subject": {
+        "distinction_ids": [
+          "Q2"
+        ]
+      },
+      "principles": [
+        "P-INDEPENDENCE"
+      ]
+    },
+    {
+      "prediction_id": "H-e7-p02-isolated-clean-room-author-pr09",
+      "topology_id": "H-e7-p02-isolated-clean-room-author",
+      "claim": "the realized child is fresh and attenuated",
+      "observable": "launch provenance + attenuation results",
+      "success_condition": "freshness PASS and attenuation PASS for the realized child",
+      "falsification_condition": "FRESHNESS_FAIL or ATTENUATION_FAIL on the realized child",
+      "weight": 1.0,
+      "kind": "verification_effect",
+      "subject": {
+        "checks": [
+          "freshness",
+          "attenuation"
+        ]
+      },
+      "principles": [
+        "P-FRESHNESS",
+        "P-ATTENUATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e7-p02-isolated-clean-room-author-pr10",
+      "topology_id": "H-e7-p02-isolated-clean-room-author",
+      "claim": "the independent path at node child-return realizes canonical role clean_room_author",
+      "observable": "realized role typing in the runtime record (ROLE_TYPE_FAIL formal failure on mismatch)",
+      "success_condition": "realized role of child-return equals clean_room_author and no ROLE_TYPE failure is recorded",
+      "falsification_condition": "the realized path's canonical role differs from clean_room_author (ROLE_TYPE_FAIL recorded)",
+      "weight": 1.0,
+      "kind": "verification_effect",
+      "subject": {
+        "checks": [
+          "ROLE_TYPE"
+        ],
+        "node": "child-return",
+        "role": "clean_room_author"
+      },
+      "principles": [
+        "P-AUTHORSHIP-INDEPENDENCE"
+      ]
+    }
+  ],
+  "falsifiers": [
+    "a distinction in ['Q1', 'Q2', 'Q3', 'Q4'] remains unresolved after execution",
+    "the runtime path violates the compiled LTS",
+    "actual model calls exceed the declared budget",
+    "a realized independent path's canonical role differs from the declared evidence provision role",
+    "child evidence duplicates parent evidence (no novel contribution)"
+  ],
+  "predicted_value": {
+    "delta_e": 1.0,
+    "cost": 0.375,
+    "redundancy": 0.0,
+    "governance_risk": 0.15
+  },
+  "status": "VALIDATED",
+  "child_contract": {},
+  "predictions_hash": "sha256:27cfcb060d078d39f414877834ebb256e85962c11cc23ec6156f393a83c29b8c"
+}

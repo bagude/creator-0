@@ -1,0 +1,265 @@
+{
+  "H-e7-p01-local": {
+    "predictions": [
+      {
+        "prediction_id": "H-e7-p01-local-pr01",
+        "topology_id": "H-e7-p01-local",
+        "claim": "distinction Q1 (What is the total number of units summed over every row of artifacts/stock.csv?) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-pr02",
+        "topology_id": "H-e7-p01-local",
+        "claim": "distinction Q2 (What is the total inventory value, computed as the sum over rows of units times ) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-pr03",
+        "topology_id": "H-e7-p01-local",
+        "claim": "distinction Q3 (Which sku has the most units, applying the tie-break rule that ties resolve to t) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-pr04",
+        "topology_id": "H-e7-p01-local",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'resolve-local', 'verify-resolution', 'return-result']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "resolve-local",
+            "verify-resolution",
+            "return-result"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-pr05",
+        "topology_id": "H-e7-p01-local",
+        "claim": "execution uses at most 1 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 1",
+        "falsification_condition": "model_calls > 1",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 1
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-pr06",
+        "topology_id": "H-e7-p01-local",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-pr07",
+        "topology_id": "H-e7-p01-local",
+        "claim": "local evidence is sufficient: resolution and verification complete without any descendant",
+        "observable": "verification record + child launch count",
+        "success_condition": "verification completes with zero child launches",
+        "falsification_condition": "verification is impossible from local evidence, or a distinction requires an isolated source",
+        "weight": 1.0,
+        "kind": "local_sufficiency",
+        "subject": {},
+        "principles": [
+          "P-LOCALITY"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:f65f18cb9fc3e4cd50a9a41bdfbbff0163ea34bef9724ff4c757ee70dc456c7d"
+  },
+  "H-e7-p01-local-independent-examiner": {
+    "predictions": [
+      {
+        "prediction_id": "H-e7-p01-local-independent-examiner-pr01",
+        "topology_id": "H-e7-p01-local-independent-examiner",
+        "claim": "distinction Q1 (What is the total number of units summed over every row of artifacts/stock.csv?) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-independent-examiner-pr02",
+        "topology_id": "H-e7-p01-local-independent-examiner",
+        "claim": "distinction Q2 (What is the total inventory value, computed as the sum over rows of units times ) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-independent-examiner-pr03",
+        "topology_id": "H-e7-p01-local-independent-examiner",
+        "claim": "distinction Q3 (Which sku has the most units, applying the tie-break rule that ties resolve to t) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-independent-examiner-pr04",
+        "topology_id": "H-e7-p01-local-independent-examiner",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'resolve-local', 'verify-resolution', 'verify-independent', 'return-result']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "resolve-local",
+            "verify-resolution",
+            "verify-independent",
+            "return-result"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-independent-examiner-pr05",
+        "topology_id": "H-e7-p01-local-independent-examiner",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-independent-examiner-pr06",
+        "topology_id": "H-e7-p01-local-independent-examiner",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-independent-examiner-pr07",
+        "topology_id": "H-e7-p01-local-independent-examiner",
+        "claim": "local evidence is sufficient: resolution and verification complete without any descendant",
+        "observable": "verification record + child launch count",
+        "success_condition": "verification completes with zero child launches",
+        "falsification_condition": "verification is impossible from local evidence, or a distinction requires an isolated source",
+        "weight": 1.0,
+        "kind": "local_sufficiency",
+        "subject": {},
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p01-local-independent-examiner-pr08",
+        "topology_id": "H-e7-p01-local-independent-examiner",
+        "claim": "the independent path at node verify-independent realizes canonical role non_author_examiner",
+        "observable": "realized role typing in the runtime record (ROLE_TYPE_FAIL formal failure on mismatch)",
+        "success_condition": "realized role of verify-independent equals non_author_examiner and no ROLE_TYPE failure is recorded",
+        "falsification_condition": "the realized path's canonical role differs from non_author_examiner (ROLE_TYPE_FAIL recorded)",
+        "weight": 1.0,
+        "kind": "verification_effect",
+        "subject": {
+          "checks": [
+            "ROLE_TYPE"
+          ],
+          "node": "verify-independent",
+          "role": "non_author_examiner"
+        },
+        "principles": [
+          "P-NONAUTHOR-SEARCH"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:4204309ddc8cce60de6748fbf335ec392144835efece1415d7a4e5e0a735988f"
+  }
+}

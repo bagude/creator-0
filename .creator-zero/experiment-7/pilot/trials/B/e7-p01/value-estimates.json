@@ -1,0 +1,17 @@
+{
+  "task_id": "e7-p01",
+  "estimates": {
+    "Q1": {
+      "value": 0.3,
+      "rationale": "Maps to exactly one of three evidence requirements (E-A) and is the simplest: a single-column integer sum with no rounding or ordering subtlety."
+    },
+    "Q2": {
+      "value": 0.4,
+      "rationale": "Maps to one requirement (E-B) but carries the most arithmetic surface: per-row products plus a two-decimal rounding convention, the likeliest place for an inadmissible or erroneous result."
+    },
+    "Q3": {
+      "value": 0.3,
+      "rationale": "Maps to one requirement (E-C); the max-by-units selection is simple but the tie-break rule adds a conditional the evidence must explicitly discharge."
+    }
+  }
+}

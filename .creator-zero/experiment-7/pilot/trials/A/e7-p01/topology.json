@@ -1,0 +1,7 @@
+{
+  "topology_id": "H-e7-p01-local",
+  "family": "local",
+  "predictions_hash": "sha256:f4e66ca831ec33a13b0fa9ce318aa26c765b58575633ffa08b0b86a944feb32b",
+  "condition": "A",
+  "role": "primary (selected)"
+}

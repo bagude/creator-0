@@ -1,0 +1,20 @@
+{
+  "artifact": "blinded infer workspace manifest",
+  "trial_id": "e7-p02",
+  "condition": "A",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/87cd2a2d-a4f9-585b-836f-2648df7a6284/scratchpad/e7run/A/e7-p02/infer-ws",
+  "blinding_scan": "PASS (0 hits)",
+  "file_sha256": {
+    ".claude/settings.json": "e57f70a0aa87cc87d776666b6ce07b86e2990f2d318fb68c38f84b8afc015426",
+    "contract.json": "6ac49cdd4565175345e0c6a27500c4fa5f53325122f324c0dea9301e9002830d",
+    "distinction-spec-schema.json": "ba5f825abb02a72258acb36e0dfdd5d43891b7abf6d82fa785bd145a666149c1",
+    "infer-harness.json": "d28f05b92d8b54c59d48ea39a04bda86ab742f731cc08adfd810dcd533a49014",
+    "package/artifacts/joiner.py": "242e41b7b4b4d90cb2ce8741f8d5146f5c7ef34672b13b5f78285423f489bdf8",
+    "package/artifacts/joinspec.md": "dd129ddc3d170820a2cbfb8589c2ab55307839caee04adbf90a33f31491173f7",
+    "package/artifacts/probes.json": "fb211cb4f250039b22cca7f0cdb753b104710a695acc125cccf0b4e26ce68512",
+    "package/task.json": "01f2df88f8bb7342ec172bf34e3a8a94362b50f6cda56a8724897122f0379c8c",
+    "prompt.md": "d0371f9236203233129d1b91e943ec9c425ad81e89ae057aa8b31dcc2997a4ac",
+    "protocol.md": "35242196e807afda57cbbab721a44905fdca3b679c29718520926830ac475158",
+    "value-estimates-schema.json": "627896bbec3c73f63cae01cc4104abf4711b250da04a329902986a0441d155dd"
+  }
+}

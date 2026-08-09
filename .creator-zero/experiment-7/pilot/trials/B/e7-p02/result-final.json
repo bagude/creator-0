@@ -1,0 +1,50 @@
+{
+  "verdict": "DIVERGES",
+  "undetermined_behaviors": [
+    "Determined DIFFERENTLY: ordering of lists with two or more items. joinspec.md ('Items appear in the order given in the list') determines the given-order join, while joiner.py computes ', '.join(reversed(items)), the reverse-order join. Exercised by probes 1 (['x','y']: spec 'x, y' vs joiner.py 'y, x'), 3 (['one','two','three']: spec 'one, two, three' vs joiner.py 'three, two, one'), and 5 (['b','a']: spec 'b, a' vs joiner.py 'a, b').",
+    "Left UNDETERMINED by joinspec.md: none. Every probe is a flat list of plain strings, whose join output is fully characterized by separator, item order, and the empty-list case; joinspec.md fixes all three explicitly (', ' separator; given order; empty list renders as the empty string). Singleton probes 0/4 and empty probe 2 are determined identically to joiner.py; separator behavior on probes 1/3/5 is determined identically. See ea-behavior-statement.md for the full per-probe completeness argument."
+  ],
+  "divergent_probe_indices": [
+    1,
+    3,
+    5
+  ],
+  "comparison": [
+    {
+      "probe_index": 0,
+      "reference_output": "a",
+      "independent_output": "a",
+      "diverges": false
+    },
+    {
+      "probe_index": 1,
+      "reference_output": "y, x",
+      "independent_output": "x, y",
+      "diverges": true
+    },
+    {
+      "probe_index": 2,
+      "reference_output": "",
+      "independent_output": "",
+      "diverges": false
+    },
+    {
+      "probe_index": 3,
+      "reference_output": "three, two, one",
+      "independent_output": "one, two, three",
+      "diverges": true
+    },
+    {
+      "probe_index": 4,
+      "reference_output": "z",
+      "independent_output": "z",
+      "diverges": false
+    },
+    {
+      "probe_index": 5,
+      "reference_output": "a, b",
+      "independent_output": "b, a",
+      "diverges": true
+    }
+  ]
+}

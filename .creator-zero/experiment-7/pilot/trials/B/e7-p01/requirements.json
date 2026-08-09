@@ -1,0 +1,52 @@
+{
+  "requirements": [
+    {
+      "requirement_id": "req-Q1",
+      "distinction_id": "Q1",
+      "kind": "LOCAL",
+      "independence": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "allowed_roles": [
+        "local_author"
+      ],
+      "prohibited_sources": [],
+      "primary_method_family": ""
+    },
+    {
+      "requirement_id": "req-Q2",
+      "distinction_id": "Q2",
+      "kind": "LOCAL",
+      "independence": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "allowed_roles": [
+        "local_author"
+      ],
+      "prohibited_sources": [],
+      "primary_method_family": ""
+    },
+    {
+      "requirement_id": "req-Q3",
+      "distinction_id": "Q3",
+      "kind": "LOCAL",
+      "independence": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "allowed_roles": [
+        "local_author"
+      ],
+      "prohibited_sources": [],
+      "primary_method_family": ""
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "task_id": "e7-p01",
+  "topology_id": "local",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "Total units = 50. Sum over all six data rows of the units column of package/artifacts/stock.csv (19 + 9 + 9 + 5 + 6 + 2 = 50), header row excluded.",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "Total value = 874.00. Per-row units*price: p1 19*23.50=446.50, p2 9*3.50=31.50, p3 9*21.50=193.50, p4 5*2.50=12.50, p5 6*30.50=183.00, p6 2*3.50=7.00; sum = 874.00, expressed to two decimal places.",
+      "evidence_ids": ["ev-1", "ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "Top sku by units = p1. Maximum of the units column is 19, attained only by sku p1; no tie exists, so the tie-break (smallest sku by ascending lexicographic sku ordering) is not invoked. Price played no role in the selection.",
+      "evidence_ids": ["ev-1", "ev-4"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

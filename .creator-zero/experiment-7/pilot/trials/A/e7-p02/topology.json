@@ -1,0 +1,7 @@
+{
+  "topology_id": "H-e7-p02-isolated-child",
+  "family": "isolated-child",
+  "predictions_hash": "sha256:97c0422b78b1334db3171818af991235061db2467eeb852dcca9fbd71b1c5267",
+  "condition": "A",
+  "role": "primary (selected)"
+}

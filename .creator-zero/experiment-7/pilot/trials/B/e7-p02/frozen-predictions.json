@@ -1,0 +1,513 @@
+{
+  "H-e7-p02-local": {
+    "predictions": [
+      {
+        "prediction_id": "H-e7-p02-local-pr01",
+        "topology_id": "H-e7-p02-local",
+        "claim": "distinction Q1 (Which behaviors exercised by the probes in probes.json does joinspec.md fail to ) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-local-pr02",
+        "topology_id": "H-e7-p02-local",
+        "claim": "distinction Q2 (What does an implementation of joinspec.md, authored solely from joinspec.md by ) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-AUTHORSHIP-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-local-pr03",
+        "topology_id": "H-e7-p02-local",
+        "claim": "distinction Q3 (On which probes in probes.json, if any, does the clean-room implementation's out) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-local-pr04",
+        "topology_id": "H-e7-p02-local",
+        "claim": "distinction Q4 (Is the final verdict (REPRODUCES vs DIVERGES) entailed jointly by the E-A behavi) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q4 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q4 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q4",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-local-pr05",
+        "topology_id": "H-e7-p02-local",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'resolve-local', 'verify-resolution', 'return-result']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "resolve-local",
+            "verify-resolution",
+            "return-result"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-local-pr06",
+        "topology_id": "H-e7-p02-local",
+        "claim": "execution uses at most 1 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 1",
+        "falsification_condition": "model_calls > 1",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 1
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-local-pr07",
+        "topology_id": "H-e7-p02-local",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-local-pr08",
+        "topology_id": "H-e7-p02-local",
+        "claim": "local evidence is sufficient: resolution and verification complete without any descendant",
+        "observable": "verification record + child launch count",
+        "success_condition": "verification completes with zero child launches",
+        "falsification_condition": "verification is impossible from local evidence, or a distinction requires an isolated source",
+        "weight": 1.0,
+        "kind": "local_sufficiency",
+        "subject": {},
+        "principles": [
+          "P-LOCALITY"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:20cd0029bb782a0320158251b48672d9c65dcea04169209903fc8097a4136341"
+  },
+  "H-e7-p02-isolated-clean-room-author": {
+    "predictions": [
+      {
+        "prediction_id": "H-e7-p02-isolated-clean-room-author-pr01",
+        "topology_id": "H-e7-p02-isolated-clean-room-author",
+        "claim": "distinction Q1 (Which behaviors exercised by the probes in probes.json does joinspec.md fail to ) is resolved by node observe-evidence",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "observe-evidence"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-isolated-clean-room-author-pr02",
+        "topology_id": "H-e7-p02-isolated-clean-room-author",
+        "claim": "distinction Q2 (What does an implementation of joinspec.md, authored solely from joinspec.md by ) is resolved by node child-return",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to child-return",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to child-return",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "child-return"
+        },
+        "principles": [
+          "P-AUTHORSHIP-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-isolated-clean-room-author-pr03",
+        "topology_id": "H-e7-p02-isolated-clean-room-author",
+        "claim": "distinction Q3 (On which probes in probes.json, if any, does the clean-room implementation's out) is resolved by node observe-evidence",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "observe-evidence"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-isolated-clean-room-author-pr04",
+        "topology_id": "H-e7-p02-isolated-clean-room-author",
+        "claim": "distinction Q4 (Is the final verdict (REPRODUCES vs DIVERGES) entailed jointly by the E-A behavi) is resolved by node observe-evidence",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q4 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+        "falsification_condition": "Q4 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q4",
+          "node": "observe-evidence"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-isolated-clean-room-author-pr05",
+        "topology_id": "H-e7-p02-isolated-clean-room-author",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'propose-child', 'validate-child', 'create-child', 'child-return', 'verify-integration', 'return-result']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "propose-child",
+            "validate-child",
+            "create-child",
+            "child-return",
+            "verify-integration",
+            "return-result"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-isolated-clean-room-author-pr06",
+        "topology_id": "H-e7-p02-isolated-clean-room-author",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-isolated-clean-room-author-pr07",
+        "topology_id": "H-e7-p02-isolated-clean-room-author",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-isolated-clean-room-author-pr08",
+        "topology_id": "H-e7-p02-isolated-clean-room-author",
+        "claim": "the child contributes novel evidence not derivable from parent-local evidence",
+        "observable": "evidence records with duplicate_of_parent flags",
+        "success_condition": "at least one child evidence record with duplicate_of_parent=false, attributed to the child",
+        "falsification_condition": "every child evidence record duplicates parent evidence",
+        "weight": 1.0,
+        "kind": "novel_evidence",
+        "subject": {
+          "distinction_ids": [
+            "Q2"
+          ]
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-isolated-clean-room-author-pr09",
+        "topology_id": "H-e7-p02-isolated-clean-room-author",
+        "claim": "the realized child is fresh and attenuated",
+        "observable": "launch provenance + attenuation results",
+        "success_condition": "freshness PASS and attenuation PASS for the realized child",
+        "falsification_condition": "FRESHNESS_FAIL or ATTENUATION_FAIL on the realized child",
+        "weight": 1.0,
+        "kind": "verification_effect",
+        "subject": {
+          "checks": [
+            "freshness",
+            "attenuation"
+          ]
+        },
+        "principles": [
+          "P-FRESHNESS",
+          "P-ATTENUATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-isolated-clean-room-author-pr10",
+        "topology_id": "H-e7-p02-isolated-clean-room-author",
+        "claim": "the independent path at node child-return realizes canonical role clean_room_author",
+        "observable": "realized role typing in the runtime record (ROLE_TYPE_FAIL formal failure on mismatch)",
+        "success_condition": "realized role of child-return equals clean_room_author and no ROLE_TYPE failure is recorded",
+        "falsification_condition": "the realized path's canonical role differs from clean_room_author (ROLE_TYPE_FAIL recorded)",
+        "weight": 1.0,
+        "kind": "verification_effect",
+        "subject": {
+          "checks": [
+            "ROLE_TYPE"
+          ],
+          "node": "child-return",
+          "role": "clean_room_author"
+        },
+        "principles": [
+          "P-AUTHORSHIP-INDEPENDENCE"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:27cfcb060d078d39f414877834ebb256e85962c11cc23ec6156f393a83c29b8c"
+  },
+  "H-e7-p02-branching": {
+    "predictions": [
+      {
+        "prediction_id": "H-e7-p02-branching-pr01",
+        "topology_id": "H-e7-p02-branching",
+        "claim": "distinction Q1 (Which behaviors exercised by the probes in probes.json does joinspec.md fail to ) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-branching-pr02",
+        "topology_id": "H-e7-p02-branching",
+        "claim": "distinction Q2 (What does an implementation of joinspec.md, authored solely from joinspec.md by ) is resolved by node child-return",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to child-return",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to child-return",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "child-return"
+        },
+        "principles": [
+          "P-AUTHORSHIP-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-branching-pr03",
+        "topology_id": "H-e7-p02-branching",
+        "claim": "distinction Q3 (On which probes in probes.json, if any, does the clean-room implementation's out) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-branching-pr04",
+        "topology_id": "H-e7-p02-branching",
+        "claim": "distinction Q4 (Is the final verdict (REPRODUCES vs DIVERGES) entailed jointly by the E-A behavi) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q4 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q4 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q4",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-branching-pr05",
+        "topology_id": "H-e7-p02-branching",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'decide-topology', 'local-resolve', 'propose-child', 'validate-child', 'create-child', 'child-return', 'integrate-evidence', 'verify-child-result', 'verify-local']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "decide-topology",
+            "local-resolve",
+            "propose-child",
+            "validate-child",
+            "create-child",
+            "child-return",
+            "integrate-evidence",
+            "verify-child-result",
+            "verify-local"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-branching-pr06",
+        "topology_id": "H-e7-p02-branching",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-branching-pr07",
+        "topology_id": "H-e7-p02-branching",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-branching-pr08",
+        "topology_id": "H-e7-p02-branching",
+        "claim": "the child contributes novel evidence not derivable from parent-local evidence",
+        "observable": "evidence records with duplicate_of_parent flags",
+        "success_condition": "at least one child evidence record with duplicate_of_parent=false, attributed to the child",
+        "falsification_condition": "every child evidence record duplicates parent evidence",
+        "weight": 1.0,
+        "kind": "novel_evidence",
+        "subject": {
+          "distinction_ids": [
+            "Q2"
+          ]
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-branching-pr09",
+        "topology_id": "H-e7-p02-branching",
+        "claim": "the realized child is fresh and attenuated",
+        "observable": "launch provenance + attenuation results",
+        "success_condition": "freshness PASS and attenuation PASS for the realized child",
+        "falsification_condition": "FRESHNESS_FAIL or ATTENUATION_FAIL on the realized child",
+        "weight": 1.0,
+        "kind": "verification_effect",
+        "subject": {
+          "checks": [
+            "freshness",
+            "attenuation"
+          ]
+        },
+        "principles": [
+          "P-FRESHNESS",
+          "P-ATTENUATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e7-p02-branching-pr10",
+        "topology_id": "H-e7-p02-branching",
+        "claim": "the independent path at node child-return realizes canonical role clean_room_author",
+        "observable": "realized role typing in the runtime record (ROLE_TYPE_FAIL formal failure on mismatch)",
+        "success_condition": "realized role of child-return equals clean_room_author and no ROLE_TYPE failure is recorded",
+        "falsification_condition": "the realized path's canonical role differs from clean_room_author (ROLE_TYPE_FAIL recorded)",
+        "weight": 1.0,
+        "kind": "verification_effect",
+        "subject": {
+          "checks": [
+            "ROLE_TYPE"
+          ],
+          "node": "child-return",
+          "role": "clean_room_author"
+        },
+        "principles": [
+          "P-AUTHORSHIP-INDEPENDENCE"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:a533fe023279f0831b9ff7a7e9b5583a50c9753811773fae6f4f3d05562a7075"
+  }
+}

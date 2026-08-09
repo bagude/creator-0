@@ -121,12 +121,36 @@ def _manifest(ws: Path, kind: str, trial_id: str, condition: str,
     }
 
 
-def _finish(ws: Path, who: str, kind: str) -> None:
+def _finish(ws: Path, who: str, kind: str,
+            extra_deny_paths: list[Path] | None = None) -> None:
     (ws / ".claude").mkdir()
+    settings = json.loads(json.dumps(DENY_SETTINGS))
+    for p in extra_deny_paths or []:
+        for verb in ("Read", "Write", "Edit"):
+            settings["permissions"]["deny"].append(f"{verb}({p}/**)")
     (ws / ".claude" / "settings.json").write_text(
-        json.dumps(DENY_SETTINGS, indent=2) + "\n", encoding="utf-8")
-    (ws / "prompt.md").write_text(PROMPTS[kind].format(who=who),
-                                  encoding="utf-8")
+        json.dumps(settings, indent=2) + "\n", encoding="utf-8")
+    if kind in PROMPTS:
+        (ws / "prompt.md").write_text(PROMPTS[kind].format(who=who),
+                                      encoding="utf-8")
+
+
+def isolation_denies(condition: str, ws_self: Path) -> list[Path]:
+    """Cross-workspace and cross-condition deny paths (NC16 enforcement):
+    the entire other-condition scratch root plus every sibling workspace of
+    this trial run except the session's own workspace."""
+    from .common import SCRATCH
+    other = "B" if condition == "A" else "A"
+    out = [SCRATCH / other]
+    run_dir = ws_self.parent
+    for sib in ("infer-ws", "exec-ws", "examiner-ws", "child-ws"):
+        for cand in (run_dir / sib, run_dir.parent / sib):
+            if cand != ws_self:
+                out.append(cand)
+    if run_dir.name in ("primary", "shadow"):
+        out.append(run_dir.parent / ("shadow" if run_dir.name == "primary"
+                                     else "primary"))
+    return out
 
 
 BLIND_SESSION_OUTPUTS = frozenset({"distinctions.json"})
@@ -158,7 +182,8 @@ def build_infer_workspace(*, trial_id: str, condition: str, bank: Path,
         encoding="utf-8")
     (ws / "infer-harness.json").write_text(
         harness.replace("__TRIAL_ID__", trial_id), encoding="utf-8")
-    _finish(ws, who, "infer")
+    _finish(ws, who, "infer",
+            extra_deny_paths=isolation_denies(condition, ws))
     _no_private_files(bank, ws)
     scan = _scan_or_die(ws, "infer")
     return _manifest(ws, "infer", trial_id, condition, scan)
@@ -189,7 +214,8 @@ def build_exec_workspace(*, trial_id: str, condition: str, bank: Path,
         shutil.copy(E6 / "contracts" / "child-contract-envelope.json",
                     ws / "child-envelope.json")
         shutil.copytree(E6 / "child-templates", ws / "child-templates")
-    _finish(ws, who, "exec")
+    _finish(ws, who, "exec",
+            extra_deny_paths=isolation_denies(condition, ws))
     _no_private_files(bank, ws)
     scan = _scan_or_die(ws, "exec", skip=BLIND_SESSION_OUTPUTS)
     return _manifest(ws, "exec", trial_id, condition, scan)
@@ -212,7 +238,8 @@ def build_examiner_workspace(*, trial_id: str, condition: str,
     else:
         shutil.copy(E7 / "protocol-examiner-v2.md", ws / "protocol.md")
         who = "V-E7"
-    _finish(ws, who, "examiner")
+    _finish(ws, who, "examiner",
+            extra_deny_paths=isolation_denies(condition, ws))
     return _manifest(ws, "examiner", trial_id, condition,
                      {"verdict": "PASS", "hits": [],
                       "note": "package scanned at exec packaging; worker "
@@ -236,12 +263,17 @@ def build_child_workspace(*, trial_id: str, exec_ws: Path, child_dir: Path,
             shutil.rmtree(ws)
             raise RuntimeError(f"manifest names missing file: {rel}")
         shutil.copy(src, ws / "inputs" / Path(rel).name)
+        # mirror at the original manifest-relative path too, so prompts
+        # referencing either location resolve to the same sanctioned input
+        mirror = ws / rel
+        mirror.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy(src, mirror)
     for name in ("child-harness.json", "child-contract.json",
                  "child-prompt.md"):
         shutil.copy(child_dir / name, ws / name)
-    (ws / ".claude").mkdir()
-    (ws / ".claude" / "settings.json").write_text(
-        json.dumps(DENY_SETTINGS, indent=2) + "\n", encoding="utf-8")
+    cond = "A" if "/A/" in str(ws) else "B"
+    _finish(ws, "child", "child",
+            extra_deny_paths=isolation_denies(cond, ws))
     files = sorted(str(p.relative_to(ws)) for p in ws.rglob("*")
                    if p.is_file())
     return {"artifact": "child workspace manifest", "trial_id": trial_id,

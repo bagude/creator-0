@@ -1,0 +1,10 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "outputs.json",
+  "child_implementation_file": "join_items.py",
+  "rule": "Mechanically recompute the clean-room outputs by executing join_items(items) from the child's join_items.py on each list in package/artifacts/probes.json, in order; the child's outputs.json 'outputs' array must match this recomputation exactly, else integration fails and the affected fields stay PENDING-INTEGRATION. Then compare index-by-index against the reference outputs in analysis/joiner-outputs.json (field probe_outputs[i].output). Set divergent_probe_indices to the sorted list of indices i where the two strings differ. Set verdict to 'DIVERGES' if that list is non-empty, else 'REPRODUCES'. Leave undetermined_behaviors as the (empty) list fixed by analysis/ea-determinacy.md; no judgment is applied at integration time.",
+  "expected_contribution": {
+    "Q3": "The child supplies the admissible clean-room implementation (join_items.py, authored solely from joinspec.md with no access to joiner.py or any analysis derived from it) and its per-probe outputs (outputs.json), which this session cannot admissibly author.",
+    "Q4": "Once the child's outputs are integrated under the rule above, verdict and divergent_probe_indices are mechanically entailed by the Q1 determinacy statement and the Q2/Q3 per-probe comparison, settling Q4 deterministically."
+  }
+}

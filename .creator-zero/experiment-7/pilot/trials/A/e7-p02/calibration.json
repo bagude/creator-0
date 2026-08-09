@@ -1,0 +1,27 @@
+{
+  "topology_id": "H-e7-p02-isolated-child",
+  "predicted_value": {
+    "delta_e": 0.85,
+    "cost": 0.375,
+    "redundancy": 0.1,
+    "governance_risk": 0.0
+  },
+  "observed_value": {
+    "delta_e": 1.0,
+    "cost": 0.375,
+    "redundancy": 0.0,
+    "governance_risk": 0.0
+  },
+  "predicted_utility": 0.375,
+  "observed_utility": 0.625,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.15,
+      "cost": 0.0,
+      "redundancy": 0.1,
+      "governance_risk": 0.0
+    },
+    "mean_component_error": 0.0625,
+    "utility_error": 0.25
+  }
+}

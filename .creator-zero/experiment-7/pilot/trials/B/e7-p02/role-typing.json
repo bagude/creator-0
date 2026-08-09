@@ -1,0 +1,7 @@
+{
+  "declared_role": "clean_room_author",
+  "realized_role": "clean_room_author",
+  "detail": "child integration-plan role 'clean_room_author'",
+  "role_type_fail": false,
+  "independent_path": true
+}

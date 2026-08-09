@@ -1,0 +1,5 @@
+{
+  "summary": "E-A is settled in-session: joinspec.md determines every behavior exercised by the six probes (separator ', ', as-given ordering, empty list -> '', single item -> the item), so undetermined_behaviors is empty; the spec's ordering rule is, however, determined differently from joiner.py, which reverses. The reference side of E-B (joiner.py's per-probe outputs) is also settled in-session by mechanical trace. The clean-room side of E-B is inadmissible for this session (it has read joiner.py) and is assigned to the proposed isolated child, whose bundle is authored under child/. verdict and divergent_probe_indices therefore remain PENDING-INTEGRATION until the root harness validates, launches, and integrates the child per the pre-committed deterministic rule.",
+  "assigned_distinctions": ["Q3", "Q4"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

@@ -1,0 +1,7 @@
+{
+  "topology_id": "H-e7-p02-isolated-clean-room-author",
+  "family": "isolated-clean-room-author",
+  "predictions_hash": "sha256:27cfcb060d078d39f414877834ebb256e85962c11cc23ec6156f393a83c29b8c",
+  "condition": "B",
+  "role": "primary (selected)"
+}

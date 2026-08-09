@@ -1,0 +1,29 @@
+{
+  "task_id": "e7-p02",
+  "estimates": {
+    "local": {
+      "delta_e": 0.35,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "A lone package-reading worker satisfies E-A (determinacy statement) and the joiner.py side of the comparison, but has accessed joiner.py, so it can never author an admissible E-B implementation; E-B fails on the authorship condition and E-C's verdict therefore cannot be admissibly established. Records are few and non-duplicative, hence low redundancy."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.35,
+      "redundancy": 0.65,
+      "governance_risk": 0.0,
+      "rationale": "The examiner also reads the package (including joiner.py) and sees the worker's answer, so it is equally disqualified as an E-B author; admissible coverage stays at E-A only. Its re-derivation of the determinacy analysis and joiner.py outputs duplicates evidence the worker already fully established, so most of its records are redundant."
+    },
+    "isolated-child": {
+      "delta_e": 0.85,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "The worker can bundle joinspec.md alone (excluding joiner.py and its own analysis) for the isolated child, whose clean-room join_items implementation is exactly what E-B's authorship condition demands; the deterministic root comparison then satisfies E-A, E-B, and E-C. The child's records are required for admissibility and thus novel; residual risk is only that the child mis-implements the very simple spec."
+    },
+    "branching": {
+      "delta_e": 0.8,
+      "redundancy": 0.12,
+      "governance_risk": 0.0,
+      "rationale": "The isolation need is unambiguous from the package, so a run-time chooser should realize the isolated-child branch and match its value; the estimate is slightly lower only for the residual chance the worker realizes the local branch and forfeits E-B admissibility."
+    }
+  }
+}

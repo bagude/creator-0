@@ -1,0 +1,100 @@
+{
+  "task_id": "e7-p02",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which behaviors exercised by the probes in probes.json does joinspec.md fail to determine, or determine differently from joiner.py?",
+      "why_unresolved": "No comparison of the spec's guarantees against joiner.py's actual behavior over the probe set has been produced yet; whether the spec is silent or contradictory on any probe-exercised behavior is exactly what the audit must establish.",
+      "required_evidence": "A statement enumerating every probe-exercised behavior that joinspec.md leaves undetermined or determines differently from joiner.py, or an explicit argument that no such behavior exists, grounded in a reading of both artifacts against each probe.",
+      "admissibility_constraints": [
+        "Must cover every behavior actually exercised by the probes in probes.json, not a sample.",
+        "Each claimed undetermined or divergent behavior must be traceable to specific spec text (or its absence) and to joiner.py's behavior on at least one probe.",
+        "If no such behavior is claimed, an explicit completeness argument is required rather than silence."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false,
+        "requires_clean_room_authorship": false,
+        "requires_nonauthor_search": false,
+        "requires_independent_decomposition": false,
+        "requires_method_disjoint_verification": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What does an implementation of joinspec.md, authored solely from joinspec.md by a party that has never accessed joiner.py or any analysis derived from it, actually compute as join_items(items)?",
+      "why_unresolved": "No such implementation exists in the workspace, and this process cannot author one: it has read joiner.py and the full package, so any implementation it writes is void under E-B's authorship condition.",
+      "required_evidence": "A python file exposing join_items(items), written from joinspec.md alone by a causally isolated process that was given only joinspec.md (and neither joiner.py, probes-vs-joiner analysis, nor any artifact of this session derived from reading joiner.py).",
+      "admissibility_constraints": [
+        "The author must never have accessed joiner.py nor any analysis derived from it; the inputs to the authoring process must be exactly joinspec.md plus the authoring instructions.",
+        "Artifacts produced by this session (including this DistinctionSpec) are derived from reading joiner.py and must not reach the authoring process.",
+        "The artifact must be a python file exposing join_items(items) so the downstream comparison is mechanically reproducible."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-B"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true,
+        "requires_clean_room_authorship": true,
+        "requires_nonauthor_search": false,
+        "requires_independent_decomposition": false,
+        "requires_method_disjoint_verification": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "On which probes in probes.json, if any, does the clean-room implementation's output differ from joiner.py's output, item by item?",
+      "why_unresolved": "The comparison cannot exist before the clean-room implementation of Q2 exists; no probe-level output pairing between the two implementations has been produced.",
+      "required_evidence": "An item-level comparison over every entry of probes.json: joiner.py's output and the clean-room implementation's output per probe, with the sorted list of indices where they differ (possibly empty), mechanically reproducible from the two python files.",
+      "admissibility_constraints": [
+        "The compared implementation must be the admissible clean-room artifact from Q2; comparing against an implementation written by a joiner.py-exposed party is inadmissible.",
+        "Every probe in probes.json must be compared; divergent indices must be reported sorted.",
+        "The comparison must be mechanically reproducible from the two python files and probes.json."
+      ],
+      "dependencies": ["Q2"],
+      "evidence_requirement_refs": ["E-B"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": true,
+        "requires_clean_room_authorship": false,
+        "requires_nonauthor_search": false,
+        "requires_independent_decomposition": false,
+        "requires_method_disjoint_verification": false
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "Is the final verdict (REPRODUCES vs DIVERGES) entailed jointly by the E-A behavior statement and the E-B probe comparison, with DIVERGES holding iff some probe shows a differing output?",
+      "why_unresolved": "The verdict is defined as a function of E-A and E-B, neither of which is yet resolved; until both exist the biconditional cannot be checked or the verdict issued.",
+      "required_evidence": "A derivation showing the reported verdict follows from the resolved Q1 statement and Q3 comparison: DIVERGES exactly when the divergent-index list is non-empty, REPRODUCES exactly when it is empty and the E-A statement is consistent with that outcome.",
+      "admissibility_constraints": [
+        "The verdict must be a deterministic consequence of E-A and E-B; it may not be asserted from spec-reading or code-reading alone.",
+        "If the E-B comparison is not yet available, only PENDING-INTEGRATION is admissible in its place."
+      ],
+      "dependencies": ["Q1", "Q3"],
+      "evidence_requirement_refs": ["E-C"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false,
+        "requires_clean_room_authorship": false,
+        "requires_nonauthor_search": false,
+        "requires_independent_decomposition": false,
+        "requires_method_disjoint_verification": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "task_id": "e7-p02",
+  "topology_id": "isolated-clean-room-author",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "observe-evidence",
+      "answer": "Exactly one probe-exercised behavior is determined differently by joinspec.md than by joiner.py: the ordering of lists with two or more items. joinspec.md clause 'Items appear in the order given in the list' mandates the given-order join; joiner.py computes ', '.join(reversed(items)). This diverges on probes 1, 3, and 5 (spec-determined 'x, y' / 'one, two, three' / 'b, a' vs joiner.py's 'y, x' / 'three, two, one' / 'a, b'). No probe-exercised behavior is left undetermined: every probe is a flat list of plain strings, whose join output is fully characterized by separator, order, and the empty-list case, and joinspec.md fixes all three; separator (probes 1/3/5), singleton rendering (probes 0/4), and empty-list rendering (probe 2) are determined identically to joiner.py. Full per-probe traceability and completeness argument in ea-behavior-statement.md.",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION. This session has read joiner.py and the full package, so any implementation it authored would be void under E-B's authorship condition. A clean-room child bundle has been proposed at propose-child (child/): a fresh, terminal Read+Write worker whose input manifest is exactly package/artifacts/joinspec.md and whose deliverable is impl.py exposing join_items(items). The root-executed validate-child / create-child / child-return nodes settle Q2.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION. The item-level comparison over all six probes between joiner.py and the clean-room impl.py cannot exist before the child artifact exists. The deterministic comparison rule (fresh copy per call, sorted divergent-index list D) is pre-committed in child/integration-plan.json and is executed at root-executed verify-integration.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION. Per its admissibility constraints the verdict may not be asserted from spec-reading or code-reading alone; only PENDING-INTEGRATION is admissible before the E-B comparison exists. The pre-committed rule in child/integration-plan.json derives the verdict deterministically at verify-integration: DIVERGES iff the divergent-index list D is non-empty, REPRODUCES iff D is empty (consistent with the resolved E-A statement in either case).",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

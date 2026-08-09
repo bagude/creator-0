@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Read package/artifacts/stock.csv in full: header row (sku,units,price) plus six data rows: p1,19,23.50; p2,9,3.50; p3,9,21.50; p4,5,2.50; p5,6,30.50; p6,2,3.50. This is the complete governed evidence base for Q1-Q3.",
+    "refs": ["package/artifacts/stock.csv"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "resolve-local",
+    "description": "Total units over all six data rows: 19+9+9+5+6+2 = 50 (integer). Deterministically reproducible by summing the units column of stock.csv.",
+    "refs": ["package/artifacts/stock.csv", "resolution.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "resolve-local",
+    "description": "Total value = sum of units*price per row: 19*23.50=446.50, 9*3.50=31.50, 9*21.50=193.50, 5*2.50=12.50, 6*30.50=183.00, 2*3.50=7.00; sum = 874.00, stated to 2 decimals as required.",
+    "refs": ["package/artifacts/stock.csv", "resolution.json"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "resolve-local",
+    "description": "Maximum of the units column is 19, attained only by sku p1 (tie set = {p1}); p2 and p3 tie at 9 units but are below the maximum, so the smallest-sku tie-break is inapplicable. Top sku by units = p1.",
+    "refs": ["package/artifacts/stock.csv", "resolution.json"]
+  },
+  {
+    "id": "ev-5",
+    "source_node": "verify-resolution",
+    "description": "Non-authoritative self-check: re-derived all three figures from the file contents (units sum 50; value sum 874.00; unique argmax p1) and confirmed result.json matches the deliverable shape {total_units: integer, total_value: number to 2 decimals, top_sku_by_units: string} and that every data row of stock.csv was covered.",
+    "refs": ["package/artifacts/stock.csv", "resolution.json", "result.json"]
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "role": "clean_room_author",
+  "child_deliverable": "result.json",
+  "child_implementation_file": "impl.py",
+  "rule": "Let J = the function join_items loaded from package/artifacts/joiner.py and C = the function join_items loaded from the child's returned impl.py (received at child-return). Load the probe list P from package/artifacts/probes.json. For each index i in 0..len(P)-1, compute a_i = J(list(P[i])) and c_i = C(list(P[i])), passing each function a fresh copy of the probe. Let D = the sorted list of all indices i with a_i != c_i. Then: set result.json field divergent_probe_indices to D; set result.json field verdict to 'DIVERGES' if D is non-empty and to 'REPRODUCES' if D is empty; leave result.json field undetermined_behaviors exactly as authored in-session from E-A (ea-behavior-statement.md). The per-probe pairs (i, a_i, c_i) together with D constitute the E-B comparison resolving Q3; the verdict assignment is the E-C derivation resolving Q4. No judgment is required at any step.",
+  "expected_contribution": {
+    "Q2": "The child's impl.py IS the required evidence: a python file exposing join_items(items), authored solely from joinspec.md by a fresh process that never accessed joiner.py, probes.json, or any artifact of this session's analysis (input manifest contains exactly package/artifacts/joinspec.md).",
+    "Q3": "impl.py enables the deterministic item-level comparison against joiner.py over every probe in probes.json; the sorted divergent-index list D produced by the rule above settles Q3 at verify-integration.",
+    "Q4": "The verdict follows mechanically from D per the rule above (DIVERGES iff D non-empty), settling Q4 at verify-integration consistently with the in-session E-A statement."
+  }
+}

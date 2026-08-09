@@ -1,0 +1,77 @@
+{
+  "task_id": "e7-p01",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What is the total number of units summed over every row of artifacts/stock.csv?",
+      "why_unresolved": "The task package supplies only the raw CSV; the sum over the units column has not been computed or recorded anywhere in the package.",
+      "required_evidence": "A deterministic summation of the units column across all six data rows of stock.csv, yielding a single integer reproducible from the file contents.",
+      "admissibility_constraints": [
+        "Evidence must be derived solely from package/artifacts/stock.csv as provided.",
+        "Every data row must be included; the header row must be excluded.",
+        "The result must be an integer, matching the deliverable shape."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false,
+        "requires_clean_room_authorship": false,
+        "requires_nonauthor_search": false,
+        "requires_independent_decomposition": false,
+        "requires_method_disjoint_verification": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What is the total inventory value, computed as the sum over rows of units times price, rounded to two decimal places?",
+      "why_unresolved": "The per-row products and their sum are not present in the package; they must be derived, and the two-decimal rounding convention must be applied to the final sum.",
+      "required_evidence": "A deterministic computation of sum(units * price) over all data rows of stock.csv, presented to two decimal places, reproducible from the file contents.",
+      "admissibility_constraints": [
+        "Evidence must be derived solely from package/artifacts/stock.csv as provided.",
+        "Per-row product must use each row's own units and price; all rows included.",
+        "The final value must be rounded/expressed to exactly two decimal places as the task specifies."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-B"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false,
+        "requires_clean_room_authorship": false,
+        "requires_nonauthor_search": false,
+        "requires_independent_decomposition": false,
+        "requires_method_disjoint_verification": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Which sku has the most units, applying the tie-break rule that ties resolve to the smallest sku?",
+      "why_unresolved": "The maximal units value and whether multiple skus share it are not recorded in the package; the tie-break ordering (smallest sku) must be applied to the actual data to settle the answer.",
+      "required_evidence": "An identification of the maximum value in the units column and of all skus attaining it, followed by selection of the smallest such sku under the task's tie-break ordering, reproducible from the file contents.",
+      "admissibility_constraints": [
+        "Evidence must be derived solely from package/artifacts/stock.csv as provided.",
+        "Comparison must be on the units column only; price must not influence the selection.",
+        "If more than one sku attains the maximum units, the smallest sku must be chosen per the stated tie-break; the chosen tie ordering must be stated."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-C"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false,
+        "requires_clean_room_authorship": false,
+        "requires_nonauthor_search": false,
+        "requires_independent_decomposition": false,
+        "requires_method_disjoint_verification": false
+      }
+    }
+  ]
+}
