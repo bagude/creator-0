@@ -1,0 +1,32 @@
+{
+  "check": "frozen_trees",
+  "git_diff_on_protected_paths": [],
+  "method": "git-tracked content only: sha256 over sorted (path, blob-sha) pairs per tree, compared between base 3a3f635 and candidate head; plus git diff over all protected paths. Untracked derived bytecode caches (__pycache__) are excluded \u2014 they are not evidence artifacts and are outside version control.",
+  "status": "PASS",
+  "trees": {
+    ".creator-zero/experiment-3": {
+      "base_3a3f635": "7e8d03c685fa3edcbc82c7b389d4f6da918cef0dc3e1572c60f4795eaae3ec30",
+      "byte_unchanged": true,
+      "candidate_head": "7e8d03c685fa3edcbc82c7b389d4f6da918cef0dc3e1572c60f4795eaae3ec30",
+      "tracked_files": 34
+    },
+    ".creator-zero/experiment-4": {
+      "base_3a3f635": "d52b2c139a6c0324a7b20f0ec9b1866df4870d397dc4c123cbaa601a99771500",
+      "byte_unchanged": true,
+      "candidate_head": "d52b2c139a6c0324a7b20f0ec9b1866df4870d397dc4c123cbaa601a99771500",
+      "tracked_files": 93
+    },
+    ".creator-zero/experiment-4c": {
+      "base_3a3f635": "72a5266ca5b6b93b296677322908f1a3040e62c76c32f094156734a310633a4c",
+      "byte_unchanged": true,
+      "candidate_head": "72a5266ca5b6b93b296677322908f1a3040e62c76c32f094156734a310633a4c",
+      "tracked_files": 41
+    },
+    ".creator-zero/experiment-5": {
+      "base_3a3f635": "0d5a8b0922b95077bc7e0936881566576233feda30f61c90a4049a73da29dd31",
+      "byte_unchanged": true,
+      "candidate_head": "0d5a8b0922b95077bc7e0936881566576233feda30f61c90a4049a73da29dd31",
+      "tracked_files": 336
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "check": "runtime_refinement",
+  "counterexample": null,
+  "detail": {
+    "final_state": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+    "matched_steps": 5
+  },
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/state/self-modification-v0.1/self-modification-ledger.jsonl",
+    "observable events matched: 5",
+    "final reconstructed state: done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+  ],
+  "formal_relation": "Runtime <= Spec",
+  "status": "PASS",
+  "unmapped_events": []
+}

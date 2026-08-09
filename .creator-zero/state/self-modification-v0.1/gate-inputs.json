@@ -1,0 +1,11 @@
+{
+  "attenuation": "/home/user/creator-0/.creator-zero/state/self-modification-v0.1/verification-results/attenuation.json",
+  "frozen_trees": "/home/user/creator-0/.creator-zero/state/self-modification-v0.1/verification-results/frozen-trees.json",
+  "historical_replay": "/home/user/creator-0/.creator-zero/state/self-modification-v0.1/historical-replay.json",
+  "independent_verifier": "/home/user/creator-0/.creator-zero/state/self-modification-v0.1/verification-results/independent-verifier.json",
+  "patch_manifest": "/home/user/creator-0/.creator-zero/state/self-modification-v0.1/candidate-patch-manifest.json",
+  "protected_laws": "/home/user/creator-0/.creator-zero/state/self-modification-v0.1/verification-results/protected-laws.json",
+  "refinement": "/home/user/creator-0/.creator-zero/state/self-modification-v0.1/verification-results/refinement.json",
+  "tests_existing": "/home/user/creator-0/.creator-zero/state/self-modification-v0.1/verification-results/tests-existing.json",
+  "tests_new": "/home/user/creator-0/.creator-zero/state/self-modification-v0.1/verification-results/tests-new.json"
+}

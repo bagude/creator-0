@@ -1,0 +1,80 @@
+{
+  "candidate_head": "1d7d7fe31b51bc6efedf8bd88e356fca6b14eee6",
+  "check": "independent_verifier",
+  "concerns": [
+    "evaluate_topology enforces prediction-hash integrity only when the runtime record carries predictions_hash; a record omitting the field skips the check (documented as instrumentation assumption A1).",
+    "gate() decides over serialized inputs without authenticating provenance (explicitly documented assumption).",
+    "gate-result.json and state artifact must be produced at promotion time."
+  ],
+  "detail": {
+    "issued_by": "verifier"
+  },
+  "findings": {
+    "governance_spot_checks": {
+      "notes": [
+        "theory_store.promote() rejects non-Gate results (PromotionError); write-once versions; hash-chained append-only evidence with prefix-rewrite detection.",
+        "self_modify.gate() is a pure deterministic conjunction over 9 required inputs; authorize_promotion() refuses non-gate actors/documents; candidate_only_guard raises outside the candidate root.",
+        "semantics.py prunes cross-branch configurations and enables complete for shared+one-full-branch; unannotated specs keep the all-nodes-done rule.",
+        "freshness.py: executed=True demands confirmed=True; None only for executed=False; missing executed fails.",
+        "predictions are hash-frozen; evaluation raises PredictionIntegrityError on mismatch."
+      ],
+      "status": "PASS"
+    },
+    "patch_reproducibility": {
+      "files_checked": 38,
+      "mismatches": [],
+      "notes": [
+        "git diff e3067c5..1d7d7fe yields exactly the 38 manifest paths; all change statuses match.",
+        "sha256 recomputed for all 38 files; every hash equals the manifest's sha256 field."
+      ],
+      "status": "PASS"
+    },
+    "proposal_consistency": {
+      "missing": [],
+      "notes": [
+        "All 17 required layout entries exist (plus __init__.py, validate.py, replay-corpus.json, utility-config.json).",
+        "gate-result.json and state/topology-theory-v0.1.json correctly absent pre-Gate; Gate must produce them at promotion."
+      ],
+      "status": "PASS"
+    },
+    "protected_laws": {
+      "notes": [
+        "No changed path under experiment-3/4/4c/5 trees, root_contract.json, or frozen state manifests; extra changed paths confined to state/self-modification-v0.1/ governance artifacts."
+      ],
+      "status": "PASS",
+      "violations": []
+    },
+    "tests": {
+      "status": "PASS",
+      "suites": {
+        "creator_zero": {
+          "errors": 0,
+          "failures": 0,
+          "outcome": "OK",
+          "ran": 8
+        },
+        "experiment5": {
+          "errors": 0,
+          "failures": 0,
+          "outcome": "OK",
+          "ran": 33
+        },
+        "formal": {
+          "errors": 0,
+          "failures": 0,
+          "outcome": "OK",
+          "ran": 82
+        },
+        "topology_theory": {
+          "errors": 0,
+          "failures": 0,
+          "outcome": "OK",
+          "ran": 70
+        }
+      },
+      "total_ran": 193
+    }
+  },
+  "status": "PASS",
+  "verifier": "fresh independent session; no write; no promotion authority"
+}
