@@ -1,0 +1,9 @@
+{
+  "verdict": "PENDING-INTEGRATION",
+  "undetermined_behaviors": [
+    "Pair ordering — determined differently: format.md ('Pairs appear in the encoded line in the order in which they appear in the mapping.') requires mapping/insertion order, while reference.py emits pairs sorted by key (for k in sorted(d)). Exercised by probes 1, 5 and 6, whose insertion order differs from sorted key order (e.g. probe 1: format-faithful 'z=9;a=1' vs reference 'a=1;z=9').",
+    "Backslash handling — determined differently (at minimum, not determined to match): format.md's escaping clause ('Inside keys and values, every ';' is written as the two characters backslash-semicolon and every '=' as backslash-equals') names only ';' and '=' as transformed characters, so under its literal reading a backslash passes through unchanged; reference.py additionally doubles every literal backslash (s.replace('\\', '\\\\') applied first). Exercised by probe 4, value 'back\\slash': format-faithful 'k=back\\slash' vs reference 'k=back\\\\slash'.",
+    "No other behavior exercised by the probe set is undetermined or determined differently: key=value pair rendering, ';' joining, escaping of '=' in keys and values, escaping of ';' including trailing position, empty-key and empty-value rendering, and empty-mapping-to-empty-line are each determined by format.md identically to reference.py; see behavior-statement.md for the clause-by-clause argument."
+  ],
+  "divergent_probe_indices": "PENDING-INTEGRATION"
+}

@@ -1,0 +1,11 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "outputs.json",
+  "child_implementation_file": "encode.py",
+  "rule": "Load package/artifacts/probes.json as a list P of mappings, preserving each object's key order. For each index i in 0..len(P)-1, mechanically execute r_i = encode(P[i]) from package/artifacts/reference.py and c_i = encode(P[i]) from the child's encode.py, each in a separate interpreter. Set divergent = sorted([i for i in range(len(P)) if r_i != c_i]). Then set result.json.divergent_probe_indices = divergent and result.json.verdict = 'DIVERGES' if divergent is non-empty else 'REPRODUCES'. result.json.undetermined_behaviors is carried over unchanged from the creator's E-A statement already present in result.json (grounded in behavior-statement.md). The child's outputs.json is advisory only (a hand-trace); the mechanically executed outputs of encode.py are authoritative for the comparison. If encode.py fails to import, does not expose encode, or raises on any probe, leave verdict and divergent_probe_indices as 'PENDING-INTEGRATION' and record the failure; do not substitute judgment.",
+  "expected_contribution": {
+    "Q2": "The admissible clean-room encode.py (authored solely from format.md, optionally probes.json) together with its output on every probe, satisfying E-B's authorship condition, which no in-session author can meet.",
+    "Q3": "The item-level comparison over probes.json between reference.py and the admissible encode.py, and the sorted list of differing indices, mechanically reproducible from the two files per the rule above.",
+    "Q4": "The verdict via the E-C rule applied to the Q3 comparison: DIVERGES iff some probe output differs, REPRODUCES iff none."
+  }
+}

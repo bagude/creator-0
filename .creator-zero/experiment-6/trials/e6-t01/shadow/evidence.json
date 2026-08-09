@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Raw task materials acquired: format.md (prose spec: key=value pairs joined by ';', mapping order, escaping of ';' and '=' only, empty mapping to empty line), reference.py (reference encoder: sorts keys, doubles backslashes before escaping ';' and '='), probes.json (10 probe mappings exercising ordering, escaping, backslash, empty key/value, and empty mapping cases). Governance files (contract.json, harness.json, distinctions.json, resolution-schema.json, child-envelope.json, child templates) also read.",
+    "refs": ["package/artifacts/format.md", "package/artifacts/reference.py", "package/artifacts/probes.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "decide-topology",
+    "description": "Typed topology decision CREATE with reasons: E-B's authorship condition is unmeetable in-session (reference.py already read); the contract and harness permit a single validated, freshly launched child; the causal-separation condition is satisfiable by restricting the child's input manifest to the two non-derived package artifacts; Q1 remains locally resolvable so the CREATE branch dominates.",
+    "refs": ["decision.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "E-A behavior statement: complete inventory of the behaviors exercised by all 10 probes, the two behaviors format.md determines differently from reference.py (pair ordering, probes 1/5/6; backslash treatment, probe 4), each grounded in quoted format.md clauses and concrete reference.py behavior on concrete probes, and an explicit clause-by-clause argument that every other exercised behavior is determined identically.",
+    "refs": ["behavior-statement.md"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "propose-child",
+    "description": "Complete child bundle for the clean-room implementer: attenuated terminal contract (Read+Write, 1 model call, no creation), four-node harness from the template, standalone prompt that never mentions reference.py or this trial's analysis, input manifest restricted to format.md and probes.json (verbatim package artifacts, not derived from reference.py), and a pre-committed deterministic integration rule mapping the mechanically executed comparison onto result.json's verdict and divergent_probe_indices.",
+    "refs": ["child/child-contract.json", "child/child-harness.json", "child/child-prompt.md", "child/child-input-manifest.json", "child/integration-plan.json"]
+  }
+]

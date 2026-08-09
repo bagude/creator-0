@@ -1,0 +1,9 @@
+{
+  "decision": "CREATE",
+  "reasons": [
+    "Q2's admissibility condition (E-B) requires an encode(d) author who has never accessed reference.py nor any analysis derived from it. This session read reference.py at observe-evidence, so no artifact authored in-session can satisfy E-B; only a separately launched, input-restricted process can.",
+    "The trial contract K-E6-trial permits creation (may_create_creator: true, may_realize_creation: true, max_children: 1, max_depth: 1) and the selected harness carries a create branch gated by validate-child and the deterministic fresh launcher, so an isolated clean-room child is realizable within governance.",
+    "The causal-separation condition of E-B is satisfiable by manifest restriction: the child needs only package/artifacts/format.md and package/artifacts/probes.json, both of which exist verbatim in the package and are not derived from reference.py.",
+    "Nothing is lost relative to the local branch: Q1 (E-A) has no authorship constraint and is resolvable in-session from workspace evidence, while Q3 and Q4 are deterministic functions of the child deliverable under a pre-committed integration rule. The CREATE branch therefore dominates: it settles everything the local branch could plus the distinctions the local branch provably cannot."
+  ]
+}

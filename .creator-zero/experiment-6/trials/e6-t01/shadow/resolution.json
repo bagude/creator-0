@@ -1,0 +1,38 @@
+{
+  "task_id": "e6-t01",
+  "topology_id": "branching",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "Exactly two probe-exercised behaviors are determined by format.md differently from reference.py, and none is left wholly undetermined without also differing: (1) pair ordering — format.md mandates mapping/insertion order ('the order in which they appear in the mapping') while reference.py sorts keys (sorted(d)); exercised by probes 1, 5, 6. (2) backslash treatment — format.md's exhaustive escaping clause names only ';' and '=', so a literal backslash passes through unchanged, while reference.py doubles every backslash first; exercised by probe 4. All other exercised behaviors (key=value rendering, ';' joining, '='/';' escaping in keys and values including trailing position, empty key/value rendering, empty mapping to empty line) are determined identically; behavior-statement.md gives the clause-by-clause enumeration covering every probe and the explicit argument that the inventory is exhaustive.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Not resolvable in this session: E-B's authorship condition (never accessed reference.py nor analysis derived from it) is already violated by this session, which read reference.py at observe-evidence. The clean-room child proposed in child/ (input manifest restricted to format.md and probes.json, both verbatim package artifacts) is designed to produce the admissible encode.py plus per-probe outputs; realization, and hence resolution, is root-executed after this session.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Depends on Q2's admissible implementation, which does not exist yet. The item-level comparison is pre-committed as a deterministic rule in child/integration-plan.json: mechanically execute reference.py's and the child's encode(d) on every probe and take the sorted list of differing indices. Root-executed at integrate-evidence. Non-authoritative E-A-based prediction: [1, 4, 5, 6].",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "The verdict is defined jointly by E-A and E-B (E-C) and may not be asserted from E-A alone; since no admissible E-B comparison exists in this session, result.json carries verdict PENDING-INTEGRATION and divergent_probe_indices PENDING-INTEGRATION. The pre-committed rule in child/integration-plan.json derives the final verdict deterministically: DIVERGES iff the mechanical comparison shows a differing output on some probe, REPRODUCES iff none.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "summary": "CREATE branch realized in-session up to propose-child. Q1 (E-A) is resolved: format.md determines pair ordering (insertion order vs reference.py's sorted keys; probes 1, 5, 6) and backslash treatment (pass-through vs reference.py's doubling; probe 4) differently from reference.py, and determines every other probe-exercised behavior identically (behavior-statement.md). Q2-Q4 await the clean-room child proposed in child/: validation, fresh launch, integration, and verification are root-executed. result.json carries PENDING-INTEGRATION for verdict and divergent_probe_indices; the non-authoritative E-A prediction for the divergent set is [1, 4, 5, 6].",
+  "assigned_distinctions": ["Q2", "Q3", "Q4"],
+  "integration_rule_ref": "child/integration-plan.json"
+}
