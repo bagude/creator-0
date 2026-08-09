@@ -1,0 +1,10 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "enumeration-2.json",
+  "child_implementation_file": null,
+  "rule": "Canonicalize: for each item in enumeration-1.json.items (call the set A) and in the child's enumeration-2.json.items (call the set B), sort layer1 and layer2 alphabetically; two items are equal iff their sorted layer1 arrays are identical and their sorted layer2 arrays are identical. Compute U = union of A and B, sorted lexicographically by the layer1 array. Set final result.json.items = U, where every item present in exactly one of A, B additionally carries the field \"flag\" set to \"only-in-enumeration-1\" or \"only-in-enumeration-2\" respectively, and items present in both carry no flag field. Set final result.json.method = \"union of two independently produced complete enumerations (enumeration-1.json by session X-E6, enumeration-2.json by isolated child C-E6 from package/artifacts/modules.json alone); per-enumeration methods stated in those files\". Set final result.json.complete = true iff A equals B as sets AND enumeration-1.json.complete == true AND enumeration-2.json.complete == true; otherwise set complete = false. No judgment is required: every step is a set operation over canonicalized JSON.",
+  "expected_contribution": {
+    "Q2": "enumeration-2.json is the second complete enumeration of the split space, produced by a causally separated fresh child whose input manifest contains only package/artifacts/modules.json, satisfying E-B's authorship/access condition.",
+    "Q3": "once enumeration-2.json is received, the merged answer (union with single-source flags) and the both-supported completeness verdict follow deterministically from the rule above, satisfying E-C."
+  }
+}

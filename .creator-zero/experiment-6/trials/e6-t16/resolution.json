@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t16",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "The complete first enumeration contains exactly 8 valid foundation/application splits, recorded in enumeration-1.json with sorted layers and lexicographically sorted items: layer1 = {auth,core,db,net,util}, {auth,core,db,util}, {core,db,net,util}, {core,db,util}, {core,net,util}, {core,util}, {db,util}, {util}, with layer2 the complement in each case. Method (stated per E-A): a split is valid iff layer1 is a non-empty, proper, downward-closed subset of the dependency DAG; an exhaustive case split over module memberships shows the DAG has exactly 10 downward-closed sets, and removing the empty and full sets leaves the 8 splits, each re-verified against all 7 dependency edges.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be resolved in this session: E-B requires a second complete enumeration produced without access to the first enumeration or its intermediate work, and this session authored the first enumeration. Assigned to the isolated fresh child proposed in the child/ bundle, whose input manifest contains only package/artifacts/modules.json; its deliverable enumeration-2.json will be integrated root-side per child/integration-plan.json.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be resolved in this session: the merge requires the child's enumeration-2.json, which does not exist yet. The deterministic rule in child/integration-plan.json maps both enumerations to the final result.json (union sorted by layer1, single-source items flagged, complete = true only if both enumerations agree as sets and both claim completeness), to be executed at the root-side verify-integration node.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

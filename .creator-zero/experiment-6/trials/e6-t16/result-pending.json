@@ -1,0 +1,5 @@
+{
+  "summary": "Session X-E6 executed observe-evidence and propose-child of the isolated-child harness for e6-t16. It produced the first complete enumeration (8 valid foundation/application splits, enumeration-1.json, resolving Q1 per E-A) and authored the full child bundle under child/ for an isolated fresh child that will produce the second, causally independent enumeration (enumeration-2.json, E-B). The final result.json fields items (as merged union with single-source flags) and complete are PENDING-INTEGRATION: they are computed root-side by the deterministic rule in child/integration-plan.json after child-return, and the completeness claim is admissible only if both enumerations agree (E-C).",
+  "assigned_distinctions": ["Q2", "Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Governed evidence acquisition: read the task statement, the module/dependency data, the distinctions, the selected harness, the trial contract, the child envelope, and the child templates. Identified Q2 as the isolation-requiring distinction (E-B forbids the producer of the second enumeration from having access to the first enumeration or its intermediate work, a condition this session cannot meet for itself) and Q1/Q3 as locally resolvable, with Q3 blocked on Q2.",
+    "refs": [
+      "package/task.json",
+      "package/artifacts/modules.json",
+      "distinctions.json",
+      "harness.json",
+      "contract.json",
+      "child-envelope.json",
+      "child-templates/child-contract-template.json",
+      "child-templates/child-harness-template.json"
+    ]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "First complete candidate enumeration (E-A): all 8 valid foundation/application splits of the six modules, with the producing method stated (exhaustive enumeration of downward-closed layer1 subsets of the dependency DAG; 10 closed sets minus empty and full; each split re-checked against all 7 dependency edges).",
+    "refs": [
+      "enumeration-1.json"
+    ]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Full child bundle proposing an isolated fresh clean-room child to produce the second enumeration (E-B): attenuated child contract within the K-E6-child-max envelope, child harness from the template, standalone prompt that mentions no trial artifact beyond the raw module data, input manifest restricted to package/artifacts/modules.json (excluding enumeration-1.json and all of this session's analysis, satisfying E-B's access condition), and a deterministic integration plan mapping enumeration-2.json to the final merged result (E-C).",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]

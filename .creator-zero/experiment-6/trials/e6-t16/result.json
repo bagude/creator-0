@@ -1,0 +1,14 @@
+{
+  "items": [
+    {"layer1": ["auth", "core", "db", "net", "util"], "layer2": ["ui"]},
+    {"layer1": ["auth", "core", "db", "util"], "layer2": ["net", "ui"]},
+    {"layer1": ["core", "db", "net", "util"], "layer2": ["auth", "ui"]},
+    {"layer1": ["core", "db", "util"], "layer2": ["auth", "net", "ui"]},
+    {"layer1": ["core", "net", "util"], "layer2": ["auth", "db", "ui"]},
+    {"layer1": ["core", "util"], "layer2": ["auth", "db", "net", "ui"]},
+    {"layer1": ["db", "util"], "layer2": ["auth", "core", "net", "ui"]},
+    {"layer1": ["util"], "layer2": ["auth", "core", "db", "net", "ui"]}
+  ],
+  "method": "First enumeration (E-A, enumeration-1.json): systematic enumeration of all dependency-closed layer1 subsets of the DAG in package/artifacts/modules.json — layer1 is valid iff it is a non-empty, proper, downward-closed set under depends-on; exhaustive case split over module memberships yields 10 closed sets, minus empty and full leaves 8 splits, each re-checked against all 7 dependency edges. The items above are the first enumeration only. The final merged answer is the union with the isolated child's independent second enumeration (E-B), with single-source items flagged, computed deterministically per child/integration-plan.json: PENDING-INTEGRATION.",
+  "complete": "PENDING-INTEGRATION"
+}
