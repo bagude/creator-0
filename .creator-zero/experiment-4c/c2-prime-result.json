@@ -1,0 +1,15 @@
+{
+  "record": "Experiment 4C C2' invocation result",
+  "session_id": "93f22e6c-1f72-4d7e-a57a-69a4fcce42f8",
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 1,
+  "duration_ms": 108480,
+  "started_utc": "2026-08-09T06:49:00Z",
+  "ended_utc": "2026-08-09T06:50:51Z",
+  "exit_status": "exit=0",
+  "stderr_bytes": 0,
+  "output_parses_as_single_json_object": true,
+  "attestation_artifact": ".creator-zero/experiment-4c/c2-prime-k3-attestation.json",
+  "attestation_sha256": "b950fb94edf02896eb965ef8971a07db9e64e561f18eeef131f147ddcca6b81c"
+}

@@ -1,0 +1,35 @@
+{
+  "record": "Experiment 4C closure verification (protocol \u00a79)",
+  "predicate": "hat_kappa(K2, K3') = Valid AND Attenuated AND CreatorCapable AND CreationMechanismValid AND ExternalStopOnly",
+  "implementation": {
+    "path": ".creator-zero/experiment-4/gate.py::attested_creator_closure",
+    "gate_sha256": "b1aa26b50b18d38a042f03aef50a16fcf684d1415c93b860093628900c66d334",
+    "note": "imported and executed directly from the 4B-amended gate; not reimplemented"
+  },
+  "k2": {
+    "path": ".creator-zero/experiment-4/child-2-contract.json",
+    "sha256": "4f6865fec22eada3eb73ed537ca23a0a1461abdb095501230fc75d7a883d04d9"
+  },
+  "k3_prime_attestation": {
+    "path": ".creator-zero/experiment-4c/c2-prime-k3-attestation.json",
+    "sha256": "b950fb94edf02896eb965ef8971a07db9e64e561f18eeef131f147ddcca6b81c",
+    "authored_by": "C2' (fresh C2-equivalent invocation, Experiment 4C)"
+  },
+  "clauses": {
+    "valid_K3": true,
+    "attenuated_K3_le_K2": true,
+    "creator_capable": true,
+    "creation_mechanism_valid": true,
+    "external_stop_only": true
+  },
+  "pre_4B_substance_checks": {
+    "k3_tools_subset_of_k2": true,
+    "k3_model_calls_strictly_below_k2": true,
+    "creation_command_present": true,
+    "non_execution_attested": true,
+    "max_depth_zero": true
+  },
+  "hat_kappa_K2_K3prime": "PASS",
+  "model_override": "none \u2014 purely mechanical evaluation",
+  "c3_realized": false
+}

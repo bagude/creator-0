@@ -1,0 +1,81 @@
+{
+  "record": "Experiment 4C witness provenance (protocol \u00a710)",
+  "witness": {
+    "artifact": ".creator-zero/experiment-4c/c2-prime-k3-attestation.json",
+    "sha256": "b950fb94edf02896eb965ef8971a07db9e64e561f18eeef131f147ddcca6b81c",
+    "byte_identity": "file content is the verbatim `result` field of the CLI JSON envelope in c2-prime-session.log; sha256(result) binds the witness to that invocation"
+  },
+  "invocation": {
+    "command": "env -u CLAUDE_CODE_SESSION_ID claude -p --model claude-sonnet-5 --output-format json --session-id \"93f22e6c-1f72-4d7e-a57a-69a4fcce42f8\" --disallowedTools \"Bash\" \"Read\" \"Write\" \"Edit\" \"Glob\" \"Grep\" \"WebFetch\" \"WebSearch\" \"Task\" \"TodoWrite\" \"NotebookEdit\" < .creator-zero/experiment-4c/c2-prime-prompt.md > raw-output.json 2> stderr.txt",
+    "cwd": "empty scratch directory outside the repository (no CLAUDE.md, no repo files reachable; all tools disallowed)",
+    "model_requested": "claude-sonnet-5",
+    "models_reported_by_cli": [
+      "claude-haiku-4-5-20251001",
+      "claude-sonnet-5"
+    ],
+    "model_note": "claude-sonnet-5 is the primary model (same model original C2 used for its invocations); the haiku entry is the CLI's internal auxiliary usage, not a task turn",
+    "allowed_tools": [],
+    "disallowed_tools": [
+      "Bash",
+      "Read",
+      "Write",
+      "Edit",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "Task",
+      "TodoWrite",
+      "NotebookEdit"
+    ],
+    "session_id": "93f22e6c-1f72-4d7e-a57a-69a4fcce42f8",
+    "started_utc": "2026-08-09T06:49:00Z",
+    "ended_utc": "2026-08-09T06:50:51Z",
+    "exit_status": "exit=0",
+    "num_turns": 1
+  },
+  "freshness_declaration": {
+    "C2_prime_fresh": true,
+    "resume_used": false,
+    "prior_session_reused": false,
+    "flags_absent": [
+      "--continue",
+      "--resume"
+    ],
+    "session_id_source": "freshly generated UUID passed via --session-id, with the orchestrator's inherited CLAUDE_CODE_SESSION_ID env var explicitly unset",
+    "prompt_delivery": "stdin only; single turn; empty working directory; all tools disallowed, so no file, network, or repo access was possible during the invocation"
+  },
+  "discarded_probe": {
+    "note": "a first, otherwise-identical invocation was discarded because the claude CLI inherited the orchestrator's CLAUDE_CODE_SESSION_ID env var and labeled the child session with the orchestrator's UUID; its conversation was fresh (num_turns=1, stdin prompt) but the label made freshness non-demonstrable, so its output was not used for any artifact",
+    "raw_envelope_sha256": "215141a22319282fc48ecf0aa283d7a3eb852c15061f4629cfa03ad20f19cd6a",
+    "used_in_witness": false
+  },
+  "prompt": {
+    "path": ".creator-zero/experiment-4c/c2-prime-prompt.md",
+    "sha256": "bfe3699e182b0667752278c608e1be2d7d0c52f33c18764639e6b31399ec74b0"
+  },
+  "input_artifacts": [
+    {
+      "path": ".creator-zero/experiment-4/child-2-contract.json",
+      "sha256": "4f6865fec22eada3eb73ed537ca23a0a1461abdb095501230fc75d7a883d04d9"
+    },
+    {
+      "path": ".creator-zero/experiment-4/closure-correction/closure-predicate-verification.json",
+      "sha256": "4f339216c3811a13bf37b4347521942ee79388a456cece65cb8271a68f712e0c"
+    },
+    {
+      "path": ".creator-zero/experiment-4/closure-correction/original-mismatch.json",
+      "sha256": "c1f1fa3054ac4b6856a33d503a64c18852f741eaac1c5257f2988e05c84db71f"
+    }
+  ],
+  "withheld_answer_key": {
+    "path": ".creator-zero/experiment-4/closure-correction/corrected-k3-attestation.json",
+    "sha256": "5ff1a8502cdd7e325d21c00af14e50f1579492219a08d08136d1bf603213e92a",
+    "provided_to_c2_prime": false,
+    "leakage_check": ".creator-zero/experiment-4c/input-manifest.json"
+  },
+  "session_log": {
+    "path": ".creator-zero/experiment-4c/c2-prime-session.log",
+    "sha256": "9fabf6732985effee403c7bf16299c45af85798b9d916e2c02a03767b6ffa7ee"
+  }
+}

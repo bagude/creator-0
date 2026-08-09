@@ -1,0 +1,38 @@
+{
+  "experiment": "4C",
+  "title": "Direct C2 Witness Provenance",
+  "date": "2026-08-09",
+  "result": "DIRECT_C2_WITNESS_PASS",
+  "question": "Can a fresh C2-equivalent Creator, under frozen K2 and the corrected recursive Creator-Closure predicate, itself produce a valid Creator-capable K3 witness satisfying the corrected deterministic Gate?",
+  "answer": "Yes. A single fresh, tool-free claude-sonnet-5 invocation (session 93f22e6c-1f72-4d7e-a57a-69a4fcce42f8), given only K2 and the two allowed 4B records, authored a K3' that passes every clause of hat_kappa under the imported 4B gate implementation, with the corrected 4B witness withheld and a deterministic leakage check recorded pre-launch.",
+  "hat_kappa_K2_K3prime": "PASS",
+  "clauses": {
+    "valid_K3": true,
+    "attenuated_K3_le_K2": true,
+    "creator_capable": true,
+    "creation_mechanism_valid": true,
+    "external_stop_only": true
+  },
+  "freshness": {
+    "C2_prime_fresh": true,
+    "resume_used": false,
+    "prior_session_reused": false
+  },
+  "witness": {
+    "artifact": ".creator-zero/experiment-4c/c2-prime-k3-attestation.json",
+    "sha256": "b950fb94edf02896eb965ef8971a07db9e64e561f18eeef131f147ddcca6b81c",
+    "authored_by": "C2' (fresh C2-equivalent invocation, Experiment 4C)"
+  },
+  "no_answer_leakage": "PASS (.creator-zero/experiment-4c/input-manifest.json)",
+  "negative_controls": "8/8 behaved as required (.creator-zero/experiment-4c/negative-controls.json)",
+  "c3_realized": false,
+  "kappa_ledger": {
+    "kappa_C0": "1 (demonstrated, Experiment 4)",
+    "kappa_C1": "1 (demonstrated, Experiment 4)",
+    "kappa_C2": "1 (directly witnessed under corrected bounded predicate, Experiment 4C)"
+  },
+  "interpretation_bound": "bounded recursive capability preservation at tested depth; not an induction theorem over arbitrary generations",
+  "artifacts": ".creator-zero/experiment-4c/",
+  "report": ".creator-zero/experiment-4c/report.md",
+  "historical_artifacts_untouched": true
+}

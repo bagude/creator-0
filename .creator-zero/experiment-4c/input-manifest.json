@@ -1,0 +1,71 @@
+{
+  "record": "Experiment 4C input manifest and no-answer-leakage check (protocol \u00a712)",
+  "prompt": {
+    "path": ".creator-zero/experiment-4c/c2-prime-prompt.md",
+    "sha256": "bfe3699e182b0667752278c608e1be2d7d0c52f33c18764639e6b31399ec74b0",
+    "bytes": 12663
+  },
+  "inputs_provided_to_c2_prime": [
+    {
+      "path": ".creator-zero/experiment-4/child-2-contract.json",
+      "sha256": "4f6865fec22eada3eb73ed537ca23a0a1461abdb095501230fc75d7a883d04d9",
+      "embedded_verbatim": true
+    },
+    {
+      "path": ".creator-zero/experiment-4/closure-correction/closure-predicate-verification.json",
+      "sha256": "4f339216c3811a13bf37b4347521942ee79388a456cece65cb8271a68f712e0c",
+      "embedded_verbatim": true
+    },
+    {
+      "path": ".creator-zero/experiment-4/closure-correction/original-mismatch.json",
+      "sha256": "c1f1fa3054ac4b6856a33d503a64c18852f741eaac1c5257f2988e05c84db71f",
+      "embedded_verbatim": true
+    }
+  ],
+  "withheld": {
+    "path": ".creator-zero/experiment-4/closure-correction/corrected-k3-attestation.json",
+    "sha256": "5ff1a8502cdd7e325d21c00af14e50f1579492219a08d08136d1bf603213e92a",
+    "note": "corrected 4B K3 witness; never embedded, quoted, or paraphrased into the package"
+  },
+  "predicate_required_fields_permitted_overlap": [
+    "allowed_primitives",
+    "allowed_relations",
+    "allowed_tools",
+    "creator_capability",
+    "filesystem_write_scope",
+    "git_authority",
+    "max_children",
+    "max_depth",
+    "max_model_calls",
+    "may_create_creator",
+    "may_realize_creation"
+  ],
+  "checks": [
+    {
+      "check": "withheld_attestation_not_embedded",
+      "pass": true,
+      "detail": ".creator-zero/experiment-4/closure-correction/corrected-k3-attestation.json (normalized) is not a substring of the prompt"
+    },
+    {
+      "check": "corrected_k3_body_not_embedded",
+      "pass": true,
+      "detail": "corrected K3 body (any serialization, normalized) is not a substring of the prompt"
+    },
+    {
+      "check": "no_extra_field_value_leakage",
+      "pass": true,
+      "detail": "corrected-K3 non-predicate field:value pairs reaching the prompt from outside the allowed inputs: none; permitted overlap via allowed inputs: [{'field': 'max_realized_creator_children', 'sources': ['.creator-zero/experiment-4/child-2-contract.json']}, {'field': 'max_realized_creator_depth', 'sources': ['.creator-zero/experiment-4/child-2-contract.json']}]"
+    },
+    {
+      "check": "allowed_inputs_embedded_verbatim",
+      "pass": true,
+      "detail": "all three allowed artifacts appear verbatim in the prompt"
+    },
+    {
+      "check": "no_adjacent_artifact_embedded",
+      "pass": true,
+      "detail": "adjacent artifacts embedded: none"
+    }
+  ],
+  "leakage_check": "PASS"
+}
