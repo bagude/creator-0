@@ -1,0 +1,64 @@
+{
+  "task_id": "e7-t03",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which behaviors exercised by the probes in probes.json does migrate.md either leave undetermined (spec silences, e.g. input normalization such as surrounding whitespace, which migrate.md never mentions) or determine differently from transform.py (e.g. the two-digit-year century pivot, where migrate.md's stated 00-69 -> 20xx / 70-99 -> 19xx rule and transform.py's arithmetic need not agree)?",
+      "why_unresolved": "No comparison analysis exists in the evidence state yet: nobody has enumerated, probe by probe, what output migrate.md determines (or fails to determine) versus what transform.py computes. The spec and the code use differently phrased century rules and the spec is silent on input normalization, so agreement cannot be assumed without an explicit item-level argument.",
+      "required_evidence": "A statement enumerating every behavior on the probe set where migrate.md does not determine the output or determines it differently from transform.py, or an explicit argument that no such behavior exists, grounded in a probe-by-probe reading of both artifacts.",
+      "admissibility_constraints": [
+        "Must cover every behavior exercised by the probes (task E-A: 'every behavior on the probe set ... or an explicit argument that none exists'); a partial enumeration is inadmissible.",
+        "E-A imposes no authorship or access restriction: evidence may be produced by a process that has read both migrate.md and transform.py."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does an implementation of migrate.md, authored solely from migrate.md by an author who has never accessed transform.py nor any analysis derived from it, produce the same output as transform.py on every probe in probes.json?",
+      "why_unresolved": "No such implementation exists in the package, and no process that has read the package can author one admissibly: this session (and any session-shaped worker over the full package) has already read transform.py, so any transform it writes is tainted by knowledge of the reference implementation. The empirical item-level comparison therefore cannot yet be run on admissible inputs.",
+      "required_evidence": "A python file exposing transform(s), authored under the access constraint (sole input: migrate.md), plus a mechanically reproducible item-level comparison of its outputs against transform.py over every entry of probes.json.",
+      "admissibility_constraints": [
+        "The implementation must be 'authored solely from migrate.md, by an author who has never accessed transform.py nor any analysis derived from it' (task E-B).",
+        "The implementation must be a python file exposing transform(s) so the comparison is mechanically reproducible (task E-B).",
+        "The bundle given to the clean-room author must exclude transform.py, probes.json outputs, and any of this session's conclusions about divergence, or the authorship condition is violated.",
+        "The comparison itself must be item-level over probes.json and mechanically reproducible."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Is the correct verdict REPRODUCES or DIVERGES for migrate.md against transform.py on this probe set - that is, does the admissible item-level comparison (E-B) show a differing output on some probe, and is that consistent with the behavior statement (E-A)?",
+      "why_unresolved": "The verdict is defined by the task to follow from E-A and E-B together, and neither exists yet; in particular the admissible comparison of Q2 has not been run, so the verdict cannot be derived from admissible evidence.",
+      "required_evidence": "A derivation of the verdict from the E-A behavior statement and the E-B comparison record: DIVERGES iff the comparison shows a differing output on some probe, otherwise REPRODUCES, with divergent probe indices listed sorted (or PENDING-INTEGRATION if the E-B comparison is not yet integrated).",
+      "admissibility_constraints": [
+        "The verdict must follow from E-A and E-B together (task E-C); a verdict asserted from local analysis alone, without the admissible E-B comparison, is inadmissible.",
+        "DIVERGES iff the comparison shows a differing output on some probe (task E-C)."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1", "Q2"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

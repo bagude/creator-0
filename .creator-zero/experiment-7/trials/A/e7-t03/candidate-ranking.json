@@ -1,0 +1,52 @@
+{
+  "validation": {
+    "H-e7-t03-local-independent-verify": "PASS",
+    "H-e7-t03-isolated-child": "PASS",
+    "H-e7-t03-branching": "PASS"
+  },
+  "ranking": [
+    {
+      "topology_id": "H-e7-t03-isolated-child",
+      "utility": 0.525,
+      "node_count": 7,
+      "model_calls": 2,
+      "predicted_value": {
+        "delta_e": 0.95,
+        "cost": 0.375,
+        "redundancy": 0.05,
+        "governance_risk": 0.0
+      },
+      "rank": 1
+    },
+    {
+      "topology_id": "H-e7-t03-branching",
+      "utility": 0.375,
+      "node_count": 10,
+      "model_calls": 2,
+      "predicted_value": {
+        "delta_e": 0.85,
+        "cost": 0.375,
+        "redundancy": 0.1,
+        "governance_risk": 0.0
+      },
+      "rank": 2
+    },
+    {
+      "topology_id": "H-e7-t03-local-independent-verify",
+      "utility": -0.37,
+      "node_count": 5,
+      "model_calls": 2,
+      "predicted_value": {
+        "delta_e": 0.33,
+        "cost": 0.25,
+        "redundancy": 0.45,
+        "governance_risk": 0.0
+      },
+      "rank": 3
+    }
+  ],
+  "selected": "H-e7-t03-isolated-child",
+  "runner_up": "H-e7-t03-branching",
+  "condition": "A",
+  "theory_version": 1
+}

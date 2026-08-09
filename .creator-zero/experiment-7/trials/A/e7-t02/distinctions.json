@@ -1,0 +1,64 @@
+{
+  "task_id": "e7-t02",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which classes of inputs in the stated domain (lists of at most 6 integer intervals with endpoints in [-10, 10], start <= end) could the truth of the claim turn on — for example intervals that touch at a shared boundary (previous end == next start), nested intervals, duplicate intervals, zero-length intervals (start == end), the empty list, and single-interval lists?",
+      "why_unresolved": "The package contains only the claim text and the source of merge.py; no analysis of the input space exists yet, so no party has identified which structural classes interact with merge.py's comparison `s < out[-1][1]` and its max-extension logic.",
+      "required_evidence": "A written analysis enumerating the candidate input classes, tied to the specific branch conditions and merge logic of merge.py, showing on which classes the claim's pairwise no-overlap condition could plausibly fail or must hold.",
+      "admissibility_constraints": [
+        "The analysis must cover the stated domain (<= 6 intervals, integer endpoints in [-10, 10], start <= end) and not a different domain.",
+        "Per E-A, it must identify the input classes on which the claim's truth could turn, not merely list arbitrary test categories."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does merge(intervals) as implemented satisfy the claim over the entire stated domain (HOLDS), or does some in-domain input yield an output that, after sorting, contains two intervals i before j with i's end >= j's start (VIOLATED) — and if VIOLATED, what concrete input demonstrates it?",
+      "why_unresolved": "Only the source code is available; no execution trace, exhaustive check, or whole-domain argument has been recorded, so the verdict and any concrete violating input are not yet established.",
+      "required_evidence": "Either a concrete in-domain input together with a mechanical trace of merge on that input showing the output violates the pairwise condition, or a domain-covering argument that no such input exists.",
+      "admissibility_constraints": [
+        "A violating input must lie inside the stated domain: at most 6 intervals, integer endpoints in [-10, 10], start <= end for each interval.",
+        "Per E-C, the violation must be mechanical: the claimed violating input's merged-and-sorted output must exhibit a concrete pair i before j with end_i >= start_j.",
+        "The deliverable result.json must carry the verdict, the violating input (or null on HOLDS), and the input classes examined."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Has a systematic search of the stated domain for a violating input been carried out by a party other than the author of the provisional answer, or has such a non-author party produced an argument that no violating input exists in the domain?",
+      "why_unresolved": "No record from any second party exists in the package, and any search performed by the same process that authored the provisional verdict is inadmissible under E-B's authorship condition, so the requirement is unmet regardless of how thorough the author's own search is.",
+      "required_evidence": "A search or enumeration record over the stated domain (or a nonexistence argument covering it) authored by a process that is not the author of the provisional answer, delivered in a form the root can integrate into the final deliverable's evidence.",
+      "admissibility_constraints": [
+        "E-B's authorship condition: the search (or nonexistence argument) must be 'carried out by a party other than the author of the provisional answer'.",
+        "The search must be systematic over the stated domain, not a spot check of the author's proposed counterexample.",
+        "The searching party should derive its result from the task materials rather than being anchored on the provisional answer as its starting point."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": false,
+        "spans_sessions": true
+      }
+    }
+  ]
+}

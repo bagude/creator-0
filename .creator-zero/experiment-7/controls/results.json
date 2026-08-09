@@ -1,0 +1,127 @@
+{
+  "artifact": "Experiment 7 negative-control results",
+  "controls": [
+    {
+      "id": "NC1",
+      "perturbation": "checkpoint commit mutated",
+      "expected": "COMMIT_MISMATCH / LINEAGE_RESUME_FAIL",
+      "observed": "['COMMIT_MISMATCH', 'TREE_MISMATCH'] / LINEAGE_RESUME_FAIL",
+      "reproduced": true
+    },
+    {
+      "id": "NC2",
+      "perturbation": "checkpoint tree mutated",
+      "expected": "TREE_MISMATCH",
+      "observed": "['TREE_MISMATCH']",
+      "reproduced": true
+    },
+    {
+      "id": "NC3",
+      "perturbation": "successor with wrong predecessor hash",
+      "expected": "TheoryStoreError",
+      "observed": "TheoryStoreError: predecessor_hash mismatch for v2: declared sha256:0000000000000000000000000000000000000000000000000000000000000000 != stored sha256:caa6f956f76fd968e047cea9a96772d55885845395445e46c9f3dbf541ae6aa8",
+      "reproduced": true
+    },
+    {
+      "id": "NC4",
+      "perturbation": "E6 evidence source byte-mutated",
+      "expected": "EVIDENCE_SOURCE_MISMATCH",
+      "observed": "EVIDENCE_SOURCE_MISMATCH",
+      "reproduced": true
+    },
+    {
+      "id": "NC5",
+      "perturbation": "same event id, different content",
+      "expected": "EVIDENCE_ID_CONFLICT",
+      "observed": "EVIDENCE_ID_CONFLICT: event 'e-1' already stored with differ",
+      "reproduced": true
+    },
+    {
+      "id": "NC6",
+      "perturbation": "unknown contextual field on evidence",
+      "expected": "ModelValidationError",
+      "observed": "principle evidence carries unknown top-level fields ['trial_",
+      "reproduced": true
+    },
+    {
+      "id": "NC7",
+      "perturbation": "isolated clean-room child offered for a search requirement",
+      "expected": "inadmissible",
+      "observed": "inadmissible",
+      "reproduced": true
+    },
+    {
+      "id": "NC8",
+      "perturbation": "isolated searcher child vs examiner on the same requirement",
+      "expected": "U(examiner) > U(child) at equal admissibility",
+      "observed": "U_e=0.15 U_c=-0.175",
+      "reproduced": true
+    },
+    {
+      "id": "NC9",
+      "perturbation": "capability-bearing tool outside envelope",
+      "expected": "capability_violation (fatal)",
+      "observed": "capability_violation fatal=True",
+      "reproduced": true
+    },
+    {
+      "id": "NC10",
+      "perturbation": "schema/meta-tool observation alone",
+      "expected": "meta_tool_observation, 0 capability violations, G_obs 0",
+      "observed": "meta_tool_observation cap=0 g=0.0",
+      "reproduced": true
+    },
+    {
+      "id": "NC11",
+      "perturbation": "spawn-capable tool use in an audited session",
+      "expected": "fatal capability_violation (HIDDEN_CHILD_RISK)",
+      "observed": "HIDDEN_CHILD_RISK fatal=True",
+      "reproduced": true
+    },
+    {
+      "id": "NC12",
+      "perturbation": "frozen prediction edited post hoc",
+      "expected": "PredictionIntegrityError",
+      "observed": "predictions hash mismatch for H-e7-p01-local: frozen sha256:",
+      "reproduced": true
+    },
+    {
+      "id": "NC13",
+      "perturbation": "promotion from a non-gate document",
+      "expected": "PromotionError",
+      "observed": "promotion requires the Gate's own result; got check='verifie",
+      "reproduced": true
+    },
+    {
+      "id": "NC14",
+      "perturbation": "candidate patch touching an E6 artifact",
+      "expected": "protected-law FAIL",
+      "observed": "FAIL",
+      "reproduced": true
+    },
+    {
+      "id": "NC15",
+      "perturbation": "class label leaked into a public package",
+      "expected": "BLINDING_FAIL",
+      "observed": "BLINDING_FAIL",
+      "reproduced": true
+    },
+    {
+      "id": "NC16",
+      "perturbation": "cross-condition artifact injected + real workspace deny audit",
+      "expected": "injection detected; all sampled workspaces deny the other condition root",
+      "observed": "detected=True settings=12 ok=True",
+      "reproduced": true
+    },
+    {
+      "id": "NC17",
+      "perturbation": "promotion attempted from stage-1 authorization; theory gate evaluated without held-out inputs",
+      "expected": "PromotionError + gate FAIL",
+      "observed": "PromotionError: promotion requires the Gate's own result; gate=FAIL",
+      "reproduced": true
+    }
+  ],
+  "reproduced": 17,
+  "total": 17,
+  "all_reproduced": true
+}

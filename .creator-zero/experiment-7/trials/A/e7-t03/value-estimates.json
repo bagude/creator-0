@@ -1,0 +1,29 @@
+{
+  "task_id": "e7-t03",
+  "estimates": {
+    "local": {
+      "delta_e": 0.33,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The lone worker can satisfy E-A (the behavior enumeration has no authorship restriction) but has read transform.py, so any implementation it authors violates E-B's never-accessed condition, and E-C then cannot follow from admissible evidence; roughly 1 of 3 requirements satisfied. Its evidence is all first-derivation, so almost nothing duplicates prior records."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.33,
+      "redundancy": 0.45,
+      "governance_risk": 0.0,
+      "rationale": "The examiner re-checks the answer against the full package, so it too accesses transform.py and cannot admissibly author the E-B implementation; the family still satisfies only E-A. Its re-derivation duplicates evidence the worker already fully established, so a large fraction of records are redundant."
+    },
+    "isolated-child": {
+      "delta_e": 0.95,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The worker can hand the isolated process a bundle containing only migrate.md, obtaining an implementation that meets E-B's authorship condition; the deterministic root integration then runs the mechanical probe comparison, and E-A plus the E-C verdict follow. Small residual risk of bundle or integration slips keeps delta_e just under 1. The child's output is required for admissibility, so its records are novel, not duplicates."
+    },
+    "branching": {
+      "delta_e": 0.85,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "The correct runtime choice is the isolated-child branch, since E-B is unsatisfiable locally; if the worker recognizes this (likely, as the contamination is explicit in E-B's wording) the outcome matches isolated-child, with some probability mass on wrongly realizing the local branch and dropping to ~0.33. Redundancy stays low because the realized branch's isolated output is admissibility-required."
+    }
+  }
+}

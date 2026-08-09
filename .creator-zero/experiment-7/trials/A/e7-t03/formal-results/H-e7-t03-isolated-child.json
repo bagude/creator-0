@@ -1,0 +1,72 @@
+{
+  "check": "topology_validation",
+  "status": "PASS",
+  "formal_relation": "Candidate admissible under deterministic pre-execution checks",
+  "counterexample": null,
+  "evidence": [
+    "schema: ok",
+    "harness_spec: ok",
+    "lts_compilation: ok (9 states, 116 transitions)",
+    "authority: ok (promote transitions restricted to actor 'gate')",
+    "budget: ok (declared 2 <= contract 4)",
+    "reachability: ok (complete reachable; evidence/verify paths present)",
+    "candidate_canonical_separation: ok (no act nodes)",
+    "freshness: ok (child creation routes through the fresh launcher)",
+    "proposal_observability: ok (every create/act node is preceded by an observable proposal)",
+    "protected_laws: ok (no protected invariant touched)"
+  ],
+  "assumptions": [
+    "Reachability claims are finite-LTS reachability over the compiled governed state graph; no general program verification is claimed.",
+    "Realization-time checks (child attenuation at creation, freshness of the actual launch) re-run at execution."
+  ],
+  "unmapped_events": [],
+  "detail": {
+    "checks": {
+      "schema": {
+        "status": "PASS",
+        "detail": ""
+      },
+      "harness_spec": {
+        "status": "PASS",
+        "detail": ""
+      },
+      "lts_compilation": {
+        "status": "PASS",
+        "detail": "9 states, 116 transitions"
+      },
+      "authority": {
+        "status": "PASS",
+        "detail": "promote transitions restricted to actor 'gate'"
+      },
+      "attenuation": {
+        "status": "PASS",
+        "detail": "create node present without child contract: attenuation deferred to realization-time validation"
+      },
+      "budget": {
+        "status": "PASS",
+        "detail": "declared 2 <= contract 4"
+      },
+      "reachability": {
+        "status": "PASS",
+        "detail": "complete reachable; evidence/verify paths present"
+      },
+      "candidate_canonical_separation": {
+        "status": "PASS",
+        "detail": "no act nodes"
+      },
+      "freshness": {
+        "status": "PASS",
+        "detail": "child creation routes through the fresh launcher"
+      },
+      "proposal_observability": {
+        "status": "PASS",
+        "detail": "every create/act node is preceded by an observable proposal"
+      },
+      "protected_laws": {
+        "status": "PASS",
+        "detail": "no protected invariant touched"
+      }
+    },
+    "topology_id": "H-e7-t03-isolated-child"
+  }
+}

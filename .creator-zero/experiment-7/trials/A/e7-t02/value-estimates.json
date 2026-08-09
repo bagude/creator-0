@@ -1,0 +1,29 @@
+{
+  "task_id": "e7-t02",
+  "estimates": {
+    "local": {
+      "delta_e": 0.8,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "A single worker can settle Q1 and Q2 admissibly (E-A analysis and an E-C verdict with a mechanically checked input), but E-B is structurally unsatisfiable because the worker is the author of the provisional answer, so only 2 of 3 distinctions resolve admissibly; with no second path there are no duplicate records, so delta_e is about 0.5*(2/3) + 0.5*1.0."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.85,
+      "redundancy": 0.25,
+      "governance_risk": 0.0,
+      "rationale": "The separately launched examiner is a party other than the author, so its systematic search satisfies E-B's authorship condition even though it sees the answer, giving 3/3 admissible distinctions; but because it starts from the worker's answer, a noticeable share of its records (re-checking the already-found counterexample) duplicate the worker's own evidence."
+    },
+    "isolated-child": {
+      "delta_e": 0.95,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "A causally isolated child given merge.py and the domain but not the worker's verdict performs an unanchored systematic search, satisfying E-B in its strongest form; its output is required for admissibility so its records are novel by construction, with only minor duplication where it independently rediscovers the same facts the worker established."
+    },
+    "branching": {
+      "delta_e": 0.9,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "E-B makes the correct run-time branch clearly the isolated-child shape, so the realized value should track isolated-child; the estimate is slightly discounted for the possibility that the worker branches to local at run time and forfeits E-B."
+    }
+  }
+}
