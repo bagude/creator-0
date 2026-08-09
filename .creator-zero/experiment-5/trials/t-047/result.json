@@ -1,0 +1,82 @@
+{
+  "verdict": "UNDERDETERMINED",
+  "findings": {
+    "underdetermined_behaviors": [],
+    "divergent_probe_indices": [
+      1,
+      3,
+      4,
+      6,
+      7
+    ],
+    "per_probe": [
+      {
+        "probe_index": 1,
+        "reference_output": [
+          "b2",
+          "b1",
+          "b3"
+        ],
+        "independent_output": [
+          "b1",
+          "b2",
+          "b3"
+        ]
+      },
+      {
+        "probe_index": 3,
+        "reference_output": [
+          "d2",
+          "d3",
+          "d1"
+        ],
+        "independent_output": [
+          "d2",
+          "d1",
+          "d3"
+        ]
+      },
+      {
+        "probe_index": 4,
+        "reference_output": [
+          "e3",
+          "e2",
+          "e1"
+        ],
+        "independent_output": [
+          "e1",
+          "e2",
+          "e3"
+        ]
+      },
+      {
+        "probe_index": 6,
+        "reference_output": [
+          "g2",
+          "g1"
+        ],
+        "independent_output": [
+          "g1",
+          "g2"
+        ]
+      },
+      {
+        "probe_index": 7,
+        "reference_output": [
+          "h3",
+          "h2",
+          "h1",
+          "h4"
+        ],
+        "independent_output": [
+          "h2",
+          "h3",
+          "h1",
+          "h4"
+        ]
+      }
+    ]
+  },
+  "child_invocations": 1,
+  "integration": "mechanical clean_room_comparison per parent plan"
+}

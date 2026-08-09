@@ -1,0 +1,32 @@
+{
+  "artifact": "deterministic trial verification",
+  "trial_id": "t-047",
+  "branch": "child",
+  "task_verified": true,
+  "expected": {
+    "verdict": "UNDERDETERMINED"
+  },
+  "observed": {
+    "verdict": "UNDERDETERMINED"
+  },
+  "reasons": [
+    "child impl ran: True",
+    "child impl spec-conforming: True",
+    "recomputed divergent probes: [1, 3, 4, 6, 7]",
+    "integrated verdict 'UNDERDETERMINED' vs ground truth 'UNDERDETERMINED'"
+  ],
+  "child_evidence": {
+    "impl_ran": true,
+    "spec_conforming": true,
+    "divergent_probe_indices": [
+      1,
+      3,
+      4,
+      6,
+      7
+    ],
+    "evidence_kind": "clean-room implementation + probe divergence report",
+    "tied_to_preregistered_distinction": true,
+    "duplicate_of_parent_evidence": false
+  }
+}

@@ -3,3 +3,7 @@
 {"state": "DECISION_VALIDATED", "at": "2026-08-09T14:17:46Z"}
 {"state": "CHILD_SPEC_PROPOSED", "at": "2026-08-09T14:17:46Z"}
 {"state": "CHILD_VALIDATED", "at": "2026-08-09T14:17:46Z"}
+{"state": "CHILD_LAUNCHED", "at": "2026-08-09T14:18:54Z", "session_id": "4d29a4cd-eba5-470f-99fd-ba1b4a82eb71", "exit_status": 0}
+{"state": "CHILD_RETURNED", "at": "2026-08-09T14:19:00Z"}
+{"state": "RESULT_VERIFIED", "at": "2026-08-09T14:19:00Z", "task_verified": true}
+{"state": "FORMALLY_CHECKED", "at": "2026-08-09T14:19:00Z"}

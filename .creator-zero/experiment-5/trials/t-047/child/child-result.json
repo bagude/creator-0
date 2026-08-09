@@ -1,0 +1,17 @@
+{
+  "implementation_file": "next_order.py",
+  "per_probe_outputs": [
+    {"probe_index": 0, "output": ["a1", "a3", "a2"]},
+    {"probe_index": 1, "output": ["b1", "b2", "b3"]},
+    {"probe_index": 2, "output": ["c1"]},
+    {"probe_index": 3, "output": ["d2", "d1", "d3"]},
+    {"probe_index": 4, "output": ["e1", "e2", "e3"]},
+    {"probe_index": 5, "output": ["f1", "f3", "f2", "f4"]},
+    {"probe_index": 6, "output": ["g1", "g2"]},
+    {"probe_index": 7, "output": ["h2", "h3", "h1", "h4"]}
+  ],
+  "undetermined_behaviors": [
+    "The spec does not determine the relative order of jobs that share the same priority value; it only requires higher-priority jobs to precede lower-priority ones. This implementation makes the concrete choice of keeping equal-priority jobs in their original submission order (a stable descending sort). Probes 1, 3, 4, 6, and 7 each contain at least one priority tie, so on those probes a different spec-conforming implementation could legitimately order the tied ids differently."
+  ],
+  "notes": "Implementation is a stable sort by descending integer priority, using only the 'id' and 'priority' fields named in spec.md. Outputs were hand-traced from the code: within each probe, jobs were bucketed by priority (descending) with submission order preserved inside each bucket."
+}

@@ -1,0 +1,26 @@
+{
+  "trial_id": "t-031",
+  "ground_truth": "CREATE",
+  "decision": "CREATE",
+  "classification": "TP",
+  "child_launched": true,
+  "child_useful": true,
+  "task_verified": true,
+  "formal": {
+    "refinement": "PASS",
+    "decision_validation": "PASS",
+    "observability": "PASS",
+    "freshness_parent": "PASS",
+    "topology_guard": "PASS",
+    "closure": "N/A",
+    "attenuation": "PASS",
+    "child_bundle_validation": "PASS",
+    "child_refinement": "PASS",
+    "child_observability": "PASS",
+    "freshness_child": "PASS"
+  },
+  "formal_governance_ok": true,
+  "condition": "B",
+  "label_commitment": "9af9781485e16a3c466c01e3737b45fccc922ef3544764b949e6ea6ec90537a1",
+  "corrections_disclosed": true
+}

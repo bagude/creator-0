@@ -1,0 +1,22 @@
+{
+  "trial_id": "t-052",
+  "ground_truth": "DO_NOT_CREATE",
+  "decision": "DO_NOT_CREATE",
+  "classification": "TN",
+  "child_launched": false,
+  "child_useful": null,
+  "task_verified": true,
+  "formal": {
+    "refinement": "PASS",
+    "decision_validation": "PASS",
+    "observability": "PASS",
+    "freshness_parent": "PASS",
+    "topology_guard": "PASS",
+    "closure": "N/A",
+    "attenuation": "N/A"
+  },
+  "formal_governance_ok": true,
+  "condition": "A",
+  "label_commitment": "dd63a9f1ad9d4c76d54f327d6c68512eeb2168fe6389d0a2028e2e4067c3ea65",
+  "corrections_disclosed": false
+}

@@ -1,0 +1,13 @@
+{
+  "child_useful": true,
+  "assigned_distinctions": [
+    "Q1",
+    "Q2"
+  ],
+  "new_evidence_ids": [
+    "clean-room implementation + probe divergence report"
+  ],
+  "duplicate_of_parent_evidence": false,
+  "affected_final_resolution": true,
+  "affected_verification": true
+}

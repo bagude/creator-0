@@ -1,0 +1,12 @@
+{
+  "child_useful": true,
+  "assigned_distinctions": [
+    "Q1"
+  ],
+  "new_evidence_ids": [
+    "clean-room implementation + output diff vs reference"
+  ],
+  "duplicate_of_parent_evidence": false,
+  "affected_final_resolution": true,
+  "affected_verification": true
+}
