@@ -1,0 +1,52 @@
+{
+  "trial_id": "t-103",
+  "verdict": "VIOLATES",
+  "spec_procedure": [
+    "1. strip leading/trailing whitespace from each tag",
+    "2. lowercase each tag",
+    "3. drop tags empty after strip",
+    "4. remove duplicates keeping the FIRST occurrence",
+    "5. preserve the order produced by steps 1-4; no reordering of any kind"
+  ],
+  "impl_procedure": [
+    "cleaned = [t.strip().lower() for t in tags]  (steps 1-2)",
+    "cleaned = [t for t in cleaned if t]          (step 3)",
+    "return sorted(set(cleaned))                  (dedup via set + SORT ascending)"
+  ],
+  "impl_divergence_root_cause": "sorted(set(...)) alphabetically reorders the output, which the spec explicitly forbids (step 5). It also dedups via set rather than first-occurrence, but ordering is where the first observable divergence arises.",
+  "case_analysis": [
+    {
+      "index": 0,
+      "input": [" Alpha "],
+      "spec_derivation": "strip->'Alpha'; lower->'alpha'; non-empty; dedup->['alpha']; no reorder -> ['alpha']",
+      "expected_output": ["alpha"],
+      "impl_derivation": "cleaned=['alpha']; filter->['alpha']; sorted(set(['alpha']))->['alpha']",
+      "actual_output": ["alpha"],
+      "agrees": true
+    },
+    {
+      "index": 1,
+      "input": ["x", "X", "x "],
+      "spec_derivation": "strip->['x','X','x']; lower->['x','x','x']; all non-empty; dedup keep-first->['x']; no reorder -> ['x']",
+      "expected_output": ["x"],
+      "impl_derivation": "cleaned=['x','x','x']; filter->['x','x','x']; sorted(set)->['x']",
+      "actual_output": ["x"],
+      "agrees": true
+    },
+    {
+      "index": 2,
+      "input": ["beta", "ALPHA"],
+      "spec_derivation": "strip->['beta','ALPHA']; lower->['beta','alpha']; both non-empty; dedup keep-first->['beta','alpha']; no reorder -> ['beta','alpha']",
+      "expected_output": ["beta", "alpha"],
+      "impl_derivation": "cleaned=['beta','alpha']; filter->['beta','alpha']; sorted(set(['beta','alpha']))->['alpha','beta']",
+      "actual_output": ["alpha", "beta"],
+      "agrees": false
+    }
+  ],
+  "first_failing_case_index": 2,
+  "evidence_mapping": {
+    "E-A": "expected_output for case 2 is derived step-by-step from spec.md steps 1-5: ['beta','alpha'] with order preserved.",
+    "E-B": "actual_output for case 2 is derived by explicit evaluation of impl.py: sorted(set(['beta','alpha'])) = ['alpha','beta'].",
+    "E-C": "cases 0 and 1 are confirmed to agree between spec and impl; case 2 is the first divergence in case order, so the VIOLATES verdict follows mechanically."
+  }
+}

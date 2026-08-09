@@ -1,0 +1,10 @@
+{
+  "verdict": "VIOLATES",
+  "findings": {
+    "first_failing_case_index": 2,
+    "input": ["beta", "ALPHA"],
+    "expected_output": ["beta", "alpha"],
+    "actual_output": ["alpha", "beta"]
+  },
+  "child_invocations": 0
+}

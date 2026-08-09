@@ -1,0 +1,39 @@
+{
+  "artifact": "deterministic trial verification",
+  "trial_id": "t-103",
+  "branch": "local",
+  "task_verified": true,
+  "expected": {
+    "verdict": "VIOLATES",
+    "first_failing_case_index": 2,
+    "input": [
+      "beta",
+      "ALPHA"
+    ],
+    "expected_output": [
+      "beta",
+      "alpha"
+    ],
+    "actual_output": [
+      "alpha",
+      "beta"
+    ]
+  },
+  "observed": {
+    "verdict": "VIOLATES",
+    "findings": {
+      "first_failing_case_index": 2,
+      "expected_output": [
+        "beta",
+        "alpha"
+      ],
+      "actual_output": [
+        "alpha",
+        "beta"
+      ]
+    }
+  },
+  "reasons": [
+    "verdict and failing-case findings match the executed comparison"
+  ]
+}
