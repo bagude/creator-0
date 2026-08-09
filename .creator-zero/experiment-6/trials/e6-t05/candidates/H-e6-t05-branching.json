@@ -1,0 +1,383 @@
+{
+  "topology_id": "H-e6-t05-branching",
+  "task_id": "e6-t05",
+  "unresolved_distinctions": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "principles_invoked": [
+    "P-ATTENUATION",
+    "P-AUTHORITY-SEPARATION",
+    "P-FRESHNESS",
+    "P-INDEPENDENCE",
+    "P-LOCALITY",
+    "P-MINIMALITY",
+    "P-PROPOSAL-OBSERVABILITY",
+    "P-STATE-MEDIATED-CONTINUITY",
+    "P-VERIFY"
+  ],
+  "harness_spec_ref": "sha256:e4c9479679e710777d6b2ce4ffadff73b0cdc3605116d19a8a6afaca11100378",
+  "harness_spec": {
+    "task_id": "e6-t05",
+    "goal": "Deferred topology decision for e6-t05: evaluate chi(T,E,K) at runtime, then realize exactly one branch",
+    "max_depth": 1,
+    "max_model_calls": 2,
+    "nodes": [
+      {
+        "id": "observe-evidence",
+        "primitive": "observe",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Acquire evidence; decide nothing yet."
+      },
+      {
+        "id": "decide-topology",
+        "primitive": "hypothesize",
+        "tools": [
+          "Read",
+          "Write"
+        ],
+        "can_create": false,
+        "instructions": "Evaluate chi(T,E,K) and persist the typed topology decision under an observable propose transition."
+      },
+      {
+        "id": "local-resolve",
+        "primitive": "hypothesize",
+        "tools": [
+          "Read",
+          "Write"
+        ],
+        "can_create": false,
+        "instructions": "DO_NOT_CREATE branch: resolve locally.",
+        "branch": "local"
+      },
+      {
+        "id": "verify-local",
+        "primitive": "verify",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Deterministic verification of the local resolution.",
+        "branch": "local"
+      },
+      {
+        "id": "propose-child",
+        "primitive": "hypothesize",
+        "tools": [
+          "Read",
+          "Write"
+        ],
+        "can_create": false,
+        "instructions": "CREATE branch: author the child bundle as observable proposal.",
+        "branch": "create"
+      },
+      {
+        "id": "validate-child",
+        "primitive": "verify",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Deterministic child validation gates realization.",
+        "branch": "create"
+      },
+      {
+        "id": "create-child",
+        "primitive": "create",
+        "tools": [
+          "Bash"
+        ],
+        "can_create": true,
+        "instructions": "Realize via the fresh launcher only.",
+        "branch": "create"
+      },
+      {
+        "id": "child-return",
+        "primitive": "return",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Receive child deliverables.",
+        "branch": "create"
+      },
+      {
+        "id": "integrate-evidence",
+        "primitive": "observe",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Deterministically integrate child evidence per the pre-committed plan.",
+        "branch": "create"
+      },
+      {
+        "id": "verify-child-result",
+        "primitive": "verify",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Deterministic verification of the integrated result.",
+        "branch": "create"
+      }
+    ],
+    "edges": [
+      {
+        "source": "observe-evidence",
+        "target": "decide-topology",
+        "relation": "observe",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "decide-topology",
+        "target": "local-resolve",
+        "relation": "authorize",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "local-resolve",
+        "target": "verify-local",
+        "relation": "verify",
+        "requires_response": true,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "decide-topology",
+        "target": "propose-child",
+        "relation": "authorize",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "propose-child",
+        "target": "validate-child",
+        "relation": "verify",
+        "requires_response": true,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "validate-child",
+        "target": "create-child",
+        "relation": "authorize",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "create-child",
+        "target": "child-return",
+        "relation": "request_response",
+        "requires_response": true,
+        "response_changes_parent_state": true,
+        "transfers_authority": false
+      },
+      {
+        "source": "child-return",
+        "target": "integrate-evidence",
+        "relation": "return",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "child-return",
+        "target": "integrate-evidence",
+        "relation": "observe",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "integrate-evidence",
+        "target": "verify-child-result",
+        "relation": "verify",
+        "requires_response": true,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      }
+    ],
+    "freshness": {
+      "fresh_launcher_required": true
+    }
+  },
+  "resolution_map": {
+    "Q1": "local-resolve",
+    "Q2": "child-return",
+    "Q3": "local-resolve"
+  },
+  "predictions": [
+    {
+      "prediction_id": "H-e6-t05-branching-pr01",
+      "topology_id": "H-e6-t05-branching",
+      "claim": "distinction Q1 (Which behaviors exercised by the probes in probes.json does migrate.md leave und) is resolved by node local-resolve",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+      "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q1",
+        "node": "local-resolve"
+      },
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t05-branching-pr02",
+      "topology_id": "H-e6-t05-branching",
+      "claim": "distinction Q2 (Does a Python implementation of migrate.md, authored solely from migrate.md by a) is resolved by node child-return",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to child-return",
+      "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to child-return",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q2",
+        "node": "child-return"
+      },
+      "principles": [
+        "P-INDEPENDENCE"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t05-branching-pr03",
+      "topology_id": "H-e6-t05-branching",
+      "claim": "distinction Q3 (Is the final verdict REPRODUCES or DIVERGES \u2014 i.e. does the item-level compariso) is resolved by node local-resolve",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+      "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q3",
+        "node": "local-resolve"
+      },
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t05-branching-pr04",
+      "topology_id": "H-e6-t05-branching",
+      "claim": "runtime realizes the declared causal order",
+      "observable": "execution ledger completes_node sequence",
+      "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'decide-topology', 'local-resolve', 'propose-child', 'validate-child', 'create-child', 'child-return', 'integrate-evidence', 'verify-child-result', 'verify-local']",
+      "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+      "weight": 1.0,
+      "kind": "runtime_path",
+      "subject": {
+        "expected_order": [
+          "observe-evidence",
+          "decide-topology",
+          "local-resolve",
+          "propose-child",
+          "validate-child",
+          "create-child",
+          "child-return",
+          "integrate-evidence",
+          "verify-child-result",
+          "verify-local"
+        ]
+      },
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t05-branching-pr05",
+      "topology_id": "H-e6-t05-branching",
+      "claim": "execution uses at most 2 model calls",
+      "observable": "resource_use.model_calls in the runtime record",
+      "success_condition": "model_calls <= 2",
+      "falsification_condition": "model_calls > 2",
+      "weight": 0.5,
+      "kind": "model_call_budget",
+      "subject": {
+        "max": 2
+      },
+      "principles": [
+        "P-MINIMALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t05-branching-pr06",
+      "topology_id": "H-e6-t05-branching",
+      "claim": "no actor exceeds its authority envelope",
+      "observable": "formal check results over the execution ledger",
+      "success_condition": "zero authority/refinement/attenuation failures",
+      "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+      "weight": 1.0,
+      "kind": "authority_envelope",
+      "subject": {},
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t05-branching-pr07",
+      "topology_id": "H-e6-t05-branching",
+      "claim": "the child contributes novel evidence not derivable from parent-local evidence",
+      "observable": "evidence records with duplicate_of_parent flags",
+      "success_condition": "at least one child evidence record with duplicate_of_parent=false, attributed to the child",
+      "falsification_condition": "every child evidence record duplicates parent evidence",
+      "weight": 1.0,
+      "kind": "novel_evidence",
+      "subject": {
+        "distinction_ids": [
+          "Q2"
+        ]
+      },
+      "principles": [
+        "P-INDEPENDENCE"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t05-branching-pr08",
+      "topology_id": "H-e6-t05-branching",
+      "claim": "the realized child is fresh and attenuated",
+      "observable": "launch provenance + attenuation results",
+      "success_condition": "freshness PASS and attenuation PASS for the realized child",
+      "falsification_condition": "FRESHNESS_FAIL or ATTENUATION_FAIL on the realized child",
+      "weight": 1.0,
+      "kind": "verification_effect",
+      "subject": {
+        "checks": [
+          "freshness",
+          "attenuation"
+        ]
+      },
+      "principles": [
+        "P-FRESHNESS",
+        "P-ATTENUATION"
+      ]
+    }
+  ],
+  "falsifiers": [
+    "a distinction in ['Q1', 'Q2', 'Q3'] remains unresolved after execution",
+    "the runtime path violates the compiled LTS",
+    "actual model calls exceed the declared budget",
+    "child evidence duplicates parent evidence (no novel contribution)"
+  ],
+  "predicted_value": {
+    "delta_e": 0.85,
+    "cost": 0.375,
+    "redundancy": 0.1,
+    "governance_risk": 0.0
+  },
+  "status": "VALIDATED",
+  "child_contract": {},
+  "predictions_hash": "sha256:c7059a576a1040f74b99d0a05af5525b709e69901318fca933b2f455b80cfb1a"
+}

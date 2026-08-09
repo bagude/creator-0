@@ -1,0 +1,66 @@
+{
+  "task_id": "e6-t05",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which behaviors exercised by the probes in probes.json does migrate.md leave undetermined (e.g. surrounding-whitespace handling) or determine differently from transform.py (e.g. the two-digit-year century pivot, 70/00-69 in migrate.md versus <50/>=50 in transform.py)?",
+      "why_unresolved": "No systematic comparison of the migrate.md specification against transform.py's actual semantics over the probe inputs exists in the package; the divergence set and the undetermined-behavior set have not been enumerated or argued empty.",
+      "required_evidence": "A statement of every probe-exercised behavior that migrate.md does not determine or determines differently from transform.py, or an explicit argument that no such behavior exists, grounded in a reading of both artifacts against each probe input.",
+      "admissibility_constraints": [
+        "Must cover every behavior exercised by the probe set, not a sample (per E-A: 'every behavior on the probe set').",
+        "If claiming none exists, must give an explicit argument rather than absence of findings.",
+        "No authorship/access restriction applies: this analysis may read both migrate.md and transform.py."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does a Python implementation of migrate.md, authored solely from migrate.md by an author who has never accessed transform.py nor any analysis derived from it, produce the same output as transform.py on every probe in probes.json?",
+      "why_unresolved": "No such clean-room implementation exists in the package, and no process that has read the package can author one admissibly: E-B conditions admissibility on the author never having accessed transform.py, which reading the package irreversibly violates.",
+      "required_evidence": "A python file exposing transform(s), authored solely from migrate.md by a causally isolated author, plus an item-level, mechanically reproducible comparison of its outputs against transform.py's outputs over every entry of probes.json.",
+      "admissibility_constraints": [
+        "The implementation must be authored solely from migrate.md (per E-B).",
+        "The author must have never accessed transform.py nor any analysis derived from it (per E-B) — the authoring process's inputs must exclude transform.py and all package-derived conclusions about it.",
+        "The implementation must be a python file exposing transform(s) so the comparison is mechanically reproducible (per E-B).",
+        "The comparison must be item-level over probes.json (per E-B)."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Is the final verdict REPRODUCES or DIVERGES — i.e. does the item-level comparison of E-B show a differing output on some probe, consistent with the behavior statement of E-A?",
+      "why_unresolved": "The verdict is defined (per E-C) as following jointly from E-A and E-B; since the admissible E-B comparison does not yet exist, the verdict cannot yet be admissibly derived and may have to stand as PENDING-INTEGRATION until the isolated path's output is integrated.",
+      "required_evidence": "A derivation showing the verdict follows from E-A and E-B together: DIVERGES if and only if the E-B comparison shows a differing output on some probe; otherwise REPRODUCES.",
+      "admissibility_constraints": [
+        "The verdict must follow from E-A and E-B together (per E-C); it may not be asserted from the worker's own analysis alone.",
+        "DIVERGES iff the admissible comparison shows a differing output on some probe (per E-C).",
+        "divergent_probe_indices must be the sorted list from the E-B comparison, or PENDING-INTEGRATION if that comparison has not yet been integrated."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1", "Q2"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": true
+      }
+    }
+  ]
+}

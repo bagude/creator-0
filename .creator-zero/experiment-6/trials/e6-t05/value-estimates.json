@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t05",
+  "estimates": {
+    "local": {
+      "delta_e": 0.6,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The worker admissibly resolves only Q1 (1/3): having read transform.py, it cannot author the E-B clean-room implementation, so Q2 is inadmissible and the Q3 verdict cannot follow from E-B (delta_e ~ 0.5*0.33 + 0.5*0.9 novel records). Its own analysis records are first-production, so redundancy is near zero."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.5,
+      "redundancy": 0.4,
+      "governance_risk": 0.0,
+      "rationale": "The examiner also reads the package (including transform.py) and sees the answer, so it is equally contaminated for E-B; admissible resolution stays at 1/3 while its re-check records largely duplicate the worker's Q1 analysis, raising redundancy without adding admissible evidence."
+    },
+    "isolated-child": {
+      "delta_e": 0.9,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "The worker can hand the isolated child migrate.md alone (excluding transform.py and its own conclusions), exactly satisfying E-B's never-accessed authorship condition; with the root's mechanical comparison, all three distinctions resolve admissibly (3/3) and the child's implementation and comparison records are required, hence novel. Small residual for the child misreading the spec-shaped instructions."
+    },
+    "branching": {
+      "delta_e": 0.85,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "The admissibility structure makes the isolated-child branch the only one that can satisfy E-B, so a run-time worker should realize it and match isolated-child's outcome; slightly discounted for the chance the worker wrongly realizes the local branch after judging its own comparison sufficient."
+    }
+  }
+}
