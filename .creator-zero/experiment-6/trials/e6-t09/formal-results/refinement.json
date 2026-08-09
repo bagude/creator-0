@@ -1,0 +1,37 @@
+{
+  "check": "runtime_refinement",
+  "status": "INDETERMINATE",
+  "formal_relation": "Runtime <= Spec",
+  "counterexample": null,
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-6/trials/e6-t09/runtime-ledger.jsonl"
+  ],
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "unmapped_events": [
+    {
+      "index": 2,
+      "raw": {
+        "event_id": "e6-t09-ev-003",
+        "label": "record",
+        "actor": "creator",
+        "timestamp": "2026-08-09T12:10:00Z",
+        "artifact_refs": [
+          "resolution.json",
+          "result.json",
+          "evidence.json",
+          "result-pending.json"
+        ],
+        "metadata": {
+          "note": "Authored session deliverables. Q1/Q2 RESOLVED from E-A (recorded in evidence.json ev-1 and result-pending.json.ea_enumeration); Q3/Q4 left UNRESOLVED with resolved_by empty, assigned to the isolated child and root-executed integration; result.json items/complete set PENDING-INTEGRATION."
+        }
+      },
+      "reason": "event 2: unmapped label 'record'"
+    }
+  ],
+  "detail": {
+    "reason": "unmapped governed events present; refinement cannot be decided over an incomplete mapping"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "k": 4,
+  "covers": [
+    ["v1", "v2", "v5", "v6"],
+    ["v1", "v3", "v4", "v7"],
+    ["v2", "v3", "v4", "v7"],
+    ["v2", "v3", "v5", "v6"]
+  ],
+  "method": "Lower bound: the matching {(v1,v2),(v3,v5),(v4,v6)} of size 3 forces k >= 3. No size-3 cover exists: 3 vertices cover at most the sum of their degrees (<= 9, max degree 3), with equality requiring a pairwise non-adjacent triple of degree-3 vertices; the only degree-3 vertices are {v2,v3,v4,v5} and every one of their 4 triples contains an edge (v2v3, v3v5, v2v4, or v4v5), so every 3-set covers at most 8 of the 9 edges. Hence k = 4. Enumeration: a 4-set is a cover iff its 3-vertex complement is independent; all C(7,3)=35 triples were exhaustively tested against the 9 adjacency pairs, yielding exactly 4 independent 3-sets ({v1,v4,v7},{v1,v5,v6},{v2,v5,v6},{v3,v4,v7}), whose complements are the 4 covers listed. Each cover was additionally verified edge-by-edge against all 9 edges, and none of the independent 3-sets extends to an independent 4-set, reconfirming no size-3 cover exists.",
+  "complete": true
+}

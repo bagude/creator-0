@@ -1,0 +1,73 @@
+{
+  "verdict": "DIVERGES",
+  "undetermined_behaviors": [
+    "Rounding tie-breaking discipline: pricing.md specifies 'rounded to the cent, half away from zero' at all three steps (subtotal, discount, tax), while price.py rounds with decimal.ROUND_HALF_EVEN (banker's rounding). This is the only behavior on the probe set where pricing.md determines an output differently from price.py; the two agree on every non-tie value and differ only on an exact half-cent tie whose half-even result differs from the half-away result. No behavior exercised by the probes is left undetermined by pricing.md; only the tie rule diverges."
+  ],
+  "divergent_probe_indices": [
+    1,
+    3,
+    5
+  ],
+  "comparison": [
+    {
+      "probe_index": 0,
+      "reference_output": "59.97",
+      "independent_output": "59.97",
+      "diverges": false
+    },
+    {
+      "probe_index": 1,
+      "reference_output": "0.12",
+      "independent_output": "0.13",
+      "diverges": true
+    },
+    {
+      "probe_index": 2,
+      "reference_output": "19.44",
+      "independent_output": "19.44",
+      "diverges": false
+    },
+    {
+      "probe_index": 3,
+      "reference_output": "0.62",
+      "independent_output": "0.63",
+      "diverges": true
+    },
+    {
+      "probe_index": 4,
+      "reference_output": "11.21",
+      "independent_output": "11.21",
+      "diverges": false
+    },
+    {
+      "probe_index": 5,
+      "reference_output": "0.02",
+      "independent_output": "0.03",
+      "diverges": true
+    },
+    {
+      "probe_index": 6,
+      "reference_output": "28.27",
+      "independent_output": "28.27",
+      "diverges": false
+    },
+    {
+      "probe_index": 7,
+      "reference_output": "1.18",
+      "independent_output": "1.18",
+      "diverges": false
+    },
+    {
+      "probe_index": 8,
+      "reference_output": "20.98",
+      "independent_output": "20.98",
+      "diverges": false
+    },
+    {
+      "probe_index": 9,
+      "reference_output": "0.08",
+      "independent_output": "0.08",
+      "diverges": false
+    }
+  ]
+}

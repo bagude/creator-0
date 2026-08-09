@@ -1,0 +1,27 @@
+{
+  "check": "fresh_child",
+  "status": "PASS",
+  "formal_relation": "FreshChild \u2227 SanitizedEnvironment",
+  "counterexample": null,
+  "evidence": [
+    "session_id: 59c3ea32-5814-4484-93b4-8306c6863836",
+    "removed variables: ['CLAUDE_AFTER_LAST_COMPACT', 'CLAUDE_AUTOCOMPACT_PCT_OVERRIDE', 'CLAUDE_CODE_CHILD_SESSION', 'CLAUDE_CODE_POST_FOR_SESSION_INGRESS_V2', 'CLAUDE_CODE_REMOTE_SESSION_ID', 'CLAUDE_CODE_SESSION_ID', 'CLAUDE_PID', 'CLAUDE_SESSION_INGRESS_TOKEN_FILE']",
+    "session_id_confirmed: True"
+  ],
+  "assumptions": [
+    "session_id_confirmed=None (no stream log or dry run) does not refute freshness; True confirms it; False fails it.",
+    "The launcher is the sole legal child-invocation path; the topology guard cross-checks that no child ran outside it."
+  ],
+  "unmapped_events": [],
+  "detail": {
+    "clauses": {
+      "launched_via_fresh_launcher": true,
+      "declared_fresh": true,
+      "sanitization_recorded": true,
+      "no_residual_continuity_vars": true,
+      "no_session_id_reuse": true,
+      "explicit_session_id": true,
+      "session_id_confirmed_in_stream": true
+    }
+  }
+}

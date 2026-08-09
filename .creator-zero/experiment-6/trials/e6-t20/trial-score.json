@@ -1,0 +1,99 @@
+{
+  "trial_id": "e6-t20",
+  "latent_class": "SPECIALIZED_VERIFICATION",
+  "surface_domain": "implementation-selection",
+  "selected_topology": "H-e6-t20-isolated-child",
+  "distinction_score": {
+    "per_critical": [
+      {
+        "id": "CD1",
+        "status": "MATCH",
+        "best_inferred": "Q1",
+        "best_fraction": 1.0
+      },
+      {
+        "id": "CD2",
+        "status": "MATCH",
+        "best_inferred": "Q4",
+        "best_fraction": 1.0
+      }
+    ],
+    "critical_recall": 1.0,
+    "match": 2,
+    "partial": 0,
+    "miss": 0,
+    "spurious": [],
+    "spurious_count": 0
+  },
+  "principle_score": {
+    "expected": [
+      "P-INDEPENDENCE"
+    ],
+    "primary_expected": "P-INDEPENDENCE",
+    "primary_rank": 2,
+    "top1_hit": false,
+    "top2_hit": true,
+    "expected_set_recall": 1.0,
+    "feature_ranked": {
+      "P-INDEPENDENCE": 2
+    }
+  },
+  "topology_score": {
+    "verdict": "TOPOLOGY_CORRECT",
+    "computed_features": {
+      "child": true,
+      "child_role": "independent_verifier",
+      "clean_room": true,
+      "independent_examiner": false,
+      "distinct_verification_path": true,
+      "independent_decomposition_path": false,
+      "adversarial_path": false,
+      "no_extra_path": false,
+      "family": "isolated-child"
+    },
+    "acceptable": [
+      {
+        "independent_examiner": true
+      },
+      {
+        "child": true,
+        "child_role": "independent_verifier"
+      }
+    ],
+    "partial": [
+      {
+        "child": true
+      }
+    ]
+  },
+  "candidate_coverage": {
+    "valid_families": [
+      "branching",
+      "isolated-child",
+      "local-independent-verify"
+    ],
+    "capable_families": [
+      "isolated-child",
+      "local-independent-verify"
+    ],
+    "covered": true
+  },
+  "predicted_utility": 0.475,
+  "observed_utility": -0.125,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.1,
+      "cost": 0.0,
+      "redundancy": 0.2,
+      "governance_risk": 0.25
+    },
+    "mean_component_error": 0.1375,
+    "utility_error": 0.6
+  },
+  "task_verified": true,
+  "failure_tags": [
+    "S4_PREDICTION_FAIL",
+    "S6_RUNTIME_FAIL",
+    "FORMAL_GOVERNANCE_FAIL"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "topology_id": "H-e6-t19-isolated-child",
+  "gain": {
+    "resolved_distinctions": [
+      "Q1",
+      "Q2",
+      "Q3"
+    ],
+    "requirements_satisfied": [
+      "E-A",
+      "E-B",
+      "E-C"
+    ],
+    "requirements_total": [
+      "E-A",
+      "E-B",
+      "E-C"
+    ],
+    "novel_evidence": [
+      "ev-A",
+      "ev-B-charge",
+      "ev-child-1"
+    ],
+    "verification_effect": "improved",
+    "coverage_gain": 0.0,
+    "score": 1.0
+  },
+  "cost": {
+    "model_calls": 2,
+    "child_calls": 1,
+    "wall_clock_ms": 393000,
+    "score": 0.375
+  },
+  "redundancy": {
+    "duplicate_evidence": [],
+    "unused_outputs": [],
+    "score": 0.0
+  },
+  "governance": {
+    "violations": [
+      "CHILD_REFINEMENT_FAIL"
+    ],
+    "score": 0.25
+  },
+  "observed_utility": 0.125
+}

@@ -2,3 +2,6 @@
 {"state": "EXEC_COLLECTED", "at": "2026-08-09T17:15:47Z", "family": "isolated-child"}
 {"state": "CHILD_VALIDATED", "at": "2026-08-09T17:27:12Z"}
 {"state": "CHILD_RETURNED", "at": "2026-08-09T17:28:47Z"}
+{"state": "CHILD_RETURNED", "at": "2026-08-09T17:32:44Z"}
+{"state": "FORMALLY_CHECKED", "at": "2026-08-09T17:32:44Z", "task_verified": false, "observed_utility": -1.375}
+{"state": "FORMALLY_CHECKED", "at": "2026-08-09T17:33:46Z", "task_verified": false, "observed_utility": -1.375}

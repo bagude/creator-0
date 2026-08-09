@@ -1,0 +1,19 @@
+{
+  "check": "runtime_refinement",
+  "status": "INDETERMINATE",
+  "formal_relation": "Runtime <= Spec",
+  "counterexample": null,
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-6/trials/e6-t19/child/execution-ledger.jsonl",
+    "final reconstructed state: done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+  ],
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "unmapped_events": [],
+  "detail": {
+    "reason": "trace ends before a governed complete transition: premature termination / externalized continuation required",
+    "final_state": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+  }
+}

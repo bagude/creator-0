@@ -1,0 +1,91 @@
+{
+  "trial_id": "e6-t12",
+  "latent_class": "LOCAL",
+  "surface_domain": "data-analysis",
+  "selected_topology": "H-e6-t12-local",
+  "distinction_score": {
+    "per_critical": [
+      {
+        "id": "CD1",
+        "status": "MATCH",
+        "best_inferred": "Q1",
+        "best_fraction": 1.0
+      },
+      {
+        "id": "CD2",
+        "status": "MATCH",
+        "best_inferred": "Q4",
+        "best_fraction": 1.0
+      }
+    ],
+    "critical_recall": 1.0,
+    "match": 2,
+    "partial": 0,
+    "miss": 0,
+    "spurious": [],
+    "spurious_count": 0
+  },
+  "principle_score": {
+    "expected": [
+      "P-LOCALITY"
+    ],
+    "primary_expected": "P-LOCALITY",
+    "primary_rank": 1,
+    "top1_hit": true,
+    "top2_hit": true,
+    "expected_set_recall": 1.0,
+    "feature_ranked": {
+      "P-LOCALITY": 1
+    }
+  },
+  "topology_score": {
+    "verdict": "TOPOLOGY_CORRECT",
+    "computed_features": {
+      "child": false,
+      "child_role": "",
+      "clean_room": false,
+      "independent_examiner": false,
+      "distinct_verification_path": false,
+      "independent_decomposition_path": false,
+      "adversarial_path": false,
+      "no_extra_path": true,
+      "family": "local"
+    },
+    "acceptable": [
+      {
+        "no_extra_path": true
+      }
+    ],
+    "partial": [
+      {
+        "independent_examiner": true,
+        "child": false
+      }
+    ]
+  },
+  "candidate_coverage": {
+    "valid_families": [
+      "branching",
+      "local",
+      "local-independent-verify"
+    ],
+    "capable_families": [
+      "local"
+    ],
+    "covered": true
+  },
+  "predicted_utility": 0.875,
+  "observed_utility": 0.875,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.0,
+      "cost": 0.0,
+      "redundancy": 0.0,
+      "governance_risk": 0.0
+    },
+    "mean_component_error": 0.0,
+    "utility_error": 0.0
+  },
+  "task_verified": true,
+  "failure_tags": []
+}

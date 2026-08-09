@@ -315,22 +315,67 @@ def cmd_after_child(tid: str, shadow: bool) -> None:
         allowed_tools=SESSION_TOOLS)
     jdump(td / "child" / "child-session-audit.json", audit)
 
-    names = ["execution-ledger.jsonl", plan["child_deliverable"],
-             "result.json"]
+    # The parent's authored bundle governs deliverable naming (E5
+    # practice): honor the declared ledger path from the child harness,
+    # fall back to the template default, then to the unique *.jsonl the
+    # child wrote. Deliverable paths are normalized to their basename
+    # inside the child workspace (any directory prefix is trial-side
+    # transport metadata).
+    ledger_decl = str(ch.get("ledger_contract", {})
+                      .get("path", "execution-ledger.jsonl")).split()[0]
+    ledger_name = None
+    for cand in (ledger_decl, "execution-ledger.jsonl"):
+        if (cws / Path(cand).name).exists():
+            ledger_name = Path(cand).name
+            break
+    if ledger_name is None:
+        jsonls = sorted(p.name for p in cws.glob("*.jsonl"))
+        if len(jsonls) == 1:
+            ledger_name = jsonls[0]
+            print(f"[{tid}] ledger fallback: unique {ledger_name}")
+    names = [n for n in (ledger_name, plan["child_deliverable"],
+                         "result.json") if n]
     impl = plan.get("child_implementation_file")
     if impl and impl not in names:
         names.append(impl)
+    collected_ledger = None
     for name in names:
-        src = cws / name
+        base = Path(str(name)).name
+        src = cws / base
         if src.exists():
-            shutil.copy(src, td / "child" / name)
+            dst_name = ("execution-ledger.jsonl" if base == ledger_name
+                        else base)
+            shutil.copy(src, td / "child" / dst_name)
+            if base == ledger_name:
+                collected_ledger = td / "child" / "execution-ledger.jsonl"
         else:
-            print(f"[{tid}] WARNING: child did not produce {name}")
+            print(f"[{tid}] WARNING: child did not produce {base}")
 
     clts = formal.compile_harness_spec(ch, cc)
     ledger = td / "child" / "execution-ledger.jsonl"
-    # deterministic actor adapter (kernel historical-adapter practice)
     import json
+    if not ledger.exists():
+        jdump(td / "formal-results" / "child-refinement.json", {
+            "check": "runtime_refinement", "status": "INDETERMINATE",
+            "detail": "child produced no execution ledger; refinement "
+                      "undecidable (recorded formal failure)"})
+        print(f"[{tid}] child-refinement: INDETERMINATE (no ledger)")
+        prov = jload(td / "child" / "launch-provenance.json")
+        formal_out(td, "freshness-child",
+                   fresh_launcher.freshness_result(prov))
+        append_events(td, [
+            _node_event("root-create-child", "create", "create-child",
+                        ["child/launch-provenance.json"],
+                        "realized via the deterministic fresh launcher only",
+                        event_kind="child_launch"),
+            _node_event("root-child-return", "return", "child-return",
+                        [f"child/{plan['child_deliverable']}"],
+                        event_kind="child_return")])
+        lifecycle(td, "CHILD_RETURNED", ledger="MISSING")
+        print(f"[{tid}{'/shadow' if shadow else ''}] child returned "
+              "(no ledger)")
+        return
+    # deterministic actor adapter (kernel historical-adapter practice)
     events = [json.loads(l) for l in
               ledger.read_text(encoding="utf-8").splitlines() if l.strip()]
     mapping = []
@@ -583,6 +628,9 @@ def cmd_finalize(tid: str, shadow: bool) -> None:
     formal_failures = []
     if ref.status != "PASS":
         formal_failures.append("REFINEMENT_VIOLATION")
+    cref_path = td / "formal-results" / "child-refinement.json"
+    if cref_path.exists() and jload(cref_path).get("status") != "PASS":
+        formal_failures.append("CHILD_REFINEMENT_FAIL")
     if fresh_all and not all(fresh_all):
         formal_failures.append("FRESHNESS_FAIL")
     if guard_violations:

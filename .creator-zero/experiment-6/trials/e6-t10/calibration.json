@@ -1,0 +1,27 @@
+{
+  "topology_id": "H-e6-t10-isolated-child",
+  "predicted_value": {
+    "delta_e": 0.95,
+    "cost": 0.375,
+    "redundancy": 0.05,
+    "governance_risk": 0.0
+  },
+  "observed_value": {
+    "delta_e": 0.6667,
+    "cost": 0.375,
+    "redundancy": 0.0,
+    "governance_risk": 0.5
+  },
+  "predicted_utility": 0.525,
+  "observed_utility": -0.7083,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.2833,
+      "cost": 0.0,
+      "redundancy": 0.05,
+      "governance_risk": 0.5
+    },
+    "mean_component_error": 0.208325,
+    "utility_error": 1.2333
+  }
+}

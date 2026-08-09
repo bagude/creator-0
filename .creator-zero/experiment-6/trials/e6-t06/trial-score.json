@@ -1,0 +1,95 @@
+{
+  "trial_id": "e6-t06",
+  "latent_class": "SPECIALIZED_VERIFICATION",
+  "surface_domain": "data-integrity",
+  "selected_topology": "H-e6-t06-local-independent-verify",
+  "distinction_score": {
+    "per_critical": [
+      {
+        "id": "CD1",
+        "status": "MATCH",
+        "best_inferred": "Q1",
+        "best_fraction": 1.0
+      },
+      {
+        "id": "CD2",
+        "status": "MATCH",
+        "best_inferred": "Q3",
+        "best_fraction": 1.0
+      }
+    ],
+    "critical_recall": 1.0,
+    "match": 2,
+    "partial": 0,
+    "miss": 0,
+    "spurious": [],
+    "spurious_count": 0
+  },
+  "principle_score": {
+    "expected": [
+      "P-INDEPENDENCE"
+    ],
+    "primary_expected": "P-INDEPENDENCE",
+    "primary_rank": 2,
+    "top1_hit": false,
+    "top2_hit": true,
+    "expected_set_recall": 1.0,
+    "feature_ranked": {
+      "P-INDEPENDENCE": 2
+    }
+  },
+  "topology_score": {
+    "verdict": "TOPOLOGY_CORRECT",
+    "computed_features": {
+      "child": false,
+      "child_role": "",
+      "clean_room": false,
+      "independent_examiner": true,
+      "distinct_verification_path": true,
+      "independent_decomposition_path": false,
+      "adversarial_path": true,
+      "no_extra_path": false,
+      "family": "local-independent-verify"
+    },
+    "acceptable": [
+      {
+        "independent_examiner": true
+      },
+      {
+        "child": true,
+        "child_role": "independent_verifier"
+      }
+    ],
+    "partial": [
+      {
+        "child": true
+      }
+    ]
+  },
+  "candidate_coverage": {
+    "valid_families": [
+      "branching",
+      "isolated-child",
+      "local-independent-verify"
+    ],
+    "capable_families": [
+      "isolated-child",
+      "local-independent-verify"
+    ],
+    "covered": true
+  },
+  "predicted_utility": 0.5,
+  "observed_utility": 0.55,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.15,
+      "cost": 0.0,
+      "redundancy": 0.1,
+      "governance_risk": 0.0
+    },
+    "mean_component_error": 0.0625,
+    "utility_error": 0.05
+  },
+  "task_verified": true,
+  "failure_tags": []
+}
