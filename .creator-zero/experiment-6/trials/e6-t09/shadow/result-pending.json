@@ -1,0 +1,5 @@
+{
+  "summary": "Topology decision CREATE realized via the propose-child node. E-A is complete in-session: k=4 with four minimum vertex covers enumerated and method stated (e-a-enumeration.json; items mirrored in result.json). E-B is assigned to the proposed causally isolated child (clean_room_implementer seeded only with package/artifacts/graph.json plus a standalone task statement); the E-C merge and the completeness verdict are governed by the pre-committed deterministic rule in child/integration-plan.json. result.json fields affected by integration (final items/flags and 'complete') are marked PENDING-INTEGRATION. Root-executed nodes remaining: validate-child, create-child, child-return, integrate-evidence, verify-child-result.",
+  "assigned_distinctions": ["Q3", "Q4"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

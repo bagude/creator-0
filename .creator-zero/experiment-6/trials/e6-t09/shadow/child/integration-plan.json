@@ -1,0 +1,10 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "result.json",
+  "child_implementation_file": null,
+  "rule": "Let A := the 'items' array of e-a-enumeration.json (E-A) and B := the 'items' array of the child's result.json (E-B). Normalize both: sort each cover's vertex list lexicographically, deduplicate covers, and sort each list of covers lexicographically. Then set final result.json fields as follows. items := the lexicographically sorted union of A and B. flagged_items := one entry {\"item\": <cover>, \"found_only_by\": \"E-A\"} for each cover in A but not B, and {\"item\": <cover>, \"found_only_by\": \"E-B\"} for each cover in B but not A (empty array if A == B as sets). complete := true if and only if A and B are equal as sets AND the child's own 'complete' field is true; otherwise complete := false. method := the string 'E-A: ' + method field of e-a-enumeration.json + ' | E-B (independent, clean-room): ' + method field of the child result.json + ' | Merged: deterministic union with symmetric-difference flagging per child/integration-plan.json.' No judgment is required at any step; all operations are set operations and string concatenations over the two named files.",
+  "expected_contribution": {
+    "Q3": "The child's result.json 'items' array IS the second complete enumeration E-B: it is produced by a separately launched, causally isolated process seeded only with package/artifacts/graph.json and a standalone task statement, with no access to the first enumeration, its intermediate work, or this worker's conclusions.",
+    "Q4": "The deterministic rule above produces the E-C merged answer (union, per-item one-side flags, and the completeness verdict admissible only when both enumerations agree), settling Q4 at integrate-evidence / verify-child-result."
+  }
+}

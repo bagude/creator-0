@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Acquired the full evidence state: task statement and deliverable spec, raw graph (7 vertices, 9 edges), unresolved distinctions Q1-Q4 with admissibility constraints, selected branching harness, governing contract K-E6-trial, child envelope K-E6-child-max, and the child contract/harness templates. No decisions or derivations were made at this node.",
+    "refs": [
+      "package/task.json",
+      "package/artifacts/graph.json",
+      "distinctions.json",
+      "harness.json",
+      "contract.json",
+      "child-envelope.json",
+      "child-templates/child-contract-template.json",
+      "child-templates/child-harness-template.json"
+    ]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "decide-topology",
+    "description": "Typed topology decision CREATE with reasons: E-B (Q3) requires a causally isolated producer this contaminated session cannot be; the contract and harness permit exactly one attenuated terminal child; local-only execution would leave the E-C completeness claim permanently inadmissible.",
+    "refs": ["decision.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "E-A: first complete enumeration. k=4 (disjoint triangle {v1,v2,v3} + 4-cycle v4-v5-v7-v6 lower bound of 2+2; witness {v2,v3,v4,v7}); all four minimum covers enumerated by structured exhaustive search over the forced 2+2 structure covering all C(7,4)=35 size-4 subsets, each survivor re-verified against all nine edges; method stated in the artifact per E-A's admissibility condition.",
+    "refs": ["e-a-enumeration.json"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "propose-child",
+    "description": "Child bundle authored as an observable proposal: attenuated terminal child contract (within K-E6-child-max), four-node child harness from the template, standalone clean-room prompt that restates the enumeration task without revealing E-A, k, or any intermediate work, input manifest restricted to the raw graph only (preserving E-B admissibility), and a pre-committed deterministic integration plan mapping the child deliverable to the final result.json fields.",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  },
+  {
+    "id": "ev-5",
+    "source_node": "propose-child",
+    "description": "Session deliverable set with pending-integration markers: result.json carries the E-A items and complete=PENDING-INTEGRATION; result-pending.json assigns Q3 and Q4 to the root-executed create branch under the pre-committed integration rule; resolution.json records Q1/Q2 RESOLVED and Q3/Q4 honestly UNRESOLVED.",
+    "refs": ["result.json", "resolution.json", "result-pending.json"]
+  }
+]

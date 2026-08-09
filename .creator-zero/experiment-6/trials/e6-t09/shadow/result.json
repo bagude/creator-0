@@ -1,0 +1,10 @@
+{
+  "items": [
+    ["v1", "v2", "v5", "v6"],
+    ["v1", "v3", "v4", "v7"],
+    ["v2", "v3", "v4", "v7"],
+    ["v2", "v3", "v5", "v6"]
+  ],
+  "method": "E-A (this session): minimum size k=4 established by a lower bound (the triangle {v1,v2,v3} and the vertex-disjoint 4-cycle v4-v5-v7-v6 each require >= 2 cover vertices, so every cover has size >= 4) plus the witness cover {v2,v3,v4,v7}; enumeration by structured exhaustive search over all size-4 subsets — a size-4 cover must take exactly 2 vertices from the triangle and 2 from the 4-cycle, only the opposite pairs {v4,v7} and {v5,v6} cover the 4-cycle, and checking cross edges (v2,v4) and (v3,v5) over all 6 combinations leaves exactly these 4 covers, each re-verified against all nine edges (full details in e-a-enumeration.json). E-B and the E-C merge are pending: a causally isolated child (bundle under child/) will independently re-enumerate, after which the deterministic rule in child/integration-plan.json produces the final union with one-side flags. The items listed here are the E-A enumeration; final items and flags await integration.",
+  "complete": "PENDING-INTEGRATION"
+}

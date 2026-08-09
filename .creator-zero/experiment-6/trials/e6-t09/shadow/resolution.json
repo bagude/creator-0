@@ -1,0 +1,38 @@
+{
+  "task_id": "e6-t09",
+  "topology_id": "branching",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "k = 4. Lower bound: the triangle {v1,v2,v3} (edges v1v2, v1v3, v2v3) and the vertex-disjoint 4-cycle v4-v5-v7-v6 (edges v4v5, v5v7, v6v7, v4v6) each require at least 2 cover vertices, so every vertex cover has size >= 2+2 = 4; in particular no cover of size 3 exists. Upper bound: {v2,v3,v4,v7} covers all nine listed edges. Method stated per E-A; derived solely from package/artifacts/graph.json.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "The complete first enumeration (E-A) of all minimum-size (k=4) vertex covers, each as a sorted vertex list, list sorted: [[v1,v2,v5,v6], [v1,v3,v4,v7], [v2,v3,v4,v7], [v2,v3,v5,v6]]. Method: structured exhaustive search over all C(7,4)=35 size-4 subsets — every size-4 cover must take exactly 2 vertices from the triangle {v1,v2,v3} and exactly 2 from the 4-cycle {v4,v5,v6,v7}; all 3 triangle pairs cover the triangle, only the opposite pairs {v4,v7} and {v5,v6} cover the 4-cycle, and checking the cross edges (v2,v4) and (v3,v5) over all 6 combinations eliminates {v1,v2}+{v4,v7} and {v1,v3}+{v5,v6}; the surviving four sets were each re-verified against all nine edges. Full record in e-a-enumeration.json.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION. E-B's admissibility condition (produced without access to the first enumeration or its intermediate work) cannot be met by this session, which authored E-A. Assigned to the causally isolated child proposed in the child/ bundle (role clean_room_implementer), seeded only with package/artifacts/graph.json and a standalone task statement; settled after root-executed validate-child, create-child, and child-return.",
+      "evidence_ids": ["ev-4"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION. The E-C merge requires both enumerations; only E-A exists in-session. The deterministic, judgment-free merge rule (union of E-A and E-B, symmetric-difference items flagged by side, complete := true only if both enumerations agree as sets and the child claims completeness) is pre-committed in child/integration-plan.json and executes at the root-executed integrate-evidence and verify-child-result nodes.",
+      "evidence_ids": ["ev-4"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}
