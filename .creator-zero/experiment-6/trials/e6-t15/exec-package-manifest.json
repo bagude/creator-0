@@ -1,0 +1,18 @@
+{
+  "artifact": "blinded exec workspace manifest",
+  "trial_id": "e6-t15",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t15/primary/exec-ws",
+  "blinding_scan": "PASS (0 hits)",
+  "file_sha256": {
+    ".claude/settings.json": "057724aff3831a2ebe097f2877650adbea6b7347a2aeada0e6e3134f4f4e2554",
+    "contract.json": "6ac49cdd4565175345e0c6a27500c4fa5f53325122f324c0dea9301e9002830d",
+    "distinctions.json": "14f32cf2e1649729b0fe1914fcdb49a7856c3b4f6e3c21f5e740efdcb51d6aea",
+    "harness.json": "676a8b98d224281346e56c8279cd36e5896ffb6b61c1d2a5e8262c935b9e9816",
+    "package/artifacts/config.txt": "8121b7240c9799673fcc7c8840219a904192362d8e7634464de2799711c37033",
+    "package/artifacts/policy.md": "54d4ef6535c79407ab1de6aa89e525281da7c48923dcc82ecb8933f1a76e04a7",
+    "package/task.json": "e9fcc0f4419d4fd8380dd6b33e12bba07e7e604d15ee1003456efbb4dd54c8db",
+    "prompt.md": "effb880790070462d1bb966623fbf6ab94bb87726ed950c0ff89c0ec1098c633",
+    "protocol.md": "9ee45d464d5e265696f1049d50e5eef9f23e589acfeb4d8f49c8be9f523a4ed3",
+    "resolution-schema.json": "0b4b4b0a748bed54c260a5b35e6432cf644a73f97360793ca48f64d2c64d3e1b"
+  }
+}

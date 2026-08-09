@@ -1,0 +1,443 @@
+{
+  "formal_object": "lts",
+  "initial": "done={}|promoted=0|complete=0",
+  "labels": [
+    "authorize",
+    "complete",
+    "consult",
+    "create",
+    "observe",
+    "persist",
+    "propose",
+    "reconstruct",
+    "reject",
+    "return",
+    "tau",
+    "validate",
+    "verify"
+  ],
+  "metadata": {
+    "act_nodes": [],
+    "allow_create": true,
+    "allow_promote": false,
+    "branches": {},
+    "contract_id": "K-E6-trial",
+    "nodes": [
+      "observe-evidence",
+      "resolve-local",
+      "return-result",
+      "verify-resolution"
+    ],
+    "shared_nodes": [
+      "observe-evidence",
+      "resolve-local",
+      "return-result",
+      "verify-resolution"
+    ],
+    "task_id": "e6-t15",
+    "verify_nodes": [
+      "verify-resolution"
+    ]
+  },
+  "states": [
+    "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+    "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=1",
+    "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+    "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+    "done={observe-evidence}|promoted=0|complete=0",
+    "done={}|promoted=0|complete=0"
+  ],
+  "transitions": [
+    {
+      "actor": "node:verify-resolution",
+      "label": "authorize",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "complete",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=1"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-evidence",
+      "label": "observe",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:resolve-local",
+      "label": "verify",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=1",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=1"
+    },
+    {
+      "actor": "node:verify-resolution",
+      "label": "authorize",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-evidence",
+      "label": "observe",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:return-result",
+      "label": "return",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,return-result,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:resolve-local",
+      "label": "verify",
+      "source": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-evidence",
+      "label": "observe",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-resolution",
+      "label": "verify",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local,verify-resolution}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:resolve-local",
+      "label": "verify",
+      "source": "done={observe-evidence,resolve-local}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-evidence",
+      "label": "observe",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:resolve-local",
+      "label": "propose",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence,resolve-local}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={observe-evidence}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-evidence",
+      "label": "observe",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={observe-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    }
+  ],
+  "version": "0.1"
+}
