@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t03",
+  "estimates": {
+    "local": {
+      "delta_e": 0.55,
+      "redundancy": 0.25,
+      "governance_risk": 0.0,
+      "rationale": "A single careful worker satisfies E-A and probably E-C (the ISO first-Thursday algorithm is deterministic, though 10 boundary items computed without execution tools leave real slip risk), but it cannot satisfy E-B: any in-session second derivation is authored by the process holding the first derivation's intermediates, violating the no-consultation origin condition, and such re-check records mostly duplicate what the worker already had."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.7,
+      "redundancy": 0.45,
+      "governance_risk": 0.0,
+      "rationale": "The separately launched examiner is causally separated from the first derivation's intermediate work and can use a disjoint method, so E-B is plausibly satisfied literally; but it sees the answers (and result.json states the first method), so its re-derivation is anchored and may be ruled inadmissible or fail to catch shared errors, and much of its output re-derives what the worker already established."
+    },
+    "isolated-child": {
+      "delta_e": 0.85,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "The worker can hand the isolated child only the raw dates list plus a mandated disjoint method, excluding its own answers and intermediates, which is exactly the origin condition E-B demands; the child's records are required for admissibility and hence novel, and per-item agreement between two independent derivations also makes exact correctness (E-C) most likely of all families."
+    },
+    "branching": {
+      "delta_e": 0.8,
+      "redundancy": 0.15,
+      "governance_risk": 0.0,
+      "rationale": "The isolation need is visible in the task text, so a run-time chooser should realize the isolated-child branch and match its value, discounted slightly for the chance it wrongly selects the local branch and forfeits E-B; cost is charged at the isolated-child rate regardless."
+    }
+  }
+}

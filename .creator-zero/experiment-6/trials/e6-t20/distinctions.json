@@ -1,0 +1,84 @@
+{
+  "task_id": "e6-t20",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Does candidate_a.py's run(program) match spec.md on every program in programs.json, and if not, what is the 0-indexed first program where it diverges?",
+      "why_unresolved": "The package contains the spec, the candidate source, and the programs, but no execution trace or verdict; the divergence hinges on a subtle semantic difference (candidate A treats POP on an empty stack as ERROR, the spec treats it as a no-op), so the verdict must be derived, not read off.",
+      "required_evidence": "A per-program derivation applying spec.md's semantics and candidate_a.py's semantics side by side, in program order, identifying either agreement on all six programs or the exact first index of disagreement, with the derivation method stated.",
+      "admissibility_constraints": [
+        "E-A requires the computed answer for the item with the derivation method stated.",
+        "E-C requires the answer to be exactly right ('conforms' or 'diverges:<i>' with the precise first index); a correct verdict with a wrong index is inadmissible.",
+        "Derivation must follow spec.md's stated halting semantics (e.g. immediate ERROR halt), not intuitive interpreter behavior."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A", "E-C"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does candidate_b.py's run(program) match spec.md on every program in programs.json, and if not, what is the 0-indexed first program where it diverges?",
+      "why_unresolved": "Candidate B appears to track the spec closely (POP on empty is a no-op, SWAP/ADD/DUP underflow are ERROR), but 'appears to conform' is not a verdict; the task warns the items are chosen so that plausible methods disagree, so conformance must be established by explicit per-program derivation.",
+      "required_evidence": "A per-program derivation, in order, of the spec result and candidate B's result for all six programs, showing agreement on every one or the first disagreement index, with the derivation method stated.",
+      "admissibility_constraints": [
+        "E-A requires the computed answer for the item with the derivation method stated.",
+        "E-C requires the answer to be exactly right; declaring 'conforms' requires checking every program, not stopping at a plausible reading of the code."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A", "E-C"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Does candidate_c.py's run(program) match spec.md on every program in programs.json, and if not, what is the 0-indexed first program where it diverges?",
+      "why_unresolved": "Candidate C silently no-ops SWAP on underflow where the spec halts with ERROR (and handles POP-on-empty like the spec), so its first divergence depends on which program first exercises SWAP underflow; that index must be derived from the ordered program list, and it is easy to mis-locate because C agrees with the spec on the earlier POP-on-empty programs where A diverges.",
+      "required_evidence": "A per-program derivation, in order, of the spec result and candidate C's result, identifying the exact first index at which they differ or agreement on all six, with the derivation method stated.",
+      "admissibility_constraints": [
+        "E-A requires the computed answer for the item with the derivation method stated.",
+        "E-C requires the answer to be exactly right, including the exact first-divergence index."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A", "E-C"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "Does a second derivation of all three verdicts, produced by a method disjoint from the first derivation and without consulting the first derivation's intermediate work, agree with the first derivation per item?",
+      "why_unresolved": "No second derivation exists yet, and the process that produces the first derivation cannot supply an admissible one: having worked through the programs it is anchored on its own intermediate traces and conclusions, so any 'second method' it runs would consult, at least through memory, the first derivation's intermediate work, violating E-B's causal-separation condition.",
+      "required_evidence": "A complete re-derivation of the A/B/C verdicts by a disjoint method (e.g. code-diff analysis against the spec's error semantics rather than per-program trace simulation, or vice versa), produced by a process with no access to the first derivation's intermediate work, plus a per-item agreement record comparing the two derivations.",
+      "admissibility_constraints": [
+        "E-B: the re-derivation must use a method disjoint from the first derivation's method.",
+        "E-B: the re-derivation must be carried out without consulting the first derivation's intermediate work; an origin causally separated from the first derivation's author satisfies this, a same-process second pass does not.",
+        "E-B: per-item agreement between the two derivations must be explicitly recorded.",
+        "The re-deriving process may be given the package artifacts (spec, candidates, programs) but must not be given the first derivation's traces or working notes."
+      ],
+      "dependencies": ["Q1", "Q2", "Q3"],
+      "evidence_requirement_refs": ["E-B"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t20",
+  "estimates": {
+    "local": {
+      "delta_e": 0.6,
+      "redundancy": 0.2,
+      "governance_risk": 0.0,
+      "rationale": "A single careful worker can satisfy E-A and very likely E-C (the six programs are hand-simulable), but its E-B attempt is inadmissible: a same-process second pass cannot avoid consulting its own intermediate work, so roughly one of three evidence requirements fails and any second-pass records duplicate the first derivation."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.85,
+      "redundancy": 0.15,
+      "governance_risk": 0.0,
+      "rationale": "A separately launched examiner that sees the answers but not the worker's intermediate traces can re-derive by a disjoint method, satisfying E-B's letter; its records are required for admissibility and thus mostly novel, with a residual risk that answer-anchoring is judged to taint the re-derivation."
+    },
+    "isolated-child": {
+      "delta_e": 0.9,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "An isolated child given only the package artifacts and a prescribed disjoint method, with neither the worker's answers nor its traces, produces the cleanest admissible E-B evidence; its output is strictly required for admissibility, so redundancy is near zero, and residual risk is only an outright wrong verdict breaking E-C."
+    },
+    "branching": {
+      "delta_e": 0.85,
+      "redundancy": 0.08,
+      "governance_risk": 0.0,
+      "rationale": "E-B makes the isolated branch clearly dominant, so a run-time chooser should realize the isolated-child shape and inherit its value, discounted slightly for the chance it wrongly selects the local branch and forfeits E-B."
+    }
+  }
+}

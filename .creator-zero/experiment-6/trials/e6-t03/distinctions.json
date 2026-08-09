@@ -1,0 +1,66 @@
+{
+  "task_id": "e6-t03",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What is the ISO-8601 week-date form (YYYY-Www-D, ISO week-numbering year, week 01-53, weekday 1=Monday..7=Sunday) of each of the 10 dates in package/artifacts/dates.json?",
+      "why_unresolved": "The package contains only the Gregorian calendar dates; no week-date forms are given, and every item sits at a year boundary where the ISO week-numbering year differs from the calendar year under some plausible-but-wrong methods, so the answers are genuinely open until derived.",
+      "required_evidence": "A stated derivation method (e.g. ISO first-Thursday rule applied via weekday computation) and the computed YYYY-Www-D answer for every one of the 10 items, recorded in result.json.",
+      "admissibility_constraints": [
+        "The derivation method must be explicitly stated alongside the answers (E-A: 'the computed answer for every item, with the derivation method stated').",
+        "All 10 items must be covered; a partial answer set does not satisfy E-A.",
+        "Answers must use the exact ISO week-date notation YYYY-Www-D with the ISO week-numbering year, not the calendar year."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does a second derivation of every answer, produced by a method disjoint from the first and without consulting the first derivation's intermediate work, agree with the first derivation item by item?",
+      "why_unresolved": "No second derivation exists yet, and the admissibility condition is causal, not merely methodological: the re-derivation must be carried out without consulting the first derivation's intermediate work. Any process that has already authored the first derivation holds those intermediates and the formed answers in context and cannot un-anchor from them.",
+      "required_evidence": "A complete second answer set for all 10 dates produced by a disjoint method (e.g. day-of-year/ordinal arithmetic if the first used weekday-of-Thursday reasoning) by a process with no access to the first derivation's intermediate work, plus a per-item agreement record comparing the two answer sets.",
+      "admissibility_constraints": [
+        "The second method must be disjoint from the first derivation's method (E-B).",
+        "The re-derivation must be carried out without consulting the first derivation's intermediate work (E-B); evidence produced by the author of the first derivation, or by a process given that derivation's working, violates this origin condition.",
+        "Per-item agreement between the two derivations must be explicitly recorded (E-B).",
+        "All 10 items must be re-derived; sampling does not satisfy the requirement."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Is every one of the 10 week-date answers exactly correct under the ISO-8601 week-numbering rules?",
+      "why_unresolved": "The task states the items are chosen so that plausible methods disagree on them (all 10 straddle year boundaries where week 52/53/01 and the week-numbering year are easy to get wrong), and the package provides no ground truth; correctness is only decided by deterministic root verification of the delivered answers.",
+      "required_evidence": "The delivered answer set itself, exactly matching the true ISO week-dates for all 10 items; agreement between the two independent disjoint derivations (Q1, Q2) is the strongest pre-verification evidence of exactness available inside the run.",
+      "admissibility_constraints": [
+        "Exact correctness of every answer is required; a single wrong item fails E-C.",
+        "Correctness is judged deterministically at root against ISO-8601 week-date semantics; the worker's own confidence claims carry no weight.",
+        "Answers must use the ISO week-numbering year, which differs from the calendar year for boundary dates."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1", "Q2"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}
