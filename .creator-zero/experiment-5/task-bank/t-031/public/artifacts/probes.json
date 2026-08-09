@@ -1,0 +1,12 @@
+{
+  "probes": [
+    {"host": "alpha", "port": "8080"},
+    {"zone": "eu", "cluster": "blue", "ring": "2"},
+    {"note": "a;b", "tag": "x=y"},
+    {"path": "C:\\tmp\\data", "mode": "rw"},
+    {"msg": "escape \\; literally", "level": "info"},
+    {"single": ""},
+    {"b_key": "2", "a_key": "1", "c_key": "3"},
+    {"eq": "==", "semi": ";;", "back": "\\"}
+  ]
+}

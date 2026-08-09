@@ -1,0 +1,26 @@
+{
+  "trial_id": "t-074",
+  "task": "Audit the recorded event trace against the declared state machine. Determine whether trace.json is accepted by machine.json starting from the initial state, and if not, identify the first violating event.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "CONFORMS | VIOLATES",
+      "findings": "on VIOLATES: {first_violation_index, state_at_violation, offending_label, allowed_labels (sorted)}; on CONFORMS: {final_state}",
+      "child_invocations": "integer"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: the reported violation (or acceptance) is derived by explicit step-by-step simulation from the initial state; the state before every event is determined",
+    "E-B: allowed_labels at the violation point is exactly the set of labels enabled in machine.json at that state, sorted lexicographically",
+    "E-C: the verdict follows mechanically from the simulation"
+  ],
+  "available_artifacts": [
+    "package/artifacts/machine.json",
+    "package/artifacts/trace.json"
+  ],
+  "clean_room_exclusions": [],
+  "contract_ref": "contract.json",
+  "verification_method": "deterministic root verification per the preregistered method for this trial",
+  "max_parent_calls": 2,
+  "max_child_calls": 1
+}

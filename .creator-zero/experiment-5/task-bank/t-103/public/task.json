@@ -1,0 +1,27 @@
+{
+  "trial_id": "t-103",
+  "task": "Audit the implementation against its specification on the given cases. Determine whether normalize_tags in impl.py conforms to spec.md for every case in cases.json, and if not, identify the first failing case in case order.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "CONFORMS | VIOLATES",
+      "findings": "on VIOLATES: {first_failing_case_index, input, expected_output, actual_output}; on CONFORMS: {}",
+      "child_invocations": "integer"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: expected_output is derived step-by-step from the specification text for the failing case",
+    "E-B: actual_output is derived by explicit evaluation of the implementation code on the same case",
+    "E-C: cases before the first failing case are confirmed to agree; the verdict follows mechanically"
+  ],
+  "available_artifacts": [
+    "package/artifacts/spec.md",
+    "package/artifacts/impl.py",
+    "package/artifacts/cases.json"
+  ],
+  "clean_room_exclusions": [],
+  "contract_ref": "contract.json",
+  "verification_method": "deterministic root verification per the preregistered method for this trial",
+  "max_parent_calls": 2,
+  "max_child_calls": 1
+}

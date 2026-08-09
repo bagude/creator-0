@@ -1,0 +1,18 @@
+{
+  "artifact": "Experiment 5 randomization record (root-private; never enters a blinded workspace)",
+  "seed": 20260809,
+  "method": "python random.Random(seed); designs = sorted 8 design keys; ids = sorted 8 neutral trial ids; shuffled = shuffle(copy of ids); mapping = zip(designs, shuffled); execution_order = shuffle(copy of ids) drawn from the same generator after the first shuffle",
+  "design_to_trial": {
+    "d-audit-config": "t-089",
+    "d-audit-deps": "t-052",
+    "d-audit-func": "t-103",
+    "d-audit-trace": "t-074",
+    "d-suff-codec": "t-031",
+    "d-suff-index": "t-068",
+    "d-suff-notes": "t-095",
+    "d-suff-sched": "t-047"
+  },
+  "execution_order": ["t-074", "t-031", "t-068", "t-095", "t-089", "t-052", "t-103", "t-047"],
+  "shadow_selection_rule": "shadow-A target = first Condition A trial in execution_order (t-074, forced CREATE); shadow-B target = first Condition B trial in execution_order (t-031, forced DO_NOT_CREATE)",
+  "note": "trial ids are neutral and carry no systematic relation to condition; the id/condition association exists only through this seeded shuffle"
+}

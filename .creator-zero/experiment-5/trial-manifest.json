@@ -1,0 +1,128 @@
+{
+  "artifact": "Experiment 5 trial manifest \u2014 frozen at preregistration",
+  "preregistration_sha256": "56661be158def12c6488fbe5a77c9df5b55d527ca7b7f2676c4ac6bab1d1b6e8",
+  "task_bank_tree_sha256": "6f166b75a31bced7117d5e192ef9a59ade00a1f1245366111cfcc0363d63ea02",
+  "task_bank_files": 56,
+  "frozen_files_sha256": {
+    "preregistration.md": "56661be158def12c6488fbe5a77c9df5b55d527ca7b7f2676c4ac6bab1d1b6e8",
+    "randomization.json": "52a47f82875a700ad2df319cc1f757aa0861a1f999475b7ff547191ea67d125e",
+    "protocol.md": "5b080bc5cae1ee6192e65116fe7e7026bcabe611f1606f01b8d3f0e39a019763",
+    "harness-template.json": "9a7ddc83d5dd19908819a3172ae683c89347af57c668198dee30e1d5b6b5eb91",
+    "decision-schema.json": "9dbe6e4ba87780a9873f41fb24d05fec8aa8b6e1be93cd7cd07cb2d637e985f2",
+    "contracts/trial-contract.json": "a197a4f5ffbae7bbf5c89a5bb0b528f78468a37942e57d010bc1b22aa2470527",
+    "contracts/child-contract-envelope.json": "5de4f5b60b5ce834d686e6d93dd66376db83c99be00310518240c9d4362e0790",
+    "runtime/__init__.py": "33e0b4665a229cfc505d0f222e46d30341b84ffc1cb4410703257fe3e93db471",
+    "runtime/decision_validator.py": "d18042d26c75b8429839153ac93d3d62505b6caabce88f02458e50db92b75163",
+    "runtime/fresh_launcher.py": "d6990c286a9f62f8d6ae7818167e5f315a14ad56db3a0e398127bc52b865d8d7",
+    "runtime/package_trial.py": "1341c82c4a6faa864592b14fc5b4a7425d3c6816d89fb745249bb249ddc0b840",
+    "runtime/proposal_observer.py": "33c8a6dc5c9df8fa41151718e3a7a548f7bd5f9fe8b90cc36f04ac97ecb251f0",
+    "runtime/scorer.py": "ad497089a252ca0570d2c37cb5b5124e16f5476f1d367b763af2d9e1b2837597",
+    "runtime/session_audit.py": "d75a091d44207e2231cefd2a3446d011401cb8fc041bae7c05e5b3c8123ec0a3",
+    "runtime/topology_guard.py": "1b9a7dcfecd21e1589b2644cc335c374e7f7b346eb8aed739df119b66438e27e",
+    "child-templates/child-contract-template.json": "3f2b93a86fe8b6c9dadc4c7d98711ecd5e6a427932e35c5b7536f1e591af6025",
+    "child-templates/child-harness-template.json": "93f624a9de351e9ca5d75a4a3925a4fe24f1fd21219ee8f9a6d4278b236b1829"
+  },
+  "task_bank_file_sha256": {
+    "_shared/__pycache__/verifylib.cpython-311.pyc": "222fa0e73919338f0d8fff7b3769e154ec9d22a006e9229dfdde58a2b54795a8",
+    "_shared/verifylib.py": "81ef151f8e07507652156a4c0e3762e424c43daa4c2716de045635b139fcc0ae",
+    "t-031/private/label.json": "7079d19f5a28e031566552b627eacdf0f44a7a5de9f45d5b14dabdcad98b4c97",
+    "t-031/private/verify.py": "809cae20a0ea68e60de9ba29c9ce336f10a4c8b3592009866efff5d11d556e43",
+    "t-031/public/artifacts/__pycache__/reference.cpython-311.pyc": "7330a2e8cf2c8dfcf3eed64166dec1e0fd33ee2981796c52f1225d307a741173",
+    "t-031/public/artifacts/format.md": "3997c51e4ccdb6809910ebc1e18e9f8066202d2c0bb1ecec5cfdf1afefb006d1",
+    "t-031/public/artifacts/probes.json": "84e45d24d76c50a393ca4fb14fb35e8e40b1eeb5daa2c1ea905ad9dcfcf49775",
+    "t-031/public/artifacts/reference.py": "2c8f558a723b75c2c40925c6c95a47409c5b46ac9447c8d3196345c9266d5ab2",
+    "t-031/public/task.json": "d9d3f17388df8096bbb3fc9115bf53976391aef077b71c2ab6d59a1ccd78d55a",
+    "t-047/private/label.json": "f20437f4575f07325b1ca0aa8a4a2bdbbf2ff59a6ef658ad2fa486c3b2e99640",
+    "t-047/private/verify.py": "6702ffd486b7944a52cc14b0334531cf747e3fc311b39a97a81b9258bedc26eb",
+    "t-047/public/artifacts/__pycache__/reference.cpython-311.pyc": "b780b1c6629c89dc8b7bc3cae7574335d236ca886564add3382bfba4d0ee4e73",
+    "t-047/public/artifacts/probes.json": "f00a8ee3054a2605bffb0643e8cf1c4f58f10e33b55b096a11f6af575fcd464a",
+    "t-047/public/artifacts/reference.py": "ba7246dbd5b15842caf4c3c495ad6d31ca24bde902258c44fa0873ab6bb1dad9",
+    "t-047/public/artifacts/spec.md": "0bf7e4f2e4abb7a7f197b11fc5539814af6c7dc0b736b2aa19fae2dc045f8a1d",
+    "t-047/public/task.json": "5737b974d03545fcb922534bb0544f62a83d282517c58a9a5d0f20b3c70c48b4",
+    "t-052/private/__pycache__/verify.cpython-311.pyc": "27ea6a9be4971275f6f7494ceb455a8506a8fc515651895357af755a15ba68a5",
+    "t-052/private/label.json": "6b1a74c264df9ee84b47a83cf92fab7be3db560bb7726463bfa0f0a357596511",
+    "t-052/private/verify.py": "8fe5b19f45fa2017dec2c296ec83a3b1b6e9a6c60a6327c820514cb103067ae6",
+    "t-052/public/artifacts/log.json": "b5756af9424845e2d111ce2dede999d962587227ef218392f402a898bed0d70c",
+    "t-052/public/artifacts/plan.json": "70d5f9136200a128e0e3fcdbdd40b99a173ee53b026ebbcd74cbf82b948ddf72",
+    "t-052/public/task.json": "aadc7133b1655e56843b6990a87745498fc951dec8fecec46ee818bb9d52256c",
+    "t-068/private/label.json": "69966e96a41b89dbbdae0ddcfcf9895d7cb0e3dceb72a019e0324aa7935dc580",
+    "t-068/private/verify.py": "26e05c01894025441da9bd642fca01052590b726ba1b82541906338f900995cd",
+    "t-068/public/artifacts/__pycache__/reference.cpython-311.pyc": "6019de528047995e3b28ff30721bd584726947f432bd68bc69acc4e92c03bb04",
+    "t-068/public/artifacts/document.txt": "554811f1b48f7eb5e74c91e19ae453c972d390818ced6b75cc3e922aa042c22a",
+    "t-068/public/artifacts/reference.py": "3a6c7c99a3289d0eb05401dabcdab040641c222e2a6c684b57c316ece16fc14b",
+    "t-068/public/artifacts/rules.md": "9a3cead1ebd0c68189a18bb8861b78722b34e542c14ef086b659e347699d6c4b",
+    "t-068/public/task.json": "837f82df4d39efe1e1c2c76a860ec15f15674444e4939af7bb3edb4dd1071511",
+    "t-074/private/__pycache__/verify.cpython-311.pyc": "ef898ffb60c77ec0578556a4063b73eb93b46e28e4b14f2451a733f5753308b8",
+    "t-074/private/label.json": "7704c72194e2fcfb4802925afd3781908d990529979f5ca00dc3c7a5f7d1d17d",
+    "t-074/private/verify.py": "aa728d7496c635ac004564a0b8ca4bf925b54a8c0255da9f8f1d480c500d0903",
+    "t-074/public/artifacts/machine.json": "bbae7601d88b9a2e90714fb625e005662271c6ef1d98114aa47785efec21d7a5",
+    "t-074/public/artifacts/trace.json": "675fd013c48b273a20f5ba5eaa1ab0b1409de45a1cdbe1b3b2fa8a273744a79e",
+    "t-074/public/task.json": "9c75f0e5cb681d821c3528ebab5d5dec0ebe72de20228e56d2f3612bfffb43ff",
+    "t-089/private/__pycache__/verify.cpython-311.pyc": "fbe27023a36543e47cbafc23b1d3ee6fd9a6692f6a707ff93d3974f071f4d61b",
+    "t-089/private/label.json": "07931b4f822ab06c78140e0403fbbc231858c5443d755fa23465376a31e75f7d",
+    "t-089/private/verify.py": "b3114f960439bf0413bda79a6fef990a8f5ecfe9e8f1c711429b40c2d55f654d",
+    "t-089/public/artifacts/config-baseline.json": "e592b8ec9d8b1e4da99ed0a7bfa7efe82ad4c6b7b865f21705f0d9d9f30d5d29",
+    "t-089/public/artifacts/config-proposed.json": "e2daadf998d4011faabbbbb7f7ef34f7c6758b37f43c0f99af4e85d5fb1def90",
+    "t-089/public/artifacts/policy.md": "551b332668133f507d2d5113a2388e6d72763f83ac55bd4a1979dfd3f2a85da2",
+    "t-089/public/task.json": "9ec1d6fccc5836093b7338eead3e90fdf9e7b503205c54550abdce72f678b53e",
+    "t-095/private/label.json": "3641329a8424691a4eb87a4a7fef9a19a2bad3d0775af224448ce94bbb4aa5b3",
+    "t-095/private/verify.py": "c882ccb9013355e6611105f9eac52a73135df2307eff916605ca2d800f93a111",
+    "t-095/public/artifacts/build-notes.md": "f3cad841e4af406fc1e03213f8f8aa0696ed8b808f9792694d956b86539bbd03",
+    "t-095/public/artifacts/records.csv": "be112f335af566d599c3240803f3379b2a5e9cba2eec9cbc09eeee10f6bbfcfc",
+    "t-095/public/artifacts/summary.txt": "101bc2c49f0a1f18f5e4de52138944f6b754659f286f52ff8414d81008da4dc5",
+    "t-095/public/task.json": "8a840c6658f9958f8e43d8562a2c8b4b6d31f4b0c8ba5e594422b022320b2886",
+    "t-103/private/__pycache__/verify.cpython-311.pyc": "d1d48b77be153debf0f1905c8a6cee3b83f5176c1fffdbe457f24018d8cb6a20",
+    "t-103/private/label.json": "6e46e70c37ffa30a40741b4aefcb2ccc09049e2416b59b80648e513e8084e0ed",
+    "t-103/private/verify.py": "78db94cc2502908c7a4b3142c099b048bb255f7ec79954d8f8ba71d839ea54f4",
+    "t-103/public/artifacts/__pycache__/impl.cpython-311.pyc": "425ba6afe3b8c74d6f9619162699cb9de95d30cbc94ca5f3f164348836cbe752",
+    "t-103/public/artifacts/cases.json": "5c05f3860ccb1fb9abb8afc07c9940ff6885a8b87f3e31715f2a000d5829ea7e",
+    "t-103/public/artifacts/impl.py": "bfa54710fe6e84edf34f917bc0c6def92bc9bfa4c225a856d4201121c28c7d0f",
+    "t-103/public/artifacts/spec.md": "7b18823ab7d0e6c8488040742660f1f051dc64994ffdfac696437e3c3b2406fa",
+    "t-103/public/task.json": "981dd8cb51f0378cbf6391e1d4a6000195d79e71fe4d6a61eca0c636b2a6910e"
+  },
+  "execution_order": [
+    "t-074",
+    "t-031",
+    "t-068",
+    "t-095",
+    "t-089",
+    "t-052",
+    "t-103",
+    "t-047"
+  ],
+  "session_budget_max": 16,
+  "trials": {
+    "t-031": {
+      "workspace": "<scratchpad>/e5/t-031/parent-ws",
+      "record": "trials/t-031/"
+    },
+    "t-047": {
+      "workspace": "<scratchpad>/e5/t-047/parent-ws",
+      "record": "trials/t-047/"
+    },
+    "t-052": {
+      "workspace": "<scratchpad>/e5/t-052/parent-ws",
+      "record": "trials/t-052/"
+    },
+    "t-068": {
+      "workspace": "<scratchpad>/e5/t-068/parent-ws",
+      "record": "trials/t-068/"
+    },
+    "t-074": {
+      "workspace": "<scratchpad>/e5/t-074/parent-ws",
+      "record": "trials/t-074/"
+    },
+    "t-089": {
+      "workspace": "<scratchpad>/e5/t-089/parent-ws",
+      "record": "trials/t-089/"
+    },
+    "t-095": {
+      "workspace": "<scratchpad>/e5/t-095/parent-ws",
+      "record": "trials/t-095/"
+    },
+    "t-103": {
+      "workspace": "<scratchpad>/e5/t-103/parent-ws",
+      "record": "trials/t-103/"
+    }
+  }
+}

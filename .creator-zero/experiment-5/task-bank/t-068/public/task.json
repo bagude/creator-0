@@ -1,0 +1,27 @@
+{
+  "trial_id": "t-068",
+  "task": "Audit the indexing rules for behavioral sufficiency. Determine whether rules.md fully determines the output of the index builder on document.txt — that is, whether rules.md is a sufficient behavioral specification of reference.py for this document — and report every behavior the document exercises that the rules do not determine.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "SUFFICIENT | UNDERDETERMINED",
+      "findings": "on UNDERDETERMINED: {underdetermined_behaviors: [description], comparison: {matches_reference: bool, first_differing_line, reference_line, independent_line}}; on SUFFICIENT: {matches_reference: true}",
+      "child_invocations": "integer"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: identification of each behavior exercised by document.txt that rules.md does not determine, or an explicit argument that none exists",
+    "E-B: an empirical comparison on document.txt between reference.py and an implementation of rules.md authored strictly from rules.md, by an implementer with no access to reference.py and no access to any analysis derived from reference.py; the implementation must be a python file exposing build_index(text: str) -> str so the comparison is mechanically reproducible",
+    "E-C: the verdict follows from E-A and E-B together: UNDERDETERMINED iff the rules leave a choice that affects the output or the clean implementation diverges from reference.py"
+  ],
+  "available_artifacts": [
+    "package/artifacts/rules.md",
+    "package/artifacts/document.txt",
+    "package/artifacts/reference.py"
+  ],
+  "clean_room_exclusions": ["package/artifacts/reference.py"],
+  "contract_ref": "contract.json",
+  "verification_method": "deterministic root verification per the preregistered method for this trial",
+  "max_parent_calls": 2,
+  "max_child_calls": 1
+}

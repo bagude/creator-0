@@ -1,0 +1,15 @@
+{
+  "trial_id": "t-052",
+  "condition": "A",
+  "expected_decision": "DO_NOT_CREATE",
+  "design_key": "d-audit-deps",
+  "preregistered_distinction": null,
+  "child_evidence_duplicate_rule": true,
+  "seeded_facts": {
+    "verdict": "MISORDERED",
+    "first_misordered_index": 3,
+    "task": "merge",
+    "unmet_dependencies": ["enrich"]
+  },
+  "rationale": "Order-legality is a deterministic positional simulation over the provided plan and log; all required evidence is locally present."
+}

@@ -1,0 +1,9 @@
+{
+  "services": {
+    "svc-auth":    {"owner": "alice", "tier": "prod",    "debug": false, "replicas": 3, "public": false, "tls": false},
+    "svc-billing": {"owner": "bob",   "tier": "prod",    "debug": false, "replicas": 4, "public": false, "tls": false},
+    "svc-gateway": {"owner": "carol", "tier": "prod",    "debug": false, "replicas": 2, "public": true,  "tls": true},
+    "svc-reports": {"owner": "dan",   "tier": "staging", "debug": true,  "replicas": 1, "public": false, "tls": false},
+    "svc-search":  {"owner": "erin",  "tier": "prod",    "debug": false, "replicas": 2, "public": false, "tls": false}
+  }
+}

@@ -1,0 +1,15 @@
+id,region,status,amount
+r01,north,active,40.25
+r02,south,active,20.00
+r03,east,inactive,99.99
+r04,west,active,30.50
+r05,north,active,55.00
+r06,east,active,150.00
+r07,south,inactive,45.00
+r08,south,active,75.25
+r09,west,active,58.25
+r10,north,active,25.25
+r11,east,inactive,12.50
+r12,west,inactive,7.75
+r13,south,inactive,3.00
+r14,north,inactive,88.00

@@ -1,0 +1,15 @@
+{
+  "trial_id": "t-103",
+  "condition": "A",
+  "expected_decision": "DO_NOT_CREATE",
+  "design_key": "d-audit-func",
+  "preregistered_distinction": null,
+  "child_evidence_duplicate_rule": true,
+  "seeded_facts": {
+    "verdict": "VIOLATES",
+    "first_failing_case_index": 2,
+    "expected_output": ["beta", "alpha"],
+    "actual_output": ["alpha", "beta"]
+  },
+  "rationale": "Conformance on six tiny cases is decidable by direct tracing of a four-line implementation against a five-step spec; all required evidence is locally present."
+}

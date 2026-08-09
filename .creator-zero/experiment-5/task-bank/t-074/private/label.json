@@ -1,0 +1,16 @@
+{
+  "trial_id": "t-074",
+  "condition": "A",
+  "expected_decision": "DO_NOT_CREATE",
+  "design_key": "d-audit-trace",
+  "preregistered_distinction": null,
+  "child_evidence_duplicate_rule": true,
+  "seeded_facts": {
+    "verdict": "VIOLATES",
+    "first_violation_index": 8,
+    "state_at_violation": "C",
+    "offending_label": "load",
+    "allowed_labels": ["process", "reset", "save"]
+  },
+  "rationale": "Acceptance is a deterministic simulation of the provided machine over the provided trace; all required evidence is locally present."
+}

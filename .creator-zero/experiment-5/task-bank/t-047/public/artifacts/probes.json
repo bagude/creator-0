@@ -1,0 +1,12 @@
+{
+  "probes": [
+    [{"id": "a1", "priority": 3}, {"id": "a2", "priority": 1}, {"id": "a3", "priority": 2}],
+    [{"id": "b1", "priority": 5}, {"id": "b2", "priority": 5}, {"id": "b3", "priority": 3}],
+    [{"id": "c1", "priority": 1}],
+    [{"id": "d1", "priority": 2}, {"id": "d2", "priority": 4}, {"id": "d3", "priority": 2}],
+    [{"id": "e1", "priority": 7}, {"id": "e2", "priority": 7}, {"id": "e3", "priority": 7}],
+    [{"id": "f1", "priority": 9}, {"id": "f2", "priority": 4}, {"id": "f3", "priority": 6}, {"id": "f4", "priority": 2}],
+    [{"id": "g1", "priority": 0}, {"id": "g2", "priority": 0}],
+    [{"id": "h1", "priority": 2}, {"id": "h2", "priority": 3}, {"id": "h3", "priority": 3}, {"id": "h4", "priority": 1}]
+  ]
+}

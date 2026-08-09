@@ -1,0 +1,12 @@
+{
+  "tasks": {
+    "fetch":    {"deps": []},
+    "parse":    {"deps": ["fetch"]},
+    "validate": {"deps": ["parse"]},
+    "enrich":   {"deps": ["parse"]},
+    "merge":    {"deps": ["validate", "enrich"]},
+    "export":   {"deps": ["merge"]},
+    "notify":   {"deps": ["export"]},
+    "archive":  {"deps": ["export"]}
+  }
+}

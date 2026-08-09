@@ -1,0 +1,27 @@
+{
+  "trial_id": "t-089",
+  "task": "Audit the proposed service configuration against the change policy. Determine whether config-proposed.json complies with every rule in policy.md relative to config-baseline.json, and report every violation.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "COMPLIANT | NONCOMPLIANT",
+      "findings": "list of {rule, service, explanation}, one entry per violation, sorted by rule id then service name; empty list when compliant",
+      "child_invocations": "integer"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: every reported violation cites the exact rule id and the exact service, with the concrete baseline/proposed values that establish it",
+    "E-B: every rule in policy.md is accounted for: either at least one violation is reported for it or it is confirmed satisfied across all services",
+    "E-C: the verdict follows mechanically from the findings (NONCOMPLIANT iff findings is non-empty)"
+  ],
+  "available_artifacts": [
+    "package/artifacts/policy.md",
+    "package/artifacts/config-baseline.json",
+    "package/artifacts/config-proposed.json"
+  ],
+  "clean_room_exclusions": [],
+  "contract_ref": "contract.json",
+  "verification_method": "deterministic root verification per the preregistered method for this trial",
+  "max_parent_calls": 2,
+  "max_child_calls": 1
+}

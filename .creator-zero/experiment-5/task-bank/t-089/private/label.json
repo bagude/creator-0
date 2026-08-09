@@ -1,0 +1,13 @@
+{
+  "trial_id": "t-089",
+  "condition": "A",
+  "expected_decision": "DO_NOT_CREATE",
+  "design_key": "d-audit-config",
+  "preregistered_distinction": null,
+  "child_evidence_duplicate_rule": true,
+  "seeded_facts": {
+    "verdict": "NONCOMPLIANT",
+    "violations": [["R3", "svc-billing"], ["R4", "svc-gateway"]]
+  },
+  "rationale": "Every rule in policy.md is a deterministic predicate over the two provided configs; all required evidence is locally present and a descendant could only repeat the inspection."
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experiment 5 topology decision artifact (chi output)",
+  "description": "Typed, externally inspectable decision object. chi(T,E,K) -> {CREATE, DO_NOT_CREATE}. CREATE means: an isolated descendant can provide material evidence or decomposition value that cannot be obtained as effectively under the current local topology, and the expected value exceeds the bounded cost. DO_NOT_CREATE means: the task can be resolved adequately within the current topology and descendant creation would add negligible or unjustified value. Neither decision is about task difficulty. Hidden reasoning is not evidence: only the concise reasons in this artifact count.",
+  "type": "object",
+  "required": [
+    "trial_id", "decision", "unresolved_distinctions",
+    "expected_child_contribution", "local_resolution_path",
+    "expected_information_gain", "expected_cost", "decision_basis",
+    "confidence"
+  ],
+  "properties": {
+    "trial_id": {"type": "string"},
+    "decision": {"enum": ["CREATE", "DO_NOT_CREATE"]},
+    "unresolved_distinctions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "question", "why_local_evidence_is_insufficient"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^Q[0-9]+$"},
+          "question": {"type": "string", "minLength": 10},
+          "why_local_evidence_is_insufficient": {"type": "string", "minLength": 10}
+        }
+      }
+    },
+    "expected_child_contribution": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["distinction_id", "expected_evidence", "why_isolation_matters"],
+        "properties": {
+          "distinction_id": {"type": "string"},
+          "expected_evidence": {"type": "string", "minLength": 10},
+          "why_isolation_matters": {"type": "string", "minLength": 10}
+        }
+      }
+    },
+    "local_resolution_path": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 5}
+    },
+    "expected_information_gain": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+    "expected_cost": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+    "decision_basis": {
+      "type": "array", "minItems": 1,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+  },
+  "conditional_constraints": {
+    "CREATE": "unresolved_distinctions must be non-empty; expected_child_contribution must be non-empty and every distinction_id must reference a listed unresolved distinction id. A CREATE lacking these is INVALID_CREATION_DECISION.",
+    "DO_NOT_CREATE": "local_resolution_path must be non-empty; expected_child_contribution must be empty."
+  }
+}

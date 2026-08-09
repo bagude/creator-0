@@ -1,0 +1,9 @@
+{
+  "initial": "A",
+  "transitions": {
+    "A": {"start": "B"},
+    "B": {"load": "C", "reset": "A"},
+    "C": {"process": "C", "save": "D", "reset": "A"},
+    "D": {"ack": "A"}
+  }
+}
