@@ -1,0 +1,5 @@
+{
+  "summary": "Implemented transform(s) in child_transform.py exactly per inputs/migrate.md: the legacy string M/D/YY or M/D/YYYY is split on '/', month and day are zero-padded to two digits, two-digit years are mapped to a century (70-99 -> 19xx, 00-69 -> 20xx), four-digit years are used as-is, and the parts are returned as ISO YYYY-MM-DD. The spec is silent on malformed input, so the implementation takes the literal reading (no speculative validation; years of other lengths pass through as-is), noted with # NOTE: comments in the file.",
+  "files_produced": ["child_transform.py", "result.json", "execution-ledger.jsonl"],
+  "model_calls_spent": 0
+}

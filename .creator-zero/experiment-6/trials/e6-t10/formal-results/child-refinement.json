@@ -1,0 +1,44 @@
+{
+  "check": "runtime_refinement",
+  "status": "FAIL",
+  "formal_relation": "Runtime <= Spec",
+  "counterexample": {
+    "violation": "REFINEMENT_VIOLATION",
+    "offending_transition": {
+      "event_id": "evt-001",
+      "source": "",
+      "label": "observe",
+      "target": "",
+      "actor": "node:observe-rules",
+      "timestamp": "2026-08-09T00:00:01Z",
+      "artifact_refs": [],
+      "contract_id": "",
+      "metadata": {
+        "completes_node": "observe-rules",
+        "detail": "Read inputs/rules.md; identified four multiplicative rules with binary triggers: BULK (quantity>=5, x0.90), LOYALTY (loyalty_member, x0.85), SEASONAL (category=='outdoor', x0.80), COUPON (coupon_code_applied, x0.95); total discount = 1.0 - product of active factors."
+      }
+    },
+    "event_index": 0,
+    "source_state": "done={}|promoted=0|complete=0",
+    "expected_allowed_labels": [
+      "consult",
+      "observe",
+      "persist",
+      "propose",
+      "reconstruct",
+      "reject",
+      "return",
+      "tau",
+      "validate"
+    ],
+    "trace_prefix": []
+  },
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-6/trials/e6-t10/child/execution-ledger.jsonl"
+  ],
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "unmapped_events": []
+}

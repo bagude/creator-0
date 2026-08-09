@@ -1,0 +1,29 @@
+{
+  "found": true,
+  "violating_input": {
+    "quantity": 5,
+    "loyalty_member": true,
+    "category": "outdoor",
+    "coupon_code_applied": true
+  },
+  "total_discount": 0.4186,
+  "input_classes_examined": [
+    "{} (no triggers): factor 1.0, discount 0.0",
+    "{BULK}: factor 0.90, discount 0.10",
+    "{LOYALTY}: factor 0.85, discount 0.15",
+    "{SEASONAL}: factor 0.80, discount 0.20",
+    "{COUPON}: factor 0.95, discount 0.05",
+    "{BULK, LOYALTY}: factor 0.765, discount 0.235",
+    "{BULK, SEASONAL}: factor 0.72, discount 0.28",
+    "{BULK, COUPON}: factor 0.855, discount 0.145",
+    "{LOYALTY, SEASONAL}: factor 0.68, discount 0.32",
+    "{LOYALTY, COUPON}: factor 0.8075, discount 0.1925",
+    "{SEASONAL, COUPON}: factor 0.76, discount 0.24",
+    "{BULK, LOYALTY, SEASONAL}: factor 0.612, discount 0.388",
+    "{BULK, LOYALTY, COUPON}: factor 0.72675, discount 0.27325",
+    "{BULK, SEASONAL, COUPON}: factor 0.684, discount 0.316",
+    "{LOYALTY, SEASONAL, COUPON}: factor 0.646, discount 0.354",
+    "{BULK, LOYALTY, SEASONAL, COUPON}: factor 0.5814, discount 0.4186"
+  ],
+  "argument": "rules.md defines exactly four rules, each governed by one binary trigger: BULK (quantity >= 5, factor 0.90), LOYALTY (loyalty_member true, factor 0.85), SEASONAL (category == 'outdoor', factor 0.80), COUPON (coupon_code_applied true, factor 0.95). The final factor is the product of the factors of the active rules and the total discount is 1.0 minus that product, so the discount of any cart depends only on which subset of the four triggers is active. The domain of all carts therefore partitions into exactly 2^4 = 16 input classes, all of which are enumerated above with their exact factor products. Every factor is strictly below 1.0, so activating an additional trigger always lowers the factor and raises the discount; the maximum is attained in the all-triggers class, with factor 0.90 * 0.85 * 0.80 * 0.95 = 0.5814 and total discount 0.4186 > 0.40. Hence the claim 'no cart's total discount exceeds 0.40' is VIOLATED. A concrete witness in that class is {quantity: 5, loyalty_member: true, category: 'outdoor', coupon_code_applied: true}: quantity 5 satisfies 'quantity of 5 or more', category 'outdoor' triggers SEASONAL, and both booleans are true, so all four rules apply and its total discount is 0.4186. All other 15 classes have discount at most 0.388 (class {BULK, LOYALTY, SEASONAL}), confirming the all-triggers class is the unique violating class and that the search covered the entire domain."
+}

@@ -1,0 +1,15 @@
+{
+  "artifact": "child workspace manifest",
+  "trial_id": "e6-t03",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t03/primary/child-ws",
+  "files": [
+    ".claude/settings.json",
+    "child-contract.json",
+    "child-harness.json",
+    "child-prompt.md",
+    "inputs/dates.json"
+  ],
+  "input_manifest": [
+    "package/artifacts/dates.json"
+  ]
+}

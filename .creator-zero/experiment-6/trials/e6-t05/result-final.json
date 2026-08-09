@@ -1,0 +1,88 @@
+{
+  "verdict": "DIVERGES",
+  "undetermined_behaviors": [
+    "DETERMINED-DIFFERENTLY: two-digit-year century pivot for years 50-69 \u2014 migrate.md maps 00-69 to 20xx (so 50-69 become 2050-2069), while transform.py maps y >= 50 to 1900+y (so 50-69 become 1950-1969); exercised by probes 2 ('3/7/55'), 7 ('5/5/69'), and 10 ('4/01/50').",
+    "UNDETERMINED: surrounding-whitespace handling \u2014 migrate.md defines the input form as M/D/YY or M/D/YYYY and says nothing about leading/trailing whitespace, so it does not determine whether input like probe 5 (' 8/15/49 ') is accepted, trimmed, or rejected; transform.py strips the input and returns '2049-08-15'.",
+    "All other behaviors exercised by the probe set (slash-separated three-component parsing, zero-padding of month/day, four-digit-year pass-through, two-digit-year mappings for 00-49 and 70-99, leading zeros inside components) are determined by migrate.md identically to transform.py; the completeness argument is in ea-behavior-statement.md."
+  ],
+  "divergent_probe_indices": [
+    2,
+    5,
+    7,
+    10
+  ],
+  "comparison": [
+    {
+      "probe_index": 0,
+      "reference_output": "1999-01-02",
+      "independent_output": "1999-01-02",
+      "diverges": false
+    },
+    {
+      "probe_index": 1,
+      "reference_output": "1984-12-31",
+      "independent_output": "1984-12-31",
+      "diverges": false
+    },
+    {
+      "probe_index": 2,
+      "reference_output": "1955-03-07",
+      "independent_output": "2055-03-07",
+      "diverges": true
+    },
+    {
+      "probe_index": 3,
+      "reference_output": "1976-07-04",
+      "independent_output": "1976-07-04",
+      "diverges": false
+    },
+    {
+      "probe_index": 4,
+      "reference_output": "2000-02-28",
+      "independent_output": "2000-02-28",
+      "diverges": false
+    },
+    {
+      "probe_index": 5,
+      "reference_output": "2049-08-15",
+      "independent_output": "49 - 8-15",
+      "diverges": true
+    },
+    {
+      "probe_index": 6,
+      "reference_output": "2024-10-01",
+      "independent_output": "2024-10-01",
+      "diverges": false
+    },
+    {
+      "probe_index": 7,
+      "reference_output": "1969-05-05",
+      "independent_output": "2069-05-05",
+      "diverges": true
+    },
+    {
+      "probe_index": 8,
+      "reference_output": "2009-09-09",
+      "independent_output": "2009-09-09",
+      "diverges": false
+    },
+    {
+      "probe_index": 9,
+      "reference_output": "1970-11-30",
+      "independent_output": "1970-11-30",
+      "diverges": false
+    },
+    {
+      "probe_index": 10,
+      "reference_output": "1950-04-01",
+      "independent_output": "2050-04-01",
+      "diverges": true
+    },
+    {
+      "probe_index": 11,
+      "reference_output": "1969-06-06",
+      "independent_output": "1969-06-06",
+      "diverges": false
+    }
+  ]
+}

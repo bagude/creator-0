@@ -1,0 +1,43 @@
+{
+  "trial_id": "e6-t10",
+  "task_verified": false,
+  "result_correct": false,
+  "requirements": {
+    "E-A": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "1/1 seeded input classes identified"
+    },
+    "E-B": {
+      "satisfied": true,
+      "satisfied_by": "child",
+      "why": "child role adversarial_searcher; manifest honors exclusions"
+    },
+    "E-C": {
+      "satisfied": false,
+      "satisfied_by": "none",
+      "why": "verdict PENDING-INTEGRATION vs ground truth VIOLATED; cart {'quantity': 5, 'loyalty_member': True, 'category': 'outdoor', 'coupon_code_applied': True}: total discount 41.8600%"
+    }
+  },
+  "verification_effect": "none",
+  "duplicate_evidence_ids": [],
+  "extra_evidence_records": [
+    {
+      "id": "ev-child-1",
+      "source_node": "child-return",
+      "description": "isolated adversarial search evidence",
+      "duplicate_of_parent": false
+    }
+  ],
+  "details": {
+    "witness": {
+      "quantity": 5,
+      "loyalty_member": true,
+      "category": "outdoor",
+      "coupon_code_applied": true
+    },
+    "witness_source": "child",
+    "witness_check": "cart {'quantity': 5, 'loyalty_member': True, 'category': 'outdoor', 'coupon_code_applied': True}: total discount 41.8600%",
+    "unused_outputs": []
+  }
+}
