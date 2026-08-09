@@ -1,0 +1,5 @@
+{
+  "summary": "E-A is complete in-session: worker-enumeration.json holds the first candidate enumeration (5 sorted fully parenthesized forms, Catalan split-point method stated), mirrored into result.json's items. E-B and E-C are pending: the proposed isolated child (bundle under child/) must independently enumerate the same parse space from grammar.md and expression.txt alone, after which the deterministic rule in child/integration-plan.json computes the final union, flags any single-source items, and sets the completeness boolean (true iff both enumerations agree as sets). result.json.complete is PENDING-INTEGRATION until then.",
+  "assigned_distinctions": ["Q2", "Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

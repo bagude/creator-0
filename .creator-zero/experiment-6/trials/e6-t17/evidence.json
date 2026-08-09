@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Governed observation of the task inputs: expression.txt tokenizes to operands [8,2,2,1] joined by operators [-,^,-]; grammar.md defines E -> E op E | number with no precedence or associativity, so the parse space is exactly the set of binary trees over the fixed token sequence, of size Catalan(3) = 5. Distinction Q2 requires isolation (its E-B admissibility is an authorship/access condition this session already violates), and Q3 depends on Q2's output.",
+    "refs": ["package/artifacts/grammar.md", "package/artifacts/expression.txt", "distinctions.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "E-A: first complete candidate enumeration of the parse space — 5 fully parenthesized no-space forms, sorted, produced by systematic split-point (Catalan) enumeration, with the method stated in the artifact.",
+    "refs": ["worker-enumeration.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Observable child-bundle proposal establishing the E-B pathway: attenuated child contract, four-node child harness, standalone child prompt, input manifest restricted to grammar.md and expression.txt (excluding worker-enumeration.json and all worker analysis so the child's enumeration is causally independent), and the pre-committed deterministic integration rule mapping the child's enumeration.json to the final result.json fields (union, single-source flags, completeness boolean).",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]

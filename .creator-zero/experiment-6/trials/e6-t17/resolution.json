@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t17",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "The complete set of distinct parses is the Catalan(3) = 5 fully parenthesized no-space forms, sorted: (((8-2)^2)-1), ((8-(2^2))-1), ((8-2)^(2-1)), (8-((2^2)-1)), (8-(2^(2-1))). Method: systematic split-point recursion over the fixed token sequence (operands [8,2,2,1], operators [-,^,-]) — parse(i,j) = number if i==j, else '(' + parse(i,k) + op_k + parse(k+1,j) + ')' for every k — which enumerates every binary tree over the three operator positions exactly once. Stated in full in worker-enumeration.json (E-A).",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be resolved in this session: E-B is an authorship/access condition, and this session has authored the first enumeration, so any enumeration it produces or inspects is inadmissible. The child bundle under child/ assigns the second enumeration to an isolated fresh child given only package/artifacts/grammar.md and package/artifacts/expression.txt (per child/child-input-manifest.json); root-executed validate-child, create-child, and child-return will produce and admit it.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be resolved before the child enumeration exists. The deterministic merge is pre-committed in child/integration-plan.json: items := sorted union of worker-enumeration.json items and child enumeration.json items; single-source items flagged; complete := true iff the two sets are equal, else false. result.json carries the E-A candidate items with complete = PENDING-INTEGRATION until root-executed verify-integration applies the rule.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

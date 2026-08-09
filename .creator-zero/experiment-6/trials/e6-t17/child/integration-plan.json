@@ -1,0 +1,10 @@
+{
+  "role": "independent_verifier",
+  "child_deliverable": "enumeration.json",
+  "child_implementation_file": null,
+  "rule": "Let A = the 'items' array of worker-enumeration.json (the worker's E-A enumeration, authored before child launch) and B = the 'items' array of the child's enumeration.json, each interpreted as a set of strings. Validation: every member of A and B must be a non-empty string containing no whitespace; if B fails validation, integration fails and result.json keeps complete = 'PENDING-INTEGRATION' with the child evidence rejected. Otherwise set result.json.items := the members of (A union B) sorted in ascending lexicographic (byte) order; set result.json.single_source_items := the sorted members of the symmetric difference of A and B, each annotated with its sole source ('worker' if only in A, 'child' if only in B); set result.json.complete := true if and only if A and B are equal as sets (equivalently, single_source_items is empty), else false; set result.json.method := 'Union of two enumerations: (E-A) worker split-point/Catalan enumeration in worker-enumeration.json; (E-B) causally independent enumeration by isolated child (given only grammar.md and expression.txt) in child enumeration.json; merged per child/integration-plan.json. ' concatenated with the method strings of both sources. No judgment is exercised: every field is a deterministic function of the two item arrays.",
+  "expected_contribution": {
+    "Q2": "The child's enumeration.json is the second, causally independent enumeration of the parse space; comparing it as a set against worker-enumeration.json settles whether an independent enumeration yields the same items (E-B).",
+    "Q3": "The child's enumeration.json is the admissible E-B input the merge rule consumes; its availability lets the rule compute the final union, the single-source flags, and the completeness boolean (E-C)."
+  }
+}

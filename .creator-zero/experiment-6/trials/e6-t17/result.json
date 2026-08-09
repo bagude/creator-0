@@ -1,0 +1,11 @@
+{
+  "items": [
+    "(((8-2)^2)-1)",
+    "((8-(2^2))-1)",
+    "((8-2)^(2-1))",
+    "(8-((2^2)-1))",
+    "(8-(2^(2-1)))"
+  ],
+  "method": "E-A (this session): systematic split-point (Catalan) enumeration over the fixed token sequence 8 - 2 ^ 2 - 1 (operands [8,2,2,1], operators [-,^,-]) under grammar E -> E op E | number with no precedence or associativity: parse(i,j) = number if i==j, else for each k in [i,j-1], '(' + parse(i,k) + op_k + parse(k+1,j) + ')'; this yields Catalan(3) = 5 fully parenthesized no-space forms, sorted lexicographically (full statement in worker-enumeration.json). E-B/E-C: a causally independent enumeration by an isolated child (given only grammar.md and expression.txt) and the deterministic union-and-flag merge per child/integration-plan.json are root-executed after this session; the items above are the E-A candidate list pending that merge.",
+  "complete": "PENDING-INTEGRATION"
+}
