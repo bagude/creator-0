@@ -1,0 +1,195 @@
+{
+  "topology_id": "H-e6-t06-isolated-child",
+  "status": "PARTIALLY_SUPPORTED",
+  "prediction_statuses": [
+    {
+      "prediction_id": "H-e6-t06-isolated-child-pr01",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "Q1 resolved by predicted node observe-evidence"
+    },
+    {
+      "prediction_id": "H-e6-t06-isolated-child-pr02",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "Q2 resolved by predicted node observe-evidence"
+    },
+    {
+      "prediction_id": "H-e6-t06-isolated-child-pr03",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "Q3 resolved by predicted node child-return"
+    },
+    {
+      "prediction_id": "H-e6-t06-isolated-child-pr04",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "Q4 resolved by predicted node observe-evidence"
+    },
+    {
+      "prediction_id": "H-e6-t06-isolated-child-pr05",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "completion order consistent with declared causal order"
+    },
+    {
+      "prediction_id": "H-e6-t06-isolated-child-pr06",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "2 <= 2"
+    },
+    {
+      "prediction_id": "H-e6-t06-isolated-child-pr07",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "no authority violation observed"
+    },
+    {
+      "prediction_id": "H-e6-t06-isolated-child-pr08",
+      "outcome": "FAILED",
+      "status": "FALSIFIED",
+      "why": "every child evidence record duplicates parent evidence"
+    },
+    {
+      "prediction_id": "H-e6-t06-isolated-child-pr09",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "verification effect: confirmed"
+    }
+  ],
+  "falsified_predictions": [
+    "H-e6-t06-isolated-child-pr08"
+  ],
+  "evidence_events": [
+    {
+      "principle_id": "P-LOCALITY",
+      "topology_id": "H-e6-t06-isolated-child",
+      "prediction_id": "H-e6-t06-isolated-child-pr01",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t06-isolated-child",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t06-isolated-child-ev001"
+    },
+    {
+      "principle_id": "P-LOCALITY",
+      "topology_id": "H-e6-t06-isolated-child",
+      "prediction_id": "H-e6-t06-isolated-child-pr02",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t06-isolated-child",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t06-isolated-child-ev002"
+    },
+    {
+      "principle_id": "P-INDEPENDENCE",
+      "topology_id": "H-e6-t06-isolated-child",
+      "prediction_id": "H-e6-t06-isolated-child-pr03",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t06-isolated-child",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t06-isolated-child-ev003"
+    },
+    {
+      "principle_id": "P-LOCALITY",
+      "topology_id": "H-e6-t06-isolated-child",
+      "prediction_id": "H-e6-t06-isolated-child-pr04",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t06-isolated-child",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t06-isolated-child-ev004"
+    },
+    {
+      "principle_id": "P-AUTHORITY-SEPARATION",
+      "topology_id": "H-e6-t06-isolated-child",
+      "prediction_id": "H-e6-t06-isolated-child-pr05",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t06-isolated-child",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t06-isolated-child-ev005"
+    },
+    {
+      "principle_id": "P-MINIMALITY",
+      "topology_id": "H-e6-t06-isolated-child",
+      "prediction_id": "H-e6-t06-isolated-child-pr06",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t06-isolated-child",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t06-isolated-child-ev006"
+    },
+    {
+      "principle_id": "P-AUTHORITY-SEPARATION",
+      "topology_id": "H-e6-t06-isolated-child",
+      "prediction_id": "H-e6-t06-isolated-child-pr07",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t06-isolated-child",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t06-isolated-child-ev007"
+    },
+    {
+      "principle_id": "P-INDEPENDENCE",
+      "topology_id": "H-e6-t06-isolated-child",
+      "prediction_id": "H-e6-t06-isolated-child-pr08",
+      "effect": "FALSIFY",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t06-isolated-child",
+          "prediction_outcome": "FAILED"
+        }
+      ],
+      "event_id": "H-e6-t06-isolated-child-ev008"
+    },
+    {
+      "principle_id": "P-FRESHNESS",
+      "topology_id": "H-e6-t06-isolated-child",
+      "prediction_id": "H-e6-t06-isolated-child-pr09",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t06-isolated-child",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t06-isolated-child-ev009"
+    },
+    {
+      "principle_id": "P-ATTENUATION",
+      "topology_id": "H-e6-t06-isolated-child",
+      "prediction_id": "H-e6-t06-isolated-child-pr09",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t06-isolated-child",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t06-isolated-child-ev010"
+    }
+  ]
+}

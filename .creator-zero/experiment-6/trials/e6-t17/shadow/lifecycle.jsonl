@@ -1,3 +1,4 @@
 {"state": "PREPARED", "at": "2026-08-09T17:43:00Z", "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t17/shadow/exec-ws", "topology": "H-e6-t17-branching", "blinding_scan": "PASS"}
 {"state": "EXEC_COLLECTED", "at": "2026-08-09T17:47:46Z", "family": "branching"}
 {"state": "BRANCH_DECIDED", "at": "2026-08-09T17:47:46Z", "decision": "CREATE"}
+{"state": "CHILD_VALIDATED", "at": "2026-08-09T17:49:40Z"}

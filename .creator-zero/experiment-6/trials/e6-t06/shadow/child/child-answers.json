@@ -1,0 +1,31 @@
+{
+  "answers": {
+    "validate:66373197": "VALID",
+    "validate:74193967": "VALID",
+    "validate:92489881": "INVALID",
+    "validate:52874804": "INVALID",
+    "validate:74391491": "VALID",
+    "validate:91324575": "VALID",
+    "validate:15878375": "VALID",
+    "validate:29067655": "INVALID",
+    "compute:479812": "9",
+    "compute:153886": "3",
+    "compute:278381": "3",
+    "compute:027899": "7"
+  },
+  "method": "For validation I used the whole-identifier congruence test: extend the 3,7,1 weight cycle one position rightward so the check digit itself receives weight 1, the rightmost payload digit weight 3, then 7, 1, 3, 7, 1 continuing leftward (weight is 3 when position p from the right, with p=0 at the check digit, satisfies p mod 3 = 1; 7 when p mod 3 = 2; 1 when p mod 3 = 0). I summed digit x weight over ALL digits including the check digit to get T, and declared the identifier VALID iff T mod 10 = 0. For computation I assigned weights left to right starting from the weight of position L (the payload length) counted from the right — for these 6-digit payloads L mod 3 = 0 so the leftmost digit gets weight 1 and the left-to-right weights are 1, 7, 3, 1, 7, 3, ending with weight 3 on the rightmost digit. I summed digit x weight to get S and found the check digit c by testing candidates 0-9 for the unique c with (S + c) mod 10 = 0. Every sum was computed digit by digit twice before recording.",
+  "derivations": {
+    "validate:66373197": "digits/weights L-to-R: 6x3=18, 6x1=6, 3x7=21, 7x3=21, 3x1=3, 1x7=7, 9x3=27, 7x1=7 (check digit 7 has weight 1); T = 18+6+21+21+3+7+27+7 = 110; T mod 10 = 0 -> VALID",
+    "validate:74193967": "digits/weights L-to-R: 7x3=21, 4x1=4, 1x7=7, 9x3=27, 3x1=3, 9x7=63, 6x3=18, 7x1=7; T = 21+4+7+27+3+63+18+7 = 150; T mod 10 = 0 -> VALID",
+    "validate:92489881": "digits/weights L-to-R: 9x3=27, 2x1=2, 4x7=28, 8x3=24, 9x1=9, 8x7=56, 8x3=24, 1x1=1; T = 27+2+28+24+9+56+24+1 = 171; T mod 10 = 1 -> INVALID",
+    "validate:52874804": "digits/weights L-to-R: 5x3=15, 2x1=2, 8x7=56, 7x3=21, 4x1=4, 8x7=56, 0x3=0, 4x1=4; T = 15+2+56+21+4+56+0+4 = 158; T mod 10 = 8 -> INVALID",
+    "validate:74391491": "digits/weights L-to-R: 7x3=21, 4x1=4, 3x7=21, 9x3=27, 1x1=1, 4x7=28, 9x3=27, 1x1=1; T = 21+4+21+27+1+28+27+1 = 130; T mod 10 = 0 -> VALID",
+    "validate:91324575": "digits/weights L-to-R: 9x3=27, 1x1=1, 3x7=21, 2x3=6, 4x1=4, 5x7=35, 7x3=21, 5x1=5; T = 27+1+21+6+4+35+21+5 = 120; T mod 10 = 0 -> VALID",
+    "validate:15878375": "digits/weights L-to-R: 1x3=3, 5x1=5, 8x7=56, 7x3=21, 8x1=8, 3x7=21, 7x3=21, 5x1=5; T = 3+5+56+21+8+21+21+5 = 140; T mod 10 = 0 -> VALID",
+    "validate:29067655": "digits/weights L-to-R: 2x3=6, 9x1=9, 0x7=0, 6x3=18, 7x1=7, 6x7=42, 5x3=15, 5x1=5; T = 6+9+0+18+7+42+15+5 = 102; T mod 10 = 2 -> INVALID",
+    "compute:479812": "L=6, 6 mod 3 = 0 so leftmost weight is 1; weights L-to-R 1,7,3,1,7,3: 4x1=4, 7x7=49, 9x3=27, 8x1=8, 1x7=7, 2x3=6; S = 4+49+27+8+7+6 = 101; need (101+c) mod 10 = 0; testing c=0..9, only c=9 gives 110 = 0 mod 10 -> c = 9",
+    "compute:153886": "L=6, weights L-to-R 1,7,3,1,7,3: 1x1=1, 5x7=35, 3x3=9, 8x1=8, 8x7=56, 6x3=18; S = 1+35+9+8+56+18 = 127; need (127+c) mod 10 = 0; testing c=0..9, only c=3 gives 130 = 0 mod 10 -> c = 3",
+    "compute:278381": "L=6, weights L-to-R 1,7,3,1,7,3: 2x1=2, 7x7=49, 8x3=24, 3x1=3, 8x7=56, 1x3=3; S = 2+49+24+3+56+3 = 137; need (137+c) mod 10 = 0; testing c=0..9, only c=3 gives 140 = 0 mod 10 -> c = 3",
+    "compute:027899": "L=6, weights L-to-R 1,7,3,1,7,3: 0x1=0, 2x7=14, 7x3=21, 8x1=8, 9x7=63, 9x3=27; S = 0+14+21+8+63+27 = 133; need (133+c) mod 10 = 0; testing c=0..9, only c=7 gives 140 = 0 mod 10 -> c = 7"
+  }
+}
