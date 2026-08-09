@@ -68,96 +68,6 @@ def run(cmd: list[str]) -> subprocess.CompletedProcess:
     return subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True, timeout=600)
 
 
-# ---------------------------------------------------------------------------
-# Experiment 4B closure-predicate correction (post-hoc governance amendment,
-# 2026-08-09; provenance: creation-ledger.jsonl gate_amended event and
-# closure-correction/provenance/). The pre-4B gate accepted
-# kappa_2_capability_attested on attenuation + reduced budget + command
-# presence + non-execution alone; the stated recursive Creator-Closure
-# definition additionally requires the PROPOSED CHILD ITSELF to remain
-# Creator-capable. hat_kappa below is that definition made executable:
-#
-#   hat_kappa(K_n, K_(n+1)) = Valid(K_(n+1))
-#                             AND Attenuated(K_(n+1), K_n)
-#                             AND CreatorCapable(K_(n+1))
-#                             AND CreationMechanismValid(K_n, K_(n+1))
-#                             AND ExternalStopOnly(K_(n+1))
-
-K3_DRAFT_KEYS = ("k3_draft", "K3_draft", "k3", "draft_child_contract_K3")
-
-
-def extract_k3(att: dict) -> dict:
-    """Key-normalized K3 draft extraction (same equivalence set the ledgered
-    pre-execution amendment recognized)."""
-    for key in K3_DRAFT_KEYS:
-        if isinstance(att.get(key), dict):
-            return att[key]
-    return {}
-
-
-def att_command_present(att: dict) -> bool:
-    return bool(att.get("creation_command") or att.get("would_run_command")
-                or att.get("exact_creation_command_NOT_EXECUTED"))
-
-
-def att_not_executed(att: dict) -> bool:
-    return bool(
-        att.get("not_executed")
-        or att.get("realized") is False
-        or "not" in str(att.get("execution_status", "")).lower()
-        or "NOT executed" in str(att.get("architectural_stop_statement", ""))
-        or any("NOT_EXECUTED" in k for k in att)
-    )
-
-
-CLOSURE_CLAUSES = ("valid_K3", "attenuated_K3_le_K2", "creator_capable",
-                   "creation_mechanism_valid", "external_stop_only")
-
-
-def attested_creator_closure(k3: dict, k2: dict, att: dict | None = None):
-    """AttestedCreatorClosure(K2, K3): the corrected bounded closure predicate.
-
-    Returns (ok, clauses). A terminal child (creator_capability=false or
-    may_create_creator=false) fails regardless of attenuation; a Creator-
-    capable child whose realization is denied only by an explicit external
-    architectural stop (may_realize_creation=false, max_children=0) passes.
-    Purely declarative: evaluates contract dicts, never launches anything.
-    """
-    att = att or {}
-
-    def tools(c):
-        return set(c.get("allowed_tools", []))
-
-    clauses = {}
-    clauses["valid_K3"] = bool(isinstance(k3, dict) and k3 and all(
-        f in k3 for f in ("allowed_tools", "max_model_calls", "max_children",
-                          "max_depth", "creator_capability",
-                          "may_create_creator", "may_realize_creation")))
-    if not clauses["valid_K3"]:
-        for name in CLOSURE_CLAUSES[1:]:
-            clauses[name] = False
-        return False, clauses
-    clauses["attenuated_K3_le_K2"] = (
-        tools(k3) <= tools(k2)
-        and set(k3.get("allowed_primitives", [])) <= set(k2.get("allowed_primitives", []))
-        and set(k3.get("allowed_relations", [])) <= set(k2.get("allowed_relations", []))
-        and int(k3["max_model_calls"]) < int(k2["max_model_calls"])
-        and int(k3["max_children"]) <= int(k2["max_children"])
-        and int(k3["max_depth"]) <= int(k2["max_depth"])
-        and str(k3.get("git_authority", "none")).startswith("none")
-        and all(str(p).startswith(".creator-zero/experiment-4/")
-                for p in k3.get("filesystem_write_scope", []))
-    )
-    clauses["creator_capable"] = (k3.get("creator_capability") is True
-                                  and k3.get("may_create_creator") is True)
-    clauses["creation_mechanism_valid"] = att_command_present(att)
-    clauses["external_stop_only"] = (
-        k3.get("may_realize_creation") is False
-        and int(k3["max_children"]) == 0
-    )
-    return all(clauses.values()), clauses
-
-
 def main() -> int:
     # 1. Required artifacts exist and parse.
     required_json = [
@@ -308,48 +218,27 @@ def main() -> int:
     # Key normalization amended 2026-08-09T06:08Z (ledgered, pre-decision):
     # the attestation content requirements never mandated exact key names,
     # so equivalent keys are recognized; substance checks are unchanged.
-    #
-    # 4B closure-predicate correction (ledgered, post-hoc): the governing
-    # attestation is closure-correction/corrected-k3-attestation.json when
-    # present (the original artifact is preserved untouched as historical
-    # evidence); every pre-4B substance condition still applies to the
-    # governing attestation, and hat_kappa is REQUIRED on top of them — a K3
-    # with creator_capability != true or may_create_creator != true can no
-    # longer pass, whatever its attenuation or creation command.
-    k3 = extract_k3(att)
-    corr_p = E4 / "closure-correction/corrected-k3-attestation.json"
-    gov_att, gov_src = att, "c2/creator-capability-attestation.json (original)"
-    if corr_p.is_file():
-        try:
-            gov_att = load(corr_p)
-            gov_src = "closure-correction/corrected-k3-attestation.json"
-        except Exception as e:
-            gov_att, gov_src = {}, f"corrected attestation unparseable: {e}"
-    gov_k3 = extract_k3(gov_att)
-    closure_ok, closure_clauses = attested_creator_closure(gov_k3, k2, gov_att)
+    k3 = (att.get("k3_draft") or att.get("K3_draft") or att.get("k3")
+          or att.get("draft_child_contract_K3") or {})
+    cmd_present = bool(att.get("creation_command") or att.get("would_run_command")
+                       or att.get("exact_creation_command_NOT_EXECUTED"))
+    not_executed = bool(
+        att.get("not_executed")
+        or att.get("realized") is False
+        or "not" in str(att.get("execution_status", "")).lower()
+        or "NOT executed" in str(att.get("architectural_stop_statement", ""))
+        or any("NOT_EXECUTED" in k for k in att)
+    )
     att_ok = (
-        isinstance(gov_k3, dict) and gov_k3
-        and set(gov_k3.get("allowed_tools", ["__none__"])) <= tools(k2)
-        and int(gov_k3.get("max_model_calls", 999)) < int(k2["max_model_calls"])
-        and att_not_executed(gov_att)
-        and att_command_present(gov_att)
-        and closure_ok
+        isinstance(k3, dict) and k3
+        and set(k3.get("allowed_tools", ["__none__"])) <= tools(k2)
+        and int(k3.get("max_model_calls", 999)) < int(k2["max_model_calls"])
+        and not_executed
+        and cmd_present
     )
     check("kappa_2_capability_attested", att_ok,
-          f"governing={gov_src} k3_tools={sorted(gov_k3.get('allowed_tools', []))} "
-          f"k3_calls={gov_k3.get('max_model_calls')} hat_kappa={closure_clauses}")
-
-    # 4B historical-integrity check: the ORIGINAL Experiment 4 K3 draft
-    # (creator_capability=false, may_create_creator=false) must remain on
-    # record as failing hat_kappa, and the mismatch record must exist. This
-    # check fails if anyone rewrites the original artifact to look compliant.
-    orig_ok, orig_clauses = attested_creator_closure(k3, k2, att)
-    mismatch_p = E4 / "closure-correction/original-mismatch.json"
-    check("kappa_2_original_mismatch_recorded",
-          (not orig_ok) and not orig_clauses["creator_capable"]
-          and mismatch_p.is_file(),
-          f"original hat_kappa=FAIL expected (historical fact): {orig_clauses}; "
-          f"mismatch_record={'present' if mismatch_p.is_file() else 'MISSING'}")
+          f"k3_tools={sorted(k3.get('allowed_tools', []))} k3_calls={k3.get('max_model_calls')} "
+          f"cmd_present={bool(att.get('creation_command') or att.get('would_run_command'))}")
 
     # 12. Pre-promotion suite state.
     pre = run([sys.executable, "-m", "unittest", "discover", "-s", "tests"])

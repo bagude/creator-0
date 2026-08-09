@@ -1,0 +1,41 @@
+{
+  "record": "Experiment 4B closure-predicate verification",
+  "predicate": "hat_kappa(K2, K3) = Valid(K3) AND Attenuated(K3, K2) AND CreatorCapable(K3) AND CreationMechanismValid(K2, K3) AND ExternalStopOnly(K3)",
+  "implementation": ".creator-zero/experiment-4/gate.py::attested_creator_closure",
+  "gate_sha256_amended": "b1aa26b50b18d38a042f03aef50a16fcf684d1415c93b860093628900c66d334",
+  "k2_contract": {
+    "path": ".creator-zero/experiment-4/child-2-contract.json",
+    "sha256": "4f6865fec22eada3eb73ed537ca23a0a1461abdb095501230fc75d7a883d04d9"
+  },
+  "evaluations": [
+    {
+      "subject": "ORIGINAL Experiment 4 K3 draft (historical artifact, unmodified)",
+      "attestation": ".creator-zero/experiment-4/c2/creator-capability-attestation.json",
+      "attestation_sha256": "2d97e54597431fe1db13d1bec3cb57a1553f3793397832628e453f2364445359",
+      "hat_kappa": "FAIL",
+      "ok": false,
+      "clauses": {
+        "valid_K3": true,
+        "attenuated_K3_le_K2": true,
+        "creator_capable": false,
+        "creation_mechanism_valid": true,
+        "external_stop_only": true
+      }
+    },
+    {
+      "subject": "CORRECTED 4B K3 draft (post-hoc artifact)",
+      "attestation": ".creator-zero/experiment-4/closure-correction/corrected-k3-attestation.json",
+      "attestation_sha256": "5ff1a8502cdd7e325d21c00af14e50f1579492219a08d08136d1bf603213e92a",
+      "hat_kappa": "PASS",
+      "ok": true,
+      "clauses": {
+        "valid_K3": true,
+        "attenuated_K3_le_K2": true,
+        "creator_capable": true,
+        "creation_mechanism_valid": true,
+        "external_stop_only": true
+      }
+    }
+  ],
+  "no_c3_realized": "Both evaluations are declarative contract checks; no creation command was executed; .creator-zero/experiment-4/c3/ does not exist."
+}

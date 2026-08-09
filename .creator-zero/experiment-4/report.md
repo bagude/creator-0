@@ -339,3 +339,75 @@ generations of reproduction with strictly attenuated contracts, genuinely
 independent epistemics (C2 contributed discriminating evidence C1 lacked),
 state-level recursive return dependence, and promotion exclusively by
 deterministic root law.
+
+---
+
+## 21. POST-HOC CLOSURE-PREDICATE CORRECTION (Experiment 4B)
+
+Everything above this line is the ORIGINAL EXPERIMENT 4 RESULT, preserved
+verbatim. This section was added afterwards (2026-08-09, correction pass 4B)
+and corrects the kappa(C2) interpretation without rewriting that record.
+Full detail: `.creator-zero/experiment-4/closure-correction/`.
+
+### 21.1 The mismatch
+
+The recursive definition requires `kappa(C_n)=1` iff C_n can produce a
+bounded successor with `kappa(C_(n+1))=1` — operationally, the proposed
+child must itself remain Creator-capable even when realization is denied by
+an external stop. The original C2 attestation's K3 draft contains
+
+```json
+{ "may_create_creator": false, "creator_capability": false }
+```
+
+— a bounded TERMINAL child. It demonstrates the ability to specify such a
+child, not preservation of Creator capability into generation 3. The
+original Gate (sha `919fd91c…`) nevertheless passed
+`kappa_2_capability_attested`, because its check verified attenuation,
+reduced budget, command presence, and non-execution, but never required K3
+itself to remain Creator-capable.
+
+### 21.2 The correction
+
+The Gate (amended sha `b1aa26b5…`, ledgered) now enforces the executable
+closure predicate
+
+```text
+hat_kappa(K2, K3) = Valid(K3) AND Attenuated(K3, K2) AND CreatorCapable(K3)
+                    AND CreationMechanismValid(K2, K3) AND ExternalStopOnly(K3)
+```
+
+with `CreatorCapable` requiring `creator_capability == true` and
+`may_create_creator == true`, and `ExternalStopOnly` requiring
+`may_realize_creation == false` and `max_children == 0`. No pre-4B check
+was weakened. The original attestation is preserved unmodified (sha
+`2d97e545…`; provenance copies under `closure-correction/provenance/`) and
+deterministically FAILS `hat_kappa` on the `creator_capable` clause alone —
+the amended Gate REJECTS when it governs. A corrected, clearly post-hoc K3
+attestation (`closure-correction/corrected-k3-attestation.json`;
+`K3 <= K2` on every governed axis, `creator_capability=true`,
+`may_create_creator=true`, `may_realize_creation=false`, `max_children=0`,
+`max_depth=0`, creation command present, NOT executed) satisfies it; the
+amended Gate ACCEPTs 21/21 with a new check pinning the original mismatch
+on record. A 7-case deterministic regression
+(`closure-correction/test_closure_predicate.py`) covers the required
+negative (terminal child → FAIL) and positive (bounded-stop Creator-capable
+child → PASS) cases. No C3 was realized anywhere.
+
+### 21.3 Corrected interpretation of §13 and §20
+
+```text
+C0 -> C1 realized: demonstrated
+C1 -> C2 realized: demonstrated
+kappa(C0): demonstrated
+kappa(C1): demonstrated
+kappa(C2) under original recursive definition:
+    not demonstrated by the original K3 attestation
+kappa(C2): retrospectively supported by corrected bounded attestation,
+    but not by the original attestation artifact
+```
+
+The corrected attestation is NOT evidence that existed during the original
+run. §13's `kappa(C2) = 1` and `CREATOR_CLOSURE_PRESERVED` stand only under
+this retrospective, post-hoc support; the §20 PASS is unaffected on every
+other condition.

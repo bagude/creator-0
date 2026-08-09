@@ -1,0 +1,44 @@
+{
+  "record": "Experiment 4B original mismatch \u2014 deterministic reproduction",
+  "generated_by": "amended gate.py attested_creator_closure evaluated against the unmodified original artifacts",
+  "stated_recursive_definition": "kappa(C_n)=1 iff C_n can produce a bounded successor Creator C_(n+1) with kappa(C_(n+1))=1; operationally for a bounded attestation, the proposed child must itself remain Creator-capable even if realization is prevented by an external depth/resource stop",
+  "original_attestation": {
+    "path": ".creator-zero/experiment-4/c2/creator-capability-attestation.json",
+    "sha256": "2d97e54597431fe1db13d1bec3cb57a1553f3793397832628e453f2364445359",
+    "k3_draft_fields_at_issue": {
+      "creator_capability": false,
+      "may_create_creator": false,
+      "may_realize_creation": false,
+      "max_children": 0
+    }
+  },
+  "original_gate": {
+    "sha256": "919fd91cf2d8a06eafc9ce1ab5a37837a39032485a37907b2dc14b7242cd6d1e",
+    "provenance_copy": ".creator-zero/experiment-4/closure-correction/provenance/original-gate.py",
+    "kappa_2_check_verified": [
+      "K3 tools subset of K2 tools",
+      "K3 max_model_calls < K2 max_model_calls",
+      "creation command present",
+      "non-execution attested"
+    ],
+    "kappa_2_check_missing_predicates": [
+      "K3.creator_capability == true",
+      "K3.may_create_creator == true",
+      "external-stop encoding (may_realize_creation == false AND max_children == 0) as an explicit requirement"
+    ],
+    "original_result": "kappa_2_capability_attested = PASS (gate-decision ACCEPT 20/20; provenance copy closure-correction/provenance/original-gate-decision.json)"
+  },
+  "corrected_predicate_evaluation_of_original_k3": {
+    "hat_kappa": "FAIL",
+    "clauses": {
+      "valid_K3": true,
+      "attenuated_K3_le_K2": true,
+      "creator_capable": false,
+      "creation_mechanism_valid": true,
+      "external_stop_only": true
+    },
+    "failing_clause": "creator_capable (creator_capability=false, may_create_creator=false)"
+  },
+  "conclusion": "The original K3 draft demonstrates the ability to specify a bounded TERMINAL child, not preservation of Creator capability into generation 3; it does not satisfy the recursive Creator-Closure definition. The pre-4B gate nevertheless accepted it because the closure predicate was not encoded in the check.",
+  "historical_integrity": "The original attestation artifact is preserved unmodified (hash above). This record documents the mismatch; it does not rewrite it."
+}

@@ -1,0 +1,55 @@
+{
+  "record": "Experiment 4B gate regression results",
+  "gate_sha256_amended": "b1aa26b50b18d38a042f03aef50a16fcf684d1415c93b860093628900c66d334",
+  "gate_sha256_original": "919fd91cf2d8a06eafc9ce1ab5a37837a39032485a37907b2dc14b7242cd6d1e",
+  "unit_regression": {
+    "suite": ".creator-zero/experiment-4/closure-correction/test_closure_predicate.py",
+    "command": "python3 -m unittest discover -s .creator-zero/experiment-4/closure-correction -v",
+    "returncode": 0,
+    "summary": [
+      "Ran 7 tests in 0.001s",
+      "OK"
+    ],
+    "cases": [
+      "A K3 gaining a tool K2 lacks must fail attenuation. ... ok",
+      "The 4B corrected attestation artifact satisfies hat_kappa. ... ok",
+      "No creation command in the attestation -> mechanism clause fails. ... ok",
+      "Required negative case: creator_capability=false, ... ok",
+      "The historical Experiment 4 K3 draft ... ok",
+      "Required positive case: creator_capability=true, ... ok",
+      "Capability preservation must not smuggle in realization authority: ... ok"
+    ],
+    "required_negative_case": "test_negative_terminal_child_fails (creator_capability=false, may_create_creator=false -> FAIL): ok",
+    "required_positive_case": "test_positive_bounded_stop_passes (creator_capability=true, may_create_creator=true, may_realize_creation=false, max_children=0 -> PASS): ok"
+  },
+  "gate_negative_run": {
+    "setup": "corrected-k3-attestation.json temporarily absent, so the governing attestation was the ORIGINAL Experiment 4 artifact (unmodified)",
+    "decision": "REJECT",
+    "exit_code": 2,
+    "promotion": "REFUSED",
+    "failed_checks": [
+      "kappa_2_capability_attested"
+    ],
+    "kappa_2_capability_attested": {
+      "check": "kappa_2_capability_attested",
+      "pass": false,
+      "detail": "governing=c2/creator-capability-attestation.json (original) k3_tools=['Bash', 'Glob', 'Grep', 'Read'] k3_calls=2 hat_kappa={'valid_K3': True, 'attenuated_K3_le_K2': True, 'creator_capable': False, 'creation_mechanism_valid': True, 'external_stop_only': True}"
+    },
+    "kappa_2_original_mismatch_recorded": {
+      "check": "kappa_2_original_mismatch_recorded",
+      "pass": true,
+      "detail": "original hat_kappa=FAIL expected (historical fact): {'valid_K3': True, 'attenuated_K3_le_K2': True, 'creator_capable': False, 'creation_mechanism_valid': True, 'external_stop_only': True}; mismatch_record=present"
+    },
+    "interpretation": "The corrected gate REJECTS the original terminal-child K3 draft solely on the closure predicate (creator_capable=false); every other check still passes, so no pre-4B check was weakened or perturbed."
+  },
+  "gate_positive_run": {
+    "setup": "corrected-k3-attestation.json present (governing attestation)",
+    "decision": "ACCEPT",
+    "exit_code": 0,
+    "checks_passed": 21,
+    "checks_failed": 0,
+    "gate_decision_file": ".creator-zero/experiment-4/gate-decision.json"
+  },
+  "no_c3_realized": "No creation command executed in any run; .creator-zero/experiment-4/c3/ does not exist.",
+  "canonical_integrity": "src/, docs/, tests/ solver suite untouched; canonical suite remains 14/14 green after all runs."
+}

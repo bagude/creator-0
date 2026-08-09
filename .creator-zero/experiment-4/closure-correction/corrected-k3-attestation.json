@@ -1,0 +1,78 @@
+{
+  "artifact_class": "POST-HOC CLOSURE-PREDICATE CORRECTION (Experiment 4B)",
+  "attestor": "Experiment 4B correction pass (C0-level governance, 2026-08-09)",
+  "NOT_original_run_evidence": "This artifact was authored AFTER Experiment 4 completed, as part of the 4B closure-predicate correction. It is NOT evidence that existed during the original run and was NOT authored by C2. The original C2-authored attestation is preserved unmodified at .creator-zero/experiment-4/c2/creator-capability-attestation.json (sha256 2d97e54597431fe1db13d1bec3cb57a1553f3793397832628e453f2364445359) and mirrored in closure-correction/provenance/.",
+  "purpose": "kappa_2 bounded evidence under the corrected recursive Creator-Closure predicate: a draft K3 that PRESERVES Creator capability (creator_capability=true, may_create_creator=true) while realization stays denied by an explicit external architectural stop (may_realize_creation=false, max_children=0, max_depth=0), together with the exact non-executed creation command.",
+  "original_defect_being_corrected": {
+    "original_k3_fields": {
+      "may_create_creator": false,
+      "creator_capability": false
+    },
+    "why_defective": "A child stripped of Creator capability is a terminal leaf. Producing it demonstrates the ability to specify a bounded terminal child, not preservation of Creator capability into generation 3; it therefore cannot witness kappa(C2)=1 under the recursive definition kappa(C_n)=1 iff C_n can produce a bounded successor with kappa(C_(n+1))=1."
+  },
+  "draft_child_contract_K3": {
+    "version": "0.2-experiment-4B-K3-CORRECTED-DRAFT-NEVER-INSTANTIATED",
+    "contract_id": "K3",
+    "holder": "C3 (hypothetical child Creator, generation 3 - NEVER INSTANTIATED)",
+    "generation": 3,
+    "derived_from": ".creator-zero/experiment-4/child-2-contract.json",
+    "authored_by": "Experiment 4B correction pass as corrected draft only; no authorization to realize",
+    "allowed_primitives": [
+      "observe",
+      "test",
+      "verify",
+      "create",
+      "return"
+    ],
+    "allowed_relations": [
+      "observe",
+      "verify",
+      "create",
+      "return"
+    ],
+    "allowed_tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+    ],
+    "max_children": 0,
+    "max_depth": 0,
+    "max_model_calls": 2,
+    "may_create_creator": true,
+    "creator_capability": true,
+    "may_realize_creation": false,
+    "max_realized_creator_children": 0,
+    "max_realized_creator_depth": 0,
+    "protected_rules": [
+      "No child may increase its authority envelope.",
+      "Model output is a proposal, never authorization.",
+      "C3 never runs promotion; only the root deterministic gate promotes.",
+      "C3 must not realize any creation: max_children=0 is enforced by cz.py validation and by this contract; capability is evidenced by attestation only."
+    ],
+    "filesystem_write_scope": [
+      ".creator-zero/experiment-4/c3/"
+    ],
+    "git_authority": "none",
+    "network_authority": "model-invocation API via claude CLI only",
+    "session_freshness": "no --continue, no --resume"
+  },
+  "attenuation_proof_K3_le_K2": {
+    "allowed_tools": "{Read,Grep,Glob,Bash} strict subset of K2's {Read,Grep,Glob,Bash,Write} (Write removed)",
+    "allowed_primitives": "{observe,test,verify,create,return} (5) subset of K2's {observe,hypothesize,test,verify,create,return} (6); 'create' RETAINED because Creator capability is the property being preserved — realization is stopped by budget, not by capability removal",
+    "allowed_relations": "{observe,verify,create,return} (4) subset of K2's 7",
+    "max_model_calls": "2 < 4",
+    "max_children": "0 <= 0",
+    "max_depth": "0 <= 0",
+    "may_realize_creation": "false == false (never re-escalated)",
+    "max_realized_creator_children": "0 <= 0",
+    "git_authority": "none <= none (K2 read-only observation not inherited)",
+    "write_scope": ".creator-zero/experiment-4/c3/** only — inside the experiment workspace, disjoint from every existing artifact, a path that does not and will never exist (same relation the original Experiment 4 record used for the K3 draft)",
+    "no_authority_axis_increases": "every governed axis equal or reduced versus K2"
+  },
+  "capability_preservation_statement": "creator_capability=true and may_create_creator=true are PRESERVED into the K3 draft, exactly as K2 itself preserves them under K1. The stop at generation 3 is external and architectural: may_realize_creation=false, max_children=0, max_depth=0, enforced by contract and by the deterministic validator (cz.py rejects any spec realizing a create node under a max_children=0 contract), not by removal of Creator capability.",
+  "exact_creation_command_NOT_EXECUTED": "env BASH_DEFAULT_TIMEOUT_MS=600000 BASH_MAX_TIMEOUT_MS=600000 claude -p \"$(cat .creator-zero/experiment-4/c3/prompt.md)\" --model claude-fable-5 --allowedTools \"Bash Read Grep Glob\" > .creator-zero/experiment-4/c3/session.log 2>&1",
+  "architectural_stop_statement": "This command is NOT executed. No C3 is instantiated by this correction pass. K2 sets max_children=0 and may_realize_creation=false: the deterministic validator (.creator-zero/cz.py validate_spec) rejects under K2 any spec realizing a create node ('creator count exceeds contract'), so the stop at generation 2 is enforced by the validator and the contract. The corrected K3 draft mirrors that same stop one generation down (max_children=0, may_realize_creation=false) while keeping Creator capability intact.",
+  "validator_check_reference": "python3 .creator-zero/cz.py validate <any-spec-with-can_create-node> --contract .creator-zero/experiment-4/child-2-contract.json -> BOUNDARY_VIOLATION: creator count exceeds contract",
+  "resulting_kappa_2_claim": "kappa(C2): retrospectively supported by this corrected bounded attestation, but not by the original attestation artifact."
+}

@@ -1,10 +1,10 @@
 {
   "gate": "experiment-4 deterministic root gate",
-  "gate_sha256_self": "b1aa26b50b18d38a042f03aef50a16fcf684d1415c93b860093628900c66d334",
+  "gate_sha256_self": "919fd91cf2d8a06eafc9ce1ab5a37837a39032485a37907b2dc14b7242cd6d1e",
   "decision": "ACCEPT",
   "mutation_performed": true,
   "promotion": "PROMOTED",
-  "checks_passed": 21,
+  "checks_passed": 20,
   "checks_failed": 0,
   "checks": [
     {
@@ -85,17 +85,12 @@
     {
       "check": "kappa_2_capability_attested",
       "pass": true,
-      "detail": "governing=closure-correction/corrected-k3-attestation.json k3_tools=['Bash', 'Glob', 'Grep', 'Read'] k3_calls=2 hat_kappa={'valid_K3': True, 'attenuated_K3_le_K2': True, 'creator_capable': True, 'creation_mechanism_valid': True, 'external_stop_only': True}"
-    },
-    {
-      "check": "kappa_2_original_mismatch_recorded",
-      "pass": true,
-      "detail": "original hat_kappa=FAIL expected (historical fact): {'valid_K3': True, 'attenuated_K3_le_K2': True, 'creator_capable': False, 'creation_mechanism_valid': True, 'external_stop_only': True}; mismatch_record=present"
+      "detail": "k3_tools=['Bash', 'Glob', 'Grep', 'Read'] k3_calls=2 cmd_present=False"
     },
     {
       "check": "suite_green_pre_promotion",
       "pass": true,
-      "detail": "ran=14 rc=0"
+      "detail": "ran=13 rc=0"
     },
     {
       "check": "promotion_preconditions",
