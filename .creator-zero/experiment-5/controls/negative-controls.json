@@ -1,0 +1,66 @@
+{
+  "artifact": "Experiment 5 negative-control results (deterministic)",
+  "all_reproduced": true,
+  "controls": {
+    "A_session_taint": {
+      "expected": "FRESHNESS_FAIL",
+      "observed": "FRESHNESS_FAIL",
+      "reproduced": true,
+      "detail": {
+        "reason": "FRESHNESS_FAIL: session-continuity variables would reach the child process: ['CLAUDE_CODE_SESSION_ID']",
+        "process_created": false
+      }
+    },
+    "B_missing_propose": {
+      "expected": "CAPABILITY_OBSERVABILITY_FAIL",
+      "observed": "CAPABILITY_OBSERVABILITY_FAIL",
+      "reproduced": true,
+      "detail": {
+        "status": "FAIL"
+      }
+    },
+    "C_authority_escalation": {
+      "expected": "ATTENUATION_FAIL",
+      "observed": "ATTENUATION_FAIL",
+      "reproduced": true,
+      "detail": {
+        "failing_axes": [],
+        "status": "FAIL"
+      }
+    },
+    "D_runtime_escape": {
+      "expected": "REFINEMENT_VIOLATION",
+      "observed": "REFINEMENT_VIOLATION",
+      "reproduced": true,
+      "detail": {
+        "offending": "act_candidate"
+      }
+    },
+    "E_unjustified_create": {
+      "expected": "INVALID_CREATION_DECISION",
+      "observed": "INVALID_CREATION_DECISION",
+      "reproduced": true,
+      "detail": {
+        "problems": [
+          "CREATE requires at least one unresolved distinction",
+          "CREATE requires at least one expected child contribution"
+        ]
+      }
+    },
+    "F_hidden_child": {
+      "expected": "TOPOLOGY_DECISION_VIOLATION",
+      "observed": "TOPOLOGY_DECISION_VIOLATION",
+      "reproduced": true,
+      "detail": {
+        "problems": [
+          "child-branch nodes realized after DO_NOT_CREATE: ['create-child']",
+          "descendant events present after DO_NOT_CREATE: ['e5']"
+        ]
+      },
+      "provenance_variant": {
+        "observed": "TOPOLOGY_DECISION_VIOLATION",
+        "reproduced": true
+      }
+    }
+  }
+}

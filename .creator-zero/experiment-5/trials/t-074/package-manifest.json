@@ -1,0 +1,26 @@
+{
+  "artifact": "blinded trial workspace manifest",
+  "trial_id": "t-074",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/f185e5e6-15ee-5d4d-b18e-9b212cd19c12/scratchpad/e5/t-074/parent-ws",
+  "bank_dir": "/home/user/creator-0/.creator-zero/experiment-5/task-bank/t-074",
+  "blinding_scan": "PASS (0 hits)",
+  "private_files_excluded": [
+    "label.json",
+    "verify.cpython-311.pyc",
+    "verify.py"
+  ],
+  "file_sha256": {
+    ".claude/settings.json": "057724aff3831a2ebe097f2877650adbea6b7347a2aeada0e6e3134f4f4e2554",
+    "child-envelope.json": "5de4f5b60b5ce834d686e6d93dd66376db83c99be00310518240c9d4362e0790",
+    "child-templates/child-contract-template.json": "3f2b93a86fe8b6c9dadc4c7d98711ecd5e6a427932e35c5b7536f1e591af6025",
+    "child-templates/child-harness-template.json": "93f624a9de351e9ca5d75a4a3925a4fe24f1fd21219ee8f9a6d4278b236b1829",
+    "contract.json": "a197a4f5ffbae7bbf5c89a5bb0b528f78468a37942e57d010bc1b22aa2470527",
+    "decision-schema.json": "9dbe6e4ba87780a9873f41fb24d05fec8aa8b6e1be93cd7cd07cb2d637e985f2",
+    "harness.json": "033f7788281084c312816de7e5f8e2209b7b6a92b393609df5bea224d330c09f",
+    "package/artifacts/machine.json": "bbae7601d88b9a2e90714fb625e005662271c6ef1d98114aa47785efec21d7a5",
+    "package/artifacts/trace.json": "675fd013c48b273a20f5ba5eaa1ab0b1409de45a1cdbe1b3b2fa8a273744a79e",
+    "package/task.json": "9c75f0e5cb681d821c3528ebab5d5dec0ebe72de20228e56d2f3612bfffb43ff",
+    "parent-prompt.md": "174b96a93b3e44607562524e3ac95d2e44413654d4ba1da4480d3dfb70648cc2",
+    "protocol.md": "5b080bc5cae1ee6192e65116fe7e7026bcabe611f1606f01b8d3f0e39a019763"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "artifact": "blinded trial workspace manifest",
+  "trial_id": "t-103",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/f185e5e6-15ee-5d4d-b18e-9b212cd19c12/scratchpad/e5/t-103/parent-ws",
+  "bank_dir": "/home/user/creator-0/.creator-zero/experiment-5/task-bank/t-103",
+  "blinding_scan": "PASS (0 hits)",
+  "private_files_excluded": [
+    "label.json",
+    "verify.cpython-311.pyc",
+    "verify.py"
+  ],
+  "file_sha256": {
+    ".claude/settings.json": "057724aff3831a2ebe097f2877650adbea6b7347a2aeada0e6e3134f4f4e2554",
+    "child-envelope.json": "5de4f5b60b5ce834d686e6d93dd66376db83c99be00310518240c9d4362e0790",
+    "child-templates/child-contract-template.json": "3f2b93a86fe8b6c9dadc4c7d98711ecd5e6a427932e35c5b7536f1e591af6025",
+    "child-templates/child-harness-template.json": "93f624a9de351e9ca5d75a4a3925a4fe24f1fd21219ee8f9a6d4278b236b1829",
+    "contract.json": "a197a4f5ffbae7bbf5c89a5bb0b528f78468a37942e57d010bc1b22aa2470527",
+    "decision-schema.json": "9dbe6e4ba87780a9873f41fb24d05fec8aa8b6e1be93cd7cd07cb2d637e985f2",
+    "harness.json": "e6aec3adc2cf27ab6c104084fa1c2e6e696b103c3ae66006f7371fcd7aec0e56",
+    "package/artifacts/__pycache__/impl.cpython-311.pyc": "425ba6afe3b8c74d6f9619162699cb9de95d30cbc94ca5f3f164348836cbe752",
+    "package/artifacts/cases.json": "5c05f3860ccb1fb9abb8afc07c9940ff6885a8b87f3e31715f2a000d5829ea7e",
+    "package/artifacts/impl.py": "bfa54710fe6e84edf34f917bc0c6def92bc9bfa4c225a856d4201121c28c7d0f",
+    "package/artifacts/spec.md": "7b18823ab7d0e6c8488040742660f1f051dc64994ffdfac696437e3c3b2406fa",
+    "package/task.json": "981dd8cb51f0378cbf6391e1d4a6000195d79e71fe4d6a61eca0c636b2a6910e",
+    "parent-prompt.md": "174b96a93b3e44607562524e3ac95d2e44413654d4ba1da4480d3dfb70648cc2",
+    "protocol.md": "5b080bc5cae1ee6192e65116fe7e7026bcabe611f1606f01b8d3f0e39a019763"
+  }
+}

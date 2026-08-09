@@ -1,0 +1,27 @@
+{
+  "trial_id": "t-047",
+  "task": "Audit the scheduling specification for behavioral sufficiency. Determine whether spec.md fully determines the output of the scheduler on every probe in probes.json — that is, whether spec.md is a sufficient behavioral specification of reference.py over these probes — and report every behavior the probes exercise that the specification does not determine.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "SUFFICIENT | UNDERDETERMINED",
+      "findings": "on UNDERDETERMINED: {underdetermined_behaviors: [description], divergent_probe_indices: sorted list, per_probe: [{probe_index, reference_output, independent_output}]}; on SUFFICIENT: {agreement: 'all probes'}",
+      "child_invocations": "integer"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: identification of each behavior exercised by the probes that spec.md does not determine, or an explicit argument that none exists",
+    "E-B: an empirical item-level comparison over probes.json between reference.py and an implementation of spec.md authored strictly from spec.md, by an implementer with no access to reference.py and no access to any analysis derived from reference.py; the implementation must be a python file exposing next_order(jobs: list[dict]) -> list[str] so the comparison is mechanically reproducible",
+    "E-C: the verdict follows from E-A and E-B together: UNDERDETERMINED iff some probe admits more than one spec-conforming output or the clean implementation diverges from reference.py on some probe"
+  ],
+  "available_artifacts": [
+    "package/artifacts/spec.md",
+    "package/artifacts/reference.py",
+    "package/artifacts/probes.json"
+  ],
+  "clean_room_exclusions": ["package/artifacts/reference.py"],
+  "contract_ref": "contract.json",
+  "verification_method": "deterministic root verification per the preregistered method for this trial",
+  "max_parent_calls": 2,
+  "max_child_calls": 1
+}

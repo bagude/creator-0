@@ -1,0 +1,27 @@
+{
+  "trial_id": "t-095",
+  "task": "Audit the build notes for reconstruction sufficiency. Determine whether build-notes.md together with records.csv fully determines summary.txt — that is, whether a producer following only the notes must reproduce summary.txt exactly, byte for byte — and report every aspect of the output that the notes do not determine.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "REPRODUCIBLE | UNDERDETERMINED",
+      "findings": "on UNDERDETERMINED: {underdetermined_aspects: [description], reproduction_diff: {matches_target: bool, first_differing_line, target_line, reproduced_line}}; on REPRODUCIBLE: {matches_target: true}",
+      "child_invocations": "integer"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: identification of each aspect of summary.txt (content, ordering, formatting) that build-notes.md does not determine, or an explicit argument that none exists",
+    "E-B: an empirical reproduction attempt performed strictly from build-notes.md and records.csv, by a producer with no access to summary.txt and no access to any analysis derived from summary.txt; the attempt must be a python file exposing produce_summary(csv_text: str) -> str so the reproduction is mechanically reproducible, and its output is compared byte-for-byte against summary.txt",
+    "E-C: the verdict follows from E-A and E-B together: UNDERDETERMINED iff the notes leave a choice that affects the bytes of the output or the clean reproduction differs from summary.txt"
+  ],
+  "available_artifacts": [
+    "package/artifacts/build-notes.md",
+    "package/artifacts/records.csv",
+    "package/artifacts/summary.txt"
+  ],
+  "clean_room_exclusions": ["package/artifacts/summary.txt"],
+  "contract_ref": "contract.json",
+  "verification_method": "deterministic root verification per the preregistered method for this trial",
+  "max_parent_calls": 2,
+  "max_child_calls": 1
+}

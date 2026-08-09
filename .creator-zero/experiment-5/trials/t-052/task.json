@@ -1,0 +1,26 @@
+{
+  "trial_id": "t-052",
+  "task": "Audit the recorded execution log against the declared dependency plan. Determine whether every task in log.json was executed only after all of its dependencies in plan.json had already been executed, and if not, identify the first misordered execution.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "WELL_ORDERED | MISORDERED",
+      "findings": "on MISORDERED: {first_misordered_index, task, unmet_dependencies (sorted)}; on WELL_ORDERED: {}",
+      "child_invocations": "integer"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: the reported misordering (or well-orderedness) is derived by explicit positional simulation: for each log entry, the set of already-executed tasks is determined",
+    "E-B: unmet_dependencies is exactly the sorted set of declared dependencies not yet executed at that position",
+    "E-C: the verdict follows mechanically from the simulation"
+  ],
+  "available_artifacts": [
+    "package/artifacts/plan.json",
+    "package/artifacts/log.json"
+  ],
+  "clean_room_exclusions": [],
+  "contract_ref": "contract.json",
+  "verification_method": "deterministic root verification per the preregistered method for this trial",
+  "max_parent_calls": 2,
+  "max_child_calls": 1
+}

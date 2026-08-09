@@ -1,0 +1,425 @@
+{
+  "task_id": "e5-t-052",
+  "goal": "Blinded Experiment 5 trial t-052: evaluate chi(T,E,K) over the supplied task package, persist a typed topology decision under an observable propose transition, then realize exactly one legal branch \u2014 local resolution under the current topology, or root-mediated creation of one validated, attenuated, fresh child \u2014 followed by deterministic verification.",
+  "max_depth": 1,
+  "max_model_calls": 2,
+  "nodes": [
+    {
+      "id": "observe-package",
+      "primitive": "observe",
+      "tools": [
+        "Read"
+      ],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "parent",
+      "instructions": "Read every file in package/ (task.json, artifacts/, evidence requirements) plus contract.json, decision-schema.json and this harness. Acquire evidence only; decide nothing yet.",
+      "why_necessary": "chi(T,E,K) is a function of the task, the available evidence, and the contract; the evidence state must be acquired as a distinct causal step before any decision is representable."
+    },
+    {
+      "id": "decide-topology",
+      "primitive": "hypothesize",
+      "tools": [
+        "Read",
+        "Write"
+      ],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "parent",
+      "instructions": "Evaluate chi(T,E,K) -> {CREATE, DO_NOT_CREATE} and write decision.json conforming to decision-schema.json. Record the decision in the ledger as a propose event with metadata.artifact_type=topology_decision and metadata.decision set. The decision artifact is capability-bearing: it must cross this observable propose transition before anything else happens.",
+      "why_necessary": "The endogenous topology choice is the capability under test; it must be a typed, externally observable proposal persisted before any realization, not an implicit side effect."
+    },
+    {
+      "id": "local-resolve",
+      "primitive": "hypothesize",
+      "tools": [
+        "Read",
+        "Write"
+      ],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "parent",
+      "branch": "local",
+      "instructions": "Only after a DO_NOT_CREATE decision: resolve the task under the current topology. Write resolution.json (verdict, findings, evidence) using only the package artifacts.",
+      "why_necessary": "The DO_NOT_CREATE branch must terminate in a local resolution or an honest local failure; this node is its sole authoring locus."
+    },
+    {
+      "id": "self-check-local",
+      "primitive": "verify",
+      "tools": [
+        "Read"
+      ],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "parent",
+      "branch": "local",
+      "instructions": "Re-read resolution.json against the task deliverable specification; record the structural check outcome. Local and non-authoritative: deterministic root verification governs.",
+      "why_necessary": "K-E5-trial requires the verify primitive in any Write-holding topology; a structural self-check before return is the minimal fulfilment."
+    },
+    {
+      "id": "return-local",
+      "primitive": "return",
+      "tools": [
+        "Read",
+        "Write"
+      ],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "parent",
+      "branch": "local",
+      "instructions": "Write result.json (final trial answer, child_invocations=0) and finalize the session ledger. Do not emit a complete event: trial completion is recorded by the root lifecycle log after deterministic verification.",
+      "why_necessary": "Mandated return locus for the local branch; without it the resolution never re-enters the governed boundary."
+    },
+    {
+      "id": "propose-child",
+      "primitive": "hypothesize",
+      "tools": [
+        "Read",
+        "Write"
+      ],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "parent",
+      "branch": "child",
+      "instructions": "Only after a CREATE decision: author the full child bundle under child/ \u2014 child-contract.json (within the child envelope, attenuated), child-harness.json (linear observe -> produce-evidence -> self-check -> return chain), child-prompt.md (complete standalone instructions incl. the child ledger contract), child-input-manifest.json (exact package files the child receives; clean-room exclusions honored), integration-plan.json (deterministic rule mapping child evidence to the final result). Every file is capability-bearing and must appear under an observable propose event.",
+      "why_necessary": "The CREATE branch requires a defined epistemic role, a bounded contract, and a compilable topology before realization; this node is their sole authoring locus. Authoring is proposal: it grants and realizes nothing."
+    },
+    {
+      "id": "self-check-proposal",
+      "primitive": "verify",
+      "tools": [
+        "Read"
+      ],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "parent",
+      "branch": "child",
+      "instructions": "Re-read the child bundle against the child envelope, the schema constraints and the assigned unresolved distinctions; record the structural check outcome. Non-authoritative: kernel validation governs.",
+      "why_necessary": "Verify primitive required for the Write-holding branch; the author must not silently certify its own bundle \u2014 this check is recorded and then superseded by deterministic validation."
+    },
+    {
+      "id": "return-proposal",
+      "primitive": "return",
+      "tools": [
+        "Read",
+        "Write"
+      ],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "parent",
+      "branch": "child",
+      "instructions": "Write result-pending.json (decision summary, assigned distinctions, expected child contribution, integration rule reference) and finalize the session ledger. The parent session ends here; realization is root-mediated only after validation.",
+      "why_necessary": "Returns the proposal into the governed boundary; the decision-maker holds no realization authority, so its branch must end in a returned proposal."
+    },
+    {
+      "id": "validate-child",
+      "primitive": "verify",
+      "tools": [
+        "Read"
+      ],
+      "can_create": false,
+      "execution_mode": "root_deterministic",
+      "executor": "root",
+      "branch": "child",
+      "instructions": "Deterministic validation of the returned bundle: decision_validator on decision.json, kernel compilation of child-harness.json under child-contract.json, check_attenuation(K-E5-trial, child-contract), input-manifest containment with clean-room exclusions, integration-plan executability. Any failure rejects realization.",
+      "why_necessary": "Realization is allowed only after child validation; this is the governing gate between proposal and creation (protected rule of K-E5-trial)."
+    },
+    {
+      "id": "create-child",
+      "primitive": "create",
+      "tools": [
+        "Bash"
+      ],
+      "can_create": true,
+      "execution_mode": "root_deterministic",
+      "executor": "root",
+      "branch": "child",
+      "instructions": "Realize the validated child via the deterministic fresh launcher only: sanitized environment, explicit fresh session id, persisted provenance. The ledger records create (topology realization) and a persist event with event_kind=child_launch referencing the launch provenance.",
+      "why_necessary": "The sole legal realization locus; creation must be causally after validate-child by construction of the declared dependencies."
+    },
+    {
+      "id": "child-return",
+      "primitive": "return",
+      "tools": [
+        "Read"
+      ],
+      "can_create": false,
+      "execution_mode": "root_deterministic",
+      "executor": "root",
+      "branch": "child",
+      "instructions": "Receive the child deliverables (child result, evidence, execution ledger) into the trial record; ledger event return with event_kind=child_return.",
+      "why_necessary": "The child result must observably re-enter the governed boundary before integration; a child whose output never returns contributes nothing."
+    },
+    {
+      "id": "verify-trial-local",
+      "primitive": "verify",
+      "tools": [
+        "Read"
+      ],
+      "can_create": false,
+      "execution_mode": "root_deterministic",
+      "executor": "root",
+      "branch": "local",
+      "instructions": "Deterministic task verification of the local branch: run the preregistered verify method for this trial against result.json.",
+      "why_necessary": "A trial answer is evidence only after deterministic verification; model self-checks are non-authoritative."
+    },
+    {
+      "id": "verify-trial-child",
+      "primitive": "verify",
+      "tools": [
+        "Read"
+      ],
+      "can_create": false,
+      "execution_mode": "root_deterministic",
+      "executor": "root",
+      "branch": "child",
+      "instructions": "Deterministic integration and task verification of the child branch: execute the parent's integration-plan rule over the returned child evidence, produce result.json mechanically, then run the preregistered verify method.",
+      "why_necessary": "Integration is deterministic execution of the parent's pre-committed rule \u2014 the root never solves the substantive task; verification then governs the outcome."
+    }
+  ],
+  "edges": [
+    {
+      "source": "observe-package",
+      "target": "decide-topology",
+      "relation": "observe",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "decide-topology",
+      "target": "local-resolve",
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "local-resolve",
+      "target": "self-check-local",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "self-check-local",
+      "target": "return-local",
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "decide-topology",
+      "target": "propose-child",
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "propose-child",
+      "target": "self-check-proposal",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "self-check-proposal",
+      "target": "return-proposal",
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "return-proposal",
+      "target": "validate-child",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "validate-child",
+      "target": "create-child",
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "create-child",
+      "target": "child-return",
+      "relation": "request_response",
+      "requires_response": true,
+      "response_changes_parent_state": true,
+      "transfers_authority": false
+    },
+    {
+      "source": "child-return",
+      "target": "verify-trial-child",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "return-local",
+      "target": "verify-trial-local",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    }
+  ],
+  "branch_semantics": {
+    "statement": "The compiled LTS permits both branches from the post-decision state; a conforming runtime realizes exactly one. Kernel-level complete requires all nodes done and is therefore unreachable by construction in a branching trial; trial completion is recorded in the deterministic lifecycle log and branch exclusivity is enforced by the topology guard (deterministic topology-decision checker per the conditional-topology semantics).",
+    "decision_conditional_legality": {
+      "DO_NOT_CREATE": "all descendant launch transitions (validate-child, create-child, child-return, verify-trial-child realizations; any launcher invocation) are illegal for the trial",
+      "CREATE": "realization is legal only after validate-child passes (attenuation, compilation, freshness preflight); local-resolve realizations are illegal"
+    }
+  },
+  "ledger_contract": {
+    "path": "execution-ledger.jsonl (parent workspace root; root appends realization events to the trial ledger trial-ledger.jsonl)",
+    "schema": "normalized formal event schema: one JSON object per line with event_id, label, actor, timestamp, artifact_refs, metadata; node executions carry metadata.completes_node; the closed kernel alphabet is used, with metadata.event_kind distinguishing decision / child_launch / child_return refinements",
+    "required_parent_events_always": [
+      {
+        "label": "observe",
+        "actor": "node:observe-package",
+        "metadata": {
+          "completes_node": "observe-package"
+        }
+      },
+      {
+        "label": "propose",
+        "actor": "node:decide-topology",
+        "metadata": {
+          "completes_node": "decide-topology",
+          "artifact_type": "topology_decision",
+          "event_kind": "decision",
+          "decision": "CREATE|DO_NOT_CREATE"
+        },
+        "artifact_refs": [
+          "decision.json"
+        ]
+      }
+    ],
+    "required_parent_events_local_branch": [
+      {
+        "label": "propose",
+        "actor": "node:local-resolve",
+        "metadata": {
+          "completes_node": "local-resolve"
+        },
+        "artifact_refs": [
+          "resolution.json"
+        ]
+      },
+      {
+        "label": "verify",
+        "actor": "node:self-check-local",
+        "metadata": {
+          "completes_node": "self-check-local"
+        }
+      },
+      {
+        "label": "return",
+        "actor": "node:return-local",
+        "metadata": {
+          "completes_node": "return-local"
+        },
+        "artifact_refs": [
+          "result.json"
+        ]
+      }
+    ],
+    "required_parent_events_child_branch": [
+      {
+        "label": "propose",
+        "actor": "node:propose-child",
+        "metadata": {
+          "completes_node": "propose-child"
+        },
+        "artifact_refs": [
+          "child/child-contract.json",
+          "child/child-harness.json",
+          "child/child-prompt.md",
+          "child/child-input-manifest.json",
+          "child/integration-plan.json"
+        ]
+      },
+      {
+        "label": "verify",
+        "actor": "node:self-check-proposal",
+        "metadata": {
+          "completes_node": "self-check-proposal"
+        }
+      },
+      {
+        "label": "return",
+        "actor": "node:return-proposal",
+        "metadata": {
+          "completes_node": "return-proposal"
+        },
+        "artifact_refs": [
+          "result-pending.json"
+        ]
+      }
+    ],
+    "root_appended_events_child_branch": [
+      {
+        "label": "verify",
+        "actor": "node:validate-child",
+        "metadata": {
+          "completes_node": "validate-child"
+        }
+      },
+      {
+        "label": "create",
+        "actor": "node:create-child",
+        "metadata": {
+          "completes_node": "create-child"
+        }
+      },
+      {
+        "label": "persist",
+        "actor": "root",
+        "metadata": {
+          "event_kind": "child_launch"
+        },
+        "artifact_refs": [
+          "child/launch-provenance.json"
+        ]
+      },
+      {
+        "label": "return",
+        "actor": "node:child-return",
+        "metadata": {
+          "completes_node": "child-return",
+          "event_kind": "child_return"
+        }
+      },
+      {
+        "label": "verify",
+        "actor": "node:verify-trial-child",
+        "metadata": {
+          "completes_node": "verify-trial-child"
+        }
+      }
+    ],
+    "root_appended_events_local_branch": [
+      {
+        "label": "verify",
+        "actor": "node:verify-trial-local",
+        "metadata": {
+          "completes_node": "verify-trial-local"
+        }
+      }
+    ],
+    "forbidden": "no complete event in the trial ledger (unreachable in the branching LTS); no create/persist(child_launch)/child_return events in a DO_NOT_CREATE trial; no local-resolve events in a CREATE trial",
+    "optional_events": "additional non-authority events (observe, propose, validate, consult, reject, persist, reconstruct, return) with actor 'creator' or 'root' are permitted as governance self-loops; tau lines permitted for silent internal steps with metadata.reason"
+  }
+}
