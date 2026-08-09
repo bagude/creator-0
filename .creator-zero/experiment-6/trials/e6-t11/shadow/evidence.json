@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "resolve-local",
+    "description": "Input-class analysis (E-A): partition of the domain into classes C1-C7 covering the n=0 identity, within-month spans, every month-boundary rollover (each DAYS entry), February leap-2024 vs non-leap-2023/2025, year rollover, multi-month spans up to n=60, and spans through table-denied days; includes a full audit of the DAYS table against true Gregorian month lengths showing the sole discrepancy at August (30 vs 31).",
+    "refs": ["input-class-analysis.md", "package/artifacts/dateadd.py"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "resolve-local",
+    "description": "Verdict VIOLATED with in-domain witness [\"2023-08-30\", 1] (E-C): mechanical line-by-line trace of add_days(\"2023-08-30\", 1) yielding \"2023-09-01\" against the true Gregorian \"2023-08-31\"; trace recorded in input-class-analysis.md and verdict persisted in result.json.",
+    "refs": ["result.json", "input-class-analysis.md", "package/artifacts/dateadd.py"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "verify-resolution",
+    "description": "Non-authoritative self-check: result.json conforms to the deliverable shape in package/task.json (verdict in {HOLDS, VIOLATED}; violating_input is [\"YYYY-MM-DD\", n] with 2023-08-30 in 2023-2025 and n=1 in [0,60]; input_classes_examined is a list of descriptions); witness trace re-derived independently of the resolve-local write (DAYS[7]=30, true August length 31, output \"2023-09-01\" != \"2023-08-31\"); resolution.json validated against resolution-schema.json field by field. Read-only node; check recorded in the ledger event metadata.",
+    "refs": ["execution-ledger.jsonl", "result.json", "resolution.json"]
+  }
+]

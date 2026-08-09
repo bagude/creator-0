@@ -1,0 +1,13 @@
+{
+  "verdict": "VIOLATED",
+  "violating_input": ["2023-08-30", 1],
+  "input_classes_examined": [
+    "C1: n=0 identity — loop body never runs; output must equal the input date",
+    "C2: within-month spans — start day + n stays inside the start month, no month-length comparison is exceeded",
+    "C3: single month-boundary rollover for each month Jan..Dec — last day of month + 1 must be the 1st of the next month, and (last day - 1) + 1 must NOT roll over; exercises every DAYS table entry",
+    "C4: February leap vs non-leap — 2024-02-28+1 -> 02-29, 2024-02-29+1 -> 03-01 (leap 2024); 2023-02-28+1 and 2025-02-28+1 -> 03-01 (non-leap)",
+    "C5: year rollover — 2023/2024/2025-12-31 + 1 -> Jan 1 of the following year",
+    "C6: multi-month spans with n up to 60 crossing up to two month boundaries — checks accumulation of month lengths",
+    "C7: spans passing through a day the DAYS table denies exists — August 31 is real but the table lists August as 30 days, so every span whose true result is Aug 31 or passes through it is shifted one day late"
+  ]
+}

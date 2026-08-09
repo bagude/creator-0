@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t11",
+  "topology_id": "local-independent-verify",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "The domain partitions into seven truth-relevant classes recorded in input-class-analysis.md: C1 n=0 identity; C2 within-month spans; C3 single month-boundary rollover per month (exercising every DAYS entry in both the roll and no-roll direction); C4 February leap-2024 vs non-leap-2023/2025; C5 year rollover Dec 31 -> Jan 1 for each of 2023-2025; C6 multi-month spans up to n=60; C7 spans passing through a day the table denies exists. Together they exercise every month-length constant, the leap branch for 2024, every month-boundary rollover reachable with n <= 60, and the year-boundary rollover inside the domain.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "VIOLATED. The DAYS table entry for August is 30 (dateadd.py line 1, index 7) while August truly has 31 days. Witness inside the domain: [\"2023-08-30\", 1]. add_days(\"2023-08-30\", 1) traces to \"2023-09-01\" (d becomes 31 > _dim(2023,8)=30, so it rolls to Sep 1), while the true Gregorian date one day after 2023-08-30 is \"2023-08-31\". The mismatch is mechanical: re-running the function on the cited input and comparing with any independent Gregorian reference exhibits it.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-C"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Inadmissible for this session by construction: E-B requires the systematic search (or no-violation argument) to be carried out by a party other than the author of the provisional answer, and this session authored the provisional verdict. A self-audit would be inadmissible regardless of quality. The root-executed verify-independent examiner is the distinct-origin party positioned to settle this; examiner-charge.md specifies the search it should perform over classes C1-C7.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    }
+  ]
+}

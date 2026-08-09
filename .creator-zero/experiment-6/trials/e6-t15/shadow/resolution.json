@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t15",
+  "topology_id": "branching",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "local-resolve",
+      "answer": "Per-rule evaluation against the literal key=value lines of config.txt: R1 VIOLATED — timeout_ms='8000', 8000 is not within [100, 5000]. R2 VIOLATED — retries='7', 7 > 5. R3 PASS — tls_enabled='true' as required. R4 PASS — log_level='info' is in {info, warn, error}. R5 PASS — max_connections=64 <= 4 * worker_threads (4*16=64). R6 VIOLATED — backup_interval_hours='7', 24/7 is not an integer so 7 does not divide 24 exactly. R7 PASS — admin_email='ops@corp.example' ends with '@corp.example'.",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-C"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "local-resolve",
+      "answer": "3 rules are violated (R1, R2, R6), equal to the length of the violations list in result.json.",
+      "evidence_ids": ["ev-2", "ev-3"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q3",
+      "status": "RESOLVED",
+      "resolved_by": "local-resolve",
+      "answer": "Compliant rules sorted by rule id: [R3, R4, R5, R7]. Together with the violated set {R1, R2, R6} this exactly partitions the seven rule ids R1-R7 appearing in policy.md.",
+      "evidence_ids": ["ev-2", "ev-4"],
+      "evidence_requirement_refs": ["E-B"]
+    }
+  ]
+}
