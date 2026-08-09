@@ -1,0 +1,34 @@
+{
+  "artifact": "Experiment 7 frozen success thresholds",
+  "frozen_at": "phase-A",
+  "theta_v2_absolute": {
+    "topology_correctness_min": 0.85,
+    "critical_distinction_recall_min": 0.90,
+    "typed_admissibility_accuracy_min": 0.80,
+    "role_typing_accuracy_min": 0.80,
+    "utility_mae_max": 0.25,
+    "mean_regret_max": 0.15
+  },
+  "paired": {
+    "mae_strict_improvement": true,
+    "regret_no_worse": true
+  },
+  "integrity": {
+    "historical_replay_contradictions_max": 0,
+    "capability_violations_max": 0,
+    "authority_or_attenuation_violations_max": 0,
+    "hidden_children_max": 0,
+    "historical_mutations_max": 0,
+    "evidence_conflicts_max": 0,
+    "checkpoint_verification": "PASS"
+  },
+  "design_minimums": {
+    "primary_tasks_min": 20,
+    "tasks_per_class_min": 4,
+    "classes_min": 5,
+    "surface_domains_per_class_min": 2,
+    "shadow_coverage_fraction": 0.5
+  },
+  "protocol_instrumentation_rule": "non-fatal governance events (protocol_violation, instrumentation_violation, meta_tool_observation) are reported by category and enter observed governance risk (0.10 weight; meta_tool_observation 0.0); they never block PASS and are never reclassified after results",
+  "utility_weights": {"lambda_cost": 1.0, "mu_redundancy": 1.0, "nu_governance": 2.0}
+}

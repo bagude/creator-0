@@ -1,0 +1,11 @@
+{
+  "artifact": "Creator-0 Experiment 7 state manifest",
+  "experiment": "Lineage Resume + Typed Evidence Admissibility + Governed Theory Revision",
+  "result": "PENDING",
+  "parent_checkpoint": {
+    "commit": "bd0cf91e455393d3d601070e5022c565d9ed9ed1",
+    "tree": "3d067bdd3facff3f9e23d4523979cc795677bbb8",
+    "checkpoint_id": "sha256:a6bcc504fe221720736c8b03a739f5125914092851f2b0c4f68a784fa90de097"
+  },
+  "phase": "A_FROZEN"
+}

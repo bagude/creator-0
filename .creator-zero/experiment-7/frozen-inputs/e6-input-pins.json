@@ -1,0 +1,125 @@
+{
+  "artifact": "Experiment 7 frozen input pins (E6 evidence source + truth artifacts)",
+  "e6_class_to_admissibility_kind": {
+    "ALTERNATIVE_DECOMPOSITION": "INDEPENDENT_DECOMPOSITION",
+    "COUNTEREXAMPLE": "NON_AUTHOR_SEARCH",
+    "ISOLATION": "CLEAN_ROOM_AUTHORSHIP",
+    "LOCAL": "LOCAL",
+    "SPECIALIZED_VERIFICATION": "METHOD_DISJOINT_VERIFICATION"
+  },
+  "e6_evidence_source": {
+    "expected_event_count": 264,
+    "expected_unique_event_ids": 264,
+    "git_blob_sha": "030f6e4a9fb5c1511fd1db1500ffa57ee525f3fa",
+    "path": ".creator-zero/experiment-6/theory-evidence-events.jsonl",
+    "run_counts": {
+      "primary": 176,
+      "shadow": 88
+    },
+    "sha256": "70688fc51c582a5a5d413b4150cdd013c0510b5f7654671a3e9ab8d6fcde0388",
+    "source_commit": "bd0cf91e455393d3d601070e5022c565d9ed9ed1"
+  },
+  "e6_truth_artifacts": {
+    ".creator-zero/experiment-6/task-bank/e6-t01/private/label.json": {
+      "git_blob_sha": "65d751a640c305995d2bff0946071b3d4967212c",
+      "latent_class": "ISOLATION",
+      "sha256": "ec1171b3ac598c34f7eacd456e543df92110b713b6fede0d8bfec95646884eb9"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t02/private/label.json": {
+      "git_blob_sha": "f2f2d5217072282cb17ee09762ac9f1a71c6c203",
+      "latent_class": "LOCAL",
+      "sha256": "ef7ccda1344bcaaf669b5958a380ba62675f9f80b7869d655c59f49c8d8ef46b"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t03/private/label.json": {
+      "git_blob_sha": "72a0da230038556e3428bee80bea78cf1cf3c8a2",
+      "latent_class": "SPECIALIZED_VERIFICATION",
+      "sha256": "5fd222261838fbebfcfc5245693a10b53744b2d38bd52747df9e85fe1c0316ad"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t04/private/label.json": {
+      "git_blob_sha": "3b3529a6602d1ed1689c8604031e84ef1be745da",
+      "latent_class": "LOCAL",
+      "sha256": "6f165fbec8c66a3878348c465c35b2415bf9b579e2c8da0a19fa8f211e12acf5"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t05/private/label.json": {
+      "git_blob_sha": "d51a4bd949c624efdbe182d8ac60c73453a52baf",
+      "latent_class": "ISOLATION",
+      "sha256": "93f44f4f0196fc20e831c766f6c63e4f6233f0b4d5fb816a7696bd7a654d8fd1"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t06/private/label.json": {
+      "git_blob_sha": "6f1317b65e86333ec0325fa79fc0a69e0318039f",
+      "latent_class": "SPECIALIZED_VERIFICATION",
+      "sha256": "72a1b93471c1fd9b3f0e654b660a14838667a44427057334bea752afeb1234e1"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t07/private/label.json": {
+      "git_blob_sha": "5d676df628befbf9becdae53634be08d8fccde6e",
+      "latent_class": "ISOLATION",
+      "sha256": "909217f9259beb0c1e22686b17effdfec5dafdf707ee386f638c7b2ccbf3643f"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t08/private/label.json": {
+      "git_blob_sha": "276ef6e74d1421528744ad12121c41206917111f",
+      "latent_class": "COUNTEREXAMPLE",
+      "sha256": "14c0080db21a0447e70fa015f850c50cf181052d85af5abfe950c078298fd3d2"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t09/private/label.json": {
+      "git_blob_sha": "de27b28f92c87ab090199f5e543c43f861c4cf6e",
+      "latent_class": "ALTERNATIVE_DECOMPOSITION",
+      "sha256": "77caa8b4aebf3ba3b62176e8f84fdd8feea6cdbed5095cba0dd93170d6625be9"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t10/private/label.json": {
+      "git_blob_sha": "d2079dc8721c4db96b2ea5b0b9e5186cc4293512",
+      "latent_class": "COUNTEREXAMPLE",
+      "sha256": "8bd833d47293e780bbc95f4be30f4655f56b765048c618204e963b367968ec22"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t11/private/label.json": {
+      "git_blob_sha": "82b794624d544e7e72229f932dd4987b7cb3c1ef",
+      "latent_class": "COUNTEREXAMPLE",
+      "sha256": "e278e63826869bf12a06bbb560a35b77912036d60c1e4f811a226b1cb99db9d3"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t12/private/label.json": {
+      "git_blob_sha": "1006ceb6643e53738fbd586bb6f4bc698ea9284a",
+      "latent_class": "LOCAL",
+      "sha256": "c9c967dd536608fc77b72d77597d7cb94b485f368a44c796522bb1f34223e52b"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t13/private/label.json": {
+      "git_blob_sha": "8fb103511cd296749676fb08dee07eb25e69dc31",
+      "latent_class": "COUNTEREXAMPLE",
+      "sha256": "1065097e52e68f6c2cf6614b3553b703c0893e3c35a7411fa9cf9b33d0ef5373"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t14/private/label.json": {
+      "git_blob_sha": "848de242f608e3d0e6acaca41c3f570da81da44c",
+      "latent_class": "SPECIALIZED_VERIFICATION",
+      "sha256": "1eab91bf2ff2f909157f412f31c6275be393d0f7b1f57f06d0ecec2f7a52fe84"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t15/private/label.json": {
+      "git_blob_sha": "4dcb721e6d99d8fc566e29b4cb2a6a8f70338648",
+      "latent_class": "LOCAL",
+      "sha256": "e4e2bc27b86ceaf2f649dbed86b4a26dd6efea8ce65f0d1adbb410f36e19fc57"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t16/private/label.json": {
+      "git_blob_sha": "b59ddbf47e4acb7d6d3d86abcc5a7914a4578624",
+      "latent_class": "ALTERNATIVE_DECOMPOSITION",
+      "sha256": "36038c15afdaaf5b4e1137ee163cf963e14998c10292b35eef6984906258a811"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t17/private/label.json": {
+      "git_blob_sha": "665de688be76a127ce40c2ddda52e62f4bf49176",
+      "latent_class": "ALTERNATIVE_DECOMPOSITION",
+      "sha256": "821f1c21a7a96d09242dc51ae78b6ab90bed4bce3ff73e2466897fdad08ffbe7"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t18/private/label.json": {
+      "git_blob_sha": "9ccfa9b0f85af8bf777e9b7a2da410195da70a0e",
+      "latent_class": "ALTERNATIVE_DECOMPOSITION",
+      "sha256": "ce72de9507bceb98fee0c85ef7c5742de92831ecaea04837b2847fae3e6234b3"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t19/private/label.json": {
+      "git_blob_sha": "707e4a7da92fcb116f35dca37f5b6e55a604b94c",
+      "latent_class": "ISOLATION",
+      "sha256": "263abdf201a5394ff92515566c6f6f6bee7e84f5e5c2e235c47319d28f392863"
+    },
+    ".creator-zero/experiment-6/task-bank/e6-t20/private/label.json": {
+      "git_blob_sha": "cbd4f6d6f0b68da6de63e9d6bf3c165a497805d2",
+      "latent_class": "SPECIALIZED_VERIFICATION",
+      "sha256": "d50665f0f97197055eedf2a1327b9b835f169bde3742970a523beeadf627a38d"
+    }
+  },
+  "join_rule": "event.trial_id -> experiment-6/task-bank/<trial_id>/private/label.json latent_class -> admissibility_kind (deterministic; labels are frozen E6 truth artifacts; no model may rewrite them)"
+}

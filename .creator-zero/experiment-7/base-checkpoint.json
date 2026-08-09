@@ -1,0 +1,49 @@
+{
+  "artifact": "Experiment 7 base lineage checkpoint (L6)",
+  "checkpoint_id": "sha256:a6bcc504fe221720736c8b03a739f5125914092851f2b0c4f68a784fa90de097",
+  "commit_sha": "bd0cf91e455393d3d601070e5022c565d9ed9ed1",
+  "evidence_head_hash": "",
+  "evidence_length": 0,
+  "experiment_id": "experiment-6",
+  "experiment_result": "LATENT_TOPOLOGY_ECONOMICS_FAIL",
+  "experiment_state_path": ".creator-zero/state/experiment-6.json",
+  "experiment_state_sha256": "43033387696690e50e057347a7a8152b70634a398b596b9a547888f47a7779e4",
+  "formal_kernel_state_artifact_id": "02a91afdb70b9faf50cbaa007a5fb05d7ce0216a1bededaa05c00947d1ce649a",
+  "parent_checkpoint_id": null,
+  "protected_manifest": {
+    "protected_files": [
+      ".creator-zero/state/experiment-2.json",
+      ".creator-zero/state/experiment-3.json",
+      ".creator-zero/state/experiment-4.json",
+      ".creator-zero/state/experiment-4c.json",
+      ".creator-zero/state/experiment-5.json",
+      ".creator-zero/state/formal-semantics-v0.1.json",
+      ".creator-zero/contracts/root_contract.json"
+    ],
+    "protected_prefixes": [
+      ".creator-zero/experiment-3/",
+      ".creator-zero/experiment-4/",
+      ".creator-zero/experiment-4c/",
+      ".creator-zero/experiment-5/"
+    ]
+  },
+  "protected_manifest_sha256": "bd44edb401fd720b38802204c6e2ea0f2c7b0d1791524d270d11a3d61dcdc06c",
+  "provenance": {
+    "created_by": "experiment-7 phase A deterministic bootstrap",
+    "e6_theory_evidence_source": {
+      "path": ".creator-zero/experiment-6/theory-evidence-events.jsonl",
+      "sha256": "70688fc51c582a5a5d413b4150cdd013c0510b5f7654671a3e9ab8d6fcde0388"
+    },
+    "parent_experiment_base_state": ".creator-zero/experiment-6/base-state.json",
+    "prior_state_manifests": {
+      ".creator-zero/state/topology-theory-v0.1.json": "62656ba654a6877f2cdc7544c086d1913aae541feb2febd825e5e3bd5aaf0447"
+    }
+  },
+  "root_contract_sha256": "f7268b999e2b35dfebce656d170d702da78090cf52b1a5762a1fb97cec17392e",
+  "schema_version": "lineage-checkpoint-v1",
+  "source_branch": "claude/new-session-ltyh1o",
+  "theory_artifact_id": "sha256:caa6f956f76fd968e047cea9a96772d55885845395445e46c9f3dbf541ae6aa8",
+  "theory_status": "PROMOTED",
+  "theory_version": 1,
+  "tree_sha": "3d067bdd3facff3f9e23d4523979cc795677bbb8"
+}
