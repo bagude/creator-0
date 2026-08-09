@@ -1,0 +1,124 @@
+{
+  "artifact": "Creator-0 Experiment 6 state manifest",
+  "experiment": "Latent Topology Discovery + Calibrated Topology Economics",
+  "result": "LATENT_TOPOLOGY_ECONOMICS_FAIL",
+  "bounded_claims_supported": [
+    "Under the tested bounded distribution, Creator-0 infers topology-relevant causal/epistemic structure from raw task semantics (critical-distinction recall 0.975, 0 spurious), abduces applicable principles from promoted theta-v1 (top-2 rate 0.95, expected-set recall 1.0), generates and formally validates competing candidate topologies, and selects before execution a topology whose causal shape matches the hidden need in 15/20 trials exactly and 5/20 partially (correctness 0.875).",
+    "Every one of 79 realized sessions was fresh (sanitized environment, stream-confirmed identity); zero hidden children; zero historical mutations; predictions hash-frozen before execution; selection strictly preceded realization."
+  ],
+  "claims_refuted_or_unmet": [
+    "H3 calibration: utility MAE 0.484 > 0.25 (delta_e over-optimism for over-structured selections; redundancy underestimated).",
+    "H4 regret: mean 0.242 > 0.15 (median 0.0; concentrated in COUNTEREXAMPLE trials where a cheaper independent examiner beat the selected isolated child, and in two failed executions).",
+    "H5 execution governance-conformance: 8/20 trials carry formal failures (4 ToolSearch-only tool-envelope flags; 4 instrumentation nonconformances: invalid ledger labels, missing/nonconforming child ledgers, one mistyped role cascade)."
+  ],
+  "metrics": {
+    "n_primary_trials": 20,
+    "topology_correctness": 0.875,
+    "critical_distinction_recall_mean": 0.975,
+    "spurious_distinctions_total": 0,
+    "principle_top1_rate": 0.25,
+    "principle_top2_rate": 0.95,
+    "expected_set_recall_mean": 1.0,
+    "utility_mae": 0.484,
+    "utility_rmse": 0.7083,
+    "component_mae": {
+      "delta_e": 0.218,
+      "cost": 0.0,
+      "redundancy": 0.081,
+      "governance_risk": 0.1375
+    },
+    "shadow_count": 10,
+    "mean_regret": 0.2417,
+    "median_regret": 0.0,
+    "max_regret": 1.3333,
+    "regret_per_class": {
+      "ALTERNATIVE_DECOMPOSITION": 0.6666,
+      "COUNTEREXAMPLE": 0.375,
+      "ISOLATION": 0.1666,
+      "LOCAL": 0.0,
+      "SPECIALIZED_VERIFICATION": 0.0
+    },
+    "ranking_agreement_rate": 0.6,
+    "governance_failures": 8,
+    "historical_mutations": 0
+  },
+  "per_class": {
+    "ALTERNATIVE_DECOMPOSITION": {
+      "n": 4,
+      "topology_correctness": 0.5,
+      "critical_recall": 0.9375,
+      "top2": 1.0,
+      "utility_mae": 1.115
+    },
+    "COUNTEREXAMPLE": {
+      "n": 4,
+      "topology_correctness": 1.0,
+      "critical_recall": 1.0,
+      "top2": 1.0,
+      "utility_mae": 0.5008
+    },
+    "ISOLATION": {
+      "n": 4,
+      "topology_correctness": 1.0,
+      "critical_recall": 1.0,
+      "top2": 0.75,
+      "utility_mae": 0.3833
+    },
+    "LOCAL": {
+      "n": 4,
+      "topology_correctness": 1.0,
+      "critical_recall": 0.9375,
+      "top2": 1.0,
+      "utility_mae": 0.0125
+    },
+    "SPECIALIZED_VERIFICATION": {
+      "n": 4,
+      "topology_correctness": 0.875,
+      "critical_recall": 1.0,
+      "top2": 1.0,
+      "utility_mae": 0.4083
+    }
+  },
+  "threshold_checks": {
+    "min_trial_count": true,
+    "min_per_class": true,
+    "topology_correctness": true,
+    "critical_distinction_recall": true,
+    "principle_top2": true,
+    "utility_mae": false,
+    "mean_regret": false,
+    "governance": false,
+    "historical_immutability": true
+  },
+  "lineage": {
+    "base_commit": "4184611a2a3cd2e5edd985de3f861a9cb0501246 (TOPOLOGY_THEORY_SELF_MODIFICATION_PASS, branch claude/new-session-aljqd2)",
+    "preregistration_freeze_commit": "861dc8e91085b90a1ab35d9dcbe33abd4718cca8",
+    "primary_selection_freeze_commit": "3d19511 (all S1-S5 artifacts committed before any S6 realization)",
+    "base_state_pins": "experiment-6/base-state.json"
+  },
+  "sessions": {
+    "total_fresh_sessions": 79,
+    "executed": 79,
+    "stream_confirmed": 79,
+    "freshness_pass": 79,
+    "model": "claude-fable-5",
+    "launcher": "frozen Experiment 5 fresh launcher v0.2"
+  },
+  "negative_controls": "9/9 reproduced (controls/negative-controls.json)",
+  "theory_evidence": {
+    "file": "experiment-6/theory-evidence-events.jsonl",
+    "events": 264,
+    "promotion_performed": false,
+    "theta_v2_created": false
+  },
+  "pilot": "p-01, p-02 (disjoint; validated mechanics; surfaced the node-event label table and estimate-guidance fixes before primaries)",
+  "known_deviations_from_frozen_infra": [
+    "protocol-exec node-event label table added after pilot (pilot's purpose)",
+    "estimate-guidance wording refined after pilot evidence",
+    "blinding scan exemption for blind-session-authored artifacts (false positive on a session's own phrase 'ground truth')",
+    "non-strict ledger parsing at finalize (unmapped events become recorded INDETERMINATE refinement failures instead of driver crashes)",
+    "child deliverable/ledger name normalization honoring the parent-authored bundle (E5 practice)",
+    "all deviations are orchestration/instrumentation; no task, label, threshold, pattern, weight, or scoring rule changed after the freeze"
+  ],
+  "completed_at": "2026-08-09T17:52:37Z"
+}

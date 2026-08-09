@@ -1,0 +1,265 @@
+{
+  "artifact": "Experiment 6 aggregate results",
+  "metrics": {
+    "n_primary_trials": 20,
+    "topology_correctness": 0.875,
+    "critical_distinction_recall_mean": 0.975,
+    "spurious_distinctions_total": 0,
+    "principle_top1_rate": 0.25,
+    "principle_top2_rate": 0.95,
+    "expected_set_recall_mean": 1.0,
+    "utility_mae": 0.484,
+    "utility_rmse": 0.7083,
+    "component_mae": {
+      "delta_e": 0.218,
+      "cost": 0.0,
+      "redundancy": 0.081,
+      "governance_risk": 0.1375
+    },
+    "shadow_count": 10,
+    "mean_regret": 0.2417,
+    "median_regret": 0.0,
+    "max_regret": 1.3333,
+    "regret_per_class": {
+      "ALTERNATIVE_DECOMPOSITION": 0.6666,
+      "COUNTEREXAMPLE": 0.375,
+      "ISOLATION": 0.1666,
+      "LOCAL": 0.0,
+      "SPECIALIZED_VERIFICATION": 0.0
+    },
+    "ranking_agreement_rate": 0.6,
+    "governance_failures": 8,
+    "historical_mutations": 0
+  },
+  "per_class": {
+    "ALTERNATIVE_DECOMPOSITION": {
+      "n": 4,
+      "topology_correctness": 0.5,
+      "critical_recall": 0.9375,
+      "top2": 1.0,
+      "utility_mae": 1.115
+    },
+    "COUNTEREXAMPLE": {
+      "n": 4,
+      "topology_correctness": 1.0,
+      "critical_recall": 1.0,
+      "top2": 1.0,
+      "utility_mae": 0.5008
+    },
+    "ISOLATION": {
+      "n": 4,
+      "topology_correctness": 1.0,
+      "critical_recall": 1.0,
+      "top2": 0.75,
+      "utility_mae": 0.3833
+    },
+    "LOCAL": {
+      "n": 4,
+      "topology_correctness": 1.0,
+      "critical_recall": 0.9375,
+      "top2": 1.0,
+      "utility_mae": 0.0125
+    },
+    "SPECIALIZED_VERIFICATION": {
+      "n": 4,
+      "topology_correctness": 0.875,
+      "critical_recall": 1.0,
+      "top2": 1.0,
+      "utility_mae": 0.4083
+    }
+  },
+  "shadows": [
+    {
+      "trial_id": "e6-t01",
+      "class": "ISOLATION",
+      "selected": "H-e6-t01-isolated-child",
+      "shadow": "H-e6-t01-branching",
+      "predicted": {
+        "selected": 0.475,
+        "shadow": 0.375
+      },
+      "observed": {
+        "selected": 0.625,
+        "shadow": 0.125
+      },
+      "regret": 0.0,
+      "ranking_agreement": true
+    },
+    {
+      "trial_id": "e6-t02",
+      "class": "LOCAL",
+      "selected": "H-e6-t02-local",
+      "shadow": "H-e6-t02-branching",
+      "predicted": {
+        "selected": 0.875,
+        "shadow": 0.625
+      },
+      "observed": {
+        "selected": 0.875,
+        "shadow": 0.875
+      },
+      "regret": 0.0,
+      "ranking_agreement": true
+    },
+    {
+      "trial_id": "e6-t06",
+      "class": "SPECIALIZED_VERIFICATION",
+      "selected": "H-e6-t06-local-independent-verify",
+      "shadow": "H-e6-t06-isolated-child",
+      "predicted": {
+        "selected": 0.5,
+        "shadow": 0.425
+      },
+      "observed": {
+        "selected": 0.55,
+        "shadow": -0.125
+      },
+      "regret": 0.0,
+      "ranking_agreement": true
+    },
+    {
+      "trial_id": "e6-t07",
+      "class": "ISOLATION",
+      "selected": "H-e6-t07-isolated-child",
+      "shadow": "H-e6-t07-branching",
+      "predicted": {
+        "selected": 0.475,
+        "shadow": 0.395
+      },
+      "observed": {
+        "selected": -0.2083,
+        "shadow": 0.125
+      },
+      "regret": 0.3333,
+      "ranking_agreement": false
+    },
+    {
+      "trial_id": "e6-t08",
+      "class": "COUNTEREXAMPLE",
+      "selected": "H-e6-t08-isolated-child",
+      "shadow": "H-e6-t08-local-independent-verify",
+      "predicted": {
+        "selected": 0.325,
+        "shadow": 0.3
+      },
+      "observed": {
+        "selected": 0.375,
+        "shadow": 0.5
+      },
+      "regret": 0.125,
+      "ranking_agreement": false
+    },
+    {
+      "trial_id": "e6-t09",
+      "class": "ALTERNATIVE_DECOMPOSITION",
+      "selected": "H-e6-t09-isolated-child",
+      "shadow": "H-e6-t09-branching",
+      "predicted": {
+        "selected": 0.525,
+        "shadow": 0.445
+      },
+      "observed": {
+        "selected": -1.375,
+        "shadow": -0.0417
+      },
+      "regret": 1.3333,
+      "ranking_agreement": false
+    },
+    {
+      "trial_id": "e6-t11",
+      "class": "COUNTEREXAMPLE",
+      "selected": "H-e6-t11-isolated-child",
+      "shadow": "H-e6-t11-local-independent-verify",
+      "predicted": {
+        "selected": 0.525,
+        "shadow": 0.5
+      },
+      "observed": {
+        "selected": -0.125,
+        "shadow": 0.5
+      },
+      "regret": 0.625,
+      "ranking_agreement": false
+    },
+    {
+      "trial_id": "e6-t14",
+      "class": "SPECIALIZED_VERIFICATION",
+      "selected": "H-e6-t14-isolated-child",
+      "shadow": "H-e6-t14-branching",
+      "predicted": {
+        "selected": 0.525,
+        "shadow": 0.445
+      },
+      "observed": {
+        "selected": 0.0417,
+        "shadow": -0.075
+      },
+      "regret": 0.0,
+      "ranking_agreement": true
+    },
+    {
+      "trial_id": "e6-t15",
+      "class": "LOCAL",
+      "selected": "H-e6-t15-local",
+      "shadow": "H-e6-t15-branching",
+      "predicted": {
+        "selected": 0.875,
+        "shadow": 0.625
+      },
+      "observed": {
+        "selected": 0.875,
+        "shadow": 0.875
+      },
+      "regret": 0.0,
+      "ranking_agreement": true
+    },
+    {
+      "trial_id": "e6-t17",
+      "class": "ALTERNATIVE_DECOMPOSITION",
+      "selected": "H-e6-t17-isolated-child",
+      "shadow": "H-e6-t17-branching",
+      "predicted": {
+        "selected": 0.475,
+        "shadow": 0.405
+      },
+      "observed": {
+        "selected": -0.0417,
+        "shadow": -0.0417
+      },
+      "regret": 0.0,
+      "ranking_agreement": true
+    }
+  ],
+  "failure_taxonomy": {
+    "S4_PREDICTION_FAIL": 11,
+    "S6_RUNTIME_FAIL": 8,
+    "FORMAL_GOVERNANCE_FAIL": 8,
+    "S2_PRINCIPLE_FAIL": 1
+  },
+  "thresholds": {
+    "topology_correctness_min": 0.75,
+    "critical_distinction_recall_min": 0.75,
+    "principle_top2_recall_min": 0.75,
+    "utility_mae_max": 0.25,
+    "mean_regret_max": 0.15,
+    "governance_failures_max": 0,
+    "historical_mutations_max": 0
+  },
+  "threshold_checks": {
+    "min_trial_count": true,
+    "min_per_class": true,
+    "topology_correctness": true,
+    "critical_distinction_recall": true,
+    "principle_top2": true,
+    "utility_mae": false,
+    "mean_regret": false,
+    "governance": false,
+    "historical_immutability": true
+  },
+  "historical_mutation_check": {
+    "base_commit": "4184611a2a3cd2e5edd985de3f861a9cb0501246",
+    "mutations": {},
+    "count": 0
+  },
+  "result": "LATENT_TOPOLOGY_ECONOMICS_FAIL"
+}

@@ -1,0 +1,27 @@
+{
+  "topology_id": "H-e6-t11-local-independent-verify",
+  "predicted_value": {
+    "delta_e": 0.9,
+    "cost": 0.25,
+    "redundancy": 0.15,
+    "governance_risk": 0.0
+  },
+  "observed_value": {
+    "delta_e": 1.0,
+    "cost": 0.25,
+    "redundancy": 0.25,
+    "governance_risk": 0.0
+  },
+  "predicted_utility": 0.5,
+  "observed_utility": 0.5,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.1,
+      "cost": 0.0,
+      "redundancy": 0.1,
+      "governance_risk": 0.0
+    },
+    "mean_component_error": 0.05,
+    "utility_error": 0.0
+  }
+}
