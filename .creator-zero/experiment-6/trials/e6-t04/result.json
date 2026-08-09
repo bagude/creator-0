@@ -1,0 +1,5 @@
+{
+  "final_states": ["S3", "S3", "E"],
+  "error_reached": true,
+  "most_visited_state": "S3"
+}

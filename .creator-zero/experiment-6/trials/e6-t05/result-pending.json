@@ -1,0 +1,5 @@
+{
+  "summary": "E-A is complete in-session: migrate.md determines the 50-69 two-digit-year pivot differently from transform.py (probes 2, 7, 10) and leaves surrounding-whitespace handling undetermined (probe 5); all other probe-exercised behaviors are determined identically. E-B and the E-C verdict await the root-executed realization of the proposed clean-room child, which will author child_transform.py solely from migrate.md; the deterministic item-level comparison in the integration plan then fixes verdict and divergent_probe_indices in result.json.",
+  "assigned_distinctions": ["Q2", "Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

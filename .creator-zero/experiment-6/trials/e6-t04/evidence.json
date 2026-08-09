@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Acquired all governed task evidence: the task statement and deliverable spec, the machine definition (5 states, initial S0, error state E, complete transition table over alphabet {a,b}), and the three input strings in order: bbbaaaaab, aaaaabbbb, abaaaaba.",
+    "refs": ["package/task.json", "package/artifacts/machine.json", "package/artifacts/inputs.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "resolve-local",
+    "description": "Deterministic step-by-step traces of all three input strings from initial state S0, applying the transition table symbol by symbol with no invented or skipped transitions. Final states in input order: S3, S3, E. Full step sequences recorded in trace.json. Settles Q1 (E-A) and is the admissible basis for Q2 and Q3.",
+    "refs": ["trace.json", "package/artifacts/machine.json", "package/artifacts/inputs.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "resolve-local",
+    "description": "Inspection of every step of the ev-2 traces for entry into error state E: E is entered at step 2 of the third string (S1 --b--> E) and on every subsequent step of that trace; strings 1 and 2 never enter E. Boolean error_reached = true, derived from the same traces that settle Q1. Settles Q2 (E-B).",
+    "refs": ["trace.json"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "resolve-local",
+    "description": "Per-state visit tally aggregated over all three ev-2 traces under the stated counting rule (initial state counted once per string; every state entered on a step counted): S3=13, E=7, S0=6, S1=3, S2=0; consistency check 29 total visits = 3 initials + 26 steps. Unique maximum S3, lexicographic tie-break not needed. Settles Q3 (E-C).",
+    "refs": ["trace.json"]
+  },
+  {
+    "id": "ev-5",
+    "source_node": "verify-resolution",
+    "description": "Non-authoritative deterministic self-check: every trace step re-verified against the transition table in machine.json; final-state list order matches inputs.json order; error_reached matches step inspection; tally arithmetic re-verified against step counts (9+9+8 symbols); result.json shape matches package/task.json deliverable spec exactly (final_states array, error_reached boolean, most_visited_state string). PASS.",
+    "refs": ["trace.json", "resolution.json", "package/task.json", "package/artifacts/machine.json", "package/artifacts/inputs.json"]
+  }
+]

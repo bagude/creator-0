@@ -1,0 +1,9 @@
+{
+  "verdict": "PENDING-INTEGRATION",
+  "undetermined_behaviors": [
+    "DETERMINED-DIFFERENTLY: two-digit-year century pivot for years 50-69 — migrate.md maps 00-69 to 20xx (so 50-69 become 2050-2069), while transform.py maps y >= 50 to 1900+y (so 50-69 become 1950-1969); exercised by probes 2 ('3/7/55'), 7 ('5/5/69'), and 10 ('4/01/50').",
+    "UNDETERMINED: surrounding-whitespace handling — migrate.md defines the input form as M/D/YY or M/D/YYYY and says nothing about leading/trailing whitespace, so it does not determine whether input like probe 5 (' 8/15/49 ') is accepted, trimmed, or rejected; transform.py strips the input and returns '2049-08-15'.",
+    "All other behaviors exercised by the probe set (slash-separated three-component parsing, zero-padding of month/day, four-digit-year pass-through, two-digit-year mappings for 00-49 and 70-99, leading zeros inside components) are determined by migrate.md identically to transform.py; the completeness argument is in ea-behavior-statement.md."
+  ],
+  "divergent_probe_indices": "PENDING-INTEGRATION"
+}

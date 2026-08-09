@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t04",
+  "topology_id": "local",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "Final states in input order: bbbaaaaab -> S3, aaaaabbbb -> S3, abaaaaba -> E. Each string was traced symbol by symbol from the declared initial state S0 using exactly the transition table in package/artifacts/machine.json; full step sequences are recorded in trace.json.",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "true. The error state E is entered during the trace of the third input string abaaaaba, at step 2 (S1 --b--> E), and remains occupied for every subsequent step of that trace. Derived by inspecting every step of the same traces that settle Q1.",
+      "evidence_ids": ["ev-2", "ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "S3. Visit tally under the stated rule (initial state once per string, every state entered on a step, aggregated across all three traces): S3=13, E=7, S0=6, S1=3, S2=0. S3 is the unique maximum, so the lexicographic tie-break is not needed. Total 29 visits = 3 initial visits + 26 steps, consistent with input lengths 9+9+8.",
+      "evidence_ids": ["ev-2", "ev-4"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

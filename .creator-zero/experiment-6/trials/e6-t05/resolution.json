@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t05",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "observe-evidence",
+      "answer": "Exactly one probe-exercised behavior is determined differently and exactly one is undetermined. Determined differently: the two-digit-year century pivot for years 50-69 (migrate.md: 00-69 -> 20xx, so 2055/2069/2050; transform.py: y >= 50 -> 1900+y, so 1955/1969/1950), exercised by probes 2, 7, 10. Undetermined: surrounding-whitespace handling (migrate.md is silent; transform.py strips), exercised by probe 5 (' 8/15/49 '). Every other behavior exercised by the 12 probes (three-component '/' parsing with 1-2 digit month/day, zero-padding of month/day, four-digit-year pass-through, two-digit mappings for 00-49 and 70-99, leading zeros inside components) is determined identically by both artifacts; the per-probe completeness argument covering the full probe set is in ea-behavior-statement.md.",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be admissibly resolved in this session: E-B requires an implementation authored solely from migrate.md by an author that has never accessed transform.py, a condition this session irreversibly violates by having read the package. A clean-room child bundle has been proposed (child/) whose input manifest contains only package/artifacts/migrate.md; the root-executed create-child/child-return/verify-integration nodes will produce the implementation and the item-level comparison. Expected on the basis of E-A (prediction only, not admissible E-B evidence): divergence on probes 2, 7, 10 from the pivot difference, with probe 5 dependent on the child's whitespace reading.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "The verdict must follow from E-A and E-B jointly (E-C) and the admissible E-B comparison does not yet exist, so the verdict stands as PENDING-INTEGRATION. The deterministic derivation rule is pre-committed in child/integration-plan.json: DIVERGES iff the item-level comparison of transform.py against the child's child_transform.py shows a differing output on some probe (exception on exactly one side counts as differing), with divergent_probe_indices the ascending-sorted list of such probes; otherwise REPRODUCES.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

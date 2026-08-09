@@ -1,0 +1,34 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Governed reading of the task package: migrate.md specification, transform.py reference semantics, and all 12 probe inputs; identification of Q2 (and the E-B component of Q3) as the isolation-requiring distinctions because E-B's authorship condition is violated by any package-reading process.",
+    "refs": [
+      "package/task.json",
+      "package/artifacts/migrate.md",
+      "package/artifacts/transform.py",
+      "package/artifacts/probes.json",
+      "distinctions.json"
+    ]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "observe-evidence",
+    "description": "E-A behavior statement: complete enumeration (classes B1-B6) of every behavior exercised by the probe set, classifying the 50-69 two-digit-year pivot as determined differently (probes 2, 7, 10) and surrounding-whitespace handling as undetermined by migrate.md (probe 5), with an explicit completeness argument that no other divergent or undetermined probe-exercised behavior exists. Analysis performed at observe-evidence; the writeup was persisted under a creator bookkeeping propose event because the observe node holds no Write tool.",
+    "refs": [
+      "ea-behavior-statement.md"
+    ]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Full clean-room child bundle proposed as observable artifact: attenuated child contract within K-E6-child-max, four-node child harness from the template, standalone child prompt that mentions no artifact outside the input manifest, input manifest restricted to package/artifacts/migrate.md to satisfy E-B's authorship/access condition, and a pre-committed deterministic integration plan (role clean_room_implementer) mapping the child's child_transform.py to the final verdict and divergent_probe_indices.",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]

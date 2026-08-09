@@ -1,0 +1,10 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "result.json",
+  "child_implementation_file": "child_transform.py",
+  "rule": "Load probes P = json.load(package/artifacts/probes.json), a list of strings, indices 0-based in file order. In one fresh interpreter import transform from package/artifacts/transform.py as ref; in another fresh interpreter import transform from the child's child_transform.py as impl. For each i in range(len(P)): compute a = ref(P[i]) and b = impl(P[i]), mapping any raised exception to the sentinel '<ERROR>'. Probe i is divergent iff exactly one side raised, or neither raised and a != b under exact string comparison (if both raise, i is not divergent). Set result.json fields: divergent_probe_indices = the ascending-sorted list of divergent i; verdict = 'DIVERGES' if that list is non-empty else 'REPRODUCES'. The undetermined_behaviors field is already fixed by the parent's E-A statement (ea-behavior-statement.md) and is not modified by integration. Record the per-item table (i, probe, a, b, divergent) as the E-B comparison artifact.",
+  "expected_contribution": {
+    "Q2": "The child supplies the admissible clean-room implementation (child_transform.py) authored solely from migrate.md by an author that never accessed transform.py nor any analysis derived from it (its input manifest contains only package/artifacts/migrate.md); the deterministic item-level comparison above completes E-B and answers whether it reproduces transform.py on every probe.",
+    "Q3": "The verdict and divergent_probe_indices of result.json are computed mechanically from the E-B comparison by the rule above, jointly with the parent's E-A statement, satisfying E-C (DIVERGES iff some probe's outputs differ)."
+  }
+}
