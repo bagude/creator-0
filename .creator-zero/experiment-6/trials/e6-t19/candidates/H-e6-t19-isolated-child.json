@@ -1,0 +1,312 @@
+{
+  "topology_id": "H-e6-t19-isolated-child",
+  "task_id": "e6-t19",
+  "unresolved_distinctions": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "principles_invoked": [
+    "P-ATTENUATION",
+    "P-AUTHORITY-SEPARATION",
+    "P-FRESHNESS",
+    "P-INDEPENDENCE",
+    "P-LOCALITY",
+    "P-MINIMALITY",
+    "P-PROPOSAL-OBSERVABILITY",
+    "P-STATE-MEDIATED-CONTINUITY",
+    "P-VERIFY"
+  ],
+  "harness_spec_ref": "sha256:62a6fd76b654142b2d398c28b1cd9e654e5dd342d1c87ae1ebb26e6c01090245",
+  "harness_spec": {
+    "task_id": "e6-t19",
+    "goal": "Isolated fresh child resolves the isolation-requiring distinctions of e6-t19",
+    "max_depth": 1,
+    "max_model_calls": 2,
+    "nodes": [
+      {
+        "id": "observe-evidence",
+        "primitive": "observe",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Acquire governed evidence; identify the distinctions requiring isolation."
+      },
+      {
+        "id": "propose-child",
+        "primitive": "hypothesize",
+        "tools": [
+          "Read",
+          "Write"
+        ],
+        "can_create": false,
+        "instructions": "Author the full child bundle (contract, harness, prompt, input manifest, integration plan) as observable proposal."
+      },
+      {
+        "id": "validate-child",
+        "primitive": "verify",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Deterministic validation: attenuation, kernel compilation, manifest containment, freshness preflight. Any failure rejects realization."
+      },
+      {
+        "id": "create-child",
+        "primitive": "create",
+        "tools": [
+          "Bash"
+        ],
+        "can_create": true,
+        "instructions": "Realize the validated child via the deterministic fresh launcher only."
+      },
+      {
+        "id": "child-return",
+        "primitive": "return",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Receive child deliverables into the governed boundary."
+      },
+      {
+        "id": "verify-integration",
+        "primitive": "verify",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Deterministically integrate child evidence per the pre-committed plan and verify the task result."
+      },
+      {
+        "id": "return-result",
+        "primitive": "return",
+        "tools": [
+          "Read",
+          "Write"
+        ],
+        "can_create": false,
+        "instructions": "Return the verified result."
+      }
+    ],
+    "edges": [
+      {
+        "source": "observe-evidence",
+        "target": "propose-child",
+        "relation": "observe",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "propose-child",
+        "target": "validate-child",
+        "relation": "verify",
+        "requires_response": true,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "validate-child",
+        "target": "create-child",
+        "relation": "authorize",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "create-child",
+        "target": "child-return",
+        "relation": "request_response",
+        "requires_response": true,
+        "response_changes_parent_state": true,
+        "transfers_authority": false
+      },
+      {
+        "source": "child-return",
+        "target": "verify-integration",
+        "relation": "verify",
+        "requires_response": true,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "verify-integration",
+        "target": "return-result",
+        "relation": "authorize",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      }
+    ],
+    "freshness": {
+      "fresh_launcher_required": true
+    }
+  },
+  "resolution_map": {
+    "Q1": "child-return",
+    "Q2": "observe-evidence",
+    "Q3": "observe-evidence"
+  },
+  "predictions": [
+    {
+      "prediction_id": "H-e6-t19-isolated-child-pr01",
+      "topology_id": "H-e6-t19-isolated-child",
+      "claim": "distinction Q1 (Does a python implementation exposing price(p), authored solely from pricing.md ) is resolved by node child-return",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to child-return",
+      "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to child-return",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q1",
+        "node": "child-return"
+      },
+      "principles": [
+        "P-INDEPENDENCE"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t19-isolated-child-pr02",
+      "topology_id": "H-e6-t19-isolated-child",
+      "claim": "distinction Q2 (Which behaviors exercised by probes.json does pricing.md fail to determine, or d) is resolved by node observe-evidence",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+      "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q2",
+        "node": "observe-evidence"
+      },
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t19-isolated-child-pr03",
+      "topology_id": "H-e6-t19-isolated-child",
+      "claim": "distinction Q3 (What is the final verdict (REPRODUCES vs DIVERGES, else PENDING-INTEGRATION) and) is resolved by node observe-evidence",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+      "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q3",
+        "node": "observe-evidence"
+      },
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t19-isolated-child-pr04",
+      "topology_id": "H-e6-t19-isolated-child",
+      "claim": "runtime realizes the declared causal order",
+      "observable": "execution ledger completes_node sequence",
+      "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'propose-child', 'validate-child', 'create-child', 'child-return', 'verify-integration', 'return-result']",
+      "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+      "weight": 1.0,
+      "kind": "runtime_path",
+      "subject": {
+        "expected_order": [
+          "observe-evidence",
+          "propose-child",
+          "validate-child",
+          "create-child",
+          "child-return",
+          "verify-integration",
+          "return-result"
+        ]
+      },
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t19-isolated-child-pr05",
+      "topology_id": "H-e6-t19-isolated-child",
+      "claim": "execution uses at most 2 model calls",
+      "observable": "resource_use.model_calls in the runtime record",
+      "success_condition": "model_calls <= 2",
+      "falsification_condition": "model_calls > 2",
+      "weight": 0.5,
+      "kind": "model_call_budget",
+      "subject": {
+        "max": 2
+      },
+      "principles": [
+        "P-MINIMALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t19-isolated-child-pr06",
+      "topology_id": "H-e6-t19-isolated-child",
+      "claim": "no actor exceeds its authority envelope",
+      "observable": "formal check results over the execution ledger",
+      "success_condition": "zero authority/refinement/attenuation failures",
+      "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+      "weight": 1.0,
+      "kind": "authority_envelope",
+      "subject": {},
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t19-isolated-child-pr07",
+      "topology_id": "H-e6-t19-isolated-child",
+      "claim": "the child contributes novel evidence not derivable from parent-local evidence",
+      "observable": "evidence records with duplicate_of_parent flags",
+      "success_condition": "at least one child evidence record with duplicate_of_parent=false, attributed to the child",
+      "falsification_condition": "every child evidence record duplicates parent evidence",
+      "weight": 1.0,
+      "kind": "novel_evidence",
+      "subject": {
+        "distinction_ids": [
+          "Q1"
+        ]
+      },
+      "principles": [
+        "P-INDEPENDENCE"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t19-isolated-child-pr08",
+      "topology_id": "H-e6-t19-isolated-child",
+      "claim": "the realized child is fresh and attenuated",
+      "observable": "launch provenance + attenuation results",
+      "success_condition": "freshness PASS and attenuation PASS for the realized child",
+      "falsification_condition": "FRESHNESS_FAIL or ATTENUATION_FAIL on the realized child",
+      "weight": 1.0,
+      "kind": "verification_effect",
+      "subject": {
+        "checks": [
+          "freshness",
+          "attenuation"
+        ]
+      },
+      "principles": [
+        "P-FRESHNESS",
+        "P-ATTENUATION"
+      ]
+    }
+  ],
+  "falsifiers": [
+    "a distinction in ['Q1', 'Q2', 'Q3'] remains unresolved after execution",
+    "the runtime path violates the compiled LTS",
+    "actual model calls exceed the declared budget",
+    "child evidence duplicates parent evidence (no novel contribution)"
+  ],
+  "predicted_value": {
+    "delta_e": 1.0,
+    "cost": 0.375,
+    "redundancy": 0.0,
+    "governance_risk": 0.0
+  },
+  "status": "VALIDATED",
+  "child_contract": {},
+  "predictions_hash": "sha256:b4a4cf606d6d0965652e1b10ec33f5dccf4839a0d00fbeec2491e586e28a3d41"
+}

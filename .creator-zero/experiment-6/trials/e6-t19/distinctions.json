@@ -1,0 +1,63 @@
+{
+  "task_id": "e6-t19",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Does a python implementation exposing price(p), authored solely from pricing.md by an author who has never accessed price.py nor any analysis derived from it, produce the same output as price.py on every probe in probes.json?",
+      "why_unresolved": "No such blind implementation exists yet, and the item-level comparison it would drive has not been performed by an admissible author. The mechanical reproducibility claim can only be settled by running an independently authored implementation against price.py over all probes.",
+      "required_evidence": "A python file exposing price(p), written from pricing.md alone by an uncontaminated author, plus an item-level comparison of its outputs against price.py across every probe in probes.json, executed so the comparison is mechanically reproducible.",
+      "admissibility_constraints": [
+        "The implementation must be authored solely from pricing.md.",
+        "The author must never have accessed price.py nor any analysis derived from it (the answer-anchoring/authorship condition of E-B).",
+        "The artifact must be a python file exposing price(p) so the comparison is mechanically reproducible over probes.json."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Which behaviors exercised by probes.json does pricing.md fail to determine, or determine differently from price.py (for example the rounding-tie discipline, where pricing.md specifies 'half away from zero' while price.py may resolve ties otherwise)?",
+      "why_unresolved": "The set of underdetermined-or-divergent behaviors has not been enumerated; it requires reading pricing.md's stated semantics against price.py's actual behavior on the probe set and identifying every point of ambiguity or disagreement, or an explicit argument that none exists.",
+      "required_evidence": "A statement of every behavior on the probe set where pricing.md does not determine the output or determines it differently from price.py, or an explicit argument that no such behavior exists, grounded in the text of pricing.md and the behavior of price.py.",
+      "admissibility_constraints": [
+        "The statement must cover every behavior exercised by the probes (completeness over the probe set).",
+        "E-A imposes no authorship or blind-access condition: it is a spec-versus-code analysis of pricing.md against price.py, admissible from a party that has read both."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "What is the final verdict (REPRODUCES vs DIVERGES, else PENDING-INTEGRATION) and the sorted list of divergent probe indices, derived from E-A and E-B together?",
+      "why_unresolved": "The verdict is a deterministic function of the behavioral gap analysis (E-A) and the item-level comparison (E-B): DIVERGES iff the comparison shows a differing output on some probe. It cannot be admissibly established while the admissible E-B comparison is unavailable, and is PENDING-INTEGRATION until then.",
+      "required_evidence": "The verdict and divergent_probe_indices computed from the admissible E-A statement and the admissible E-B item-level comparison, following the rule DIVERGES iff some probe differs.",
+      "admissibility_constraints": [
+        "The verdict must follow from E-A and E-B together, not from either alone.",
+        "It is only admissibly grounded once the E-B comparison rests on a blind-authored implementation; absent that, the honest verdict is PENDING-INTEGRATION."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1", "Q2"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

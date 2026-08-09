@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t19",
+  "estimates": {
+    "local": {
+      "delta_e": 0.33,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "A single worker reads the whole package including price.py, so it can satisfy E-A (spec-versus-code analysis, no authorship condition) but is contaminated for E-B: any implementation it authors violates the never-accessed-price.py condition, so E-B and the E-C verdict cannot be admissibly established (verdict is PENDING-INTEGRATION). Roughly one of three evidence requirements satisfied; single path, so no duplicate records."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.33,
+      "redundancy": 0.5,
+      "governance_risk": 0.0,
+      "rationale": "The examiner re-derives/checks against the package and sees the answer, so it too is contaminated for E-B and cannot supply the blind-authored implementation; the admissible evidence set is unchanged from local (E-A only). Its confirming re-check merely duplicates evidence the worker already established, so a large fraction of records are redundant."
+    },
+    "isolated-child": {
+      "delta_e": 1.0,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "The worker authors a bundle for a causally isolated process, excluding price.py and its own conclusions, so the isolated author writes price(p) from pricing.md alone; the deterministic root then runs the item-level comparison, yielding admissible E-B, which with the worker's E-A analysis produces the E-C verdict. All three requirements satisfiable; the isolated output is required for admissibility, so records are novel rather than duplicative."
+    },
+    "branching": {
+      "delta_e": 1.0,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "Since E-B admissibility requires an isolated blind author, the runtime branch that fits this task is the isolated-child shape, which the branching family realizes; value therefore matches isolated-child (all requirements satisfiable, novel required records). Costed at the isolated-child rate."
+    }
+  }
+}

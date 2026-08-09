@@ -1,0 +1,57 @@
+{
+  "trial_id": "e6-t19",
+  "utility_config": {
+    "lambda_cost": 1.0,
+    "mu_redundancy": 1.0,
+    "nu_governance": 2.0
+  },
+  "ranking": [
+    {
+      "topology_id": "H-e6-t19-isolated-child",
+      "utility": 0.625,
+      "node_count": 7,
+      "model_calls": 2,
+      "predicted_value": {
+        "delta_e": 1.0,
+        "cost": 0.375,
+        "redundancy": 0.0,
+        "governance_risk": 0.0
+      },
+      "rank": 1
+    },
+    {
+      "topology_id": "H-e6-t19-branching",
+      "utility": 0.625,
+      "node_count": 10,
+      "model_calls": 2,
+      "predicted_value": {
+        "delta_e": 1.0,
+        "cost": 0.375,
+        "redundancy": 0.0,
+        "governance_risk": 0.0
+      },
+      "rank": 2
+    },
+    {
+      "topology_id": "H-e6-t19-local-independent-verify",
+      "utility": -0.42,
+      "node_count": 5,
+      "model_calls": 2,
+      "predicted_value": {
+        "delta_e": 0.33,
+        "cost": 0.25,
+        "redundancy": 0.5,
+        "governance_risk": 0.0
+      },
+      "rank": 3
+    }
+  ],
+  "validation": {
+    "H-e6-t19-local-independent-verify": "PASS",
+    "H-e6-t19-isolated-child": "PASS",
+    "H-e6-t19-branching": "PASS"
+  },
+  "selected": "H-e6-t19-isolated-child",
+  "runner_up": "H-e6-t19-branching",
+  "tie_break": "utility desc, node_count asc, model_calls asc, topology_id asc"
+}
