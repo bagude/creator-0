@@ -1,0 +1,112 @@
+{
+  "experiment_id": "experiment-4",
+  "parent_experiment": "experiment-3",
+  "parent_state": ".creator-zero/state/experiment-3.json",
+  "canonical_start_commit": "9a87df41851785c79a9ead035bdc4d2b62b47bbb",
+  "canonical_end_commit": "the commit landing gate-promoted tests/test_solver.py (14 tests), experiment-4 artifacts, and this manifest on claude/new-session-s0jklj; interim C0 checkpoint commits during the run are part of the same branch history and are C0-scope only",
+  "creator_lineage": {
+    "C0": {"role": "root governor: M3 reconstruction, K1 derivation, C1 instantiation, gate submission; did not solve T4", "contract": ".creator-zero/experiment-4/root-contract.json", "session": "fresh operator session", "model_calls_initiated": 2},
+    "C1": {"role": "task Creator: fresh Decomposer/Composer pair; synthesized+executed R8 harness; created C2; incorporated C2 return", "contract": ".creator-zero/experiment-4/child-1-contract.json", "session": "fresh headless claude -p (fable-5); Phase D via fresh externalized-state continuation", "model_calls_initiated": 5},
+    "C2": {"role": "challenge Creator: fresh Decomposer/Composer pair; synthesized+executed own challenge harness against C1's explicit package", "contract": ".creator-zero/experiment-4/child-2-contract.json", "session": "fresh headless claude -p (fable-5) launched by C1", "model_calls_initiated": 2}
+  },
+  "creation_contracts": {
+    "K0": ".creator-zero/experiment-4/root-contract.json",
+    "K1": ".creator-zero/experiment-4/child-1-contract.json (authored by C0)",
+    "K2": ".creator-zero/experiment-4/child-2-contract.json (authored by C1 under K1 child_contract_law)",
+    "K3_draft_unrealized": "inside .creator-zero/experiment-4/c2/creator-capability-attestation.json (authored by C2; NOT executed)"
+  },
+  "attenuation_results": {
+    "tools": "7 (K0) > 6 (K1, -Agent) > 5 (K2, -Edit) > 4 (K3 draft, -Write)",
+    "max_model_calls": "16 > 12 > 4 > 2",
+    "max_children": "3 > 1 > 0",
+    "max_depth": "2 > 1 > 0",
+    "invariant_K2_le_K1_le_K0": "HOLDS, machine-checked by gate check contract_attenuation",
+    "authority": "no descendant gained tool/filesystem/network/canonical/git authority anywhere; canonical-write authority was zero at every generation"
+  },
+  "inherited_evidence": [
+    "M3 manifest claims (suite 13/13, differential 20689, probes 24/24, R6 gap verified+promoted, solver held)",
+    "M3 unresolved: R8 without unit-suite coverage — treated strictly as task candidate, not as evidence of a gap"
+  ],
+  "new_evidence": [
+    "Exponential surrogate (exhaustive-enumeration class named by R8) passes all 13 canonical tests — executable gap witness (C1, reproduced by C2 with a structurally distinct third family).",
+    "Mild 1.02^n super-polynomial surrogate passes the out-of-suite 30s wall-clock probe (C1) AND the promoted trace discriminator (C2: max ratio 5.86) — low-base growth is finitely untestable; coverage claims must stay scoped to the named violation class.",
+    "Deterministic settrace op-count per-doubling discriminator separates cleanly: canonical 5.0-6.9, legitimate polynomial rewrites 5.5-7.2 (two independent rewrites), exponential 104-660 vs bound 32; counts bit-stable across runs.",
+    "C-level-builtin exponential work is tracer-invisible; the candidate's failure mode there is a hang at n=64, not an assertion failure (C2).",
+    "C1 verify node_end ledger narrative contradicted its own verdict artifact (13825+ vs 1885 instances; 100.4-373.5 vs 149.3/660.2 ratios); artifact values verified correct by C2's independent reproduction — ledger prose is not evidence."
+  ],
+  "rejected_claims": [
+    "None rejected outright; C1's E7 'R8 runtime coverage achieved' was NARROWED by C2 to 'discriminates the named violation class' (scoping, not refutation)."
+  ],
+  "C1_topology": {
+    "spec": ".creator-zero/experiment-4/c1/final-harness.json",
+    "nodes": ["evidence-and-discriminator (test)", "act-candidate-test (act)", "verify-candidate (verify)", "report (return)"],
+    "execution_mode": "all deterministic_script (0 model calls on nodes)",
+    "synthesis": {"rounds": 2, "decomposer_invocations": 2, "composer_invocations": 2},
+    "questions": 7,
+    "harness_fidelity": "EXACT",
+    "session_fidelity": "FUNCTIONALLY_EQUIVALENT_WITH_DEVIATION (premature exit after C2 launch; Phase D as fresh externalized-state continuation)"
+  },
+  "C2_topology": {
+    "spec": ".creator-zero/experiment-4/c2/final-harness.json",
+    "nodes": ["evidence-and-surrogates (test)", "independent-rederivation (verify)", "compile-result (return)"],
+    "execution_mode": "all deterministic_script",
+    "synthesis": {"rounds": 1, "decomposer_invocations": 1, "composer_invocations": 1},
+    "questions": 9,
+    "fidelity": "EXACT"
+  },
+  "creator_capability_results": {
+    "kappa_0": 1,
+    "kappa_1": 1,
+    "kappa_2": 1,
+    "kappa_0_validation": "realized bounded creation of C1 (creation-ledger.jsonl)",
+    "kappa_1_validation": "realized bounded creation of C2 (creation-ledger.jsonl, c2/ artifacts)",
+    "kappa_2_validation": "creator-capability-attestation.json: machine-checked K3 draft strictly <= K2 + exact creation command, NOT executed; stop is architectural (K2 max_children=0, cz.py boundary), not capability loss",
+    "closure": "CREATOR_CLOSURE_PRESERVED"
+  },
+  "recursion_semantics": {
+    "C1_pending_on_C2": "HELD at state level: c1/result.json did not exist until after C2 returned; c1_pending_on_c2 ledgered before C2 ran",
+    "C2_returned": true,
+    "C2_result_causally_affected_C1": "YES — continuation launched strictly after c2/result.json existed, read it, recorded five causal effects (scoping, hang-mode, ledger-discrepancy acknowledgment, CPython assumption, confirmation closure)",
+    "deviation": "process-level wait broken by C1 premature session exit; recovered via fresh externalized-state continuation (Experiment-2 inheritance mechanism applied within a generation); ledgered before recovery ran"
+  },
+  "runtime_topology_fidelity": {
+    "C0": "EXACT",
+    "C1": "FUNCTIONALLY_EQUIVALENT_WITH_DEVIATION",
+    "C2": "EXACT"
+  },
+  "mutation": {
+    "performed": true,
+    "artifact": "tests/test_solver.py",
+    "change": "added test_r8_operation_growth_is_polynomial (+34/-0): deterministic sys.settrace op-count per-doubling ratio bound 32 across n in {16,32,64}; no wall-clock",
+    "actor": "C1 act-candidate-test node (candidate-write only)",
+    "candidate_workspace": ".creator-zero/experiment-4/c1/candidate/",
+    "verification": "C1 verify-candidate ACCEPT 7/7 (fresh surrogates); C2 PARTIAL_CONFIRMATION with candidate_endorsed=true",
+    "promotion": "gate.py deterministic copy after ACCEPT 20/20; post-promotion suite 14/14 green",
+    "known_limits": "scoped to named violation class; low-base growth undetectable by any finite test; C-level exponentials manifest as hang; CPython settrace mechanism assumed"
+  },
+  "root_gate_result": {
+    "decision": "ACCEPT",
+    "checks": "20/20",
+    "file": ".creator-zero/experiment-4/gate-decision.json",
+    "gate_sha256": "919fd91cf2d8a06eafc9ce1ab5a37837a39032485a37907b2dc14b7242cd6d1e",
+    "gate_amendment": "pre-execution key-normalization for kappa_2 attestation, ledgered with old hash 1f9407bc6a1796c43f55bdd759ac5fd93627e011b0a844ebdca43a4d5daec88e"
+  },
+  "boundary_events": [
+    "C1 ledger timestamp anomaly (append-only correction)",
+    "C1 verify checker lexical false positive, self-corrected (C2 hit identical shape; judged harmless; exposed artifact-level vs mind-level verification distinction)",
+    "C1_PREMATURE_SESSION_EXIT + externalized-state continuation recovery",
+    "gate_amended (key normalization, pre-execution)",
+    "C1 verify ledger narrative vs artifact discrepancy (artifact governs)"
+  ],
+  "unresolved": [
+    "Low-base/near-1 super-polynomial growth is permanently indistinguishable by any fixed finite test — coverage claims must remain scoped (logical limit, both creators).",
+    "Discriminator bound-32 admittance edge untested: no legitimate near-degree-5 implementation was constructed; measured legitimate rewrites sit at ratio <= 7.2.",
+    "Non-CPython interpreters (PyPy/JIT settrace semantics) untested; candidate assumes CPython.",
+    "C-level-builtin super-polynomial regressions are tracer-invisible; candidate fails there only by hanging (CI timeout), not assertion.",
+    "oracle.py correctness still inherited (three-implementation agreement, not re-proven).",
+    "Headless Creator sessions can end their turn instead of blocking on a pending child — process-level pending-dependence needs an architectural mechanism (e.g. gate-checked completion marker protocol) rather than prompt discipline.",
+    "gate.py remains experiment-local (M3 unresolved item carried forward; the reusable contract-governed promotion gate still does not exist)."
+  ],
+  "recommended_next_experiment": "Experiment 5 candidate: endogenous creation judgment — remove the protocol mandate and test whether a Creator, given a task and its contract, correctly DECIDES whether creating a descendant Creator is epistemically justified (and abstains when it is not), under the same attenuation/gate law. Secondary: harden process-level recursive pending-dependence (child-completion protocol survivable across session death, generalizing this experiment's externalized continuation recovery into contract law), and promote the gate mechanism from experiment-local script to a first-class contract-governed boundary object.",
+  "reconstruction_guide_for_successors": "Start from this file plus the repository at the end commit. Full causal record under .creator-zero/experiment-4/: creation-ledger.jsonl (every creation/boundary/gate event with contracts, environments, limits, gate hashes), contracts (root/child-1/child-2), per-generation task.json, prompt.md, rounds/ (exact JSON crossing role boundaries), decomposition.json, final-harness.json, execution-ledger.jsonl, evidence.json, result.json, sandboxes with re-runnable surrogates/drivers, c1/candidate/ (pre-promotion), c2/creator-capability-attestation.json (K3 draft), gate.py, gate-decision.json, report.md. Session transcripts: c1/session.log, c1/continuation-session.log, c2/session.log."
+}

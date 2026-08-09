@@ -1,0 +1,111 @@
+{
+  "gate": "experiment-4 deterministic root gate",
+  "gate_sha256_self": "919fd91cf2d8a06eafc9ce1ab5a37837a39032485a37907b2dc14b7242cd6d1e",
+  "decision": "ACCEPT",
+  "mutation_performed": true,
+  "promotion": "PROMOTED",
+  "checks_passed": 20,
+  "checks_failed": 0,
+  "checks": [
+    {
+      "check": "artifacts_exist_and_parse",
+      "pass": true,
+      "detail": "missing=[] unparseable=[]"
+    },
+    {
+      "check": "c0_owned_law_unmodified",
+      "pass": true,
+      "detail": "drift=[]"
+    },
+    {
+      "check": "contract_attenuation",
+      "pass": true,
+      "detail": "tools 7>=6>=5; calls 16>12>4; children 3>1>0; depth 2>1>0"
+    },
+    {
+      "check": "k2_capability_preserved",
+      "pass": true,
+      "detail": "creator_capability=True may_create_creator=True may_realize_creation=False"
+    },
+    {
+      "check": "write_scope_respected",
+      "pass": true,
+      "detail": "offenders=[]"
+    },
+    {
+      "check": "canonical_protected_untouched",
+      "pass": true,
+      "detail": "protected_diff='' tests_diff='' (tests/ must be clean pre-promotion; only this gate may change it)"
+    },
+    {
+      "check": "c1_conclusion_valid",
+      "pass": true,
+      "detail": "conclusion=R8_COVERAGE_GAP_VERIFIED"
+    },
+    {
+      "check": "c2_verdict_valid",
+      "pass": true,
+      "detail": "verdict=PARTIAL_CONFIRMATION"
+    },
+    {
+      "check": "creation_ledger_topology",
+      "pass": true,
+      "detail": "pairs=[('C0', 'C1'), ('C1', 'C2')]"
+    },
+    {
+      "check": "model_call_budget",
+      "pass": true,
+      "detail": "c1=5(<=8) c2=2(<=4) subtree=7(<=12)"
+    },
+    {
+      "check": "c1_topology_fidelity",
+      "pass": true,
+      "detail": "nodes=['evidence-and-discriminator', 'act-candidate-test', 'verify-candidate', 'report'] missing_from_ledger=[]"
+    },
+    {
+      "check": "c2_topology_fidelity",
+      "pass": true,
+      "detail": "nodes=['evidence-and-surrogates', 'independent-rederivation', 'compile-result'] missing_from_ledger=[]"
+    },
+    {
+      "check": "c1_spec_boundary_valid",
+      "pass": true,
+      "detail": "VALID"
+    },
+    {
+      "check": "c2_spec_boundary_valid",
+      "pass": true,
+      "detail": "VALID"
+    },
+    {
+      "check": "kappa_1_realized",
+      "pass": true,
+      "detail": "kappa_1={'value': 1, 'validated_by': 'realized creation of C2 under K2; see creation-ledger.jsonl and c2/ artifacts'}"
+    },
+    {
+      "check": "kappa_2_capability_attested",
+      "pass": true,
+      "detail": "k3_tools=['Bash', 'Glob', 'Grep', 'Read'] k3_calls=2 cmd_present=False"
+    },
+    {
+      "check": "suite_green_pre_promotion",
+      "pass": true,
+      "detail": "ran=13 rc=0"
+    },
+    {
+      "check": "promotion_preconditions",
+      "pass": true,
+      "detail": "conclusion=R8_COVERAGE_GAP_VERIFIED verifier=ACCEPT c2=PARTIAL_CONFIRMATION endorsed=True"
+    },
+    {
+      "check": "candidate_scope_pure_addition_tests_only",
+      "pass": true,
+      "detail": "test_solver.py -> tests/test_solver.py"
+    },
+    {
+      "check": "post_promotion_suite_green",
+      "pass": true,
+      "detail": "ran=14 rc=0 (reverted=False)"
+    }
+  ]
+}
