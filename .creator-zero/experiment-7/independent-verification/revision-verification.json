@@ -1,0 +1,129 @@
+{
+  "verifier": "IV-E7-REV",
+  "verdict": "PASS",
+  "authority_note": "Information-only verification in a fresh session. This report is evidence for the Stage 1 evaluation-authorization conjunction; it is not gate-shaped, authorizes nothing, and cannot promote.",
+  "artifacts_reviewed": [
+    "preregistration.md (sections 6-8, plus 0-5 and 9-14 for context)",
+    "proposal.json",
+    "candidate-theta-v2.json",
+    "replay-result.json",
+    "evidence-import-manifest.json",
+    "theta-v1.json"
+  ],
+  "checks": [
+    {
+      "id": "C1-split-trigger-recomputed",
+      "description": "Recompute all four frozen SPLIT trigger clauses (preregistration section 6) from the raw context counts, not the stated rates.",
+      "result": "PASS",
+      "details": {
+        "recomputed_support_rates": {
+          "CLEAN_ROOM_AUTHORSHIP": "12 SUPPORT / (12+0+0) = 1.0 over 12 listed event ids (matches stated 1.0)",
+          "INDEPENDENT_DECOMPOSITION": "6 / 12 = 0.5 over 12 listed event ids (matches stated 0.5)",
+          "METHOD_DISJOINT_VERIFICATION": "4 / 10 = 0.4 over 10 listed event ids (matches stated 0.4)",
+          "NON_AUTHOR_SEARCH": "5 / 8 = 0.625 over 8 listed event ids (matches stated 0.625)"
+        },
+        "mixed_evidence": "27 total SUPPORT >= 1 and 15 total FALSIFY >= 1; 27+15 = 42 = total_events -> TRUE",
+        "context_coverage": "unresolved_context_events = 0, so 42/42 = 1.0 >= 0.9 -> TRUE (consistent with import manifest context_resolved_events = 264 for the full log)",
+        "enough_contexts": "4 contexts with >= 4 events each (12, 12, 10, 8) >= required 2 -> TRUE",
+        "support_rate_spread": "best 1.0 (CLEAN_ROOM_AUTHORSHIP) - worst 0.4 (METHOD_DISJOINT_VERIFICATION) = 0.6 >= 0.3 -> TRUE (matches stated 0.6)",
+        "qualifying_contexts": "all four contexts qualify (each >= 4 events), matching the proposal's qualifying_contexts list",
+        "event_id_counts": "listed event_ids per context (12, 12, 10, 8) equal the stated SUPPORT+FALSIFY+CHALLENGE counts in every context; no double-listing across contexts"
+      }
+    },
+    {
+      "id": "C2-scores-and-selection-recomputed",
+      "description": "Recompute all four evidence-explanation scores per the frozen section 6 definitions and verify the selection rule application.",
+      "result": "PASS",
+      "details": {
+        "no_change": "explains SUPPORT only: 27/42 = 0.642857 -> stated 0.6429 correct",
+        "DEPRECATE": "explains FALSIFY only: 15/42 = 0.357142 -> stated 0.3571 correct",
+        "SPECIALIZE": "retained contexts = falsify_rate < 0.2 -> only CLEAN_ROOM_AUTHORSHIP (0.0); INDEPENDENT_DECOMPOSITION 0.5, METHOD_DISJOINT_VERIFICATION 0.6, NON_AUTHOR_SEARCH 0.375 dropped; explained = 12 retained SUPPORT + 15 dropped FALSIFY = 27/42 = 0.6429 correct; proposal's retained_contexts list is consistent",
+        "SPLIT": "reproducibility floor 2: every context has S_c >= 2 (12, 6, 4, 5) and every nonzero F_c >= 2 (6, 6, 3); all 42 events explained -> 1.0 correct",
+        "selection": "SPLIT is the unique maximum (1.0 > 0.6429 = 0.6429 > 0.3571), so tie-break rules never engage; selected = SPLIT follows the frozen rule; the no-change/SPECIALIZE tie at 0.6429 is irrelevant to the outcome",
+        "rules_block": "min_context_coverage 0.9, min_context_events 4, min_spread 0.3, reproducibility_floor 2, specialize_max_falsify_rate 0.2 all match the frozen section 6 values"
+      }
+    },
+    {
+      "id": "C3-split-children-structure",
+      "description": "Per-child validation: unique id, parent linkage, distinct precondition feature, distinct predicted effects, explicit falsifier, non-empty motivating evidence drawn only from its own context.",
+      "result": "PASS",
+      "details": {
+        "ids": "P-AUTHORSHIP-INDEPENDENCE, P-INDEPENDENT-DECOMPOSITION, P-METHOD-DISJOINT-VERIFICATION, P-NONAUTHOR-SEARCH: 4 unique ids, exactly the preregistered section 6 split basis",
+        "parent_linkage": "all four have parent_principles == ['P-INDEPENDENCE']",
+        "preconditions": "feature:requires_clean_room_authorship / requires_independent_decomposition / requires_method_disjoint_verification / requires_nonauthor_search - all distinct and exactly as preregistered",
+        "predicted_effects": "each child names a distinct canonical role (clean_room_author / independent_decomposer / method_disjoint_verifier / non_author_examiner) and a distinct required vector ([1,0,0,0] / [0,0,1,0] / [0,0,0,1] / [0,1,0,0]); no two effect sets identical -> no semantic-duplicate invalidation",
+        "falsifiers": "all four falsifiers present, non-empty, and stated as concrete refutation conditions",
+        "evidence_attribution": "each child's supporting_evidence event-id set matched 1:1 against its own context partition: 12/12 CLEAN_ROOM_AUTHORSHIP, 12/12 INDEPENDENT_DECOMPOSITION, 10/10 METHOD_DISJOINT_VERIFICATION, 8/8 NON_AUTHOR_SEARCH; zero cross-context events, zero overlap between context sets, all non-empty; SPLIT motivating_evidence (42 ids) equals the exact union of the four partitions"
+      }
+    },
+    {
+      "id": "C4-candidate-theta-v2-structure",
+      "description": "Successor document: version 2, status CANDIDATE, predecessor_hash present, parent REVISED (active), all nine v1 principles retained, children applied as proposed.",
+      "result": "PASS",
+      "details": {
+        "version": 2,
+        "status": "CANDIDATE (not PROMOTED)",
+        "predecessor_hash": "present and non-empty (sha256:caa6f956...); theta-v1's own predecessor_hash is empty as expected for the seed theory",
+        "parent_principle": "P-INDEPENDENCE status REVISED; preregistration section 6 states REVISED remains an active status, so replay cases requiring it stay grounded; its statement, preconditions, effects, and evidence are otherwise unchanged from v1",
+        "v1_retention": "all nine v1 principles present: P-INDEPENDENCE (REVISED), P-LOCALITY, P-VERIFY, P-AUTHORITY-SEPARATION, P-PROPOSAL-OBSERVABILITY, P-FRESHNESS, P-STATE-MEDIATED-CONTINUITY, P-MINIMALITY, P-ATTENUATION (the eight others retain SUPPORTED status, version 1, and identical content)",
+        "children": "the four CANDIDATE children in theta-v2 are content-identical to the selected SPLIT candidate in proposal.json",
+        "revision_graph": "contains exactly the applied SPLIT revision rev-split-p-independence; provenance records revised_from 1 and the same revision_id"
+      }
+    },
+    {
+      "id": "C5-historical-replay",
+      "description": "Replay per section 7: full corpus, zero CONTRADICTED, zero INDETERMINATE.",
+      "result": "PASS",
+      "details": {
+        "corpus": "8 cases = 5 frozen v0.1 cases + 3 frozen E6 cases (E6-clean-room-authorship, E6-examiner-cheaper-than-child, E6-local-sufficiency), matching section 7; no case removed",
+        "counts": "compatible 8, contradicted 0, indeterminate 0; counts equal the per-case results",
+        "theory_version": 2,
+        "grounding": "the three cases requiring P-INDEPENDENCE report it active, consistent with REVISED being an active status"
+      }
+    },
+    {
+      "id": "C6-no-promotion",
+      "description": "No artifact claims or performs promotion; two-stage gate boundary respected.",
+      "result": "PASS",
+      "details": {
+        "gate_record": "no {'check':'gate','status':'PASS','issued_by':'gate'} shape appears in any reviewed artifact",
+        "statuses": "proposal candidates and theta-v2 are all status CANDIDATE; the only PROMOTED status is theta-v1, the existing canonical predecessor, which is expected",
+        "replay_acceptable_flag": "replay-result.json 'acceptable': true is a per-check evaluation result feeding Stage 1, not a promotion claim",
+        "this_report": "is itself information-only evidence for the Stage 1 'independent verifier PASS' input and confers no authorization"
+      }
+    },
+    {
+      "id": "C7-evidence-provenance",
+      "description": "Import manifest against the section 3 frozen pin.",
+      "result": "PASS",
+      "details": {
+        "source_pin": "sha256 70688fc51c582a5a5d413b4150cdd013c0510b5f7654671a3e9ab8d6fcde0388, 264 events, 264 unique ids - all match the preregistered pin; source_commit matches the parent checkpoint bd0cf91e...",
+        "idempotence": "imported 0, skipped_identical 264, conflicts 0, evidence head hash and length identical before and after, append_only_intact true - consistent with the section 3 idempotent re-import semantics",
+        "context_resolution": "context_resolved_events 264 of 264, consistent with proposal.json's unresolved_context_events = 0 for the P-INDEPENDENCE subset"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "severity": "LIMITATION",
+      "finding": "Hash values could not be independently recomputed. This verifier has Read/Write only (no execution capability), so the predecessor_hash in candidate-theta-v2.json (sha256:caa6f956...) was checked for presence and format but not recomputed against theta-v1.json bytes, and the replay's 'pinned artifacts byte-identical' claims were not re-hashed. A deterministic check with hashing capability (NC3 / the Stage 1 conjunction) must remain the authority for byte-level identity."
+    },
+    {
+      "severity": "LIMITATION",
+      "finding": "The underlying 264-event evidence log (.creator-zero/experiment-6/theory-evidence-events.jsonl) was not among the provided artifacts, so membership of the 42 P-INDEPENDENCE event ids (and their SUPPORT/FALSIFY effects) in that log was verified only for internal consistency across proposal.json and the import manifest, not against the log itself. The ids follow the imported H-e6-* scheme and all cross-artifact counts agree exactly."
+    },
+    {
+      "severity": "OBSERVATION",
+      "finding": "The rejected SPECIALIZE candidate carries an empty falsifier string. Section 6 requires explicit falsifiers for SPLIT children (all four comply); no requirement is stated for non-selected SPECIALIZE candidates, so this does not affect the selected candidate's validity, but it is worth noting for engine hygiene."
+    },
+    {
+      "severity": "OBSERVATION",
+      "finding": "no-change and SPECIALIZE tie at 0.6429. The tie is between non-winning candidates and never reaches the tie-break rule, since SPLIT scores a strict 1.0 maximum; noted only to confirm the tie-break was not needed and was not applied."
+    },
+    {
+      "severity": "OBSERVATION",
+      "finding": "The section 3 pin also records the run split {primary: 176, shadow: 88}; the import manifest does not restate this split. The pinned sha256, event count, and unique-id count it does restate all match, so this is a completeness note, not a discrepancy."
+    }
+  ],
+  "summary": "PASS. All recomputations agree with the artifacts: the four SPLIT trigger clauses hold on the raw counts (support-rate spread 1.0 - 0.4 = 0.6 >= 0.3; coverage 42/42 = 1.0 >= 0.9; four contexts with >= 4 events; 27 SUPPORT and 15 FALSIFY mixed evidence); the frozen section 6 scores recompute exactly (no-change 27/42 = 0.6429, DEPRECATE 15/42 = 0.3571, SPECIALIZE 27/42 = 0.6429 with only CLEAN_ROOM_AUTHORSHIP retained, SPLIT 42/42 = 1.0) and SPLIT is the unique maximum under the frozen selection rule; the four children match the preregistered split basis with unique ids, parent linkage to P-INDEPENDENCE, distinct precondition features, distinct role/vector effects, explicit falsifiers, and evidence drawn exclusively from each child's own context (12/12/10/8, no leakage); candidate-theta-v2 is version 2, status CANDIDATE, predecessor_hash present, P-INDEPENDENCE REVISED-and-active, with all nine v1 principles retained; replay shows 8 COMPATIBLE, 0 CONTRADICTED, 0 INDETERMINATE; and no artifact claims or performs promotion - no gate-shaped record exists and every candidate status is CANDIDATE. Two limitations are recorded (no independent hash recomputation and no direct access to the 264-event log); neither contradicts any claim checked. This report is information-only evidence for Stage 1 and authorizes nothing."
+}

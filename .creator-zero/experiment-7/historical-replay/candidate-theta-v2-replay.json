@@ -1,0 +1,49 @@
+{
+  "acceptable": true,
+  "case_results": [
+    {
+      "case_id": "E3-independent-verifier",
+      "result": "COMPATIBLE",
+      "why": "required principles ['P-AUTHORITY-SEPARATION', 'P-PROPOSAL-OBSERVABILITY', 'P-VERIFY'] active; pinned artifacts byte-identical"
+    },
+    {
+      "case_id": "E4-lineage-continuation",
+      "result": "COMPATIBLE",
+      "why": "required principles ['P-ATTENUATION', 'P-STATE-MEDIATED-CONTINUITY'] active; pinned artifacts byte-identical"
+    },
+    {
+      "case_id": "E4C-freshness-observability",
+      "result": "COMPATIBLE",
+      "why": "required principles ['P-FRESHNESS', 'P-PROPOSAL-OBSERVABILITY'] active; pinned artifacts byte-identical"
+    },
+    {
+      "case_id": "E5-local-sufficiency",
+      "result": "COMPATIBLE",
+      "why": "required principles ['P-LOCALITY', 'P-MINIMALITY'] active; pinned artifacts byte-identical"
+    },
+    {
+      "case_id": "E5-contamination",
+      "result": "COMPATIBLE",
+      "why": "required principles ['P-ATTENUATION', 'P-FRESHNESS', 'P-INDEPENDENCE'] active; pinned artifacts byte-identical"
+    },
+    {
+      "case_id": "E6-clean-room-authorship",
+      "result": "COMPATIBLE",
+      "why": "required principles ['P-FRESHNESS', 'P-INDEPENDENCE'] active; pinned artifacts byte-identical"
+    },
+    {
+      "case_id": "E6-examiner-cheaper-than-child",
+      "result": "COMPATIBLE",
+      "why": "required principles ['P-INDEPENDENCE', 'P-MINIMALITY'] active; pinned artifacts byte-identical"
+    },
+    {
+      "case_id": "E6-local-sufficiency",
+      "result": "COMPATIBLE",
+      "why": "required principles ['P-LOCALITY', 'P-MINIMALITY'] active; pinned artifacts byte-identical"
+    }
+  ],
+  "compatible": 8,
+  "contradicted": 0,
+  "indeterminate": 0,
+  "theory_version": 2
+}

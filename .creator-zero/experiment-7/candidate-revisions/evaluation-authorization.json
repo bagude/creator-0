@@ -1,0 +1,27 @@
+{
+  "check": "evaluation_authorization",
+  "counterexample": null,
+  "detail": {
+    "clauses": {
+      "candidate_schema": "PASS",
+      "evidence_provenance": "PASS",
+      "historical_replay": "PASS",
+      "independent_verifier": "PASS",
+      "protected_laws": "PASS",
+      "tests_existing": "PASS",
+      "tests_new": "PASS"
+    },
+    "issued_by": "evaluation_authorization"
+  },
+  "evidence": [
+    "candidate_schema: PASS",
+    "evidence_provenance: PASS",
+    "historical_replay: PASS",
+    "independent_verifier: PASS",
+    "protected_laws: PASS",
+    "tests_existing: PASS",
+    "tests_new: PASS"
+  ],
+  "formal_relation": "conjunction over stage-1 verification inputs; authorizes held-out evaluation only \u2014 this result cannot promote a theory",
+  "status": "PASS"
+}

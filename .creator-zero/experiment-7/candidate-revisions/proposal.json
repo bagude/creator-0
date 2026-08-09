@@ -1,0 +1,702 @@
+{
+  "artifact": "revision proposal v2",
+  "candidates": {
+    "DEPRECATE": {
+      "candidate_principles": [],
+      "changed_predictions": [],
+      "context_partition": {},
+      "historical_cases_affected": [],
+      "motivating_evidence": [
+        "H-e6-t03-isolated-child-ev002",
+        "H-e6-t03-isolated-child-ev007",
+        "H-e6-t06-isolated-child-ev003",
+        "H-e6-t06-isolated-child-ev008",
+        "H-e6-t08-isolated-child-ev003",
+        "H-e6-t08-isolated-child-ev007",
+        "H-e6-t09-branching-ev003",
+        "H-e6-t09-branching-ev008",
+        "H-e6-t09-isolated-child-ev003",
+        "H-e6-t09-isolated-child-ev008",
+        "H-e6-t10-isolated-child-ev002",
+        "H-e6-t10-isolated-child-ev007",
+        "H-e6-t11-isolated-child-ev003",
+        "H-e6-t11-isolated-child-ev007",
+        "H-e6-t13-isolated-child-ev003",
+        "H-e6-t13-isolated-child-ev007",
+        "H-e6-t14-branching-ev002",
+        "H-e6-t14-branching-ev007",
+        "H-e6-t14-isolated-child-ev002",
+        "H-e6-t14-isolated-child-ev007",
+        "H-e6-t16-isolated-child-ev002",
+        "H-e6-t16-isolated-child-ev007",
+        "H-e6-t17-branching-ev002",
+        "H-e6-t17-branching-ev007",
+        "H-e6-t17-isolated-child-ev002",
+        "H-e6-t17-isolated-child-ev007",
+        "H-e6-t18-isolated-child-ev002",
+        "H-e6-t18-isolated-child-ev007",
+        "H-e6-t20-isolated-child-ev004",
+        "H-e6-t20-isolated-child-ev008"
+      ],
+      "parents": [
+        "P-INDEPENDENCE"
+      ],
+      "revision_id": "rev-deprecate-p-independence",
+      "status": "CANDIDATE",
+      "type": "DEPRECATE"
+    },
+    "SPECIALIZE": {
+      "candidate_principles": [
+        {
+          "contradicting_evidence": [],
+          "falsifier": "",
+          "id": "P-INDEPENDENCE-SPECIALIZED",
+          "parent_principles": [
+            "P-INDEPENDENCE"
+          ],
+          "preconditions": [
+            "feature:requires_isolation",
+            "feature:contamination"
+          ],
+          "predicted_topology_effects": [
+            "adds an isolated fresh child (or independent verifier) node",
+            "child evidence is novel, not a duplicate of parent evidence",
+            "child resolves the assigned distinctions"
+          ],
+          "scope": [
+            "topology-decision",
+            "verification"
+          ],
+          "statement": "When a distinction requires evidence that the current session cannot produce without contaminating it (clean-room, independent authorship, adversarial check), an isolated fresh descendant or independent examiner adds epistemic value that local work cannot. [SPECIALIZED: preconditions narrowed to admissibility contexts ['CLEAN_ROOM_AUTHORSHIP'] in which the principle's predictions held]",
+          "status": "CANDIDATE",
+          "supporting_evidence": [
+            {
+              "frozen_artifact": "experiment-5/trials/t-031/decision.json",
+              "sha256": "36611ccc00073203ca5430e5cd52481b79ecbe9d58f48f56b1ff3f677b90aaa5"
+            },
+            {
+              "frozen_artifact": "experiment-5/trials/t-031/child/launch-provenance.json",
+              "sha256": "9cb765b6b2c970188b2fa86e71cc5564d773c3dbc72a721b4d5caf489e4cbf05"
+            },
+            {
+              "frozen_artifact": "experiment-5/aggregate-results.json",
+              "sha256": "635621885c398b308228dc9bafabb39c5ab65a2f7b928cab663f57a6a60af185"
+            },
+            {
+              "frozen_artifact": "experiment-3/execution-ledger.jsonl",
+              "sha256": "bb561f728cc7e991266c9a33865894cfa528051dd825f4bcce40ceff415f3446"
+            }
+          ],
+          "version": 1
+        }
+      ],
+      "changed_predictions": [],
+      "context_partition": {
+        "retained_contexts": [
+          "CLEAN_ROOM_AUTHORSHIP"
+        ]
+      },
+      "historical_cases_affected": [],
+      "motivating_evidence": [
+        "H-e6-t03-isolated-child-ev002",
+        "H-e6-t03-isolated-child-ev007",
+        "H-e6-t06-isolated-child-ev003",
+        "H-e6-t06-isolated-child-ev008",
+        "H-e6-t08-isolated-child-ev003",
+        "H-e6-t08-isolated-child-ev007",
+        "H-e6-t09-branching-ev003",
+        "H-e6-t09-branching-ev008",
+        "H-e6-t09-isolated-child-ev003",
+        "H-e6-t09-isolated-child-ev008",
+        "H-e6-t10-isolated-child-ev002",
+        "H-e6-t10-isolated-child-ev007",
+        "H-e6-t11-isolated-child-ev003",
+        "H-e6-t11-isolated-child-ev007",
+        "H-e6-t13-isolated-child-ev003",
+        "H-e6-t13-isolated-child-ev007",
+        "H-e6-t14-branching-ev002",
+        "H-e6-t14-branching-ev007",
+        "H-e6-t14-isolated-child-ev002",
+        "H-e6-t14-isolated-child-ev007",
+        "H-e6-t16-isolated-child-ev002",
+        "H-e6-t16-isolated-child-ev007",
+        "H-e6-t17-branching-ev002",
+        "H-e6-t17-branching-ev007",
+        "H-e6-t17-isolated-child-ev002",
+        "H-e6-t17-isolated-child-ev007",
+        "H-e6-t18-isolated-child-ev002",
+        "H-e6-t18-isolated-child-ev007",
+        "H-e6-t20-isolated-child-ev004",
+        "H-e6-t20-isolated-child-ev008"
+      ],
+      "parents": [
+        "P-INDEPENDENCE"
+      ],
+      "revision_id": "rev-specialize-p-independence",
+      "status": "CANDIDATE",
+      "type": "SPECIALIZE"
+    },
+    "SPLIT": {
+      "candidate_principles": [
+        {
+          "contradicting_evidence": [],
+          "falsifier": "a reference-exposed path yields evidence scored admissible for a clean-room distinction, or the isolated clean-room author fails to add admissible value where the requirement is present",
+          "id": "P-AUTHORSHIP-INDEPENDENCE",
+          "parent_principles": [
+            "P-INDEPENDENCE"
+          ],
+          "preconditions": [
+            "feature:requires_clean_room_authorship"
+          ],
+          "predicted_topology_effects": [
+            "adds an independent path with canonical role clean_room_author",
+            "that path's evidence is admissible for CLEAN_ROOM_AUTHORSHIP distinctions (required vector [1, 0, 0, 0])",
+            "cheaper admissible paths dominate costlier ones at equal coverage (saturating value)"
+          ],
+          "scope": [
+            "topology-decision",
+            "verification"
+          ],
+          "statement": "When a distinction requires clean-room authorship \u2014 an artifact written without exposure to the existing solution it might otherwise copy \u2014 admissible evidence is supplied by an isolated fresh child node operating in the clean_room_author role, whose launch provenance shows it never had access to the contaminating material. An artifact authored in the parent session, or by any node that read the existing solution before writing, does not satisfy the relation, no matter how independently the work is later characterized. Isolation is required here only to guarantee non-exposure at authoring time; it adds no evidential weight beyond that guarantee.",
+          "status": "CANDIDATE",
+          "supporting_evidence": [
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t01-branching-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t01-branching-ev008",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t01-isolated-child-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t01-isolated-child-ev008",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t05-isolated-child-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t05-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t07-branching-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t07-branching-ev008",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t07-isolated-child-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t07-isolated-child-ev008",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t19-isolated-child-ev001",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "CLEAN_ROOM_AUTHORSHIP",
+              "evidence_event_id": "H-e6-t19-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            }
+          ],
+          "version": 1
+        },
+        {
+          "contradicting_evidence": [],
+          "falsifier": "a decomposition produced with access to the first is scored admissible, or the isolated decomposer duplicates the first decomposition without novel enumeration evidence",
+          "id": "P-INDEPENDENT-DECOMPOSITION",
+          "parent_principles": [
+            "P-INDEPENDENCE"
+          ],
+          "preconditions": [
+            "feature:requires_independent_decomposition"
+          ],
+          "predicted_topology_effects": [
+            "adds an independent path with canonical role independent_decomposer",
+            "that path's evidence is admissible for INDEPENDENT_DECOMPOSITION distinctions (required vector [0, 0, 1, 0])",
+            "cheaper admissible paths dominate costlier ones at equal coverage (saturating value)"
+          ],
+          "scope": [
+            "topology-decision",
+            "verification"
+          ],
+          "statement": "When a distinction requires independent decomposition \u2014 a breakdown of the problem derived without access to the parent's own decomposition \u2014 admissible evidence is supplied by a child node in the independent_decomposer role that produces its decomposition before seeing the parent's version. A node that receives, refines, or merely ratifies the parent's existing breakdown does not satisfy the relation, and neither does the parent re-decomposing within its own session. The relation claims only that the second decomposition was derived independently, so its agreement or divergence is informative; it does not claim that an isolated node's decomposition is generally better than local work.",
+          "status": "CANDIDATE",
+          "supporting_evidence": [
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t09-branching-ev003",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t09-branching-ev008",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t09-isolated-child-ev003",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t09-isolated-child-ev008",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t16-isolated-child-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t16-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t17-branching-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t17-branching-ev007",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t17-isolated-child-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t17-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t18-isolated-child-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "INDEPENDENT_DECOMPOSITION",
+              "evidence_event_id": "H-e6-t18-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            }
+          ],
+          "version": 1
+        },
+        {
+          "contradicting_evidence": [],
+          "falsifier": "a method-sharing verification is scored admissible for a method-disjoint distinction, or the method-disjoint verifier fails to add admissible value where the requirement is present",
+          "id": "P-METHOD-DISJOINT-VERIFICATION",
+          "parent_principles": [
+            "P-INDEPENDENCE"
+          ],
+          "preconditions": [
+            "feature:requires_method_disjoint_verification"
+          ],
+          "predicted_topology_effects": [
+            "adds an independent path with canonical role method_disjoint_verifier",
+            "that path's evidence is admissible for METHOD_DISJOINT_VERIFICATION distinctions (required vector [0, 0, 0, 1])",
+            "cheaper admissible paths dominate costlier ones at equal coverage (saturating value)"
+          ],
+          "scope": [
+            "topology-decision",
+            "verification"
+          ],
+          "statement": "When a distinction requires method-disjoint verification \u2014 checking a result by a method different from the one that produced it \u2014 admissible evidence is supplied by a node in the method_disjoint_verifier role whose check demonstrably uses a distinct method from the original derivation. Re-running the original method, even in a fully isolated fresh session, is replication rather than method-disjoint verification and does not satisfy the relation. Isolation matters here only insofar as it prevents the original method from leaking into the check; the evidential weight comes from the disjointness of methods, not from the isolation itself.",
+          "status": "CANDIDATE",
+          "supporting_evidence": [
+            {
+              "context_kind": "METHOD_DISJOINT_VERIFICATION",
+              "evidence_event_id": "H-e6-t03-isolated-child-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "METHOD_DISJOINT_VERIFICATION",
+              "evidence_event_id": "H-e6-t03-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "METHOD_DISJOINT_VERIFICATION",
+              "evidence_event_id": "H-e6-t06-isolated-child-ev003",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "METHOD_DISJOINT_VERIFICATION",
+              "evidence_event_id": "H-e6-t06-isolated-child-ev008",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "METHOD_DISJOINT_VERIFICATION",
+              "evidence_event_id": "H-e6-t14-branching-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "METHOD_DISJOINT_VERIFICATION",
+              "evidence_event_id": "H-e6-t14-branching-ev007",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "METHOD_DISJOINT_VERIFICATION",
+              "evidence_event_id": "H-e6-t14-isolated-child-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "METHOD_DISJOINT_VERIFICATION",
+              "evidence_event_id": "H-e6-t14-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "METHOD_DISJOINT_VERIFICATION",
+              "evidence_event_id": "H-e6-t20-isolated-child-ev004",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "METHOD_DISJOINT_VERIFICATION",
+              "evidence_event_id": "H-e6-t20-isolated-child-ev008",
+              "source": "experiment-6 imported theory evidence"
+            }
+          ],
+          "version": 1
+        },
+        {
+          "contradicting_evidence": [],
+          "falsifier": "the independent examiner's search is scored inadmissible where predicted admissible, or an isolated child strictly outperforms the examiner on the same search requirement at equal admissibility and equal coverage",
+          "id": "P-NONAUTHOR-SEARCH",
+          "parent_principles": [
+            "P-INDEPENDENCE"
+          ],
+          "preconditions": [
+            "feature:requires_nonauthor_search"
+          ],
+          "predicted_topology_effects": [
+            "adds an independent path with canonical role non_author_examiner",
+            "that path's evidence is admissible for NON_AUTHOR_SEARCH distinctions (required vector [0, 1, 0, 0])",
+            "cheaper admissible paths dominate costlier ones at equal coverage (saturating value)"
+          ],
+          "scope": [
+            "topology-decision",
+            "verification"
+          ],
+          "statement": "When a distinction requires a non-author search \u2014 examination of an artifact by a party that did not write it \u2014 admissible evidence is supplied by a child node in the non_author_examiner role that inspects the artifact without having contributed to its authorship. The author re-examining its own work does not satisfy the relation, and neither does evidence from a node in a different role (such as a clean-room author) that never actually examined the artifact. The relation demands only that examiner and author be distinct; it does not require, and gains nothing from, the examiner being isolated from information beyond the authorship boundary.",
+          "status": "CANDIDATE",
+          "supporting_evidence": [
+            {
+              "context_kind": "NON_AUTHOR_SEARCH",
+              "evidence_event_id": "H-e6-t08-isolated-child-ev003",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "NON_AUTHOR_SEARCH",
+              "evidence_event_id": "H-e6-t08-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "NON_AUTHOR_SEARCH",
+              "evidence_event_id": "H-e6-t10-isolated-child-ev002",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "NON_AUTHOR_SEARCH",
+              "evidence_event_id": "H-e6-t10-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "NON_AUTHOR_SEARCH",
+              "evidence_event_id": "H-e6-t11-isolated-child-ev003",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "NON_AUTHOR_SEARCH",
+              "evidence_event_id": "H-e6-t11-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "NON_AUTHOR_SEARCH",
+              "evidence_event_id": "H-e6-t13-isolated-child-ev003",
+              "source": "experiment-6 imported theory evidence"
+            },
+            {
+              "context_kind": "NON_AUTHOR_SEARCH",
+              "evidence_event_id": "H-e6-t13-isolated-child-ev007",
+              "source": "experiment-6 imported theory evidence"
+            }
+          ],
+          "version": 1
+        }
+      ],
+      "changed_predictions": [
+        "typed admissibility replaces coarse isolation preference in topology generation and ranking",
+        "an examiner (not an isolated child) is predicted optimal for pure NON_AUTHOR_SEARCH requirements",
+        "a method-disjoint verifier (not an isolated child) is predicted optimal for METHOD_DISJOINT_VERIFICATION"
+      ],
+      "context_partition": {
+        "CLEAN_ROOM_AUTHORSHIP": {
+          "CHALLENGE": 0,
+          "FALSIFY": 0,
+          "SUPPORT": 12,
+          "event_ids": [
+            "H-e6-t01-branching-ev002",
+            "H-e6-t01-branching-ev008",
+            "H-e6-t01-isolated-child-ev002",
+            "H-e6-t01-isolated-child-ev008",
+            "H-e6-t05-isolated-child-ev002",
+            "H-e6-t05-isolated-child-ev007",
+            "H-e6-t07-branching-ev002",
+            "H-e6-t07-branching-ev008",
+            "H-e6-t07-isolated-child-ev002",
+            "H-e6-t07-isolated-child-ev008",
+            "H-e6-t19-isolated-child-ev001",
+            "H-e6-t19-isolated-child-ev007"
+          ]
+        },
+        "INDEPENDENT_DECOMPOSITION": {
+          "CHALLENGE": 0,
+          "FALSIFY": 6,
+          "SUPPORT": 6,
+          "event_ids": [
+            "H-e6-t09-branching-ev003",
+            "H-e6-t09-branching-ev008",
+            "H-e6-t09-isolated-child-ev003",
+            "H-e6-t09-isolated-child-ev008",
+            "H-e6-t16-isolated-child-ev002",
+            "H-e6-t16-isolated-child-ev007",
+            "H-e6-t17-branching-ev002",
+            "H-e6-t17-branching-ev007",
+            "H-e6-t17-isolated-child-ev002",
+            "H-e6-t17-isolated-child-ev007",
+            "H-e6-t18-isolated-child-ev002",
+            "H-e6-t18-isolated-child-ev007"
+          ]
+        },
+        "METHOD_DISJOINT_VERIFICATION": {
+          "CHALLENGE": 0,
+          "FALSIFY": 6,
+          "SUPPORT": 4,
+          "event_ids": [
+            "H-e6-t03-isolated-child-ev002",
+            "H-e6-t03-isolated-child-ev007",
+            "H-e6-t06-isolated-child-ev003",
+            "H-e6-t06-isolated-child-ev008",
+            "H-e6-t14-branching-ev002",
+            "H-e6-t14-branching-ev007",
+            "H-e6-t14-isolated-child-ev002",
+            "H-e6-t14-isolated-child-ev007",
+            "H-e6-t20-isolated-child-ev004",
+            "H-e6-t20-isolated-child-ev008"
+          ]
+        },
+        "NON_AUTHOR_SEARCH": {
+          "CHALLENGE": 0,
+          "FALSIFY": 3,
+          "SUPPORT": 5,
+          "event_ids": [
+            "H-e6-t08-isolated-child-ev003",
+            "H-e6-t08-isolated-child-ev007",
+            "H-e6-t10-isolated-child-ev002",
+            "H-e6-t10-isolated-child-ev007",
+            "H-e6-t11-isolated-child-ev003",
+            "H-e6-t11-isolated-child-ev007",
+            "H-e6-t13-isolated-child-ev003",
+            "H-e6-t13-isolated-child-ev007"
+          ]
+        }
+      },
+      "historical_cases_affected": [],
+      "motivating_evidence": [
+        "H-e6-t01-branching-ev002",
+        "H-e6-t01-branching-ev008",
+        "H-e6-t01-isolated-child-ev002",
+        "H-e6-t01-isolated-child-ev008",
+        "H-e6-t03-isolated-child-ev002",
+        "H-e6-t03-isolated-child-ev007",
+        "H-e6-t05-isolated-child-ev002",
+        "H-e6-t05-isolated-child-ev007",
+        "H-e6-t06-isolated-child-ev003",
+        "H-e6-t06-isolated-child-ev008",
+        "H-e6-t07-branching-ev002",
+        "H-e6-t07-branching-ev008",
+        "H-e6-t07-isolated-child-ev002",
+        "H-e6-t07-isolated-child-ev008",
+        "H-e6-t08-isolated-child-ev003",
+        "H-e6-t08-isolated-child-ev007",
+        "H-e6-t09-branching-ev003",
+        "H-e6-t09-branching-ev008",
+        "H-e6-t09-isolated-child-ev003",
+        "H-e6-t09-isolated-child-ev008",
+        "H-e6-t10-isolated-child-ev002",
+        "H-e6-t10-isolated-child-ev007",
+        "H-e6-t11-isolated-child-ev003",
+        "H-e6-t11-isolated-child-ev007",
+        "H-e6-t13-isolated-child-ev003",
+        "H-e6-t13-isolated-child-ev007",
+        "H-e6-t14-branching-ev002",
+        "H-e6-t14-branching-ev007",
+        "H-e6-t14-isolated-child-ev002",
+        "H-e6-t14-isolated-child-ev007",
+        "H-e6-t16-isolated-child-ev002",
+        "H-e6-t16-isolated-child-ev007",
+        "H-e6-t17-branching-ev002",
+        "H-e6-t17-branching-ev007",
+        "H-e6-t17-isolated-child-ev002",
+        "H-e6-t17-isolated-child-ev007",
+        "H-e6-t18-isolated-child-ev002",
+        "H-e6-t18-isolated-child-ev007",
+        "H-e6-t19-isolated-child-ev001",
+        "H-e6-t19-isolated-child-ev007",
+        "H-e6-t20-isolated-child-ev004",
+        "H-e6-t20-isolated-child-ev008"
+      ],
+      "parents": [
+        "P-INDEPENDENCE"
+      ],
+      "revision_id": "rev-split-p-independence",
+      "status": "CANDIDATE",
+      "type": "SPLIT"
+    },
+    "no-change": null
+  },
+  "context_stats": {
+    "contexts": {
+      "CLEAN_ROOM_AUTHORSHIP": {
+        "CHALLENGE": 0,
+        "FALSIFY": 0,
+        "SUPPORT": 12,
+        "event_ids": [
+          "H-e6-t01-branching-ev002",
+          "H-e6-t01-branching-ev008",
+          "H-e6-t01-isolated-child-ev002",
+          "H-e6-t01-isolated-child-ev008",
+          "H-e6-t05-isolated-child-ev002",
+          "H-e6-t05-isolated-child-ev007",
+          "H-e6-t07-branching-ev002",
+          "H-e6-t07-branching-ev008",
+          "H-e6-t07-isolated-child-ev002",
+          "H-e6-t07-isolated-child-ev008",
+          "H-e6-t19-isolated-child-ev001",
+          "H-e6-t19-isolated-child-ev007"
+        ],
+        "falsify_rate": 0.0,
+        "support_rate": 1.0
+      },
+      "INDEPENDENT_DECOMPOSITION": {
+        "CHALLENGE": 0,
+        "FALSIFY": 6,
+        "SUPPORT": 6,
+        "event_ids": [
+          "H-e6-t09-branching-ev003",
+          "H-e6-t09-branching-ev008",
+          "H-e6-t09-isolated-child-ev003",
+          "H-e6-t09-isolated-child-ev008",
+          "H-e6-t16-isolated-child-ev002",
+          "H-e6-t16-isolated-child-ev007",
+          "H-e6-t17-branching-ev002",
+          "H-e6-t17-branching-ev007",
+          "H-e6-t17-isolated-child-ev002",
+          "H-e6-t17-isolated-child-ev007",
+          "H-e6-t18-isolated-child-ev002",
+          "H-e6-t18-isolated-child-ev007"
+        ],
+        "falsify_rate": 0.5,
+        "support_rate": 0.5
+      },
+      "METHOD_DISJOINT_VERIFICATION": {
+        "CHALLENGE": 0,
+        "FALSIFY": 6,
+        "SUPPORT": 4,
+        "event_ids": [
+          "H-e6-t03-isolated-child-ev002",
+          "H-e6-t03-isolated-child-ev007",
+          "H-e6-t06-isolated-child-ev003",
+          "H-e6-t06-isolated-child-ev008",
+          "H-e6-t14-branching-ev002",
+          "H-e6-t14-branching-ev007",
+          "H-e6-t14-isolated-child-ev002",
+          "H-e6-t14-isolated-child-ev007",
+          "H-e6-t20-isolated-child-ev004",
+          "H-e6-t20-isolated-child-ev008"
+        ],
+        "falsify_rate": 0.6,
+        "support_rate": 0.4
+      },
+      "NON_AUTHOR_SEARCH": {
+        "CHALLENGE": 0,
+        "FALSIFY": 3,
+        "SUPPORT": 5,
+        "event_ids": [
+          "H-e6-t08-isolated-child-ev003",
+          "H-e6-t08-isolated-child-ev007",
+          "H-e6-t10-isolated-child-ev002",
+          "H-e6-t10-isolated-child-ev007",
+          "H-e6-t11-isolated-child-ev003",
+          "H-e6-t11-isolated-child-ev007",
+          "H-e6-t13-isolated-child-ev003",
+          "H-e6-t13-isolated-child-ev007"
+        ],
+        "falsify_rate": 0.375,
+        "support_rate": 0.625
+      }
+    },
+    "principle_id": "P-INDEPENDENCE",
+    "total_events": 42,
+    "unresolved_context_events": 0
+  },
+  "rules": {
+    "min_context_coverage": 0.9,
+    "min_context_events": 4,
+    "min_spread": 0.3,
+    "reproducibility_floor": 2,
+    "specialize_max_falsify_rate": 0.2
+  },
+  "scores": {
+    "DEPRECATE": 0.3571,
+    "SPECIALIZE": 0.6429,
+    "SPLIT": 1.0,
+    "no-change": 0.6429
+  },
+  "selected": "SPLIT",
+  "selection_rule": "max explanation score; ties -> fewer new principles -> fixed order [no-change, SPECIALIZE, SPLIT, DEPRECATE]",
+  "split_trigger": {
+    "clauses": {
+      "context_coverage": true,
+      "enough_contexts": true,
+      "mixed_evidence": true,
+      "support_rate_spread": true
+    },
+    "context_coverage": 1.0,
+    "eligible": true,
+    "qualifying_contexts": [
+      "CLEAN_ROOM_AUTHORSHIP",
+      "INDEPENDENT_DECOMPOSITION",
+      "METHOD_DISJOINT_VERIFICATION",
+      "NON_AUTHOR_SEARCH"
+    ],
+    "support_rate_spread": 0.6
+  },
+  "target_principle": "P-INDEPENDENCE",
+  "wording_source": "fresh drafting session R-E7-DRAFT (serialized wording.json)"
+}

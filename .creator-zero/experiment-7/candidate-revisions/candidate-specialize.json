@@ -1,0 +1,91 @@
+{
+  "candidate_principles": [
+    {
+      "contradicting_evidence": [],
+      "falsifier": "",
+      "id": "P-INDEPENDENCE-SPECIALIZED",
+      "parent_principles": [
+        "P-INDEPENDENCE"
+      ],
+      "preconditions": [
+        "feature:requires_isolation",
+        "feature:contamination"
+      ],
+      "predicted_topology_effects": [
+        "adds an isolated fresh child (or independent verifier) node",
+        "child evidence is novel, not a duplicate of parent evidence",
+        "child resolves the assigned distinctions"
+      ],
+      "scope": [
+        "topology-decision",
+        "verification"
+      ],
+      "statement": "When a distinction requires evidence that the current session cannot produce without contaminating it (clean-room, independent authorship, adversarial check), an isolated fresh descendant or independent examiner adds epistemic value that local work cannot. [SPECIALIZED: preconditions narrowed to admissibility contexts ['CLEAN_ROOM_AUTHORSHIP'] in which the principle's predictions held]",
+      "status": "CANDIDATE",
+      "supporting_evidence": [
+        {
+          "frozen_artifact": "experiment-5/trials/t-031/decision.json",
+          "sha256": "36611ccc00073203ca5430e5cd52481b79ecbe9d58f48f56b1ff3f677b90aaa5"
+        },
+        {
+          "frozen_artifact": "experiment-5/trials/t-031/child/launch-provenance.json",
+          "sha256": "9cb765b6b2c970188b2fa86e71cc5564d773c3dbc72a721b4d5caf489e4cbf05"
+        },
+        {
+          "frozen_artifact": "experiment-5/aggregate-results.json",
+          "sha256": "635621885c398b308228dc9bafabb39c5ab65a2f7b928cab663f57a6a60af185"
+        },
+        {
+          "frozen_artifact": "experiment-3/execution-ledger.jsonl",
+          "sha256": "bb561f728cc7e991266c9a33865894cfa528051dd825f4bcce40ceff415f3446"
+        }
+      ],
+      "version": 1
+    }
+  ],
+  "changed_predictions": [],
+  "context_partition": {
+    "retained_contexts": [
+      "CLEAN_ROOM_AUTHORSHIP"
+    ]
+  },
+  "historical_cases_affected": [],
+  "motivating_evidence": [
+    "H-e6-t03-isolated-child-ev002",
+    "H-e6-t03-isolated-child-ev007",
+    "H-e6-t06-isolated-child-ev003",
+    "H-e6-t06-isolated-child-ev008",
+    "H-e6-t08-isolated-child-ev003",
+    "H-e6-t08-isolated-child-ev007",
+    "H-e6-t09-branching-ev003",
+    "H-e6-t09-branching-ev008",
+    "H-e6-t09-isolated-child-ev003",
+    "H-e6-t09-isolated-child-ev008",
+    "H-e6-t10-isolated-child-ev002",
+    "H-e6-t10-isolated-child-ev007",
+    "H-e6-t11-isolated-child-ev003",
+    "H-e6-t11-isolated-child-ev007",
+    "H-e6-t13-isolated-child-ev003",
+    "H-e6-t13-isolated-child-ev007",
+    "H-e6-t14-branching-ev002",
+    "H-e6-t14-branching-ev007",
+    "H-e6-t14-isolated-child-ev002",
+    "H-e6-t14-isolated-child-ev007",
+    "H-e6-t16-isolated-child-ev002",
+    "H-e6-t16-isolated-child-ev007",
+    "H-e6-t17-branching-ev002",
+    "H-e6-t17-branching-ev007",
+    "H-e6-t17-isolated-child-ev002",
+    "H-e6-t17-isolated-child-ev007",
+    "H-e6-t18-isolated-child-ev002",
+    "H-e6-t18-isolated-child-ev007",
+    "H-e6-t20-isolated-child-ev004",
+    "H-e6-t20-isolated-child-ev008"
+  ],
+  "parents": [
+    "P-INDEPENDENCE"
+  ],
+  "revision_id": "rev-specialize-p-independence",
+  "status": "CANDIDATE",
+  "type": "SPECIALIZE"
+}
