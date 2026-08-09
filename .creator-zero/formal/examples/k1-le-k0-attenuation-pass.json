@@ -1,0 +1,36 @@
+{
+  "assumptions": [
+    "Axis absent on parent = unrestricted (most permissive) at that axis.",
+    "Axis absent on child = inherited from parent (no escalation).",
+    "Filesystem scope: child paths accepted by parent-scope containment or by sibling delegation inside the parent scope's workspace envelope with no overlap of parent protected paths; paths compared as normalized repo-relative strings, parenthetical annotations (e.g. '(append only)') stripped.",
+    "Authority strings mapped to deterministic ordinals: none=0 < scoped/read-only/model-invocation=1 < unrestricted=2.",
+    "Local check only; 'no finite descendant escalates' follows inductively only if every creation transition is checked."
+  ],
+  "check": "contract_attenuation",
+  "counterexample": null,
+  "detail": {
+    "verdict": "ATTENUATION_PASS"
+  },
+  "evidence": [
+    "allowed_tools: ['Bash', 'Edit', 'Glob', 'Grep', 'Read', 'Write'] subset of ['Agent', 'Bash', 'Edit', 'Glob', 'Grep', 'Read', 'Write']",
+    "allowed_primitives: ['act', 'create', 'hypothesize', 'observe', 'return', 'test', 'verify'] subset of ['act', 'create', 'hypothesize', 'observe', 'return', 'test', 'verify']",
+    "allowed_relations: ['authorize', 'consult', 'create', 'delegate', 'observe', 'request_response', 'return', 'verify'] subset of ['authorize', 'consult', 'create', 'delegate', 'observe', 'request_response', 'return', 'verify']",
+    "max_model_calls: 12 <= 16",
+    "max_children: 1 <= 3",
+    "max_depth: 1 <= 2",
+    "max_realized_creator_children: 1 <= 1",
+    "max_realized_creator_depth: 1 <= 2",
+    "may_create_creator: True <= True",
+    "may_realize_creation: True <= True",
+    "filesystem_write_scope: child paths delegated within parent scope/workspace envelope, disjoint from parent protected paths",
+    "candidate_write_authority: parent unrestricted",
+    "candidate_write_authority: ordinal 1 <= 2",
+    "canonical_write_authority: ordinal 0 <= 0",
+    "git_authority: parent unrestricted",
+    "git_authority: ordinal 1 <= 2",
+    "network_authority: ordinal 1 <= 1"
+  ],
+  "formal_relation": "K_child <= K_parent",
+  "status": "PASS",
+  "unmapped_events": []
+}

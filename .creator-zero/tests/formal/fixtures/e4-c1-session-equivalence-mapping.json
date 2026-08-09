@@ -1,0 +1,18 @@
+{
+  "purpose": "Records exactly which Experiment 4 C1 ledger events are hidden as tau and which remain observable in the session-reconstruction equivalence analysis (weak bisimulation over the governed observation alphabet).",
+  "source_artifacts": [
+    ".creator-zero/experiment-4/c1/execution-ledger.jsonl",
+    ".creator-zero/experiment-4/creation-ledger.jsonl"
+  ],
+  "observable_events": {
+    "model_invocation_start[role=c2_instantiation]": "create (creator) — A:s0->s1, B:t0->t1",
+    "c2_result_incorporated": "return (creator) — A:s1->s2, B:t3->t4",
+    "c1_complete": "complete (creator) — A:s2->s3, B:t4->t5"
+  },
+  "hidden_as_tau": {
+    "c1_pending_on_c2 + externalized-state persistence + premature session exit (boundary_event C1_PREMATURE_SESSION_EXIT in creation-ledger.jsonl)": "B:t1->t2",
+    "fresh continuation invocation + c1_continuation_start state reconstruction from externalized artifacts": "B:t2->t3"
+  },
+  "claim": "Process identity differs (two OS-level sessions in B, one in A); governed behavioral equivalence holds: weak bisimulation over {create, return, complete} accepts A ~= B. Strong bisimulation distinguishes A from B (B's tau structure is unmatched), which is the formal content of 'process identity is not governed behavioral equivalence'.",
+  "non_claim": "No equality of hidden epistemic states between the exited session and the continuation session is claimed."
+}

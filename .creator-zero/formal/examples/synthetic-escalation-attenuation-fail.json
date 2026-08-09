@@ -1,0 +1,98 @@
+{
+  "assumptions": [
+    "Axis absent on parent = unrestricted (most permissive) at that axis.",
+    "Axis absent on child = inherited from parent (no escalation).",
+    "Filesystem scope: child paths accepted by parent-scope containment or by sibling delegation inside the parent scope's workspace envelope with no overlap of parent protected paths; paths compared as normalized repo-relative strings, parenthetical annotations (e.g. '(append only)') stripped.",
+    "Authority strings mapped to deterministic ordinals: none=0 < scoped/read-only/model-invocation=1 < unrestricted=2.",
+    "Local check only; 'no finite descendant escalates' follows inductively only if every creation transition is checked."
+  ],
+  "check": "contract_attenuation",
+  "counterexample": {
+    "escalating_dimensions": [
+      {
+        "child": [
+          "Agent",
+          "Bash",
+          "Edit",
+          "Glob",
+          "Grep",
+          "Read",
+          "Write"
+        ],
+        "dimension": "allowed_tools",
+        "escalation": [
+          "Agent"
+        ],
+        "parent": [
+          "Bash",
+          "Edit",
+          "Glob",
+          "Grep",
+          "Read",
+          "Write"
+        ]
+      },
+      {
+        "child": 64,
+        "dimension": "max_model_calls",
+        "escalation": "64 > 12",
+        "parent": 12
+      },
+      {
+        "child": 2,
+        "dimension": "max_children",
+        "escalation": "2 > 1",
+        "parent": 1
+      },
+      {
+        "child": [
+          "src",
+          ".creator-zero/experiment-4/c1"
+        ],
+        "dimension": "filesystem_write_scope",
+        "escalation": [
+          "src"
+        ],
+        "parent": [
+          ".creator-zero/experiment-4/c1",
+          ".creator-zero/experiment-4/c2/task.json",
+          ".creator-zero/experiment-4/c2/prompt.md",
+          ".creator-zero/experiment-4/child-2-contract.json",
+          ".creator-zero/experiment-4/creation-ledger.jsonl"
+        ]
+      },
+      {
+        "child": "full",
+        "dimension": "canonical_write_authority",
+        "escalation": "ordinal 1 > 0",
+        "parent": "none"
+      },
+      {
+        "child": "commit and push",
+        "dimension": "git_authority",
+        "escalation": "ordinal 2 > 1",
+        "parent": "read-only (no commit, no push, no branch operations)."
+      },
+      {
+        "child": "unrestricted",
+        "dimension": "network_authority",
+        "escalation": "ordinal 2 > 1",
+        "parent": "model-invocation API via claude CLI only."
+      }
+    ],
+    "verdict": "ATTENUATION_FAIL"
+  },
+  "evidence": [
+    "allowed_primitives: ['act', 'create', 'hypothesize', 'observe', 'return', 'test', 'verify'] subset of ['act', 'create', 'hypothesize', 'observe', 'return', 'test', 'verify']",
+    "allowed_relations: ['authorize', 'consult', 'create', 'delegate', 'observe', 'request_response', 'return', 'verify'] subset of ['authorize', 'consult', 'create', 'delegate', 'observe', 'request_response', 'return', 'verify']",
+    "max_depth: 1 <= 1",
+    "max_realized_creator_children: 1 <= 1",
+    "max_realized_creator_depth: 1 <= 1",
+    "may_create_creator: True <= True",
+    "may_realize_creation: True <= True",
+    "candidate_write_authority: child absent, inherits parent"
+  ],
+  "formal_relation": "K_child <= K_parent",
+  "status": "FAIL",
+  "unmapped_events": []
+}

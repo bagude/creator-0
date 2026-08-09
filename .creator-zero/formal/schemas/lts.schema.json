@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "creator-zero/formal/lts.schema.json",
+  "title": "Creator-0 labelled transition system L = (S, Lambda, ->, s0)",
+  "type": "object",
+  "required": ["initial", "states", "transitions"],
+  "properties": {
+    "formal_object": {"const": "lts"},
+    "version": {"type": "string"},
+    "initial": {"type": "string", "minLength": 1},
+    "states": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "labels": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "transitions": {
+      "type": "array",
+      "items": {"$ref": "creator-zero/formal/transition.schema.json"}
+    },
+    "metadata": {"type": "object"}
+  }
+}

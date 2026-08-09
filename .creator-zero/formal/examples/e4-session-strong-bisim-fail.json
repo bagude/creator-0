@@ -1,0 +1,31 @@
+{
+  "assumptions": [
+    "Observable action = (label, actor); actor strings compared literally.",
+    "Finite explicitly-modeled state spaces only; no claim about hidden epistemic states or unrestricted future models."
+  ],
+  "check": "strong_bisimulation",
+  "counterexample": {
+    "note": "B has no move with this label/actor",
+    "path_from_initial": [
+      {
+        "actor": "creator",
+        "label": "create"
+      }
+    ],
+    "side": "A",
+    "state_pair": [
+      "s1",
+      "t1"
+    ],
+    "unmatched_action": {
+      "actor": "creator",
+      "label": "return"
+    }
+  },
+  "evidence": [
+    "relation size: 3 pairs; initial pair absent"
+  ],
+  "formal_relation": "A ~ B",
+  "status": "FAIL",
+  "unmapped_events": []
+}

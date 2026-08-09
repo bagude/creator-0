@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "creator-zero/formal/transition.schema.json",
+  "title": "Creator-0 formal transition",
+  "type": "object",
+  "required": ["source", "label", "target"],
+  "additionalProperties": false,
+  "properties": {
+    "source": {"type": "string", "minLength": 1},
+    "label": {
+      "type": "string",
+      "enum": ["observe", "propose", "validate", "reject", "consult",
+               "delegate", "create", "return", "act_candidate", "verify",
+               "authorize", "promote", "persist", "reconstruct", "complete",
+               "tau"]
+    },
+    "target": {"type": "string", "minLength": 1},
+    "actor": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Actor pattern: a concrete actor id (e.g. node:report, gate, creator) or '*' for any actor (non-authority labels only)."
+    }
+  }
+}

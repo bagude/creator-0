@@ -1,0 +1,76 @@
+{
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "check": "runtime_refinement",
+  "counterexample": {
+    "event_index": 2,
+    "expected_allowed_labels": [
+      "authorize",
+      "consult",
+      "create",
+      "observe",
+      "persist",
+      "propose",
+      "reconstruct",
+      "reject",
+      "return",
+      "tau",
+      "validate",
+      "verify"
+    ],
+    "offending_transition": {
+      "actor": "node:act-candidate-test",
+      "artifact_refs": [],
+      "contract_id": "",
+      "event_id": "syn-2",
+      "label": "promote",
+      "metadata": {
+        "note": "Actor attempts canonical write; only the gate holds promotion authority and only after verification",
+        "synthetic": true
+      },
+      "source": "",
+      "target": "canonical",
+      "timestamp": ""
+    },
+    "source_state": "done={act-candidate-test,evidence-gap-and-derivation}|promoted=0|complete=0",
+    "trace_prefix": [
+      {
+        "actor": "node:evidence-gap-and-derivation",
+        "artifact_refs": [],
+        "contract_id": "",
+        "event_id": "syn-0",
+        "label": "observe",
+        "metadata": {
+          "completes_node": "evidence-gap-and-derivation",
+          "synthetic": true
+        },
+        "source": "",
+        "target": "evidence-gap-and-derivation",
+        "timestamp": ""
+      },
+      {
+        "actor": "node:act-candidate-test",
+        "artifact_refs": [],
+        "contract_id": "",
+        "event_id": "syn-1",
+        "label": "act_candidate",
+        "metadata": {
+          "completes_node": "act-candidate-test",
+          "synthetic": true
+        },
+        "source": "",
+        "target": "act-candidate-test",
+        "timestamp": ""
+      }
+    ],
+    "violation": "REFINEMENT_VIOLATION"
+  },
+  "evidence": [
+    "trace origin: tests/formal/fixtures/synthetic-actor-canonical-write.jsonl"
+  ],
+  "formal_relation": "Runtime <= Spec",
+  "status": "FAIL",
+  "unmapped_events": []
+}

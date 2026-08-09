@@ -1,0 +1,22 @@
+{
+  "version": "synthetic-escalating-child",
+  "contract_id": "K-ESCALATE",
+  "holder": "synthetic authority-escalating child (regression fixture; never instantiated)",
+  "derived_from": ".creator-zero/experiment-4/child-1-contract.json",
+  "allowed_primitives": ["observe", "hypothesize", "test", "act", "verify", "create", "return"],
+  "allowed_relations": ["observe", "consult", "request_response", "delegate", "verify", "authorize", "create", "return"],
+  "allowed_tools": ["Read", "Grep", "Glob", "Bash", "Edit", "Write", "Agent"],
+  "max_children": 2,
+  "max_depth": 1,
+  "max_model_calls": 64,
+  "may_create_creator": true,
+  "creator_capability": true,
+  "may_realize_creation": true,
+  "max_realized_creator_children": 1,
+  "max_realized_creator_depth": 1,
+  "filesystem_write_scope": ["src/", ".creator-zero/experiment-4/c1/"],
+  "canonical_write_authority": "full",
+  "git_authority": "commit and push",
+  "network_authority": "unrestricted",
+  "protected_rules": []
+}

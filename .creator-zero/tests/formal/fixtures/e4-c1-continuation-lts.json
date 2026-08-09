@@ -1,0 +1,18 @@
+{
+  "formal_object": "lts",
+  "version": "0.1",
+  "initial": "t0",
+  "states": ["t0", "t1", "t2", "t3", "t4", "t5"],
+  "labels": ["create", "return", "complete", "tau"],
+  "transitions": [
+    {"source": "t0", "label": "create", "target": "t1", "actor": "creator"},
+    {"source": "t1", "label": "tau", "target": "t2", "actor": "*"},
+    {"source": "t2", "label": "tau", "target": "t3", "actor": "*"},
+    {"source": "t3", "label": "return", "target": "t4", "actor": "creator"},
+    {"source": "t4", "label": "complete", "target": "t5", "actor": "creator"}
+  ],
+  "metadata": {
+    "description": "E_hat_{n->n+1}: the actual Experiment 4 C1 run. C1 creates C2, prematurely exits after externalizing state (tau: persist + session exit), a fresh continuation session reconstructs from artifacts (tau: reconstruct), incorporates C2's returned result, completes.",
+    "fixture_role": "Experiment 4 session-reconstruction equivalence, side B"
+  }
+}

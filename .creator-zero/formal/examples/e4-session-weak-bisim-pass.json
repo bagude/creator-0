@@ -1,0 +1,19 @@
+{
+  "assumptions": [
+    "Observable action = (label, actor); actor strings compared literally.",
+    "Finite explicitly-modeled state spaces only; no claim about hidden epistemic states or unrestricted future models.",
+    "Weak matching: tau* observable tau*; tau moves may be matched by zero or more tau steps."
+  ],
+  "check": "weak_bisimulation",
+  "counterexample": null,
+  "detail": {
+    "relation_size": 6
+  },
+  "evidence": [
+    "greatest bisimulation contains initial pair ('s0', 't0')",
+    "relation size: 6 pairs"
+  ],
+  "formal_relation": "A ~= B",
+  "status": "PASS",
+  "unmapped_events": []
+}

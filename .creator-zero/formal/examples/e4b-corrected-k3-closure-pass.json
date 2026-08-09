@@ -1,0 +1,28 @@
+{
+  "assumptions": [
+    "Creator = nu X.F(X) is the abstract coinductive definition; this check is a bounded finite witness, not a proof of arbitrary infinite Creator lineage.",
+    "CreationMechanismValid = a concrete non-empty creation command is attested and marked not executed (capability evidenced by attestation, realization externally stopped)."
+  ],
+  "check": "creator_closure",
+  "counterexample": null,
+  "detail": {
+    "child_contract_id": "K3",
+    "clauses": {
+      "Attenuated": true,
+      "CreationMechanismValid": true,
+      "CreatorCapable": true,
+      "ExternalStopOnly": true,
+      "Valid": true
+    }
+  },
+  "evidence": [
+    "Valid: child contract carries all required governed keys",
+    "Attenuated: PASS",
+    "CreatorCapable: creator_capability=True, may_create_creator=True",
+    "CreationMechanismValid: command present, non-execution marker present",
+    "ExternalStopOnly: may_realize_creation=False, max_children=0"
+  ],
+  "formal_relation": "hat_kappa(K_parent, K_child) = Valid AND Attenuated AND CreatorCapable AND CreationMechanismValid AND ExternalStopOnly",
+  "status": "PASS",
+  "unmapped_events": []
+}

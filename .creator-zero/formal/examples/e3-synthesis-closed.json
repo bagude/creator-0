@@ -1,0 +1,28 @@
+{
+  "assumptions": [
+    "Finite-set progress classification only; no Tarski convergence claim for arbitrary D/C synthesis."
+  ],
+  "check": "synthesis_fixed_point",
+  "counterexample": null,
+  "detail": {
+    "classification": "SYNTHESIS_CLOSED",
+    "introduced": [],
+    "resolved": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4",
+      "Q5",
+      "Q6",
+      "Q7"
+    ]
+  },
+  "evidence": [
+    "|Q_before|=7, |Q_after|=0",
+    "resolved: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6', 'Q7']",
+    "introduced: []"
+  ],
+  "formal_relation": "Q_after vs Q_before over finite unresolved-distinction sets",
+  "status": "PASS",
+  "unmapped_events": []
+}

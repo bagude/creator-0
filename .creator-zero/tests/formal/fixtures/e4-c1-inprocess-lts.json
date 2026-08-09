@@ -1,0 +1,16 @@
+{
+  "formal_object": "lts",
+  "version": "0.1",
+  "initial": "s0",
+  "states": ["s0", "s1", "s2", "s3"],
+  "labels": ["create", "return", "complete"],
+  "transitions": [
+    {"source": "s0", "label": "create", "target": "s1", "actor": "creator"},
+    {"source": "s1", "label": "return", "target": "s2", "actor": "creator"},
+    {"source": "s2", "label": "complete", "target": "s3", "actor": "creator"}
+  ],
+  "metadata": {
+    "description": "E_n: hypothetical in-process C1 Phase C->D. C1 creates C2, blocks in-process, incorporates C2's returned result, completes. Governed observation alphabet only.",
+    "fixture_role": "Experiment 4 session-reconstruction equivalence, side A"
+  }
+}

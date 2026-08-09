@@ -1,0 +1,177 @@
+{
+  "adapter": "formal.adapters.adapt_experiment4_c1_ledger",
+  "mapping": [
+    {
+      "actor": "creator",
+      "index": 0,
+      "mapped_label": "observe",
+      "raw_event": "c1_session_start"
+    },
+    {
+      "actor": "creator",
+      "index": 1,
+      "mapped_label": "tau",
+      "raw_event": "phase_transition"
+    },
+    {
+      "actor": "creator",
+      "index": 2,
+      "mapped_label": "consult",
+      "raw_event": "model_invocation_start"
+    },
+    {
+      "actor": "decomposer",
+      "index": 3,
+      "mapped_label": "propose",
+      "raw_event": "model_invocation_end"
+    },
+    {
+      "actor": "creator",
+      "index": 4,
+      "mapped_label": "consult",
+      "raw_event": "model_invocation_start"
+    },
+    {
+      "actor": "composer",
+      "index": 5,
+      "mapped_label": "propose",
+      "raw_event": "model_invocation_end"
+    },
+    {
+      "actor": "validator",
+      "index": 6,
+      "mapped_label": "validate",
+      "raw_event": "boundary_validation"
+    },
+    {
+      "actor": "creator",
+      "index": 7,
+      "mapped_label": "consult",
+      "raw_event": "model_invocation_start"
+    },
+    {
+      "actor": "decomposer",
+      "index": 8,
+      "mapped_label": "propose",
+      "raw_event": "model_invocation_end"
+    },
+    {
+      "actor": "creator",
+      "index": 9,
+      "mapped_label": "consult",
+      "raw_event": "model_invocation_start"
+    },
+    {
+      "actor": "composer",
+      "index": 10,
+      "mapped_label": "propose",
+      "raw_event": "model_invocation_end"
+    },
+    {
+      "actor": "validator",
+      "index": 11,
+      "mapped_label": "validate",
+      "raw_event": "boundary_validation"
+    },
+    {
+      "actor": "creator",
+      "index": 12,
+      "mapped_label": "tau",
+      "raw_event": "phase_transition"
+    },
+    {
+      "actor": "creator",
+      "index": 13,
+      "mapped_label": "tau",
+      "raw_event": "anomaly"
+    },
+    {
+      "actor": "creator",
+      "index": 14,
+      "mapped_label": "tau",
+      "raw_event": "node_start"
+    },
+    {
+      "actor": "node:evidence-and-discriminator",
+      "index": 15,
+      "mapped_label": "observe",
+      "raw_event": "node_end"
+    },
+    {
+      "actor": "creator",
+      "index": 16,
+      "mapped_label": "tau",
+      "raw_event": "node_start"
+    },
+    {
+      "actor": "node:act-candidate-test",
+      "index": 17,
+      "mapped_label": "act_candidate",
+      "raw_event": "node_end"
+    },
+    {
+      "actor": "creator",
+      "index": 18,
+      "mapped_label": "tau",
+      "raw_event": "node_start"
+    },
+    {
+      "actor": "creator",
+      "index": 19,
+      "mapped_label": "tau",
+      "raw_event": "anomaly"
+    },
+    {
+      "actor": "node:verify-candidate",
+      "index": 20,
+      "mapped_label": "verify",
+      "raw_event": "node_end"
+    },
+    {
+      "actor": "creator",
+      "index": 21,
+      "mapped_label": "tau",
+      "raw_event": "phase_transition"
+    },
+    {
+      "actor": "creator",
+      "index": 22,
+      "mapped_label": "create",
+      "raw_event": "model_invocation_start"
+    },
+    {
+      "actor": "creator",
+      "index": 23,
+      "mapped_label": "tau",
+      "raw_event": "c1_pending_on_c2"
+    },
+    {
+      "actor": "creator",
+      "index": 24,
+      "mapped_label": "reconstruct",
+      "raw_event": "c1_continuation_start"
+    },
+    {
+      "actor": "creator",
+      "index": 25,
+      "mapped_label": "return",
+      "raw_event": "c2_result_incorporated"
+    },
+    {
+      "actor": "node:report",
+      "index": 26,
+      "mapped_label": "return",
+      "raw_event": "c1_complete"
+    },
+    {
+      "actor": "creator",
+      "index": 26,
+      "mapped_label": "complete",
+      "raw_event": "c1_complete"
+    }
+  ],
+  "note": "Original historical artifact preserved unmodified; c1_complete fans out into report-node return + governed complete (recorded per event).",
+  "source_artifact": ".creator-zero/experiment-4/c1/execution-ledger.jsonl",
+  "source_sha256": "53657a2c59c4efa7e477c1aa751218225f419f5e22fc1e248e022e5eb206edec",
+  "unmapped": []
+}

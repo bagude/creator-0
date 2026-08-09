@@ -1,0 +1,63 @@
+{
+  "adapter": "formal.adapters.adapt_experiment3_ledger",
+  "mapping": [
+    {
+      "actor": "decomposer",
+      "index": 0,
+      "mapped_label": "propose",
+      "raw_event": "decomposer_round_0_complete"
+    },
+    {
+      "actor": "composer",
+      "index": 1,
+      "mapped_label": "propose",
+      "raw_event": "composer_round_0_complete"
+    },
+    {
+      "actor": "decomposer",
+      "index": 2,
+      "mapped_label": "consult",
+      "raw_event": "decomposer_round_1_critique"
+    },
+    {
+      "actor": "creator",
+      "index": 3,
+      "mapped_label": "tau",
+      "raw_event": "synthesis_closure"
+    },
+    {
+      "actor": "node:evidence-gap-and-derivation",
+      "index": 4,
+      "mapped_label": "observe",
+      "raw_event": "node_complete"
+    },
+    {
+      "actor": "node:act-candidate-test",
+      "index": 5,
+      "mapped_label": "act_candidate",
+      "raw_event": "node_complete"
+    },
+    {
+      "actor": "node:verify-candidate",
+      "index": 6,
+      "mapped_label": "verify",
+      "raw_event": "node_complete"
+    },
+    {
+      "actor": "gate",
+      "index": 7,
+      "mapped_label": "promote",
+      "raw_event": "gate_decision"
+    },
+    {
+      "actor": "node:report",
+      "index": 8,
+      "mapped_label": "return",
+      "raw_event": "node_complete"
+    }
+  ],
+  "note": "Original historical artifact preserved unmodified; this records the deterministic event mapping.",
+  "source_artifact": ".creator-zero/experiment-3/execution-ledger.jsonl",
+  "source_sha256": "bb561f728cc7e991266c9a33865894cfa528051dd825f4bcce40ceff415f3446",
+  "unmapped": []
+}

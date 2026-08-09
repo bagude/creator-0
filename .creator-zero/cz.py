@@ -110,14 +110,121 @@ def materialize(s,c,out_dir):
     p=ROOT/"runs"/f"{slug(s['task_id'])}-runbook.json"; p.parent.mkdir(exist_ok=True)
     p.write_text(json.dumps(rb,indent=2)+"\n"); return rb
 
+# ---------------------------------------------------------------------------
+# Formal Semantics Kernel v0.1 commands (read-only w.r.t. canonical state).
+# Exit codes for formal commands: 0=PASS, 2=formal relation FAIL,
+# 3=INDETERMINATE / insufficient evidence, 4=malformed input / parse failure.
+
+def _formal():
+    sys.path.insert(0, str(ROOT))
+    import formal
+    return formal
+
+def _emit_result(res, json_out=None):
+    from formal.serialization import result_to_json
+    text=result_to_json(res)
+    print(f"{res.check}: {res.status} [{res.formal_relation}]")
+    if json_out:
+        Path(json_out).write_text(text); print(json_out)
+    else:
+        print(text, end="")
+    return res.exit_code
+
+def _load_q_set(path):
+    d=load_json(path)
+    if isinstance(d, dict):
+        for k in ("unresolved","questions","distinctions"):
+            if k in d: d=d[k]; break
+        else:
+            raise ValueError(f"{path}: no unresolved/questions/distinctions key")
+    if not isinstance(d, list):
+        raise ValueError(f"{path}: expected a finite set as JSON list")
+    return [x["id"] if isinstance(x,dict) and "id" in x else json.dumps(x,sort_keys=True) if isinstance(x,(dict,list)) else x for x in d]
+
+def cmd_semantics(a):
+    f=_formal()
+    from formal.serialization import lts_to_json
+    lts=f.compile_harness_spec(load_json(a.spec), load_json(a.contract))
+    text=lts_to_json(lts)
+    print(f"semantics: OK states={len(lts.states)} transitions={len(lts.transitions)} initial={lts.initial!r}")
+    if a.out:
+        Path(a.out).write_text(text); print(a.out)
+    else:
+        print(text, end="")
+    return 0
+
+def cmd_check_runtime(a):
+    f=_formal()
+    spec=load_json(a.spec); contract=load_json(a.contract)
+    lts=f.compile_harness_spec(spec, contract)
+    if a.adapter=="experiment3":
+        from formal.adapters import adapt_experiment3_ledger
+        trace,_=adapt_experiment3_ledger(a.ledger, spec)
+    elif a.adapter=="experiment4-c1":
+        from formal.adapters import adapt_experiment4_c1_ledger
+        trace,_=adapt_experiment4_c1_ledger(a.ledger, spec)
+    else:
+        trace=f.parse_runtime_ledger(a.ledger, strict=False)
+    res=f.check_refinement(trace, lts, require_completion=a.require_completion)
+    return _emit_result(res, a.json_out)
+
+def cmd_bisim(a):
+    f=_formal()
+    from formal.serialization import lts_from_json
+    A=lts_from_json(Path(a.state_a).read_text(encoding="utf-8"))
+    B=lts_from_json(Path(a.state_b).read_text(encoding="utf-8"))
+    res=f.weak_bisimilar(A,B) if a.mode=="weak" else f.strong_bisimilar(A,B)
+    return _emit_result(res, a.json_out)
+
+def cmd_attenuation(a):
+    f=_formal()
+    res=f.check_attenuation(load_json(a.parent), load_json(a.child))
+    return _emit_result(res, a.json_out)
+
+def cmd_closure(a):
+    f=_formal()
+    res=f.check_creator_closure(load_json(a.parent), load_json(a.attestation))
+    return _emit_result(res, a.json_out)
+
+def cmd_synthesis_status(a):
+    f=_formal()
+    res=f.classify_synthesis(_load_q_set(a.q_before), _load_q_set(a.q_after))
+    code=_emit_result(res, a.json_out)
+    print(res.detail["classification"])
+    return code
+
 def main():
     p=argparse.ArgumentParser(); sub=p.add_subparsers(dest="cmd",required=True)
     v=sub.add_parser("validate"); v.add_argument("spec"); v.add_argument("--contract",default=str(DEFAULT_CONTRACT))
     m=sub.add_parser("materialize"); m.add_argument("spec"); m.add_argument("--contract",default=str(DEFAULT_CONTRACT)); m.add_argument("--out",default=str(DEFAULT_AGENTS_DIR))
     cc=sub.add_parser("child-contract"); cc.add_argument("--contract",default=str(DEFAULT_CONTRACT)); cc.add_argument("--out",required=True)
     lg=sub.add_parser("log"); lg.add_argument("event")
+
+    fs=sub.add_parser("semantics", help="compile HarnessSpec -> deterministic LTS")
+    fs.add_argument("spec"); fs.add_argument("--contract",default=str(DEFAULT_CONTRACT)); fs.add_argument("--out",default=None)
+    cr=sub.add_parser("check-runtime", help="runtime ledger refines declared semantics")
+    cr.add_argument("spec"); cr.add_argument("ledger"); cr.add_argument("--contract",default=str(DEFAULT_CONTRACT))
+    cr.add_argument("--adapter",choices=["none","experiment3","experiment4-c1"],default="none")
+    cr.add_argument("--require-completion",action="store_true"); cr.add_argument("--json-out",default=None)
+    bs=sub.add_parser("bisim", help="strong/weak bisimulation of two LTS files")
+    bs.add_argument("state_a"); bs.add_argument("state_b"); bs.add_argument("--mode",choices=["strong","weak"],default="weak")
+    bs.add_argument("--json-out",default=None)
+    at=sub.add_parser("attenuation", help="K_child <= K_parent authority invariant")
+    at.add_argument("parent"); at.add_argument("child"); at.add_argument("--json-out",default=None)
+    cl=sub.add_parser("closure", help="bounded Creator-Closure witness hat_kappa")
+    cl.add_argument("parent"); cl.add_argument("attestation"); cl.add_argument("--json-out",default=None)
+    ss=sub.add_parser("synthesis-status", help="finite fixed-point synthesis classification")
+    ss.add_argument("q_before"); ss.add_argument("q_after"); ss.add_argument("--json-out",default=None)
+
     a=p.parse_args()
+    formal_cmds={"semantics":cmd_semantics,"check-runtime":cmd_check_runtime,"bisim":cmd_bisim,
+                 "attenuation":cmd_attenuation,"closure":cmd_closure,"synthesis-status":cmd_synthesis_status}
     try:
+        if a.cmd in formal_cmds:
+            try:
+                return formal_cmds[a.cmd](a)
+            except (json.JSONDecodeError, FileNotFoundError, ValueError, KeyError) as e:
+                print(f"FORMAL_PARSE_ERROR: {e}",file=sys.stderr); return 4
         if a.cmd=="validate":
             validate_spec(load_json(a.spec),load_json(a.contract)); print("VALID")
         elif a.cmd=="materialize":
