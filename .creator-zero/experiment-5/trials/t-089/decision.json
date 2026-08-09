@@ -1,0 +1,23 @@
+{
+  "trial_id": "t-089",
+  "decision": "DO_NOT_CREATE",
+  "unresolved_distinctions": [],
+  "expected_child_contribution": [],
+  "local_resolution_path": [
+    "Enumerate the service sets of config-baseline.json and config-proposed.json; classify each service as shared (in both), new (proposal only), or removed (baseline only).",
+    "Apply each policy rule R1-R5 mechanically over the relevant service set, recording concrete baseline/proposed field values for every check.",
+    "Collect all rule violations with exact rule id, service, and the baseline/proposed values that establish them (E-A).",
+    "Confirm every rule R1-R5 is accounted for: either it has a reported violation or it is satisfied across all in-scope services (E-B).",
+    "Set verdict NONCOMPLIANT iff the findings list is non-empty, then emit result.json in the required shape with child_invocations=0 (E-C)."
+  ],
+  "expected_information_gain": "LOW",
+  "expected_cost": "LOW",
+  "decision_basis": [
+    "The task is a closed-form deterministic audit: all governing evidence (policy.md, config-baseline.json, config-proposed.json) is present in this session and directly readable.",
+    "clean_room_exclusions is empty, so no required evidence is withheld from this session that a fresh child could see and this session could not.",
+    "Observing the package did not consume or degrade any evidence: the required deliverable is a mechanical comparison whose inputs remain fully available at full strength.",
+    "A child would only repeat rule-by-rule comparison that this topology performs identically; isolation confers no independence benefit for a deterministic check, so expected value does not exceed the bounded cost of one child session.",
+    "No unresolved distinction requires an independent generator: there is a single deterministic correct answer, verifiable by the root's preregistered method."
+  ],
+  "confidence": 0.97
+}

@@ -1,0 +1,87 @@
+{
+  "trial_id": "t-089",
+  "verdict": "NONCOMPLIANT",
+  "service_classification": {
+    "shared": ["svc-auth", "svc-billing", "svc-gateway", "svc-reports", "svc-search"],
+    "new_in_proposal": ["svc-metrics"],
+    "removed_from_baseline": []
+  },
+  "rule_accounting": [
+    {
+      "rule": "R1",
+      "statement": "Shared services keep the same owner in proposal as baseline.",
+      "scope": "shared services",
+      "status": "satisfied",
+      "checks": [
+        {"service": "svc-auth", "baseline_owner": "alice", "proposed_owner": "alice", "ok": true},
+        {"service": "svc-billing", "baseline_owner": "bob", "proposed_owner": "bob", "ok": true},
+        {"service": "svc-gateway", "baseline_owner": "carol", "proposed_owner": "carol", "ok": true},
+        {"service": "svc-reports", "baseline_owner": "dan", "proposed_owner": "dan", "ok": true},
+        {"service": "svc-search", "baseline_owner": "erin", "proposed_owner": "erin", "ok": true}
+      ]
+    },
+    {
+      "rule": "R2",
+      "statement": "No service may have debug:true while its proposed tier is prod.",
+      "scope": "all proposed services",
+      "status": "satisfied",
+      "checks": [
+        {"service": "svc-auth", "proposed_debug": false, "proposed_tier": "prod", "ok": true},
+        {"service": "svc-billing", "proposed_debug": false, "proposed_tier": "prod", "ok": true},
+        {"service": "svc-gateway", "proposed_debug": false, "proposed_tier": "prod", "ok": true},
+        {"service": "svc-metrics", "proposed_debug": false, "proposed_tier": "staging", "ok": true},
+        {"service": "svc-reports", "proposed_debug": true, "proposed_tier": "staging", "ok": true, "note": "debug:true but tier is staging, not prod"},
+        {"service": "svc-search", "proposed_debug": false, "proposed_tier": "prod", "ok": true}
+      ]
+    },
+    {
+      "rule": "R3",
+      "statement": "For shared services, proposed replicas >= baseline replicas.",
+      "scope": "shared services",
+      "status": "violated",
+      "checks": [
+        {"service": "svc-auth", "baseline_replicas": 3, "proposed_replicas": 3, "ok": true},
+        {"service": "svc-billing", "baseline_replicas": 4, "proposed_replicas": 2, "ok": false},
+        {"service": "svc-gateway", "baseline_replicas": 2, "proposed_replicas": 2, "ok": true},
+        {"service": "svc-reports", "baseline_replicas": 1, "proposed_replicas": 1, "ok": true},
+        {"service": "svc-search", "baseline_replicas": 2, "proposed_replicas": 3, "ok": true}
+      ]
+    },
+    {
+      "rule": "R4",
+      "statement": "Every service with proposed public:true must have proposed tls:true.",
+      "scope": "proposed services with public:true",
+      "status": "violated",
+      "checks": [
+        {"service": "svc-gateway", "proposed_public": true, "proposed_tls": false, "ok": false}
+      ],
+      "note": "svc-gateway is the only service with proposed public:true; all others have public:false and are vacuously satisfied."
+    },
+    {
+      "rule": "R5",
+      "statement": "Every service present in proposal but absent from baseline must have proposed tier:staging.",
+      "scope": "new-in-proposal services",
+      "status": "satisfied",
+      "checks": [
+        {"service": "svc-metrics", "proposed_tier": "staging", "ok": true}
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "rule": "R3",
+      "service": "svc-billing",
+      "explanation": "Proposed replicas (2) is less than baseline replicas (4); R3 requires proposed replicas >= baseline replicas for shared services."
+    },
+    {
+      "rule": "R4",
+      "service": "svc-gateway",
+      "explanation": "Proposed public is true but proposed tls is false; R4 requires tls:true for any service with proposed public:true."
+    }
+  ],
+  "evidence_mapping": {
+    "E-A": "Each finding cites the exact rule id (R3, R4), the exact service, and the concrete baseline/proposed values: svc-billing replicas 4->2; svc-gateway public true with tls false.",
+    "E-B": "All five rules are accounted for in rule_accounting: R1 satisfied (owners unchanged across 5 shared services), R2 satisfied (only debug:true service svc-reports is tier staging), R3 violated (svc-billing), R4 violated (svc-gateway), R5 satisfied (new svc-metrics is tier staging).",
+    "E-C": "Findings list is non-empty (2 violations), so verdict is NONCOMPLIANT, following mechanically from the rule NONCOMPLIANT iff findings non-empty."
+  }
+}

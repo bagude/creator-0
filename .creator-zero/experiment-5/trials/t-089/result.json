@@ -1,0 +1,16 @@
+{
+  "verdict": "NONCOMPLIANT",
+  "findings": [
+    {
+      "rule": "R3",
+      "service": "svc-billing",
+      "explanation": "Proposed replicas (2) is less than baseline replicas (4); R3 requires proposed replicas >= baseline replicas for services present in both configurations."
+    },
+    {
+      "rule": "R4",
+      "service": "svc-gateway",
+      "explanation": "Proposed public is true but proposed tls is false; R4 requires tls:true for every service with proposed public:true."
+    }
+  ],
+  "child_invocations": 0
+}

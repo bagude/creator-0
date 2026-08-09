@@ -1,0 +1,35 @@
+{
+  "artifact": "deterministic trial verification",
+  "trial_id": "t-089",
+  "branch": "local",
+  "task_verified": true,
+  "expected": {
+    "verdict": "NONCOMPLIANT",
+    "violations": [
+      [
+        "R3",
+        "svc-billing"
+      ],
+      [
+        "R4",
+        "svc-gateway"
+      ]
+    ]
+  },
+  "observed": {
+    "verdict": "NONCOMPLIANT",
+    "violations": [
+      [
+        "R3",
+        "svc-billing"
+      ],
+      [
+        "R4",
+        "svc-gateway"
+      ]
+    ]
+  },
+  "reasons": [
+    "verdict and violation set match the recomputation"
+  ]
+}
