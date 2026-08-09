@@ -1,0 +1,72 @@
+{
+  "task_id": "e6-__TRIAL_ID__-infer",
+  "goal": "Experiment 6 stage S1 for trial __TRIAL_ID__: infer the unresolved distinctions of the raw task package (with latent-structure features) and estimate per-family observed-value components; produce typed DistinctionSpec and value-estimate artifacts for the deterministic downstream pipeline.",
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "nodes": [
+    {
+      "id": "observe-package",
+      "primitive": "observe",
+      "tools": ["Read"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "instructions": "Read every file in package/ plus contract.json, the schemas, and this harness. Acquire evidence only; infer nothing yet.",
+      "why_necessary": "Distinction inference is a function of the raw task semantics; the evidence state must be acquired as a distinct causal step."
+    },
+    {
+      "id": "infer-distinctions",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "instructions": "Write distinctions.json conforming to distinction-spec-schema.json: the unresolved distinctions with admissibility constraints, evidence-requirement references, dependencies, and latent-structure features.",
+      "why_necessary": "The latent inference under test: topology-relevant structure must be derived from raw semantics, not from prefilled features."
+    },
+    {
+      "id": "estimate-value",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "instructions": "Write value-estimates.json conforming to value-estimates-schema.json: predicted delta_e, redundancy, and governance_risk per candidate family, with rationales.",
+      "why_necessary": "Predicted-value components are model-mediated estimates; they must be serialized into a typed artifact before deterministic utility arithmetic and ranking."
+    },
+    {
+      "id": "self-check-spec",
+      "primitive": "verify",
+      "tools": ["Read"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "instructions": "Re-read both artifacts against their schemas; record the structural outcome in the ledger. Non-authoritative: deterministic root validation governs.",
+      "why_necessary": "The contract requires a verify primitive in any Write-holding topology; the author must not silently certify its own artifacts."
+    },
+    {
+      "id": "return-spec",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "instructions": "Write spec-summary.json ({task_id, distinction_count, families_estimated}) and finalize execution-ledger.jsonl. Do not emit a complete event.",
+      "why_necessary": "Mandated return locus; without it the inference never re-enters the governed boundary."
+    }
+  ],
+  "edges": [
+    {"source": "observe-package", "target": "infer-distinctions", "relation": "observe", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "infer-distinctions", "target": "estimate-value", "relation": "authorize", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "estimate-value", "target": "self-check-spec", "relation": "verify", "requires_response": true, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "self-check-spec", "target": "return-spec", "relation": "authorize", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false}
+  ],
+  "ledger_contract": {
+    "path": "execution-ledger.jsonl (workspace root)",
+    "schema": "normalized formal event schema: one JSON object per line with event_id, label, actor, timestamp, artifact_refs, metadata; node executions carry metadata.completes_node",
+    "required_node_execution_events": [
+      {"label": "observe", "actor": "node:observe-package", "metadata": {"completes_node": "observe-package"}},
+      {"label": "propose", "actor": "node:infer-distinctions", "metadata": {"completes_node": "infer-distinctions"}, "artifact_refs": ["distinctions.json"]},
+      {"label": "propose", "actor": "node:estimate-value", "metadata": {"completes_node": "estimate-value"}, "artifact_refs": ["value-estimates.json"]},
+      {"label": "verify", "actor": "node:self-check-spec", "metadata": {"completes_node": "self-check-spec"}},
+      {"label": "return", "actor": "node:return-spec", "metadata": {"completes_node": "return-spec"}, "artifact_refs": ["spec-summary.json"]}
+    ],
+    "forbidden": "no complete event; no create/act events",
+    "optional_events": "additional non-authority events with actor 'creator' permitted as governance self-loops; tau lines permitted with metadata.reason"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Candidate-family value estimates (Experiment 6, S1 output)",
+  "description": "Model-mediated predicted-value estimates per candidate topology family, serialized before candidate generation. Cost is NOT estimated here: it is computed deterministically from the family's expected call structure (utility-operationalization.md). Each estimate is a prediction of the observed component as operationalized: delta_e = 0.5*(fraction of unresolved distinctions resolved with admissible evidence) + 0.5*(fraction of evidence records that are novel, i.e. not duplicates of parent-local evidence); redundancy = fraction of evidence records that duplicate parent-local evidence; governance_risk = 0.25 * expected count of formal/governance failures.",
+  "type": "object",
+  "required": ["task_id", "estimates"],
+  "additionalProperties": false,
+  "properties": {
+    "task_id": {"type": "string"},
+    "estimates": {
+      "type": "object",
+      "required": ["local", "local-independent-verify", "isolated-child", "branching"],
+      "additionalProperties": false,
+      "properties": {
+        "local": {"$ref": "#/$defs/estimate"},
+        "local-independent-verify": {"$ref": "#/$defs/estimate"},
+        "isolated-child": {"$ref": "#/$defs/estimate"},
+        "branching": {"$ref": "#/$defs/estimate"}
+      }
+    }
+  },
+  "$defs": {
+    "estimate": {
+      "type": "object",
+      "required": ["delta_e", "redundancy", "governance_risk", "rationale"],
+      "additionalProperties": false,
+      "properties": {
+        "delta_e": {"type": "number", "minimum": 0, "maximum": 1},
+        "redundancy": {"type": "number", "minimum": 0, "maximum": 1},
+        "governance_risk": {"type": "number", "minimum": 0, "maximum": 1},
+        "rationale": {"type": "string", "minLength": 10}
+      }
+    }
+  }
+}

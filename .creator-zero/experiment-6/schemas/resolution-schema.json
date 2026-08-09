@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Resolution record (Experiment 6, S6 execution output)",
+  "type": "object",
+  "required": ["task_id", "topology_id", "resolutions"],
+  "additionalProperties": false,
+  "properties": {
+    "task_id": {"type": "string"},
+    "topology_id": {"type": "string"},
+    "resolutions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status", "resolved_by", "answer", "evidence_ids",
+                     "evidence_requirement_refs"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^Q[0-9]+$"},
+          "status": {"enum": ["RESOLVED", "UNRESOLVED"]},
+          "resolved_by": {"type": "string",
+            "description": "harness node id that produced the resolving evidence; empty when UNRESOLVED"},
+          "answer": {"type": "string"},
+          "evidence_ids": {"type": "array", "items": {"type": "string"}},
+          "evidence_requirement_refs": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

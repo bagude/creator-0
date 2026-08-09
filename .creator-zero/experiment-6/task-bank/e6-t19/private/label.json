@@ -1,0 +1,66 @@
+{
+  "trial_id": "e6-t19",
+  "latent_class": "ISOLATION",
+  "surface_domain": "business-rules",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "child": true,
+      "clean_room": true,
+      "child_role": "clean_room_implementer"
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "child": true,
+      "clean_room": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "whether a description-only implementation reproduces the reference on the probes",
+      "core_patterns": [
+        "reproduc|diverg|determin|match|agree",
+        "probe|behavior|output"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the authorship/access admissibility condition and its violation by this process",
+      "core_patterns": [
+        "access|read|seen|contaminat|anchor|solely|cannot un",
+        "author|reference|implementation"
+      ]
+    }
+  ],
+  "fn_name": "price",
+  "reference_file": "artifacts/price.py",
+  "probes_file": "artifacts/probes.json",
+  "determined": {
+    "0": "59.97",
+    "2": "19.44",
+    "4": "11.21",
+    "6": "28.27",
+    "7": "1.18",
+    "8": "20.98",
+    "9": "0.08"
+  },
+  "verdict": "DIVERGES",
+  "analysis_patterns": [
+    [
+      "round|half|even|banker|away from zero",
+      "cent|0\\.01|tie"
+    ]
+  ],
+  "clean_room_exclusions": [
+    "package/artifacts/price.py"
+  ],
+  "forbidden_shortcuts": [
+    "verdict asserted without the admissible comparison; the auditor has read the reference and cannot author solely from the description"
+  ]
+}

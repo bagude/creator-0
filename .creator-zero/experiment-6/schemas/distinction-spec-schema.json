@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DistinctionSpec (Experiment 6, S1 output)",
+  "type": "object",
+  "required": ["task_id", "unresolved_distinctions"],
+  "additionalProperties": false,
+  "properties": {
+    "task_id": {"type": "string"},
+    "unresolved_distinctions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": ["id", "question", "why_unresolved", "required_evidence",
+                     "admissibility_constraints", "dependencies", "features",
+                     "evidence_requirement_refs"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {"type": "string", "pattern": "^Q[0-9]+$"},
+          "question": {"type": "string", "minLength": 10},
+          "why_unresolved": {"type": "string", "minLength": 10},
+          "required_evidence": {"type": "string", "minLength": 10},
+          "admissibility_constraints": {
+            "type": "array", "items": {"type": "string"}
+          },
+          "dependencies": {
+            "type": "array", "items": {"type": "string", "pattern": "^Q[0-9]+$"}
+          },
+          "evidence_requirement_refs": {
+            "type": "array", "items": {"type": "string"},
+            "description": "ids of the task's evidence_requirements this distinction maps to (e.g. E-A)"
+          },
+          "features": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["locally_resolvable", "requires_isolation",
+                         "contamination", "capability_bearing_artifact",
+                         "spans_sessions"],
+            "properties": {
+              "locally_resolvable": {"type": "boolean"},
+              "requires_isolation": {"type": "boolean"},
+              "contamination": {"type": "boolean"},
+              "capability_bearing_artifact": {"type": "boolean"},
+              "spans_sessions": {"type": "boolean"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

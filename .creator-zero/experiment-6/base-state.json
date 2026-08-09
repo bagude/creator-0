@@ -1,0 +1,28 @@
+{
+  "artifact": "Experiment 6 base reconstruction: hash-pinned lineage",
+  "base_commit": "4184611a2a3cd2e5edd985de3f861a9cb0501246",
+  "base_branch": "claude/new-session-aljqd2 (checked out as claude/new-session-ltyh1o)",
+  "expected_lineage": {
+    "experiment_5": "ENDOGENOUS_TOPOLOGY_PASS",
+    "topology_theory": "TOPOLOGY_THEORY_SELF_MODIFICATION_PASS"
+  },
+  "pins": {
+    "theta_v1": "sha256:f7e38eb7555f5deb53fd24ac5b14e8b71f1d629d64114bb0dfeb16ab65fd9946",
+    "topology_theory_state_manifest": "sha256:62656ba654a6877f2cdc7544c086d1913aae541feb2febd825e5e3bd5aaf0447",
+    "experiment_5_state": "sha256:7b2359ea139c7f1e8a0590d076e65f2c1ae3dc723062e79e8ed6b5bab0c1ddc7",
+    "formal_semantics_state": "sha256:02a91afdb70b9faf50cbaa007a5fb05d7ce0216a1bededaa05c00947d1ce649a",
+    "utility_config": "sha256:96ac67beb02f36b8bdda64c3cddfe9237527dfb2ee236165ba7b9b2aa31f31bd",
+    "formal_kernel_py_tree": {
+      "hash": "sha256:b86553b7fd7f55266f27fa179659a414f13b00fcc0d18a6f59fd057b118f7fd7",
+      "files": 13
+    },
+    "topology_theory_py_tree": {
+      "hash": "sha256:de36f78d0fba3a1fbea13cefa53a2546e3d69b4c37e333b5ae670b7fcb16fb17",
+      "files": 15
+    },
+    "fresh_launcher_v0_2": "sha256:d6990c286a9f62f8d6ae7818167e5f315a14ad56db3a0e398127bc52b865d8d7",
+    "root_contract": "sha256:f7268b999e2b35dfebce656d170d702da78090cf52b1a5762a1fb97cec17392e"
+  },
+  "protected_laws_source": "topology-theory/validate.py PROTECTED_LAWS + PROTECTED_PATH_PREFIXES (pinned via topology_theory_py_tree)",
+  "immutability_rule": "all prior experiment artifacts are immutable; experiment-6 adds files only"
+}

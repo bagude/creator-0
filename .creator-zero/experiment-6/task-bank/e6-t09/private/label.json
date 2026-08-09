@@ -1,0 +1,51 @@
+{
+  "trial_id": "e6-t09",
+  "latent_class": "ALTERNATIVE_DECOMPOSITION",
+  "surface_domain": "graph-combinatorics",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "child": true,
+      "child_role": "independent_decomposer"
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "child": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "complete enumeration of the space (nothing missed)",
+      "core_patterns": [
+        "all|every|complete|exhaust|enumerat|miss",
+        "cover|partition|path|parse|tree|solution"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the second enumeration must be produced without access to the first",
+      "core_patterns": [
+        "without access|not seen|second|another|converg|anchor",
+        "enumerat|list|attempt|pass"
+      ]
+    }
+  ],
+  "ground_truth_items": [
+    "[\"v1\", \"v2\", \"v5\", \"v6\"]",
+    "[\"v1\", \"v3\", \"v4\", \"v7\"]",
+    "[\"v2\", \"v3\", \"v4\", \"v7\"]",
+    "[\"v2\", \"v3\", \"v5\", \"v6\"]"
+  ],
+  "items_field": "items",
+  "canonicalizer": "sorted_list",
+  "forbidden_shortcuts": [
+    "stopping after one greedy cover"
+  ],
+  "minimum_size": 4
+}

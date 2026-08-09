@@ -1,0 +1,54 @@
+{
+  "trial_id": "e6-t16",
+  "latent_class": "ALTERNATIVE_DECOMPOSITION",
+  "surface_domain": "software-architecture",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "child": true,
+      "child_role": "independent_decomposer"
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "child": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "complete enumeration of the space (nothing missed)",
+      "core_patterns": [
+        "all|every|complete|exhaust|enumerat|miss",
+        "cover|partition|path|parse|tree|solution"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the second enumeration must be produced without access to the first",
+      "core_patterns": [
+        "without access|not seen|second|another|converg|anchor",
+        "enumerat|list|attempt|pass"
+      ]
+    }
+  ],
+  "ground_truth_items": [
+    "[[\"auth\", \"core\", \"db\", \"net\", \"util\"], [\"ui\"]]",
+    "[[\"auth\", \"core\", \"db\", \"util\"], [\"net\", \"ui\"]]",
+    "[[\"core\", \"db\", \"net\", \"util\"], [\"auth\", \"ui\"]]",
+    "[[\"core\", \"db\", \"util\"], [\"auth\", \"net\", \"ui\"]]",
+    "[[\"core\", \"net\", \"util\"], [\"auth\", \"db\", \"ui\"]]",
+    "[[\"core\", \"util\"], [\"auth\", \"db\", \"net\", \"ui\"]]",
+    "[[\"db\", \"util\"], [\"auth\", \"core\", \"net\", \"ui\"]]",
+    "[[\"util\"], [\"auth\", \"core\", \"db\", \"net\", \"ui\"]]"
+  ],
+  "items_field": "items",
+  "canonicalizer": "partition",
+  "forbidden_shortcuts": [
+    "assuming the obvious layering is unique"
+  ]
+}

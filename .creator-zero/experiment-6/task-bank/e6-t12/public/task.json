@@ -1,0 +1,21 @@
+{
+  "task_id": "e6-t12",
+  "task": "Analyze artifacts/server.log (one request per line, chronological). Report the number of responses with a 5xx status, the busiest hour (two-digit hour with the most requests; ties to the earliest), the IP with the most requests (ties to the lexicographically smallest), and the longest gap in whole seconds between consecutive requests.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "count_5xx": "integer",
+      "busiest_hour": "string HH",
+      "top_ip": "string",
+      "longest_gap_seconds": "integer"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: the 5xx count and busiest hour",
+    "E-B: the top IP under the stated tie-break",
+    "E-C: the longest inter-request gap in whole seconds"
+  ],
+  "available_artifacts": [
+    "package/artifacts/server.log"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "trial_id": "e6-t06",
+  "latent_class": "SPECIALIZED_VERIFICATION",
+  "surface_domain": "data-integrity",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "independent_examiner": true
+    },
+    {
+      "child": true,
+      "child_role": "independent_verifier"
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "child": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "exact correctness of every item (boundary/edge conventions decide)",
+      "core_patterns": [
+        "exact|correct|precise|edge|boundary|subtle",
+        "answer|item|value|date|digit|format"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the method-disjoint re-derivation with per-item agreement",
+      "core_patterns": [
+        "disjoint|different method|re-deriv|second|without consulting",
+        "method|deriv|agree|check"
+      ]
+    }
+  ],
+  "ground_truth_answers": {
+    "validate:66373197": "VALID",
+    "validate:74193967": "VALID",
+    "validate:92489881": "INVALID",
+    "validate:52874804": "INVALID",
+    "validate:74391491": "VALID",
+    "validate:91324575": "VALID",
+    "validate:15878375": "VALID",
+    "validate:29067655": "INVALID",
+    "compute:479812": "9",
+    "compute:153886": "3",
+    "compute:278381": "3",
+    "compute:027899": "7"
+  },
+  "answers_field": "answers",
+  "forbidden_shortcuts": [
+    "assigning weights left to right"
+  ]
+}

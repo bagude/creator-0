@@ -1,0 +1,61 @@
+{
+  "trial_id": "p-02",
+  "latent_class": "ISOLATION",
+  "surface_domain": "codec",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "child": true,
+      "clean_room": true,
+      "child_role": "clean_room_implementer"
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "child": true,
+      "clean_room": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "whether a description-only implementation reproduces the reference on the probes",
+      "core_patterns": [
+        "reproduc|diverg|determin|match|agree",
+        "probe|behavior|output"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the authorship/access admissibility condition and its violation by this process",
+      "core_patterns": [
+        "access|read|seen|contaminat|anchor|solely|cannot un",
+        "author|reference|implementation"
+      ]
+    }
+  ],
+  "fn_name": "join_items",
+  "reference_file": "artifacts/joiner.py",
+  "probes_file": "artifacts/probes.json",
+  "determined": {
+    "0": "a",
+    "2": "",
+    "4": "z"
+  },
+  "verdict": "DIVERGES",
+  "analysis_patterns": [
+    [
+      "order|revers"
+    ]
+  ],
+  "clean_room_exclusions": [
+    "package/artifacts/joiner.py"
+  ],
+  "forbidden_shortcuts": [
+    "verdict asserted without the admissible comparison; the auditor has read the reference and cannot author solely from the description"
+  ]
+}

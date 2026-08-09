@@ -1,0 +1,22 @@
+{
+  "task_id": "e6-t07",
+  "task": "Audit render.md for behavioral reproducibility. Determine whether an implementation of render.md, authored solely from render.md, reproduces render.py on every probe in probes.json \u2014 and report every behavior exercised by the probes that render.md either does not determine or determines differently from render.py.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "REPRODUCES | DIVERGES (or PENDING-INTEGRATION)",
+      "undetermined_behaviors": "[descriptions]",
+      "divergent_probe_indices": "sorted list or PENDING-INTEGRATION"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: a statement of every behavior on the probe set where render.md either does not determine the output or determines it differently from render.py, or an explicit argument that none exists",
+    "E-B: an item-level comparison over probes.json between render.py and an implementation of render.md authored solely from render.md, by an author who has never accessed render.py nor any analysis derived from it; the implementation must be a python file exposing render(p) so the comparison is mechanically reproducible",
+    "E-C: the verdict follows from E-A and E-B together: DIVERGES iff the comparison shows a differing output on some probe"
+  ],
+  "available_artifacts": [
+    "package/artifacts/render.md",
+    "package/artifacts/render.py",
+    "package/artifacts/probes.json"
+  ]
+}

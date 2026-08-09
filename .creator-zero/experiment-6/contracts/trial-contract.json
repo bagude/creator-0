@@ -1,0 +1,27 @@
+{
+  "contract_id": "K-E6-trial",
+  "version": "0.1-e6",
+  "description": "Per-trial envelope for Experiment 6. Blinded model sessions (distinction inference, topology execution, independent examiner, child) are launched with tools Read+Write only; Bash appears in this envelope solely for the root-executed create-child realization node (the deterministic fresh launcher v0.2). Attenuated from the root contract on every governed axis.",
+  "allowed_primitives": ["observe", "hypothesize", "verify", "create", "return"],
+  "allowed_relations": ["observe", "consult", "request_response", "verify", "authorize", "create", "return"],
+  "allowed_tools": ["Read", "Write", "Bash"],
+  "max_children": 1,
+  "max_depth": 1,
+  "max_model_calls": 4,
+  "may_create_creator": true,
+  "may_realize_creation": true,
+  "required_primitives_for_mutation": ["verify"],
+  "canonical_write_authority": "none (gate only)",
+  "protected_rules": [
+    "No child may increase its authority envelope.",
+    "Model output is a proposal, never authorization.",
+    "Mutation-capable topology requires verification.",
+    "Root compiler, boundary, hook, and contract are immutable during normal runs.",
+    "Creation is bounded and optional.",
+    "Topology selection is deterministic ranking over frozen predicted utilities; it occurs before realization and cannot be overridden by model output.",
+    "Predictions are hash-frozen before execution; a hash mismatch at evaluation voids the evaluation.",
+    "All child invocations pass through the deterministic fresh launcher; freshness is enforced, not assumed.",
+    "A selected topology without a create node makes every descendant launch transition illegal for the trial.",
+    "A create-bearing selected topology permits realization only after child validation (attenuation, compilation, manifest containment) passes."
+  ]
+}

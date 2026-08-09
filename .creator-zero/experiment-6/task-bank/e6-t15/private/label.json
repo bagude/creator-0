@@ -1,0 +1,79 @@
+{
+  "trial_id": "e6-t15",
+  "latent_class": "LOCAL",
+  "surface_domain": "compliance-audit",
+  "expected_principles": [
+    "P-LOCALITY"
+  ],
+  "acceptable_topology_features": [
+    {
+      "no_extra_path": true
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "independent_examiner": true,
+      "child": false
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "rule-by-rule decidability from the config text alone",
+      "core_patterns": [
+        "rule|policy|R[1-7]",
+        "config|violat|compl"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "exact arithmetic checks (ranges, divisibility, multiples)",
+      "core_patterns": [
+        "divide|divis|range|times|at most|between",
+        "24|4|5000|check"
+      ]
+    }
+  ],
+  "ground_truth": {
+    "violations": [
+      {
+        "rule": "R1",
+        "key": "timeout_ms",
+        "value": "8000"
+      },
+      {
+        "rule": "R2",
+        "key": "retries",
+        "value": "7"
+      },
+      {
+        "rule": "R6",
+        "key": "backup_interval_hours",
+        "value": "7"
+      }
+    ],
+    "violation_count": 3,
+    "compliant_rules": [
+      "R3",
+      "R4",
+      "R5",
+      "R7"
+    ]
+  },
+  "requirement_fields": {
+    "E-A": [
+      "violation_count"
+    ],
+    "E-B": [
+      "compliant_rules"
+    ],
+    "E-C": [
+      "violations"
+    ]
+  },
+  "forbidden_shortcuts": [
+    "reporting rules without checking values"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "trial_id": "e6-t05",
+  "latent_class": "ISOLATION",
+  "surface_domain": "data-migration",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "child": true,
+      "clean_room": true,
+      "child_role": "clean_room_implementer"
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "child": true,
+      "clean_room": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "whether a description-only implementation reproduces the reference on the probes",
+      "core_patterns": [
+        "reproduc|diverg|determin|match|agree",
+        "probe|behavior|output"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the authorship/access admissibility condition and its violation by this process",
+      "core_patterns": [
+        "access|read|seen|contaminat|anchor|solely|cannot un",
+        "author|reference|implementation"
+      ]
+    }
+  ],
+  "fn_name": "transform",
+  "reference_file": "artifacts/transform.py",
+  "probes_file": "artifacts/probes.json",
+  "determined": {
+    "0": "1999-01-02",
+    "1": "1984-12-31",
+    "3": "1976-07-04",
+    "4": "2000-02-28",
+    "6": "2024-10-01",
+    "8": "2009-09-09",
+    "9": "1970-11-30",
+    "11": "1969-06-06"
+  },
+  "verdict": "DIVERGES",
+  "analysis_patterns": [
+    [
+      "pivot|50|69|70|century|two-digit"
+    ],
+    [
+      "whitespace|space|strip|trim"
+    ]
+  ],
+  "clean_room_exclusions": [
+    "package/artifacts/transform.py"
+  ],
+  "forbidden_shortcuts": [
+    "verdict asserted without the admissible comparison; the auditor has read the reference and cannot author solely from the description"
+  ]
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "qty": 3,
+    "unit_price": "19.99",
+    "discount_pct": 0,
+    "tax_pct": 0
+  },
+  {
+    "qty": 1,
+    "unit_price": "0.25",
+    "discount_pct": 50,
+    "tax_pct": 0
+  },
+  {
+    "qty": 2,
+    "unit_price": "10.00",
+    "discount_pct": 10,
+    "tax_pct": 8
+  },
+  {
+    "qty": 1,
+    "unit_price": "1.25",
+    "discount_pct": 50,
+    "tax_pct": 0
+  },
+  {
+    "qty": 5,
+    "unit_price": "2.49",
+    "discount_pct": 25,
+    "tax_pct": 20
+  },
+  {
+    "qty": 1,
+    "unit_price": "0.05",
+    "discount_pct": 50,
+    "tax_pct": 0
+  },
+  {
+    "qty": 4,
+    "unit_price": "7.77",
+    "discount_pct": 15,
+    "tax_pct": 7
+  },
+  {
+    "qty": 1,
+    "unit_price": "2.35",
+    "discount_pct": 50,
+    "tax_pct": 0
+  },
+  {
+    "qty": 6,
+    "unit_price": "3.33",
+    "discount_pct": 0,
+    "tax_pct": 5
+  },
+  {
+    "qty": 1,
+    "unit_price": "0.15",
+    "discount_pct": 50,
+    "tax_pct": 0
+  }
+]

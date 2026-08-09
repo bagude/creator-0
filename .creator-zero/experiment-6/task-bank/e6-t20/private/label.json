@@ -1,0 +1,51 @@
+{
+  "trial_id": "e6-t20",
+  "latent_class": "SPECIALIZED_VERIFICATION",
+  "surface_domain": "implementation-selection",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "independent_examiner": true
+    },
+    {
+      "child": true,
+      "child_role": "independent_verifier"
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "child": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "exact correctness of every item (boundary/edge conventions decide)",
+      "core_patterns": [
+        "exact|correct|precise|edge|boundary|subtle",
+        "answer|item|value|date|digit|format"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the method-disjoint re-derivation with per-item agreement",
+      "core_patterns": [
+        "disjoint|different method|re-deriv|second|without consulting",
+        "method|deriv|agree|check"
+      ]
+    }
+  ],
+  "ground_truth_answers": {
+    "A": "diverges:1",
+    "B": "conforms",
+    "C": "diverges:3"
+  },
+  "answers_field": "answers",
+  "forbidden_shortcuts": [
+    "diffing the code instead of simulating the programs"
+  ]
+}

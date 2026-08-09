@@ -1,0 +1,21 @@
+{
+  "task_id": "e6-t15",
+  "task": "Audit artifacts/config.txt against every numbered rule in artifacts/policy.md. Report each violated rule with the offending key and its value (as a string), sorted by rule id, plus the count and the sorted list of compliant rules.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "violations": "[{rule, key, value}] sorted by rule",
+      "violation_count": "integer",
+      "compliant_rules": "[rule ids] sorted"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: the violation count",
+    "E-B: the sorted list of compliant rules",
+    "E-C: every violation with rule, key, and value"
+  ],
+  "available_artifacts": [
+    "package/artifacts/config.txt",
+    "package/artifacts/policy.md"
+  ]
+}

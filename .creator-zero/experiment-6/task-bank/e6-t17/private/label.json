@@ -1,0 +1,51 @@
+{
+  "trial_id": "e6-t17",
+  "latent_class": "ALTERNATIVE_DECOMPOSITION",
+  "surface_domain": "language-parsing",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "child": true,
+      "child_role": "independent_decomposer"
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "child": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "complete enumeration of the space (nothing missed)",
+      "core_patterns": [
+        "all|every|complete|exhaust|enumerat|miss",
+        "cover|partition|path|parse|tree|solution"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the second enumeration must be produced without access to the first",
+      "core_patterns": [
+        "without access|not seen|second|another|converg|anchor",
+        "enumerat|list|attempt|pass"
+      ]
+    }
+  ],
+  "ground_truth_items": [
+    "(((8-2)^2)-1)",
+    "((8-(2^2))-1)",
+    "((8-2)^(2-1))",
+    "(8-((2^2)-1))",
+    "(8-(2^(2-1)))"
+  ],
+  "items_field": "items",
+  "canonicalizer": "string",
+  "forbidden_shortcuts": [
+    "applying conventional precedence"
+  ]
+}

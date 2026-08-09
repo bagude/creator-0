@@ -1,0 +1,56 @@
+{
+  "trial_id": "e6-t18",
+  "latent_class": "ALTERNATIVE_DECOMPOSITION",
+  "surface_domain": "route-planning",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "child": true,
+      "child_role": "independent_decomposer"
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "child": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "complete enumeration of the space (nothing missed)",
+      "core_patterns": [
+        "all|every|complete|exhaust|enumerat|miss",
+        "cover|partition|path|parse|tree|solution"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the second enumeration must be produced without access to the first",
+      "core_patterns": [
+        "without access|not seen|second|another|converg|anchor",
+        "enumerat|list|attempt|pass"
+      ]
+    }
+  ],
+  "ground_truth_items": [
+    "S-A-B-C-D-T",
+    "S-A-B-C-T",
+    "S-A-B-D-T",
+    "S-A-C-D-T",
+    "S-A-C-T",
+    "S-A-D-T",
+    "S-B-C-D-T",
+    "S-B-C-T",
+    "S-B-D-T"
+  ],
+  "items_field": "items",
+  "canonicalizer": "string",
+  "forbidden_shortcuts": [
+    "returning one shortest route"
+  ],
+  "minimum_cost": 8
+}
