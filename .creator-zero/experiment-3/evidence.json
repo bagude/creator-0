@@ -1,0 +1,35 @@
+{
+  "compiled_by": "operator (mechanical collection of node artifacts; no new evidence generated)",
+  "verdict": "H1",
+  "coverage_verdict": "R6_COVERAGE_GAP_VERIFIED",
+  "inherited_evidence": [
+    "M2 manifest claims E1-D1..E1-D9, E2-D1..E2-D4 (.creator-zero/experiment-3/inherited-state.json)"
+  ],
+  "reverified_inherited_evidence": [
+    "suite 12/12 at db51bb3 (operator re-run + verify node re-run)",
+    "differential ALL total=20689 pass=20689 fail=0 mutated=0 (operator re-run + verify node + gate re-run)",
+    "probes 24/24 (operator re-run + verify node + gate re-run)"
+  ],
+  "newly_generated_deterministic_evidence": {
+    "surrogate_admissibility": "2 surrogates (ef_dp_backtrack, prefer_higher_index) each verified over 71,904 instances (69,904 exhaustive n<=4 + 2,000 seeded n=5..8): 0 weight mismatches vs oracle (R5 preserved), R6-divergence on 13,754 / 37,296 instances respectively",
+    "gap_witness": "ef_dp_backtrack passes all 12 existing tests (12/12) while violating R6; prefer_higher_index killed by test_tie_break_prefers_lower_indices (11/12)",
+    "tie_enumeration": "classic 8-job instance: unique optimum (11, [2,6]) — NOT tie-bearing; chosen instance [(0,2,1),(0,1,1)]: W=1, optimal sequences {[0],[1]}, lex-min [0]",
+    "minimality": "measure: fewest jobs, then coordinate span, then wmax, then assertions; n<2 provably tie-free; all strictly smaller cells exhaustively negative; chosen: n=2, span=2, wmax=1, 1 assertion",
+    "expected_value_provenance": "oracle-first: oracle enumeration + hand derivation from R2/R5/R6 recorded before solver run; solver agrees (1, [0])",
+    "discrimination": "candidate test fails under both admissible surrogates ((1,[1]) != (1,[0])) and passes with canonical solver (13/13)"
+  },
+  "model_hypotheses": [
+    "choice of surrogate violation class (reconstruction-order family + higher-index tie policy) — converted to deterministic evidence by admissibility checks",
+    "candidate test specification — converted to deterministic evidence by verify node re-execution"
+  ],
+  "verifier_findings": "9/9 checks pass, overall ACCEPT (.creator-zero/experiment-3/sandbox-verify/verify-verdict.json)",
+  "gate": "deterministic gate.py: 8/8 checks ok, decision ACCEPT, promoted=true, post-promotion suite green (.creator-zero/experiment-3/gate-decision.json)",
+  "artifacts": {
+    "evidence_record": ".creator-zero/experiment-3/sandbox/evidence-round-0.json",
+    "verify_verdict": ".creator-zero/experiment-3/sandbox-verify/verify-verdict.json",
+    "candidate_diff": ".creator-zero/experiment-3/candidate/candidate.diff",
+    "gate_decision": ".creator-zero/experiment-3/gate-decision.json",
+    "surrogates": ".creator-zero/experiment-3/sandbox/surrogates/",
+    "ledger": ".creator-zero/experiment-3/execution-ledger.jsonl"
+  }
+}

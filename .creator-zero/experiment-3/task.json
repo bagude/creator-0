@@ -1,0 +1,18 @@
+{
+  "task_id": "experiment-3-r6-coverage",
+  "task": "Determine whether the current test suite adequately protects the specification's lexicographic tie-break requirement for optimal solutions. If a real coverage gap exists, derive and add the smallest regression test that discriminates a correct R6 implementation from an implementation that returns a different optimal index sequence with the same total weight. Do not change src/solver.py unless new independent evidence demonstrates an implementation defect.",
+  "authoritative_specification": "docs/solver_spec.md",
+  "implementation": "src/solver.py",
+  "tests": "tests/",
+  "success_hypotheses": {
+    "H0": "current suite sufficiently protects R6",
+    "H1": "current suite leaves an R6 regression undetected"
+  },
+  "evidence_requirements_if_H1": [
+    "multiple feasible optimal schedules have the same maximum total weight",
+    "the specification chooses one uniquely through the lexicographic rule",
+    "an implementation violating R6 could return a different optimal sequence while still satisfying R5",
+    "the new test would distinguish those behaviors"
+  ],
+  "mutation_rule": "If the current suite already contains a test that genuinely discriminates R6-compliant from R6-violating behavior, preserve the suite. If a real coverage gap is demonstrated: derive the smallest regression case; create the test only as candidate state; verify the test fails against a deliberately constructed R6-violating surrogate; verify it passes against the canonical solver; verify it does not encode behavior not required by the spec; verify the full suite remains green; promote only after deterministic gate acceptance."
+}

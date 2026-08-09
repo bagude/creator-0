@@ -33,12 +33,6 @@ class TestSolve(unittest.TestCase):
         # Both {0} and {1} achieve weight 5; schedule must be [0].
         self.assertEqual(solve([(0, 4, 5), (1, 5, 5)]), (5, [0]))
 
-    def test_tie_break_lex_smallest_when_later_index_finishes_first(self):
-        # Jobs overlap, so {0} and {1} both achieve W=1; R6 requires [0].
-        # Job 1 finishes earlier, so earliest-finish DP reconstructions
-        # that do not lexicographically minimize return [1] instead.
-        self.assertEqual(solve([(0, 2, 1), (0, 1, 1)]), (1, [0]))
-
     def test_negative_starts(self):
         self.assertEqual(solve([(-5, -1, 2), (-1, 3, 4)]), (6, [0, 1]))
 

@@ -1,0 +1,60 @@
+{
+  "unresolved": [
+    {
+      "id": "Q1",
+      "question": "Does the current 12-test suite (at db51bb3, all green) pass under at least one implementation that satisfies R1-R5, R7, R8 but violates R6 by returning a different optimal index sequence with the same total weight?",
+      "why_required": "This is the exact H0-vs-H1 discriminator in task.json. test_tie_break_prefers_lower_indices kills the naive higher-index-preference mutant, but other R5-preserving tie-break policies (e.g. the standard earliest-finish DP reconstruction, which on that 2-job instance happens to also return [0], and which is unconstrained by test_classic_instance because that test asserts weight 11 but never pins the schedule indices) may pass every existing assertion. Whether any such implementation passes the whole suite is currently unknown; without settling it, neither 'suite sufficiently protects R6' nor 'gap exists' can be asserted.",
+      "resolution_condition": "Deterministic execution of the full unit suite against at least one concrete surrogate implementation that (a) is verified R5-optimal and R6-violating (see Q2/Q3), and (b) passes all 12 tests -> H1 confirmed. Conversely, H0 requires showing that every surrogate in the agreed violation class (Q2) is killed by some existing test.",
+      "evidence_type_needed": "executable: run 'python -m unittest discover -s tests' with the surrogate substituted for src/solver.py's solve (via import shim in a sandbox copy, not by mutating canonical files), plus oracle verification that the surrogate is genuinely R5-satisfying/R6-violating",
+      "already_resolved_by_inheritance": false
+    },
+    {
+      "id": "Q2",
+      "question": "What class of R6-violating behaviors must the suite (and any new test) discriminate against, and is each candidate surrogate in that class genuinely R5-satisfying while R6-violating?",
+      "why_required": "Adequacy is relative to a violation class. A single arbitrary mutant (e.g. hardcoded wrong output) proves nothing about realistic regressions; conversely, demanding the test kill every conceivable mutant is unbounded. The task's H1 evidence requirements ('an implementation violating R6 could return a different optimal sequence while still satisfying R5') require that each surrogate provably preserves optimality on the test instance and provably deviates from the lexicographic rule; otherwise a test failure would be attributable to R5, not R6, and the regression test would be mis-labeled.",
+      "resolution_condition": "For each surrogate used as evidence: an oracle-based check showing (weight_surrogate == weight_oracle) on the relevant instances (R5 preserved) and (sequence_surrogate != lexicographically smallest optimal sequence) on at least one instance (R6 violated). The surrogate set should include at least the realistic reconstruction-order family (e.g. earliest-finish-sorted DP backtracking), since that is the canonical way R6 regressions arise.",
+      "evidence_type_needed": "executable: per-surrogate differential run against .creator-zero/harness/oracle.py comparing weight (must agree) and index sequence (must disagree somewhere)",
+      "already_resolved_by_inheritance": false
+    },
+    {
+      "id": "Q3",
+      "question": "Does the instance chosen for the regression test actually admit multiple distinct feasible optimal index sequences with the same maximum total weight, with R6 selecting exactly one of them? In particular, does the classic 8-job instance itself have optimal ties, or is (11, [2, 6]) its unique optimum?",
+      "why_required": "task.json's first two H1 evidence requirements demand a demonstrated tie resolved uniquely by the lexicographic rule. If the chosen instance has a unique optimal subset, pinning its schedule tests R3/R5 rather than R6, and the added test would not discriminate R6-compliant from R6-violating behavior (any R5-correct implementation would return the same sequence). Whether the classic instance is tie-bearing is unknown from inherited evidence, which only established its optimum value and canonical sequence, not the multiplicity of optima.",
+      "resolution_condition": "Brute-force enumeration (oracle-style, n <= 10) of ALL optimal subsets of the candidate instance, showing count >= 2 distinct pairwise-compatible index sequences achieving W, and identifying the lexicographically smallest as the spec-canonical S.",
+      "evidence_type_needed": "executable: exhaustive subset enumeration reusing the logic of .creator-zero/harness/oracle.py, reporting the full set of optimal sequences, not just the minimum",
+      "already_resolved_by_inheritance": false
+    },
+    {
+      "id": "Q4",
+      "question": "Is the candidate regression test the smallest that discriminates, under an explicit minimality measure, and what does 'smallest' mean here (fewest jobs, then smallest coordinate/weight universe, then fewest assertions)?",
+      "why_required": "The mutation rule mandates 'derive the smallest regression case'. Without an explicit minimality criterion and evidence that no strictly smaller instance discriminates the same violation class, 'smallest' is an unverified claim and the change risks scope creep (the failure mode this experiment is designed to measure). Note the existing 2-job tie test shows discriminating instances can be tiny; the candidate must be minimal relative to the surrogates it must kill (Q2), not merely small in absolute terms.",
+      "resolution_condition": "A stated minimality measure plus exhaustive search over all instances strictly smaller under that measure (bounded universe, oracle-checkable) showing none is failed by every surrogate in the Q2 class while being passed by the canonical solver; or a direct witness that the candidate meets a proven lower bound (e.g. no 1-job instance can have a tie, so 2 jobs is minimal for singleton ties).",
+      "evidence_type_needed": "executable: bounded exhaustive enumeration of smaller instances, evaluating candidate-test discrimination (surrogate fails, canonical passes) per instance",
+      "already_resolved_by_inheritance": false
+    },
+    {
+      "id": "Q5",
+      "question": "Does the candidate test assert only behavior entailed by docs/solver_spec.md (expected W and S derived independently from the spec/oracle), rather than encoding an artifact of the current implementation?",
+      "why_required": "The mutation rule requires verifying the test 'does not encode behavior not required by the spec'. If the expected schedule were copied from solve()'s output rather than derived from R2/R5/R6, the test would entrench the implementation instead of the specification, and a future spec-compliant reimplementation could be falsely failed. This distinction is independent of Q3 (tie existence) because even on a tie-bearing instance the asserted sequence could be wrong.",
+      "resolution_condition": "The expected (W, S) for the test instance is produced by the brute-force oracle (audited in E2 against R2/R5/R6) and/or a hand derivation from the spec text, and matches the value the canonical solver returns; provenance of the expectation is recorded as oracle-first, not solver-first.",
+      "evidence_type_needed": "executable oracle computation plus a short hand derivation; agreement of oracle and solver on the instance",
+      "already_resolved_by_inheritance": false
+    },
+    {
+      "id": "Q6",
+      "question": "Does the candidate test, as actually written, fail against every constructed R6-violating surrogate (Q2) and pass against the canonical src/solver.py?",
+      "why_required": "task.json's fourth H1 evidence requirement ('the new test would distinguish those behaviors') and the mutation rule's explicit gates. A test intended to discriminate can silently fail to do so (wrong instance transcription, assertion on weight only, surrogate coincidentally lexicographic on this instance); only execution settles it.",
+      "resolution_condition": "Deterministic runs: (a) the candidate test file executed with each surrogate substituted reports FAIL on the new test and only the new test attributable to the substitution; (b) executed against canonical src/solver.py reports PASS.",
+      "evidence_type_needed": "executable: unittest runs in a sandboxed copy with import redirection, exit codes and failure identities captured",
+      "already_resolved_by_inheritance": false
+    },
+    {
+      "id": "Q7",
+      "question": "After adding the candidate test, is the verification system unweakened and fully green: all 12 pre-existing tests byte-unchanged and passing, new test passing, differential (20689 cases) and probes (24) still green, and the diff scope limited to the single added test?",
+      "why_required": "The mutation rule conditions promotion on 'the full suite remains green' and the task forbids touching src/solver.py absent new defect evidence; the experiment's discipline additionally forbids weakening existing protections. Without a post-mutation integrity check, the change could regress protections established and reverified in E1/E2.",
+      "resolution_condition": "Post-mutation: unittest discovery reports 13/13 pass; git diff against the pre-mutation commit shows changes only within tests/test_solver.py adding the new test (and byte-identity of src/solver.py and docs/solver_spec.md); differential.py reports total=20689 pass=20689 fail=0 mutated=0; probes.py reports 24/24.",
+      "evidence_type_needed": "executable: test runner, differential.py, probes.py, and git diff scope audit",
+      "already_resolved_by_inheritance": false
+    }
+  ]
+}

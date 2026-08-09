@@ -1,0 +1,9 @@
+{"ts":"2026-08-09","event":"decomposer_round_0_complete","unresolved":["Q1","Q2","Q3","Q4","Q5","Q6","Q7"],"fresh_invocation":true}
+{"ts":"2026-08-09","event":"composer_round_0_complete","nodes":4,"fresh_invocation":true,"boundary":"VALID"}
+{"ts":"2026-08-09","event":"decomposer_round_1_critique","coverage":true,"missing":[],"fresh_invocation":true}
+{"ts":"2026-08-09","event":"synthesis_closure","rounds":1,"d_invocations":2,"c_invocations":1,"final_harness":"final-harness.json"}
+{"ts":"2026-08-09","event":"node_complete","node":"evidence-gap-and-derivation","verdict":"H1","witness":"ef_dp_backtrack passes 12/12","chosen_instance":"[(0,2,1),(0,1,1)] expected (1,[0])","act_authorized":true}
+{"ts":"2026-08-09","event":"node_complete","node":"act-candidate-test","candidate":"candidate/test_solver.py","diff":"+6/-0","canonical_writes":0}
+{"ts":"2026-08-09","event":"node_complete","node":"verify-candidate","overall":"ACCEPT","checks_passed":9,"checks_failed":0}
+{"ts":"2026-08-09","event":"gate_decision","decision":"ACCEPT","promoted":true,"mechanism":"gate.py deterministic copy","checks":8}
+{"ts":"2026-08-09","event":"node_complete","node":"report","payload":"H1 / R6_COVERAGE_GAP_VERIFIED; gate ACCEPT; promoted","writes":0}

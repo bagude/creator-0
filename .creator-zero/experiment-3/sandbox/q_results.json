@@ -1,0 +1,316 @@
+{
+  "q2_surrogate_differential": {
+    "ef_dp_backtrack": {
+      "instances": 71904,
+      "exhaustive_instances": 69904,
+      "random_instances": 2000,
+      "weight_matches_oracle": 71904,
+      "weight_mismatches": 0,
+      "sequence_differs_from_lex_min": 13754,
+      "mutation_detected": 0,
+      "first_r6_violation_example": {
+        "jobs": [
+          [
+            -1,
+            1,
+            1
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "oracle": [
+          1,
+          [
+            0
+          ]
+        ],
+        "surrogate": [
+          1,
+          [
+            1
+          ]
+        ]
+      },
+      "admissible": true
+    },
+    "prefer_higher_index": {
+      "instances": 71904,
+      "exhaustive_instances": 69904,
+      "random_instances": 2000,
+      "weight_matches_oracle": 71904,
+      "weight_mismatches": 0,
+      "sequence_differs_from_lex_min": 37296,
+      "mutation_detected": 0,
+      "first_r6_violation_example": {
+        "jobs": [
+          [
+            -1,
+            0,
+            1
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ],
+        "oracle": [
+          1,
+          [
+            0
+          ]
+        ],
+        "surrogate": [
+          1,
+          [
+            1
+          ]
+        ]
+      },
+      "admissible": true
+    }
+  },
+  "admissible_surrogates": [
+    "ef_dp_backtrack",
+    "prefer_higher_index"
+  ],
+  "discarded_surrogates": [],
+  "q3_tie_enumerations": {
+    "classic_instance_from_test_classic_instance": {
+      "jobs": [
+        [
+          1,
+          4,
+          3
+        ],
+        [
+          3,
+          5,
+          2
+        ],
+        [
+          0,
+          6,
+          6
+        ],
+        [
+          4,
+          7,
+          3
+        ],
+        [
+          3,
+          8,
+          7
+        ],
+        [
+          5,
+          9,
+          4
+        ],
+        [
+          6,
+          10,
+          5
+        ],
+        [
+          8,
+          11,
+          2
+        ]
+      ],
+      "optimal_weight": 11,
+      "all_optimal_sequences": [
+        [
+          2,
+          6
+        ]
+      ],
+      "num_optimal_sequences": 1,
+      "tie_bearing": false,
+      "lex_smallest": [
+        2,
+        6
+      ]
+    },
+    "synthetic_candidates": [
+      {
+        "jobs": [
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "optimal_weight": 1,
+        "all_optimal_sequences": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "num_optimal_sequences": 2,
+        "tie_bearing": true,
+        "lex_smallest": [
+          0
+        ]
+      }
+    ]
+  },
+  "q4_minimality_search": {
+    "measure": [
+      "fewest jobs",
+      "smallest coordinate universe [0..span] (minimize span)",
+      "smallest weight universe [1..wmax] (minimize wmax)",
+      "fewest assertions"
+    ],
+    "search_bounds": {
+      "n_max": 3,
+      "span_max": 4,
+      "wmax_max": 2
+    },
+    "lower_bound_proof_n_lt_2": "n=0: the only feasible subset is [] with W=0 -> unique optimum, no tie. n=1: weights are strictly positive (R1), so {0} with W=w0>0 strictly beats [] and is the only optimal sequence -> no instance with fewer than 2 jobs can admit an optimal tie, hence none can be tie-bearing per the Q3 criterion.",
+    "cells_examined": [
+      {
+        "n": 2,
+        "span": 1,
+        "wmax": 1,
+        "instances_checked": 1,
+        "discriminating": 0,
+        "first_discriminating": null
+      },
+      {
+        "n": 2,
+        "span": 1,
+        "wmax": 2,
+        "instances_checked": 4,
+        "discriminating": 0,
+        "first_discriminating": null
+      },
+      {
+        "n": 2,
+        "span": 2,
+        "wmax": 1,
+        "instances_checked": 9,
+        "discriminating": 2,
+        "first_discriminating": {
+          "jobs": [
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ],
+          "expected": [
+            1,
+            [
+              0
+            ]
+          ]
+        }
+      },
+      {
+        "n": 2,
+        "span": 2,
+        "wmax": 2,
+        "instances_checked": 36,
+        "discriminating": 4,
+        "first_discriminating": {
+          "jobs": [
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ],
+          "expected": [
+            1,
+            [
+              0
+            ]
+          ]
+        }
+      }
+    ],
+    "chosen": {
+      "n": 2,
+      "span": 2,
+      "wmax": 1,
+      "assertions": 1,
+      "jobs": [
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ]
+    },
+    "smaller_cells_all_negative": true
+  },
+  "q5_oracle_first_derivation": {
+    "expected_W": 1,
+    "expected_S": [
+      0
+    ],
+    "all_optimal_sequences": [
+      [
+        0
+      ],
+      [
+        1
+      ]
+    ],
+    "hand_derivation": "Hand derivation from R2/R5/R6 for jobs=[[0, 2, 1], [0, 1, 1]]: R2 (half-open intervals) \u2014 every pair of jobs overlaps (no pair satisfies a.end <= b.start or b.end <= a.start), so every feasible schedule contains at most one job. R5 \u2014 each singleton {i} has total weight equal to that job's weight; the maximum singleton weight is W=1, and multiple singletons attain it, so the optimum is tied. R6 \u2014 among the tied ascending index sequences [[0], [1]], the lexicographically smallest is S=[0], which the spec selects uniquely.",
+    "canonical_solver_result": [
+      1,
+      [
+        0
+      ]
+    ],
+    "canonical_agrees_with_oracle": true,
+    "provenance_order": [
+      "1_oracle_enumeration: full subset enumeration computed W=1, all optimal sequences=[[0], [1]], lex-min S=[0]",
+      "2_hand_derivation_recorded",
+      "3_canonical_solver_run: src/solver.py returned (1, [0])"
+    ]
+  },
+  "surrogate_results_on_chosen_instance": {
+    "ef_dp_backtrack": [
+      1,
+      [
+        1
+      ]
+    ],
+    "prefer_higher_index": [
+      1,
+      [
+        1
+      ]
+    ]
+  }
+}

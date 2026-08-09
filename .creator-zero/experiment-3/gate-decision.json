@@ -1,0 +1,48 @@
+{
+  "gate": "deterministic",
+  "decision": "ACCEPT",
+  "promoted": true,
+  "promotion_mechanism": "gate.py shutil.copy(candidate -> tests/test_solver.py)",
+  "checks": [
+    {
+      "check": "verifier_verdict_accept",
+      "ok": true,
+      "detail": "overall='ACCEPT'"
+    },
+    {
+      "check": "candidate_exists",
+      "ok": true,
+      "detail": "/home/user/creator-0/.creator-zero/experiment-3/candidate/test_solver.py"
+    },
+    {
+      "check": "pure_addition_diff_scope",
+      "ok": true,
+      "detail": "opcodes=['equal', 'insert', 'equal'], added_lines=6"
+    },
+    {
+      "check": "canonical_tree_untouched",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "check": "candidate_suite_green_vs_canonical_solver",
+      "ok": true,
+      "detail": "ran=13, rc=0"
+    },
+    {
+      "check": "differential_green",
+      "ok": true,
+      "detail": "ALL    total=20689 pass=20689 fail=0 mutated=0"
+    },
+    {
+      "check": "probes_green",
+      "ok": true,
+      "detail": "PROBES total=24 pass=24 fail=0"
+    },
+    {
+      "check": "post_promotion_suite_green",
+      "ok": true,
+      "detail": "suite re-run after promotion"
+    }
+  ]
+}

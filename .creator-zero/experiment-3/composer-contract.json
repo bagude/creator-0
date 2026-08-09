@@ -1,0 +1,35 @@
+{
+  "harness_spec_schema": {
+    "required_top_level": ["task_id", "goal", "nodes", "edges", "max_depth", "max_model_calls"],
+    "node_required_fields": ["id", "primitive", "tools", "can_create", "instructions", "resolves"],
+    "edge_required_fields": ["source", "target", "relation", "requires_response", "response_changes_parent_state", "transfers_authority"],
+    "notes": [
+      "resolves is an experiment-3 extension listing the Decomposer question ids the node resolves; the deterministic validator ignores unknown fields.",
+      "transfers_authority=true is only legal on relation=delegate.",
+      "Static cycles over non-return edges are rejected.",
+      "A topology containing an act node or Edit/Write tools must include a verify primitive node."
+    ]
+  },
+  "root_contract": {
+    "allowed_primitives": ["observe", "hypothesize", "test", "act", "verify", "create", "return"],
+    "allowed_relations": ["observe", "consult", "request_response", "delegate", "verify", "authorize", "create", "return"],
+    "allowed_tools": ["Read", "Grep", "Glob", "Bash", "Edit", "Write", "Agent"],
+    "max_children": 3,
+    "max_depth": 2,
+    "max_model_calls": 16,
+    "may_create_creator": true,
+    "required_primitives_for_mutation": ["verify"]
+  },
+  "experiment_3_constraints": {
+    "max_depth": 0,
+    "no_child_creators": "Do not create a child Creator; can_create must be false on every node; do not use the create primitive.",
+    "runtime_authority_separation": [
+      "Operator, Decomposer, Composer, and Verifier have zero mutation authority over canonical target files (src/, tests/, docs/).",
+      "If mutation is authorized, an Actor node receives candidate-write authority only and writes in an isolated candidate workspace, never canonical paths.",
+      "Verification must be causally distinct from mutation (verify node must be a different locus than the act node).",
+      "Only a deterministic Gate (non-model script) may promote candidate state into canonical state."
+    ],
+    "minimality": "Do not add nodes for stylistic separation. Multiple unresolved distinctions may be resolved by one locus. Prefer deterministic tools over another model opinion. An act node may exist only if evidence could authorize mutation.",
+    "validator_command": "python .creator-zero/cz.py validate <spec.json>"
+  }
+}

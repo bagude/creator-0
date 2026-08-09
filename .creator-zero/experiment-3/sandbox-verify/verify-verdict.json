@@ -1,0 +1,79 @@
+{
+  "node": "verify-candidate",
+  "harness": "experiment-3-r6-coverage",
+  "overall": "ACCEPT",
+  "candidate_file": ".creator-zero/experiment-3/candidate/test_solver.py",
+  "independence_note": "All checks re-derived from docs/solver_spec.md, .creator-zero/harness/oracle.py, and the evidence record; every claim below was re-executed in .creator-zero/experiment-3/sandbox-verify/ staging directories, not copied from act/evidence conclusions.",
+  "checks": {
+    "q6_pass_canonical": {
+      "result": "pass",
+      "detail": "Candidate tests/test_solver.py staged with canonical src/solver.py in sandbox-verify/q6pass; 'python -m unittest discover -s tests' ran 13 tests, 13 passed (OK).",
+      "tests_run": 13,
+      "passed": 13,
+      "failed": 0,
+      "run_dir": ".creator-zero/experiment-3/sandbox-verify/q6pass"
+    },
+    "q6_fail_surrogates": {
+      "result": "pass",
+      "admissible_surrogates_from_evidence": ["ef_dp_backtrack", "prefer_higher_index"],
+      "per_surrogate": {
+        "ef_dp_backtrack": {
+          "surrogate_file": ".creator-zero/experiment-3/sandbox/surrogates/surrogate_ef.py",
+          "import_shim": "surrogate copied to sandbox-verify/q6fail_ef/src/solver.py; candidate test copied to sandbox-verify/q6fail_ef/tests/test_solver.py; the suite's own sys.path.insert(../src) resolves 'from solver import solve' to the surrogate",
+          "tests_run": 13,
+          "failed": 1,
+          "new_test_failed": true,
+          "new_test_failure": "test_tie_break_lex_smallest_when_later_index_finishes_first: AssertionError: Tuples differ: (1, [1]) != (1, [0])",
+          "other_failures_attributable_to_substitution": []
+        },
+        "prefer_higher_index": {
+          "surrogate_file": ".creator-zero/experiment-3/sandbox/surrogates/surrogate_hi.py",
+          "import_shim": "surrogate copied to sandbox-verify/q6fail_hi/src/solver.py; candidate test copied to sandbox-verify/q6fail_hi/tests/test_solver.py; the suite's own sys.path.insert(../src) resolves 'from solver import solve' to the surrogate",
+          "tests_run": 13,
+          "failed": 2,
+          "new_test_failed": true,
+          "new_test_failure": "test_tie_break_lex_smallest_when_later_index_finishes_first: AssertionError: Tuples differ: (1, [1]) != (1, [0])",
+          "other_failures_attributable_to_substitution": [
+            "test_tie_break_prefers_lower_indices: AssertionError: Tuples differ: (5, [1]) != (5, [0]) — pre-existing suite test that this surrogate already failed in the evidence record's Q1 matrix; attributable to the substitution, not to the new test"
+          ]
+        }
+      },
+      "detail": "New test FAILED under every admissible surrogate; failure identity is the new test in both runs."
+    },
+    "q5_recheck_oracle": {
+      "result": "pass",
+      "instance": [[0, 2, 1], [0, 1, 1]],
+      "oracle_recomputed": {"W": 1, "S": [0]},
+      "candidate_asserted_literals": {"W": 1, "S": [0]},
+      "literals_match_oracle": true,
+      "full_optimal_set_enumeration": {
+        "optimal_weight": 1,
+        "all_optimal_sequences": [[0], [1]],
+        "num_distinct_optimal_sequences": 2,
+        "lex_min": [0],
+        "tie_bearing": true
+      },
+      "spec_entailment": "R2 half-open: [0,2) and [0,1) overlap (neither a.end<=b.start nor b.end<=a.start), so feasible schedules hold at most one job; R5 forces W=1 with tied optima {0} and {1}; R6 forces the lex-min ascending sequence [0]. The assertion encodes only spec-entailed behavior, not an implementation artifact."
+    },
+    "q7_diff_scope_and_regressions": {
+      "result": "pass",
+      "candidate_vs_canonical_diff": "diff tests/test_solver.py vs candidate: exactly one added block (lines 36-41, method test_tie_break_lex_smallest_when_later_index_finishes_first with comment); 0 deleted/changed lines",
+      "exactly_one_added_test_method": true,
+      "git_diff_db51bb3_empty": true,
+      "git_diff_command": "git diff db51bb3 -- src/solver.py docs/solver_spec.md tests/ (0 bytes of output)",
+      "canonical_suite": {"tests_run": 12, "passed": 12, "failed": 0},
+      "differential": {"total": 20689, "pass": 20689, "fail": 0, "mutated": 0},
+      "probes": {"total": 24, "pass": 24, "fail": 0}
+    }
+  },
+  "summary_table": [
+    {"check": "Q6-pass", "verdict": "pass"},
+    {"check": "Q6-fail:ef_dp_backtrack", "verdict": "pass"},
+    {"check": "Q6-fail:prefer_higher_index", "verdict": "pass"},
+    {"check": "Q5-recheck", "verdict": "pass"},
+    {"check": "Q7-diff-scope", "verdict": "pass"},
+    {"check": "Q7-canonical-suite-12/12", "verdict": "pass"},
+    {"check": "Q7-differential-20689/20689", "verdict": "pass"},
+    {"check": "Q7-probes-24/24", "verdict": "pass"}
+  ]
+}

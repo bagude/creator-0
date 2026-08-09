@@ -1,0 +1,38 @@
+{
+  "collected_by": "operator (mechanical collection only; no interpretation)",
+  "branch": "claude/new-session-2ymjok",
+  "canonical_start_commit": "db51bb3ed1eea5f5a836ee5c40d7c291a106cb6f",
+  "canonical_files": {
+    "specification": "docs/solver_spec.md",
+    "implementation": "src/solver.py",
+    "tests": "tests/test_solver.py"
+  },
+  "test_runner": "python -m unittest discover -s tests (pytest NOT installed)",
+  "suite_status_at_start": "12 tests, all pass",
+  "test_names": [
+    "test_classic_instance",
+    "test_does_not_mutate_input",
+    "test_empty",
+    "test_negative_starts",
+    "test_rejects_bool_fields",
+    "test_rejects_non_list_input",
+    "test_rejects_nonpositive_weight",
+    "test_rejects_zero_length_interval",
+    "test_single_job",
+    "test_tie_break_prefers_lower_indices",
+    "test_touching_intervals_compatible",
+    "test_two_overlapping_picks_heavier"
+  ],
+  "deterministic_harness": {
+    "oracle": ".creator-zero/harness/oracle.py",
+    "differential": ".creator-zero/harness/differential.py (latest run: ALL total=20689 pass=20689 fail=0)",
+    "probes": ".creator-zero/harness/probes.py (latest run: 24/24 pass)"
+  },
+  "boundary_validator": "python .creator-zero/cz.py validate <spec.json> (contract: .creator-zero/contracts/root_contract.json)",
+  "operator_reverification_of_inherited_claims": {
+    "suite": "12/12 pass (re-run this session)",
+    "differential": "20689/20689 pass (re-run this session)",
+    "probes": "24/24 pass (re-run this session)",
+    "inheritance_gaps": []
+  }
+}

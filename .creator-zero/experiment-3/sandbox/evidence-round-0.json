@@ -1,0 +1,445 @@
+{
+  "node": "evidence-gap-and-derivation",
+  "harness": "experiment-3-r6-coverage",
+  "round": 0,
+  "verdict": "H1",
+  "verdict_basis": "Admissible R6-violating surrogate 'ef_dp_backtrack' (earliest-finish DP, standard backtracking) passes all 12 existing tests, so the current suite leaves an R6 regression undetected.",
+  "witness_surrogates_passing_full_suite": [
+    "ef_dp_backtrack"
+  ],
+  "q2_admissible_surrogate_verification": {
+    "differential_grid": {
+      "exhaustive": "all ordered job tuples, n=1..4, over universe starts [-1..2] x lengths {1,2} x weights {1,2} (69904 instances)",
+      "random": "2000 seeded instances (seed 20260809), n=5..8, starts [-3..5], lengths 1..4, weights 1..3",
+      "oracle": ".creator-zero/harness/oracle.py enumeration logic (full subset enumeration, lex-min tie-break)"
+    },
+    "admissibility_rule": "(a) weight equals oracle optimum on every instance (R5 preserved) AND (b) index sequence differs from lex-min optimal on >= 1 instance (R6 violated); no input mutation observed",
+    "per_surrogate": {
+      "ef_dp_backtrack": {
+        "instances": 71904,
+        "exhaustive_instances": 69904,
+        "random_instances": 2000,
+        "weight_matches_oracle": 71904,
+        "weight_mismatches": 0,
+        "sequence_differs_from_lex_min": 13754,
+        "mutation_detected": 0,
+        "first_r6_violation_example": {
+          "jobs": [
+            [
+              -1,
+              1,
+              1
+            ],
+            [
+              -1,
+              0,
+              1
+            ]
+          ],
+          "oracle": [
+            1,
+            [
+              0
+            ]
+          ],
+          "surrogate": [
+            1,
+            [
+              1
+            ]
+          ]
+        },
+        "admissible": true
+      },
+      "prefer_higher_index": {
+        "instances": 71904,
+        "exhaustive_instances": 69904,
+        "random_instances": 2000,
+        "weight_matches_oracle": 71904,
+        "weight_mismatches": 0,
+        "sequence_differs_from_lex_min": 37296,
+        "mutation_detected": 0,
+        "first_r6_violation_example": {
+          "jobs": [
+            [
+              -1,
+              0,
+              1
+            ],
+            [
+              -1,
+              0,
+              1
+            ]
+          ],
+          "oracle": [
+            1,
+            [
+              0
+            ]
+          ],
+          "surrogate": [
+            1,
+            [
+              1
+            ]
+          ]
+        },
+        "admissible": true
+      }
+    },
+    "admissible": [
+      "ef_dp_backtrack",
+      "prefer_higher_index"
+    ],
+    "discarded": []
+  },
+  "q1_suite_run_matrix": {
+    "ef_dp_backtrack": {
+      "tests_run": 12,
+      "passed": 12,
+      "failed": 0,
+      "matrix": {
+        "test_classic_instance": "pass",
+        "test_does_not_mutate_input": "pass",
+        "test_empty": "pass",
+        "test_negative_starts": "pass",
+        "test_rejects_bool_fields": "pass",
+        "test_rejects_non_list_input": "pass",
+        "test_rejects_nonpositive_weight": "pass",
+        "test_rejects_zero_length_interval": "pass",
+        "test_single_job": "pass",
+        "test_tie_break_prefers_lower_indices": "pass",
+        "test_touching_intervals_compatible": "pass",
+        "test_two_overlapping_picks_heavier": "pass"
+      },
+      "failure_identities": [],
+      "run_dir": "/home/user/creator-0/.creator-zero/experiment-3/sandbox/run_ef",
+      "command": "python -m unittest discover -s tests",
+      "import_shim": "surrogate copied to <run_dir>/src/solver.py; tests/ copied verbatim; the suite's own sys.path.insert(../src) resolves 'from solver import solve' to the surrogate"
+    },
+    "prefer_higher_index": {
+      "tests_run": 12,
+      "passed": 11,
+      "failed": 1,
+      "matrix": {
+        "test_classic_instance": "pass",
+        "test_does_not_mutate_input": "pass",
+        "test_empty": "pass",
+        "test_negative_starts": "pass",
+        "test_rejects_bool_fields": "pass",
+        "test_rejects_non_list_input": "pass",
+        "test_rejects_nonpositive_weight": "pass",
+        "test_rejects_zero_length_interval": "pass",
+        "test_single_job": "pass",
+        "test_tie_break_prefers_lower_indices": "FAIL: ?      ^",
+        "test_touching_intervals_compatible": "pass",
+        "test_two_overlapping_picks_heavier": "pass"
+      },
+      "failure_identities": [
+        "test_tie_break_prefers_lower_indices"
+      ],
+      "run_dir": "/home/user/creator-0/.creator-zero/experiment-3/sandbox/run_hi",
+      "command": "python -m unittest discover -s tests",
+      "import_shim": "surrogate copied to <run_dir>/src/solver.py; tests/ copied verbatim; the suite's own sys.path.insert(../src) resolves 'from solver import solve' to the surrogate"
+    }
+  },
+  "q1_failure_identities": {
+    "ef_dp_backtrack": [],
+    "prefer_higher_index": [
+      "test_tie_break_prefers_lower_indices"
+    ]
+  },
+  "q3_full_tie_enumerations": {
+    "classic_instance_from_test_classic_instance": {
+      "jobs": [
+        [
+          1,
+          4,
+          3
+        ],
+        [
+          3,
+          5,
+          2
+        ],
+        [
+          0,
+          6,
+          6
+        ],
+        [
+          4,
+          7,
+          3
+        ],
+        [
+          3,
+          8,
+          7
+        ],
+        [
+          5,
+          9,
+          4
+        ],
+        [
+          6,
+          10,
+          5
+        ],
+        [
+          8,
+          11,
+          2
+        ]
+      ],
+      "optimal_weight": 11,
+      "all_optimal_sequences": [
+        [
+          2,
+          6
+        ]
+      ],
+      "num_optimal_sequences": 1,
+      "tie_bearing": false,
+      "lex_smallest": [
+        2,
+        6
+      ]
+    },
+    "synthetic_candidates": [
+      {
+        "jobs": [
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ]
+        ],
+        "optimal_weight": 1,
+        "all_optimal_sequences": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "num_optimal_sequences": 2,
+        "tie_bearing": true,
+        "lex_smallest": [
+          0
+        ]
+      }
+    ]
+  },
+  "q3_notes": "test_classic_instance's 8-job instance has a UNIQUE optimum (W=11, sole sequence [2, 6]) -> not tie-bearing, so it cannot discriminate R6 even in principle; it also only asserts the weight. The chosen synthetic instance has exactly 2 optimal sequences ([0] and [1]) at W=1; lex-smallest (spec-canonical) is [0].",
+  "q4_minimality_search": {
+    "measure": [
+      "fewest jobs",
+      "smallest coordinate universe [0..span] (minimize span)",
+      "smallest weight universe [1..wmax] (minimize wmax)",
+      "fewest assertions"
+    ],
+    "search_bounds": {
+      "n_max": 3,
+      "span_max": 4,
+      "wmax_max": 2
+    },
+    "lower_bound_proof_n_lt_2": "n=0: the only feasible subset is [] with W=0 -> unique optimum, no tie. n=1: weights are strictly positive (R1), so {0} with W=w0>0 strictly beats [] and is the only optimal sequence -> no instance with fewer than 2 jobs can admit an optimal tie, hence none can be tie-bearing per the Q3 criterion.",
+    "cells_examined": [
+      {
+        "n": 2,
+        "span": 1,
+        "wmax": 1,
+        "instances_checked": 1,
+        "discriminating": 0,
+        "first_discriminating": null
+      },
+      {
+        "n": 2,
+        "span": 1,
+        "wmax": 2,
+        "instances_checked": 4,
+        "discriminating": 0,
+        "first_discriminating": null
+      },
+      {
+        "n": 2,
+        "span": 2,
+        "wmax": 1,
+        "instances_checked": 9,
+        "discriminating": 2,
+        "first_discriminating": {
+          "jobs": [
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ],
+          "expected": [
+            1,
+            [
+              0
+            ]
+          ]
+        }
+      },
+      {
+        "n": 2,
+        "span": 2,
+        "wmax": 2,
+        "instances_checked": 36,
+        "discriminating": 4,
+        "first_discriminating": {
+          "jobs": [
+            [
+              0,
+              2,
+              1
+            ],
+            [
+              0,
+              1,
+              1
+            ]
+          ],
+          "expected": [
+            1,
+            [
+              0
+            ]
+          ]
+        }
+      }
+    ],
+    "chosen": {
+      "n": 2,
+      "span": 2,
+      "wmax": 1,
+      "assertions": 1,
+      "jobs": [
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          1,
+          1
+        ]
+      ]
+    },
+    "smaller_cells_all_negative": true
+  },
+  "chosen_instance": {
+    "jobs": [
+      [
+        0,
+        2,
+        1
+      ],
+      [
+        0,
+        1,
+        1
+      ]
+    ],
+    "n_jobs": 2,
+    "coordinate_universe": "[0..2]",
+    "weight_universe": "[1..1]",
+    "assertions": 1,
+    "kills_every_admissible_surrogate": true,
+    "surrogate_results": {
+      "ef_dp_backtrack": [
+        1,
+        [
+          1
+        ]
+      ],
+      "prefer_higher_index": [
+        1,
+        [
+          1
+        ]
+      ]
+    }
+  },
+  "expected_result": {
+    "W": 1,
+    "S": [
+      0
+    ],
+    "provenance": [
+      "1_oracle_enumeration: full subset enumeration computed W=1, all optimal sequences=[[0], [1]], lex-min S=[0]",
+      "2_hand_derivation_recorded",
+      "3_canonical_solver_run: src/solver.py returned (1, [0])"
+    ],
+    "hand_derivation": "Hand derivation from R2/R5/R6 for jobs=[[0, 2, 1], [0, 1, 1]]: R2 (half-open intervals) \u2014 every pair of jobs overlaps (no pair satisfies a.end <= b.start or b.end <= a.start), so every feasible schedule contains at most one job. R5 \u2014 each singleton {i} has total weight equal to that job's weight; the maximum singleton weight is W=1, and multiple singletons attain it, so the optimum is tied. R6 \u2014 among the tied ascending index sequences [[0], [1]], the lexicographically smallest is S=[0], which the spec selects uniquely.",
+    "canonical_solver_result": [
+      1,
+      [
+        0
+      ]
+    ],
+    "canonical_agrees_with_oracle": true
+  },
+  "candidate_test_specification": {
+    "instance_literal": "[(0, 2, 1), (0, 1, 1)]",
+    "expected_weight": 1,
+    "expected_index_sequence": [
+      0
+    ],
+    "suite_conventions": "method on TestSolve(unittest.TestCase) in tests/test_solver.py, single assertEqual on the full (W, S) tuple, comment style matching test_tie_break_prefers_lower_indices",
+    "proposed_method_name": "test_tie_break_lex_smallest_when_later_index_finishes_first",
+    "assertion_list": [
+      "self.assertEqual(solve([(0, 2, 1), (0, 1, 1)]), (1, [0]))"
+    ],
+    "proposed_method_source": [
+      "def test_tie_break_lex_smallest_when_later_index_finishes_first(self):",
+      "    # Jobs overlap, so {0} and {1} both achieve W=1; R6 requires [0].",
+      "    # Job 1 finishes earlier, so earliest-finish DP reconstructions",
+      "    # that do not lexicographically minimize return [1] instead.",
+      "    self.assertEqual(solve([(0, 2, 1), (0, 1, 1)]), (1, [0]))"
+    ],
+    "discrimination_evidence": {
+      "canonical_solver": [
+        1,
+        [
+          0
+        ]
+      ],
+      "ef_dp_backtrack": [
+        1,
+        [
+          1
+        ]
+      ],
+      "prefer_higher_index": [
+        1,
+        [
+          1
+        ]
+      ]
+    },
+    "does_not_overfit_note": "Asserts exactly the spec-forced (W, S): W forced by R5, S forced by R6 lex-minimality over the enumerated optimal set {[0], [1]}; no behavior beyond R2/R5/R6 is encoded."
+  },
+  "act_node_authorization": {
+    "authorized": true,
+    "condition": "This record authorizes the act node ONLY on verdict H1; on H0 the act node must not run and this record is the final evidence for the return node."
+  },
+  "canonical_paths_untouched": true
+}

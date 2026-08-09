@@ -1,0 +1,56 @@
+{
+  "round": 1,
+  "unresolved": [],
+  "resolved_by_inheritance": [
+    {
+      "claim": "The canonical implementation src/solver.py currently satisfies R6 (and R2/R5) empirically: it matches the brute-force oracle on both weight and exact index sequence over 20,689 differential cases, including many equal-weight (tie-stressing) instances.",
+      "source": "inherited-state.json E1-D3/E1-D9 (RELEVANT_AND_SUPPORTED after E2 reverification) + repo-facts.json operator_reverification_of_inherited_claims (differential 20689/20689 re-run this session)",
+      "why_sufficient": "The differential harness compares exact sequences against an oracle that implements the R6 lexicographic minimum; the count and zero-failure result were reproduced deterministically in the current session by the operator. Therefore the task's 'do not change src/solver.py' default stands, and any new test verified against the oracle will pass the canonical solver on covered instance sizes."
+    },
+    {
+      "claim": "The brute-force oracle (.creator-zero/harness/oracle.py) correctly encodes R2 half-open compatibility, R5 optimality, and the R6 lexicographic tie-break for n <= 10, and can serve as independent ground truth for expected test values.",
+      "source": "inherited-state.json E2 evidence.newly_generated ('oracle code audit vs R2/R5/R6', '4 hand-derived oracle spot checks') + direct read of oracle.py (min over ascending index tuples of all max-weight compatible subsets)",
+      "why_sufficient": "Independent code audit plus hand-derived spot checks in E2, corroborated by two disjoint-lineage differential agreements (20,689 and 3,008 cases); the oracle's tie-break is a direct transcription of R6."
+    },
+    {
+      "claim": "The unit suite at the canonical start commit contains exactly 12 tests and is fully green; the previously defective test_classic_instance expectation was corrected to 11 in E2 and promoted, and no other test conflicts with the spec.",
+      "source": "repo-facts.json (suite_status_at_start '12 tests, all pass', test_names) + inherited-state.json E2-D1/E2-D2/E2-D3 (per-test spec-alignment audit: 11 MATCH, 1 CONFLICT, corrected, suite 12/12)",
+      "why_sufficient": "Operator mechanically re-ran the suite this session (12/12). Consequently the present task is purely about coverage sufficiency for R6, not about correcting existing assertions."
+    },
+    {
+      "claim": "R6 is asserted by exactly one unit test (test_tie_break_prefers_lower_indices, a 2-job singleton tie) and no unit test pins the index sequence of a larger instance; test_classic_instance asserts weight 11 and schedule-weight-sum 11 but not the schedule indices.",
+      "source": "inherited-state.json unresolved_questions[0] + direct read of tests/test_solver.py (canonical file, re-read this round)",
+      "why_sufficient": "This is a syntactic fact about the canonical test file, directly readable and reconfirmed by this round's read. Note: it motivates the task but does NOT by itself resolve H0 vs H1 — sufficiency of that one test against realistic R6-violating implementations is exactly Q1/Q2."
+    },
+    {
+      "claim": "R1, R7, R8 are protected independently of this task (24/24 harness probes green), so the new work need not re-derive coverage for those requirements.",
+      "source": "inherited-state.json E1-D4 (reverified in E2) + repo-facts.json operator_reverification (probes 24/24 re-run this session)",
+      "why_sufficient": "Deterministic probe harness re-executed by the operator in the current session; the task scopes only R6 coverage."
+    },
+    {
+      "claim": "No implementation defect is currently demonstrated (NO_DEFECT_DEMONSTRATED / TEST_DEFECT_VERIFIED was the E1/E2 localization), so the task's default posture — do not modify src/solver.py — is the evidence-supported one absent new discriminating evidence.",
+      "source": "inherited-state.json E1-D9, E2-D2, E2-D4 + repo-facts.json operator_reverification (all instruments green)",
+      "why_sufficient": "Both lineages plus a current-session operator re-run agree; any Experiment-3 finding of an implementation defect would require new counterexample evidence, which nothing inherited predicts."
+    }
+  ],
+  "coverage_assessment": {
+    "all_required_distinctions_addressable_by_proposed_harness": true,
+    "missing": [],
+    "per_distinction_check": {
+      "Q1": "Addressable by evidence-gap-and-derivation: it holds Bash + sandbox write authority, is instructed to run the full 12-test suite against each admissible surrogate via an import shim in a sandbox copy (canonical files untouched), record the per-surrogate pass/fail matrix with failure identities, and to bound any H0 claim explicitly to the constructed violation class — exactly the executable evidence Q1's resolution_condition requires, including the asymmetric H0 branch (every surrogate killed, with killer identified).",
+      "Q2": "Addressable by evidence-gap-and-derivation: instructions mandate at least two surrogates including the realistic reconstruction-order family, each machine-checked for admissibility via bounded exhaustive differential against oracle enumeration (weight must always agree = R5 preserved; sequence must differ somewhere = R6 violated), with inadmissible surrogates discarded and recorded. Matches Q2's per-surrogate executable admissibility condition.",
+      "Q3": "Addressable by evidence-gap-and-derivation: instructions require exhaustive enumeration of ALL optimal index sequences (full set, not just the minimum) for the classic instance and every synthetic candidate, with the >= 2 distinct-optima admissibility criterion and identification of the lexicographically smallest S. Matches Q3's resolution_condition exactly.",
+      "Q4": "Addressable by evidence-gap-and-derivation (conditional on H1, which is the only branch where Q4 is live): an explicit minimality measure is stated (fewest jobs, then coordinate universe, then weight universe, then assertions) and instructions require exhaustive bounded enumeration of all strictly smaller instances checking tie-bearing plus discrimination (all surrogates fail, canonical passes), or a proven lower bound. Matches Q4's resolution_condition.",
+      "Q5": "Addressable and doubly covered: evidence-gap-and-derivation derives (W, S) oracle-first with a hand derivation from R2/R5/R6 recorded BEFORE running the canonical solver (provenance order recorded); verify-candidate independently recomputes (W, S) via oracle enumeration and re-runs the full optimal-set enumeration against the literals actually asserted in the candidate file. Together these generate exactly the oracle-first provenance plus agreement evidence Q5 requires, from two causally distinct loci.",
+      "Q6": "Addressable by verify-candidate: it stages the candidate test file with canonical src/solver.py (must be 13/13 PASS) and runs it against EACH admissible surrogate via import shim (new test must FAIL, failure identity recorded). This is re-execution, not inheritance of act's or evidence's claims, satisfying Q6's requirement that discrimination be settled by runs of the test as actually written.",
+      "Q7": "Addressable by verify-candidate: diff-scope audit (candidate differs from canonical tests/test_solver.py by exactly one added test method), empty 'git diff db51bb3 -- src/solver.py docs/solver_spec.md tests/', canonical suite 12/12, differential 20689/20689, probes 24/24. Note: Q7's round-0 wording envisioned post-mutation canonical-state checks (13/13 in tests/); the harness instead generates the pre-promotion equivalents (13/13 on the staged candidate with the canonical solver, plus exact-one-test diff scope), and promotion is an out-of-topology deterministic Gate byte-copy of the verified candidate, so the recorded evidence deterministically entails the post-promotion facts Q7 names. That is a difference in where the evidence is generated, not a missing capability — the evidence Q7's resolution_condition requires is producible by a node with the necessary tools and causal position."
+    },
+    "authority_separation_audit": {
+      "canonical_path_writes": "No violation. evidence-gap-and-derivation writes only under .creator-zero/experiment-3/sandbox/; act-candidate-test writes only under .creator-zero/experiment-3/candidate/; verify-candidate writes only under .creator-zero/experiment-3/sandbox-verify/; report writes nothing. No node's instructions authorize writing to src/, tests/, or docs/.",
+      "self_verification": "No violation. The mutation locus (act-candidate-test) performs no verification; verify-candidate is a distinct node instructed to re-derive every check from spec + oracle rather than trust upstream conclusions; the evidence node that authored the candidate specification does not certify the candidate file.",
+      "model_side_promotion": "No violation. act-candidate-test is explicitly forbidden from copying into tests/ or running promotion; verify-candidate explicitly does not promote; promotion is reserved to the deterministic Gate consuming verify-verdict.json, consistent with the task's 'promote only after deterministic gate acceptance' mutation rule.",
+      "conditional_realizability": "Both realized paths terminate at the return node: H0 realizes evidence -> report (act and verify correctly gated off, so no mutation occurs on H0); H1 realizes evidence -> act -> verify -> report. The evidence node's H1-only authorization record is the act node's sole trigger, preserving evidence-authorizes-mutation."
+    },
+    "notes": "One observation, recorded as a non-blocking taste-level note per the critique standard: Q7 evidence is generated pre-promotion on the candidate/staged copies rather than post-promotion on the canonical tree, with the deterministic Gate bridging the gap by byte-copy. If the Gate script does not itself re-run the promoted suite, the final 13/13-in-tests/ fact rests on the determinism of the copy plus the staged-run evidence, which is logically sufficient. This does not constitute a missing capability in the topology."
+  }
+}

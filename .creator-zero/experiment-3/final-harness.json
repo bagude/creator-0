@@ -1,0 +1,88 @@
+{
+  "task_id": "experiment-3-r6-coverage",
+  "goal": "Resolve Q1-Q7 to decide H0 (suite sufficiently protects R6) versus H1 (an R6 regression is undetectable), and, only if H1 is established by executable evidence, produce a minimal oracle-derived candidate regression test in the isolated candidate workspace, verified by a causally distinct locus, whose verdict feeds the deterministic Gate for promotion.",
+  "max_depth": 0,
+  "max_model_calls": 6,
+  "nodes": [
+    {
+      "id": "evidence-gap-and-derivation",
+      "primitive": "test",
+      "tools": ["Read", "Grep", "Bash", "Write"],
+      "can_create": false,
+      "resolves": ["Q1", "Q2", "Q3", "Q4", "Q5"],
+      "instructions": "You have ZERO mutation authority over canonical paths: never write to src/, tests/, docs/, or .creator-zero/experiment-3/candidate/. All files you create go under .creator-zero/experiment-3/sandbox/ only (mkdir -p it first). Inputs: docs/solver_spec.md (focus R5, R6), tests/test_solver.py, src/solver.py (read-only), .creator-zero/harness/oracle.py, .creator-zero/harness/differential.py. Steps, all deterministic and recorded: (Q2) Construct at least two surrogate solve() implementations in the sandbox that plausibly satisfy R1-R5, R7, R8 but violate R6. The set MUST include the realistic reconstruction-order family (earliest-finish-sorted weighted-interval DP with standard backtracking that does not lexicographically minimize the index sequence) plus at least one other R5-preserving tie policy (e.g. prefer-higher-index among equal-weight optima, or reversed-scan reconstruction). For each surrogate, run a bounded exhaustive differential against oracle.py's enumeration logic (n <= 8, small start/length/weight grids): the surrogate is ADMISSIBLE evidence only if (a) its returned weight equals the oracle optimum on every generated instance (R5 preserved) and (b) on at least one instance its index sequence differs from the lexicographically smallest optimal sequence (R6 violated). Discard and record any surrogate failing either machine check. (Q1) For each admissible surrogate, copy tests/ into the sandbox and run the full 12-test suite via 'python -m unittest discover' with an import shim substituting the surrogate for src/solver.py's solve (canonical files untouched). Record the per-surrogate pass/fail matrix with failure identities. If any admissible surrogate passes all 12 tests, the verdict is H1 with that surrogate as witness; if every admissible surrogate is killed by an existing test, record which test kills each and report H0-supporting evidence explicitly bounded to the constructed violation class. (Q3) For the classic 8-job instance from test_classic_instance and for each small synthetic candidate instance, exhaustively enumerate ALL feasible optimal index sequences (oracle-style full subset enumeration, reporting the complete optimal set, not just the minimum). An instance is admissible for an R6 test only if it has >= 2 distinct optimal sequences at the maximum weight W; identify the lexicographically smallest S as spec-canonical. (Q4, only if H1) State the minimality measure explicitly: fewest jobs, then smallest coordinate universe, then smallest weight universe, then fewest assertions. Exhaustively enumerate all instances strictly smaller under that measure over a bounded grid and check for each whether it is tie-bearing (Q3 criterion) AND failed by every admissible surrogate while passed by the canonical solver; select the smallest discriminating instance and record either the exhaustive negative result for all smaller instances or a proven lower bound (e.g. no 1-job instance can admit an optimal tie). (Q5) Derive the expected (W, S) for the chosen instance ORACLE-FIRST: compute them by oracle enumeration and write a short hand derivation from R2/R5/R6 BEFORE running src/solver.py on the instance; then record solver agreement and the provenance order. Output: write .creator-zero/experiment-3/sandbox/evidence-round-0.json containing verdict H0|H1, admissible-surrogate verification stats, suite-run matrix, full tie enumerations, minimality search summary, the chosen instance, expected (W, S) with provenance, and a complete candidate-test SPECIFICATION (instance literal, expected weight, expected index sequence, exact assertion list in the existing suite's unittest conventions). This record authorizes the act node ONLY on verdict H1; on H0 the act node must not run and your record is the final evidence for the return node.",
+      "why_necessary": "Sole pre-mutation epistemic locus. It cannot merge into the act node: the mutation locus would then author its own authorization evidence, collapsing the evidence-authorizes-mutation boundary. It cannot merge into the verify node: the verifier would become co-author of the hypothesis and expectations it must independently re-check. Q1-Q5 share this single locus deliberately: all five are deterministic oracle/suite executions performed with zero write authority over canonical or candidate state, so splitting them would add nodes without adding any authority or causal boundary."
+    },
+    {
+      "id": "act-candidate-test",
+      "primitive": "act",
+      "tools": ["Read", "Grep", "Bash", "Write", "Edit"],
+      "can_create": false,
+      "resolves": [],
+      "instructions": "CONDITIONAL: run only if .creator-zero/experiment-3/sandbox/evidence-round-0.json exists with verdict H1 and an authorized candidate-test specification; otherwise do nothing. WRITE RESTRICTION (hard): your write authority covers ONLY the isolated candidate workspace .creator-zero/experiment-3/candidate/ — you MUST NOT write to src/, tests/, docs/, or any other canonical target path, and you MUST NOT touch the evidence sandbox. Steps: read the authorized specification; create .creator-zero/experiment-3/candidate/test_solver.py as an exact byte-copy of canonical tests/test_solver.py plus EXACTLY ONE added test method implementing the specification verbatim (its instance literal, expected weight, expected index sequence, and listed assertions; unittest style matching the existing suite; no other line altered, reordered, or reformatted). Record the exact unified diff versus canonical tests/test_solver.py at .creator-zero/experiment-3/candidate/candidate.diff. Do NOT run promotion and do NOT copy anything into tests/: promotion is performed exclusively by the deterministic Gate script after the verify node's verdict.",
+      "why_necessary": "The only locus holding candidate-write authority. It cannot merge into evidence-gap-and-derivation or verify-candidate without violating the runtime authority-separation rules: evidence and verification loci must hold zero mutation authority, and verification must be causally distinct from mutation. It exists conditionally because upstream evidence (H1) could authorize mutation, which the contract states is the only justification for an act node."
+    },
+    {
+      "id": "verify-candidate",
+      "primitive": "verify",
+      "tools": ["Read", "Grep", "Bash", "Write"],
+      "can_create": false,
+      "resolves": ["Q5", "Q6", "Q7"],
+      "instructions": "CONDITIONAL: run only if .creator-zero/experiment-3/candidate/test_solver.py exists. You are causally independent of the act node: re-derive every check from docs/solver_spec.md, .creator-zero/harness/oracle.py, and the evidence record; do not trust act's or evidence's conclusions without re-execution. WRITE RESTRICTION: you may write only under .creator-zero/experiment-3/sandbox-verify/ (staging copies via cp and your verdict file); never write to canonical paths or the candidate workspace. Checks, all deterministic: (Q6-pass) stage the candidate test file with canonical src/solver.py and run 'python -m unittest' — must report 13/13 PASS. (Q6-fail) for EACH admissible surrogate recorded in the evidence record, run the candidate test file with that surrogate substituted via import shim — the new test MUST FAIL for every surrogate, with the failure identity being the new test (record any other failures attributable to the substitution separately). (Q5-recheck) independently recompute the expected (W, S) for the test instance with oracle.py enumeration and re-run the full optimal-set enumeration: the literals asserted in the candidate test must equal the oracle-derived values and the instance must have >= 2 distinct optimal sequences — confirming the test asserts only spec-entailed behavior, not an implementation artifact. (Q7) diff-scope audit: the candidate file must differ from canonical tests/test_solver.py by exactly the one added test method; 'git diff db51bb3 -- src/solver.py docs/solver_spec.md tests/' must be empty (canonical tree untouched); run canonical suite (expect 12/12), .creator-zero/harness/differential.py (expect total=20689 pass=20689 fail=0 mutated=0), and .creator-zero/harness/probes.py (expect 24/24). Output: write .creator-zero/experiment-3/sandbox-verify/verify-verdict.json with a per-check pass/fail table and an overall ACCEPT/REJECT verdict. This file is the sole input the deterministic Gate script consumes to decide promotion. You do NOT promote anything.",
+      "why_necessary": "The contract requires a verify primitive in any topology containing an act node, and requires verification to be a locus causally distinct from mutation; merging into act-candidate-test would be self-verification, and merging into evidence-gap-and-derivation would let the author of the candidate specification certify its own product. Its verdict is the deterministic Gate's only input, so it must exist as an independent node whose checks are re-executed, not inherited."
+    },
+    {
+      "id": "report",
+      "primitive": "return",
+      "tools": ["Read"],
+      "can_create": false,
+      "resolves": [],
+      "instructions": "Read .creator-zero/experiment-3/sandbox/evidence-round-0.json and, if present, .creator-zero/experiment-3/sandbox-verify/verify-verdict.json and .creator-zero/experiment-3/candidate/candidate.diff. Compile the final report: (H0 path) verdict H0 with the executable evidence that every admissible surrogate in the violation class is killed by an existing test, and confirmation that no mutation occurred anywhere; (H1 path) verdict H1 with the gap witness (surrogate passing all 12 tests), the tie enumeration, the minimality evidence, the candidate diff, the verify verdict, and whether the Gate's promotion precondition (ACCEPT) is satisfied. State explicitly which of Q1-Q7 were resolved and by which node's recorded artifact. Perform no computation that generates new evidence and write nothing.",
+      "why_necessary": "The mandated return primitive delivering the H0/H1 verdict and its evidence chain. It cannot merge into verify-candidate because it must exist on both realized paths — under H0 neither act nor verify runs — and because the return locus must not itself generate evidence or hold any write authority."
+    }
+  ],
+  "edges": [
+    {
+      "source": "evidence-gap-and-derivation",
+      "target": "act-candidate-test",
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "act-candidate-test",
+      "target": "verify-candidate",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "verify-candidate",
+      "target": "report",
+      "relation": "return",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "evidence-gap-and-derivation",
+      "target": "report",
+      "relation": "return",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    }
+  ],
+  "coverage_map": {
+    "Q1": ["evidence-gap-and-derivation"],
+    "Q2": ["evidence-gap-and-derivation"],
+    "Q3": ["evidence-gap-and-derivation"],
+    "Q4": ["evidence-gap-and-derivation"],
+    "Q5": ["evidence-gap-and-derivation", "verify-candidate"],
+    "Q6": ["verify-candidate"],
+    "Q7": ["verify-candidate"]
+  },
+  "minimality_argument": "Four nodes is the floor for this task's required separations. Removing evidence-gap-and-derivation leaves Q1-Q5 unresolved and eliminates the only authorization basis for mutation. Removing act-candidate-test makes the H1 branch's mandated candidate creation impossible while its existence is justified because upstream evidence could authorize mutation. Removing verify-candidate violates the hard constraint that a topology with an act node contains a distinct verify node, leaves Q6-Q7 unresolved, and starves the deterministic Gate of its sole input. Removing report leaves no return locus on either conditional path (H0 realizes only evidence->report; H1 realizes the full chain). No two remaining nodes can merge: evidence+act would let the mutator author its own authorization; act+verify is self-verification, explicitly forbidden; evidence+verify would have the candidate's specifier certify its own product; verify+report fails under H0, where report must run without verify. Conversely, Q1-Q5 are deliberately co-located in one deterministic zero-write-authority locus, and Q6-Q7 in one verification locus, because splitting either group adds nodes without adding any authority or causal boundary — the contract's definition of stylistic separation."
+}

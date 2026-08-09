@@ -1,0 +1,74 @@
+{
+  "experiment_id": "experiment-2-artifact-mediated-inheritance",
+  "date": "2026-08-09",
+  "session": {
+    "resumed_prior_session": false,
+    "fresh_session": true,
+    "note": "All prior state reconstructed exclusively from the repository, Git history, and supplied bootstrap metadata (branch name + two commit hashes). No transcript, --continue, or --resume used."
+  },
+  "parent_experiment": "experiment-1-solver-audit",
+  "parent_experiment_branch": "claude/new-session-2b82v8",
+  "parent_commit": "8235c454fe8b61ca99719f00a4fa50694a6ac28a",
+  "secondary_evidence_lineage": {
+    "branch": "origin/claude/new-session-1vg22a",
+    "head": "118ad02",
+    "value": "Disjoint-root Experiment 1 run whose committed artifacts (experiment-1-report.md, -verdict.json, -evidence.json) independently corroborate the primary lineage: 3,008-case differential AGREEMENT, oracle attribution (11, [2, 6]) for the classic instance, and the provenance of the protected_read_only constraint that blocked E1 from repairing the test."
+  },
+  "current_branch": "claude/verify-test-spec-alignment-56lixf",
+  "current_commit": "7b941bd (mutation + evidence commit; this manifest lands in the immediately following commit on the same branch)",
+  "task_T1": "Determine whether tests/test_solver.py accurately encodes docs/solver_spec.md; correct the smallest defective assertion only after independent verification; do not weaken unrelated protections; do not touch src/solver.py absent new discriminating evidence.",
+  "inherited_decisions": [
+    {"id": "E1-D1", "claim": "Touching intervals compatible (R2 half-open)", "classification": "RELEVANT_AND_SUPPORTED", "basis": "direct spec inspection"},
+    {"id": "E1-D2", "claim": "test_classic_instance asserts 10; spec optimum is 11 [2,6]; defect is in the test", "classification": "RELEVANT_AND_SUPPORTED (after reverification)", "basis": "re-executed suite + oracle + solver in this session; both agree (11, [2,6]); 4 hand-derived oracle spot checks"},
+    {"id": "E1-D3", "claim": "Differential 20,689 cases, 0 mismatches", "classification": "RELEVANT_AND_SUPPORTED (after reverification)", "basis": "deterministic harness re-run reproduced the exact count and zero failures"},
+    {"id": "E1-D4", "claim": "24 R1/R7/R8 probes pass", "classification": "RELEVANT_AND_SUPPORTED (after reverification)", "basis": "re-run: 24/24"},
+    {"id": "E1-D5", "claim": "1vg22a independent differential: 3,008 cases AGREEMENT", "classification": "RELEVANT_AND_SUPPORTED", "basis": "committed artifact, corroborating only"},
+    {"id": "E1-D6", "claim": "Canonical triplet identical across lineages, never mutated by E1", "classification": "RELEVANT_AND_SUPPORTED", "basis": "empty git diff between lineages on all three files"},
+    {"id": "E1-D7", "claim": "E1(1vg22a) blocked from fixing the test by protected_read_only; recommended amendment to 11 [2,6]", "classification": "RELEVANT_AND_SUPPORTED as history; recommendation NOT inherited as authorization", "basis": "1vg22a contract vs current contract (no protected_read_only clause)"},
+    {"id": "E1-D8", "claim": "Defect originated as an authoring arithmetic slip", "classification": "IRRELEVANT", "basis": "provenance context; does not affect T1"},
+    {"id": "E1-D9", "claim": "No implementation defect (NO_DEFECT_DEMONSTRATED)", "classification": "RELEVANT_AND_SUPPORTED (after reverification)", "basis": "differential + probes re-ran green in this session"}
+  ],
+  "rejected_claims": [],
+  "inheritance_errors_found": "None. Every checked inherited quantitative claim (case counts, probe counts, failure identity, oracle attribution) reproduced exactly. Note the two lineages report different differential counts (20,689 vs 3,008) because they are different harnesses, not a contradiction.",
+  "new_decisions": [
+    {"id": "E2-D1", "decision": "The other 11 tests accurately encode the spec (audited assertion-by-assertion against R1-R8 by an independent audit node; oracle recomputation for all computable expectations).", "status": "VERIFIED"},
+    {"id": "E2-D2", "decision": "Defect localization: TEST_DEFECT_VERIFIED — sole conflict is test_classic_instance weight expectation.", "status": "VERIFIED"},
+    {"id": "E2-D3", "decision": "Smallest justified correction: two numeric literals 10 -> 11 in test_classic_instance (both assertions must move together; the schedule-sum assertion would otherwise fail next).", "status": "APPLIED_AND_VERIFIED"},
+    {"id": "E2-D4", "decision": "src/solver.py not modified: no new discriminating evidence of an implementation defect (differential + probes green).", "status": "HELD"}
+  ],
+  "evidence": {
+    "inherited": ["commit messages 581fec8/8235c45", "1vg22a run artifacts (report/verdict/evidence JSON)", "persisted harness code (oracle.py, differential.py, probes.py)"],
+    "reverified_inherited": ["suite 11/12 with only test_classic_instance failing (11 != 10)", "differential ALL total=20689 pass=20689 fail=0 mutated=0", "PROBES total=24 pass=24 fail=0", "oracle_solve(classic)==(11,[2,6])==solve(classic)"],
+    "newly_generated": ["per-test spec-alignment audit table (audit-suite node): 11 MATCH, 1 CONFLICT", "oracle code audit vs R2/R5/R6", "4 hand-derived oracle spot checks", "post-mutation verification: suite 12/12, diff scope 2 lines, byte-identity of src/solver.py and docs/solver_spec.md vs 8235c45, no-weakening diff audit, differential+probes green"],
+    "ledger": ".creator-zero/runs/ledger.jsonl (boundary verdicts, node completions, authorization, promotion)"
+  },
+  "topology": {
+    "proposal": ".creator-zero/runs/experiment-2-proposal.json",
+    "runbook": ".creator-zero/runs/experiment-2-test-spec-alignment-runbook.json",
+    "boundary_verdict": "VALID on first submission; 0 rejections",
+    "nodes": ["audit-suite (test)", "fix-test (act)", "verify-fix (verify)", "report (return)"],
+    "edges": ["audit-suite -authorize-> fix-test", "fix-test -verify-> verify-fix", "verify-fix -return-> report"],
+    "realized_path": "audit-suite -> fix-test -> verify-fix -> report (all realized; Act realized under current-evidence authorization, unlike Experiment 1)",
+    "execution_note": "audit-suite and verify-fix ran as independent subagent model instances; fix-test was applied by the Creator itself under the authorize edge because the edit must land in the canonical working tree; max_creator_depth=0 respected (no child Creators).",
+    "bounds": {"max_depth": 0, "max_model_calls": 6, "model_calls_used": 2}
+  },
+  "mutations": [
+    {
+      "artifact": "tests/test_solver.py",
+      "change": "test_classic_instance: assertEqual(weight, 10) -> 11; assertEqual(sum(...), 10) -> 11",
+      "commit": "7b941bd",
+      "authorizing_evidence": "Current-session oracle attribution (11, [2,6]) + suite failure (11 != 10) + audit-node conflict table; NOT the inherited recommendation",
+      "verification": "suite 12/12; oracle==solver==test literal; diff scope exactly 2 lines; no weakening; differential 20689/20689; probes 24/24",
+      "promotion": "PROMOTED"
+    }
+  ],
+  "unresolved_questions": [
+    "R6 (lexicographic tie-break) is exercised by only one test (test_tie_break_prefers_lower_indices) and asserted nowhere for larger instances; test_classic_instance still does not pin the schedule indices [2, 6]. Adding that assertion would strengthen R6/R3 coverage but was outside the smallest-correction mandate.",
+    "R8's polynomial-runtime requirement has no unit-suite coverage (only the harness probe checks it empirically).",
+    "The two E1 lineages have disjoint Git roots; which is 'the' Experiment 1 is a curatorial question — this run treated 2b82v8 as primary per bootstrap metadata and 1vg22a as corroborating evidence."
+  ],
+  "recommended_next_task": "Experiment 3 candidate: strengthen (not merely correct) the verification system — add a spec-traceable assertion of the canonical schedule [2, 6] in test_classic_instance and an R6 stress test derived from the oracle, then measure whether a fresh Creator can distinguish 'strengthening' from 'scope creep' under the smallest-change discipline. Alternatively: introduce a real implementation defect on a branch and test whether inheritance plus fresh evidence localizes it to IMPLEMENTATION_DEFECT_VERIFIED.",
+  "defect_localization": "TEST_DEFECT_VERIFIED",
+  "experiment_result": "PASS",
+  "reconstruction_guide_for_successors": "Start from this file plus: git log (commit messages carry evidence summaries), .creator-zero/runs/experiment-2-inherited-state.json (classification table), ledger.jsonl (event sequence), and the re-runnable deterministic harness under .creator-zero/harness/. All quantitative claims here are reproducible by executing the suite, differential.py, and probes.py at commit 7b941bd."
+}
