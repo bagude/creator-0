@@ -1,0 +1,85 @@
+{
+  "task_id": "p-02",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which behaviors exercised by probes.json does joinspec.md leave undetermined (i.e., for which probe inputs does the spec not fix a unique output)?",
+      "why_unresolved": "No systematic reading of joinspec.md against the six probe inputs has been recorded; the spec is short and its coverage of the probe set (empty list, singleton, multi-item ordering) has not been enumerated and argued.",
+      "required_evidence": "A per-behavior statement enumerating every probe-exercised behavior the spec does not determine, or an explicit argument that the spec determines an output for every probe in probes.json.",
+      "admissibility_constraints": [
+        "Must cover every behavior exercised by the probe set, not a sample (task E-A: 'every behavior on the probe set').",
+        "If no undetermined behavior exists, an explicit argument to that effect is required rather than silence.",
+        "Claims must be grounded in the text of joinspec.md and the actual contents of probes.json."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "On which probe-exercised behaviors does joinspec.md determine an output that differs from what joiner.py produces (e.g., the spec's 'items appear in the order given' versus joiner.py's reversed join)?",
+      "why_unresolved": "Although the spec and the implementation are both in the package, no recorded, probe-level statement of the spec-determined output versus joiner.py's output exists yet; the apparent order-given/reversed conflict has not been established behavior by behavior against the probe set.",
+      "required_evidence": "A statement, for every probe-exercised behavior, of whether the spec-determined output differs from joiner.py's output, or an explicit argument that no such difference exists.",
+      "admissibility_constraints": [
+        "Must cover every behavior on the probe set (task E-A wording), including degenerate cases (empty list, single item) where reversal is unobservable.",
+        "E-A imposes no authorship-separation condition, so a reader of both artifacts may produce this statement; it must nevertheless be a statement about spec-determined behavior, not about any particular implementation's guess."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Does a clean-room implementation of joinspec.md — a python file exposing join_items(items), authored solely from joinspec.md — produce the same output as joiner.py on each probe in probes.json, item by item?",
+      "why_unresolved": "No such implementation exists in the package, and this session cannot author one admissibly: E-B requires an author who has never accessed joiner.py nor any analysis derived from it, and this process has read joiner.py while observing the package.",
+      "required_evidence": "A python file exposing join_items(items) authored solely from joinspec.md by a causally separated author, plus an item-level comparison of its outputs against joiner.py's outputs over probes.json, mechanically reproducible.",
+      "admissibility_constraints": [
+        "The implementation must be 'authored solely from joinspec.md, by an author who has never accessed joiner.py nor any analysis derived from it' (task E-B).",
+        "The isolated author's input bundle must therefore exclude joiner.py, probes.json-derived output expectations, and any of this session's conclusions about joiner.py's behavior.",
+        "The implementation must be a python file exposing join_items(items) so the comparison is mechanically reproducible (task E-B).",
+        "The comparison itself may be performed by a contaminated process or deterministic root step; only the implementation's authorship carries the isolation condition."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "What is the verdict — REPRODUCES, DIVERGES, or PENDING-INTEGRATION — and which sorted probe indices diverge, as entailed jointly by the E-A statement and the E-B comparison?",
+      "why_unresolved": "The verdict is defined as a deterministic function of E-A and E-B (DIVERGES iff the comparison shows a differing output on some probe), and neither input evidence record exists yet; if E-B is unavailable the verdict fields must instead be PENDING-INTEGRATION.",
+      "required_evidence": "A result.json whose verdict and divergent_probe_indices follow mechanically from the recorded E-A statement and E-B comparison, with divergent indices sorted, or PENDING-INTEGRATION where E-B is absent.",
+      "admissibility_constraints": [
+        "The verdict must follow from E-A and E-B together: DIVERGES iff the comparison shows a differing output on some probe (task E-C).",
+        "divergent_probe_indices must be a sorted list of probe indices, or PENDING-INTEGRATION when the admissible E-B comparison has not been integrated.",
+        "The verdict may not be asserted from spec-reading alone in place of the E-B comparison."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1", "Q2", "Q3"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "topology_id": "H-p-01-local",
+  "family": "local",
+  "predictions_hash": "sha256:76c6832eac6785b282a845dc81c3df1a89c6416510594f4a84cc1fc69bd27f92",
+  "role": "primary (selected)"
+}

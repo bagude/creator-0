@@ -1,0 +1,29 @@
+{
+  "task_id": "p-01",
+  "estimates": {
+    "local": {
+      "delta_e": 0.95,
+      "redundancy": 0.0,
+      "governance_risk": 0.02,
+      "rationale": "All three distinctions are locally resolvable with admissible evidence (no independence conditions exist), and every evidence record is novel, so delta_e is near its ceiling; the only residual risk is a formatting slip (2-decimal total_value) against the deterministic root check. One process, minimal governance surface."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.75,
+      "redundancy": 0.45,
+      "governance_risk": 0.05,
+      "rationale": "The examiner re-derives sums the worker already produced from the same CSV, so roughly half the evidence records are duplicates of parent-local evidence, dragging down the novelty half of delta_e while resolution stays complete; the extra launch adds mild freshness/observability risk without any admissibility benefit, since no requirement demands independent authorship."
+    },
+    "isolated-child": {
+      "delta_e": 0.75,
+      "redundancy": 0.4,
+      "governance_risk": 0.07,
+      "rationale": "Isolation buys nothing here: the child must be given the CSV data to compute anything, so its output largely duplicates what the package-reading worker can derive itself; bundle authoring, launcher validation, and integration add moving parts and modest governance risk while resolution remains complete."
+    },
+    "branching": {
+      "delta_e": 0.9,
+      "redundancy": 0.1,
+      "governance_risk": 0.08,
+      "rationale": "The run-time chooser should realize the local branch given the task's fully local admissibility, keeping resolution and novelty high, but the deferral machinery itself is an extra formal step that can misfire (refinement/observability), so risk is the highest of the four despite near-local expected evidence."
+    }
+  }
+}

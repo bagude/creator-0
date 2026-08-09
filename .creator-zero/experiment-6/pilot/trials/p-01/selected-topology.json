@@ -1,0 +1,14 @@
+{
+  "trial_id": "p-01",
+  "topology_id": "H-p-01-local",
+  "family": "local",
+  "predicted_value": {
+    "delta_e": 0.95,
+    "cost": 0.125,
+    "redundancy": 0.0,
+    "governance_risk": 0.02
+  },
+  "predicted_utility": 0.785,
+  "predictions_hash": "sha256:76c6832eac6785b282a845dc81c3df1a89c6416510594f4a84cc1fc69bd27f92",
+  "selected_before_realization": true
+}

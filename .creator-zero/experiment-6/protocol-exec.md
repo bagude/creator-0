@@ -49,9 +49,21 @@ protocol.md                  this file
   `{"event_id", "label", "actor", "timestamp", "artifact_refs",
   "metadata"}`. Every in-session node you execute gets exactly one event
   with `actor` = `node:<id>` and `metadata.completes_node` = `<id>`, in
-  dependency order. Deliverable-authoring events use label `propose` with
-  the file in `artifact_refs`. Never emit a `complete` event; never emit
-  events for root-executed nodes.
+  dependency order. **The event's `label` is fixed by the node's
+  primitive** (read it from `harness.json`):
+
+  | node primitive | event label |
+  |----------------|-------------|
+  | observe        | `observe`   |
+  | hypothesize    | `propose`   |
+  | verify         | `verify`    |
+  | return         | `return`    |
+
+  List the files a node authored in its event's `artifact_refs`. If you
+  want extra bookkeeping events beyond the node events (for example a
+  `propose` for `examiner-charge.md`), give them actor `creator` and NO
+  `completes_node`. Never emit a `complete` event; never emit events for
+  root-executed nodes.
 
 ## Family-specific conduct
 

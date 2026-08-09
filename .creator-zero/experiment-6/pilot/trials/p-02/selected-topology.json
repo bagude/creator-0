@@ -1,0 +1,14 @@
+{
+  "trial_id": "p-02",
+  "topology_id": "H-p-02-isolated-child",
+  "family": "isolated-child",
+  "predicted_value": {
+    "delta_e": 0.9,
+    "cost": 0.375,
+    "redundancy": 0.1,
+    "governance_risk": 0.1
+  },
+  "predicted_utility": 0.225,
+  "predictions_hash": "sha256:cc467e587482f8de26dfea17e5d83d924461ba09926cd96e48b0d2233dabbe88",
+  "selected_before_realization": true
+}

@@ -1,0 +1,29 @@
+{
+  "task_id": "p-02",
+  "estimates": {
+    "local": {
+      "delta_e": 0.5,
+      "redundancy": 0.05,
+      "governance_risk": 0.05,
+      "rationale": "A single worker can admissibly resolve Q1, Q2 (E-A carries no authorship condition) but is contaminated for E-B, so Q3 fails and Q4 can only reach PENDING-INTEGRATION; roughly half the distinctions resolve, with all evidence novel first derivations. Simple shape, minimal governance surface."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.45,
+      "redundancy": 0.45,
+      "governance_risk": 0.08,
+      "rationale": "The examiner sees the package (including joiner.py) and the worker's answer, so it is equally contaminated for E-B and adds nothing admissible on Q3; its records mostly re-derive the worker's E-A analysis, driving redundancy up and the novelty component of delta_e down without changing which requirements are satisfied."
+    },
+    "isolated-child": {
+      "delta_e": 0.9,
+      "redundancy": 0.1,
+      "governance_risk": 0.1,
+      "rationale": "The worker can hand the isolated child joinspec.md only (excluding joiner.py and its own conclusions), yielding an admissibly authored join_items implementation; the root/worker comparison over probes.json then satisfies E-B, and E-A plus E-C follow, resolving all four distinctions. The spec is short and unambiguous enough that the child implementation almost surely joins in given order, making the comparison outcome near-deterministic. Slightly more governance surface from launcher, attenuation, and manifest steps."
+    },
+    "branching": {
+      "delta_e": 0.85,
+      "redundancy": 0.1,
+      "governance_risk": 0.12,
+      "rationale": "Q3's isolation requirement is visible before run time, so deferring the local-vs-isolated choice buys nothing; if the branch resolves to isolated-child the value matches that family, but the runtime decision adds a small chance of realizing the inferior local branch and an extra governance step that can fail formally."
+    }
+  }
+}

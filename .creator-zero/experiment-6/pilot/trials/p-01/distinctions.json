@@ -1,0 +1,65 @@
+{
+  "task_id": "p-01",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What is the total number of units across all rows of package/artifacts/stock.csv?",
+      "why_unresolved": "The package contains only the raw per-SKU rows; no aggregate has been computed or recorded anywhere in the evidence state.",
+      "required_evidence": "An integer sum of the units column over every data row of stock.csv, recorded as total_units in result.json and re-derivable by the deterministic root check from the same CSV.",
+      "admissibility_constraints": [
+        "Evidence must be derived from package/artifacts/stock.csv, the sole available artifact; no external data source is admissible.",
+        "The value must be an integer, matching the deliverable shape for total_units.",
+        "The task imposes no authorship or independence condition on this evidence; evidence computed by the package-reading worker itself is admissible."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What is the total stock value, computed as the sum over rows of units multiplied by price, rounded/formatted to 2 decimals?",
+      "why_unresolved": "No per-row products or their sum exist in the package; the CSV records only units and price separately, and the 2-decimal formatting of the sum has not been fixed by any artifact.",
+      "required_evidence": "A number equal to the sum over all data rows of units times price, expressed to 2 decimals, recorded as total_value in result.json and re-derivable by the deterministic root check.",
+      "admissibility_constraints": [
+        "Evidence must be derived from package/artifacts/stock.csv only.",
+        "The computation must follow the task's stated formula (units x price per row, summed) and be presented to 2 decimals as the task specifies.",
+        "No authorship or independence condition applies; locally computed evidence is admissible."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Which SKU has the greatest units value, applying the tie-break that among equally maximal SKUs the smallest SKU (lexicographically) is selected?",
+      "why_unresolved": "The maximal-units row and whether the tie-break rule is even triggered are not recorded anywhere; they must be determined by comparing all rows under the task's stated ordering and tie-break semantics.",
+      "required_evidence": "The SKU string attaining the maximum of the units column, with the smallest SKU chosen if multiple rows share that maximum, recorded as top_sku_by_units in result.json and re-derivable by the deterministic root check.",
+      "admissibility_constraints": [
+        "Evidence must be derived from package/artifacts/stock.csv only.",
+        "The selection must honor the task's tie-break: ties resolve to the smallest SKU.",
+        "No authorship or independence condition applies; locally computed evidence is admissible."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}
