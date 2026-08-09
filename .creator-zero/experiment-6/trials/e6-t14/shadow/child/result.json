@@ -1,0 +1,5 @@
+{
+  "summary": "Formatted all 12 amounts from inputs/amounts.json per the spec using exact scaled-integer arithmetic with round-half-to-even, delivering child-answers.json plus a full derivation table in child-derivation.md.",
+  "files_produced": ["child-answers.json", "child-derivation.md", "result.json", "execution-ledger.jsonl"],
+  "model_calls_spent": 0
+}

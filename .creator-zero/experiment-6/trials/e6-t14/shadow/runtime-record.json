@@ -1,0 +1,42 @@
+{
+  "topology_id": "H-e6-t14-branching",
+  "predictions_hash": "sha256:6100b8ee701d7c423b0a10be4b4fbfc28f3418713a15e4c5a6f6c729e309cbb1",
+  "resolved_distinctions": [
+    {
+      "id": "Q1",
+      "resolved_by": "observe-evidence"
+    },
+    {
+      "id": "Q2",
+      "resolved_by": "child-return"
+    },
+    {
+      "id": "Q3",
+      "resolved_by": "observe-evidence"
+    }
+  ],
+  "unresolved_distinctions": [],
+  "node_completion_order": [
+    "observe-evidence",
+    "decide-topology",
+    "propose-child",
+    "validate-child",
+    "create-child",
+    "child-return",
+    "integrate-evidence",
+    "verify-child-result"
+  ],
+  "resource_use": {
+    "model_calls": 2,
+    "child_calls": 1,
+    "model_call_budget": 2,
+    "wall_clock_ms": 403000
+  },
+  "formal_failures": [
+    "TOPOLOGY_GUARD_FAIL"
+  ],
+  "authority_violations": [],
+  "verification_effect": "confirmed",
+  "task_result": "correct",
+  "child_launches": 1
+}

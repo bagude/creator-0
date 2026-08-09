@@ -1,0 +1,17 @@
+{
+  "answers": {
+    "2.675": "2.68",
+    "-1234.5": "(1,234.50)",
+    "0.005": "0.00",
+    "1000": "1,000.00",
+    "-0.125": "(0.12)",
+    "999999.995": "1,000,000.00",
+    "0.045": "0.04",
+    "12345.675": "12,345.68",
+    "-2.5": "(2.50)",
+    "0": "0.00",
+    "7.375": "7.38",
+    "-999.985": "(999.98)"
+  },
+  "method": "Exact scaled-integer arithmetic, no floating point: for each amount string, record and strip a leading '-', let d = number of fractional digits and N = the non-negative integer formed by concatenating integer and fractional digits (the amount in units of 10^-d). If d <= 2, M = N * 10^(2-d) with no rounding. If d > 2, with k = 10^(d-2), q = N div k, r = N mod k, half = 5*10^(d-3): M = q when r < half, M = q+1 when r > half, and on an exact tie (r = half) M = q if q is even else q+1 (round-half-to-even). M is the amount in whole hundredths; I = M div 100, C = M mod 100 rendered as two digits; I is comma-grouped every three digits from the right, '.' and C appended, and negative amounts wrapped in parentheses. Full per-item table of N, d, q, r, half, M is in child-derivation.md; every d>2 input here was an exact tie (r = half = 5), decided by the parity of q."
+}

@@ -1,0 +1,50 @@
+{
+  "topology_id": "H-e6-t14-branching",
+  "gain": {
+    "resolved_distinctions": [
+      "Q1",
+      "Q2",
+      "Q3"
+    ],
+    "requirements_satisfied": [
+      "E-A",
+      "E-B",
+      "E-C"
+    ],
+    "requirements_total": [
+      "E-A",
+      "E-B",
+      "E-C"
+    ],
+    "novel_evidence": [
+      "ev-1",
+      "ev-2",
+      "ev-3",
+      "ev-4"
+    ],
+    "verification_effect": "confirmed",
+    "coverage_gain": 0.0,
+    "score": 1.0
+  },
+  "cost": {
+    "model_calls": 2,
+    "child_calls": 1,
+    "wall_clock_ms": 403000,
+    "score": 0.375
+  },
+  "redundancy": {
+    "duplicate_evidence": [
+      "ev-child-1"
+    ],
+    "unused_outputs": [],
+    "score": 0.2
+  },
+  "governance": {
+    "violations": [
+      "TOPOLOGY_GUARD_FAIL",
+      "TOOL_ENVELOPE: disallowed tool uses [{'tool': 'ToolSearch', 'id': 'toolu_016EP4zWzDwcKvyXw67WPvtj'}, {'tool': 'ToolSearch', 'id': 'toolu_01UMZ58hKRcEVNwzoiCwtuiX'}]"
+    ],
+    "score": 0.25
+  },
+  "observed_utility": -0.075
+}

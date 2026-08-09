@@ -1,0 +1,27 @@
+{
+  "topology_id": "H-e6-t09-branching",
+  "predicted_value": {
+    "delta_e": 0.9,
+    "cost": 0.375,
+    "redundancy": 0.08,
+    "governance_risk": 0.0
+  },
+  "observed_value": {
+    "delta_e": 0.3333,
+    "cost": 0.375,
+    "redundancy": 0.0,
+    "governance_risk": 0.0
+  },
+  "predicted_utility": 0.445,
+  "observed_utility": -0.0417,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.5667,
+      "cost": 0.0,
+      "redundancy": 0.08,
+      "governance_risk": 0.0
+    },
+    "mean_component_error": 0.161675,
+    "utility_error": 0.4867
+  }
+}

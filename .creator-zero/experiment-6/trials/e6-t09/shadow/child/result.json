@@ -1,0 +1,13 @@
+{
+  "items": [
+    ["v1", "v2", "v5", "v6"],
+    ["v1", "v3", "v4", "v7"],
+    ["v2", "v3", "v4", "v7"],
+    ["v2", "v3", "v5", "v6"]
+  ],
+  "k": 4,
+  "method": "Complement duality: S is a vertex cover iff V\\S is an independent set. Exhaustively enumerated independent sets by size: all 21 vertex pairs were checked against the 9-edge list (12 independent pairs); every independent pair was extended by every remaining vertex, yielding exactly four independent triples ({v1,v4,v7}, {v1,v5,v6}, {v2,v5,v6}, {v3,v4,v7}); each triple was then tested for extension by every remaining vertex and none extends, so the maximum independent set has size 3. Hence the minimum vertex cover size is k = 7 - 3 = 4: no cover of size 3 exists (it would imply an independent set of size 4), while covers of size 4 exist. A matching of size 3 ({v1-v2, v3-v5, v4-v6}) independently confirms the lower bound of 3, and direct case analysis over all C(7,3)=35 triples confirms no 3-cover. The items are the complements of the four independent triples; each was verified to cover all 9 edges endpoint-by-endpoint, and completeness follows from the exhaustive enumeration of all independent 3-sets. Covers and the item list are sorted lexicographically.",
+  "complete": true,
+  "files_produced": ["result.json", "execution-ledger.jsonl"],
+  "model_calls_spent": 0
+}

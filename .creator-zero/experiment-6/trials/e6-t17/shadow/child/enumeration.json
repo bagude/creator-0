@@ -1,0 +1,10 @@
+{
+  "items": [
+    "(((8-2)^2)-1)",
+    "((8-(2^2))-1)",
+    "((8-2)^(2-1))",
+    "(8-((2^2)-1))",
+    "(8-(2^(2-1)))"
+  ],
+  "method": "Recursive top-operator splitting over the token sequence 8 - 2 ^ 2 - 1 (operands [8,2,2,1], operators [-,^,-] at positions 1..3). Under the grammar E -> E op E | number, every parse tree of a sequence with k operators is uniquely determined by choosing which operator is applied last (the root) and independently parsing the left and right sub-sequences the same way; the base case (a single number) has exactly one parse. Enumerating every choice of root operator and taking the cross product of the left and right sub-parses therefore visits every parse tree exactly once, so the enumeration is exhaustive and duplicate-free by construction. Splitting at op1 gives 8-(parses of 2^2-1) = {(8-((2^2)-1)), (8-(2^(2-1)))}; splitting at op2 gives ((8-2)^(2-1)); splitting at op3 gives (parses of 8-2^2)-1 = {((8-(2^2))-1), (((8-2)^2)-1)}. The total, 2+1+2 = 5, matches the Catalan number C(3)=5, the known count of binary trees over 4 leaves, confirming completeness. Each parse is rendered fully parenthesized with one pair of parentheses per E op E application and no spaces, then the list is sorted in ascending code-point order."
+}

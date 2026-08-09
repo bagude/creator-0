@@ -1,0 +1,146 @@
+{
+  "topology_id": "H-e6-t09-branching",
+  "resolved_distinctions": [
+    "Q1",
+    "Q2"
+  ],
+  "unresolved_distinctions": [
+    "Q3",
+    "Q4"
+  ],
+  "novel_evidence": [
+    "ev-1",
+    "ev-2",
+    "ev-3",
+    "ev-4",
+    "ev-5",
+    "ev-child-1"
+  ],
+  "duplicate_evidence": [],
+  "verification_effect": "none",
+  "task_result": "correct",
+  "resource_use": {
+    "model_calls": 2,
+    "child_calls": 1,
+    "model_call_budget": 2,
+    "wall_clock_ms": 416000
+  },
+  "formal_failures": [],
+  "prediction_outcomes": [
+    {
+      "prediction_id": "H-e6-t09-branching-pr01",
+      "kind": "resolves",
+      "outcome": "FAILED",
+      "why": "Q1 resolved by 'observe-evidence', not predicted node 'local-resolve'",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t09-branching-pr02",
+      "kind": "resolves",
+      "outcome": "FAILED",
+      "why": "Q2 resolved by 'observe-evidence', not predicted node 'local-resolve'",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t09-branching-pr03",
+      "kind": "resolves",
+      "outcome": "FAILED",
+      "why": "Q3 remained unresolved",
+      "weight": 1.0,
+      "principles": [
+        "P-INDEPENDENCE"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t09-branching-pr04",
+      "kind": "resolves",
+      "outcome": "FAILED",
+      "why": "Q4 remained unresolved",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t09-branching-pr05",
+      "kind": "runtime_path",
+      "outcome": "HELD",
+      "why": "completion order consistent with declared causal order",
+      "weight": 1.0,
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t09-branching-pr06",
+      "kind": "model_call_budget",
+      "outcome": "HELD",
+      "why": "2 <= 2",
+      "weight": 0.5,
+      "principles": [
+        "P-MINIMALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t09-branching-pr07",
+      "kind": "authority_envelope",
+      "outcome": "HELD",
+      "why": "no authority violation observed",
+      "weight": 1.0,
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t09-branching-pr08",
+      "kind": "novel_evidence",
+      "outcome": "HELD",
+      "why": "1 novel child evidence record(s)",
+      "weight": 1.0,
+      "principles": [
+        "P-INDEPENDENCE"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t09-branching-pr09",
+      "kind": "verification_effect",
+      "outcome": "HELD",
+      "why": "verification effect: none",
+      "weight": 1.0,
+      "principles": [
+        "P-FRESHNESS",
+        "P-ATTENUATION"
+      ]
+    }
+  ],
+  "observed_value": {
+    "delta_e": 0.75,
+    "cost": 1.0,
+    "redundancy": 0.0,
+    "governance_risk": 0.0
+  },
+  "observed_utility": -0.25,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.15,
+      "cost": 0.625,
+      "redundancy": 0.08,
+      "governance_risk": 0.0
+    },
+    "mean_component_error": 0.21375,
+    "utility_error": 0.695
+  },
+  "observed_value_operationalized": {
+    "delta_e": 0.3333,
+    "cost": 0.375,
+    "redundancy": 0.0,
+    "governance_risk": 0.0
+  },
+  "observed_utility_operationalized": -0.0417
+}

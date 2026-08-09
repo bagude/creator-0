@@ -1,0 +1,44 @@
+{
+  "topology_id": "H-e6-t09-branching",
+  "gain": {
+    "resolved_distinctions": [
+      "Q1",
+      "Q2"
+    ],
+    "requirements_satisfied": [
+      "E-A"
+    ],
+    "requirements_total": [
+      "E-A",
+      "E-B",
+      "E-C"
+    ],
+    "novel_evidence": [
+      "ev-1",
+      "ev-2",
+      "ev-3",
+      "ev-4",
+      "ev-5",
+      "ev-child-1"
+    ],
+    "verification_effect": "none",
+    "coverage_gain": 0.0,
+    "score": 0.3333
+  },
+  "cost": {
+    "model_calls": 2,
+    "child_calls": 1,
+    "wall_clock_ms": 416000,
+    "score": 0.375
+  },
+  "redundancy": {
+    "duplicate_evidence": [],
+    "unused_outputs": [],
+    "score": 0.0
+  },
+  "governance": {
+    "violations": [],
+    "score": 0.0
+  },
+  "observed_utility": -0.0417
+}
