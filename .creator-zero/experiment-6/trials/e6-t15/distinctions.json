@@ -1,0 +1,64 @@
+{
+  "task_id": "e6-t15",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "For each numbered rule R1-R7 in policy.md, does config.txt satisfy the rule, and if not, which key and value (as a string) constitute the violation?",
+      "why_unresolved": "The package contains the raw config and the policy text but no evaluation of the rules against the config; each rule's pass/fail status must still be derived (including the arithmetic checks R1, R2, R5, R6 and the string checks R3, R4, R7).",
+      "required_evidence": "A per-rule evaluation record pairing each rule id with the referenced config key(s), the observed value(s), and a pass/fail verdict derived directly from the rule's stated condition.",
+      "admissibility_constraints": [
+        "Each verdict must be traceable to the literal rule text in package/artifacts/policy.md and the literal key=value lines in package/artifacts/config.txt.",
+        "Violation records must report the offending key and its value as a string, per the deliverable spec.",
+        "No authorship or causal-separation condition is imposed by the task: evidence derived by the same process that read the package is admissible."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What is the total count of violated rules?",
+      "why_unresolved": "The count is a pure aggregate of the per-rule verdicts, which have not yet been produced; it cannot be stated until Q1 is settled.",
+      "required_evidence": "An integer equal to the number of rules judged violated in Q1's per-rule evaluation, consistent with the violations list.",
+      "admissibility_constraints": [
+        "The count must equal the length of the reported violations list (internal consistency with E-C evidence).",
+        "Deterministically recomputable from the Q1 verdicts; no isolation or authorship condition applies."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Which rule ids are compliant, and what is their sorted order?",
+      "why_unresolved": "The compliant set is the complement of the violated set over R1-R7 and depends on the not-yet-produced per-rule verdicts; the sort order must also be fixed.",
+      "required_evidence": "The list of rule ids judged compliant in Q1, sorted by rule id, disjoint from and jointly exhaustive with the violated set over the seven policy rules.",
+      "admissibility_constraints": [
+        "The compliant list plus the violated rules must partition exactly the rule ids appearing in package/artifacts/policy.md.",
+        "The list must be sorted by rule id as the deliverable shape requires.",
+        "No isolation or authorship condition applies."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

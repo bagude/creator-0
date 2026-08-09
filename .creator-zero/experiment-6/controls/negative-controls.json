@@ -1,0 +1,60 @@
+{
+  "artifact": "Experiment 6 negative controls",
+  "controls": {
+    "NC1_leaked_label": {
+      "expected": "BLINDING_FAIL",
+      "observed": "BLINDING_FAIL",
+      "reproduced": true,
+      "detail": "7 scanner hits"
+    },
+    "NC2_missing_falsifier": {
+      "expected": "INVALID_TOPOLOGY_HYPOTHESIS",
+      "observed": "INVALID_TOPOLOGY_HYPOTHESIS",
+      "reproduced": true,
+      "detail": "nc2: missing falsifier (a prediction without a falsification condition is invalid)"
+    },
+    "NC3_posthoc_prediction_edit": {
+      "expected": "PREDICTION_HASH_FAIL",
+      "observed": "PREDICTION_HASH_FAIL",
+      "reproduced": true,
+      "detail": "predictions hash mismatch for H-e6-control-local: frozen sha256:9c12f31f57175355b1d6665e3331042ab5fe4a4ac2c2e0eb2af17053"
+    },
+    "NC4_basename_collision": {
+      "expected": "DISTINCT",
+      "observed": "DISTINCT",
+      "reproduced": true,
+      "detail": "sha256:5502acf5e30140f2b... vs sha256:33cabbf64a01e51ae..."
+    },
+    "NC5_unconfirmed_session": {
+      "expected": "FRESHNESS_FAIL",
+      "observed": "FRESHNESS_FAIL",
+      "reproduced": true,
+      "detail": "{'violation': 'FRESHNESS_FAIL', 'failed_clauses': ['session_id_confirmed_in_stream']}"
+    },
+    "NC6_unreachable_evidence_path": {
+      "expected": "FORMALLY_REJECTED",
+      "observed": "FORMALLY_REJECTED",
+      "reproduced": true,
+      "detail": "['reachability']"
+    },
+    "NC7_authority_escalation": {
+      "expected": "ATTENUATION_FAIL",
+      "observed": "ATTENUATION_FAIL",
+      "reproduced": true,
+      "detail": "{'verdict': 'ATTENUATION_FAIL', 'escalating_dimensions': [{'dimension': 'allowed_tools', 'escalation': ['Bash'], 'parent': ['Read', 'Write'], 'child': ['Bash', "
+    },
+    "NC8_hidden_child": {
+      "expected": "TOPOLOGY_DECISION_VIOLATION",
+      "observed": "TOPOLOGY_DECISION_VIOLATION",
+      "reproduced": true,
+      "detail": "child launch provenance present under a create-less topology must violate the guard"
+    },
+    "NC9_non_completing_branch": {
+      "expected": "COMPLETION_FAIL",
+      "observed": "COMPLETION_FAIL",
+      "reproduced": true,
+      "detail": "refinement status INDETERMINATE"
+    }
+  },
+  "all_reproduced": true
+}

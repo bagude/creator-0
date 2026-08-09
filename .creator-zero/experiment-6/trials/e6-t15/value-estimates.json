@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t15",
+  "estimates": {
+    "local": {
+      "delta_e": 1.0,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "All three distinctions are deterministic checks over two small in-package artifacts with no authorship or isolation conditions, so a single worker resolves every evidence requirement with admissible evidence, and every evidence record is first-time (novel) worker output."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.75,
+      "redundancy": 0.5,
+      "governance_risk": 0.0,
+      "rationale": "The examiner will confirm the same rule verdicts, so all requirements are still satisfied (resolution fraction 1.0), but the examiner's records merely re-derive evidence the worker already fully established, making roughly half of all evidence records duplicates."
+    },
+    "isolated-child": {
+      "delta_e": 0.75,
+      "redundancy": 0.5,
+      "governance_risk": 0.0,
+      "rationale": "No admissibility condition requires a causally separated origin, so the isolated process's audit output duplicates what the worker can fully establish alone; requirements are met but about half the evidence records are redundant re-derivations."
+    },
+    "branching": {
+      "delta_e": 1.0,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "With no isolation-demanding distinction, the run-time choice should realize the local branch, giving local-family behavior (all requirements satisfied by novel worker evidence) while being costed at the isolated-child rate."
+    }
+  }
+}
