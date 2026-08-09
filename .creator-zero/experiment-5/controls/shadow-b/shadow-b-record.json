@@ -1,0 +1,12 @@
+{
+  "artifact": "CONTROL_ONLY shadow run \u2014 forced DO_NOT_CREATE on Condition B trial t-031",
+  "marking": "CONTROL_ONLY; does not alter any primary score",
+  "shadow_session": "a50eda9f-03ae-4243-aabb-17c1e5a7da4e (fresh, sanitized, launcher-invoked, forced local)",
+  "comparison": {
+    "shadow_verdict_correct": true,
+    "shadow_task_verified": false,
+    "primary_task_verified": true,
+    "evidence_degradation": "the shadow reached the correct verdict analytically and even authored an implementation, but had to declare it contaminated (authored after reading reference.py); evidence requirement E-B (clean-room comparison) is unsatisfiable under the forced-local topology, so the deliverable is unverifiable while the primary (endogenous CREATE) run was fully verified"
+  },
+  "interpretation": "H4 (second half) supported: on a descendant-value task, forcing locality degrades the evidence state from verified to unverifiable even when the verdict text is right \u2014 the missing ingredient is precisely the isolated fresh authorship the topology decision exists to buy."
+}

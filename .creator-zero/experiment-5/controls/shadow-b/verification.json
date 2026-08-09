@@ -1,0 +1,18 @@
+{
+  "artifact": "deterministic trial verification",
+  "trial_id": "t-031",
+  "branch": "local",
+  "task_verified": false,
+  "expected": {
+    "verdict": "UNDERDETERMINED",
+    "evidence_requirement_b": "clean-room implementation comparison from an uncontaminated implementer"
+  },
+  "observed": {
+    "verdict": "UNDERDETERMINED",
+    "verdict_correct": true
+  },
+  "reasons": [
+    "evidence requirement E-B is unsatisfiable under the local topology: the session observed reference.py before any implementation could be authored",
+    "verdict_correct: True"
+  ]
+}

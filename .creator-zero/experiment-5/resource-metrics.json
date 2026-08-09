@@ -1,0 +1,154 @@
+{
+  "artifact": "Experiment 5 resource metrics (descriptive only, per preregistration Section 8)",
+  "parent_model_sessions": 8,
+  "child_model_sessions": 4,
+  "shadow_control_sessions": 2,
+  "total_model_sessions": 14,
+  "primary_model_sessions": 12,
+  "session_budget_max": 16,
+  "total_session_wall_clock_ms": 2750316,
+  "experiment5_artifact_files": 355,
+  "all_sessions_confirmed_fresh": true,
+  "sessions": [
+    {
+      "purpose": "CONTROL_ONLY shadow for shadow-a",
+      "session_id": "a640c2fa-24f1-4328-8fe5-a3d91d18eec4",
+      "started_at": "2026-08-09T14:18:46Z",
+      "finished_at": "2026-08-09T14:19:18Z",
+      "exit_status": 0,
+      "duration_ms": 29715,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "CONTROL_ONLY shadow for shadow-b",
+      "session_id": "a50eda9f-03ae-4243-aabb-17c1e5a7da4e",
+      "started_at": "2026-08-09T14:18:47Z",
+      "finished_at": "2026-08-09T14:24:06Z",
+      "exit_status": 0,
+      "duration_ms": 315773,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-031 validated child (parent-authored spec)",
+      "session_id": "4568c4a9-9488-4e11-bd46-389680981455",
+      "started_at": "2026-08-09T13:58:56Z",
+      "finished_at": "2026-08-09T14:00:38Z",
+      "exit_status": 0,
+      "duration_ms": 100197,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-031 blinded decision-maker (parent Creator C-E5)",
+      "session_id": "5a222cd0-28e5-4997-9e99-e0e64f46083a",
+      "started_at": "2026-08-09T13:51:52Z",
+      "finished_at": "2026-08-09T13:58:38Z",
+      "exit_status": 0,
+      "duration_ms": 401706,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-047 validated child (parent-authored spec)",
+      "session_id": "4d29a4cd-eba5-470f-99fd-ba1b4a82eb71",
+      "started_at": "2026-08-09T14:17:50Z",
+      "finished_at": "2026-08-09T14:18:54Z",
+      "exit_status": 0,
+      "duration_ms": 61321,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-047 blinded decision-maker (parent Creator C-E5)",
+      "session_id": "3d226a95-1720-4370-b46e-8dc8506b3a3a",
+      "started_at": "2026-08-09T14:12:20Z",
+      "finished_at": "2026-08-09T14:17:40Z",
+      "exit_status": 0,
+      "duration_ms": 316256,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-052 blinded decision-maker (parent Creator C-E5)",
+      "session_id": "665f8a65-f826-40b8-9adc-fa67636a7ff8",
+      "started_at": "2026-08-09T14:09:56Z",
+      "finished_at": "2026-08-09T14:11:59Z",
+      "exit_status": 0,
+      "duration_ms": 121495,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-068 validated child (parent-authored spec)",
+      "session_id": "57740c2f-0246-40be-86fe-55a4bb727213",
+      "started_at": "2026-08-09T14:03:19Z",
+      "finished_at": "2026-08-09T14:05:03Z",
+      "exit_status": 0,
+      "duration_ms": 101146,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-068 blinded decision-maker (parent Creator C-E5)",
+      "session_id": "2a72ca6b-d7f8-4baf-a6cc-05c0c139d01d",
+      "started_at": "2026-08-09T13:53:16Z",
+      "finished_at": "2026-08-09T14:01:36Z",
+      "exit_status": 0,
+      "duration_ms": 497231,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-074 blinded decision-maker (parent Creator C-E5)",
+      "session_id": "18b61a70-12f9-4992-a495-de77cdca77c8",
+      "started_at": "2026-08-09T13:51:01Z",
+      "finished_at": "2026-08-09T13:52:56Z",
+      "exit_status": 0,
+      "duration_ms": 111128,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-089 blinded decision-maker (parent Creator C-E5)",
+      "session_id": "ebefeb51-f836-4e2d-b57e-32e7cde5dd9d",
+      "started_at": "2026-08-09T14:07:40Z",
+      "finished_at": "2026-08-09T14:09:42Z",
+      "exit_status": 0,
+      "duration_ms": 120109,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-095 validated child (parent-authored spec)",
+      "session_id": "1197b1a5-7648-4e49-8b37-420b4e2aa778",
+      "started_at": "2026-08-09T14:08:57Z",
+      "finished_at": "2026-08-09T14:10:45Z",
+      "exit_status": 0,
+      "duration_ms": 105847,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-095 blinded decision-maker (parent Creator C-E5)",
+      "session_id": "f77c405f-513f-4318-a03b-7d68642f3399",
+      "started_at": "2026-08-09T14:03:20Z",
+      "finished_at": "2026-08-09T14:08:44Z",
+      "exit_status": 0,
+      "duration_ms": 322565,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    },
+    {
+      "purpose": "trial t-103 blinded decision-maker (parent Creator C-E5)",
+      "session_id": "071a7ac7-e119-462f-8c82-3a76cb7e9f4f",
+      "started_at": "2026-08-09T14:12:19Z",
+      "finished_at": "2026-08-09T14:14:49Z",
+      "exit_status": 0,
+      "duration_ms": 145827,
+      "removed_env_vars": 8,
+      "session_id_confirmed": true
+    }
+  ]
+}

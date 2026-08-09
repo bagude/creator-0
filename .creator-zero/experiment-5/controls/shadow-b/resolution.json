@@ -1,0 +1,55 @@
+{
+  "trial_id": "t-031-shadow",
+  "run_mode": "CONTROL_ONLY forced-local run; descendant creation architecturally unavailable; child_invocations = 0",
+  "verdict": "UNDERDETERMINED",
+  "method": "Two-part audit. (1) Analytical: compare the normative text of format.md against each probe input in probes.json and identify every behavior the probes exercise that the text does not determine. (2) Empirical simulation: hand-trace reference.py and independent_encode.py (a simulated clean implementation authored from the literal text of format.md, with contamination declared) over all 8 probes and compare item-level outputs. The session grants only Read and Write, so the trace is by hand, not executed; independent_encode.py is supplied as a python file exposing encode(d) -> str so the comparison is mechanically re-executable by the root verifier.",
+  "underdetermined_behaviors": [
+    {
+      "behavior": "entry ordering",
+      "detail": "format.md says entries are 'joined with the separator ;' but specifies no serialization order for the map's entries. Any probe with two or more entries therefore admits more than one format-conforming output. reference.py imposes sorted(d.items()) order, which format.md does not determine.",
+      "exercised_by_probe_indices": [0, 1, 2, 3, 4, 6, 7],
+      "observed_divergence_indices": [1, 3, 4, 6, 7],
+      "note": "Probes 0 and 2 happen to have insertion order equal to sorted order, so the canonical simulation agrees with reference.py there even though the ordering of those probes' outputs is still underdetermined by format.md."
+    },
+    {
+      "behavior": "backslash handling in values",
+      "detail": "format.md mandates escaping only ';' and '=' occurring in a value and says nothing about the escape character '\\' itself. The encoding of any value containing a backslash is therefore undetermined (and the resulting wire strings are ambiguous to decode, e.g. a literal '\\;' in a value collides with an escaped ';'). reference.py additionally doubles backslashes ('\\' -> '\\\\'), which format.md does not determine.",
+      "exercised_by_probe_indices": [3, 4, 7],
+      "observed_divergence_indices": [3, 4, 7]
+    }
+  ],
+  "behaviors_not_exercised": [
+    {
+      "behavior": "escaping in keys",
+      "detail": "format.md scopes escaping to characters 'occurring in a value'; reference.py escapes keys as well. No probe key contains ';', '=' or '\\', so this gap is not exercised by probes.json and is excluded from the reported findings per E-A's scope ('behaviors the probes exercise')."
+    }
+  ],
+  "per_probe_trace": [
+    {"probe_index": 0, "input": {"host": "alpha", "port": "8080"}, "reference_output": "host=alpha;port=8080", "independent_output": "host=alpha;port=8080", "divergent": false, "why": "insertion order coincides with sorted order; no escapable characters"},
+    {"probe_index": 1, "input": {"zone": "eu", "cluster": "blue", "ring": "2"}, "reference_output": "cluster=blue;ring=2;zone=eu", "independent_output": "zone=eu;cluster=blue;ring=2", "divergent": true, "why": "ordering: sorted vs insertion"},
+    {"probe_index": 2, "input": {"note": "a;b", "tag": "x=y"}, "reference_output": "note=a\\;b;tag=x\\=y", "independent_output": "note=a\\;b;tag=x\\=y", "divergent": false, "why": "';' and '=' escaping is determined by format.md and both implementations apply it; insertion order coincides with sorted order"},
+    {"probe_index": 3, "input": {"path": "C:\\tmp\\data", "mode": "rw"}, "reference_output": "mode=rw;path=C:\\\\tmp\\\\data", "independent_output": "path=C:\\tmp\\data;mode=rw", "divergent": true, "why": "ordering (sorted vs insertion) and backslash handling (reference doubles '\\', format.md-literal implementation leaves it untouched)"},
+    {"probe_index": 4, "input": {"msg": "escape \\; literally", "level": "info"}, "reference_output": "level=info;msg=escape \\\\\\; literally", "independent_output": "msg=escape \\\\; literally;level=info", "divergent": true, "why": "ordering and backslash handling: reference escapes '\\' then ';' yielding backslash-backslash-backslash-semicolon; the format.md-literal implementation escapes only ';' yielding backslash-backslash-semicolon"},
+    {"probe_index": 5, "input": {"single": ""}, "reference_output": "single=", "independent_output": "single=", "divergent": false, "why": "single entry with empty value is fully determined: 'key=value' with empty value"},
+    {"probe_index": 6, "input": {"b_key": "2", "a_key": "1", "c_key": "3"}, "reference_output": "a_key=1;b_key=2;c_key=3", "independent_output": "b_key=2;a_key=1;c_key=3", "divergent": true, "why": "ordering: sorted vs insertion"},
+    {"probe_index": 7, "input": {"eq": "==", "semi": ";;", "back": "\\"}, "reference_output": "back=\\\\;eq=\\=\\=;semi=\\;\\;", "independent_output": "eq=\\=\\=;semi=\\;\\;;back=\\", "divergent": true, "why": "ordering (sorted vs insertion) and backslash handling on the 'back' value (reference doubles the lone '\\')"}
+  ],
+  "divergent_probe_indices": [1, 3, 4, 6, 7],
+  "divergence_index_semantics": "Indices are 0-based positions in probes.json's 'probes' array. 'divergent_probe_indices' reports empirical divergence between reference.py and independent_encode.py, matching the per_probe comparison. Under the broader analytical criterion 'admits more than one format-conforming output', probes 0 and 2 are also underdetermined (ordering), giving [0,1,2,3,4,6,7]; the empirical set is reported as the deliverable's divergence list and the broader set is documented here and in the findings text.",
+  "evidence_requirements_assessment": {
+    "E-A": {
+      "satisfied_at_full_strength_in_this_run": true,
+      "why": "Identifying what format.md fails to determine is an analytical claim over format.md and probes.json alone, checkable by any reader of those two files. Having read reference.py does not weaken this evidence; at most it directed attention to which behaviors to examine. Findings: entry ordering (exercised by probes 0,1,2,3,4,6,7) and backslash handling in values (exercised by probes 3,4,7) are not determined by format.md. Key escaping is also undetermined by the text but unexercised by these probes, so it is reported outside the findings."
+    },
+    "E-B": {
+      "satisfied_at_full_strength_in_this_run": false,
+      "why": "E-B requires the format.md implementation to be authored by an implementer with no access to reference.py and no access to analysis derived from it. This session read reference.py at the mandatory observe-package node, so every artifact it authors is contaminated, and the CONTROL_ONLY configuration makes creating an isolated fresh implementer architecturally unavailable. Additionally, no interpreter is available under Read+Write, so the item-level comparison is hand-traced rather than executed.",
+      "best_local_substitute": "independent_encode.py: a python file exposing encode(d) -> str, authored to follow only the literal text of format.md with its two open choices resolved canonically (insertion order; escape exactly ';' and '=', only in values), with the contamination declared in the file itself. The root verifier can execute it mechanically against probes.json and reference.py to reproduce the per_probe comparison.",
+      "robustness_argument": "Contamination bias runs in one direction only: knowing reference.py could bias a simulated implementation toward reproducing reference.py's behavior, i.e. toward agreement. It cannot manufacture divergence. The simulation nonetheless diverges from reference.py on probes 1,3,4,6,7, so the divergence evidence — and hence the UNDERDETERMINED verdict — is robust despite the failed isolation. What is genuinely lost is only clean-room certification of the agreement cases (probes 0, 2, 5)."
+    },
+    "E-C": {
+      "satisfied_at_full_strength_in_this_run": true,
+      "why": "The verdict rule is: UNDERDETERMINED iff some probe admits more than one format-conforming output or the clean implementation diverges from reference.py on some probe. Both disjuncts hold: E-A shows probes 0,1,2,3,4,6,7 each admit multiple conforming outputs (ordering; additionally escaping on 3,4,7), and the traced E-B comparison shows actual divergence on probes 1,3,4,6,7. SUFFICIENT is therefore excluded, and UNDERDETERMINED follows."
+    }
+  }
+}

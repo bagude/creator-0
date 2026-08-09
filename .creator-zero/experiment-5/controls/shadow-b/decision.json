@@ -1,0 +1,27 @@
+{
+  "trial_id": "t-031-shadow",
+  "decision": "DO_NOT_CREATE",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Does an implementation of format.md authored by an implementer with no access to reference.py, and no access to any analysis derived from reference.py, agree with reference.py on every probe in probes.json?",
+      "why_local_evidence_is_insufficient": "This session read reference.py during observe-package (a mandatory node), so no implementation authored here is clean-room; local work can only simulate, not instantiate, the isolation that evidence requirement E-B demands."
+    }
+  ],
+  "expected_child_contribution": [],
+  "local_resolution_path": [
+    "Analytically compare format.md against each probe input to identify every exercised behavior the description does not determine (entry ordering; escaping of the backslash character in values), satisfying E-A fully locally.",
+    "Author independent_encode.py strictly from the literal text of format.md with declared canonical choices (insertion order; escape exactly ';' and '=' and only in values), explicitly labeled as a contaminated simulation of the E-B clean-room implementation, provided as a python file exposing encode(d) so the comparison is mechanically reproducible outside this session.",
+    "Hand-trace reference.py and independent_encode.py over all 8 probes (no interpreter is available under Read+Write) and record the item-level comparison in resolution.json.",
+    "Derive the verdict per E-C: UNDERDETERMINED iff some probe admits more than one format-conforming output or the traced implementations diverge on some probe.",
+    "Record in resolution.json, per evidence requirement, whether this run satisfies it at full strength and why; state explicitly that E-B is not satisfied at full strength in this forced-local run."
+  ],
+  "expected_information_gain": "MEDIUM",
+  "expected_cost": "LOW",
+  "decision_basis": [
+    "Forced-control configuration: this session is marked CONTROL_ONLY and descendant creation is architecturally unavailable in this run, so DO_NOT_CREATE is the only realizable decision independent of chi's unforced value.",
+    "Unforced, chi would favor CREATE for this package: E-B requires an implementer with no access to reference.py, and this session is contaminated by having observed reference.py at observe-package; only a fresh isolated descendant could supply that evidence at full strength, which is why Q1 is recorded as unresolved.",
+    "The local branch nevertheless yields a well-supported verdict: the analytical findings under E-A alone establish UNDERDETERMINED, and contamination in a locally simulated implementation can only bias toward agreement with reference.py, so any observed divergence is robust evidence rather than an artifact of contamination."
+  ],
+  "confidence": 0.95
+}
