@@ -1,0 +1,157 @@
+{
+  "check": "runtime_refinement",
+  "status": "FAIL",
+  "formal_relation": "Runtime <= Spec",
+  "counterexample": {
+    "violation": "REFINEMENT_VIOLATION",
+    "offending_transition": {
+      "event_id": "root-create-child",
+      "source": "",
+      "label": "create",
+      "target": "",
+      "actor": "node:create-child",
+      "timestamp": "2026-08-09T14:03:19Z",
+      "artifact_refs": [
+        "child/child-contract.json",
+        "child/child-harness.json"
+      ],
+      "contract_id": "",
+      "metadata": {
+        "completes_node": "create-child",
+        "note": "validated child realization via fresh launcher"
+      }
+    },
+    "event_index": 5,
+    "source_state": "done={decide-topology,observe-package,propose-child,return-proposal,self-check-proposal}|promoted=0|complete=0",
+    "expected_allowed_labels": [
+      "authorize",
+      "consult",
+      "create",
+      "observe",
+      "persist",
+      "propose",
+      "reconstruct",
+      "reject",
+      "return",
+      "tau",
+      "validate",
+      "verify"
+    ],
+    "trace_prefix": [
+      {
+        "event_id": "e1",
+        "source": "",
+        "label": "observe",
+        "target": "",
+        "actor": "node:observe-package",
+        "timestamp": "2026-08-09T12:00:00Z",
+        "artifact_refs": [
+          "package/task.json",
+          "package/artifacts/rules.md",
+          "package/artifacts/document.txt",
+          "package/artifacts/reference.py",
+          "contract.json",
+          "child-envelope.json",
+          "harness.json",
+          "decision-schema.json",
+          "protocol.md"
+        ],
+        "contract_id": "",
+        "metadata": {
+          "completes_node": "observe-package"
+        }
+      },
+      {
+        "event_id": "e2",
+        "source": "",
+        "label": "propose",
+        "target": "",
+        "actor": "node:decide-topology",
+        "timestamp": "2026-08-09T12:00:05Z",
+        "artifact_refs": [
+          "decision.json"
+        ],
+        "contract_id": "",
+        "metadata": {
+          "artifact_type": "topology_decision",
+          "completes_node": "decide-topology",
+          "decision": "CREATE",
+          "event_kind": "decision"
+        }
+      },
+      {
+        "event_id": "e3",
+        "source": "",
+        "label": "propose",
+        "target": "",
+        "actor": "node:propose-child",
+        "timestamp": "2026-08-09T12:05:00Z",
+        "artifact_refs": [
+          "child/child-contract.json",
+          "child/child-harness.json",
+          "child/child-prompt.md",
+          "child/child-input-manifest.json",
+          "child/integration-plan.json"
+        ],
+        "contract_id": "",
+        "metadata": {
+          "completes_node": "propose-child",
+          "event_kind": "child_bundle"
+        }
+      },
+      {
+        "event_id": "e4",
+        "source": "",
+        "label": "verify",
+        "target": "",
+        "actor": "node:self-check-proposal",
+        "timestamp": "2026-08-09T12:07:00Z",
+        "artifact_refs": [
+          "child/child-contract.json",
+          "child/child-harness.json",
+          "child/child-prompt.md",
+          "child/child-input-manifest.json",
+          "child/integration-plan.json",
+          "decision.json"
+        ],
+        "contract_id": "",
+        "metadata": {
+          "check_outcome": "pass",
+          "checks": [
+            "child-contract attenuates K-E5-trial and is within K-E5-child-max on every axis",
+            "child-harness is a linear observe->hypothesize->verify->return chain that compiles under child-contract",
+            "child-input-manifest contains only available_artifacts and honors clean_room_exclusions (reference.py excluded)",
+            "child-prompt leaks no parent analysis, hypotheses, or excluded-artifact content and ends its ledger with a complete event",
+            "decision.json conforms to decision-schema and every expected_child_contribution.distinction_id references a listed unresolved distinction (Q1)",
+            "integration-plan is a deterministic clean_room_comparison rule executable by the root"
+          ],
+          "completes_node": "self-check-proposal",
+          "non_authoritative": true
+        }
+      },
+      {
+        "event_id": "e5",
+        "source": "",
+        "label": "return",
+        "target": "",
+        "actor": "node:return-proposal",
+        "timestamp": "2026-08-09T12:08:00Z",
+        "artifact_refs": [
+          "result-pending.json"
+        ],
+        "contract_id": "",
+        "metadata": {
+          "completes_node": "return-proposal"
+        }
+      }
+    ]
+  },
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-5/trials/t-068/runtime-ledger.jsonl"
+  ],
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "unmapped_events": []
+}

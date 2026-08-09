@@ -1,0 +1,14 @@
+{
+  "verdict": "UNDERDETERMINED",
+  "findings": {
+    "underdetermined_behaviors": [],
+    "comparison": {
+      "matches_reference": false,
+      "first_differing_line": 0,
+      "reference_line": "the: 0,1,3",
+      "independent_line": "again: 6"
+    }
+  },
+  "child_invocations": 1,
+  "integration": "mechanical clean_room_comparison per parent plan"
+}

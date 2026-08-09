@@ -1,0 +1,36 @@
+{
+  "artifact": "deterministic child-ledger actor adapter mapping",
+  "rule": "actor := node:<metadata.completes_node> for node-execution events; all other events unchanged; original ledger preserved verbatim",
+  "original": "/home/user/creator-0/.creator-zero/experiment-5/trials/t-068/child/child-execution-ledger.jsonl",
+  "adapted": "/home/user/creator-0/.creator-zero/experiment-5/trials/t-068/child/execution-ledger.adapted.jsonl",
+  "rewrites": [
+    {
+      "index": 0,
+      "event_id": "evt-001",
+      "from_actor": "child-worker",
+      "to_actor": "node:observe-inputs",
+      "basis": "metadata.completes_node"
+    },
+    {
+      "index": 1,
+      "event_id": "evt-002",
+      "from_actor": "child-worker",
+      "to_actor": "node:produce-evidence",
+      "basis": "metadata.completes_node"
+    },
+    {
+      "index": 2,
+      "event_id": "evt-003",
+      "from_actor": "child-worker",
+      "to_actor": "node:self-check",
+      "basis": "metadata.completes_node"
+    },
+    {
+      "index": 3,
+      "event_id": "evt-004",
+      "from_actor": "child-worker",
+      "to_actor": "node:return-result",
+      "basis": "metadata.completes_node"
+    }
+  ]
+}

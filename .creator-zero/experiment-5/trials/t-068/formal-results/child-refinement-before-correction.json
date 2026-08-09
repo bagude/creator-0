@@ -1,0 +1,47 @@
+{
+  "check": "runtime_refinement",
+  "status": "FAIL",
+  "formal_relation": "Runtime <= Spec",
+  "counterexample": {
+    "violation": "REFINEMENT_VIOLATION",
+    "offending_transition": {
+      "event_id": "evt-001",
+      "source": "",
+      "label": "observe",
+      "target": "",
+      "actor": "child-worker",
+      "timestamp": "2026-08-09T00:00:01Z",
+      "artifact_refs": [
+        "inputs/rules.md",
+        "inputs/document.txt"
+      ],
+      "contract_id": "",
+      "metadata": {
+        "completes_node": "observe-inputs",
+        "note": "read rules.md (4 rules) and document.txt (6 lines); inputs were located under the inputs/ subdirectory of the working directory"
+      }
+    },
+    "event_index": 0,
+    "source_state": "done={}|promoted=0|complete=0",
+    "expected_allowed_labels": [
+      "consult",
+      "observe",
+      "persist",
+      "propose",
+      "reconstruct",
+      "reject",
+      "return",
+      "tau",
+      "validate"
+    ],
+    "trace_prefix": []
+  },
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-5/trials/t-068/child/child-execution-ledger.jsonl"
+  ],
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "unmapped_events": []
+}

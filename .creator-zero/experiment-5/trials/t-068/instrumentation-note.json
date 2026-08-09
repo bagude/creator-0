@@ -1,0 +1,14 @@
+{
+  "artifact": "root instrumentation correction record",
+  "corrections": [
+    "merged ledger: omitted root validate-child event inserted at its lifecycle-recorded time (same driver omission as t-031; validation demonstrably preceded launch per lifecycle.jsonl and formal-results timestamps)",
+    "child ledger: child used actor 'child-worker' with correct completes_node metadata; deterministically adapted to the kernel node-actor convention per the committed child-ledger-adapter-mapping.json (kernel historical-adapter practice); original ledger preserved verbatim",
+    "verification/observability target: the parent's integration plan names child_implementation_file=clean_impl.py as the capability-bearing implementation; the driver initially fed the transport summary (child-result.json) to the verifier and observability check; re-run against the plan-named implementation file"
+  ],
+  "first_kernel_verdicts_preserved": [
+    "formal-results/refinement-before-correction.json",
+    "formal-results/topology-guard-before-correction.json",
+    "formal-results/child-refinement-before-correction.json",
+    "formal-results/child-observability-before-correction.json"
+  ]
+}

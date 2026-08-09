@@ -102,11 +102,55 @@ def lifecycle_states(tid):
 
 
 def append_trial_events(tid, events):
-    """Append root realization events to the merged trial ledger."""
+    """Append root realization events to the merged trial ledger.
+    Idempotent by event_id so re-runs never duplicate realization events."""
     p = trial_dir(tid) / "runtime-ledger.jsonl"
+    existing = set()
+    if p.exists():
+        for line in p.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                existing.add(json.loads(line).get("event_id"))
     with p.open("a", encoding="utf-8") as f:
         for ev in events:
-            f.write(json.dumps(ev) + "\n")
+            if ev["event_id"] not in existing:
+                f.write(json.dumps(ev) + "\n")
+
+
+def adapt_child_ledger(tid, ledger_path):
+    """Deterministic actor adapter for child ledgers, following the kernel's
+    historical-adapter practice: an event carrying metadata.completes_node=X
+    is the execution of node X, so its actor is normalized to node:X. Every
+    rewrite is recorded in a committed mapping file; the original ledger is
+    never modified. Returns the path to parse."""
+    events = [json.loads(l)
+              for l in Path(ledger_path).read_text(encoding="utf-8")
+              .splitlines() if l.strip()]
+    mapping = []
+    for i, ev in enumerate(events):
+        node = (ev.get("metadata") or {}).get("completes_node")
+        if node and ev.get("actor") != f"node:{node}":
+            mapping.append({"index": i, "event_id": ev.get("event_id"),
+                            "from_actor": ev.get("actor"),
+                            "to_actor": f"node:{node}",
+                            "basis": "metadata.completes_node"})
+            ev["actor"] = f"node:{node}"
+    if not mapping:
+        return Path(ledger_path)
+    adapted = trial_dir(tid) / "child" / "execution-ledger.adapted.jsonl"
+    adapted.write_text("\n".join(json.dumps(e) for e in events) + "\n",
+                       encoding="utf-8")
+    jdump(trial_dir(tid) / "child" / "child-ledger-adapter-mapping.json", {
+        "artifact": "deterministic child-ledger actor adapter mapping",
+        "rule": "actor := node:<metadata.completes_node> for node-execution "
+                "events; all other events unchanged; original ledger "
+                "preserved verbatim",
+        "original": str(ledger_path),
+        "adapted": str(adapted),
+        "rewrites": mapping,
+    })
+    print(f"[{tid}] child ledger adapted: {len(mapping)} actor rewrites "
+          "(mapping committed)")
+    return adapted
 
 
 def formal_result_out(tid, name, res):
@@ -289,15 +333,20 @@ def cmd_after_child(tid):
         if not _collect(cws / name, td / "child" / name):
             print(f"[{tid}] WARNING: child did not produce {name}")
 
+    # The capability-bearing child artifact is the implementation when the
+    # plan names one; the deliverable summary is transport.
+    impl_file = plan.get("child_implementation_file",
+                         plan["child_deliverable"])
+
     # Child formal checks.
     child_contract = jload(td / "child" / "child-contract.json")
     clts = formal.compile_harness_spec(child_harness, child_contract)
-    ctrace = parse_runtime_ledger(td / "child" / ledger_decl, strict=True)
+    ledger_to_parse = adapt_child_ledger(tid, td / "child" / ledger_decl)
+    ctrace = parse_runtime_ledger(ledger_to_parse, strict=True)
     formal_result_out(tid, "child-refinement",
                       formal.check_refinement(ctrace, clts,
                                               require_completion=True))
-    cobs = proposal_observer.check_capability_observability(
-        ctrace, plan["child_deliverable"])
+    cobs = proposal_observer.check_capability_observability(ctrace, impl_file)
     formal_result_out(tid, "child-observability", cobs)
     prov = jload(td / "child" / "launch-provenance.json")
     formal_result_out(tid, "freshness-child",
@@ -318,10 +367,12 @@ def cmd_after_child(tid):
 
     # Mechanical integration + deterministic verification.
     verify = E5 / "task-bank" / tid / "private" / "verify.py"
+    if not (td / "child" / impl_file).exists():
+        _collect(cws / impl_file, td / "child" / impl_file)
     subprocess.run(
         [sys.executable, str(verify), "--mode", "integrate-and-verify",
          "--plan", str(td / "child" / "integration-plan.json"),
-         "--child-deliverable", str(td / "child" / plan["child_deliverable"]),
+         "--child-deliverable", str(td / "child" / impl_file),
          "--integrated-out", str(td / "result.json"),
          "--out", str(td / "verification.json")], check=True)
     append_trial_events(tid, [{
