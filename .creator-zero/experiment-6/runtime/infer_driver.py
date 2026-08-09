@@ -67,6 +67,14 @@ def cmd_after(tid: str) -> None:
         td / "infer-session.log", workspace=ws, allowed_tools=SESSION_TOOLS)
     jdump(td / "infer-session-audit.json", audit)
 
+    prov_path = td / "infer-launch-provenance.json"
+    if prov_path.exists():
+        fresh = e5_runtime("fresh_launcher").freshness_result(
+            jload(prov_path))
+        jdump(td / "formal-results" / "freshness-infer.json",
+              fresh.to_dict())
+        print(f"[{tid}] freshness-infer: {fresh.status}")
+
     # closed-schema validation (typed rejection; model output cannot override)
     req_ids = [r.split(":", 1)[0].strip() for r in
                task.get("evidence_requirements", [])]

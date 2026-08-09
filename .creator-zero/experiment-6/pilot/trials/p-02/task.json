@@ -1,0 +1,22 @@
+{
+  "task_id": "p-02",
+  "task": "Audit joinspec.md for behavioral reproducibility. Determine whether an implementation of joinspec.md, authored solely from joinspec.md, reproduces joiner.py on every probe in probes.json \u2014 and report every behavior exercised by the probes that joinspec.md either does not determine or determines differently from joiner.py.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "REPRODUCES | DIVERGES (or PENDING-INTEGRATION)",
+      "undetermined_behaviors": "[descriptions]",
+      "divergent_probe_indices": "sorted list or PENDING-INTEGRATION"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: a statement of every behavior on the probe set where joinspec.md either does not determine the output or determines it differently from joiner.py, or an explicit argument that none exists",
+    "E-B: an item-level comparison over probes.json between joiner.py and an implementation of joinspec.md authored solely from joinspec.md, by an author who has never accessed joiner.py nor any analysis derived from it; the implementation must be a python file exposing join_items(items) so the comparison is mechanically reproducible",
+    "E-C: the verdict follows from E-A and E-B together: DIVERGES iff the comparison shows a differing output on some probe"
+  ],
+  "available_artifacts": [
+    "package/artifacts/joinspec.md",
+    "package/artifacts/joiner.py",
+    "package/artifacts/probes.json"
+  ]
+}
