@@ -1,0 +1,892 @@
+{
+  "formal_object": "lts",
+  "initial": "done={}|promoted=0|complete=0",
+  "labels": [
+    "act_candidate",
+    "authorize",
+    "complete",
+    "consult",
+    "observe",
+    "persist",
+    "promote",
+    "propose",
+    "reconstruct",
+    "reject",
+    "return",
+    "tau",
+    "validate",
+    "verify"
+  ],
+  "metadata": {
+    "act_nodes": [
+      "implement-candidate"
+    ],
+    "allow_create": false,
+    "allow_promote": true,
+    "contract_id": "K-self-mod-topology-theory-v0.1",
+    "nodes": [
+      "implement-candidate",
+      "observe-base",
+      "propose-upgrade",
+      "return-result",
+      "verify-deterministic",
+      "verify-independent"
+    ],
+    "task_id": "sm-topology-theory-v0.1",
+    "verify_nodes": [
+      "verify-deterministic",
+      "verify-independent"
+    ]
+  },
+  "states": [
+    "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+    "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=1",
+    "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+    "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=1",
+    "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+    "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+    "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+    "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+    "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+    "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+    "done={observe-base}|promoted=0|complete=0",
+    "done={}|promoted=0|complete=0"
+  ],
+  "transitions": [
+    {
+      "actor": "node:propose-upgrade",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-independent",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "complete",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=1"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-base",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "gate",
+      "label": "promote",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-deterministic",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=1",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=1"
+    },
+    {
+      "actor": "node:propose-upgrade",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-independent",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "complete",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=1"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:observe-base",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-deterministic",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=1",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=1"
+    },
+    {
+      "actor": "node:propose-upgrade",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-independent",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-base",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "gate",
+      "label": "promote",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:return-result",
+      "label": "return",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-deterministic",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:propose-upgrade",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-independent",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:observe-base",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:return-result",
+      "label": "return",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,return-result,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-deterministic",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:propose-upgrade",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-base",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "gate",
+      "label": "promote",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-independent",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-deterministic",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:propose-upgrade",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:observe-base",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-independent",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic,verify-independent}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-deterministic",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:propose-upgrade",
+      "label": "authorize",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-base",
+      "label": "observe",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-deterministic",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade,verify-deterministic}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "act_candidate",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={implement-candidate,observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:propose-upgrade",
+      "label": "authorize",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-base",
+      "label": "observe",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={observe-base,propose-upgrade}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-base",
+      "label": "observe",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:propose-upgrade",
+      "label": "propose",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base,propose-upgrade}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={observe-base}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-base",
+      "label": "observe",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={observe-base}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    }
+  ],
+  "version": "0.1"
+}

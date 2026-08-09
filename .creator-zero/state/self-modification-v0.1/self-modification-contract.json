@@ -1,0 +1,51 @@
+{
+  "version": "0.1-self-modification",
+  "contract_id": "K-self-mod-topology-theory-v0.1",
+  "derived_from": "contracts/root_contract.json (sha256 f7268b999e2b35dfebce656d170d702da78090cf52b1a5762a1fb97cec17392e)",
+  "allowed_primitives": ["observe", "hypothesize", "act", "verify", "return"],
+  "allowed_relations": ["observe", "consult", "request_response", "verify", "authorize", "return"],
+  "allowed_tools": ["Read", "Grep", "Glob", "Bash", "Edit", "Write", "Agent"],
+  "max_children": 0,
+  "max_depth": 1,
+  "max_model_calls": 16,
+  "may_create_creator": false,
+  "required_primitives_for_mutation": ["verify"],
+  "filesystem_write_scope": [
+    ".creator-zero/topology-theory",
+    ".creator-zero/tests/topology_theory",
+    ".creator-zero/state/self-modification-v0.1",
+    ".creator-zero/state/topology-theory-v0.1.json",
+    ".creator-zero/state/topology-theory",
+    ".creator-zero/formal",
+    ".creator-zero/cz.py",
+    ".creator-zero/runs"
+  ],
+  "protected_paths": [
+    ".creator-zero/experiment-3",
+    ".creator-zero/experiment-4",
+    ".creator-zero/experiment-4c",
+    ".creator-zero/experiment-5",
+    ".creator-zero/state/experiment-2.json",
+    ".creator-zero/state/experiment-3.json",
+    ".creator-zero/state/experiment-4.json",
+    ".creator-zero/state/experiment-4c.json",
+    ".creator-zero/state/experiment-5.json",
+    ".creator-zero/state/formal-semantics-v0.1.json",
+    ".creator-zero/contracts/root_contract.json"
+  ],
+  "candidate_write_authority": "scoped: candidate git worktree only (branch candidate/topology-theory-v0.1); all implementation writes are candidate-first",
+  "canonical_write_authority": "none before gate PASS; canonical promotion exclusively via the deterministic Gate after all verification results PASS",
+  "git_authority": "read-only on canonical branch until gate promotion; commit authority on candidate branch only",
+  "network_authority": "model-invocation only (independent verifier consultation)",
+  "protected_rules": [
+    "No child may increase its authority envelope.",
+    "Model output is a proposal, never authorization.",
+    "Mutation-capable topology requires verification.",
+    "Root compiler, boundary, hook, and contract are immutable during normal runs.",
+    "Creation is bounded and optional.",
+    "Gate monopoly on canonical promotion.",
+    "Historical evidence immutability: experiment-3/4/4c/5 trees and prior state manifests stay byte-unchanged.",
+    "Candidate-before-canonical mutation.",
+    "Formal-result integrity: failed verification evidence is never deleted."
+  ]
+}

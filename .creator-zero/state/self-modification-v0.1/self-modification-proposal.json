@@ -1,0 +1,77 @@
+{
+  "artifact": "self-modification proposal — Topology Theory + Reverse-ITP Self-Modification v0.1",
+  "proposal_id": "sm-topology-theory-v0.1",
+  "status": "PROPOSAL",
+  "authored_by": "creator-0 root session (model-mediated proposal; carries no authority)",
+  "base_lineage": {
+    "branch": "claude/new-session-kphjhb",
+    "base_commit": "3a3f6354df1d08b9dc8276b8ead56b0dba92daff",
+    "base_result": "ENDOGENOUS_TOPOLOGY_PASS",
+    "working_branch": "claude/new-session-aljqd2",
+    "pinned_hashes": {
+      "contracts/root_contract.json": "f7268b999e2b35dfebce656d170d702da78090cf52b1a5762a1fb97cec17392e",
+      "cz.py": "d5ee6fb68085aa9f475dc2ff4f94464e95b33447f9b40aaf1fd72cc1cd37a73c",
+      "formal/semantics.py": "8325da4ad8702a16809309ccbbeecc8e63515052c9e6a5a72b83ea189477cb3d",
+      "formal/refinement.py": "32fb0c595d4a72a93f460be9117b0401b7fd2d7623cedb059f3c4cfd470284db",
+      "formal/attenuation.py": "e4f70b06e83af478af9216f6e34980f26bacb6a9705802832417a9ca46305ffa",
+      "state/experiment-5.json": "7b2359ea139c7f1e8a0590d076e65f2c1ae3dc723062e79e8ed6b5bab0c1ddc7",
+      "experiment-5/runtime/fresh_launcher.py": "d6990c286a9f62f8d6ae7818167e5f315a14ad56db3a0e398127bc52b865d8d7",
+      "experiment-5/harness-template.json": "9a7ddc83d5dd19908819a3172ae683c89347af57c668198dee30e1d5b6b5eb91"
+    },
+    "frozen_experiment_trees": {
+      "experiment-3": {"sha256_of_pathhash_concat": "6f9b55602b2998fc9cfb5bc09fc014d2b670de5d5d90519ba1653f35fd36f84a", "files": 34},
+      "experiment-4": {"sha256_of_pathhash_concat": "a984c7821f0ac46e47cf3d5197547182b025d7415ce9104eb22e2856a63604ce", "files": 93},
+      "experiment-4c": {"sha256_of_pathhash_concat": "2b9a6d3ca5263a5232ddbe55607655aaef529cf9f24899879cdd2eb3ea974d3b", "files": 41},
+      "experiment-5": {"sha256_of_pathhash_concat": "45bbc4445b16c1867c18cd6dbe1992980f0a56c5982a4e9c5d02fc70b8904411", "files": 341}
+    }
+  },
+  "goal": "Move Creator-0 from binary CREATE/DO_NOT_CREATE topology choice to an explicit, versioned, falsifiable topology theory Theta_H = (P, E+, E-, R, V, L) with abductive candidate generation, frozen predictions, deterministic pre-execution rejection, utility ranking, observed-value evaluation, prediction-specific falsification, reverse-ITP principle revision, historical replay, and governed candidate-first self-modification.",
+  "unresolved_distinctions": [
+    {"id": "Q1", "question": "What typed, versioned, append-only persistent representation does Theta_H require so that principles, evidence, revisions, and lineage are externally reconstructible?", "locally_resolvable": true},
+    {"id": "Q2", "question": "Where is the deterministic/model-mediated boundary in mapping unresolved distinctions Q to applicable principles, and how is model-mediated applicability serialized before candidate generation?", "locally_resolvable": true},
+    {"id": "Q3", "question": "What candidate-generation grammar produces up to 4 admissible HarnessSpec topologies that respect the governing contract and resource envelope without maximizing node count or recursion?", "locally_resolvable": true},
+    {"id": "Q4", "question": "What prediction/falsifier structure makes every claimed resolved distinction observably falsifiable before execution, with retrospective edits impossible?", "locally_resolvable": true},
+    {"id": "Q5", "question": "Which deterministic formal checks (schema, HarnessSpec, LTS compilation, authority, attenuation, budget, finite reachability, candidate/canonical separation, freshness, proposal observability, protected laws) reject an invalid candidate pre-execution?", "locally_resolvable": true},
+    {"id": "Q6", "question": "What explicit-config utility function and deterministic tie-break yield a stable topology ranking (utility desc, node_count asc, model_calls asc, topology_id asc)?", "locally_resolvable": true},
+    {"id": "Q7", "question": "How are frozen predictions compared to observed runtime evidence to produce observed utility, calibration error, and prediction-specific falsification events?", "locally_resolvable": true},
+    {"id": "Q8", "question": "What revision operators (ADD/SPECIALIZE/GENERALIZE/MERGE/SPLIT/DEPRECATE/REINSTATE) allow theory change as proposal-only, with promotion reserved to the deterministic Gate?", "locally_resolvable": true},
+    {"id": "Q9", "question": "How does historical replay over the frozen E3/E4/E4C/E5 corpus detect a candidate theory revision that contradicts preregistered historical outcomes?", "locally_resolvable": true},
+    {"id": "Q10", "question": "How can the finite branching LTS semantics let both legal branches (LOCAL and CREATE) reach `complete` under require_completion=True without changing any historical verdict?", "locally_resolvable": true},
+    {"id": "Q11", "question": "How is freshness tightened to `executed=true => session_id_confirmed=true` (None only for dry runs) without mutating frozen Experiment 5 evidence?", "locally_resolvable": true},
+    {"id": "Q12", "question": "What stable exact artifact identity (sha256(content || provenance_identity)) replaces path/basename identity for new architecture artifacts?", "locally_resolvable": true},
+    {"id": "Q13", "question": "How is this upgrade itself implemented candidate-first, formally checked, replayed, independently verified, and promoted only by the deterministic Gate?", "locally_resolvable": true}
+  ],
+  "topology_decision": {
+    "decision": "DO_NOT_CREATE_DESCENDANT_CREATOR",
+    "rationale": "All thirteen distinctions are resolvable from evidence already inside the governed boundary (frozen artifacts, kernel sources, prior state manifests). No distinction requires evidence that is inaccessible to this session (no clean-room/contamination condition), so per the E5-supported locality principle a descendant Creator is not epistemically justified. The topology is a local linear implement-verify chain plus one bounded independent verifier consultation; the verifier is an information-only fresh examiner, not a Creator.",
+    "principles_invoked_informally": ["P-LOCALITY", "P-MINIMALITY", "P-VERIFY", "P-INDEPENDENCE (verifier only)", "P-AUTHORITY-SEPARATION", "P-PROPOSAL-OBSERVABILITY", "P-STATE-MEDIATED-CONTINUITY"]
+  },
+  "predictions": [
+    {"prediction_id": "SM-P1", "claim": "All 13 distinctions resolve without creating a descendant Creator", "observable": "state artifact resolution map", "success_condition": "every Qi marked resolved with artifact refs and zero child Creator launches", "falsification_condition": "any Qi unresolved at gate time, or any descendant Creator launched"},
+    {"prediction_id": "SM-P2", "claim": "Canonical governance files change only via the Gate promotion step", "observable": "git history of the working branch", "success_condition": "implementation commits exist only on the candidate branch; canonical branch receives them only in the gate promotion commit after gate-result.json PASS", "falsification_condition": "any canonical commit carrying candidate implementation before gate PASS"},
+    {"prediction_id": "SM-P3", "claim": "Existing formal/E5/creator-zero test suites remain green and Experiments 1-5 remain byte-unchanged", "observable": "test runs + frozen tree hashes recomputed at gate time", "success_condition": "all pre-existing tests PASS and all four frozen tree hashes equal their pinned values", "falsification_condition": "any pre-existing test failure or any frozen tree hash drift"},
+    {"prediction_id": "SM-P4", "claim": "The self-modification runtime trace refines the compiled self-modification LTS with completion", "observable": "verification-results/refinement.json", "success_condition": "check_refinement(trace, lts, require_completion=True) = PASS", "falsification_condition": "REFINEMENT_VIOLATION or premature termination"},
+    {"prediction_id": "SM-P5", "claim": "The independent verifier finds the candidate patch externally reconstructible and consistent with this proposal", "observable": "verification-results/independent-verifier.json", "success_condition": "verifier verdict PASS with candidate-patch-manifest hashes reproduced", "falsification_condition": "verifier verdict FAIL or hash mismatch"}
+  ],
+  "expected_budget": {"model_calls_max": 16, "child_creator_launches": 0, "independent_verifier_consultations": 1},
+  "planned_artifacts": [
+    ".creator-zero/state/self-modification-v0.1/self-modification-harness.json",
+    ".creator-zero/state/self-modification-v0.1/self-modification-contract.json",
+    ".creator-zero/state/self-modification-v0.1/self-modification-lts.json",
+    ".creator-zero/state/self-modification-v0.1/candidate-patch-manifest.json",
+    ".creator-zero/state/self-modification-v0.1/verification-results/",
+    ".creator-zero/state/self-modification-v0.1/historical-replay.json",
+    ".creator-zero/state/self-modification-v0.1/gate-result.json",
+    ".creator-zero/state/topology-theory-v0.1.json"
+  ],
+  "protected_laws_acknowledged": [
+    "Gate monopoly on canonical promotion",
+    "historical evidence immutability",
+    "model output != authority",
+    "contract attenuation",
+    "freshness enforcement",
+    "proposal observability",
+    "candidate-before-canonical mutation",
+    "formal-result integrity"
+  ]
+}

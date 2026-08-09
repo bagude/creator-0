@@ -1,0 +1,35 @@
+{
+  "assumptions": [
+    "Axis absent on parent = unrestricted (most permissive) at that axis.",
+    "Axis absent on child = inherited from parent (no escalation).",
+    "Filesystem scope: child paths accepted by parent-scope containment or by sibling delegation inside the parent scope's workspace envelope with no overlap of parent protected paths; paths compared as normalized repo-relative strings, parenthetical annotations (e.g. '(append only)') stripped.",
+    "Authority strings mapped to deterministic ordinals: none=0 < scoped/read-only/model-invocation=1 < unrestricted=2.",
+    "Local check only; 'no finite descendant escalates' follows inductively only if every creation transition is checked."
+  ],
+  "check": "contract_attenuation",
+  "counterexample": null,
+  "detail": {
+    "verdict": "ATTENUATION_PASS"
+  },
+  "evidence": [
+    "allowed_tools: ['Agent', 'Bash', 'Edit', 'Glob', 'Grep', 'Read', 'Write'] subset of ['Agent', 'Bash', 'Edit', 'Glob', 'Grep', 'Read', 'Write']",
+    "allowed_primitives: ['act', 'hypothesize', 'observe', 'return', 'verify'] subset of ['act', 'create', 'hypothesize', 'observe', 'return', 'test', 'verify']",
+    "allowed_relations: ['authorize', 'consult', 'observe', 'request_response', 'return', 'verify'] subset of ['authorize', 'consult', 'create', 'delegate', 'observe', 'request_response', 'return', 'verify']",
+    "max_model_calls: 16 <= 16",
+    "max_children: 0 <= 3",
+    "max_depth: 1 <= 2",
+    "may_create_creator: False <= True",
+    "filesystem_write_scope: parent unrestricted",
+    "candidate_write_authority: parent unrestricted",
+    "candidate_write_authority: ordinal 1 <= 2",
+    "canonical_write_authority: parent unrestricted",
+    "canonical_write_authority: ordinal 0 <= 2",
+    "git_authority: parent unrestricted",
+    "git_authority: ordinal 1 <= 2",
+    "network_authority: parent unrestricted",
+    "network_authority: ordinal 1 <= 2"
+  ],
+  "formal_relation": "K_child <= K_parent",
+  "status": "PASS",
+  "unmapped_events": []
+}

@@ -1,0 +1,63 @@
+{
+  "task_id": "sm-topology-theory-v0.1",
+  "goal": "Implement the Topology Theory + Reverse-ITP Self-Modification v0.1 architecture upgrade candidate-first: persistent falsifiable topology theory, abduction, candidate generation, prediction freezing, formal validation, deterministic utility, evaluation, falsification, revision, historical replay, governed self-modification machinery, branching-completion repair, freshness hardening, stable artifact identity, CLI, and tests — with canonical promotion exclusively by the deterministic Gate.",
+  "max_depth": 0,
+  "max_model_calls": 8,
+  "nodes": [
+    {
+      "id": "observe-base",
+      "primitive": "observe",
+      "tools": ["Read", "Grep", "Glob", "Bash"],
+      "can_create": false,
+      "instructions": "Reconstruct lineage: base commit, pinned hashes of governance files, frozen experiment tree hashes, baseline test-suite status. Acquire evidence only.",
+      "why_necessary": "The upgrade is defined relative to a pinned base state; without reconstructed lineage no immutability or regression claim is checkable."
+    },
+    {
+      "id": "propose-upgrade",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Decompose the upgrade into unresolved engineering distinctions Q1-Q13, author the self-modification proposal with frozen predictions and falsifiers, the attenuated self-modification contract, and this harness. All artifacts are proposals under observable propose transitions.",
+      "why_necessary": "Proposal observability and prediction-before-execution are protected laws; the upgrade must exist as typed falsifiable proposal before any mutation."
+    },
+    {
+      "id": "implement-candidate",
+      "primitive": "act",
+      "tools": ["Read", "Write", "Edit", "Bash"],
+      "can_create": false,
+      "instructions": "In the candidate git worktree only: implement .creator-zero/topology-theory/ (all modules, schemas, docs), the branching-completion repair and hardened freshness in the formal kernel, stable artifact identity, cz.py CLI commands, the frozen replay corpus, seeded theory version, and the topology_theory test suite. No canonical write.",
+      "why_necessary": "Candidate-before-canonical mutation is a protected law; the sole mutation locus is the candidate workspace."
+    },
+    {
+      "id": "verify-deterministic",
+      "primitive": "verify",
+      "tools": ["Bash", "Read"],
+      "can_create": false,
+      "instructions": "Run in the candidate worktree: all pre-existing suites (formal, experiment5, creator-zero), the new topology_theory suite, historical replay over the frozen corpus, attenuation of the self-modification contract, protected-law checks, frozen-tree immutability re-hash, and refinement of the self-modification ledger against the compiled LTS. Persist every FormalResult under verification-results/.",
+      "why_necessary": "Deterministic verification is the governing filter between candidate mutation and any promotion claim; model self-checks are non-authoritative."
+    },
+    {
+      "id": "verify-independent",
+      "primitive": "verify",
+      "tools": ["Agent", "Read"],
+      "can_create": false,
+      "instructions": "Consult one fresh independent verifier (information-only, no write, no promotion authority) to inspect the candidate diff, reproduce the candidate-patch-manifest hashes, and check the implementation against the proposal. Persist its report.",
+      "why_necessary": "Independent verification before promotion is required by the self-modification architecture; the implementer must not certify its own patch."
+    },
+    {
+      "id": "return-result",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Assemble gate inputs (verification results, replay, patch manifest, immutability re-hash), run the deterministic Gate. Only on gate PASS is the candidate promoted to canonical; then persist the state artifact and finalize the ledger.",
+      "why_necessary": "The Gate alone promotes; the return node externalizes the gate inputs and the final governed state."
+    }
+  ],
+  "edges": [
+    {"source": "observe-base", "target": "propose-upgrade", "relation": "observe", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "propose-upgrade", "target": "implement-candidate", "relation": "authorize", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "implement-candidate", "target": "verify-deterministic", "relation": "verify", "requires_response": true, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "verify-deterministic", "target": "verify-independent", "relation": "verify", "requires_response": true, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "verify-independent", "target": "return-result", "relation": "authorize", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false}
+  ]
+}
