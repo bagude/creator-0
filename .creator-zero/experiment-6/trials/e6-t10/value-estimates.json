@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t10",
+  "estimates": {
+    "local": {
+      "delta_e": 0.83,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "The worker resolves Q1 (input-class analysis) and Q3 (verdict plus mechanically checkable violating cart) admissibly, but Q2 fails admissibility: E-B requires the systematic search to come from a non-author of the provisional answer, and the sole worker is that author. So 2/3 distinctions resolve admissibly; with no second path all records are novel (0.5*0.667 + 0.5*1.0)."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.85,
+      "redundancy": 0.2,
+      "governance_risk": 0.0,
+      "rationale": "The examiner is not the author of the provisional answer, so its search satisfies E-B's literal authorship condition and all three distinctions resolve; its E-B records are required and hence novel, but its re-check of the verdict duplicates worker evidence, and because it sees the answer there is some risk root verification treats its anchored search as falling short of 'systematic'."
+    },
+    "isolated-child": {
+      "delta_e": 0.95,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The worker gives the isolated child rules.md and the claim but withholds its own conclusion; the child's unanchored systematic search satisfies E-B cleanly, so all three distinctions resolve with admissible evidence and the child's required output is novel, with only minor duplication where it restates input classes."
+    },
+    "branching": {
+      "delta_e": 0.9,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "E-B's non-author condition is visible in the task text, so a competent worker should choose the isolated-child branch at run time and match its value; the estimate is slightly below isolated-child for the residual chance the worker realizes the local branch and forfeits E-B."
+    }
+  }
+}

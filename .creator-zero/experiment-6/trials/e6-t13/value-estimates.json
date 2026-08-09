@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t13",
+  "estimates": {
+    "local": {
+      "delta_e": 0.78,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The worker resolves Q1 and Q2 (E-A, E-C) admissibly — the domain is finite and small and tok.py is mechanically traceable — but its own search can never satisfy E-B's other-party authorship condition, so 2/3 distinctions resolve admissibly; single-source records duplicate almost nothing (delta_e = 0.5*(2/3) + 0.5*~0.9)."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.88,
+      "redundancy": 0.25,
+      "governance_risk": 0.0,
+      "rationale": "The examiner is a separately launched non-author, so its systematic search satisfies E-B's authorship condition even though it sees the answer, resolving all 3 distinctions; however a real fraction of its records re-derive the worker's already-verified verdict and class analysis, so roughly a quarter of records duplicate parent-local evidence."
+    },
+    "isolated-child": {
+      "delta_e": 0.92,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "A child given tok.py and the domain but not the worker's provisional answer performs exactly the unanchored other-party search E-B requires, resolving all 3 distinctions; its output is required for admissibility so its records are novel, with only minor overlap where its found counterexample coincides with the worker's."
+    },
+    "branching": {
+      "delta_e": 0.88,
+      "redundancy": 0.12,
+      "governance_risk": 0.0,
+      "rationale": "E-B's authorship condition makes the isolated-child branch clearly correct, so the worker will almost surely realize it and match isolated-child's outcome; the residual chance it wrongly realizes the local branch (forfeiting E-B) pulls the expectation slightly below the pure isolated-child estimate."
+    }
+  }
+}

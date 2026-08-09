@@ -1,0 +1,64 @@
+{
+  "task_id": "e6-t08",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which input classes within the domain (lists of <= 6 integer intervals, endpoints in [-10, 10], start <= end) could the truth of the no-overlap claim about merge(intervals) turn on?",
+      "why_unresolved": "The package provides only the raw source of merge.py and the claim text; no analysis of the code's branch structure (in particular the strict comparison `s < out[-1][1]` on line 8) or of the domain's boundary cases (touching intervals, containment, duplicates, empty list, single interval, negative endpoints) has been produced or recorded as evidence.",
+      "required_evidence": "A written analysis, derived from merge.py's control flow and the claim's phrasing, enumerating the input classes on which the claim could plausibly fail or hold: e.g. adjacent/touching intervals where one end equals the next start, nested/contained intervals, duplicate intervals, empty and singleton lists, and unsorted inputs.",
+      "admissibility_constraints": [
+        "The analysis must identify the input classes on which the claim's truth could turn (task requirement E-A), grounded in the provided merge.py, not in a generic checklist.",
+        "No authorship or isolation condition is imposed: the worker that reads the package may author this analysis."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does the claim HOLD or is it VIOLATED over the stated domain, and if VIOLATED, what concrete input in the domain mechanically violates it (i.e. sorted merge output contains intervals i before j with i.end >= j.start)?",
+      "why_unresolved": "No verdict or candidate violating input exists yet in the evidence state; the claim's truth depends on the exact comparison operator used in merge.py, which no artifact in the package has yet exercised against the boundary classes of the domain.",
+      "required_evidence": "A verdict (HOLDS or VIOLATED) together with, on VIOLATED, a concrete in-domain input list and a mechanical demonstration: the trace of merge on that input and the specific output pair (i, j) with i.end >= j.start after sorting.",
+      "admissibility_constraints": [
+        "On VIOLATED, the violating input must lie inside the stated domain (<= 6 intervals, integer endpoints in [-10, 10], start <= end) and must mechanically violate the claim as stated (task requirement E-C).",
+        "The demonstration must follow the actual code of package/artifacts/merge.py, not an idealized merge; no authorship restriction is imposed on E-C itself.",
+        "Deterministic root verification decides whether the demonstration in fact violates the claim."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1", "Q3"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Has a systematic search of the domain for a violating input been carried out by a party other than the author of the provisional answer (or has such a party argued that no violating input exists)?",
+      "why_unresolved": "No second party exists yet in the evidence state: every present artifact was supplied with the package, and any process that reads the package and the claim immediately forms a provisional answer, making itself the author whose search E-B rules inadmissible.",
+      "required_evidence": "A record of a systematic search over the domain (e.g. structured enumeration of the boundary classes, or exhaustive/bounded enumeration of small interval lists) produced by a process that is not the author of the provisional verdict; on a HOLDS outcome, that party's argument that no violating input exists in the domain.",
+      "admissibility_constraints": [
+        "Task requirement E-B: the search must be 'carried out by a party other than the author of the provisional answer, or such a party's argument that no violating input exists in the domain'.",
+        "The searching party must therefore be a separately launched process: either one that sees the provisional answer but did not author it, or one causally isolated from the worker's conclusions that searches unanchored.",
+        "The search record must survive its originating session and be integrated into the deliverable by the governed root step to count."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": false,
+        "spans_sessions": true
+      }
+    }
+  ]
+}

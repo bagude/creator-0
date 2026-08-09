@@ -1,0 +1,61 @@
+{
+  "task_id": "e6-t13",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which input classes in the stated domain (token lists of 1-3 tokens, each 1-3 chars over {a, b, double-quote, backslash}) could the round-trip claim's truth turn on?",
+      "why_unresolved": "The package supplies only the code (tok.py) and the claim; no analysis of the interaction between detokenize's quoting/escaping rules (it quotes tokens containing a double-quote but never escapes backslashes) and tokenize's in-quote backslash escape handling exists yet.",
+      "required_evidence": "A written analysis partitioning the domain into classes by structural risk: tokens containing backslash only, tokens containing double-quote only, tokens mixing backslash and double-quote (where an unescaped backslash can swallow the emitted escape or closing quote), plain a/b tokens, and adjacency effects between quoted and bare tokens under space joining.",
+      "admissibility_constraints": [
+        "Must identify the classes on which the claim's truth could turn (task E-A), grounded in the actual behavior of the provided tok.py, not a generic tokenizer."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does tokenize(detokenize(tokens)) equal the original list for every list in the domain (verdict HOLDS), or is there a concrete list in the domain for which the round trip differs (verdict VIOLATED, with that list exhibited)?",
+      "why_unresolved": "No verdict or counterexample exists in the package; whether detokenize's failure to escape backslashes actually breaks a round trip within the 1-3 char / 1-3 token bounds must be established by tracing or executing the given code on candidate inputs.",
+      "required_evidence": "Either a domain-covering argument that every class round-trips, or one concrete token list in the domain together with a mechanical step-by-step trace of detokenize then tokenize on it showing the output list differs from the input list (task E-C: the violation must be mechanical, not asserted).",
+      "admissibility_constraints": [
+        "On VIOLATED, the violating input must lie inside the stated domain (1-3 tokens, each 1-3 characters over the four-symbol alphabet) and must mechanically violate the claim when run through the provided tok.py (task E-C).",
+        "The trace must follow tok.py as written, not an idealized tokenizer."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Has a systematic search for a violating input over the stated domain been carried out by a party other than the author of the provisional answer (or has such a party argued that no violating input exists)?",
+      "why_unresolved": "Task E-B makes admissibility turn on authorship: whatever search the worker that forms the provisional answer performs is inadmissible for E-B by construction, and no second-party search record exists in the package.",
+      "required_evidence": "A search record (class enumeration or exhaustive/systematic sweep of the finite domain against tok.py's semantics) produced by a separately launched process that did not author the provisional answer, either exhibiting a violating input or arguing none exists in the domain.",
+      "admissibility_constraints": [
+        "The search must be 'carried out by a party other than the author of the provisional answer' (task E-B, quoted); evidence authored by the worker who formed the provisional verdict does not count regardless of quality.",
+        "The search must be systematic over the stated domain, not a spot check of the worker's own candidate."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": false,
+        "spans_sessions": true
+      }
+    }
+  ]
+}

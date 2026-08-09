@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t08",
+  "estimates": {
+    "local": {
+      "delta_e": 0.8,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "The worker alone resolves Q1 and Q2 admissibly (2/3 of distinctions) and its records are all first-instance (novel fraction ~1.0), but E-B/Q3 is unsatisfiable: the worker is the author of the provisional answer, so its own search is inadmissible by the task's authorship condition."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.85,
+      "redundancy": 0.3,
+      "governance_risk": 0.0,
+      "rationale": "The separately launched examiner is a party other than the author, so its systematic search satisfies E-B's letter and all three distinctions resolve; but because it sees the answer, a sizable share of its records merely re-confirm the worker's counterexample and analysis, raising redundancy."
+    },
+    "isolated-child": {
+      "delta_e": 0.9,
+      "redundancy": 0.2,
+      "governance_risk": 0.0,
+      "rationale": "A child given merge.py and the claim but excluded from the worker's conclusions performs an unanchored systematic search — the cleanest fit for E-B — resolving all three distinctions; its search record is required for admissibility and thus novel, though the concrete counterexample it finds will likely duplicate the worker's E-C evidence."
+    },
+    "branching": {
+      "delta_e": 0.85,
+      "redundancy": 0.2,
+      "governance_risk": 0.0,
+      "rationale": "Q3's isolation requirement is legible from the package, so the worker will almost surely realize the isolated-child branch and match its value; the residual chance of realizing the local branch (forfeiting E-B) slightly lowers the expected delta_e, while cost is fixed at the isolated-child rate."
+    }
+  }
+}

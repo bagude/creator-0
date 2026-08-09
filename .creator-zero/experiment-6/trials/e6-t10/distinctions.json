@@ -1,0 +1,64 @@
+{
+  "task_id": "e6-t10",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which input classes of the cart shape (quantity thresholds, loyalty flag, category values, coupon flag, and their combinations) could the truth of the claim 'no total discount exceeds 40 percent' turn on?",
+      "why_unresolved": "The package states the four multiplicative rules but contains no analysis partitioning the cart domain into classes by which rules fire; without that partition the claim's truth conditions are not yet articulated.",
+      "required_evidence": "An analysis enumerating the input classes induced by the rule triggers (quantity >= 5 vs < 5, loyalty_member true/false, category == 'outdoor' vs other, coupon_code_applied true/false) and identifying which class combinations maximize total discount.",
+      "admissibility_constraints": [
+        "Must identify the input classes on which the claim's truth could turn (task requirement E-A verbatim).",
+        "Must be grounded in the rule triggers actually stated in package/artifacts/rules.md, covering all four rules."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does any cart in the domain 'all carts expressible in the cart shape' have a total discount exceeding 40 percent, as established by a systematic search (or impossibility argument) originating from a party other than the author of the provisional answer?",
+      "why_unresolved": "No search or argument exists in the package, and any search this process now performs is inadmissible: E-B conditions admissibility on the searcher not being the author of the provisional answer, and having read the claim plus the four rules, this process has effectively already formed the provisional answer (the maximal stacked factor is directly computable), making it the author.",
+      "required_evidence": "A systematic search over the rule-induced input classes producing either a concrete violating cart or an argument that none exists, carried out by a separately launched process that is not the author of the provisional answer.",
+      "admissibility_constraints": [
+        "The search must be carried out by a party other than the author of the provisional answer, or be such a party's argument that no violating input exists in the domain (task requirement E-B verbatim).",
+        "The search must be systematic over the stated domain (all carts expressible in the cart shape), not a spot check.",
+        "Evidence produced by the same process that authored the provisional verdict does not count toward E-B."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Is the verdict HOLDS or VIOLATED, and on VIOLATED, what concrete cart {quantity, loyalty_member, category, coupon_code_applied} mechanically yields a total discount exceeding 40 percent under the multiplicative rules?",
+      "why_unresolved": "No result.json exists yet; the verdict and, if applicable, a concrete violating input with its factor computation have not been recorded in the deliverable shape.",
+      "required_evidence": "A result.json with verdict, violating_input (or null), and input_classes_examined, where any claimed violating input's factor product under rules.md is mechanically checkable to give total discount > 0.40.",
+      "admissibility_constraints": [
+        "On VIOLATED the violating input must mechanically violate the claim (task requirement E-C): applying the stated factors to the input must yield 1.0 minus the product strictly greater than 0.40.",
+        "The input must be expressible in the cart shape {quantity: int, loyalty_member: bool, category: str, coupon_code_applied: bool}.",
+        "Deliverable must match the specified result.json shape."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1", "Q2"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}
