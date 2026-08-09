@@ -1,0 +1,77 @@
+{
+  "experiment_id": "experiment-3",
+  "parent_experiment": "experiment-2",
+  "parent_state": ".creator-zero/state/experiment-2.json",
+  "canonical_start_commit": "db51bb3ed1eea5f5a836ee5c40d7c291a106cb6f",
+  "canonical_end_commit": "933d2489f92a7469fbda219579feb544de17a4e7 (mutation + artifacts commit on claude/new-session-2ymjok; this manifest lands in the immediately following commit on the same branch)",
+  "session": {
+    "resumed_prior_session": false,
+    "fresh_session": true,
+    "note": "Operator reconstructed all prior state exclusively from .creator-zero/state/experiment-2.json plus the canonical repository at db51bb3. No Experiment 1 reports, alternate branches, or transcripts were read. Decomposer (D0, D1) and Composer (C0) ran as fresh, causally isolated external model invocations exchanging only serialized JSON artifacts under .creator-zero/experiment-3/."
+  },
+  "inherited_claims_used": [
+    "E2-D1 suite spec-alignment (11 MATCH + corrected classic test)",
+    "E1-D9/E2-D4 no implementation defect demonstrated; solver held",
+    "oracle.py encodes R2/R5/R6 correctly (E2 audit + spot checks)",
+    "M2 unresolved_questions[0]: R6 asserted by only one 2-job test; classic instance does not pin [2,6]"
+  ],
+  "inherited_claims_reverified": [
+    "suite 12/12 at db51bb3 (operator re-run; verify node re-run)",
+    "differential ALL total=20689 pass=20689 fail=0 mutated=0 (operator, verify node, and gate re-runs)",
+    "probes 24/24 (operator, verify node, and gate re-runs)"
+  ],
+  "rejected_claims": [],
+  "inheritance_gaps": [],
+  "new_decisions": [
+    {"id": "E3-D1", "decision": "R6_COVERAGE_GAP_VERIFIED: surrogate ef_dp_backtrack (earliest-finish DP, standard backtracking) preserves R5 on 71,904 oracle-differential instances (0 weight mismatches; 13,754 R6-divergences) yet passes all 12 pre-existing tests.", "status": "VERIFIED", "evidence": ".creator-zero/experiment-3/sandbox/evidence-round-0.json"},
+    {"id": "E3-D2", "decision": "The classic 8-job instance has a UNIQUE optimum (11, [2,6]) — it is not tie-bearing, so pinning its schedule would test R3/R5, not R6. M2's suggestion to strengthen R6 via test_classic_instance index assertions would NOT have discriminated R6.", "status": "VERIFIED", "evidence": "full optimal-set enumeration in evidence-round-0.json (q3)"},
+    {"id": "E3-D3", "decision": "Smallest discriminating regression case under measure (jobs, coordinate span, wmax, assertions): [(0,2,1),(0,1,1)] expected (1,[0]); n<2 provably tie-free; all strictly smaller cells exhaustively non-discriminating.", "status": "VERIFIED", "evidence": "q4 minimality search in evidence-round-0.json"},
+    {"id": "E3-D4", "decision": "Added test_tie_break_lex_smallest_when_later_index_finishes_first (+6/-0 lines, single assertion, oracle-first provenance). Fails both admissible surrogates ((1,[1]) != (1,[0])); passes canonical solver (13/13).", "status": "APPLIED_AND_VERIFIED", "evidence": ".creator-zero/experiment-3/candidate/candidate.diff, sandbox-verify/verify-verdict.json, gate-decision.json"},
+    {"id": "E3-D5", "decision": "src/solver.py not modified: no new evidence of implementation defect (canonical solver agrees with oracle everywhere tested).", "status": "HELD"}
+  ],
+  "decomposition": [
+    {"id": "Q1", "summary": "does any R5-preserving R6-violating implementation pass the whole suite?", "resolved_by": "evidence-gap-and-derivation", "answer": "yes: ef_dp_backtrack 12/12"},
+    {"id": "Q2", "summary": "violation class + per-surrogate R5/R6 admissibility proof", "resolved_by": "evidence-gap-and-derivation", "answer": "2/2 surrogates admissible (machine-checked)"},
+    {"id": "Q3", "summary": "does the test instance admit >=2 optimal sequences with R6 selecting one?", "resolved_by": "evidence-gap-and-derivation + verify-candidate recheck", "answer": "yes: {[0],[1]}, lex-min [0]; classic instance NOT tie-bearing"},
+    {"id": "Q4", "summary": "minimality under explicit measure", "resolved_by": "evidence-gap-and-derivation", "answer": "n=2/span=2/wmax=1/1 assertion; smaller cells exhaustively negative"},
+    {"id": "Q5", "summary": "spec-entailed expectation, oracle-first provenance", "resolved_by": "evidence-gap-and-derivation + verify-candidate recheck", "answer": "oracle + hand derivation before solver run; all agree (1,[0])"},
+    {"id": "Q6", "summary": "written test discriminates: fails every surrogate, passes canonical", "resolved_by": "verify-candidate", "answer": "yes"},
+    {"id": "Q7", "summary": "post-mutation integrity: pure-addition diff, suite/differential/probes green", "resolved_by": "verify-candidate + gate", "answer": "yes: 13/13, 20689/20689, 24/24, +6/-0"}
+  ],
+  "final_topology": {
+    "spec": ".creator-zero/experiment-3/final-harness.json",
+    "runbook": ".creator-zero/runs/experiment-3-r6-coverage-runbook.json",
+    "nodes": ["evidence-gap-and-derivation (test)", "act-candidate-test (act, conditional on H1)", "verify-candidate (verify)", "report (return)"],
+    "edges": ["evidence -authorize-> act", "act -verify-> verify", "verify -return-> report", "evidence -return-> report (H0 path)"],
+    "bounds": {"max_depth": 0, "max_model_calls": 6, "model_calls_used": 4},
+    "epistemic_compression": {"Q": 7, "V_H": 4, "rho_H": 0.571}
+  },
+  "synthesis_rounds": 1,
+  "synthesis_invocations": {"decomposer": 2, "composer": 1},
+  "boundary_events": [{"spec": "composer-round-0.json", "verdict": "VALID", "rejections": 0}],
+  "runtime_topology_fidelity": "EXACT — each node ran as an independent fresh model instance; Actor wrote only in .creator-zero/experiment-3/candidate/; Verifier re-executed all checks independently; promotion performed exclusively by deterministic gate.py; no model session (operator included) ever wrote a canonical target file, unlike Experiment 2's parent-Creator edit.",
+  "mutation": {
+    "artifact": "tests/test_solver.py",
+    "change": "added test_tie_break_lex_smallest_when_later_index_finishes_first: assertEqual(solve([(0, 2, 1), (0, 1, 1)]), (1, [0])) (+6/-0 lines)",
+    "actor": "act-candidate-test node (candidate-write authority only)",
+    "candidate_workspace": ".creator-zero/experiment-3/candidate/",
+    "authorizing_evidence": "H1 verdict in sandbox/evidence-round-0.json (gap witness + tie enumeration + minimality + oracle-first expectation)",
+    "verification": "verify-candidate: 9/9 ACCEPT; gate: 8/8 ACCEPT incl. independent suite/differential/probes re-runs and pure-addition diff audit",
+    "promotion": "PROMOTED by gate.py deterministic copy; post-promotion suite 13/13 green",
+    "commit": "933d2489f92a7469fbda219579feb544de17a4e7"
+  },
+  "verification": {
+    "verifier": "verify-candidate node, .creator-zero/experiment-3/sandbox-verify/verify-verdict.json (overall ACCEPT, 9 checks)",
+    "gate": ".creator-zero/experiment-3/gate-decision.json (deterministic, ACCEPT, 8 checks)",
+    "reproducibility": "All quantitative claims reproducible at the end commit: python -m unittest discover -s tests (13/13); .creator-zero/harness/differential.py; .creator-zero/harness/probes.py; surrogates preserved under .creator-zero/experiment-3/sandbox/surrogates/ with driver.py."
+  },
+  "coverage_verdict": "R6_COVERAGE_GAP_VERIFIED",
+  "experiment_result": "PASS",
+  "unresolved": [
+    "R8 polynomial-runtime still has no unit-suite coverage (only the empirical harness probe), carried over from M2.",
+    "The suite's R6 protection is now witnessed against the constructed violation class (reconstruction-order + higher-index policies); adequacy against violation classes outside it is bounded, not universal.",
+    "gate.py is experiment-local infrastructure; a reusable promotion gate inside .creator-zero/ proper (contract-governed) does not yet exist."
+  ],
+  "recommended_next_task": "Experiment 4 candidate: generalize the candidate/gate mechanism from experiment-local (gate.py) into the Creator-0 contract itself (a governed 'promotion' relation with deterministic gate scripts as first-class boundary objects), then test whether a fresh lineage can execute a mutation task under the generalized gate without any experiment-specific scaffolding. Alternatively: close the R8 unit-coverage gap under the same external D/C synthesis discipline, testing whether the architecture scales to a performance property where 'executable counterexample' requires an asymptotic argument rather than a value comparison.",
+  "reconstruction_guide_for_successors": "Start from this file plus the canonical repository at the end commit. The full causal record is under .creator-zero/experiment-3/: decomposer/composer round artifacts (the exact JSON that crossed role boundaries), final-harness.json, execution-ledger.jsonl (event sequence), validation-events.jsonl, evidence.json (evidence classification with pointers), sandbox/evidence-round-0.json (all raw enumerations), sandbox-verify/verify-verdict.json, gate-decision.json, gate.py (the promotion mechanism itself), and report.md (the full experiment report). Surrogate implementations and the differential driver are preserved and re-runnable."
+}
