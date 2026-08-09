@@ -1,0 +1,41 @@
+{
+  "topology_id": "H-e6-t06-local-independent-verify",
+  "predictions_hash": "sha256:43f8a73e0ed66fe4af09d0c6a1de1c80e8cfad9dc7516aa31a0bfdbfcafeecb2",
+  "resolved_distinctions": [
+    {
+      "id": "Q1",
+      "resolved_by": "resolve-local"
+    },
+    {
+      "id": "Q2",
+      "resolved_by": "resolve-local"
+    },
+    {
+      "id": "Q3",
+      "resolved_by": "verify-independent"
+    },
+    {
+      "id": "Q4",
+      "resolved_by": "resolve-local"
+    }
+  ],
+  "unresolved_distinctions": [],
+  "node_completion_order": [
+    "observe-evidence",
+    "resolve-local",
+    "verify-resolution",
+    "verify-independent",
+    "return-result"
+  ],
+  "resource_use": {
+    "model_calls": 2,
+    "child_calls": 0,
+    "model_call_budget": 2,
+    "wall_clock_ms": 310000
+  },
+  "formal_failures": [],
+  "authority_violations": [],
+  "verification_effect": "confirmed",
+  "task_result": "correct",
+  "child_launches": 0
+}

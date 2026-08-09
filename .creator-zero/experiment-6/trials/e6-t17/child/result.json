@@ -1,0 +1,5 @@
+{
+  "summary": "Enumerated all 5 distinct parses (Catalan(3)) of the expression 8 - 2 ^ 2 - 1 under the precedence-free, associativity-free grammar E -> E op E | number, written as sorted fully parenthesized forms in enumeration.json.",
+  "files_produced": ["enumeration.json", "result.json", "execution-ledger.jsonl"],
+  "model_calls_spent": 0
+}

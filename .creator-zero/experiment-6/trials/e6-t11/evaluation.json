@@ -1,0 +1,135 @@
+{
+  "topology_id": "H-e6-t11-isolated-child",
+  "resolved_distinctions": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "unresolved_distinctions": [],
+  "novel_evidence": [
+    "ev-1",
+    "ev-2",
+    "ev-3"
+  ],
+  "duplicate_evidence": [
+    "ev-child-1"
+  ],
+  "verification_effect": "confirmed",
+  "task_result": "correct",
+  "resource_use": {
+    "model_calls": 2,
+    "child_calls": 1,
+    "model_call_budget": 2,
+    "wall_clock_ms": 492000
+  },
+  "formal_failures": [
+    "TOPOLOGY_GUARD_FAIL"
+  ],
+  "prediction_outcomes": [
+    {
+      "prediction_id": "H-e6-t11-isolated-child-pr01",
+      "kind": "resolves",
+      "outcome": "HELD",
+      "why": "Q1 resolved by predicted node observe-evidence",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t11-isolated-child-pr02",
+      "kind": "resolves",
+      "outcome": "HELD",
+      "why": "Q2 resolved by predicted node observe-evidence",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t11-isolated-child-pr03",
+      "kind": "resolves",
+      "outcome": "HELD",
+      "why": "Q3 resolved by predicted node child-return",
+      "weight": 1.0,
+      "principles": [
+        "P-INDEPENDENCE"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t11-isolated-child-pr04",
+      "kind": "runtime_path",
+      "outcome": "HELD",
+      "why": "completion order consistent with declared causal order",
+      "weight": 1.0,
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t11-isolated-child-pr05",
+      "kind": "model_call_budget",
+      "outcome": "HELD",
+      "why": "2 <= 2",
+      "weight": 0.5,
+      "principles": [
+        "P-MINIMALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t11-isolated-child-pr06",
+      "kind": "authority_envelope",
+      "outcome": "HELD",
+      "why": "no authority violation observed",
+      "weight": 1.0,
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t11-isolated-child-pr07",
+      "kind": "novel_evidence",
+      "outcome": "FAILED",
+      "why": "every child evidence record duplicates parent evidence",
+      "weight": 1.0,
+      "principles": [
+        "P-INDEPENDENCE"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t11-isolated-child-pr08",
+      "kind": "verification_effect",
+      "outcome": "HELD",
+      "why": "verification effect: confirmed",
+      "weight": 1.0,
+      "principles": [
+        "P-FRESHNESS",
+        "P-ATTENUATION"
+      ]
+    }
+  ],
+  "observed_value": {
+    "delta_e": 0.875,
+    "cost": 1.0,
+    "redundancy": 0.25,
+    "governance_risk": 0.25
+  },
+  "observed_utility": -0.875,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.075,
+      "cost": 0.625,
+      "redundancy": 0.2,
+      "governance_risk": 0.25
+    },
+    "mean_component_error": 0.2875,
+    "utility_error": 1.4
+  },
+  "observed_value_operationalized": {
+    "delta_e": 1.0,
+    "cost": 0.375,
+    "redundancy": 0.25,
+    "governance_risk": 0.25
+  },
+  "observed_utility_operationalized": -0.125
+}

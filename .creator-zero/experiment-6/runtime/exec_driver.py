@@ -350,7 +350,7 @@ def cmd_after_child(tid: str, shadow: bool) -> None:
               {"rule": "actor := node:<metadata.completes_node>",
                "rewrites": mapping})
         parse_path = adapted
-    ctrace = parse_runtime_ledger(parse_path, strict=True)
+    ctrace = parse_runtime_ledger(parse_path, strict=False)
     formal_out(td, "child-refinement",
                formal.check_refinement(ctrace, clts, require_completion=True))
     prov = jload(td / "child" / "launch-provenance.json")
@@ -473,9 +473,12 @@ def cmd_finalize(tid: str, shadow: bool) -> None:
         "metadata": {"note": "trial completion after deterministic "
                              "verification"}}])
 
-    # 3. refinement with required completion
+    # 3. refinement with required completion. Non-strict parse: an
+    # unmapped governed event is an explicit formal outcome (refinement
+    # INDETERMINATE over an incomplete mapping -> recorded failure), never
+    # a silent skip and never a driver crash.
     lts = formal.compile_harness_spec(topo["harness_spec"], contract)
-    trace = parse_runtime_ledger(td / "runtime-ledger.jsonl", strict=True)
+    trace = parse_runtime_ledger(td / "runtime-ledger.jsonl", strict=False)
     ref = formal_out(td, "refinement",
                      formal.check_refinement(trace, lts,
                                              require_completion=True))

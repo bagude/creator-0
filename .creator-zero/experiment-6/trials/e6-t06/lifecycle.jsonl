@@ -1,3 +1,5 @@
 {"state": "PREPARED", "at": "2026-08-09T17:04:38Z", "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t06/primary/exec-ws", "topology": "H-e6-t06-local-independent-verify", "blinding_scan": "PASS"}
 {"state": "EXEC_COLLECTED", "at": "2026-08-09T17:07:58Z", "family": "local-independent-verify"}
 {"state": "EXAMINER_PREPARED", "at": "2026-08-09T17:26:22Z", "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t06/primary/examiner-ws"}
+{"state": "EXAMINER_RETURNED", "at": "2026-08-09T17:28:13Z"}
+{"state": "FORMALLY_CHECKED", "at": "2026-08-09T17:28:13Z", "task_verified": true, "observed_utility": 0.55}

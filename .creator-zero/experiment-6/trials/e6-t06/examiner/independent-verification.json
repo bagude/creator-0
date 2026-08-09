@@ -1,0 +1,28 @@
+{
+  "task_id": "e6-t06",
+  "method": "Disjoint re-derivation per examiner-charge.md, computed from package/artifacts/spec.md and package/artifacts/items.json only; derivations.md was never opened, so the first derivation's intermediate work was not consulted (E-B's non-consultation condition holds). Method differs from the worker's: (1) for the 8 'validate' identifiers I did not compute the check digit at all — I took the final digit at weight 1 and payload positions 1..7 counted from the right at weights 3,7,1,3,7,1,3, computed the total T over all 8 digits, and declared VALID iff T mod 10 == 0; (2) for the 4 'compute' payloads I worked LEFT to RIGHT with explicit phase correction p = 7 - i (weight 3 if p mod 3 == 1, 7 if p mod 3 == 2, 1 if p mod 3 == 0), giving left-to-right weights 1,7,3,1,7,3, then check digit (10 - (S mod 10)) mod 10. Per-item E-B agreement record (mine vs result.json): validate 66373197 T=110 (7+27+7+3+21+21+6+18) VALID vs VALID AGREE; 74193967 T=150 (7+18+63+3+27+7+4+21) VALID vs VALID AGREE; 92489881 T=171 (1+24+56+9+24+28+2+27) INVALID vs INVALID AGREE; 52874804 T=158 (4+0+56+4+21+56+2+15) INVALID vs INVALID AGREE; 74391491 T=130 (1+27+28+1+27+21+4+21) VALID vs VALID AGREE; 91324575 T=120 (5+21+35+4+6+21+1+27) VALID vs VALID AGREE; 15878375 T=140 (5+21+21+8+21+56+5+3) VALID vs VALID AGREE; 29067655 T=102 (5+15+42+7+18+0+9+6) INVALID vs INVALID AGREE; compute 479812 S=101 (4+49+27+8+7+6) digit 9 vs 9 AGREE; 153886 S=127 (1+35+9+8+56+18) digit 3 vs 3 AGREE; 278381 S=137 (2+49+24+3+56+3) digit 3 vs 3 AGREE; 027899 S=133 (0+14+21+8+63+27) digit 7 vs 7 AGREE. Agreement: 12/12. My totals also cross-check the worker's claimed payload sums in resolution.json via T = S + final digit for every validate item (e.g. 110 = 103 + 7, 171 = 170 + 1, 102 = 97 + 5) and match the worker's compute sums exactly. Ordering disclosure: the session protocol instructed reading the whole workspace before working, so result.json's answers were in context before my derivation, deviating from the charge's derive-first ordering; the E-B condition itself (no consultation of the first derivation's intermediate work, derivations.md) was strictly honored, and every total above is shown in full so a deterministic checker can re-verify my arithmetic independently of any anchoring concern.",
+  "per_distinction": [
+    {
+      "id": "Q1",
+      "verdict": "CONCUR",
+      "why": "My congruence-form derivation (VALID iff T mod 10 == 0 with the check digit included at weight 1) reproduces all 8 verdicts: VALID, VALID, INVALID, INVALID, VALID, VALID, VALID, INVALID in items.json order. The three INVALID verdicts the charge flagged as phase-error-sensitive (92489881 T=171, 52874804 T=158, 29067655 T=102) are confirmed non-multiples of 10. The worker's stated weight convention (rightmost payload digit weight 3, i.e. left-to-right 3,1,7,3,1,7,3 for a 7-digit payload) is exactly spec.md's rule, and the worker's claimed sums S match my totals via T = S + final digit on every item."
+    },
+    {
+      "id": "Q2",
+      "verdict": "CONCUR",
+      "why": "My left-to-right phase-corrected computation (weights 1,7,3,1,7,3 for a 6-digit payload, equivalent to spec.md's rightmost-gets-3 rule) yields 9, 3, 3, 7 with sums 101, 127, 137, 133 — identical to the worker's answers and claimed sums."
+    },
+    {
+      "id": "Q3",
+      "verdict": "CONCUR",
+      "why": "The worker correctly left Q3 UNRESOLVED (it could not admissibly self-satisfy E-B) and assigned the disjoint re-derivation to this examiner. This report supplies that evidence: a causally separate session, methods disjoint from the worker's tabulation (congruence total for validate; left-to-right phase-corrected for compute), derivations.md never consulted, and per-item agreement recorded in the method field. Answer to Q3's question: yes — the disjoint re-derivation agrees with the first derivation on all 12 of 12 items."
+    },
+    {
+      "id": "Q4",
+      "verdict": "CONCUR",
+      "why": "Judged against spec.md's right-to-left 3,7,1 weighting, my independent computation of every item matches result.json exactly, so per my derivation every one of the 12 answers is correct (E-C). The worker correctly noted deterministic root verification is the final authority on E-C satisfaction; nothing in my re-derivation contradicts any answer."
+    }
+  ],
+  "discrepancies": [],
+  "overall": "CONFIRMED"
+}

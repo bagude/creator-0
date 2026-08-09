@@ -1,0 +1,48 @@
+{
+  "topology_id": "H-e6-t06-local-independent-verify",
+  "gain": {
+    "resolved_distinctions": [
+      "Q1",
+      "Q2",
+      "Q3",
+      "Q4"
+    ],
+    "requirements_satisfied": [
+      "E-A",
+      "E-B",
+      "E-C"
+    ],
+    "requirements_total": [
+      "E-A",
+      "E-B",
+      "E-C"
+    ],
+    "novel_evidence": [
+      "ev-1",
+      "ev-2",
+      "ev-3",
+      "ev-4"
+    ],
+    "verification_effect": "confirmed",
+    "coverage_gain": 0.0,
+    "score": 1.0
+  },
+  "cost": {
+    "model_calls": 2,
+    "child_calls": 0,
+    "wall_clock_ms": 310000,
+    "score": 0.25
+  },
+  "redundancy": {
+    "duplicate_evidence": [
+      "ev-exam-1"
+    ],
+    "unused_outputs": [],
+    "score": 0.2
+  },
+  "governance": {
+    "violations": [],
+    "score": 0.0
+  },
+  "observed_utility": 0.55
+}

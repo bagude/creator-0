@@ -1,0 +1,10 @@
+{
+  "deliverable": "search-report.json",
+  "files_produced": [
+    "search-report.json",
+    "search-report.md",
+    "result.json",
+    "execution-ledger.jsonl"
+  ],
+  "model_calls_spent": 0
+}

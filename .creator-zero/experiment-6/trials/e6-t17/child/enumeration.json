@@ -1,0 +1,11 @@
+{
+  "items": [
+    "(((8-2)^2)-1)",
+    "((8-(2^2))-1)",
+    "((8-2)^(2-1))",
+    "(8-((2^2)-1))",
+    "(8-(2^(2-1)))"
+  ],
+  "method": "The expression tokenizes as the fixed sequence 8 - 2 ^ 2 - 1 (leaves 8,2,2,1; operators -,^,- in positions 1,2,3). Under the grammar E -> E op E | number with no precedence and no associativity, a parse of a token span is determined solely by which operator position is chosen as the root split, applied recursively to the left and right subspans; leaves parse uniquely as numbers. I enumerated by exhaustive recursion: for the span of 4 leaves, choose each of the 3 operator positions as root, and recursively enumerate every combination of left-subspan and right-subspan parses (spans of 1 leaf have 1 parse, spans of 2 leaves have 1, spans of 3 leaves have 2). This yields root at op1: 1*2=2 parses, root at op2: 1*1=1 parse, root at op3: 2*1=2 parses, total 5, matching Catalan(3)=5, the count of binary trees over 4 leaves. The enumeration is complete because every derivation of E over the token sequence must pick exactly one root operator, and the recursion covers all root choices and all subparse combinations for each; distinctness holds because different tree shapes yield different parenthesizations. Items are rendered fully parenthesized with no spaces and sorted in ascending byte order ('(' 0x28 sorts before digits).",
+  "count": 5
+}

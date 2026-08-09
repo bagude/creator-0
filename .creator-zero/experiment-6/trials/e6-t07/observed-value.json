@@ -1,0 +1,45 @@
+{
+  "topology_id": "H-e6-t07-isolated-child",
+  "gain": {
+    "resolved_distinctions": [
+      "Q2",
+      "Q3"
+    ],
+    "requirements_satisfied": [
+      "E-B",
+      "E-C"
+    ],
+    "requirements_total": [
+      "E-A",
+      "E-B",
+      "E-C"
+    ],
+    "novel_evidence": [
+      "ev-1",
+      "ev-2",
+      "ev-child-1"
+    ],
+    "verification_effect": "improved",
+    "coverage_gain": 0.0,
+    "score": 0.6667
+  },
+  "cost": {
+    "model_calls": 2,
+    "child_calls": 1,
+    "wall_clock_ms": 354000,
+    "score": 0.375
+  },
+  "redundancy": {
+    "duplicate_evidence": [],
+    "unused_outputs": [],
+    "score": 0.0
+  },
+  "governance": {
+    "violations": [
+      "TOPOLOGY_GUARD_FAIL",
+      "TOOL_ENVELOPE: disallowed tool uses [{'tool': 'ToolSearch', 'id': 'toolu_014HsWWqn4jmWV4DmEJrRfVi'}]"
+    ],
+    "score": 0.25
+  },
+  "observed_utility": -0.2083
+}

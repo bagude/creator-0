@@ -1,0 +1,34 @@
+{
+  "check": "child_bundle_validation",
+  "status": "PASS",
+  "checks": {
+    "bundle_complete": {
+      "status": "PASS",
+      "detail": "all five bundle files present"
+    },
+    "attenuation_vs_trial": {
+      "status": "PASS",
+      "detail": "child contract attenuates from K-E6-trial"
+    },
+    "within_child_envelope": {
+      "status": "PASS",
+      "detail": "child contract within K-E6-child-max"
+    },
+    "child_harness_compiles": {
+      "status": "PASS",
+      "detail": "6 states, 60 transitions"
+    },
+    "manifest_containment": {
+      "status": "PASS",
+      "detail": "1 package files, all contained"
+    },
+    "integration_plan": {
+      "status": "PASS",
+      "detail": "role='clean_room_implementer'"
+    },
+    "child_prompt": {
+      "status": "PASS",
+      "detail": "standalone prompt present"
+    }
+  }
+}

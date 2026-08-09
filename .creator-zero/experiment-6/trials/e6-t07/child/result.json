@@ -1,0 +1,6 @@
+{
+  "deliverable": "render_clean.py",
+  "summary": "Implemented the placeholder-substitution specification from inputs/render.md as render_clean.py, exposing render(p) where p = {\"template\": t, \"context\": ctx}. A compiled regex matches exactly '{{' + [a-z]+ + '}}'; each match is replaced with context[name], or the empty string when the name is absent from the context. Substitution uses a single left-to-right re.sub pass with a callable replacement, so inserted values are literal text that is never re-scanned for placeholders, and no other transformation is applied. The module is stdlib-only and has no import-time side effects.",
+  "files_produced": ["render_clean.py", "result.json", "execution-ledger.jsonl"],
+  "model_calls_spent": 0
+}

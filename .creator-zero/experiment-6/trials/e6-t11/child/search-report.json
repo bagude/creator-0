@@ -1,0 +1,33 @@
+{
+  "verdict": "VIOLATION_FOUND",
+  "witnesses": [
+    ["2023-08-30", 1],
+    ["2024-08-30", 1],
+    ["2025-08-30", 1],
+    ["2023-08-29", 2],
+    ["2023-07-15", 60],
+    ["2023-08-01", 60]
+  ],
+  "classes_searched": [
+    "n = 0 identity on arbitrary valid dates (loop body never runs; input returned verbatim) — correct",
+    "Advances that stay strictly inside a single month, all twelve months, both leap and non-leap years — correct (the day counter only increments and never reaches the _dim comparison boundary)",
+    "January 31 -> February 1 rollover (DAYS[0] = 31, true 31) — correct",
+    "February 28 -> March 1 in non-leap 2023 and 2025 (_leap false, _dim = DAYS[1] = 28, true 28) — correct",
+    "February 28 -> 29 -> March 1 in leap 2024 (_leap(2024) true, _dim = 29, true 29) — correct",
+    "March 31 -> April 1 rollover (DAYS[2] = 31, true 31) — correct",
+    "April 30 -> May 1 rollover (DAYS[3] = 30, true 30) — correct",
+    "May 31 -> June 1 rollover (DAYS[4] = 31, true 31) — correct",
+    "June 30 -> July 1 rollover (DAYS[5] = 30, true 30) — correct",
+    "July 31 -> August 1 rollover (DAYS[6] = 31, true 31) — correct",
+    "August rollover (DAYS[7] = 30 but true August has 31 days): any step from August 30 rolls to September 1 instead of August 31 — VIOLATION in all three domain years; starting exactly on August 31 is coincidentally correct (32 > 30 rolls to the true successor September 1)",
+    "September 30 -> October 1 rollover (DAYS[8] = 30, true 30) — correct",
+    "October 31 -> November 1 rollover (DAYS[9] = 31, true 31) — correct",
+    "November 30 -> December 1 rollover (DAYS[10] = 30, true 30) — correct",
+    "December 31 -> January 1 year rollover for start years 2023, 2024, 2025 (DAYS[11] = 31, true 31; m > 12 branch resets m and increments y) — correct",
+    "Starts on the next-to-last true day of each month with n = 2 (exercises last-day step then rollover) — correct for all months except August (2023-08-30 is the last day the code recognizes, so 2023-08-29 + 2 lands on 2023-09-01 instead of the true 2023-08-31)",
+    "Multi-month spans up to n = 60 not touching the Aug 30 -> 31 step (e.g. 2023-01-31 + 60 = 2023-04-01, 2024-02-28 + 2 = 2024-03-01) — correct",
+    "Multi-month spans up to n = 60 crossing the Aug 30 -> 31 step (e.g. 2023-07-15 + 60, 2023-08-01 + 60) — VIOLATION, result is exactly one day ahead of the true calendar"
+  ],
+  "method": "The loop in add_days is a repeated successor function: each iteration increments the day and rolls over when the day exceeds _dim(y, m), which reads the DAYS table (with a correct leap-February override). Correctness of every (d, n) therefore reduces to correctness of the single-step successor at every date the traversal visits, so the domain was partitioned by which table entry and which branch each step exercises: the n = 0 identity, in-month steps, each of the twelve month-end rollovers (from both the last and next-to-last true day), leap versus non-leap February across 2023-2025, the December 31 year rollover for each domain year, and multi-month spans up to n = 60 that do and do not cross each boundary. Each class was hand-traced through the code exactly as written and compared entry-by-entry against the true Gregorian month lengths (31,28/29,31,30,31,30,31,31,30,31,30,31). Every entry matches except DAYS[7] (August) = 30 versus the true 31, so exactly the pairs whose day-by-day path strictly spans the true August 30 -> August 31 step are wrong, and each such result is one calendar day ahead of the truth; all other classes are step-for-step correct.",
+  "no_violation_argument": null
+}

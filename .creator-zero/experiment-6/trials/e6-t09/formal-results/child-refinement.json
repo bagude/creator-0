@@ -1,0 +1,44 @@
+{
+  "check": "runtime_refinement",
+  "status": "FAIL",
+  "formal_relation": "Runtime <= Spec",
+  "counterexample": {
+    "violation": "REFINEMENT_VIOLATION",
+    "offending_transition": {
+      "event_id": "evt-001",
+      "source": "",
+      "label": "observe",
+      "target": "",
+      "actor": "node:n1",
+      "timestamp": "2026-08-09T00:00:01Z",
+      "artifact_refs": [],
+      "contract_id": "",
+      "metadata": {
+        "completes_node": "n1",
+        "detail": "Read inputs/graph.json: 7 vertices (v1..v7), 9 edges (v1v2, v1v3, v2v3, v2v4, v3v5, v4v5, v4v6, v5v7, v6v7); degrees: v2,v3,v4,v5 = 3, v1,v6,v7 = 2."
+      }
+    },
+    "event_index": 0,
+    "source_state": "done={}|promoted=0|complete=0",
+    "expected_allowed_labels": [
+      "consult",
+      "observe",
+      "persist",
+      "propose",
+      "reconstruct",
+      "reject",
+      "return",
+      "tau",
+      "validate"
+    ],
+    "trace_prefix": []
+  },
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-6/trials/e6-t09/child/execution-ledger.jsonl"
+  ],
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "unmapped_events": []
+}

@@ -1,0 +1,50 @@
+{
+  "artifact": "fresh-child launch provenance",
+  "creator": "V-E6-e6-t06",
+  "purpose": "Experiment 6 examiner session for trial e6-t06",
+  "fresh": true,
+  "model": "claude-fable-5",
+  "session_id": "40b56c36-ec54-4dc6-98a1-a70db339397b",
+  "allowed_tools": [
+    "Read",
+    "Write"
+  ],
+  "working_directory": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t06/primary/examiner-ws",
+  "prompt_path": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t06/primary/examiner-ws/prompt.md",
+  "prompt_sha256": "3d447a21a58ae3cac87454b273c8ef29b71fa350ecef96d46e2655ae01c44f0d",
+  "command_display": "claude -p <prompt text> --session-id 40b56c36-ec54-4dc6-98a1-a70db339397b --model claude-fable-5 --allowedTools 'Read Write' --output-format stream-json --verbose",
+  "environment_sanitization": {
+    "removed_variables": [
+      "CLAUDE_AFTER_LAST_COMPACT",
+      "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+      "CLAUDE_CODE_CHILD_SESSION",
+      "CLAUDE_CODE_POST_FOR_SESSION_INGRESS_V2",
+      "CLAUDE_CODE_REMOTE_SESSION_ID",
+      "CLAUDE_CODE_SESSION_ID",
+      "CLAUDE_PID",
+      "CLAUDE_SESSION_INGRESS_TOKEN_FILE"
+    ],
+    "exact_denylist": [
+      "CLAUDE_CODE_SESSION_ID",
+      "CLAUDE_CODE_CHILD_SESSION",
+      "CLAUDE_CODE_REMOTE_SESSION_ID",
+      "CLAUDE_SESSION_ID",
+      "CLAUDE_CODE_SESSION_RESUME",
+      "CLAUDE_CODE_CONTINUE",
+      "CLAUDE_AFTER_LAST_COMPACT",
+      "CLAUDE_PID"
+    ],
+    "pattern_denylist": "^CLAUDE.*(SESSION|RESUME|CONTINUE|TRANSCRIPT|COMPACT)",
+    "residual_continuity_variables": [],
+    "inherited_session_id_present": true,
+    "session_id_reuse": false
+  },
+  "dry_run": false,
+  "started_at": "2026-08-09T17:26:23Z",
+  "executed": true,
+  "exit_status": 0,
+  "finished_at": "2026-08-09T17:28:13Z",
+  "log_path": "/home/user/creator-0/.creator-zero/experiment-6/trials/e6-t06/examiner/examiner-session.log",
+  "log_sha256": "79bff199e4add5fb9156844db2cdfc5c2eb8a85a62fce595eff756d4aefbe160",
+  "session_id_confirmed": true
+}

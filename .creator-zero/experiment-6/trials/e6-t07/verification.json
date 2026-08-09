@@ -1,0 +1,39 @@
+{
+  "trial_id": "e6-t07",
+  "task_verified": false,
+  "result_correct": true,
+  "requirements": {
+    "E-A": {
+      "satisfied": false,
+      "satisfied_by": "none",
+      "why": "0/1 seeded behavior groups identified"
+    },
+    "E-B": {
+      "satisfied": true,
+      "satisfied_by": "child",
+      "why": "isolated implementation authored per the description; item-level comparison computed"
+    },
+    "E-C": {
+      "satisfied": true,
+      "satisfied_by": "integration",
+      "why": "integrated verdict REPRODUCES vs ground truth REPRODUCES"
+    }
+  },
+  "verification_effect": "improved",
+  "duplicate_evidence_ids": [],
+  "extra_evidence_records": [
+    {
+      "id": "ev-child-1",
+      "source_node": "child-return",
+      "description": "isolated implementation + comparison evidence",
+      "duplicate_of_parent": false
+    }
+  ],
+  "details": {
+    "divergent_probe_indices": [],
+    "seeded_groups_hit": [
+      false
+    ],
+    "unused_outputs": []
+  }
+}

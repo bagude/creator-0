@@ -1,0 +1,39 @@
+{
+  "trial_id": "e6-t06",
+  "task_verified": true,
+  "result_correct": true,
+  "requirements": {
+    "E-A": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "all 12 items answered with method stated"
+    },
+    "E-B": {
+      "satisfied": true,
+      "satisfied_by": "examiner",
+      "why": "examiner CONFIRMED"
+    },
+    "E-C": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "all answers exactly correct"
+    }
+  },
+  "verification_effect": "confirmed",
+  "duplicate_evidence_ids": [
+    "ev-exam-1"
+  ],
+  "extra_evidence_records": [
+    {
+      "id": "ev-exam-1",
+      "source_node": "verify-independent",
+      "description": "method-disjoint re-derivation with per-item agreement",
+      "duplicate_of_parent": true
+    }
+  ],
+  "details": {
+    "wrong_items": [],
+    "missing_items": [],
+    "unused_outputs": []
+  }
+}

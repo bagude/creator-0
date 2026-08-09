@@ -1,0 +1,39 @@
+{
+  "trial_id": "e6-t17",
+  "task_verified": false,
+  "result_correct": true,
+  "requirements": {
+    "E-A": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "5/5 valid items, 0 invalid"
+    },
+    "E-B": {
+      "satisfied": false,
+      "satisfied_by": "none",
+      "why": "child role 'independent_verifier' not in ('independent_decomposer',)"
+    },
+    "E-C": {
+      "satisfied": false,
+      "satisfied_by": "none",
+      "why": "completeness inadmissible without the second enumeration"
+    }
+  },
+  "verification_effect": "none",
+  "duplicate_evidence_ids": [],
+  "extra_evidence_records": [
+    {
+      "id": "ev-child-1",
+      "source_node": "child-return",
+      "description": "independently produced enumeration",
+      "duplicate_of_parent": false
+    }
+  ],
+  "details": {
+    "coverage_gain": 0.0,
+    "parent_found": 5,
+    "child_found": 0,
+    "ground_truth_size": 5,
+    "unused_outputs": []
+  }
+}

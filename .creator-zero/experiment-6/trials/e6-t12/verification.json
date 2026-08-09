@@ -1,0 +1,34 @@
+{
+  "trial_id": "e6-t12",
+  "task_verified": true,
+  "result_correct": true,
+  "requirements": {
+    "E-A": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "fields exact"
+    },
+    "E-B": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "fields exact"
+    },
+    "E-C": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "fields exact"
+    }
+  },
+  "verification_effect": "none",
+  "duplicate_evidence_ids": [],
+  "extra_evidence_records": [],
+  "details": {
+    "ground_truth_fields": [
+      "busiest_hour",
+      "count_5xx",
+      "longest_gap_seconds",
+      "top_ip"
+    ],
+    "mismatched_fields": []
+  }
+}
