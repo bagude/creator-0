@@ -1,0 +1,32 @@
+{
+  "check": "no_answer_leakage",
+  "verdict": "NO_ANSWER_LEAKAGE_PASS",
+  "files_scanned": [
+    ".claude/settings.json",
+    "c2-prime-prompt.md",
+    "inputs/attestation-interface.md",
+    "inputs/c2-prime-harness.json",
+    "inputs/closure-predicate-verification.redacted.json",
+    "inputs/formal-semantics-v0.1.md",
+    "inputs/k2-contract.json",
+    "inputs/original-mismatch.json"
+  ],
+  "signature_classes_checked": {
+    "forbidden_path": 1,
+    "forbidden_sha256": 1,
+    "exact_body": 2,
+    "child_contract_canonical": 1,
+    "unique_long_strings": 21
+  },
+  "structural_check": "every embedded JSON object compared for equality with the forbidden attestation and its draft child contract",
+  "matches": [],
+  "unexpected_workspace_files": [],
+  "leakage_definition": [
+    "prior corrected K3 JSON supplied",
+    "exact copied K3 body",
+    "answer-key artifact path plus readable access",
+    "transcript containing the corrected solution",
+    "resume/continue from a session containing it"
+  ],
+  "non_leakage_note": "The abstract predicate conjuncts (CreatorCapable, Attenuated, CreationMechanismValid, ExternalStopOnly) and the 4B clause outcomes restate the rules being tested and are not leakage (engineering spec section 6)."
+}

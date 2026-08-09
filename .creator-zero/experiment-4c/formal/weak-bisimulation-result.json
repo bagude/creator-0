@@ -1,0 +1,95 @@
+{
+  "record": "Experiment 4C \u2014 H6 weak bisimulation, C2' vs historical C2",
+  "secondary_status": "INDETERMINATE",
+  "kernel_results": {
+    "full_granularity": {
+      "assumptions": [
+        "Observable action = (label, actor); actor strings compared literally.",
+        "Finite explicitly-modeled state spaces only; no claim about hidden epistemic states or unrestricted future models.",
+        "Weak matching: tau* observable tau*; tau moves may be matched by zero or more tau steps."
+      ],
+      "check": "weak_bisimulation",
+      "counterexample": {
+        "note": "B has no move with this label/actor",
+        "path_from_initial": [],
+        "side": "A",
+        "state_pair": [
+          "s0",
+          "s0"
+        ],
+        "unmatched_action": {
+          "actor": "c2-prime",
+          "label": "observe"
+        }
+      },
+      "evidence": [
+        "relation size: 1 pairs; initial pair absent"
+      ],
+      "formal_relation": "A ~= B",
+      "status": "FAIL",
+      "unmapped_events": []
+    },
+    "role_abstraction": {
+      "assumptions": [
+        "Observable action = (label, actor); actor strings compared literally.",
+        "Finite explicitly-modeled state spaces only; no claim about hidden epistemic states or unrestricted future models.",
+        "Weak matching: tau* observable tau*; tau moves may be matched by zero or more tau steps."
+      ],
+      "check": "weak_bisimulation",
+      "counterexample": {
+        "note": "B has no matching move to a related pair",
+        "path_from_initial": [],
+        "side": "A",
+        "state_pair": [
+          "s0",
+          "s0"
+        ],
+        "unmatched_action": {
+          "actor": "c2-role",
+          "label": "observe"
+        }
+      },
+      "evidence": [
+        "relation size: 10 pairs; initial pair absent"
+      ],
+      "formal_relation": "A ~= B",
+      "status": "FAIL",
+      "unmapped_events": []
+    }
+  },
+  "constructions": {
+    "trace_lts_builder": ".creator-zero/experiment-4c/build-trace-lts.py (deterministic; nothing dropped or invented)",
+    "mapping_record": ".creator-zero/experiment-4c/historical-c2-ledger-mapping.json",
+    "lts_files": [
+      ".creator-zero/experiment-4c/bisim/c2-prime-lts-full.json",
+      ".creator-zero/experiment-4c/bisim/historical-c2-lts-full.json",
+      ".creator-zero/experiment-4c/bisim/c2-prime-lts-role.json",
+      ".creator-zero/experiment-4c/bisim/historical-c2-lts-role.json"
+    ]
+  },
+  "observable_role_sequences": {
+    "c2_prime": [
+      "observe",
+      "observe",
+      "propose",
+      "verify",
+      "return",
+      "complete"
+    ],
+    "historical_c2": [
+      "observe",
+      "observe",
+      "verify",
+      "return",
+      "complete"
+    ]
+  },
+  "why_indeterminate": [
+    "Full granularity: FAIL is dominated by actor-vocabulary and task differences (historical C2 ran a 3-node challenge harness with decomposer/composer model sub-invocations; C2' ran a 4-node witness harness). This comparison shows the sessions are not the same process, which was never the claim under test.",
+    "Role abstraction (actors quotiented, intra-session synthesis machinery tau-hidden per the committed mapping): FAIL with the distinguishing action being C2'-side observable 'propose' \u2014 the witness-authoring event. The historical ledger contains NO observable witness-authoring action: historical C2 authored its K3 attestation inside its compile-result return node as one of several deliverables, so the historical observation surface cannot expose the very action H6 would need to match.",
+    "Forcing PASS would require hiding C2''s witness-authoring propose as tau; that would silence the governed observable of exactly the capability Experiment 4C tests, so it is declined.",
+    "Per protocol: the historical-C2 abstraction cannot be constructed with a comparable witness-authoring observation without inventing missing events; H6 is therefore INDETERMINATE (insufficient comparable historical observation surface), which does not affect the primary result."
+  ],
+  "what_is_established_despite_indeterminate": "On the shared role surface both sessions realize the same governed envelope pattern \u2014 observe+ then verify, return, complete under a K2-attenuated harness with zero realized creation \u2014 and diverge only on the witness-authoring propose that the historical surface lacks; both kernel counterexamples are persisted verbatim above.",
+  "no_model_verdict_note": "Both kernel FormalResults are reported unmodified; INDETERMINATE is the protocol-mandated classification for insufficient comparable historical evidence (task protocol section 11.D), not an override of any kernel FAIL."
+}

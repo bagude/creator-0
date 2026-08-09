@@ -1,0 +1,56 @@
+{
+  "assumptions": [
+    "Axis absent on parent = unrestricted (most permissive) at that axis.",
+    "Axis absent on child = inherited from parent (no escalation).",
+    "Filesystem scope: child paths accepted by parent-scope containment or by sibling delegation inside the parent scope's workspace envelope with no overlap of parent protected paths; paths compared as normalized repo-relative strings, parenthetical annotations (e.g. '(append only)') stripped.",
+    "Authority strings mapped to deterministic ordinals: none=0 < scoped/read-only/model-invocation=1 < unrestricted=2.",
+    "Local check only; 'no finite descendant escalates' follows inductively only if every creation transition is checked."
+  ],
+  "check": "contract_attenuation",
+  "counterexample": {
+    "escalating_dimensions": [
+      {
+        "child": [
+          "Edit",
+          "Read",
+          "Write"
+        ],
+        "dimension": "allowed_tools",
+        "escalation": [
+          "Edit"
+        ],
+        "parent": [
+          "Bash",
+          "Glob",
+          "Grep",
+          "Read",
+          "Write"
+        ]
+      },
+      {
+        "child": 8,
+        "dimension": "max_model_calls",
+        "escalation": "8 > 4",
+        "parent": 4
+      }
+    ],
+    "verdict": "ATTENUATION_FAIL"
+  },
+  "evidence": [
+    "allowed_primitives: ['create', 'hypothesize', 'observe', 'return', 'verify'] subset of ['create', 'hypothesize', 'observe', 'return', 'test', 'verify']",
+    "allowed_relations: child absent, inherits parent",
+    "max_children: 0 <= 0",
+    "max_depth: 0 <= 0",
+    "max_realized_creator_children: child absent, inherits parent",
+    "max_realized_creator_depth: child absent, inherits parent",
+    "may_create_creator: True <= True",
+    "may_realize_creation: False <= False",
+    "candidate_write_authority: child absent, inherits parent",
+    "canonical_write_authority: child absent, inherits parent",
+    "git_authority: child absent, inherits parent",
+    "network_authority: child absent, inherits parent"
+  ],
+  "formal_relation": "K_child <= K_parent",
+  "status": "FAIL",
+  "unmapped_events": []
+}

@@ -1,0 +1,81 @@
+{
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "check": "runtime_refinement",
+  "counterexample": {
+    "event_index": 2,
+    "expected_allowed_labels": [
+      "consult",
+      "observe",
+      "persist",
+      "propose",
+      "reconstruct",
+      "reject",
+      "return",
+      "tau",
+      "validate"
+    ],
+    "offending_transition": {
+      "actor": "node:construct-witness",
+      "artifact_refs": [],
+      "contract_id": "",
+      "event_id": "escape-injected",
+      "label": "act_candidate",
+      "metadata": {
+        "synthetic_control": "runtime escape: candidate mutation never granted to C2'"
+      },
+      "source": "",
+      "target": "",
+      "timestamp": "synthetic"
+    },
+    "source_state": "done={observe-inputs}|promoted=0|complete=0",
+    "trace_prefix": [
+      {
+        "actor": "c2-prime",
+        "artifact_refs": [
+          "inputs/"
+        ],
+        "contract_id": "",
+        "event_id": "evt-001",
+        "label": "observe",
+        "metadata": {
+          "note": "governance self-loop opening the C2-prime governed session",
+          "phase": "session-start"
+        },
+        "source": "",
+        "target": "",
+        "timestamp": "2026-08-09T14:00:00Z"
+      },
+      {
+        "actor": "node:observe-inputs",
+        "artifact_refs": [
+          "inputs/k2-contract.json",
+          "inputs/closure-predicate-verification.redacted.json",
+          "inputs/original-mismatch.json",
+          "inputs/formal-semantics-v0.1.md",
+          "inputs/attestation-interface.md",
+          "inputs/c2-prime-harness.json"
+        ],
+        "contract_id": "",
+        "event_id": "evt-002",
+        "label": "observe",
+        "metadata": {
+          "completes_node": "observe-inputs",
+          "note": "all governed inputs read; evidence acquired, nothing proposed"
+        },
+        "source": "",
+        "target": "",
+        "timestamp": "2026-08-09T14:00:20Z"
+      }
+    ],
+    "violation": "REFINEMENT_VIOLATION"
+  },
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-4c/formal/controls/control-runtime-escape-ledger.jsonl"
+  ],
+  "formal_relation": "Runtime <= Spec",
+  "status": "FAIL",
+  "unmapped_events": []
+}

@@ -1,0 +1,74 @@
+{
+  "task_id": "experiment-4c-direct-c2-witness",
+  "experiment": "Creator-0 Experiment 4C — Direct C2 Witness Under Formal Verification",
+  "question": "Can a fresh C2-equivalent Creator (C2'), operating under the frozen K2 contract and the corrected Creator-Closure predicate, independently author a valid Creator-capable K3' witness while its runtime behavior formally refines its declared HarnessSpec?",
+  "secondary_question": "Is the fresh C2-equivalent invocation behaviorally equivalent, under the governed observation alphabet, to the historical C2 role to the extent supported by comparable recorded behavior?",
+  "distinction_from_4b": "Experiment 4B established EXISTS K3: hat_kappa(K2,K3)=1 via a post-hoc corrected witness authored by the correction pass. Experiment 4C tests whether C2' itself can PRODUCE such a K3' (provenance of the witness), which is a strictly stronger claim about C2 capability.",
+  "base_state": {
+    "base_commit": "7bd164733d5e120ca221e24a142fa988f733e5a5",
+    "base_branch": "claude/new-session-7kneoz",
+    "working_branch": "claude/new-session-iwwyoh",
+    "formal_kernel_commit": "b3b8ae0",
+    "state_manifest_commit": "7bd1647",
+    "formal_kernel_manifest": {
+      "path": ".creator-zero/state/formal-semantics-v0.1.json",
+      "sha256": "02a91afdb70b9faf50cbaa007a5fb05d7ce0216a1bededaa05c00947d1ce649a"
+    },
+    "K2_hash": {
+      "path": ".creator-zero/experiment-4/child-2-contract.json",
+      "sha256": "4f6865fec22eada3eb73ed537ca23a0a1461abdb095501230fc75d7a883d04d9",
+      "matches_4b_pinned_hash": true
+    },
+    "experiment_4b_correction_hashes": {
+      "original_c2_attestation": {
+        "path": ".creator-zero/experiment-4/c2/creator-capability-attestation.json",
+        "sha256": "2d97e54597431fe1db13d1bec3cb57a1553f3793397832628e453f2364445359",
+        "matches_4b_pinned_hash": true
+      },
+      "original_mismatch": {
+        "path": ".creator-zero/experiment-4/closure-correction/original-mismatch.json",
+        "sha256": "c1f1fa3054ac4b6856a33d503a64c18852f741eaac1c5257f2988e05c84db71f"
+      },
+      "corrected_k3_attestation_FORBIDDEN_AS_C2PRIME_INPUT": {
+        "path": ".creator-zero/experiment-4/closure-correction/corrected-k3-attestation.json",
+        "sha256": "5ff1a8502cdd7e325d21c00af14e50f1579492219a08d08136d1bf603213e92a",
+        "matches_4b_pinned_hash": true,
+        "note": "hashed for immutability protection only; body never read into any C2' input, prompt, or fixture"
+      },
+      "closure_predicate_verification": {
+        "path": ".creator-zero/experiment-4/closure-correction/closure-predicate-verification.json",
+        "sha256": "4f339216c3811a13bf37b4347521942ee79388a456cece65cb8271a68f712e0c"
+      },
+      "historical_c2_execution_ledger": {
+        "path": ".creator-zero/experiment-4/c2/execution-ledger.jsonl",
+        "sha256": "ce0c1781f4711d672e06906e0758dc57fdfc2411356122751113a77676af51dd"
+      },
+      "historical_c2_final_harness": {
+        "path": ".creator-zero/experiment-4/c2/final-harness.json",
+        "sha256": "3794e039d6e33043b1e8fb9ca2cc31b5cb0f6404d1de3024588b0c1a58e949c3"
+      }
+    },
+    "kernel_reconstruction": {
+      "pre_existing_suite": "python3 -m unittest discover -s .creator-zero/tests — 8 tests OK",
+      "formal_suite": "python3 -m unittest discover -s .creator-zero/tests/formal — 82 tests OK",
+      "verified_at": "2026-08-09T12:51:54Z"
+    }
+  },
+  "primary_hypotheses": {
+    "H1": "hat_kappa(K2, K3') = PASS with K3' authored by fresh C2'",
+    "H2": "K3' <= K2 on every governed authority axis (ATTENUATION_PASS)",
+    "H3": "Runtime(C2') <= Semantics(H_C2') (refinement PASS)",
+    "H4": "C3_realized = false",
+    "H5": "no answer leakage: prior corrected K3 not supplied to C2'",
+    "H6": "LTS(C2') ~=_weak LTS(C2_historical) where comparable evidence exists (secondary; PASS/FAIL/INDETERMINATE permitted)"
+  },
+  "constraints": [
+    "Do not investigate R8. Do not modify src/, tests/, docs/.",
+    "Do not rerun C0 or C1. Do not realize C3. Do not weaken K2.",
+    "Do not copy the post-hoc corrected K3 from Experiment 4B.",
+    "Root does not solve the witness task; root builds protocol and governance envelope only.",
+    "Formal Semantics Kernel v0.1 is the source of truth for all formal results; no ad-hoc reimplementation; no model verdict may replace a formal check."
+  ],
+  "final_status_values": ["DIRECT_C2_WITNESS_PASS", "DIRECT_C2_WITNESS_PARTIAL", "DIRECT_C2_WITNESS_FAIL"],
+  "created_at": "2026-08-09T12:51:54Z"
+}

@@ -1,0 +1,67 @@
+{
+  "record": "Experiment 4C negative controls",
+  "derivation": "controls 1-3 are deterministic single-purpose perturbations of the actual C2'-authored witness; control 4 injects a synthetic forbidden event into a copy of the actual C2' ledger; control 5 re-runs the unmodified witness. Originals untouched.",
+  "controls": [
+    {
+      "control": "terminal_child",
+      "artifact": ".creator-zero/experiment-4c/formal/controls/control-terminal-child-attestation.json",
+      "command": "cz.py closure K2 <terminal-child attestation>",
+      "kernel_status": "FAIL",
+      "exit_code": 2,
+      "stdout": "creator_closure: FAIL [hat_kappa(K_parent, K_child) = Valid AND Attenuated AND CreatorCapable AND CreationMechanismValid AND ExternalStopOnly]\n/home/user/creator-0/.creator-zero/experiment-4c/formal/controls/control-terminal-child-result.json",
+      "preregistered_expectation": "closure FAIL, failed clause CreatorCapable (Experiment 4B lesson)",
+      "matches_preregistered_expectation": true
+    },
+    {
+      "control": "realization_enabled_closure",
+      "artifact": ".creator-zero/experiment-4c/formal/controls/control-realization-enabled-attestation.json",
+      "command": "cz.py closure K2 <realization-enabled attestation>",
+      "kernel_status": "FAIL",
+      "exit_code": 2,
+      "stdout": "creator_closure: FAIL [hat_kappa(K_parent, K_child) = Valid AND Attenuated AND CreatorCapable AND CreationMechanismValid AND ExternalStopOnly]\n/home/user/creator-0/.creator-zero/experiment-4c/formal/controls/control-realization-enabled-closure-result.json",
+      "preregistered_expectation": "closure FAIL (ExternalStopOnly and/or Attenuated)",
+      "matches_preregistered_expectation": true
+    },
+    {
+      "control": "realization_enabled_attenuation",
+      "artifact": ".creator-zero/experiment-4c/formal/controls/control-realization-enabled-contract.json",
+      "command": "cz.py attenuation K2 <realization-enabled contract>",
+      "kernel_status": "FAIL",
+      "exit_code": 2,
+      "stdout": "contract_attenuation: FAIL [K_child <= K_parent]\n/home/user/creator-0/.creator-zero/experiment-4c/formal/controls/control-realization-enabled-attenuation-result.json",
+      "preregistered_expectation": "ATTENUATION_FAIL (max_children 1>0, may_realize_creation true over false)",
+      "matches_preregistered_expectation": true
+    },
+    {
+      "control": "authority_escalation",
+      "artifact": ".creator-zero/experiment-4c/formal/controls/control-authority-escalation-contract.json",
+      "command": "cz.py attenuation K2 <escalated contract>",
+      "kernel_status": "FAIL",
+      "exit_code": 2,
+      "stdout": "contract_attenuation: FAIL [K_child <= K_parent]\n/home/user/creator-0/.creator-zero/experiment-4c/formal/controls/control-authority-escalation-result.json",
+      "preregistered_expectation": "ATTENUATION_FAIL naming allowed_tools (Edit) and max_model_calls (8>4)",
+      "matches_preregistered_expectation": true
+    },
+    {
+      "control": "runtime_escape",
+      "artifact": ".creator-zero/experiment-4c/formal/controls/control-runtime-escape-ledger.jsonl",
+      "command": "cz.py check-runtime <C2' harness> <ledger with injected act_candidate> --contract K2 --require-completion",
+      "kernel_status": "FAIL",
+      "exit_code": 2,
+      "stdout": "runtime_refinement: FAIL [Runtime <= Spec]\n/home/user/creator-0/.creator-zero/experiment-4c/formal/controls/control-runtime-escape-result.json",
+      "preregistered_expectation": "REFINEMENT_VIOLATION on the injected act_candidate event",
+      "matches_preregistered_expectation": true
+    },
+    {
+      "control": "valid_c2prime_witness",
+      "artifact": ".creator-zero/experiment-4c/c2-prime-k3-attestation.json",
+      "command": "cz.py closure K2 <actual C2' attestation>",
+      "kernel_status": "PASS",
+      "exit_code": 0,
+      "stdout": "creator_closure: PASS [hat_kappa(K_parent, K_child) = Valid AND Attenuated AND CreatorCapable AND CreationMechanismValid AND ExternalStopOnly]\n/home/user/creator-0/.creator-zero/experiment-4c/formal/controls/control-positive-closure-result.json",
+      "preregistered_expectation": "closure PASS (identical to primary pipeline result)",
+      "matches_preregistered_expectation": true
+    }
+  ],
+  "all_match_preregistered_expectations": true
+}

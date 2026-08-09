@@ -1,0 +1,20 @@
+{
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "check": "runtime_refinement",
+  "counterexample": null,
+  "detail": {
+    "final_state": "done={construct-witness,observe-inputs,return-witness,self-check}|promoted=0|complete=1",
+    "matched_steps": 7
+  },
+  "evidence": [
+    "trace origin: .creator-zero/experiment-4c/c2-prime-execution-ledger.jsonl",
+    "observable events matched: 7",
+    "final reconstructed state: done={construct-witness,observe-inputs,return-witness,self-check}|promoted=0|complete=1"
+  ],
+  "formal_relation": "Runtime <= Spec",
+  "status": "PASS",
+  "unmapped_events": []
+}

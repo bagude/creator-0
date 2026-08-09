@@ -1,0 +1,33 @@
+{
+  "record": "Experiment 4C — deterministic mapping of the historical C2 execution ledger to the normalized formal event schema",
+  "source_ledger": {
+    "path": ".creator-zero/experiment-4/c2/execution-ledger.jsonl",
+    "sha256": "ce0c1781f4711d672e06906e0758dc57fdfc2411356122751113a77676af51dd",
+    "immutable": true
+  },
+  "style_precedent": "follows the committed experiment4-c1 adapter conventions (.creator-zero/formal/adapters.py, .creator-zero/tests/formal/fixtures/experiment4-c1-adapter-mapping.json): model_invocation_start -> consult, model_invocation_end -> propose by the invoked role, phase transitions -> tau, node completion -> the node primitive's execution label with actor node:<id>",
+  "mapping_full_granularity": [
+    {"raw_event": "c2_start", "label": "observe", "actor": "creator", "rationale": "session start acquires task + contract as governed evidence"},
+    {"raw_event": "model_invocation_start", "label": "consult", "actor": "creator", "rationale": "information-only interaction opened by the creator (adapter precedent)"},
+    {"raw_event": "model_invocation_end", "label": "propose", "actor": "<role field: decomposer|composer>", "rationale": "the invoked role returns a typed proposal (adapter precedent)"},
+    {"raw_event": "phase_a_synthesis_complete", "label": "tau", "actor": "creator", "rationale": "internal phase bookkeeping; no governed authority action"},
+    {"raw_event": "deterministic_coverage_check", "label": "validate", "actor": "creator", "rationale": "deterministic validation performed in-session"},
+    {"raw_event": "phase_b_start", "label": "tau", "actor": "creator", "rationale": "internal phase bookkeeping"},
+    {"raw_event": "node_start", "label": "tau", "actor": "creator", "rationale": "node execution is recorded at node_end (adapter precedent: start markers are silent)"},
+    {"raw_event": "node_end (node=evidence-and-surrogates, primitive=test)", "label": "observe", "actor": "node:evidence-and-surrogates", "rationale": "test primitive maps to the observe execution label (labels.py PRIMITIVE_LABEL)"},
+    {"raw_event": "anomaly", "label": "tau", "actor": "creator", "rationale": "recorded internal anomaly and its resolution; no authority-bearing transition; preserved verbatim in the immutable raw ledger"},
+    {"raw_event": "node_end (node=independent-rederivation, primitive=verify)", "label": "verify", "actor": "node:independent-rederivation", "rationale": "verify primitive execution"},
+    {"raw_event": "c2_complete", "label": "return + complete (two normalized events)", "actor": "node:compile-result, then creator", "rationale": "the raw line conflates completion of the compile-result return node (deliverables_verified lists its outputs) with session completion; deterministically split 1->2, in that order. Nothing is dropped and nothing else is added."}
+  ],
+  "role_abstraction_view": {
+    "purpose": "H6 compares the C2 ROLE interface, not intra-session epistemic machinery. This view quotients actor identity and hides intra-session machinery as tau.",
+    "actor_relabeling": "every actor -> 'c2-role' (session-internal node/role naming is implementation identity, not role behavior; precedent: Experiment 4 session-equivalence treated persist/exit/reconstruct as hidden and compared governed behavior, separating process identity from behavioral equivalence)",
+    "tau_hidden_event_classes": [
+      {"class": "consult/propose pairs of intra-session model sub-invocations (historical decomposer/composer synthesis)", "justification": "sub-invocations inside C2's own budget are epistemic machinery internal to the role; the parent boundary observes only their externalized products"},
+      {"class": "validate (internal deterministic coverage self-check)", "justification": "in-session bookkeeping validation, non-authority label"},
+      {"class": "persist (file-write bookkeeping self-loops)", "justification": "non-authority bookkeeping; precedent: persist hidden as tau in the committed e4-c1 session-equivalence mapping"}
+    ],
+    "NOT_hidden": "witness-authoring propose events, node execution observe/verify events, return, complete — these are the role's governed interface. In particular C2-prime's propose (witness authoring) is deliberately kept observable even though hiding it would force a bisimulation PASS: it is the capability under test.",
+    "known_asymmetry": "the historical ledger contains no observable witness-authoring propose event (historical C2 authored its K3 attestation inside its compile-result return node); this asymmetry is expected to be the distinguishing action if role-level bisimulation fails"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "contract_id": "K3-prime",
+  "allowed_primitives": [
+    "observe",
+    "hypothesize",
+    "verify",
+    "create",
+    "return"
+  ],
+  "allowed_tools": [
+    "Read",
+    "Write"
+  ],
+  "max_children": 0,
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "may_create_creator": true,
+  "creator_capability": true,
+  "may_realize_creation": false
+}

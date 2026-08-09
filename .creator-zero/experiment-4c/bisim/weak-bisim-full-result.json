@@ -1,0 +1,27 @@
+{
+  "assumptions": [
+    "Observable action = (label, actor); actor strings compared literally.",
+    "Finite explicitly-modeled state spaces only; no claim about hidden epistemic states or unrestricted future models.",
+    "Weak matching: tau* observable tau*; tau moves may be matched by zero or more tau steps."
+  ],
+  "check": "weak_bisimulation",
+  "counterexample": {
+    "note": "B has no move with this label/actor",
+    "path_from_initial": [],
+    "side": "A",
+    "state_pair": [
+      "s0",
+      "s0"
+    ],
+    "unmatched_action": {
+      "actor": "c2-prime",
+      "label": "observe"
+    }
+  },
+  "evidence": [
+    "relation size: 1 pairs; initial pair absent"
+  ],
+  "formal_relation": "A ~= B",
+  "status": "FAIL",
+  "unmapped_events": []
+}

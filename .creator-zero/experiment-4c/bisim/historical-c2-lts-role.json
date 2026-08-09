@@ -1,0 +1,141 @@
+{
+  "formal_object": "lts",
+  "initial": "s0",
+  "labels": [
+    "complete",
+    "observe",
+    "return",
+    "tau",
+    "verify"
+  ],
+  "metadata": {
+    "construction": "linear trace-LTS, one transition per ledger event, nothing dropped or invented",
+    "mapping_record": ".creator-zero/experiment-4c/historical-c2-ledger-mapping.json",
+    "origin": "/home/user/creator-0/.creator-zero/experiment-4/c2/execution-ledger.jsonl",
+    "view": "role-abstraction"
+  },
+  "states": [
+    "s0",
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16"
+  ],
+  "transitions": [
+    {
+      "actor": "c2-role",
+      "label": "observe",
+      "source": "s0",
+      "target": "s1"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s1",
+      "target": "s2"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s2",
+      "target": "s3"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s3",
+      "target": "s4"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s4",
+      "target": "s5"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s5",
+      "target": "s6"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s6",
+      "target": "s7"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s7",
+      "target": "s8"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s8",
+      "target": "s9"
+    },
+    {
+      "actor": "c2-role",
+      "label": "observe",
+      "source": "s9",
+      "target": "s10"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s10",
+      "target": "s11"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s11",
+      "target": "s12"
+    },
+    {
+      "actor": "c2-role",
+      "label": "verify",
+      "source": "s12",
+      "target": "s13"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s13",
+      "target": "s14"
+    },
+    {
+      "actor": "c2-role",
+      "label": "return",
+      "source": "s14",
+      "target": "s15"
+    },
+    {
+      "actor": "c2-role",
+      "label": "complete",
+      "source": "s15",
+      "target": "s16"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "s16",
+      "target": "s16"
+    }
+  ],
+  "version": "0.1"
+}

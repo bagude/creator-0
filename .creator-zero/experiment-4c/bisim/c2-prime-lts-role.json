@@ -1,0 +1,79 @@
+{
+  "formal_object": "lts",
+  "initial": "s0",
+  "labels": [
+    "complete",
+    "observe",
+    "propose",
+    "return",
+    "tau",
+    "verify"
+  ],
+  "metadata": {
+    "construction": "linear trace-LTS, one transition per ledger event, nothing dropped or invented",
+    "mapping_record": ".creator-zero/experiment-4c/historical-c2-ledger-mapping.json",
+    "origin": ".creator-zero/experiment-4c/c2-prime-execution-ledger.jsonl",
+    "view": "role-abstraction"
+  },
+  "states": [
+    "s0",
+    "s1",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s7"
+  ],
+  "transitions": [
+    {
+      "actor": "c2-role",
+      "label": "observe",
+      "source": "s0",
+      "target": "s1"
+    },
+    {
+      "actor": "c2-role",
+      "label": "observe",
+      "source": "s1",
+      "target": "s2"
+    },
+    {
+      "actor": "c2-role",
+      "label": "propose",
+      "source": "s2",
+      "target": "s3"
+    },
+    {
+      "actor": "c2-role",
+      "label": "tau",
+      "source": "s3",
+      "target": "s4"
+    },
+    {
+      "actor": "c2-role",
+      "label": "verify",
+      "source": "s4",
+      "target": "s5"
+    },
+    {
+      "actor": "c2-role",
+      "label": "return",
+      "source": "s5",
+      "target": "s6"
+    },
+    {
+      "actor": "c2-role",
+      "label": "complete",
+      "source": "s6",
+      "target": "s7"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "s7",
+      "target": "s7"
+    }
+  ],
+  "version": "0.1"
+}

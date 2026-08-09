@@ -1,0 +1,89 @@
+{
+  "experiment": "4C",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/6f58e623-b810-5741-bdae-9c15b5931a4f/scratchpad/c2-prime-workspace",
+  "supplied_files": [
+    {
+      "workspace_path": "c2-prime-prompt.md",
+      "supplied_sha256": "b52e18c54a8566090a53198c8722644b3afdaeba02c3dad2ede34a8e2f82b052",
+      "source_path": ".creator-zero/experiment-4c/c2-prime-prompt.md",
+      "source_sha256": "b52e18c54a8566090a53198c8722644b3afdaeba02c3dad2ede34a8e2f82b052",
+      "transform": "verbatim-copy (root-authored protocol)"
+    },
+    {
+      "workspace_path": "inputs/k2-contract.json",
+      "supplied_sha256": "4f6865fec22eada3eb73ed537ca23a0a1461abdb095501230fc75d7a883d04d9",
+      "source_path": ".creator-zero/experiment-4/child-2-contract.json",
+      "source_sha256": "4f6865fec22eada3eb73ed537ca23a0a1461abdb095501230fc75d7a883d04d9",
+      "transform": "verbatim-copy"
+    },
+    {
+      "workspace_path": "inputs/original-mismatch.json",
+      "supplied_sha256": "c1f1fa3054ac4b6856a33d503a64c18852f741eaac1c5257f2988e05c84db71f",
+      "source_path": ".creator-zero/experiment-4/closure-correction/original-mismatch.json",
+      "source_sha256": "c1f1fa3054ac4b6856a33d503a64c18852f741eaac1c5257f2988e05c84db71f",
+      "transform": "verbatim-copy"
+    },
+    {
+      "workspace_path": "inputs/closure-predicate-verification.redacted.json",
+      "supplied_sha256": "dd1fd9b53a02c4e1dbdbe7bad5d0d06830b0e796b4c0c62202030071d1618b7a",
+      "source_path": ".creator-zero/experiment-4/closure-correction/closure-predicate-verification.json",
+      "source_sha256": "4f339216c3811a13bf37b4347521942ee79388a456cece65cb8271a68f712e0c",
+      "transform": "redacted-copy: evaluations[subject~CORRECTED].attestation and .attestation_sha256 replaced with redaction markers; redaction_note added; all other content verbatim"
+    },
+    {
+      "workspace_path": "inputs/formal-semantics-v0.1.md",
+      "supplied_sha256": "33608a8b50be9a1ca4c151d99b6d702ad8c23787ae1a59d94ccd7b7659dd1af8",
+      "source_path": ".creator-zero/formal/SEMANTICS.md",
+      "source_sha256": "33608a8b50be9a1ca4c151d99b6d702ad8c23787ae1a59d94ccd7b7659dd1af8",
+      "transform": "verbatim-copy"
+    },
+    {
+      "workspace_path": "inputs/attestation-interface.md",
+      "supplied_sha256": "3772c0cf2819686910feb7de602916463336ddfc168796478dfb87d6030cac90",
+      "source_path": ".creator-zero/experiment-4c/attestation-interface.md",
+      "source_sha256": "3772c0cf2819686910feb7de602916463336ddfc168796478dfb87d6030cac90",
+      "transform": "verbatim-copy (root-authored kernel-interface excerpt)"
+    },
+    {
+      "workspace_path": "inputs/c2-prime-harness.json",
+      "supplied_sha256": "2f5b7dd774bf28abcc0aa491d43e750c85fd0743b4c4b998f2a9f9d259a3a57e",
+      "source_path": ".creator-zero/experiment-4c/c2-prime-harness.json",
+      "source_sha256": "2f5b7dd774bf28abcc0aa491d43e750c85fd0743b4c4b998f2a9f9d259a3a57e",
+      "transform": "verbatim-copy (root-authored governance envelope)"
+    },
+    {
+      "workspace_path": ".claude/settings.json",
+      "supplied_sha256": "a641a808e447c2105f15f652d34e8b8fcb8ca00cb0ad1f90fd0df06acb9e8620",
+      "source_path": null,
+      "source_sha256": null,
+      "transform": "root-authored access-control deny rules"
+    }
+  ],
+  "unexpected_workspace_files": [],
+  "forbidden_answer_source": {
+    "path": ".creator-zero/experiment-4/closure-correction/corrected-k3-attestation.json",
+    "sha256": "5ff1a8502cdd7e325d21c00af14e50f1579492219a08d08136d1bf603213e92a",
+    "supplied": false
+  },
+  "access_controls": {
+    "allowed_tools": [
+      "Read",
+      "Write"
+    ],
+    "denied": [
+      "Read(//home/user/creator-0/**)",
+      "Write(//home/user/creator-0/**)",
+      "Edit(//home/user/creator-0/**)",
+      "Read(//root/.claude/uploads/**)",
+      "Bash",
+      "Grep",
+      "Glob",
+      "Edit",
+      "Task",
+      "WebFetch",
+      "WebSearch",
+      "NotebookEdit"
+    ],
+    "note": "C2' runs with cwd=workspace, Read/Write only (no Bash/Grep/Glob/Edit/Task/Web), and deny rules blocking the entire repository and uploads paths; the forbidden artifact is therefore not readable by C2' even by path guessing."
+  }
+}

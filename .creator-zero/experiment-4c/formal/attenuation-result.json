@@ -1,0 +1,33 @@
+{
+  "assumptions": [
+    "Axis absent on parent = unrestricted (most permissive) at that axis.",
+    "Axis absent on child = inherited from parent (no escalation).",
+    "Filesystem scope: child paths accepted by parent-scope containment or by sibling delegation inside the parent scope's workspace envelope with no overlap of parent protected paths; paths compared as normalized repo-relative strings, parenthetical annotations (e.g. '(append only)') stripped.",
+    "Authority strings mapped to deterministic ordinals: none=0 < scoped/read-only/model-invocation=1 < unrestricted=2.",
+    "Local check only; 'no finite descendant escalates' follows inductively only if every creation transition is checked."
+  ],
+  "check": "contract_attenuation",
+  "counterexample": null,
+  "detail": {
+    "verdict": "ATTENUATION_PASS"
+  },
+  "evidence": [
+    "allowed_tools: ['Read', 'Write'] subset of ['Bash', 'Glob', 'Grep', 'Read', 'Write']",
+    "allowed_primitives: ['create', 'hypothesize', 'observe', 'return', 'verify'] subset of ['create', 'hypothesize', 'observe', 'return', 'test', 'verify']",
+    "allowed_relations: child absent, inherits parent",
+    "max_model_calls: 1 <= 4",
+    "max_children: 0 <= 0",
+    "max_depth: 0 <= 0",
+    "max_realized_creator_children: child absent, inherits parent",
+    "max_realized_creator_depth: child absent, inherits parent",
+    "may_create_creator: True <= True",
+    "may_realize_creation: False <= False",
+    "candidate_write_authority: child absent, inherits parent",
+    "canonical_write_authority: child absent, inherits parent",
+    "git_authority: child absent, inherits parent",
+    "network_authority: child absent, inherits parent"
+  ],
+  "formal_relation": "K_child <= K_parent",
+  "status": "PASS",
+  "unmapped_events": []
+}

@@ -1,0 +1,21 @@
+{
+  "contract_id": "K3-prime-escalation-control",
+  "allowed_primitives": [
+    "observe",
+    "hypothesize",
+    "verify",
+    "create",
+    "return"
+  ],
+  "allowed_tools": [
+    "Edit",
+    "Read",
+    "Write"
+  ],
+  "max_children": 0,
+  "max_depth": 0,
+  "max_model_calls": 8,
+  "may_create_creator": true,
+  "creator_capability": true,
+  "may_realize_creation": false
+}

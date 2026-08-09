@@ -1,0 +1,16 @@
+{"actor": "creator", "event_id": "h0", "label": "observe", "metadata": {"raw_event": "c2_start"}, "timestamp": "2026-08-09T05:45:20Z"}
+{"actor": "creator", "event_id": "h1", "label": "consult", "metadata": {"raw_event": "model_invocation_start"}, "timestamp": "2026-08-09T05:46:23Z"}
+{"actor": "decomposer", "event_id": "h2", "label": "propose", "metadata": {"raw_event": "model_invocation_end"}, "timestamp": "2026-08-09T05:48:47Z"}
+{"actor": "creator", "event_id": "h3", "label": "consult", "metadata": {"raw_event": "model_invocation_start"}, "timestamp": "2026-08-09T05:49:42Z"}
+{"actor": "composer", "event_id": "h4", "label": "propose", "metadata": {"raw_event": "model_invocation_end"}, "timestamp": "2026-08-09T05:53:20Z"}
+{"actor": "creator", "event_id": "h5", "label": "tau", "metadata": {"raw_event": "phase_a_synthesis_complete"}, "timestamp": "2026-08-09T05:53:38Z"}
+{"actor": "creator", "event_id": "h6", "label": "validate", "metadata": {"raw_event": "deterministic_coverage_check"}, "timestamp": "2026-08-09T05:53:38Z"}
+{"actor": "creator", "event_id": "h7", "label": "tau", "metadata": {"raw_event": "phase_b_start"}, "timestamp": "2026-08-09T05:53:38Z"}
+{"actor": "creator", "event_id": "h8", "label": "tau", "metadata": {"raw_event": "node_start"}, "timestamp": "2026-08-09T05:57:41Z"}
+{"actor": "node:evidence-and-surrogates", "event_id": "h9", "label": "observe", "metadata": {"raw_event": "node_end"}, "timestamp": "2026-08-09T05:58:59Z"}
+{"actor": "creator", "event_id": "h10", "label": "tau", "metadata": {"raw_event": "node_start"}, "timestamp": "2026-08-09T06:00:03Z"}
+{"actor": "creator", "event_id": "h11", "label": "tau", "metadata": {"raw_event": "anomaly"}, "timestamp": "2026-08-09T06:00:35Z"}
+{"actor": "node:independent-rederivation", "event_id": "h12", "label": "verify", "metadata": {"raw_event": "node_end"}, "timestamp": "2026-08-09T06:00:35Z"}
+{"actor": "creator", "event_id": "h13", "label": "tau", "metadata": {"raw_event": "node_start"}, "timestamp": "2026-08-09T06:01:19Z"}
+{"actor": "node:compile-result", "event_id": "h14", "label": "return", "metadata": {"raw_event": "c2_complete"}, "timestamp": "2026-08-09T06:03:33Z"}
+{"actor": "creator", "event_id": "h15", "label": "complete", "metadata": {"raw_event": "c2_complete"}, "timestamp": "2026-08-09T06:03:33Z"}
