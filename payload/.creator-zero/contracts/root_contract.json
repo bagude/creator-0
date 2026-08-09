@@ -1,0 +1,45 @@
+{
+  "version": "0.1",
+  "allowed_primitives": [
+    "observe",
+    "hypothesize",
+    "test",
+    "act",
+    "verify",
+    "create",
+    "return"
+  ],
+  "allowed_relations": [
+    "observe",
+    "consult",
+    "request_response",
+    "delegate",
+    "verify",
+    "authorize",
+    "create",
+    "return"
+  ],
+  "allowed_tools": [
+    "Read",
+    "Grep",
+    "Glob",
+    "Bash",
+    "Edit",
+    "Write",
+    "Agent"
+  ],
+  "max_children": 3,
+  "max_depth": 2,
+  "max_model_calls": 16,
+  "may_create_creator": true,
+  "required_primitives_for_mutation": [
+    "verify"
+  ],
+  "protected_rules": [
+    "No child may increase its authority envelope.",
+    "Model output is a proposal, never authorization.",
+    "Mutation-capable topology requires verification.",
+    "Root compiler, boundary, hook, and contract are immutable during normal runs.",
+    "Creation is bounded and optional."
+  ]
+}
