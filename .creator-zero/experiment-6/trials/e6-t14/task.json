@@ -1,0 +1,20 @@
+{
+  "task_id": "e6-t14",
+  "task": "Format every amount string in artifacts/amounts.json according to artifacts/format-spec.md, treating each input as an exact decimal. Every answer must be exactly right; the items are chosen so that plausible methods disagree on them.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "answers": "{\"<input>\": \"<formatted>\"}",
+      "method": "how the answers were derived"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: the computed answer for every item, with the derivation method stated",
+    "E-B: a re-derivation of every answer by a method disjoint from the first derivation, carried out without consulting the first derivation's intermediate work, with per-item agreement recorded",
+    "E-C: every answer exactly correct"
+  ],
+  "available_artifacts": [
+    "package/artifacts/format-spec.md",
+    "package/artifacts/amounts.json"
+  ]
+}

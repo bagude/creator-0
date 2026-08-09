@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t04",
+  "estimates": {
+    "local": {
+      "delta_e": 1.0,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The task is a fully deterministic trace over package artifacts with no authorship or access conditions on evidence; a single worker resolves all three distinctions admissibly, and its records are first derivations, not duplicates."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.75,
+      "redundancy": 0.5,
+      "governance_risk": 0.0,
+      "rationale": "The examiner re-derives a trace the worker already fully establishes admissibly, so roughly half the evidence records are confirming duplicates; all distinctions still resolve, but the novelty fraction drops to about one half."
+    },
+    "isolated-child": {
+      "delta_e": 0.85,
+      "redundancy": 0.35,
+      "governance_risk": 0.0,
+      "rationale": "Isolation buys no admissibility here since no distinction requires a causally separated origin; the child's trace is integrated into the deliverable so many of its records substitute for worker records, but the worker's own package reading and bundle authoring produce some overlapping evidence, and bundle transcription adds a small failure surface for delta_e."
+    },
+    "branching": {
+      "delta_e": 1.0,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "With every distinction locally resolvable and no isolation requirement, the run-time choice should realize the local branch, giving local-family evidence characteristics while being costed at the isolated-child rate."
+    }
+  }
+}

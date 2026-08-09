@@ -1,0 +1,67 @@
+{
+  "task_id": "e6-t04",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What is the final state reached by the machine in artifacts/machine.json for each of the three input strings in artifacts/inputs.json, tracing each string from the initial state S0?",
+      "why_unresolved": "The package supplies the transition table and the input strings but no trace has been executed; the final states exist only implicitly in the machine semantics until a step-by-step trace is carried out and recorded.",
+      "required_evidence": "A deterministic step-by-step trace of each input string from the initial state, applying the transition table symbol by symbol, yielding one final state per string in input order.",
+      "admissibility_constraints": [
+        "The trace must start from the machine's declared initial state (S0) for every string.",
+        "Each step must follow the transition table in package/artifacts/machine.json exactly; no transitions may be invented or skipped.",
+        "Final states must be reported one per input string, in the order the strings appear in package/artifacts/inputs.json.",
+        "The task imposes no authorship or access restriction: evidence derived by any process that read the package artifacts is admissible."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Is the declared error state E ever entered during the trace of any of the three input strings?",
+      "why_unresolved": "Whether E is reached depends on the full step sequences of the traces, which have not been executed; it cannot be read directly off the transition table without tracing the specific inputs.",
+      "required_evidence": "The complete step sequences from the Q1 traces, inspected for any step whose target state is E (or any string whose final state is E), yielding a single boolean.",
+      "admissibility_constraints": [
+        "The boolean must be derived from the same admissible traces that settle Q1, not asserted independently of them.",
+        "Entering E at any step of any string counts, not only as a final state.",
+        "The task imposes no authorship or access restriction: locally derived evidence is admissible."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Which state is most visited across all three traces, counting one visit for the initial state per string and one visit for every state entered on a step, breaking ties by lexicographically smallest state name?",
+      "why_unresolved": "The visit counts are an aggregate over all steps of all traces; until the traces are executed and tallied under the stated counting rule, the maximum (and any tie-break) is not established.",
+      "required_evidence": "A per-state visit tally aggregated over all three traces under the stated counting rule (initial state counted once per string; every entered state counted per step), plus identification of the maximum with the lexicographic tie-break applied if needed.",
+      "admissibility_constraints": [
+        "Counting must follow the task's rule exactly: the initial state is counted for every string, and each state entered on a step is counted, aggregated across all strings.",
+        "Ties must be broken by lexicographically smallest state name.",
+        "The tally must be derived from the same admissible traces that settle Q1.",
+        "The task imposes no authorship or access restriction: locally derived evidence is admissible."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}
