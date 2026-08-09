@@ -1,0 +1,63 @@
+{
+  "task_id": "e6-t14",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What is the exact formatted string format(x) for each of the 12 amount strings in amounts.json under the spec's rules: exact-decimal interpretation, rounding to two decimals with ties to the even neighbor, comma grouping of the integer part, and parenthesized unsigned negatives?",
+      "why_unresolved": "No answers have been computed yet, and the items are deliberately chosen so that plausible methods disagree: binary floating-point parsing turns exact ties like 2.675 into 2.67499…, half-up rounding differs from half-even on most items, and carry propagation (999999.995 -> 1,000,000.00) and sign-before-round ordering are easy to get wrong. The correct outputs cannot be read off the spec without a careful exact-decimal derivation per item.",
+      "required_evidence": "A per-item computed answer for all 12 inputs together with an explicit statement of the derivation method used, serialized in result.json as required by the deliverable shape.",
+      "admissibility_constraints": [
+        "Each input must be treated as an exact decimal string, not as a binary floating-point value (task: 'treating each input as an exact decimal').",
+        "The derivation method must be stated alongside the answers (E-A: 'with the derivation method stated')."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does a second derivation of every answer, produced by a method disjoint from the first and carried out without consulting the first derivation's intermediate work, agree with the first derivation item by item?",
+      "why_unresolved": "No second derivation exists yet, and the process that authors the first derivation cannot admissibly supply one: its first derivation's answers and intermediate work sit in its own context, so any second pass it performs consults them by construction and is anchored on the answers it already formed. The agreement question is therefore open and cannot be closed from inside the authoring process.",
+      "required_evidence": "A re-derivation of all 12 answers by a causally separate origin using a method disjoint from the first (e.g. digit-string tie inspection vs. scaled-integer arithmetic), with no access to the first derivation's intermediate work, plus a recorded per-item agreement comparison between the two derivations.",
+      "admissibility_constraints": [
+        "The second method must be disjoint from the first derivation's method (E-B: 'by a method disjoint from the first derivation').",
+        "The re-derivation must be carried out without consulting the first derivation's intermediate work (E-B); evidence produced by a process holding that work in context violates this condition.",
+        "Per-item agreement must be explicitly recorded (E-B: 'with per-item agreement recorded')."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Is every formatted answer in result.json exactly equal to the string the format specification mandates, with no item wrong?",
+      "why_unresolved": "Correctness is not self-certifying: the items are adversarial precisely so that a single plausible method can be systematically wrong on several of them while looking reasonable, so 'every answer exactly right' remains open until the answers are deterministically checked and corroborated by an independent disjoint-method derivation.",
+      "required_evidence": "Exact string-equality confirmation of all 12 answers against the spec's mandated outputs, established by deterministic root verification and corroborated by per-item agreement of two admissible disjoint-method derivations.",
+      "admissibility_constraints": [
+        "Exactness is total: every answer must be string-exact (E-C: 'every answer exactly correct'); a single mismatched item fails the requirement.",
+        "Evidence of correctness must rest on derivations that themselves satisfy the task's method conditions (exact-decimal treatment; for the corroborating derivation, the E-B disjointness and non-consultation conditions)."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1", "Q2"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

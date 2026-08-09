@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t14",
+  "estimates": {
+    "local": {
+      "delta_e": 0.6,
+      "redundancy": 0.15,
+      "governance_risk": 0.0,
+      "rationale": "A careful exact-decimal worker satisfies E-A and very likely E-C, but cannot produce admissible E-B: any second pass it performs consults its own first derivation held in context, so roughly one of three requirements goes unsatisfied and any in-session 're-check' records are duplicative."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.85,
+      "redundancy": 0.2,
+      "governance_risk": 0.0,
+      "rationale": "The separately launched examiner never sees the first derivation's intermediate work and can choose a disjoint method, so its re-derivation plausibly satisfies E-B and its records are admissibility-required (novel); residual risk is that a re-derivation performed with the worker's answers in view is ruled anchored, which would demote its records to duplicates."
+    },
+    "isolated-child": {
+      "delta_e": 0.95,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The worker can hand the isolated child only format-spec.md and amounts.json, excluding its own answers and intermediate work, and prescribe a disjoint method without revealing results; the child's derivation is causally separate and un-anchored, cleanly satisfying E-B, and per-item agreement strongly corroborates E-C, so nearly all requirements are met with novel records."
+    },
+    "branching": {
+      "delta_e": 0.9,
+      "redundancy": 0.08,
+      "governance_risk": 0.0,
+      "rationale": "The task semantics make the isolated-child branch the clearly correct runtime choice (E-B is unsatisfiable locally), so branching should realize that shape and match its outcome, discounted slightly for the chance of a wrong branch choice; deferral buys nothing here at the isolated-child cost."
+    }
+  }
+}

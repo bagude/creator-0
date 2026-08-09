@@ -1,0 +1,423 @@
+{
+  "H-e6-t14-local-independent-verify": {
+    "predictions": [
+      {
+        "prediction_id": "H-e6-t14-local-independent-verify-pr01",
+        "topology_id": "H-e6-t14-local-independent-verify",
+        "claim": "distinction Q1 (What is the exact formatted string format(x) for each of the 12 amount strings i) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-local-independent-verify-pr02",
+        "topology_id": "H-e6-t14-local-independent-verify",
+        "claim": "distinction Q2 (Does a second derivation of every answer, produced by a method disjoint from the) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-local-independent-verify-pr03",
+        "topology_id": "H-e6-t14-local-independent-verify",
+        "claim": "distinction Q3 (Is every formatted answer in result.json exactly equal to the string the format ) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-local-independent-verify-pr04",
+        "topology_id": "H-e6-t14-local-independent-verify",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'resolve-local', 'verify-resolution', 'verify-independent', 'return-result']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "resolve-local",
+            "verify-resolution",
+            "verify-independent",
+            "return-result"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-local-independent-verify-pr05",
+        "topology_id": "H-e6-t14-local-independent-verify",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-local-independent-verify-pr06",
+        "topology_id": "H-e6-t14-local-independent-verify",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-local-independent-verify-pr07",
+        "topology_id": "H-e6-t14-local-independent-verify",
+        "claim": "local evidence is sufficient: resolution and verification complete without any descendant",
+        "observable": "verification record + child launch count",
+        "success_condition": "verification completes with zero child launches",
+        "falsification_condition": "verification is impossible from local evidence, or a distinction requires an isolated source",
+        "weight": 1.0,
+        "kind": "local_sufficiency",
+        "subject": {},
+        "principles": [
+          "P-LOCALITY"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:dd212d8e376c3cbb005a455bdec5391c103eb394701ef085524ba14c4b4afc39"
+  },
+  "H-e6-t14-isolated-child": {
+    "predictions": [
+      {
+        "prediction_id": "H-e6-t14-isolated-child-pr01",
+        "topology_id": "H-e6-t14-isolated-child",
+        "claim": "distinction Q1 (What is the exact formatted string format(x) for each of the 12 amount strings i) is resolved by node observe-evidence",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "observe-evidence"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-isolated-child-pr02",
+        "topology_id": "H-e6-t14-isolated-child",
+        "claim": "distinction Q2 (Does a second derivation of every answer, produced by a method disjoint from the) is resolved by node child-return",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to child-return",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to child-return",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "child-return"
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-isolated-child-pr03",
+        "topology_id": "H-e6-t14-isolated-child",
+        "claim": "distinction Q3 (Is every formatted answer in result.json exactly equal to the string the format ) is resolved by node observe-evidence",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "observe-evidence"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-isolated-child-pr04",
+        "topology_id": "H-e6-t14-isolated-child",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'propose-child', 'validate-child', 'create-child', 'child-return', 'verify-integration', 'return-result']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "propose-child",
+            "validate-child",
+            "create-child",
+            "child-return",
+            "verify-integration",
+            "return-result"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-isolated-child-pr05",
+        "topology_id": "H-e6-t14-isolated-child",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-isolated-child-pr06",
+        "topology_id": "H-e6-t14-isolated-child",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-isolated-child-pr07",
+        "topology_id": "H-e6-t14-isolated-child",
+        "claim": "the child contributes novel evidence not derivable from parent-local evidence",
+        "observable": "evidence records with duplicate_of_parent flags",
+        "success_condition": "at least one child evidence record with duplicate_of_parent=false, attributed to the child",
+        "falsification_condition": "every child evidence record duplicates parent evidence",
+        "weight": 1.0,
+        "kind": "novel_evidence",
+        "subject": {
+          "distinction_ids": [
+            "Q2"
+          ]
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-isolated-child-pr08",
+        "topology_id": "H-e6-t14-isolated-child",
+        "claim": "the realized child is fresh and attenuated",
+        "observable": "launch provenance + attenuation results",
+        "success_condition": "freshness PASS and attenuation PASS for the realized child",
+        "falsification_condition": "FRESHNESS_FAIL or ATTENUATION_FAIL on the realized child",
+        "weight": 1.0,
+        "kind": "verification_effect",
+        "subject": {
+          "checks": [
+            "freshness",
+            "attenuation"
+          ]
+        },
+        "principles": [
+          "P-FRESHNESS",
+          "P-ATTENUATION"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:ae6f1432606b0b9597f7bb7f4657effdc1f4c7d440ab3c9807b9446c909f5521"
+  },
+  "H-e6-t14-branching": {
+    "predictions": [
+      {
+        "prediction_id": "H-e6-t14-branching-pr01",
+        "topology_id": "H-e6-t14-branching",
+        "claim": "distinction Q1 (What is the exact formatted string format(x) for each of the 12 amount strings i) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-branching-pr02",
+        "topology_id": "H-e6-t14-branching",
+        "claim": "distinction Q2 (Does a second derivation of every answer, produced by a method disjoint from the) is resolved by node child-return",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to child-return",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to child-return",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "child-return"
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-branching-pr03",
+        "topology_id": "H-e6-t14-branching",
+        "claim": "distinction Q3 (Is every formatted answer in result.json exactly equal to the string the format ) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-branching-pr04",
+        "topology_id": "H-e6-t14-branching",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'decide-topology', 'local-resolve', 'propose-child', 'validate-child', 'create-child', 'child-return', 'integrate-evidence', 'verify-child-result', 'verify-local']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "decide-topology",
+            "local-resolve",
+            "propose-child",
+            "validate-child",
+            "create-child",
+            "child-return",
+            "integrate-evidence",
+            "verify-child-result",
+            "verify-local"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-branching-pr05",
+        "topology_id": "H-e6-t14-branching",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-branching-pr06",
+        "topology_id": "H-e6-t14-branching",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-branching-pr07",
+        "topology_id": "H-e6-t14-branching",
+        "claim": "the child contributes novel evidence not derivable from parent-local evidence",
+        "observable": "evidence records with duplicate_of_parent flags",
+        "success_condition": "at least one child evidence record with duplicate_of_parent=false, attributed to the child",
+        "falsification_condition": "every child evidence record duplicates parent evidence",
+        "weight": 1.0,
+        "kind": "novel_evidence",
+        "subject": {
+          "distinction_ids": [
+            "Q2"
+          ]
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t14-branching-pr08",
+        "topology_id": "H-e6-t14-branching",
+        "claim": "the realized child is fresh and attenuated",
+        "observable": "launch provenance + attenuation results",
+        "success_condition": "freshness PASS and attenuation PASS for the realized child",
+        "falsification_condition": "FRESHNESS_FAIL or ATTENUATION_FAIL on the realized child",
+        "weight": 1.0,
+        "kind": "verification_effect",
+        "subject": {
+          "checks": [
+            "freshness",
+            "attenuation"
+          ]
+        },
+        "principles": [
+          "P-FRESHNESS",
+          "P-ATTENUATION"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:6100b8ee701d7c423b0a10be4b4fbfc28f3418713a15e4c5a6f6c729e309cbb1"
+  }
+}
