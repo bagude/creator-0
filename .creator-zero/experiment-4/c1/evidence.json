@@ -1,0 +1,81 @@
+{
+  "task_id": "experiment-4-T4-r8-coverage",
+  "creator": "C1",
+  "provisional_conclusion": "R8_COVERAGE_GAP_VERIFIED",
+  "status_at_write_time": "PROVISIONAL — architecturally unresolved pending C2's challenge (Phase C)",
+  "evidence": [
+    {
+      "id": "E1",
+      "classification": "deterministic",
+      "claim": "tests/test_solver.py contains exactly 13 test methods; the largest literal instance has 8 jobs; zero occurrences of any timing/instrumentation/scaling token; no test varies len(jobs) programmatically or counts operations.",
+      "pointer": ".creator-zero/experiment-4/c1/sandbox/evidence-round-0.json#q3_enumeration"
+    },
+    {
+      "id": "E2",
+      "classification": "deterministic",
+      "claim": "python -m unittest discover -s tests collects exactly those 13 tests; none of probes.py's r8_* probes are collected — probes.py is outside the suite, so suite-level R8-runtime protection cannot be credited to it.",
+      "pointer": ".creator-zero/experiment-4/c1/sandbox/evidence-round-0.json#q4a_discovery"
+    },
+    {
+      "id": "E3",
+      "classification": "deterministic",
+      "claim": "A mild super-polynomial surrogate (canonical solve + busy-loop of int(3000*1.02**n) iterations, genuinely exponential) passes probes.py's r8_scaling 30s wall-clock cap (ok=True) and the full 24-probe matrix: even if probes.py were in the suite, its wall-clock-threshold form does not discriminate mild-base exponential regressions.",
+      "pointer": ".creator-zero/experiment-4/c1/sandbox/evidence-round-0.json#q4b_probe_check"
+    },
+    {
+      "id": "E4",
+      "classification": "deterministic",
+      "claim": "An exponential surrogate in exactly the violation class R8 names (unmemoized include/exclude recursion, Theta(2^n) nodes), verified R5/R6-equivalent to oracle enumeration on 13,825 exhaustive small instances (0 mismatches) and R1-equivalent on rejection spot checks (8/8), passes the entire canonical suite 13/13 via staged import shim. This is the executable H1 witness: tests/ cannot distinguish the named violation class from the canonical solver.",
+      "pointer": ".creator-zero/experiment-4/c1/sandbox/evidence-round-0.json#q5_gap_demo"
+    },
+    {
+      "id": "E5",
+      "classification": "deterministic",
+      "claim": "A justified deterministic discriminator exists: sys.settrace trace-event counts on the disjoint instance family, asserted per doubling of n with bound 32 (=2^5, admits any polynomial of degree <= 5). Measured per-doubling ratios: canonical 4.98-6.86; fresh higher-degree polynomial control 5.46-7.15 (no false positive); exponential surrogate 103.6-442.67 at its capped schedule (flagged; cap justified because polynomial ratios are degree-bounded at every n while enumeration ratios diverge). Counts exactly reproducible run-to-run; assertion is on ratios, so no environment- or implementation-specific constant is encoded.",
+      "pointer": ".creator-zero/experiment-4/c1/sandbox/evidence-round-0.json#q6_discriminator"
+    },
+    {
+      "id": "E6",
+      "classification": "deterministic",
+      "claim": "Causally distinct verification ACCEPTed the candidate 7/7: with freshly re-authored surrogates (iterative bitmask enumerator, ratios 149.3/660.2 > 32; start-sorted suffix-DP polynomial, candidate passes 14/14), candidate+canonical 14/14, candidate FAILS the fresh exponential surrogate with failure identity exactly the new test (no hang: incremental assertions fail at n=16), pure-addition diff audit, canonical tree git-clean, canonical suite 13/13, probes 24/24.",
+      "pointer": ".creator-zero/experiment-4/c1/sandbox-verify/verify-verdict.json"
+    },
+    {
+      "id": "E7",
+      "classification": "model_judgment",
+      "claim": "R8's runtime clause reads NARROW, not AMBIGUOUS: 'Runtime MUST be polynomial in len(jobs) (exhaustive subset enumeration is not acceptable)' anchors the obligation to a named concrete violation class; no degree bound is stated or implied elsewhere in the spec.",
+      "pointer": ".creator-zero/experiment-4/c1/sandbox/evidence-round-0.json#q1_reading"
+    },
+    {
+      "id": "E8",
+      "classification": "deterministic",
+      "claim": "Fixed logical limit (execution-independent): no finite set of timed or counted runs can certify asymptotic polynomiality for all n; 'mechanically testable' for R8-runtime can only mean deterministic discrimination of concrete violation classes, first of all the class R8 itself names. Any coverage verdict is scoped accordingly.",
+      "pointer": ".creator-zero/experiment-4/c1/sandbox/evidence-round-0.json#q2_note"
+    },
+    {
+      "id": "E9",
+      "classification": "model_judgment",
+      "claim": "R8 sub-clause mapping (supported by deterministic greps E1/E2): no-mutation has 1 suite test; determinism has 0 suite tests (only out-of-suite probes); runtime has 0 suite tests. The verdict is scoped strictly to the runtime sub-clause.",
+      "pointer": ".creator-zero/experiment-4/c1/sandbox/evidence-round-0.json#q7_mapping"
+    },
+    {
+      "id": "E10",
+      "classification": "model_judgment",
+      "claim": "Recorded residual risks of the discriminator: (a) super-polynomial growth with base near 1 (e.g. 1.02^n) evades any fixed finite test — unavoidable per E8, applies equally to wall-clock forms; (b) work executed entirely inside C extensions emits no trace events — implausible for a hand-written scheduling regression; (c) ratio bound 32 would false-positive on a legitimate polynomial of degree > 5 — the spec permits any degree, so this admittance line is a judgment, made with 4.7x headroom over the highest measured legitimate ratio.",
+      "pointer": ".creator-zero/experiment-4/c1/sandbox/evidence-round-0.json#q6_discriminator.constant_evasion_note"
+    },
+    {
+      "id": "E11",
+      "classification": "inherited",
+      "claim": "M3's unresolved item ('R8 polynomial-runtime still has no unit-suite coverage') was used ONLY as task motivation, never as evidence: the gap was re-demonstrated fresh (E4). oracle.py's R2/R5/R6 correctness is inherited from Experiment 2/3 audits; both this experiment's evidence and verify nodes used it for surrogate admissibility, and its enumeration logic was additionally cross-checked here by two independently authored surrogates agreeing with it on 13,825 instances each.",
+      "pointer": ".creator-zero/state/experiment-3.json"
+    }
+  ],
+  "topology_note": "All four harness nodes executed as deterministic scripts (the execution_mode each declared in the validated final-harness.json); no node ran as a separate model instance. Causal distinctness of verification is realized at the artifact level: verify-candidate imported nothing from the evidence sandbox and re-authored both surrogate classes with different constructions (bitmask-iterative vs recursive; start-sorted suffix DP vs end-sorted prefix DP), re-deriving expectations from spec + oracle. The single authoring locus for all scripts is C1 itself — flagged for C2's verifier-dependence probe.",
+  "mutation_authorization_chain": "E4 (gap witness) + E5 (justified discriminator) -> act node authored candidate/test_solver.py (+34/-0) -> E6 (independent ACCEPT). Promotion is exclusively the root deterministic gate's decision; C1 promotes nothing.",
+  "boundary_events": [
+    {"event": "composer emitted markdown fences despite pure-JSON instruction (round 0); JSON extracted deterministically, spec VALID first validation", "impact": "none"},
+    {"event": "critique D1_1 found Q6 n-schedule infeasibility in composed spec; fixed in composer round 1; revised spec VALID", "impact": "synthesis used 4 of 8 model calls"},
+    {"event": "verify checker initially REJECTed on a lexical false positive (matched the word 'wall-clock' in a candidate comment); checker corrected to timing-API patterns, re-run ACCEPT 7/7", "impact": "recorded as anomaly in execution ledger"}
+  ]
+}

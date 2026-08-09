@@ -1,0 +1,2 @@
+{"ts": "2026-08-09T05:45:20Z", "event": "c2_start", "detail": "C2 session begun; contract K2 and task.json read; phase A beginning"}
+{"ts": "2026-08-09T05:46:23Z", "event": "model_invocation_start", "call": 1, "role": "decomposer", "prompt": ".creator-zero/experiment-4/c2/rounds/d2_0-prompt.md", "model": "claude-sonnet-5"}

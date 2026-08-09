@@ -1,0 +1,74 @@
+{
+  "node": "verify-candidate",
+  "overall": "ACCEPT",
+  "checks": {
+    "fresh_surrogate_admissibility": {
+      "pass": true,
+      "instances": 1885,
+      "mismatches": {
+        "exp_mask": 0,
+        "poly_alt": 0
+      },
+      "r1_rejections": {
+        "exp_mask": "8/8",
+        "poly_alt": "8/8"
+      }
+    },
+    "candidate_with_canonical_14_14": {
+      "pass": true,
+      "exit": 0,
+      "tests_run": 14,
+      "failures": [],
+      "tail": "OK"
+    },
+    "fresh_exponential_exceeds_bound": {
+      "pass": true,
+      "counts": {
+        "6": 3087,
+        "8": 16975,
+        "12": 460917,
+        "16": 11206807
+      },
+      "ratios": {
+        "6->12": 149.3,
+        "8->16": 660.2
+      },
+      "bound": 32,
+      "reproducible": true,
+      "schedule_cap_rationale": "2^n trace events at the candidate's n=64 cannot execute; per-doubling ratios of any polynomial are bounded (~2^degree) at every n, so exceeding the bound at n<=16 doublings is the same discrimination the full schedule would give"
+    },
+    "candidate_fails_fresh_exponential": {
+      "pass": true,
+      "exit": 1,
+      "tests_run": 14,
+      "failures": [
+        "test_r8_operation_growth_is_polynomial"
+      ],
+      "tail": "FAILED (failures=1)",
+      "note": "failure identity must be exactly the new test; all 13 pre-existing tests still pass on this R1-R7-preserving surrogate"
+    },
+    "candidate_passes_fresh_polynomial": {
+      "pass": true,
+      "exit": 0,
+      "tests_run": 14,
+      "failures": [],
+      "tail": "OK"
+    },
+    "diff_scope_and_canonical_integrity": {
+      "pass": true,
+      "diff_added_lines": 34,
+      "diff_removed_lines": 0,
+      "diff_new_methods": [
+        "test_r8_operation_growth_is_polynomial"
+      ],
+      "git_diff_canonical": "(empty)",
+      "canonical_suite": "OK",
+      "probes": "PROBES total=24 pass=24 fail=0"
+    },
+    "candidate_matches_specification": {
+      "pass": true,
+      "detail": "bound=32 per doubling, schedule [8,16,32,64] incremental, settrace counting, tracer saved/restored, no wall-clock reference"
+    }
+  },
+  "independence": "all surrogates re-authored fresh in sandbox-verify/ (bitmask enumerator vs evidence's recursive one; start-sorted suffix-DP polynomial vs evidence's end-sorted prefix-DP); expectations re-derived from docs/solver_spec.md via oracle enumeration; no evidence-sandbox module imported"
+}

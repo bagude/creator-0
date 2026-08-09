@@ -1,0 +1,8 @@
+C2 is launched and running in the background (PID 30293), with a monitor armed on its DONE flag. Per protocol I'm now architecturally unresolved and doing no further T4 work until C2 returns.
+
+Status so far:
+- **Phase A**: External Decomposer produced 7 load-bearing questions; Composer produced a 4-node harness (all deterministic-script nodes); a fresh critique caught a real infeasibility (exponential surrogate scheduled at n=160) and a Composer revision fixed it; final spec validated **VALID** against K1 by `cz.py`. 4 model calls used.
+- **Phase B**: Evidence node established, executably: the suite has zero runtime coverage; an exponential surrogate in exactly the class R8 names passes all 13 canonical tests; the out-of-suite wall-clock probe misses a mild 1.02ⁿ regression; and a deterministic trace-count discriminator (per-doubling ratio bound 32) separates cleanly — canonical 5.0–6.9, higher-degree polynomial control 5.5–7.2, exponential surrogates 104–660. Provisional conclusion: **R8_COVERAGE_GAP_VERIFIED**, with a one-method candidate test (+34/−0) verified ACCEPT 7/7 by a causally distinct verify step using freshly re-authored surrogates.
+- **Phase C**: K2 authored (attenuated, capability-preserving), creation ledger appended before launch, C2 running with its own 4-call budget.
+
+Awaiting C2's challenge verdict.

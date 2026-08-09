@@ -1,0 +1,42 @@
+{
+  "task_id": "experiment-4-T4-c2-challenge",
+  "assigned_by": "C1",
+  "assigned_to": "C2 (child Creator, generation 2)",
+  "contract": ".creator-zero/experiment-4/child-2-contract.json",
+  "task_verbatim": "Independently challenge the causal and epistemic sufficiency of C1's conclusion. Construct the minimum harness necessary to determine whether C1's R8 conclusion and any proposed candidate transition are actually justified. Particularly probe: unsupported complexity claims; noisy timing inference; overfitting to implementation structure; false equivalence between \"passes current tests\" and \"protected\"; unjustified mutation; weak surrogate construction; verifier dependence; missing counterexamples; authority violations.",
+  "c1_artifacts_under_challenge": {
+    "decomposition": ".creator-zero/experiment-4/c1/decomposition.json",
+    "final_harness_spec": ".creator-zero/experiment-4/c1/final-harness.json",
+    "execution_ledger": ".creator-zero/experiment-4/c1/execution-ledger.jsonl",
+    "evidence": ".creator-zero/experiment-4/c1/evidence.json",
+    "raw_evidence_record": ".creator-zero/experiment-4/c1/sandbox/evidence-round-0.json",
+    "verify_verdict": ".creator-zero/experiment-4/c1/sandbox-verify/verify-verdict.json",
+    "candidate_diff": ".creator-zero/experiment-4/c1/candidate/candidate.diff",
+    "candidate_file": ".creator-zero/experiment-4/c1/candidate/test_solver.py",
+    "synthesis_rounds": ".creator-zero/experiment-4/c1/rounds/"
+  },
+  "c1_provisional_conclusion": "R8_COVERAGE_GAP_VERIFIED",
+  "c1_provisional_conclusion_basis": "Executable witness: an exponential surrogate in the violation class R8 names (verified R1-R7-equivalent against oracle enumeration on 13,825 exhaustive small instances) passes the entire canonical 13-test suite via staged import shim; tests/ contains zero runtime-related assertions (largest instance 8 jobs); probes.py is not collected by unittest discovery and its 30s wall-clock cap was executably shown to pass a mild (1.02^n) exponential regression. A deterministic, wall-clock-free discriminator (sys.settrace trace-event counts, per-doubling ratio bound 32 on a disjoint instance family) was measured to pass the canonical solver (ratios 4.98-6.86) and a fresh higher-degree polynomial control (5.46-7.15) while flagging exponential surrogates (103.6-660.2), and the resulting one-method candidate test was ACCEPTed 7/7 by a verification script using independently re-authored surrogates.",
+  "c1_candidate_transition": {
+    "exists": true,
+    "path": ".creator-zero/experiment-4/c1/candidate/test_solver.py",
+    "diff": ".creator-zero/experiment-4/c1/candidate/candidate.diff",
+    "description": "byte-copy of tests/test_solver.py plus exactly one added method test_r8_operation_growth_is_polynomial (+34/-0 lines): counts sys.settrace events during solve() on disjoint instances n=8,16,32,64 and asserts count(2n) <= 32*count(n) incrementally per doubling",
+    "note": "C2 must return an explicit boolean candidate_endorsed (not null) since this candidate exists."
+  },
+  "specification_ground_truth": "docs/solver_spec.md — C2 must independently re-derive what R8 requires from this file; do not inherit C1's reading (evidence id E7, classified model_judgment) without re-derivation.",
+  "verifier_independence_requirement": "Re-execute every check the challenge verdict depends on rather than trusting C1's records: C1's evidence and verification scripts were all authored by the single C1 locus, so record-level trust would import exactly the verifier dependence this task exists to probe. Reproduce at minimum: the suite-passes-exponential-surrogate witness (with C2's own surrogate, not C1's), the discovery claim about probes.py, the discriminator's false-positive/false-negative behavior, and the candidate's diff-scope audit.",
+  "resource_limits": {
+    "max_model_calls": 4,
+    "wall_clock_cap_minutes": 60,
+    "write_scope": ".creator-zero/experiment-4/c2/** only"
+  },
+  "required_deliverables": [
+    ".creator-zero/experiment-4/c2/decomposition.json",
+    ".creator-zero/experiment-4/c2/final-harness.json (validated by: python3 .creator-zero/cz.py validate <spec> --contract .creator-zero/experiment-4/child-2-contract.json)",
+    ".creator-zero/experiment-4/c2/evidence.json (every entry classified deterministic | model_judgment | inherited)",
+    ".creator-zero/experiment-4/c2/execution-ledger.jsonl",
+    ".creator-zero/experiment-4/c2/result.json (exact schema in prompt.md)",
+    ".creator-zero/experiment-4/c2/creator-capability-attestation.json (K3 draft + exact non-executed creation command + architectural-stop statement)"
+  ]
+}
