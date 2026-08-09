@@ -1,0 +1,65 @@
+{
+  "task_id": "e5-t068-child",
+  "goal": "Author, strictly and only from rules.md, a Python implementation of build_index(text: str) -> str, and report the exact string it returns for document.txt.",
+  "contract_ref": "child-contract.json",
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "nodes": [
+    {
+      "id": "observe-inputs",
+      "primitive": "observe",
+      "tools": ["Read"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Read the two supplied files: rules.md and document.txt. Read nothing else and assume nothing beyond what rules.md states.",
+      "why_necessary": "The implementation must be grounded only in the supplied specification and the supplied document; the input state must be acquired before any implementation is written."
+    },
+    {
+      "id": "produce-evidence",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Write clean_impl.py containing a function build_index(text: str) -> str that implements exactly and only what rules.md specifies. Do not add behavior rules.md does not state. Where rules.md is silent about a detail you must nevertheless decide in order to produce output, make a reasonable choice, implement it, and briefly record which choice you made and why. Then evaluate build_index on the full contents of document.txt and record the exact returned string.",
+      "why_necessary": "The deliverable evidence is a specification-faithful implementation plus its concrete output on the document; both are authored here."
+    },
+    {
+      "id": "self-check",
+      "primitive": "verify",
+      "tools": ["Read"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Re-read clean_impl.py against rules.md. Confirm the function is named build_index, takes a single str argument, returns a str, and that each numbered rule is honored. Record the structural check outcome. This self-check is non-authoritative.",
+      "why_necessary": "A Write-holding topology requires the verify primitive; a structural self-check before return is its minimal fulfilment."
+    },
+    {
+      "id": "return-result",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Write child-result.json (deliverable: implementation filename, the exact output string on document.txt, and any recorded silent-choice notes) and finalize the child ledger with a terminating complete event.",
+      "why_necessary": "The child result must be written into a returnable deliverable and the child lifecycle closed with its complete event."
+    }
+  ],
+  "edges": [
+    {"source": "observe-inputs", "target": "produce-evidence", "relation": "observe", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "produce-evidence", "target": "self-check", "relation": "verify", "requires_response": true, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "self-check", "target": "return-result", "relation": "authorize", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false}
+  ],
+  "ledger_contract": {
+    "path": "child-execution-ledger.jsonl (child workspace root)",
+    "schema": "normalized formal event schema: one JSON object per line with event_id, label, actor, timestamp, artifact_refs, metadata; node executions carry metadata.completes_node; the child lifecycle terminates with a complete event.",
+    "required_child_events": [
+      {"label": "observe", "actor": "node:observe-inputs", "metadata": {"completes_node": "observe-inputs"}},
+      {"label": "propose", "actor": "node:produce-evidence", "metadata": {"completes_node": "produce-evidence"}, "artifact_refs": ["clean_impl.py"]},
+      {"label": "verify", "actor": "node:self-check", "metadata": {"completes_node": "self-check"}},
+      {"label": "return", "actor": "node:return-result", "metadata": {"completes_node": "return-result"}, "artifact_refs": ["child-result.json"]},
+      {"label": "complete", "actor": "child", "metadata": {"event_kind": "child_complete"}}
+    ]
+  }
+}

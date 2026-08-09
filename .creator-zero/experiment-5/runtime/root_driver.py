@@ -229,6 +229,15 @@ def cmd_after_parent(tid):
     (trial_dir(tid) / "child" / "child-lts.json").write_text(
         lts_to_json(parts["child_lts"]), encoding="utf-8")
     lifecycle(tid, "CHILD_VALIDATED")
+    append_trial_events(tid, [{
+        "event_id": "root-validate-child", "label": "verify",
+        "actor": "node:validate-child", "timestamp": now(),
+        "artifact_refs": ["formal-results/child-bundle-validation.json",
+                          "formal-results/attenuation.json"],
+        "metadata": {"completes_node": "validate-child",
+                     "note": "deterministic bundle validation: attenuation, "
+                             "kernel compilation, manifest containment, "
+                             "plan executability"}}])
 
     cws = child_ws_dir(tid)
     if cws.exists():
@@ -265,17 +274,25 @@ def cmd_after_child(tid):
         allowed_tools=ALLOWED_TOOLS)
     jdump(td / "child" / "child-session-audit.json", audit)
 
-    for name in ("execution-ledger.jsonl", "result.json",
-                 plan["child_deliverable"]):
+    # The parent's authored child spec governs deliverable naming: honor the
+    # declared ledger path and result-file names, with the template defaults
+    # as fallbacks.
+    child_harness = jload(td / "child" / "child-harness.json")
+    ledger_decl = str(child_harness.get("ledger_contract", {})
+                      .get("path", "execution-ledger.jsonl")).split()[0]
+    names = [ledger_decl, plan["child_deliverable"]]
+    for cand in ("result.json", "child-result.json",
+                 plan.get("auxiliary_child_deliverable")):
+        if cand and cand not in names:
+            names.append(cand)
+    for name in names:
         if not _collect(cws / name, td / "child" / name):
             print(f"[{tid}] WARNING: child did not produce {name}")
 
     # Child formal checks.
     child_contract = jload(td / "child" / "child-contract.json")
-    child_harness = jload(td / "child" / "child-harness.json")
     clts = formal.compile_harness_spec(child_harness, child_contract)
-    ctrace = parse_runtime_ledger(td / "child" / "execution-ledger.jsonl",
-                                  strict=True)
+    ctrace = parse_runtime_ledger(td / "child" / ledger_decl, strict=True)
     formal_result_out(tid, "child-refinement",
                       formal.check_refinement(ctrace, clts,
                                               require_completion=True))
@@ -338,12 +355,15 @@ def cmd_finalize(tid):
     if cp.exists():
         provs.append(jload(cp))
     audit = jload(td / "parent-session-audit.json")
+    states = lifecycle_states(tid)
+    if states and states[-1] != "FORMALLY_CHECKED":
+        states = states + ["FORMALLY_CHECKED"]
     guard = topology_guard.guard_trial(
-        decision=decision, lifecycle_states=lifecycle_states(tid) +
-        ["FORMALLY_CHECKED"], trace=trace, launch_provenances=provs,
-        session_audit=audit)
+        decision=decision, lifecycle_states=states, trace=trace,
+        launch_provenances=provs, session_audit=audit)
     formal_result_out(tid, "topology-guard", guard)
-    lifecycle(tid, "FORMALLY_CHECKED")
+    if lifecycle_states(tid)[-1] != "FORMALLY_CHECKED":
+        lifecycle(tid, "FORMALLY_CHECKED")
     print(f"[{tid}] finalized")
 
 

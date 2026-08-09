@@ -1,0 +1,28 @@
+{
+  "trial_id": "t-068",
+  "decision": "CREATE",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "When build_index is implemented strictly and only from rules.md by an implementer who has never seen reference.py, does its output on document.txt match reference.py's output, and if not, at which output line does it first diverge?",
+      "why_local_evidence_is_insufficient": "This session has already read reference.py (a clean_room_exclusion). Any implementation it now authors is causally derived from that observation, so it cannot satisfy E-B's explicit requirement of an implementer with no access to reference.py and no access to analysis derived from it. A self-authored 'independent' implementation would be contaminated and would prove nothing about behavioral sufficiency; the deliverable's comparison field independent_line therefore cannot be filled at full strength locally."
+    }
+  ],
+  "expected_child_contribution": [
+    {
+      "distinction_id": "Q1",
+      "expected_evidence": "A Python file exposing build_index(text: str) -> str authored solely from rules.md, plus the child's own evaluation of that function's returned string on document.txt. This lets the root mechanically execute both the child implementation and reference.py on document.txt and diff the outputs line by line (E-B), yielding matches_reference and the first divergence.",
+      "why_isolation_matters": "The evidential force of E-B is exactly the implementer's independence: only choices made without sight of reference.py reveal whether the points rules.md leaves unspecified get resolved the same way by chance or diverge. A fresh session receiving only rules.md and document.txt is causally shielded from reference.py in a way this contaminated session no longer can be."
+    }
+  ],
+  "local_resolution_path": [],
+  "expected_information_gain": "HIGH",
+  "expected_cost": "LOW",
+  "decision_basis": [
+    "Evidence requirement E-B explicitly demands an implementation authored with no access to reference.py and no access to analysis derived from it; the deliverable comparison object (independent_line) requires an actual independent implementation to exist.",
+    "This session has already observed reference.py and is therefore contaminated; it cannot generate E-B at full strength, so the required evidence set cannot be completed under the current local topology.",
+    "E-A (enumerating the behaviors document.txt exercises that rules.md leaves undetermined) is derivable locally from rules.md alone and is pre-committed in the integration plan, so the child is scoped to exactly the one evidence class the parent cannot honestly supply and does not merely repeat local work.",
+    "One terminal child holding only rules.md and document.txt produces the missing independent implementation at low bounded cost, and the root-side mechanical diff makes the comparison reproducible; expected value clearly exceeds the cost of a single child session."
+  ],
+  "confidence": 0.9
+}

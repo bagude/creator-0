@@ -1,0 +1,8 @@
+{
+  "encoder_file": "clean_impl.py",
+  "undetermined_behaviors": [
+    "Entry ordering: format.md never states the order in which entries are emitted. Probe {\"b_key\":\"2\",\"a_key\":\"1\",\"c_key\":\"3\"} is not in sorted key order, so insertion order and sorted order give different output. I chose the dict's own iteration order (insertion order).",
+    "Treatment of literal backslashes in a value: format.md only mandates escaping the characters ';' and '=', and is silent about backslash. Probes {\"back\":\"\\\\\"}, {\"path\":\"C:\\\\tmp\\\\data\",...}, and {\"msg\":\"escape \\\\; literally\",...} contain literal backslashes. A reader could reasonably escape backslashes too (for round-trippability), producing e.g. 'back=\\\\'; I implemented the literal spec and leave backslashes untouched, so a single backslash is emitted verbatim and 'escape \\; literally' becomes 'escape \\\\; literally' (an ambiguous sequence on any hypothetical decode)."
+  ],
+  "notes": "format.md defines four rules: entries rendered as key=value, joined by ';', and the value-only escaping of ';' and '=' by a preceding backslash. I implemented exactly these and nothing more. Escaping is applied only to values, not keys (no probe key contains ';' or '='). The two gaps above are the only behaviors probes exercise that the text does not uniquely determine; empty values (probe {\"single\":\"\"}) are determined -> 'single='."
+}

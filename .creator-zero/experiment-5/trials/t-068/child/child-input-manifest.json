@@ -1,0 +1,10 @@
+{
+  "files": [
+    "package/artifacts/rules.md",
+    "package/artifacts/document.txt"
+  ],
+  "excluded": [
+    "package/artifacts/reference.py"
+  ],
+  "exclusion_reason": "reference.py is listed in package/task.json -> clean_room_exclusions. E-B requires the implementer to have no access to reference.py; supplying it would void the child's independence and the evidence it exists to produce."
+}

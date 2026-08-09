@@ -1,0 +1,7 @@
+{
+  "artifact": "root instrumentation correction record",
+  "what": "the merged trial ledger initially omitted the root's validate-child verify event; kernel refinement and the topology guard rejected the composed ledger (create-child before validate-child)",
+  "why_correction_is_legitimate": "the deterministic validation demonstrably occurred before child launch: formal-results/child-bundle-validation.json and lifecycle.jsonl (CHILD_VALIDATED at 2026-08-09T13:58:45Z, strictly before CHILD_LAUNCHED) are the authoritative per-action records; the merged ledger is a root-composed evidence artifact and was corrected to include the omitted event at its recorded time",
+  "driver_fix": "root_driver.cmd_after_parent now appends the validate-child event at validation time for all subsequent trials",
+  "first_kernel_verdicts_preserved": "formal-results/refinement-before-correction.json, formal-results/topology-guard-before-correction.json"
+}

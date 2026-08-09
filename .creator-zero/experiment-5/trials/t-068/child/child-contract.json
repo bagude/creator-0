@@ -1,0 +1,23 @@
+{
+  "contract_id": "K-E5-t068-child",
+  "version": "0.1-e5",
+  "parent_contract": "K-E5-trial",
+  "envelope_ref": "K-E5-child-max",
+  "description": "Terminal worker contract for trial t-068. Attenuated from K-E5-trial and bounded on every axis by K-E5-child-max. The child authors, strictly from rules.md, a Python implementation of build_index and reports its evaluated output on document.txt. It creates, delegates, and realizes nothing.",
+  "allowed_primitives": ["observe", "hypothesize", "verify", "return"],
+  "allowed_relations": ["observe", "verify", "authorize", "return"],
+  "allowed_tools": ["Read", "Write"],
+  "max_children": 0,
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "may_create_creator": false,
+  "may_realize_creation": false,
+  "required_primitives_for_mutation": ["verify"],
+  "terminal": true,
+  "protected_rules": [
+    "No child may increase its authority envelope.",
+    "Model output is a proposal, never authorization.",
+    "Mutation-capable topology requires verification.",
+    "The child is terminal: it may not create, delegate, or launch anything."
+  ]
+}

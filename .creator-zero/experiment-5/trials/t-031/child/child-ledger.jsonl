@@ -1,0 +1,5 @@
+{"event_id": "evt-031-01-9a1c3f", "label": "observe", "actor": "node:observe-inputs", "timestamp": "2026-08-09T00:00:01Z", "artifact_refs": [], "metadata": {"completes_node": "observe-inputs"}}
+{"event_id": "evt-031-02-4b7e2d", "label": "propose", "actor": "node:produce-evidence", "timestamp": "2026-08-09T00:00:02Z", "artifact_refs": ["clean_impl.py"], "metadata": {"completes_node": "produce-evidence"}}
+{"event_id": "evt-031-03-c58a10", "label": "verify", "actor": "node:self-check", "timestamp": "2026-08-09T00:00:03Z", "artifact_refs": [], "metadata": {"completes_node": "self-check"}}
+{"event_id": "evt-031-04-e3f9b6", "label": "return", "actor": "node:return-result", "timestamp": "2026-08-09T00:00:04Z", "artifact_refs": ["child-result.json", "clean_impl.py"], "metadata": {"completes_node": "return-result"}}
+{"event_id": "evt-031-05-77d0aa", "label": "complete", "actor": "child", "timestamp": "2026-08-09T00:00:05Z", "artifact_refs": [], "metadata": {"event_kind": "child_complete"}}

@@ -1,0 +1,28 @@
+{
+  "trial_id": "t-068",
+  "branch": "CREATE",
+  "decision_summary": "chi(T,E,K) = CREATE. The task requires E-B: an empirical comparison on document.txt between reference.py and an implementation authored strictly from rules.md by an implementer with no access to reference.py and no access to analysis derived from it. This parent session has already read reference.py (a clean_room_exclusion) and is therefore contaminated; it cannot produce E-B at full strength. One terminal, fresh child that receives only rules.md and document.txt supplies exactly that missing independent implementation.",
+  "assigned_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Does an implementation of build_index authored strictly from rules.md, with no access to reference.py, produce output on document.txt that matches reference.py, and if not, where does it first diverge?",
+      "assigned_to": "child"
+    }
+  ],
+  "expected_child_contribution": [
+    {
+      "distinction_id": "Q1",
+      "expected_evidence": "clean_impl.py exposing build_index(text: str) -> str authored solely from rules.md, plus the child's evaluated output string on document.txt, enabling a mechanical root-side diff against reference.py (E-B).",
+      "why_isolation_matters": "Only an implementer that never saw reference.py yields independent choices; the parent, having read reference.py, cannot generate this evidence without contamination."
+    }
+  ],
+  "parent_local_evidence": {
+    "E-A": "Derived locally from rules.md alone (committed in child/integration-plan.json). Behaviors document.txt exercises that rules.md does not determine: (1) the line-number base — rule 2 lists 'line numbers' but never states whether the first line is 0 or 1; (2) term/output-line ordering — rules 3-4 require one line per unique term but never state the order of terms. Both affect the output string on document.txt.",
+    "note": "E-A alone already implies UNDERDETERMINED via E-C. The child is required to complete the mandated E-B evidence set and to make the comparison mechanically reproducible, not because the verdict is otherwise unknowable."
+  },
+  "integration_rule_reference": "child/integration-plan.json (method=clean_room_comparison; the root executes reference.py and the child's clean_impl.py on document.txt, diffs them, and assembles result.json per verdict_rule).",
+  "expected_final_verdict": "UNDERDETERMINED",
+  "expected_final_verdict_basis": "Parent E-A establishes output-affecting choices left open by rules.md that document.txt exercises; per E-C this yields UNDERDETERMINED independent of the empirical diff, which the child's E-B supplies to fill the comparison fields.",
+  "realization_status": "PENDING_ROOT_VALIDATION",
+  "realization_note": "This parent session holds no realization authority. Realization is legal only after the root's validate-child gate (attenuation, compilation, freshness) passes, and is performed exclusively by the deterministic fresh launcher. child_invocations will be 1 in the assembled result.json only if realization occurs."
+}

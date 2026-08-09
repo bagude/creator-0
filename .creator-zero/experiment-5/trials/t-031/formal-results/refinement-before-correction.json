@@ -1,0 +1,148 @@
+{
+  "check": "runtime_refinement",
+  "status": "FAIL",
+  "formal_relation": "Runtime <= Spec",
+  "counterexample": {
+    "violation": "REFINEMENT_VIOLATION",
+    "offending_transition": {
+      "event_id": "root-create-child",
+      "source": "",
+      "label": "create",
+      "target": "",
+      "actor": "node:create-child",
+      "timestamp": "2026-08-09T13:58:56Z",
+      "artifact_refs": [
+        "child/child-contract.json",
+        "child/child-harness.json"
+      ],
+      "contract_id": "",
+      "metadata": {
+        "completes_node": "create-child",
+        "note": "validated child realization via fresh launcher"
+      }
+    },
+    "event_index": 5,
+    "source_state": "done={decide-topology,observe-package,propose-child,return-proposal,self-check-proposal}|promoted=0|complete=0",
+    "expected_allowed_labels": [
+      "authorize",
+      "consult",
+      "create",
+      "observe",
+      "persist",
+      "propose",
+      "reconstruct",
+      "reject",
+      "return",
+      "tau",
+      "validate",
+      "verify"
+    ],
+    "trace_prefix": [
+      {
+        "event_id": "e1",
+        "source": "",
+        "label": "observe",
+        "target": "",
+        "actor": "node:observe-package",
+        "timestamp": "2026-08-09T00:00:01Z",
+        "artifact_refs": [
+          "package/task.json",
+          "package/artifacts/format.md",
+          "package/artifacts/reference.py",
+          "package/artifacts/probes.json",
+          "contract.json",
+          "child-envelope.json",
+          "harness.json",
+          "decision-schema.json"
+        ],
+        "contract_id": "",
+        "metadata": {
+          "completes_node": "observe-package",
+          "event_kind": "observe"
+        }
+      },
+      {
+        "event_id": "e2",
+        "source": "",
+        "label": "propose",
+        "target": "",
+        "actor": "node:decide-topology",
+        "timestamp": "2026-08-09T00:00:02Z",
+        "artifact_refs": [
+          "decision.json"
+        ],
+        "contract_id": "",
+        "metadata": {
+          "artifact_type": "topology_decision",
+          "completes_node": "decide-topology",
+          "decision": "CREATE",
+          "event_kind": "decision"
+        }
+      },
+      {
+        "event_id": "e3",
+        "source": "",
+        "label": "propose",
+        "target": "",
+        "actor": "node:propose-child",
+        "timestamp": "2026-08-09T00:00:03Z",
+        "artifact_refs": [
+          "child/child-contract.json",
+          "child/child-harness.json",
+          "child/child-prompt.md",
+          "child/child-input-manifest.json",
+          "child/integration-plan.json"
+        ],
+        "contract_id": "",
+        "metadata": {
+          "completes_node": "propose-child",
+          "event_kind": "propose"
+        }
+      },
+      {
+        "event_id": "e4",
+        "source": "",
+        "label": "verify",
+        "target": "",
+        "actor": "node:self-check-proposal",
+        "timestamp": "2026-08-09T00:00:04Z",
+        "artifact_refs": [
+          "child/child-contract.json",
+          "child/child-harness.json",
+          "child/child-input-manifest.json",
+          "child/integration-plan.json"
+        ],
+        "contract_id": "",
+        "metadata": {
+          "completes_node": "self-check-proposal",
+          "event_kind": "verify",
+          "outcome": "PASS_NONAUTHORITATIVE"
+        }
+      },
+      {
+        "event_id": "e5",
+        "source": "",
+        "label": "return",
+        "target": "",
+        "actor": "node:return-proposal",
+        "timestamp": "2026-08-09T00:00:05Z",
+        "artifact_refs": [
+          "result-pending.json"
+        ],
+        "contract_id": "",
+        "metadata": {
+          "completes_node": "return-proposal",
+          "event_kind": "return"
+        }
+      }
+    ]
+  },
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-5/trials/t-031/runtime-ledger.jsonl"
+  ],
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "Only explicitly modeled governed events are checked; instrumentation completeness of the runtime is assumed, not proven."
+  ],
+  "unmapped_events": []
+}

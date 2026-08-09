@@ -1,0 +1,24 @@
+{
+  "method": "clean_room_comparison",
+  "child_deliverable": "child-result.json",
+  "child_implementation_file": "clean_impl.py",
+  "comparison": "The root executes reference.py's build_index on the full contents of document.txt to obtain reference_output, and executes the child's clean_impl.py build_index on the same full contents to obtain independent_output, then compares the two strings line by line (splitlines, in order). This is E-B; it never requires the root to design or judge an implementation, only to run two given files and diff.",
+  "parent_committed_findings": {
+    "note": "E-A is derived by the parent from rules.md alone (no reference.py content is used to derive it) and is pre-committed here so the root assembles the deliverable mechanically.",
+    "E-A_underdetermined_behaviors": [
+      "Line-number base is unspecified: rules.md rule 2 says to list the 'line numbers' of each line on which a term occurs but never states whether the first line is numbered 0 or 1. document.txt has multiple non-empty lines, so this choice changes every emitted line number and thus the output.",
+      "Term (output-line) ordering is unspecified: rules.md rules 3-4 require one rendered line per unique term but never state the order in which terms are listed in the output. document.txt yields multiple distinct terms, so two legal orderings (e.g. first-appearance order versus alphabetical order) produce different output strings."
+    ]
+  },
+  "verdict_rule": {
+    "if_any_divergence": "UNDERDETERMINED",
+    "if_none": "UNDERDETERMINED",
+    "rationale": "Per E-C, the verdict is UNDERDETERMINED iff rules.md leaves an output-affecting choice OR the clean implementation diverges from reference.py. The parent's E-A already establishes output-affecting choices (line-number base and term ordering) that document.txt exercises, so the verdict is UNDERDETERMINED regardless of whether the child's particular choices happened to coincide with reference.py. A coincidental empirical match does not restore sufficiency; it only means this one independent implementer picked the same options a different legal implementer could have picked differently. The verdict would be SUFFICIENT only if E-A found no output-affecting choice AND the child output matched reference.py exactly; that antecedent is false here.",
+    "findings": "Assemble result.json.findings as: underdetermined_behaviors := parent_committed_findings.E-A_underdetermined_behaviors, augmented (deduplicated) by any items the child independently reported in child-result.json.silent_choices. comparison := { matches_reference: (reference_output == independent_output); first_differing_line: 1-based index of the first line at which the two split outputs differ, or null if identical; reference_line: that line from reference_output (null if identical or absent); independent_line: that line from independent_output (null if identical or absent) }."
+  },
+  "result_assembly": {
+    "verdict": "from verdict_rule (UNDERDETERMINED for this trial)",
+    "findings": "from verdict_rule.findings",
+    "child_invocations": 1
+  }
+}

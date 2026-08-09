@@ -1,0 +1,43 @@
+{
+  "check": "capability_proposal_observability",
+  "status": "PASS",
+  "formal_relation": "capability artifact in observable propose",
+  "counterexample": null,
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-5/trials/t-031/child/child-ledger.jsonl",
+    "artifact_id: clean_impl.py",
+    "reference hits: 2",
+    "first observable propose: event index 1 (evt-031-02-4b7e2d, actor node:produce-evidence, match exact)"
+  ],
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "An artifact reference matches by exact string or by final path component (basename); the matching mode used is recorded in evidence.",
+    "propose is an observable label in the kernel alphabet (never tau); this check adds no new label and modifies no kernel semantics.",
+    "Instrumentation completeness of the runtime ledger is assumed, not proven: an unlogged construction cannot be detected here and is governed by the topology guard and session audit instead."
+  ],
+  "unmapped_events": [],
+  "detail": {
+    "artifact_id": "clean_impl.py",
+    "first_propose_index": 1,
+    "propose_events": [
+      {
+        "index": 1,
+        "event_id": "evt-031-02-4b7e2d",
+        "label": "propose",
+        "actor": "node:produce-evidence",
+        "ref": "clean_impl.py",
+        "match_mode": "exact"
+      }
+    ],
+    "return_events": [
+      {
+        "index": 3,
+        "event_id": "evt-031-04-e3f9b6",
+        "label": "return",
+        "actor": "node:return-result",
+        "ref": "clean_impl.py",
+        "match_mode": "exact"
+      }
+    ]
+  }
+}
