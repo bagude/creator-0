@@ -1,0 +1,20 @@
+{
+  "task_id": "e6-t16",
+  "task": "Enumerate ALL valid foundation/application splits of the modules in artifacts/modules.json: an assignment of every module to exactly one of layer1 (foundation) or layer2 (application), both non-empty, such that no module in layer1 depends on a module in layer2 (a dependency entry {from: a, to: b} means a depends on b).  Completeness is the deliverable: a missed item is a wrong answer.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "items": "[{\"layer1\": [...], \"layer2\": [...]} with sorted module lists] (all of them, sorted)",
+      "method": "how the enumeration was produced",
+      "complete": "boolean or PENDING-INTEGRATION"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: one complete candidate enumeration with its method stated",
+    "E-B: a second complete enumeration of the same space produced without access to the first enumeration or any of its intermediate work",
+    "E-C: the final merged answer (union of both), with any item found by only one enumeration flagged; the completeness claim is admissible only when supported by both enumerations"
+  ],
+  "available_artifacts": [
+    "package/artifacts/modules.json"
+  ]
+}

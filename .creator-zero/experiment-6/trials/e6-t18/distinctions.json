@@ -1,0 +1,65 @@
+{
+  "task_id": "e6-t18",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What is the complete set of minimum-total-cost routes from S to T in package/artifacts/network.json (one-way links, no repeated nodes), and by what enumeration method was it produced?",
+      "why_unresolved": "No enumeration exists yet in the evidence state; the network artifact only defines the graph. The minimum cost and the full set of routes attaining it must be derived, and the deliverable demands completeness, which a single unstated derivation does not establish.",
+      "required_evidence": "A complete candidate enumeration of all minimum-cost S-to-T routes, sorted, together with an explicit statement of the method that produced it (per E-A).",
+      "admissibility_constraints": [
+        "The enumeration must be complete over the route space defined by network.json: one-way links respected, no node repeated within a route.",
+        "The method used to produce the enumeration must be stated alongside the items (task E-A: 'one complete candidate enumeration with its method stated').",
+        "Routes must be written as node names joined by '-'."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does a second, independently produced complete enumeration of the same route space exist — produced without any access to the first enumeration or its intermediate work — and what does it contain?",
+      "why_unresolved": "No such enumeration exists, and the process that reads the package and produces the first enumeration is thereby disqualified from producing this one: E-B's authorship condition ('without access to the first enumeration or any of its intermediate work') cannot be met by the author of E-A, who cannot un-anchor on the answer already formed.",
+      "required_evidence": "A complete enumeration of all minimum-cost S-to-T routes originating from a causally separated process whose inputs include network.json but exclude the first enumeration and all of its intermediate work (per E-B).",
+      "admissibility_constraints": [
+        "The producing process must have had no access to the first enumeration or any of its intermediate work (task E-B verbatim condition).",
+        "Causal separation must be enforced by launch conditions (input bundle chosen to exclude the first enumeration and the worker's conclusions), not merely asserted by the producer.",
+        "The second enumeration must itself be complete over the same route space and use the same route-string format so the two are comparable."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-B"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "What is the final merged answer — the union of both enumerations with any item found by only one enumeration flagged — and is the completeness claim supported by both enumerations?",
+      "why_unresolved": "The merge cannot exist before both enumerations exist, and the completeness claim is admissible only when supported by both (E-C); since the second enumeration must originate outside the worker process, the worker alone can at best deliver a result marked PENDING-INTEGRATION.",
+      "required_evidence": "A merged deliverable (result.json) whose items are the union of the two enumerations, with singly-found items flagged, and whose 'complete' field is set true only if both enumerations jointly support completeness (per E-C); integration of the out-of-session enumeration is performed by a deterministic root step.",
+      "admissibility_constraints": [
+        "The merged item list must be exactly the union of the E-A and E-B enumerations, sorted.",
+        "Any route found by only one of the two enumerations must be explicitly flagged.",
+        "The completeness claim is admissible only when supported by both enumerations (task E-C verbatim condition); with only one admissible enumeration, 'complete' must be false or PENDING-INTEGRATION."
+      ],
+      "dependencies": ["Q1", "Q2"],
+      "evidence_requirement_refs": ["E-C"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": true
+      }
+    }
+  ]
+}

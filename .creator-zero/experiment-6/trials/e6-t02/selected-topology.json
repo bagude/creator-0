@@ -1,0 +1,14 @@
+{
+  "trial_id": "e6-t02",
+  "topology_id": "H-e6-t02-local",
+  "family": "local",
+  "predicted_value": {
+    "delta_e": 1.0,
+    "cost": 0.125,
+    "redundancy": 0.0,
+    "governance_risk": 0.0
+  },
+  "predicted_utility": 0.875,
+  "predictions_hash": "sha256:f74e894e63df4ce21a537cf0836a0d9845f54cca61e7aea1d20e1ec3a2a37eb5",
+  "selected_before_realization": true
+}

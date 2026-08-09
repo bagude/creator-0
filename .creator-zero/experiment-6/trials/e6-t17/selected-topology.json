@@ -1,0 +1,14 @@
+{
+  "trial_id": "e6-t17",
+  "topology_id": "H-e6-t17-isolated-child",
+  "family": "isolated-child",
+  "predicted_value": {
+    "delta_e": 0.95,
+    "cost": 0.375,
+    "redundancy": 0.1,
+    "governance_risk": 0.0
+  },
+  "predicted_utility": 0.475,
+  "predictions_hash": "sha256:eda6817f1685c73049a9303db0837f1ce8539ae0c5d91cbe1992f8d7849e2561",
+  "selected_before_realization": true
+}

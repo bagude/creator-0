@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t18",
+  "estimates": {
+    "local": {
+      "delta_e": 0.65,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "The worker resolves Q1 (E-A) admissibly, but E-B's no-access authorship condition makes Q2 unresolvable by the package-reading worker, and without Q2 the E-C completeness claim is inadmissible: roughly 1/3 of distinctions resolved. All evidence records are the worker's own first production, so none duplicate prior worker evidence (novelty near 1, redundancy near 0)."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.4,
+      "redundancy": 0.55,
+      "governance_risk": 0.0,
+      "rationale": "The examiner sees the worker's answer, so its re-derivation violates E-B's 'without access to the first enumeration' condition and is inadmissible for Q2; still only Q1 is resolved. The examiner's records are a confirming re-check of an answer the worker fully established, so roughly half of all evidence records are duplicates."
+    },
+    "isolated-child": {
+      "delta_e": 0.9,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The worker satisfies E-A; a causally isolated child given only network.json produces an admissible E-B enumeration; deterministic root integration yields E-C — all three distinctions resolved barring a small chance either enumerator misses a route on this ~9-route graph. The child's output is required for admissibility, so its records are novel and redundancy is near zero."
+    },
+    "branching": {
+      "delta_e": 0.85,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The task's E-B makes the isolated-child branch strictly dominant, so a competent run-time choice realizes that branch and matches its value; the estimate is discounted slightly for the residual chance the local branch is chosen, which would leave Q2 and the E-C completeness claim unresolved."
+    }
+  }
+}

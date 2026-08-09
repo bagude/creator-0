@@ -1,0 +1,229 @@
+{
+  "topology_id": "H-e6-t02-local",
+  "task_id": "e6-t02",
+  "unresolved_distinctions": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "principles_invoked": [
+    "P-ATTENUATION",
+    "P-AUTHORITY-SEPARATION",
+    "P-FRESHNESS",
+    "P-LOCALITY",
+    "P-MINIMALITY",
+    "P-PROPOSAL-OBSERVABILITY",
+    "P-VERIFY"
+  ],
+  "harness_spec_ref": "sha256:0e7404ffa1379d3cb17e251748dd8dc9f6c38e3494bdacaa2871d8ce27329b46",
+  "harness_spec": {
+    "task_id": "e6-t02",
+    "goal": "Local resolution of e6-t02 under the current topology",
+    "max_depth": 0,
+    "max_model_calls": 1,
+    "nodes": [
+      {
+        "id": "observe-evidence",
+        "primitive": "observe",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Acquire all governed evidence for the task."
+      },
+      {
+        "id": "resolve-local",
+        "primitive": "hypothesize",
+        "tools": [
+          "Read",
+          "Write"
+        ],
+        "can_create": false,
+        "instructions": "Resolve every unresolved distinction from local evidence; persist the resolution."
+      },
+      {
+        "id": "verify-resolution",
+        "primitive": "verify",
+        "tools": [
+          "Read"
+        ],
+        "can_create": false,
+        "instructions": "Deterministically verify the resolution against the task deliverable."
+      },
+      {
+        "id": "return-result",
+        "primitive": "return",
+        "tools": [
+          "Read",
+          "Write"
+        ],
+        "can_create": false,
+        "instructions": "Return the verified result into the governed boundary."
+      }
+    ],
+    "edges": [
+      {
+        "source": "observe-evidence",
+        "target": "resolve-local",
+        "relation": "observe",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "resolve-local",
+        "target": "verify-resolution",
+        "relation": "verify",
+        "requires_response": true,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      },
+      {
+        "source": "verify-resolution",
+        "target": "return-result",
+        "relation": "authorize",
+        "requires_response": false,
+        "response_changes_parent_state": false,
+        "transfers_authority": false
+      }
+    ]
+  },
+  "resolution_map": {
+    "Q1": "resolve-local",
+    "Q2": "resolve-local",
+    "Q3": "resolve-local"
+  },
+  "predictions": [
+    {
+      "prediction_id": "H-e6-t02-local-pr01",
+      "topology_id": "H-e6-t02-local",
+      "claim": "distinction Q1 (What are the exact per-region revenue totals and the overall total revenue, wher) is resolved by node resolve-local",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+      "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q1",
+        "node": "resolve-local"
+      },
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t02-local-pr02",
+      "topology_id": "H-e6-t02-local",
+      "claim": "distinction Q2 (What is the median order value across all orders, where an even count of orders ) is resolved by node resolve-local",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+      "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q2",
+        "node": "resolve-local"
+      },
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t02-local-pr03",
+      "topology_id": "H-e6-t02-local",
+      "claim": "distinction Q3 (Which product has the largest total qty across all orders, with ties broken by l) is resolved by node resolve-local",
+      "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+      "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+      "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+      "weight": 1.0,
+      "kind": "resolves",
+      "subject": {
+        "distinction_id": "Q3",
+        "node": "resolve-local"
+      },
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t02-local-pr04",
+      "topology_id": "H-e6-t02-local",
+      "claim": "runtime realizes the declared causal order",
+      "observable": "execution ledger completes_node sequence",
+      "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'resolve-local', 'verify-resolution', 'return-result']",
+      "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+      "weight": 1.0,
+      "kind": "runtime_path",
+      "subject": {
+        "expected_order": [
+          "observe-evidence",
+          "resolve-local",
+          "verify-resolution",
+          "return-result"
+        ]
+      },
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t02-local-pr05",
+      "topology_id": "H-e6-t02-local",
+      "claim": "execution uses at most 1 model calls",
+      "observable": "resource_use.model_calls in the runtime record",
+      "success_condition": "model_calls <= 1",
+      "falsification_condition": "model_calls > 1",
+      "weight": 0.5,
+      "kind": "model_call_budget",
+      "subject": {
+        "max": 1
+      },
+      "principles": [
+        "P-MINIMALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t02-local-pr06",
+      "topology_id": "H-e6-t02-local",
+      "claim": "no actor exceeds its authority envelope",
+      "observable": "formal check results over the execution ledger",
+      "success_condition": "zero authority/refinement/attenuation failures",
+      "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+      "weight": 1.0,
+      "kind": "authority_envelope",
+      "subject": {},
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t02-local-pr07",
+      "topology_id": "H-e6-t02-local",
+      "claim": "local evidence is sufficient: resolution and verification complete without any descendant",
+      "observable": "verification record + child launch count",
+      "success_condition": "verification completes with zero child launches",
+      "falsification_condition": "verification is impossible from local evidence, or a distinction requires an isolated source",
+      "weight": 1.0,
+      "kind": "local_sufficiency",
+      "subject": {},
+      "principles": [
+        "P-LOCALITY"
+      ]
+    }
+  ],
+  "falsifiers": [
+    "a distinction in ['Q1', 'Q2', 'Q3'] remains unresolved after execution",
+    "the runtime path violates the compiled LTS",
+    "actual model calls exceed the declared budget",
+    "local evidence proves insufficient (verification impossible locally)"
+  ],
+  "predicted_value": {
+    "delta_e": 1.0,
+    "cost": 0.125,
+    "redundancy": 0.0,
+    "governance_risk": 0.0
+  },
+  "status": "VALIDATED",
+  "child_contract": {},
+  "predictions_hash": "sha256:f74e894e63df4ce21a537cf0836a0d9845f54cca61e7aea1d20e1ec3a2a37eb5"
+}

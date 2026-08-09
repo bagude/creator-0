@@ -1,0 +1,67 @@
+{
+  "task_id": "e6-t17",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What is the complete set of distinct parses (fully parenthesized, no-space forms) of the expression '8 - 2 ^ 2 - 1' under the grammar E -> E op E | number, and by what method was it enumerated?",
+      "why_unresolved": "The package contains only the grammar and the raw expression; no enumeration of the parse space exists yet, and completeness is the deliverable, so the set must be produced and its method stated.",
+      "required_evidence": "One complete candidate enumeration of every fully parenthesized form, sorted, with an explicit statement of the enumeration method (e.g. systematic binary-tree/Catalan enumeration over the three operator positions).",
+      "admissibility_constraints": [
+        "Each item must be a fully parenthesized form with no spaces, per the task's example format ((8-2)^(2-1)).",
+        "The enumeration must be complete over the grammar's parse space: a missed item is a wrong answer.",
+        "The method used to produce the enumeration must be stated (E-A: 'one complete candidate enumeration with its method stated').",
+        "Items must be sorted in the deliverable."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Does a second, causally independent enumeration of the same parse space — produced with access to the grammar and expression but no access to the first enumeration or any of its intermediate work — yield the same set of items?",
+      "why_unresolved": "No second enumeration exists, and by construction it cannot be produced by the process that authored (or has seen) the first one: E-B's admissibility condition is an authorship/access condition, not a correctness condition, so no amount of local re-checking can settle it.",
+      "required_evidence": "A complete enumeration of the parse space originating from a process that was given only the grammar and the expression, and demonstrably never given the first enumeration or its intermediate work.",
+      "admissibility_constraints": [
+        "E-B: the second enumeration must be 'produced without access to the first enumeration or any of its intermediate work'.",
+        "The producing process may see the package inputs (grammar, expression) but not the worker's conclusions, drafts, or partial results.",
+        "A re-derivation performed by the worker itself, or by any process shown the first answer, is inadmissible regardless of correctness."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-B"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "What is the final merged answer — the union of both enumerations with any single-source item flagged — and is the completeness claim supported by both enumerations?",
+      "why_unresolved": "The merge cannot exist before both enumerations exist; in particular the completeness field of result.json is admissible only when corroborated by the causally independent enumeration, which this process cannot itself supply.",
+      "required_evidence": "A merged item list equal to the union of the two enumerations, with any item found by only one enumeration explicitly flagged, and a completeness claim asserted only if both enumerations support it (otherwise PENDING-INTEGRATION or false).",
+      "admissibility_constraints": [
+        "E-C: the final answer must be the union of both enumerations, with any item found by only one enumeration flagged.",
+        "E-C: 'the completeness claim is admissible only when supported by both enumerations'.",
+        "The merge must consume an admissible E-B input; a merge over two same-origin enumerations does not satisfy E-C.",
+        "Deliverable shape: result.json with items (sorted), method, and complete (boolean or PENDING-INTEGRATION)."
+      ],
+      "dependencies": ["Q1", "Q2"],
+      "evidence_requirement_refs": ["E-C"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": true
+      }
+    }
+  ]
+}

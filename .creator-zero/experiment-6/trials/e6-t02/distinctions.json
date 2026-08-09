@@ -1,0 +1,64 @@
+{
+  "task_id": "e6-t02",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What are the exact per-region revenue totals and the overall total revenue, where each order's value is qty * unit_price and monetary amounts are exact decimals rounded to 2 places, half away from zero?",
+      "why_unresolved": "The raw package contains only the order rows in artifacts/orders.csv; no aggregation has been performed, so the region sums and grand total are not yet in the evidence state.",
+      "required_evidence": "A deterministic computation over every row of artifacts/orders.csv producing revenue_by_region and total_revenue, with exact-decimal arithmetic and half-away-from-zero rounding to the cent, checkable by re-running the same arithmetic on the same file.",
+      "admissibility_constraints": [
+        "Evidence must derive from package/artifacts/orders.csv, covering all data rows with none skipped or double-counted.",
+        "Arithmetic must be exact-decimal (no binary floating-point drift) with rounding to 2 places, half away from zero, per the task statement.",
+        "Per-region figures must sum consistently with the overall total to the cent (E-A: 'exact to the cent')."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What is the median order value across all orders, where an even count of orders takes the mean of the two middle values, computed on the rounded per-order values?",
+      "why_unresolved": "The per-order values have not been computed or sorted; orders.csv has 18 data rows (an even count), so the median depends on identifying the two middle values of the sorted value list, which no artifact yet records.",
+      "required_evidence": "The sorted list of the 18 per-order values (qty * unit_price, exact-decimal, rounded per the stated convention) with the mean of the 9th and 10th values, rounded to 2 places half away from zero, reproducible from orders.csv alone.",
+      "admissibility_constraints": [
+        "Evidence must derive from package/artifacts/orders.csv with every data row's value included exactly once.",
+        "The even-count convention stated in the task must be applied: median of an even count is the mean of the two middle values.",
+        "Monetary rounding must be to 2 places, half away from zero (E-B: 'under the stated convention')."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Which product has the largest total qty across all orders, with ties broken by lexicographically smallest product name?",
+      "why_unresolved": "Per-product qty totals have not been aggregated from the raw rows, so neither the maximum nor whether a tie-break is needed is settled by the present evidence state.",
+      "required_evidence": "The per-product total-qty table aggregated from orders.csv, the identified maximum, and — if two or more products share the maximum — application of the lexicographic tie-break, all reproducible from the file.",
+      "admissibility_constraints": [
+        "Evidence must derive from package/artifacts/orders.csv with all rows for each product included in its qty total.",
+        "If the maximum total qty is shared, the stated tie-break must be applied: lexicographically smallest product name (E-C: 'under the stated tie-break')."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

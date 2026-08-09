@@ -1,0 +1,394 @@
+{
+  "H-e6-t02-local": {
+    "predictions": [
+      {
+        "prediction_id": "H-e6-t02-local-pr01",
+        "topology_id": "H-e6-t02-local",
+        "claim": "distinction Q1 (What are the exact per-region revenue totals and the overall total revenue, wher) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-pr02",
+        "topology_id": "H-e6-t02-local",
+        "claim": "distinction Q2 (What is the median order value across all orders, where an even count of orders ) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-pr03",
+        "topology_id": "H-e6-t02-local",
+        "claim": "distinction Q3 (Which product has the largest total qty across all orders, with ties broken by l) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-pr04",
+        "topology_id": "H-e6-t02-local",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'resolve-local', 'verify-resolution', 'return-result']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "resolve-local",
+            "verify-resolution",
+            "return-result"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-pr05",
+        "topology_id": "H-e6-t02-local",
+        "claim": "execution uses at most 1 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 1",
+        "falsification_condition": "model_calls > 1",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 1
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-pr06",
+        "topology_id": "H-e6-t02-local",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-pr07",
+        "topology_id": "H-e6-t02-local",
+        "claim": "local evidence is sufficient: resolution and verification complete without any descendant",
+        "observable": "verification record + child launch count",
+        "success_condition": "verification completes with zero child launches",
+        "falsification_condition": "verification is impossible from local evidence, or a distinction requires an isolated source",
+        "weight": 1.0,
+        "kind": "local_sufficiency",
+        "subject": {},
+        "principles": [
+          "P-LOCALITY"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:f74e894e63df4ce21a537cf0836a0d9845f54cca61e7aea1d20e1ec3a2a37eb5"
+  },
+  "H-e6-t02-local-independent-verify": {
+    "predictions": [
+      {
+        "prediction_id": "H-e6-t02-local-independent-verify-pr01",
+        "topology_id": "H-e6-t02-local-independent-verify",
+        "claim": "distinction Q1 (What are the exact per-region revenue totals and the overall total revenue, wher) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-independent-verify-pr02",
+        "topology_id": "H-e6-t02-local-independent-verify",
+        "claim": "distinction Q2 (What is the median order value across all orders, where an even count of orders ) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-independent-verify-pr03",
+        "topology_id": "H-e6-t02-local-independent-verify",
+        "claim": "distinction Q3 (Which product has the largest total qty across all orders, with ties broken by l) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-independent-verify-pr04",
+        "topology_id": "H-e6-t02-local-independent-verify",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'resolve-local', 'verify-resolution', 'verify-independent', 'return-result']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "resolve-local",
+            "verify-resolution",
+            "verify-independent",
+            "return-result"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-independent-verify-pr05",
+        "topology_id": "H-e6-t02-local-independent-verify",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-independent-verify-pr06",
+        "topology_id": "H-e6-t02-local-independent-verify",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-local-independent-verify-pr07",
+        "topology_id": "H-e6-t02-local-independent-verify",
+        "claim": "local evidence is sufficient: resolution and verification complete without any descendant",
+        "observable": "verification record + child launch count",
+        "success_condition": "verification completes with zero child launches",
+        "falsification_condition": "verification is impossible from local evidence, or a distinction requires an isolated source",
+        "weight": 1.0,
+        "kind": "local_sufficiency",
+        "subject": {},
+        "principles": [
+          "P-LOCALITY"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:2ad69dfe79ae73a38bb751855fdcc637de8173bb1c5be13253ab6664c2d666a9"
+  },
+  "H-e6-t02-branching": {
+    "predictions": [
+      {
+        "prediction_id": "H-e6-t02-branching-pr01",
+        "topology_id": "H-e6-t02-branching",
+        "claim": "distinction Q1 (What are the exact per-region revenue totals and the overall total revenue, wher) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-branching-pr02",
+        "topology_id": "H-e6-t02-branching",
+        "claim": "distinction Q2 (What is the median order value across all orders, where an even count of orders ) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-branching-pr03",
+        "topology_id": "H-e6-t02-branching",
+        "claim": "distinction Q3 (Which product has the largest total qty across all orders, with ties broken by l) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-branching-pr04",
+        "topology_id": "H-e6-t02-branching",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'decide-topology', 'local-resolve', 'propose-child', 'validate-child', 'create-child', 'child-return', 'integrate-evidence', 'verify-child-result', 'verify-local']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "decide-topology",
+            "local-resolve",
+            "propose-child",
+            "validate-child",
+            "create-child",
+            "child-return",
+            "integrate-evidence",
+            "verify-child-result",
+            "verify-local"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-branching-pr05",
+        "topology_id": "H-e6-t02-branching",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-branching-pr06",
+        "topology_id": "H-e6-t02-branching",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-branching-pr07",
+        "topology_id": "H-e6-t02-branching",
+        "claim": "the child contributes novel evidence not derivable from parent-local evidence",
+        "observable": "evidence records with duplicate_of_parent flags",
+        "success_condition": "at least one child evidence record with duplicate_of_parent=false, attributed to the child",
+        "falsification_condition": "every child evidence record duplicates parent evidence",
+        "weight": 1.0,
+        "kind": "novel_evidence",
+        "subject": {
+          "distinction_ids": []
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t02-branching-pr08",
+        "topology_id": "H-e6-t02-branching",
+        "claim": "the realized child is fresh and attenuated",
+        "observable": "launch provenance + attenuation results",
+        "success_condition": "freshness PASS and attenuation PASS for the realized child",
+        "falsification_condition": "FRESHNESS_FAIL or ATTENUATION_FAIL on the realized child",
+        "weight": 1.0,
+        "kind": "verification_effect",
+        "subject": {
+          "checks": [
+            "freshness",
+            "attenuation"
+          ]
+        },
+        "principles": [
+          "P-FRESHNESS",
+          "P-ATTENUATION"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:510b8d8aea850a55d21ae44f540347989e195cd13f619e87c62aeeccfa30944d"
+  }
+}

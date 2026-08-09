@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t02",
+  "estimates": {
+    "local": {
+      "delta_e": 1.0,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "All three distinctions are deterministic aggregations over one small CSV with no authorship or isolation conditions, so a single worker resolves all of them with admissible evidence, and every evidence record it produces is novel."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.75,
+      "redundancy": 0.5,
+      "governance_risk": 0.0,
+      "rationale": "The examiner re-derives aggregates the worker already fully establishes admissibly, so all distinctions resolve (fraction 1.0) but roughly half the evidence records are duplicates of the worker's, cutting the novelty term."
+    },
+    "isolated-child": {
+      "delta_e": 0.75,
+      "redundancy": 0.5,
+      "governance_risk": 0.0,
+      "rationale": "No evidence requirement demands a causally isolated origin, so the child's recomputation from the same CSV duplicates evidence the worker alone can and will establish; distinctions still all resolve admissibly."
+    },
+    "branching": {
+      "delta_e": 1.0,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "At run time the worker will see that no distinction requires isolation and realize the local branch, matching local's evidence profile (all distinctions resolved, no duplicate records) while being costed at the isolated-child rate."
+    }
+  }
+}
