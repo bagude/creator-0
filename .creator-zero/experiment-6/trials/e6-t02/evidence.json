@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Full read of package/artifacts/orders.csv: header plus 18 data rows (o001-o018), columns order_id, region, product, qty, unit_price. This is the sole governed input artifact and the basis for every computation.",
+    "refs": ["package/artifacts/orders.csv"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "resolve-local",
+    "description": "Per-order value table (qty * unit_price, exact decimal) and per-region revenue aggregation: east=1260.11, west=1203.55, north=1199.50, south=267.96, total=3931.12. Cross-checked two ways: sum of region subtotals equals the direct sum of all 18 per-order values, exact to the cent (E-A).",
+    "refs": ["worksheet.md", "package/artifacts/orders.csv"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "resolve-local",
+    "description": "Sorted list of the 18 per-order values with the two middle (9th and 10th) values 191.92 and 204.75; median = mean = 198.335, rounded half away from zero to 198.34 under the stated even-count convention (E-B).",
+    "refs": ["worksheet.md", "package/artifacts/orders.csv"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "resolve-local",
+    "description": "Per-product total-qty table: anvil=39, bolt=35, crate=12, duct=10. Maximum held uniquely by anvil, so the lexicographic tie-break is not triggered (E-C).",
+    "refs": ["worksheet.md", "package/artifacts/orders.csv"]
+  },
+  {
+    "id": "ev-5",
+    "source_node": "verify-resolution",
+    "description": "Deterministic self-check (non-authoritative) of resolution.json and the computed figures against package/task.json: deliverable shape matches (total_revenue number, revenue_by_region map, top_product_by_qty string, median_order_value number); all 18 rows counted exactly once per aggregation; region subtotals reconcile with total_revenue to the cent; rounding and median conventions applied as stated. All checks passed.",
+    "refs": ["resolution.json", "worksheet.md", "package/task.json"]
+  }
+]

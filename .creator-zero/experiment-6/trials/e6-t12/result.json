@@ -1,0 +1,6 @@
+{
+  "count_5xx": 11,
+  "busiest_hour": "10",
+  "top_ip": "198.51.100.4",
+  "longest_gap_seconds": 420
+}

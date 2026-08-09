@@ -1,0 +1,38 @@
+{
+  "task_id": "e6-t12",
+  "topology_id": "local",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "11 responses carry a 5xx status code (statuses observed: 500 at lines 1,5,25,27,30,39; 502 at lines 3,10,23; 503 at lines 15,21). All 40 lines were classified with no sampling.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "Hour 10 is busiest with 22 requests versus 18 in hour 09 (18+22=40, full coverage). Counts are unequal, so the earliest-hour tie-break is not invoked.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q3",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "198.51.100.4 issued the most requests: 14, versus 192.0.2.9 with 13, 203.0.113.7 with 8, and 203.0.113.20 with 5 (sum 40, full coverage). The maximum is unique, so the lexicographic tie-break is not invoked.",
+      "evidence_ids": ["ev-4"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "The longest gap between consecutive requests is 420 whole seconds, attained 6 times among the 39 consecutive-pair differences, first at 09:17:50 -> 09:24:50 (lines 2-3).",
+      "evidence_ids": ["ev-5"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

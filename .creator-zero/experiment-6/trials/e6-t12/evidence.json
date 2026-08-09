@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Read the sole governed artifact package/artifacts/server.log in full: 40 lines, one request per line, chronological, format 'TIMESTAMP IP METHOD PATH STATUS LATENCY'. Also read package/task.json (deliverable spec) and distinctions.json (Q1-Q4 with admissibility constraints).",
+    "refs": ["package/artifacts/server.log", "package/task.json", "distinctions.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "resolve-local",
+    "description": "Q1: deterministic classification of every line's status field; 11 lines carry a status in [500,599] (500 at lines 1,5,25,27,30,39; 502 at lines 3,10,23; 503 at lines 15,21). Cross-check: 25 lines with 200, 3 with 404, 1 with 201; 25+3+1+11=40, so every line was covered with no sampling.",
+    "refs": ["analysis.md", "resolution.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "resolve-local",
+    "description": "Q2: per-hour histogram over all 40 timestamps: hour 09 -> 18 requests (lines 1-18), hour 10 -> 22 requests (lines 19-40); 18+22=40. Unique maximum at hour 10; earliest-hour tie-break not invoked.",
+    "refs": ["analysis.md", "resolution.json"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "resolve-local",
+    "description": "Q3: per-IP counts over all 40 lines: 198.51.100.4 -> 14, 192.0.2.9 -> 13, 203.0.113.7 -> 8, 203.0.113.20 -> 5; 14+13+8+5=40. Unique maximum at 198.51.100.4; lexicographic tie-break not invoked.",
+    "refs": ["analysis.md", "resolution.json"]
+  },
+  {
+    "id": "ev-5",
+    "source_node": "resolve-local",
+    "description": "Q4: all 39 consecutive-line timestamp differences computed in whole seconds; maximum is 420 seconds, attained 6 times (lines 2-3, 8-9, 13-14, 27-28, 32-33, 36-37), first at 09:17:50 -> 09:24:50. The full ordered list of 39 gaps is recorded in analysis.md.",
+    "refs": ["analysis.md", "resolution.json"]
+  },
+  {
+    "id": "ev-6",
+    "source_node": "verify-resolution",
+    "description": "Deterministic self-check (non-authoritative) of the resolution against the deliverable spec: each partition in ev-2/ev-3/ev-4 sums to exactly the 40 log lines; the gap list in ev-5 has exactly 39 entries (40 lines - 1) with maximum 420; answers conform to the deliverable shape (count_5xx integer, busiest_hour two-digit string, top_ip string, longest_gap_seconds integer); both stated tie-breaks were checked and found not triggered because both maxima are unique.",
+    "refs": ["resolution.json", "analysis.md", "package/task.json"]
+  }
+]

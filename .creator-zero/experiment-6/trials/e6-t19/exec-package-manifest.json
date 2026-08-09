@@ -1,0 +1,22 @@
+{
+  "artifact": "blinded exec workspace manifest",
+  "trial_id": "e6-t19",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t19/primary/exec-ws",
+  "blinding_scan": "PASS (0 hits)",
+  "file_sha256": {
+    ".claude/settings.json": "057724aff3831a2ebe097f2877650adbea6b7347a2aeada0e6e3134f4f4e2554",
+    "child-envelope.json": "b1eeb7c15c7b0f62aaf42f8777eea77e88f407bb39e646c7b7cda662a4852b79",
+    "child-templates/child-contract-template.json": "7209fc7b5d4e87df5d8ad53a8b1edd54290482e1c07f3fff5084879c2e41b2c3",
+    "child-templates/child-harness-template.json": "e82679ecb8ebf94f2a3080a08c3af3392c58f80bcee09661b4f5c195da137672",
+    "contract.json": "6ac49cdd4565175345e0c6a27500c4fa5f53325122f324c0dea9301e9002830d",
+    "distinctions.json": "a65aee6c81aa81ec45da8e01f073a620515612bb605fe4c1378d66f13618522b",
+    "harness.json": "b71dac9e34eb713720d269b75e4135142d324170e699b4a7b13cb6cad9a1933c",
+    "package/artifacts/price.py": "b14d5edbe226d254c8b6024cf78bc00c91b749e8cd8a06bc8d2a21d7de0a29e5",
+    "package/artifacts/pricing.md": "08a1bb530b881602d34be74c8729f0dcbb598f23cfa11ed54f9c9cf6623aeffc",
+    "package/artifacts/probes.json": "3216ae722e909ec3a017f61ebebfeb0dea5a97b28042f0c0983ffc4f2bf98386",
+    "package/task.json": "fa08475f891a83bbe0659994f79f3e032af07b359c00bc96dba990cea365193c",
+    "prompt.md": "effb880790070462d1bb966623fbf6ab94bb87726ed950c0ff89c0ec1098c633",
+    "protocol.md": "9ee45d464d5e265696f1049d50e5eef9f23e589acfeb4d8f49c8be9f523a4ed3",
+    "resolution-schema.json": "0b4b4b0a748bed54c260a5b35e6432cf644a73f97360793ca48f64d2c64d3e1b"
+  }
+}

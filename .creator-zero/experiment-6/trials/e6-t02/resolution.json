@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t02",
+  "topology_id": "local",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "revenue_by_region: east=1260.11, west=1203.55, north=1199.50, south=267.96; total_revenue=3931.12. Computed with exact decimal arithmetic over all 18 rows of package/artifacts/orders.csv; every qty*unit_price product is exact to the cent, and the four region sums add to the grand total exactly (1260.11+1203.55+1199.50+267.96=3931.12).",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "median_order_value=198.34. The 18 per-order values sorted ascending place 191.92 in 9th and 204.75 in 10th position; their mean is 198.335, which rounds to 198.34 under 2-place half-away-from-zero rounding, per the stated even-count convention.",
+      "evidence_ids": ["ev-1", "ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "top_product_by_qty=anvil. Per-product qty totals aggregated from all rows: anvil=39, bolt=35, crate=12, duct=10. The maximum (39) is held uniquely by anvil, so the lexicographic tie-break is not triggered.",
+      "evidence_ids": ["ev-1", "ev-4"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}
