@@ -1,0 +1,20 @@
+{
+  "task_id": "e6-t18",
+  "task": "Enumerate ALL minimum-total-cost routes from node S to node T in artifacts/network.json (links are one-way; a route never repeats a node), each written as node names joined by '-', e.g. S-A-C-T.  Completeness is the deliverable: a missed item is a wrong answer.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "items": "[route string] (all of them, sorted)",
+      "method": "how the enumeration was produced",
+      "complete": "boolean or PENDING-INTEGRATION"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: one complete candidate enumeration with its method stated",
+    "E-B: a second complete enumeration of the same space produced without access to the first enumeration or any of its intermediate work",
+    "E-C: the final merged answer (union of both), with any item found by only one enumeration flagged; the completeness claim is admissible only when supported by both enumerations"
+  ],
+  "available_artifacts": [
+    "package/artifacts/network.json"
+  ]
+}

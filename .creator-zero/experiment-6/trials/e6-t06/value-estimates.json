@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t06",
+  "estimates": {
+    "local": {
+      "delta_e": 0.8,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "A single careful worker resolves Q1, Q2 and Q4 admissibly (the arithmetic is deterministic; ~3 of 4 distinctions resolved, with a small residual slip risk on the adversarial items), and its records are novel first derivations. It cannot resolve Q3: any second pass it makes consults its own intermediate work, so E-B is unsatisfiable in this family."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.85,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "The separately launched examiner never saw the worker's intermediate work and can re-derive by a disjoint method, satisfying E-B's letter and resolving all four distinctions; its records are required for admissibility and hence mostly novel. Residual discount because the examiner does see the final answers, which invites anchoring and leaves a small risk the re-derivation is judged insufficiently independent."
+    },
+    "isolated-child": {
+      "delta_e": 0.9,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "The worker can hand the child only spec.md and items.json plus a mandated disjoint method, excluding its own answers and working entirely, so the re-derivation is answer-blind and cleanly satisfies E-B's non-consultation condition; all four distinctions resolve with admissible evidence. The child's records duplicate answer values but are required for E-B admissibility, so redundancy stays low; residual risk is an arithmetic slip on either path breaking per-item agreement."
+    },
+    "branching": {
+      "delta_e": 0.85,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "E-B makes the isolated-child branch strictly dominant, so a competent run-time choice realizes that branch and matches its value; a small discount reflects the chance the worker wrongly judges E-B locally satisfiable and realizes the local branch, forfeiting Q3."
+    }
+  }
+}

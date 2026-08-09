@@ -1,0 +1,17 @@
+{
+  "artifact": "blinded infer workspace manifest",
+  "trial_id": "e6-t18",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t18/infer-ws",
+  "blinding_scan": "PASS (0 hits)",
+  "file_sha256": {
+    ".claude/settings.json": "057724aff3831a2ebe097f2877650adbea6b7347a2aeada0e6e3134f4f4e2554",
+    "contract.json": "6ac49cdd4565175345e0c6a27500c4fa5f53325122f324c0dea9301e9002830d",
+    "distinction-spec-schema.json": "ba5f825abb02a72258acb36e0dfdd5d43891b7abf6d82fa785bd145a666149c1",
+    "infer-harness.json": "c1e9c62acad50f1f2d82cf61f75003fdc3ff38c396cc024c4b25a5ae3e72751c",
+    "package/artifacts/network.json": "52cd9176527942eeea5fdc504f4cdd91bf30e3a447fdf546dc0b1591798f3700",
+    "package/task.json": "1a06aceba7a02089ce28eb8a527fca46eeea70e9e1878c5627cd1ca449f6390d",
+    "prompt.md": "d0371f9236203233129d1b91e943ec9c425ad81e89ae057aa8b31dcc2997a4ac",
+    "protocol.md": "35242196e807afda57cbbab721a44905fdca3b679c29718520926830ac475158",
+    "value-estimates-schema.json": "627896bbec3c73f63cae01cc4104abf4711b250da04a329902986a0441d155dd"
+  }
+}

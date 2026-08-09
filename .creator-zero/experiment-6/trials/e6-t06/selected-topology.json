@@ -1,0 +1,14 @@
+{
+  "trial_id": "e6-t06",
+  "topology_id": "H-e6-t06-local-independent-verify",
+  "family": "local-independent-verify",
+  "predicted_value": {
+    "delta_e": 0.85,
+    "cost": 0.25,
+    "redundancy": 0.1,
+    "governance_risk": 0.0
+  },
+  "predicted_utility": 0.5,
+  "predictions_hash": "sha256:43f8a73e0ed66fe4af09d0c6a1de1c80e8cfad9dc7516aa31a0bfdbfcafeecb2",
+  "selected_before_realization": true
+}

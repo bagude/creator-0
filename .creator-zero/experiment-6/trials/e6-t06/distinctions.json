@@ -1,0 +1,84 @@
+{
+  "task_id": "e6-t06",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "For each of the 8 identifiers listed under 'validate' in package/artifacts/items.json, is the identifier VALID or INVALID under the W371 rule in package/artifacts/spec.md?",
+      "why_unresolved": "No answers exist anywhere in the package, and the task states the items are chosen so that plausible methods disagree on them: the 7-digit payloads mean a left-to-right weight assignment or a wrong weight phase yields different verdicts than the specified right-to-left assignment, so only a careful, spec-faithful derivation settles each item.",
+      "required_evidence": "A per-identifier derivation applying weights 3,7,1 cycling from the RIGHTMOST payload digit (weight 3) leftward, the weighted sum S, the check digit (10 - (S mod 10)) mod 10, and its comparison against the identifier's final digit, with the method stated in the deliverable.",
+      "admissibility_constraints": [
+        "The derivation method must be stated in the deliverable (E-A).",
+        "Weights must be assigned right-to-left with the rightmost payload digit receiving weight 3, exactly as spec.md prescribes.",
+        "The answer must be exactly correct (E-C); a plausible-but-unfaithful method variant does not count even if internally consistent."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A", "E-C"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "For each of the 4 payloads listed under 'compute' in package/artifacts/items.json, what is its check digit under the W371 rule?",
+      "why_unresolved": "The check digits are not present in the package and the 6-digit payloads are adversarially selected: a left-to-right or phase-shifted weight assignment produces a different digit than the specified right-to-left assignment, so the answer is open until a spec-faithful computation is performed.",
+      "required_evidence": "A per-payload computation of the weighted sum with weights 3,7,1 assigned from the rightmost digit leftward and the resulting check digit (10 - (S mod 10)) mod 10, with the method stated in the deliverable.",
+      "admissibility_constraints": [
+        "The derivation method must be stated in the deliverable (E-A).",
+        "Weights must be assigned right-to-left with the rightmost payload digit receiving weight 3, exactly as spec.md prescribes.",
+        "The answer must be exactly correct (E-C)."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A", "E-C"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Does a re-derivation of every answer by a method disjoint from the first derivation, carried out without consulting the first derivation's intermediate work, agree with the first derivation item by item?",
+      "why_unresolved": "No second derivation exists yet, and it cannot be produced admissibly by whichever process authors the first derivation: that process holds the first derivation's intermediate work in its own context, so any second pass it performs consults (and is anchored on) that work, violating E-B's non-consultation condition.",
+      "required_evidence": "A complete second answer set for all 12 items produced by a disjoint method (for example: validation by checking that the full weighted sum including the check digit with weight 1 is congruent to 0 mod 10, or left-to-right weighting with an explicit phase correction), produced by a process with no access to the first derivation's intermediate work, plus a recorded per-item agreement comparison between the two answer sets.",
+      "admissibility_constraints": [
+        "The second method must be disjoint from the first derivation's method (E-B).",
+        "The re-derivation must be carried out without consulting the first derivation's intermediate work, which requires an origin causally separated from the first derivation's working context (E-B).",
+        "Per-item agreement between the two derivations must be recorded (E-B)."
+      ],
+      "dependencies": ["Q1", "Q2"],
+      "evidence_requirement_refs": ["E-B"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "Is every answer in the deliverable's answers object exactly correct under spec.md?",
+      "why_unresolved": "The items are chosen so plausible methods disagree, so per-item plausibility does not establish correctness; correctness of the full answer set is only settled by deterministic verification against the spec-faithful computation, with agreement of two causally separate disjoint derivations as the strongest producible pre-verification evidence.",
+      "required_evidence": "Exact match of all 12 answers against the spec-faithful W371 computation (deterministic root verification decides satisfaction); convergent agreement between the first derivation and an admissible disjoint re-derivation supports but does not replace this.",
+      "admissibility_constraints": [
+        "Every answer must be exactly right (E-C); partial correctness does not satisfy the requirement.",
+        "Correctness is judged against spec.md's right-to-left 3,7,1 weighting, not against any alternative plausible convention."
+      ],
+      "dependencies": ["Q1", "Q2"],
+      "evidence_requirement_refs": ["E-C"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}
