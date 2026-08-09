@@ -1,0 +1,43 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Acquired all governed evidence: task statement and deliverable spec, the W371 rule (weights 3,7,1 cycling right-to-left, rightmost payload digit weight 3; check digit (10 - (S mod 10)) mod 10), the 8 validate identifiers and 4 compute payloads, the unresolved distinctions Q1-Q4, and the governing contract and harness.",
+    "refs": [
+      "package/task.json",
+      "package/artifacts/spec.md",
+      "package/artifacts/items.json",
+      "distinctions.json",
+      "harness.json",
+      "contract.json"
+    ]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "resolve-local",
+    "description": "First derivation (E-A): spec-faithful per-item W371 computation for all 12 items with full weighted-sum tables — weights assigned right-to-left with the rightmost payload digit at weight 3, weighted sum S, check digit (10 - (S mod 10)) mod 10, and comparison against each validate identifier's final digit. Results: VALID/VALID/INVALID/INVALID/VALID/VALID/VALID/INVALID for the validate items in listed order; check digits 9, 3, 3, 7 for the compute payloads in listed order. Method stated in result.json as E-A requires; resolutions persisted in resolution.json.",
+    "refs": [
+      "derivations.md",
+      "result.json",
+      "resolution.json"
+    ]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "verify-resolution",
+    "description": "In-session read-only cross-check (non-authoritative): every validate item re-checked via the congruence form (identifier valid iff S plus its final digit is congruent to 0 mod 10) with independently re-tabulated right-to-left sums (S = 103, 143, 170, 154, 129, 115, 135, 97), and every compute payload re-summed right-to-left (S = 101, 127, 137, 133); all 12 outcomes agree with ev-2. result.json checked against package/task.json deliverable shape: answers object with exactly the 12 required 'validate:<id>' / 'compute:<payload>' keys plus a method statement. NOT admissible for Q3 (same session holds the first derivation's intermediate work) and not authoritative for Q4 (deterministic root verification governs).",
+    "refs": [
+      "result.json",
+      "derivations.md",
+      "package/task.json"
+    ]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "",
+    "description": "Examiner charge (creator bookkeeping, proposed at authoring time): instructions for the root-executed verify-independent examiner to produce the E-B disjoint re-derivation — full-sum congruence check for validate items and left-to-right weighting with explicit phase correction for compute items — with a strict non-consultation rule (derivations.md forbidden; result.json answers read only after the examiner's own answers are fixed) and a per-item agreement report.",
+    "refs": [
+      "examiner-charge.md"
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "task_id": "e6-t01",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "Exactly two probe-exercised behaviors are determined differently by format.md and reference.py: (1) pair ordering — format.md mandates mapping (insertion) order, reference.py emits sorted key order, divergent on probes 1, 5, 6; (2) backslash handling — format.md's escaping clause is exhaustive over ';' and '=' so a literal backslash passes through verbatim, while reference.py doubles it, divergent on probe 4. Every other behavior exercised by the probe set (key=value pair rendering; '=' escaping; ';' escaping including trailing ';'; empty key and empty value rendering; empty mapping as the empty string) is determined identically, argued clause-by-clause in ea-behavior-statement.md. E-A's coverage condition is met by explicit enumeration of the behaviors each probe exercises.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be admissibly resolved in this session: E-B requires an author who has never accessed reference.py, and this session has read it. A clean-room child bundle has been proposed (child/) whose input manifest passes only package/artifacts/format.md and package/artifacts/probes.json verbatim; the isolated child will author encode.py solely from format.md. Settled after root-executed validate-child, create-child, and child-return.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "The item-level comparison cannot exist until the admissible implementation from Q2 exists. The deterministic comparison rule is pre-committed in child/integration-plan.json: execute reference.py and the child's encode.py on every probe in probes.json, compare exact strings, and report the sorted 0-based list of differing indices. Settled at root-executed verify-integration.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "The verdict is a function of E-A and E-B jointly and E-B does not yet exist; result.json therefore carries verdict PENDING-INTEGRATION. The pre-committed rule in child/integration-plan.json derives it without judgment: DIVERGES iff the mechanical comparison shows a differing output on some probe, REPRODUCES iff none. Settled at root-executed verify-integration and return-result.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

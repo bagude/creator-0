@@ -1,0 +1,11 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "result.json",
+  "child_implementation_file": "encode.py",
+  "rule": "Let P be the array in package/artifacts/probes.json (0-based indices). In a fresh Python 3 process, load encode from package/artifacts/reference.py as ref_encode and, in a separate fresh Python 3 process context, load encode from the child's encode.py as child_encode. For each i, compute r_i = ref_encode(P[i]) and c_i = child_encode(P[i]). Set divergent = sorted list of all i with r_i != c_i (exact string comparison). In result.json set: divergent_probe_indices = divergent; verdict = 'DIVERGES' if divergent is non-empty, 'REPRODUCES' if divergent is empty. Leave undetermined_behaviors exactly as authored from E-A (ea-behavior-statement.md). If the child's encode.py is missing, fails to compile, or raises on any probe, leave verdict and divergent_probe_indices as 'PENDING-INTEGRATION' and record the failure; the child's hand-traced outputs.json is advisory only and never substitutes for mechanical execution.",
+  "expected_contribution": {
+    "Q2": "The admissibly authored implementation itself (encode.py, authored solely from format.md with no access to reference.py or any analysis derived from it) together with its per-probe outputs, satisfying E-B's authorship condition.",
+    "Q3": "The inputs to the deterministic item-level comparison: running the rule above over reference.py and the child's encode.py yields the sorted list of divergent probe indices, mechanically reproducible from the two files.",
+    "Q4": "The E-B half of the verdict function: with E-A already on record, applying the rule (DIVERGES iff some probe differs, else REPRODUCES) settles the verdict at verify-integration."
+  }
+}

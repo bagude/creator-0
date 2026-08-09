@@ -1,0 +1,9 @@
+{
+  "verdict": "PENDING-INTEGRATION",
+  "undetermined_behaviors": [
+    "Pair ordering: format.md requires pairs in the order in which they appear in the mapping ('Pairs appear in the encoded line in the order in which they appear in the mapping'), while reference.py emits pairs in sorted key order (';'.join over sorted(d)). Determined differently; exercised divergently by probes 1, 5, and 6.",
+    "Backslash escaping: format.md's escaping clause covers only ';' and '=' ('every ';' is written as the two characters backslash-semicolon and every '=' as backslash-equals'), so a literal backslash passes through verbatim under the spec as written, while reference.py doubles every backslash (s.replace('\\', '\\\\') applied first). Determined differently — at best undetermined; exercised divergently by probe 4.",
+    "All other probe-exercised behaviors (pair rendering as key=value, '=' escaping in keys and values, ';' escaping in values, empty key and empty value rendering, empty mapping as empty string) are determined identically by format.md and reference.py — see ea-behavior-statement.md for the clause-by-clause argument."
+  ],
+  "divergent_probe_indices": "PENDING-INTEGRATION"
+}

@@ -1,0 +1,38 @@
+{
+  "task_id": "e6-t06",
+  "topology_id": "local-independent-verify",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "66373197 VALID (S=103, c=7); 74193967 VALID (S=143, c=7); 92489881 INVALID (S=170, c=0, final digit 1); 52874804 INVALID (S=154, c=6, final digit 4); 74391491 VALID (S=129, c=1); 91324575 VALID (S=115, c=5); 15878375 VALID (S=135, c=5); 29067655 INVALID (S=97, c=3, final digit 5). Weights assigned 3,7,1 right-to-left with the rightmost payload digit receiving weight 3, exactly as spec.md prescribes; method stated in result.json and full derivations in derivations.md.",
+      "evidence_ids": ["ev-2", "ev-3"],
+      "evidence_requirement_refs": ["E-A", "E-C"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "479812 -> 9 (S=101); 153886 -> 3 (S=127); 278381 -> 3 (S=137); 027899 -> 7 (S=133). Weights assigned 3,7,1 right-to-left with the rightmost payload digit receiving weight 3; method stated in result.json and full derivations in derivations.md.",
+      "evidence_ids": ["ev-2", "ev-3"],
+      "evidence_requirement_refs": ["E-A", "E-C"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING: E-B requires a disjoint re-derivation carried out without consulting the first derivation's intermediate work. This session authored the first derivation and holds its intermediate work in context, so no second pass it performs is admissible. The re-derivation is assigned to the root-executed verify-independent examiner; examiner-charge.md specifies the disjoint method and the per-item agreement record to produce.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING: E-C satisfaction is decided by deterministic root verification, which this session cannot perform. Supporting but non-authoritative evidence exists: the in-session verify-resolution cross-check (congruence method, re-tabulated sums) agreed with the first derivation on all 12 items (ev-3).",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

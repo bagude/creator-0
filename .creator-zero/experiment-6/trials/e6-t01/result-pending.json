@@ -1,0 +1,5 @@
+{
+  "summary": "Q1 (E-A) is resolved in-session: format.md determines pair ordering (mapping order vs reference.py's sorted order; probes 1, 5, 6) and backslash escaping (verbatim pass-through vs reference.py's doubling; probe 4) differently from reference.py, and no other probe-exercised behavior differs. Q2-Q4 require the isolated clean-room child proposed under child/: it authors encode(d) solely from format.md, after which the pre-committed deterministic rule in child/integration-plan.json produces the item-level comparison, divergent_probe_indices, and the E-C verdict. result.json carries PENDING-INTEGRATION in verdict and divergent_probe_indices until then. Based on E-A alone, divergence on probes 1, 4, 5, 6 is expected, but the verdict may not be asserted from E-A alone.",
+  "assigned_distinctions": ["Q2", "Q3", "Q4"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

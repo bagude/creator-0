@@ -1,0 +1,25 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "propose-child",
+    "description": "E-A behavior statement: clause-by-clause confrontation of format.md with reference.py over every behavior exercised by the 10 probes, concluding that exactly two behaviors are determined differently (pair ordering, probes 1/5/6; backslash escaping, probe 4) and all others agree. Authored in-session; E-A carries no authorship restriction.",
+    "refs": [
+      "ea-behavior-statement.md",
+      "package/artifacts/format.md",
+      "package/artifacts/reference.py",
+      "package/artifacts/probes.json"
+    ]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "Complete child bundle proposing an isolated clean-room implementer for E-B: attenuated child contract within child-envelope.json, child harness from template, standalone child prompt, input manifest restricted to format.md and probes.json verbatim (excluding reference.py and all analysis derived from it, including ea-behavior-statement.md), and a pre-committed deterministic integration rule mapping the child's encode.py to divergent_probe_indices and verdict.",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]
