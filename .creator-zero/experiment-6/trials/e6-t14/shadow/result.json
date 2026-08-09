@@ -1,0 +1,17 @@
+{
+  "answers": {
+    "2.675": "2.68",
+    "-1234.5": "(1,234.50)",
+    "0.005": "0.00",
+    "1000": "1,000.00",
+    "-0.125": "(0.12)",
+    "999999.995": "1,000,000.00",
+    "0.045": "0.04",
+    "12345.675": "12,345.68",
+    "-2.5": "(2.50)",
+    "0": "0.00",
+    "7.375": "7.38",
+    "-999.985": "(999.98)"
+  },
+  "method": "Exact digit-string tie inspection, no floating point at any step: each input was kept as its exact decimal digit string; the tail beyond the second fractional digit was classified as below-half, above-half, or an exact tie (third fractional digit 5 followed by nothing or only zeros); exact ties kept the two-decimal truncation when its hundredths digit was even and incremented it otherwise; increments carried right-to-left through the digit string (999999.995 -> 1,000,000.00); the integer part was then comma-grouped every three digits and negative amounts were rendered as unsigned values in parentheses after rounding (half-even is symmetric, so rounding the magnitude equals rounding the signed value). Full per-item working is in first-derivation.md. A corroborating re-derivation by a disjoint method (pure scaled-integer arithmetic) in an isolated child process, with deterministic per-item agreement comparison, is pending integration per child/integration-plan.json."
+}

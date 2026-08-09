@@ -1,0 +1,10 @@
+{
+  "decision": "CREATE",
+  "reasons": [
+    "chi(T): the task's evidence requirement E-B demands a re-derivation of every answer by a method disjoint from the first derivation, carried out without consulting the first derivation's intermediate work. The process that authors the first derivation (this session) holds that work in context, so any second pass it performs consults it by construction; E-B is unsatisfiable in-session.",
+    "chi(E): distinctions.json marks Q2 requires_isolation=true and contamination=true, and its admissibility constraints explicitly void evidence produced by a process holding the first derivation's work in context. Only a causally separate origin — a freshly launched child that receives just the format spec and the amount strings — can produce admissible E-B evidence.",
+    "chi(K): contract K-E6-trial permits bounded creation (may_create_creator=true, may_realize_creation=true, max_children=1, max_depth=1), and the child envelope K-E6-child-max (Read+Write, 1 model call, terminal worker) is sufficient for the re-derivation task. The selected harness carries a create node, so realization is legal once child validation passes.",
+    "The DO_NOT_CREATE branch would leave Q2 honestly UNRESOLVED with no downstream mechanism to ever resolve it, and would strip Q3 of its required corroborating disjoint-method derivation. CREATE dominates: Q1 resolves locally either way, and only CREATE makes Q2 and Q3 settleable by deterministic root integration and verification.",
+    "Integration is deterministic: a per-item string-equality comparison between the parent's answers and the child's answers requires no judgment, so the child's contribution maps onto the final result by a pre-committed rule."
+  ]
+}

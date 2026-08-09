@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t14",
+  "topology_id": "branching",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "format(x) for the 12 inputs, derived by exact digit-string tie inspection (method stated in result.json, per-item working in first-derivation.md): 2.675 -> 2.68; -1234.5 -> (1,234.50); 0.005 -> 0.00; 1000 -> 1,000.00; -0.125 -> (0.12); 999999.995 -> 1,000,000.00; 0.045 -> 0.04; 12345.675 -> 12,345.68; -2.5 -> (2.50); 0 -> 0.00; 7.375 -> 7.38; -999.985 -> (999.98).",
+      "evidence_ids": ["ev-4"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION: the disjoint-method re-derivation is assigned to the isolated child (scaled-integer arithmetic, inputs limited to format-spec.md and amounts.json); per-item agreement is recorded by the deterministic rule in child/integration-plan.json after root-executed launch. Any second derivation performed inside this session would consult the first derivation's in-context intermediate work and be inadmissible under E-B.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION: total string-exactness of all 12 answers is settled by deterministic root verification, corroborated by the child's disjoint-method agreement per child/integration-plan.json. In-session self-checks are non-authoritative and cannot close E-C.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

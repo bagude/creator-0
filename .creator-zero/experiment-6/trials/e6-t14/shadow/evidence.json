@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Acquired all workspace evidence: the task statement and deliverable shape, the formatting specification (half-even rounding at 2 decimals, comma grouping, parenthesized unsigned negatives), the 12 adversarial amount strings, the three unresolved distinctions with their admissibility constraints, and the governing contract, child envelope, and selected harness. Identified that Q2's non-consultation constraint makes a second in-session derivation inadmissible.",
+    "refs": ["package/task.json", "package/artifacts/format-spec.md", "package/artifacts/amounts.json", "distinctions.json", "contract.json", "child-envelope.json", "harness.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "decide-topology",
+    "description": "Typed topology decision CREATE with chi(T,E,K) reasoning: E-B requires a causally separate derivation origin; the contract permits one terminal child within the K-E6-child-max envelope; the DO_NOT_CREATE branch would leave Q2 unresolvable. Persisted as decision.json under an observable propose transition.",
+    "refs": ["decision.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Complete child bundle: attenuated terminal child contract (Read+Write, 1 model call, no creation), child harness from the template, standalone child prompt prescribing the disjoint scaled-integer method and the child ledger contract, input manifest restricted to format-spec.md and amounts.json (excluding the parent's derivation and all trial analysis, preserving E-B admissibility), and a deterministic integration plan mapping the child's answers to per-item agreement and the final result fields.",
+    "refs": ["child/child-contract.json", "child/child-harness.json", "child/child-prompt.md", "child/child-input-manifest.json", "child/integration-plan.json"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "propose-child",
+    "description": "First derivation (E-A): all 12 formatted answers computed by exact digit-string tie inspection with the method stated alongside the answers, treating every input as an exact decimal string (no binary floating point); per-item working including tie classification, even/odd hundredths decisions, and carry propagation recorded in first-derivation.md; answers serialized in result.json in the deliverable shape. Authored at the propose-child stage of the CREATE branch.",
+    "refs": ["first-derivation.md", "result.json"]
+  }
+]

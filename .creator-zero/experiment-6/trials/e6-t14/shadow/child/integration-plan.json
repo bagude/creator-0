@@ -1,0 +1,10 @@
+{
+  "role": "independent_verifier",
+  "child_deliverable": "child-answers.json",
+  "child_implementation_file": null,
+  "rule": "For each of the 12 input strings listed in package/artifacts/amounts.json, in array order: agreement[input] := (child-answers.json .answers[input] is present AND string-equal to result.json .answers[input] in the parent workspace). Record the 12 boolean comparisons as the per-item agreement log. If all 12 are true: Q2 is settled affirmatively (disjoint-method re-derivation agrees item by item) and result.json .answers stands unchanged as the final deliverable. If any comparison is false or any key is missing from either side: Q2 is settled negatively, the disagreeing items are listed, and Q3 / E-C fail pending root adjudication; result.json .answers is NOT overwritten by the child's values. No step in this rule requires judgment: it is exact key lookup and exact string equality only.",
+  "expected_contribution": {
+    "Q2": "The child supplies the second derivation: a causally separate origin (fresh session, inputs limited to format-spec.md and amounts.json, no access to the parent's derivation or intermediate work) using a method (scaled-integer arithmetic) disjoint from the parent's digit-string tie inspection. The deterministic per-item comparison of this rule produces the recorded agreement E-B requires.",
+    "Q3": "Corroboration only: item-by-item agreement of two admissible disjoint-method derivations is the corroborating leg of E-C; final settlement of Q3 remains with deterministic root verification against the spec's mandated outputs."
+  }
+}

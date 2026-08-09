@@ -1,0 +1,5 @@
+{
+  "summary": "Topology decision CREATE taken at decide-topology. The first derivation (E-A, digit-string tie inspection) is complete and fills result.json in full. The second, disjoint-method derivation required by E-B cannot admissibly originate in this session (the first derivation's intermediate work is in this session's context), so a terminal child bundle was proposed: the child re-derives all 12 answers by exact scaled-integer arithmetic from only format-spec.md and amounts.json. Root-executed validation, launch, per-item agreement integration, and verification remain.",
+  "assigned_distinctions": ["Q2", "Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}
