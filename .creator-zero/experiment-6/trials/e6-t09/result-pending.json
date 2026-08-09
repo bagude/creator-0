@@ -1,0 +1,15 @@
+{
+  "summary": "E-A (the first complete enumeration of all minimum, size-4, vertex covers) was produced and verified in this session: k=4 with exactly 4 covers. E-B (the causally-independent second enumeration) is delegated to a fresh isolated child (bundle under child/), and E-C (the union-with-flags merge plus the both-supported completeness verdict) is left for the root-executed verify-integration node. result.json.items and result.json.complete are therefore PENDING-INTEGRATION.",
+  "assigned_distinctions": ["Q3", "Q4"],
+  "integration_rule_ref": "child/integration-plan.json",
+  "ea_enumeration": {
+    "k": 4,
+    "covers": [
+      ["v1", "v2", "v5", "v6"],
+      ["v1", "v3", "v4", "v7"],
+      ["v2", "v3", "v4", "v7"],
+      ["v2", "v3", "v5", "v6"]
+    ],
+    "method": "Proved k>=4 (no three pairwise non-adjacent degree-3 vertices exist), then enumerated all size-4 covers exhaustively as complements of the size-3 independent sets {v1,v4,v7},{v1,v5,v6},{v2,v5,v6},{v3,v4,v7}; each complement verified to cover all 9 edges."
+  }
+}

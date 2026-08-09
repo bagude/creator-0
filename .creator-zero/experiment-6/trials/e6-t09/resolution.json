@@ -1,0 +1,38 @@
+{
+  "task_id": "e6-t09",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "observe-evidence",
+      "answer": "The minimum vertex cover size is k=4. Lower bound k>=4: covering all 9 edges with 3 vertices would require the three vertices to sum to >=9 edge-incidences with no internal edge, i.e. three degree-3 vertices that are pairwise non-adjacent; the only degree-3 vertices are {v2,v3,v4,v5} and no three of them are pairwise non-adjacent (the only non-adjacent pairs among them are {v2,v5} and {v3,v4}), so no size-3 cover exists. A size-4 cover exists (e.g. {v2,v3,v5,v6}), so k=4. Method: degree/counting lower-bound argument plus an exhibited size-4 cover, derived from package/artifacts/graph.json.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "observe-evidence",
+      "answer": "Complete first enumeration (E-A) of all minimum (size-4) vertex covers: [[\"v1\",\"v2\",\"v5\",\"v6\"], [\"v1\",\"v3\",\"v4\",\"v7\"], [\"v2\",\"v3\",\"v4\",\"v7\"], [\"v2\",\"v3\",\"v5\",\"v6\"]] (4 covers). Method: since k=4 and n=7, every size-4 cover is the complement of a size-3 independent set; enumerated all size-3 independent sets exhaustively via triangle search in the complement graph ({v1,v4,v7}, {v1,v5,v6}, {v2,v5,v6}, {v3,v4,v7}) and took complements, then verified each complement covers all 9 edges. Equivalent to an exhaustive scan of all C(7,4)=35 size-4 subsets for the cover property. This is one complete candidate enumeration with its method stated.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "E-B requires a causally-isolated second enumeration produced without access to the first enumeration or its intermediate work. This worker session, having produced E-A, cannot supply admissible E-B by construction. It is delegated to a separately launched fresh child (bundle authored under child/), whose evidence is received and settled by root-executed nodes (child-return / verify-integration). PENDING the isolated child run.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "E-C is the deterministic merge (union with per-item only_A/only_B flags) of E-A and E-B, with completeness admissible only when both independent enumerations support it. Because E-B does not yet exist in this session, the merge and the completeness verdict are PENDING-INTEGRATION, to be produced by the root-executed verify-integration node per child/integration-plan.json.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

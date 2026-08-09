@@ -1,0 +1,66 @@
+{
+  "task_id": "e6-t09-child",
+  "goal": "Independently and exhaustively enumerate all minimum-size vertex covers of the provided graph.",
+  "contract": "K-E6-t09-child",
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "nodes": [
+    {
+      "id": "observe-inputs",
+      "primitive": "observe",
+      "tools": ["Read"],
+      "can_create": false,
+      "instructions": "Read the only input file, graph.json (its vertices and edges), and the task described in the prompt."
+    },
+    {
+      "id": "produce-evidence",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Determine the minimum vertex-cover size k by an exhaustive/provable method, then enumerate every vertex cover of size k. Write enumeration.json."
+    },
+    {
+      "id": "self-check",
+      "primitive": "verify",
+      "tools": ["Read"],
+      "can_create": false,
+      "instructions": "Re-verify that every reported set covers all edges, that all have size k, that no cover of size k-1 exists, and that the search over the space was complete (no size-k cover omitted)."
+    },
+    {
+      "id": "return-result",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Return enumeration.json and the execution ledger."
+    }
+  ],
+  "edges": [
+    {
+      "source": "observe-inputs",
+      "target": "produce-evidence",
+      "relation": "observe",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "produce-evidence",
+      "target": "self-check",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "self-check",
+      "target": "return-result",
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    }
+  ],
+  "freshness": {
+    "fresh_launcher_required": true
+  }
+}

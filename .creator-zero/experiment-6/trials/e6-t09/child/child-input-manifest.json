@@ -1,0 +1,6 @@
+{
+  "files": [
+    "package/artifacts/graph.json"
+  ],
+  "rationale": "The child receives ONLY the raw graph. It is deliberately denied result.json, resolution.json, evidence.json, result-pending.json, the first enumeration (E-A), and every intermediate derivation of this session, so that its enumeration is produced without access to the first enumeration or its intermediate work (E-B admissibility). The task statement it needs is embedded self-containedly in child-prompt.md, which does not reveal any cover, k, or the existence of a prior enumeration."
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "E-A: complete first enumeration of all minimum-size vertex covers of graph.json. k=4 (lower bound k>=4 proven by degree/counting argument: a size-3 cover needs three pairwise non-adjacent degree-3 vertices, impossible among {v2,v3,v4,v5}; a size-4 cover exists). All size-4 covers found exhaustively as complements of the size-3 independent sets: [[\"v1\",\"v2\",\"v5\",\"v6\"],[\"v1\",\"v3\",\"v4\",\"v7\"],[\"v2\",\"v3\",\"v4\",\"v7\"],[\"v2\",\"v3\",\"v5\",\"v6\"]] (4 covers), each verified to cover all 9 edges. Method stated per E-A.",
+    "refs": ["package/artifacts/graph.json", "result-pending.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "Child bundle authored to produce E-B, the causally-independent second enumeration: attenuated child contract (within K-E6-child-max), child harness (observe-inputs -> produce-evidence -> self-check -> return-result), a self-contained prompt revealing no cover/k/prior enumeration, an input manifest containing ONLY package/artifacts/graph.json (so the child has no access to E-A or its intermediate work), and the deterministic integration plan mapping child/enumeration.json to the final result.",
+    "refs": ["child/child-contract.json", "child/child-harness.json", "child/child-prompt.md", "child/child-input-manifest.json", "child/integration-plan.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Pre-committed integration rule for E-C: deterministic union of E-A (result-pending.json.ea_enumeration) and E-B (child/enumeration.json) with per-item only_A/only_B flags, and completeness set true only when both non-empty and identical. Recorded before the child runs so the completeness claim's admissibility depends on mutual support, not on this session's word.",
+    "refs": ["child/integration-plan.json", "result-pending.json"]
+  }
+]

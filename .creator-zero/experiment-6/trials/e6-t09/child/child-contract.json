@@ -1,0 +1,22 @@
+{
+  "contract_id": "K-E6-t09-child",
+  "version": "0.1-e6",
+  "description": "Terminal worker child for e6-t09: independently enumerate all minimum-size vertex covers of the provided graph. Attenuated from K-E6-trial and within the K-E6-child-max envelope on every axis. No Creator capability, no realization, no descendants.",
+  "parent_contract": "K-E6-trial",
+  "envelope_ceiling": "K-E6-child-max",
+  "allowed_primitives": ["observe", "hypothesize", "verify", "return"],
+  "allowed_relations": ["observe", "verify", "authorize", "return"],
+  "allowed_tools": ["Read", "Write"],
+  "max_children": 0,
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "may_create_creator": false,
+  "may_realize_creation": false,
+  "required_primitives_for_mutation": ["verify"],
+  "protected_rules": [
+    "No child may increase its authority envelope.",
+    "Model output is a proposal, never authorization.",
+    "Mutation-capable topology requires verification.",
+    "The child is terminal: it may not create, delegate, or launch anything."
+  ]
+}

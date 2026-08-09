@@ -1,0 +1,10 @@
+{
+  "role": "independent_verifier",
+  "child_deliverable": "child/enumeration.json",
+  "child_implementation_file": null,
+  "rule": "Let A be the E-A cover set from result-pending.json.ea_enumeration.covers (this session's first enumeration). Let B be child/enumeration.json.covers (the child's E-B enumeration). Normalize both: sort the vertices within each cover ascending, drop duplicate covers, sort each collection lexicographically. Compute U = the sorted lexicographic union of A and B. For each item in U attach a flag: 'both' if the item is in A and B, 'only_A' if in A but not B, 'only_B' if in B but not A. Set result.json.items = U (each cover a sorted vertex list, list sorted). Set result.json.complete = true if and only if A and B are both non-empty AND A equals B exactly (no 'only_A' and no 'only_B' items); otherwise set result.json.complete = false and keep every discrepant item flagged in the merged record. Set result.json.method to record both enumeration methods (E-A: proven lower bound k>=4 plus exhaustive size-3-independent-set complement search; E-B: the child's stated method) and the merge. This rule is executable deterministically with no judgment.",
+  "expected_contribution": {
+    "Q3": "child/enumeration.json is E-B: the causally-independent second complete enumeration, produced by a fresh isolated process seeded only with the graph, satisfying the 'without access to the first enumeration or its intermediate work' condition.",
+    "Q4": "the union-with-flags merge of E-A and E-B and the completeness verdict that is set true only when both independent enumerations mutually support it (A == B), making the completeness claim admissible."
+  }
+}
