@@ -1,0 +1,22 @@
+{
+  "artifact": "Experiment 5 base-state record — lineage anchor, frozen before any Experiment 5 change",
+  "base_commit": "ad95dabdb766127f4eae1eb0d9efdaf191d6f094",
+  "base_branch": "claude/new-session-iwwyoh",
+  "working_branch": "claude/new-session-kphjhb",
+  "formal_kernel_manifest": ".creator-zero/state/formal-semantics-v0.1.json",
+  "formal_kernel_manifest_hash": "02a91afdb70b9faf50cbaa007a5fb05d7ce0216a1bededaa05c00947d1ce649a",
+  "experiment_4c_manifest": ".creator-zero/state/experiment-4c.json",
+  "experiment_4c_manifest_hash": "d7988084e2e6dea3841c86a07efe5f061f92fafc680430c84a79c368e0e077e6",
+  "root_contract": ".creator-zero/contracts/root_contract.json",
+  "root_contract_hash": "f7268b999e2b35dfebce656d170d702da78090cf52b1a5762a1fb97cec17392e",
+  "expected_prior_state": {
+    "formal_semantics_kernel": "v0.1 present (commit b3b8ae0, manifest 7bd1647)",
+    "experiment_4c": "DIRECT_C2_WITNESS_PASS (commit ad95dab)"
+  },
+  "kernel_reconstruction_at_base": {
+    "pre_existing_suite": "OK (unittest discover .creator-zero/tests)",
+    "formal_suite": "OK (unittest discover .creator-zero/tests/formal)",
+    "verified_at": "2026-08-09T13:40:00Z"
+  },
+  "historical_immutability_rule": "No file under .creator-zero/{contracts,examples,experiment-3,experiment-4,experiment-4c,formal,harness,runs,state,tests} present at base_commit may be modified or deleted by Experiment 5; verified by git diff against base_commit before final report."
+}
