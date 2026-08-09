@@ -1,0 +1,50 @@
+{
+  "task_id": "experiment-3-r6-coverage",
+  "goal": "Resolve Q1-Q7 to decide H0 (suite sufficiently protects R6) versus H1 (an R6 regression is undetectable), and, only if H1 is established by executable evidence, produce a minimal oracle-derived candidate regression test in the isolated candidate workspace, verified by a causally distinct locus, whose verdict feeds the deterministic Gate for promotion.",
+  "execution_order": [
+    "evidence-gap-and-derivation",
+    "report",
+    "act-candidate-test",
+    "verify-candidate"
+  ],
+  "edges": [
+    {
+      "source": "evidence-gap-and-derivation",
+      "target": "act-candidate-test",
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "act-candidate-test",
+      "target": "verify-candidate",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "verify-candidate",
+      "target": "report",
+      "relation": "return",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    },
+    {
+      "source": "evidence-gap-and-derivation",
+      "target": "report",
+      "relation": "return",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    }
+  ],
+  "generated_agents": [
+    "/home/user/creator-0/.claude/agents/generated/cz-experiment-3-r6-coverage-evidence-gap-and-derivation.md",
+    "/home/user/creator-0/.claude/agents/generated/cz-experiment-3-r6-coverage-act-candidate-test.md",
+    "/home/user/creator-0/.claude/agents/generated/cz-experiment-3-r6-coverage-verify-candidate.md",
+    "/home/user/creator-0/.claude/agents/generated/cz-experiment-3-r6-coverage-report.md"
+  ]
+}
