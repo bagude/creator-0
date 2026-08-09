@@ -1,0 +1,5 @@
+{
+  "items": [],
+  "method": "Attempted exhaustive depth-first enumeration of all simple (non-node-repeating) directed S-to-T paths in package/artifacts/network.json, keeping only paths whose total link cost equals the minimum. The method could not be executed: the manifest input package/artifacts/network.json does not exist in the child workspace. Probed the manifest path relative to the workspace root (/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t18/primary/child-ws/package/artifacts/network.json) plus ancestor directories (primary/, e6-t18/, e6/, scratchpad/), the session scratchpad, and naming variants (artifacts/, child-package/, launch-package/, packages/, pkg/); all reads returned file-not-found. Per contract, no other input material was acquired or assumed, so no routes could be derived. items is empty because no network data was available, not because the minimum-cost route set is known to be empty.",
+  "complete": false
+}

@@ -1,0 +1,5 @@
+{
+  "summary": "Exhaustively enumerated all 8 valid foundation/application splits of the 6 modules in inputs/modules.json by checking all 64 candidate layer1 subsets for dependency-closedness, and wrote them sorted and self-checked to enumeration-2.json.",
+  "files_produced": ["enumeration-2.json", "result.json", "execution-ledger.jsonl"],
+  "model_calls_spent": 0
+}

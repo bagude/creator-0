@@ -1,0 +1,38 @@
+{
+  "items": [
+    {
+      "layer1": ["auth", "core", "db", "net", "util"],
+      "layer2": ["ui"]
+    },
+    {
+      "layer1": ["auth", "core", "db", "util"],
+      "layer2": ["net", "ui"]
+    },
+    {
+      "layer1": ["core", "db", "net", "util"],
+      "layer2": ["auth", "ui"]
+    },
+    {
+      "layer1": ["core", "db", "util"],
+      "layer2": ["auth", "net", "ui"]
+    },
+    {
+      "layer1": ["core", "net", "util"],
+      "layer2": ["auth", "db", "ui"]
+    },
+    {
+      "layer1": ["core", "util"],
+      "layer2": ["auth", "db", "net", "ui"]
+    },
+    {
+      "layer1": ["db", "util"],
+      "layer2": ["auth", "core", "net", "ui"]
+    },
+    {
+      "layer1": ["util"],
+      "layer2": ["auth", "core", "db", "net", "ui"]
+    }
+  ],
+  "method": "Exhaustive enumeration of all 2^6 = 64 subsets of the 6 modules {auth, core, db, net, ui, util} as candidate layer1 sets. A candidate is valid iff (a) it is non-empty, (b) its complement (layer2) is non-empty, and (c) it is dependency-closed: for every edge {from, to} in inputs/modules.json with 'from' in layer1, 'to' is also in layer1 (equivalently, no layer1 module depends on a layer2 module). Closedness over the 7 edges is fully characterized by the membership implications core=>util, db=>util, net=>core, auth=>(core and db), ui=>(auth and net); applying these implications over all 64 subsets yields exactly 10 dependency-closed subsets: the empty set, the full set, and the 8 listed above. The 8 non-trivial closed subsets, paired with their complements, are therefore all valid splits, with no omissions and no duplicates. Each listed item was additionally re-checked edge-by-edge against all 7 dependencies.",
+  "complete": true
+}
