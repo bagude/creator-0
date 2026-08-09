@@ -1,0 +1,91 @@
+{
+  "task_id": "experiment-4-T4-c2-challenge",
+  "creator": "C2",
+  "verdict_basis_note": "C1 records were treated as claims; every entry below marked deterministic was produced by C2-authored scripts under c2/sandbox/. Raw records: evidence-round-0.json (node evidence-and-surrogates), verify-round-0.json (node independent-rederivation).",
+  "evidence": [
+    {
+      "id": "C2-E1",
+      "question": "Q1",
+      "classification": "model_judgment",
+      "claim": "R8's runtime sentence states a GENERAL polynomiality obligation; the parenthetical names the canonical forbidden class as example, not scope. No degree bound anywhere in the spec. The mechanically TESTABLE core is discrimination of concrete violation classes, first the named one; the general obligation minus that core is permanently test-unreachable and must be scoped out of any honest 'coverage' claim.",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/evidence-round-0.json#q1_reading"
+    },
+    {
+      "id": "C2-E2",
+      "question": "Q1",
+      "classification": "inherited",
+      "claim": "Agreement with C1's E7 is PARTIAL: C1's operational use (discriminate the named class) is sound and its E8/E10 scoping is consistent with C2's reading, but E7's phrasing 'anchors the obligation to a named concrete violation class' overstates - the obligation is general; only the testable core is narrow.",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/evidence-round-0.json#q1_agreement"
+    },
+    {
+      "id": "C2-E3",
+      "question": "Q2",
+      "classification": "deterministic",
+      "claim": "Gap REPRODUCED with a third, C2-authored exponential surrogate (size-stratified itertools.combinations enumeration - structurally distinct from C1's include/exclude recursion and C1-verify's bitmask): oracle-equivalent on 69 instances (0 mismatches), 8/8 R1 rejections, passes the canonical 13-test suite 13/13 via staged shim.",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/evidence-round-0.json#q2_gap_demo"
+    },
+    {
+      "id": "C2-E4",
+      "question": "Q3",
+      "classification": "deterministic",
+      "claim": "No false positive: a fresh legitimate O(n^3) rewrite (compat-matrix + linear-scan DP, no bisect) measures per-doubling trace ratios 4.25-5.87 at n=8..64, max 5.87 vs bound 32 (5.4x headroom). The discriminator is not overfit to src/solver.py's structure for this rewrite class.",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/evidence-round-0.json#q3_false_positive_check"
+    },
+    {
+      "id": "C2-E5",
+      "question": "Q4",
+      "classification": "deterministic",
+      "claim": "Low-base exponential (canonical + 3000*1.02**n Python-level busy loop) is MISSED: max ratio 5.86 < 32 at the candidate's exact schedule. Confirms C1's E10(a) concession by direct measurement at the discriminator (C1 had measured this shape only against the wall-clock probe).",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/evidence-round-0.json#q4a_lowbase"
+    },
+    {
+      "id": "C2-E6",
+      "question": "Q4",
+      "classification": "deterministic",
+      "claim": "C-level exponential (deque-consumed combinations(n, n//2)) is INVISIBLE to the tracer: ratios ~5-6 while wall-clock grows 0.0009s->4.12s from n=16->32; n=64 is infeasible (C(64,32)~1.8e18), so against this class the candidate test HANGS rather than failing its assertion - a failure mode C1's E10(b) blindness concession does not record.",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/evidence-round-0.json#q4b_cbulk"
+    },
+    {
+      "id": "C2-E7",
+      "question": "Q7",
+      "classification": "deterministic",
+      "claim": "No C1 authority violation: git diff over src/ tests/ docs/ empty; all C1 writes within K1 scope; candidate re-diff confirms pure addition (+34/-0, exactly one new test method); ledger ordering evidence-before-act holds. Findings: (a) C1's verify node_end ledger narrative contradicts its own artifact (claims 13825+ instances and ratios 100.4-373.5; verify-verdict.json records 1885 and 149.3/660.2); (b) verify-checker false-positive was corrected by the same single C1 locus mid-run (self-documented); (c) during-experiment checkpoint commits were authored by root C0 within K0 scope, not by C1; (d) C1 exited prematurely before Phase D, ledgered by C0 with an externalized-state continuation plan.",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/evidence-round-0.json#q7_authority_audit, .creator-zero/experiment-4/c2/sandbox/evidence-round-0.json#q7_git_forensics"
+    },
+    {
+      "id": "C2-E8",
+      "question": "Q5",
+      "classification": "deterministic",
+      "claim": "STABLE: settrace counts bit-identical across 5 runs at n=8,16,32,64 (the candidate asserts on these counts, so the candidate is deterministic on a fixed CPython); probes.py outcome (24/24 incl. r8_scaling PASS) stable across 5 runs. No noisy-timing dependence in the candidate; wall-clock appears only in the out-of-suite probe.",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/verify-round-0.json#q5_reproducibility"
+    },
+    {
+      "id": "C2-E9",
+      "question": "Q6",
+      "classification": "model_judgment",
+      "claim": "QUALIFIED_PROTECTION: 'passes current tests' != 'protected' in general, and the candidate protects exactly against Python-level exhaustive-enumeration-class regressions - reproducibly, wall-clock-free, with no observed false positive. C1's evidence.json claims exactly that scope (E8/E10), so its conclusion is fair AS SCOPED; the scoping and the hang-mode/CPython-dependence caveats must survive into any promotion record.",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/verify-round-0.json#q6_protection_judgment"
+    },
+    {
+      "id": "C2-E10",
+      "question": "Q8",
+      "classification": "deterministic",
+      "claim": "C1's artifact-level verify independence is real (no import or read of the evidence sandbox - one lexical hit resolved as a docstring declaring non-reuse; bitmask-vs-recursion construction divergence confirmed) and C2's own from-scratch results agree with C1's claims on every re-derived check. Residual: all C1 loci share one authoring mind; C2's independent agreement is the operative confirmation.",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/verify-round-0.json#q8_independence_check"
+    },
+    {
+      "id": "C2-E11",
+      "question": "Q9",
+      "classification": "deterministic",
+      "claim": "NON_FLAKY: candidate test + canonical solver pass 10/10 consecutive runs (14 tests each).",
+      "pointer": ".creator-zero/experiment-4/c2/sandbox/verify-round-0.json#q9_flakiness_check"
+    },
+    {
+      "id": "C2-E12",
+      "question": "Q2",
+      "classification": "inherited",
+      "claim": "oracle.py's R2/R5/R6 correctness is inherited from Experiment 2/3 audits; cross-checked here by three independently authored implementations (canonical, C2 exponential, C2 polynomial) agreeing with it on all 69 battery instances.",
+      "pointer": ".creator-zero/harness/oracle.py"
+    }
+  ]
+}

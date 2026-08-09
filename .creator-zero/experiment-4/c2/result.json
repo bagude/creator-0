@@ -1,0 +1,33 @@
+{
+  "creator": "C2",
+  "verdict": "PARTIAL_CONFIRMATION",
+  "candidate_endorsed": true,
+  "objections": [
+    "C1's execution-ledger verify-candidate node_end narrative contradicts its own artifact: ledger claims '13825+ oracle-differential instances' and exponential ratios '100.4-373.5'; verify-verdict.json records instances=1885 and ratios 149.3/660.2. The artifact-level measurements stand (C2 independently reproduced their substance), but the ledger narrative is unreliable as a record and should be corrected or annotated before the Gate treats ledger text as evidence. (evidence: c2/evidence.json C2-E7)",
+    "C1's E7 reading overstates: R8's obligation is general polynomiality; only the TESTABLE core is the named enumeration class. Any promotion record must carry E8/E10's scoping forward - 'R8 runtime coverage' means 'discriminates the named violation class', nothing stronger. (C2-E1, C2-E2)",
+    "Uncaught-shape failure mode understated: against a super-polynomial regression executed in C-level builtins, the candidate test does not fail its assertion - it HANGS at n=64 (measured: wall-clock 0.0009s->4.12s from n=16->32 while trace ratios stay ~6; C(64,32)~1.8e18 is infeasible). C1's E10(b) concedes tracer blindness but not the hang mode; in CI this surfaces only as a job timeout. Should be documented in the candidate or its record. (C2-E6)",
+    "The verify-checker's mid-run self-correction (lexical false positive on 'wall-clock') was diagnosed and patched by the same single C1 authoring locus whose product was under verification - self-documented and substantively harmless here (C2 hit and resolved the identical failure shape itself), but it demonstrates that C1's 'causally distinct verification' is artifact-level, not mind-level; C2's independent reproduction is what closes that residue. (C2-E7, C2-E10)",
+    "The candidate asserts on CPython sys.settrace event counts: ratios (not absolute counts) keep it implementation-version-robust in practice and 10/10 runs were bit-stable, but the mechanism is CPython-specific and the suite record should state that assumption. (C2-E8, C2-E9)"
+  ],
+  "new_information": [
+    "Third independent surrogate family (size-stratified combinations enumeration) reproduces the 13/13 gap - the gap claim now rests on three structurally distinct constructions by two causally separate creators.",
+    "Direct measurement of the 1.02^n low-base shape against the candidate's actual trace discriminator (max ratio 5.86, missed) - C1 had only measured it against the 30s wall-clock probe.",
+    "Measured demonstration that C-level exponential work is tracer-invisible AND that the resulting candidate failure mode is a hang, not an assertion failure.",
+    "A second fresh legitimate polynomial rewrite (degree 3, no bisect, compat-matrix) passes with max ratio 5.87 - additional false-positive headroom datapoint.",
+    "Ledger-vs-artifact discrepancies in C1's verify node_end narrative (instances 13825 vs 1885; ratios 100.4-373.5 vs 149.3/660.2).",
+    "Forensic attribution of during-experiment git checkpoint commits to root C0 (within K0 scope) and confirmation C1 performed no git writes; C1's premature exit before Phase D was ledgered by C0 with an externalized-state continuation plan.",
+    "Candidate determinism measured: settrace counts bit-identical across 5 runs; candidate+canonical 10/10 consecutive passes."
+  ],
+  "unresolved_distinctions": [
+    "Low-base/near-1 super-polynomial growth is permanently indistinguishable by any fixed finite test (logical limit, C1's E8) - unresolved by both C1 and C2, and unresolvable; any coverage claim must remain scoped.",
+    "The bound-32 (degree<=5) admittance line: both measured legitimate rewrites sit at ratio <=7.15; no near-degree-5 legitimate implementation was constructed by either creator, so the bound's behavior near its admittance edge is untested.",
+    "Behavior under non-CPython interpreters (PyPy/JIT) where settrace event streams differ - untested by both creators.",
+    "oracle.py correctness remains inherited from Experiment 2/3 audits (cross-checked by three-implementation agreement, not re-proven)."
+  ],
+  "evidence": ".creator-zero/experiment-4/c2/evidence.json (raw: c2/sandbox/evidence-round-0.json, c2/sandbox/verify-round-0.json, scripts+surrogates under c2/sandbox/)",
+  "model_calls_initiated": 2,
+  "kappa_2": {
+    "value": 1,
+    "validated_by": ".creator-zero/experiment-4/c2/creator-capability-attestation.json"
+  }
+}

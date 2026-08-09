@@ -1,0 +1,182 @@
+{
+  "q5_reproducibility": {
+    "classification": "deterministic",
+    "settrace_runs": [
+      {
+        "8": 1499,
+        "16": 7459,
+        "32": 45107,
+        "64": 309331
+      },
+      {
+        "8": 1499,
+        "16": 7459,
+        "32": 45107,
+        "64": 309331
+      },
+      {
+        "8": 1499,
+        "16": 7459,
+        "32": 45107,
+        "64": 309331
+      },
+      {
+        "8": 1499,
+        "16": 7459,
+        "32": 45107,
+        "64": 309331
+      },
+      {
+        "8": 1499,
+        "16": 7459,
+        "32": 45107,
+        "64": 309331
+      }
+    ],
+    "settrace_bit_identical_across_5_runs": true,
+    "canonical_per_doubling_ratios": {
+      "8->16": 4.98,
+      "16->32": 6.05,
+      "32->64": 6.86
+    },
+    "probes_runs": [
+      {
+        "exit": 0,
+        "scaling_line": "PASS | R8 empirical polynomial scaling n=100,200,400 | n=100:0.0070s n=200:0.0288s n=400:0.0900s ratio200/100=4.12 ratio400/200=3.13",
+        "summary": "PROBES total=24 pass=24 fail=0"
+      },
+      {
+        "exit": 0,
+        "scaling_line": "PASS | R8 empirical polynomial scaling n=100,200,400 | n=100:0.0066s n=200:0.0272s n=400:0.0892s ratio200/100=4.14 ratio400/200=3.28",
+        "summary": "PROBES total=24 pass=24 fail=0"
+      },
+      {
+        "exit": 0,
+        "scaling_line": "PASS | R8 empirical polynomial scaling n=100,200,400 | n=100:0.0064s n=200:0.0264s n=400:0.0869s ratio200/100=4.13 ratio400/200=3.29",
+        "summary": "PROBES total=24 pass=24 fail=0"
+      },
+      {
+        "exit": 0,
+        "scaling_line": "PASS | R8 empirical polynomial scaling n=100,200,400 | n=100:0.0068s n=200:0.0280s n=400:0.0904s ratio200/100=4.14 ratio400/200=3.23",
+        "summary": "PROBES total=24 pass=24 fail=0"
+      },
+      {
+        "exit": 0,
+        "scaling_line": "PASS | R8 empirical polynomial scaling n=100,200,400 | n=100:0.0067s n=200:0.0303s n=400:0.0935s ratio200/100=4.52 ratio400/200=3.09",
+        "summary": "PROBES total=24 pass=24 fail=0"
+      }
+    ],
+    "probes_outcome_stable": true,
+    "stability_verdict": "STABLE",
+    "note": "settrace counts are the candidate's actual assertion input; wall-clock r8_scaling is C1's E3 subject. Bit-identical counts mean the candidate test is deterministic given a fixed interpreter; wall-clock lines may vary in magnitude but only the ok (30s cap) outcome matters for stability."
+  },
+  "q8_independence_check": {
+    "classification": "deterministic",
+    "c1_verify_imports": {
+      "exp_mask.py": {
+        "imports": [],
+        "imports_evidence_sandbox": false,
+        "string_refs_evidence_sandbox": false
+      },
+      "poly_alt.py": {
+        "imports": [],
+        "imports_evidence_sandbox": false,
+        "string_refs_evidence_sandbox": false
+      },
+      "run_verify.py": {
+        "imports": [
+          "\nimport importlib.util",
+          "import itertools",
+          "import json",
+          "import os",
+          "import re",
+          "import shutil",
+          "import subprocess",
+          "import sys"
+        ],
+        "imports_evidence_sandbox": false,
+        "string_refs_evidence_sandbox": true
+      }
+    },
+    "no_evidence_sandbox_import": true,
+    "construction_divergence_bitmask_vs_recursion": true,
+    "c2_vs_c1_claim_comparison": {
+      "gap_13_13": {
+        "c1_claim": true,
+        "c2_independent": true
+      },
+      "no_false_positive_on_legit_polynomial": {
+        "c1_claim": true,
+        "c2_independent": true
+      },
+      "exponential_flagged_by_bound": {
+        "c1_claim": true,
+        "c2_independent_note": "C2 did not re-run its own exp surrogate under the counter (its class was already flagged by C1 twice); C2's cbulk/lowbase results instead bound the discriminator's blind spots"
+      }
+    },
+    "independent_agreement": true,
+    "caveat": "artifact-level independence within C1 is real (verify re-authored its surrogates; no imports from the evidence sandbox), but ALL C1 loci share one authoring mind; the operative independence evidence is C2's own from-scratch agreement, plus the ledger-vs-artifact narrative discrepancies node 1 found (instances 13825 vs 1885; ratios 100.4-373.5 vs 149.3/660.2), which undermine the ledger narrative's precision but not the artifact-level measurements.",
+    "string_ref_resolution": {
+      "classification": "deterministic",
+      "detail": "the single string_refs_evidence_sandbox hit in run_verify.py is a docstring sentence declaring non-reuse ('reuses NOTHING from c1/sandbox/ except reading the recorded bound/schedule') plus a verdict-text line; grep confirms run_verify.py never opens evidence-round-0.json nor imports any c1/sandbox module. C2's lexical scan false-positived on a declaration string - the same failure shape as C1's own verify-checker anomaly - and is resolved by content inspection: no actual causal dependence."
+    },
+    "no_evidence_sandbox_import_note": "set true after string-ref resolution above; raw lexical scan result preserved in c1_verify_imports"
+  },
+  "q9_flakiness_check": {
+    "classification": "deterministic",
+    "runs": [
+      {
+        "exit": 0,
+        "tail": "OK"
+      },
+      {
+        "exit": 0,
+        "tail": "OK"
+      },
+      {
+        "exit": 0,
+        "tail": "OK"
+      },
+      {
+        "exit": 0,
+        "tail": "OK"
+      },
+      {
+        "exit": 0,
+        "tail": "OK"
+      },
+      {
+        "exit": 0,
+        "tail": "OK"
+      },
+      {
+        "exit": 0,
+        "tail": "OK"
+      },
+      {
+        "exit": 0,
+        "tail": "OK"
+      },
+      {
+        "exit": 0,
+        "tail": "OK"
+      },
+      {
+        "exit": 0,
+        "tail": "OK"
+      }
+    ],
+    "all_10_pass": true,
+    "verdict": "NON_FLAKY"
+  },
+  "q6_protection_judgment": {
+    "classification": "model_judgment",
+    "residual_uncaught_shapes": [
+      "low-base exponential (e.g. 1.02^n busy work): measured MISSED at n<=64 (q4a); C1's E10(a) concedes this and it is unavoidable for any fixed finite test (E8, logically sound)",
+      "super-polynomial work executed inside C-level builtins: measured INVISIBLE to the trace-event counter (q4b); C1's E10(b) concedes tracer blindness but NOT the concrete failure mode that such a regression makes the candidate test HANG at n=64 rather than fail - in CI this surfaces as a timeout, which still flags the regression operationally but not via the assertion path C1 describes",
+      "legitimate polynomial of degree > 5 would false-positive the bound-32 test; C1's E10(c) concedes this; C2 measured a fresh degree-3 rewrite at max ratio 5.87 (5.4x headroom), consistent with C1's headroom claim but the degree->ratio mapping means a legitimate O(n^6+) rewrite (unusual for this problem) would be wrongly rejected"
+    ],
+    "judgment": "QUALIFIED_PROTECTION",
+    "detail": "The candidate test genuinely discriminates the violation class R8 names (Python-level exhaustive enumeration) with reproducible, wall-clock-free counts, no observed false positive on two structurally distinct legitimate rewrites (C1's control + C2's), and fail-fast behavior on the named class. 'Protected' is fair ONLY as scoped by C1's E8/E10: protection against the named class, not general R8-runtime enforcement. The claim as recorded in C1's evidence.json IS so scoped; the scoping must survive into any promotion record. One addition C1's record lacks: the hang (not fail) mode on C-level regressions, and the test's dependence on CPython settrace semantics (a PyPy/JIT environment could change counts - though ratios, not absolute counts, are asserted, and the suite is CPython-targeted)."
+  }
+}

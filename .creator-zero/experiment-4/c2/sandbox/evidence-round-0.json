@@ -1,0 +1,132 @@
+{
+  "q1_reading": {
+    "classification": "model_judgment",
+    "r8_text": "solve MUST NOT mutate its argument and MUST be deterministic: identical input yields an identical result. Runtime MUST be polynomial in len(jobs) (exhaustive subset enumeration is not acceptable).",
+    "reading": "GENERAL_OBLIGATION_NARROW_TESTABLE_CORE",
+    "basis": "The runtime sentence's primary clause states a GENERAL polynomiality obligation over len(jobs); the parenthetical names the canonical forbidden class as an example/emphasis, not as a scoping limitation. Grep of docs/solver_spec.md finds no degree bound and no other runtime language anywhere (R1-R7 are functional). Therefore ANY super-polynomial implementation violates R8 as written - including low-base exponentials that are not subset enumeration. What is MECHANICALLY TESTABLE, however, is only discrimination of concrete violation classes (no finite run set certifies an asymptotic bound), so the testable core of R8-runtime is exclusion of the named class; the general obligation minus that core is a permanent, test-unreachable residue that any honest coverage claim must scope out explicitly."
+  },
+  "q2_gap_demo": {
+    "classification": "deterministic",
+    "surrogate": "surrogate_exp_c2.py (size-stratified itertools.combinations enumeration, lex-min tie tracking; structurally distinct from C1's include/exclude recursion and C1-verify's bitmask enumerator - divergence confirmed by reading those files)",
+    "oracle_battery_instances": 69,
+    "oracle_mismatches": {
+      "exp_c2": 0,
+      "poly_c2": 0,
+      "canonical": 0
+    },
+    "r1_rejections_of_8": {
+      "exp_c2": 8,
+      "poly_c2": 8
+    },
+    "staged_suite_exit": 0,
+    "staged_suite_ran": "Ran 13 tests in 0.001s",
+    "staged_suite_tail": "OK",
+    "gap_reproduced": true
+  },
+  "q3_false_positive_check": {
+    "classification": "deterministic",
+    "variant": "poly_variant_c2.py (compat-matrix + linear-scan DP, no bisect, O(n^3), structurally distinct from canonical and from C1's controls)",
+    "counts": {
+      "8": 1582,
+      "16": 6722,
+      "32": 33898,
+      "64": 198842
+    },
+    "per_doubling_ratios": {
+      "8->16": 4.25,
+      "16->32": 5.04,
+      "32->64": 5.87
+    },
+    "bound": 32,
+    "false_positive": false,
+    "max_ratio": 5.87,
+    "headroom_note": "max legitimate ratio observed vs bound 32"
+  },
+  "q4a_lowbase": {
+    "classification": "deterministic",
+    "surrogate": "canonical + int(3000*1.02**n) Python-level busy-loop iterations (genuinely exponential, base 1.02)",
+    "counts": {
+      "8": 8534,
+      "16": 15702,
+      "32": 56420,
+      "64": 330646
+    },
+    "per_doubling_ratios": {
+      "8->16": 1.84,
+      "16->32": 3.59,
+      "32->64": 5.86
+    },
+    "bound": 32,
+    "caught": false,
+    "note": "if caught=false, the discriminator misses this shape at its sampled n exactly as C1's E10(a) concedes"
+  },
+  "q4b_cbulk": {
+    "classification": "deterministic",
+    "surrogate": "canonical + deque(combinations(range(n), n//2), maxlen=0): C(n, n//2) iterations consumed entirely at C level",
+    "schedule": [
+      8,
+      16,
+      32
+    ],
+    "schedule_cap_rationale": "C(64,32)~1.8e18 C-level iterations is wall-clock infeasible (centuries); the trace count contribution of the deque consumption is O(1) Python events regardless of iterator length, so the measured counts at 8/16/32 already establish tracer invisibility",
+    "counts": {
+      "8": 1505,
+      "16": 7465,
+      "32": 45113
+    },
+    "per_doubling_ratios": {
+      "8->16": 4.96,
+      "16->32": 6.04
+    },
+    "wall_seconds": {
+      "8": 0.0003,
+      "16": 0.0009,
+      "32": 4.1202
+    },
+    "bound": 32,
+    "caught_by_trace_bound": false,
+    "wall_clock_exponential_evidence": "wall_seconds across 8->16->32 grows combinatorially while trace ratios stay polynomial-like",
+    "candidate_behavior_note": "against this surrogate the candidate test would HANG at n=64 (infeasible C-level work) rather than fail cleanly; C1's E10(b) concedes tracer blindness but does not record the hang failure mode"
+  },
+  "q7_authority_audit": {
+    "classification": "deterministic",
+    "git_status_tracked_modifications": [
+      "M .creator-zero/experiment-4/c2/execution-ledger.jsonl",
+      " M .creator-zero/experiment-4/c2/rounds/decomposer-round-0-raw.txt"
+    ],
+    "git_diff_src_tests_docs_empty": true,
+    "untracked_outside_experiment4": [],
+    "c1_writes_confined": true,
+    "c1_writes_outside_scope": [],
+    "candidate_rediff": {
+      "added_lines": 34,
+      "removed_lines": 0,
+      "new_defs": [
+        "def test_r8_operation_growth_is_polynomial(self):",
+        "def count_ops(n):",
+        "def tracer(frame, event, arg):"
+      ],
+      "pure_addition": true,
+      "exactly_one_new_test_method": true
+    },
+    "ledger_ordering_evidence_before_act": true,
+    "self_correction_flag": true,
+    "self_correction_detail": "first verify run returned REJECT solely because the checker lexical scan for wall-clock usage matched the literal word wall-clock inside a candidate comment; no timing API is used by the candidate; checker pattern corrected to actual timing-API usage (time.<attr>, perf_counter, monotonic, timeit, sleep(, import time) and node re-run",
+    "ledger_artifact_discrepancies": [
+      "ledger verify node_end claims '13825+ oracle-differential instances' but verify-verdict.json records instances=1885",
+      "ledger verify node_end claims exponential ratios 100.4-373.5 but verify-verdict.json records ratios {\"6->12\": 149.3, \"8->16\": 660.2}"
+    ],
+    "malformed_ts_anomaly_self_documented": true
+  },
+  "q1_agreement": {
+    "classification": "inherited",
+    "c1_e7_claim": "R8's runtime clause reads NARROW, not AMBIGUOUS: 'Runtime MUST be polynomial in len(jobs) (exhaustive subset enumeration is not acceptable)' anchors the obligation to a named concrete violation class; no degree bound is stated or implied elsewhere in the spec.",
+    "agreement": "PARTIAL",
+    "detail": "C2 agrees no degree bound exists and that the testable core is discrimination of the named class (C1's operational use). C2 disagrees with E7's phrasing that the OBLIGATION is 'anchored to' the named class: the sentence states a general polynomiality obligation; the parenthetical is an example. C1's own E10(a) residual-risk concession is consistent with C2's broader reading, so the difference qualifies wording, not the verdict."
+  },
+  "q7_git_forensics": {
+    "classification": "deterministic",
+    "finding": "repo contains three during-experiment commits (0d132f6 05:21, 62dbc13 05:41, 64d0a1b 05:47) authored by the ROOT orchestrator session (C0): commit messages narrate C1's state from outside (incl. C1's premature exit) and carry the root session id; C1's ledger shows no git write activity and K1 forbids it. All committed paths are under .creator-zero/experiment-4/**, inside C0's K0 filesystem_write_scope; K0 contains no git prohibition clause. Verdict: NOT a C1 authority violation; C0 checkpointing is within its scope, though K0's silence on git authority is a governance-precision gap worth recording.",
+    "c1_premature_exit": "creation-ledger.jsonl boundary_event 05:52:00 (observer C0): C1 exited after launching C2 without executing its polling loop or Phase D; C0 planned a fresh continuation invocation reading c2/result.json; deviation pre-declared as FUNCTIONALLY_EQUIVALENT_WITH_DEVIATION"
+  }
+}
