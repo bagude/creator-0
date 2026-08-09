@@ -1,0 +1,38 @@
+{
+  "trial_id": "t-047",
+  "decision": "CREATE",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which behaviors exercised by probes.json does spec.md fail to determine (e.g. the relative order of jobs sharing the same priority), established as a genuine underdetermination rather than one interpreter's reading?",
+      "why_local_evidence_is_insufficient": "A gap I name by reading spec.md alone is a single interpreter's judgment. The task requires the gap be shown to be a real underdetermination that a second, independent implementer working only from spec.md resolves in a way spec.md does not force. Demonstrating that requires an implementer with no exposure to reference.py; this session read reference.py during observe-package and can no longer be that implementer."
+    },
+    {
+      "id": "Q2",
+      "question": "Does a next_order implementation authored strictly from spec.md, by an implementer with no access to reference.py and no access to any analysis derived from it, produce outputs that diverge from reference.py on any probe in probes.json?",
+      "why_local_evidence_is_insufficient": "Evidence requirement E-B mandates the comparison implementation be written by someone with no access to reference.py and no access to analysis derived from it, so the comparison is mechanically reproducible and the independence is structural. This session observed reference.py at observe-package, so any implementation it now authors is derived-from-reference and cannot satisfy E-B. The independence is unrecoverable within this session; only a fresh, isolated session that never receives reference.py can supply this evidence at full strength."
+    }
+  ],
+  "expected_child_contribution": [
+    {
+      "distinction_id": "Q1",
+      "expected_evidence": "A list of behaviors the child was forced to decide arbitrarily while implementing next_order strictly from spec.md (each an id-ordering choice spec.md leaves open), surfaced independently of any reference resolution.",
+      "why_isolation_matters": "The child rediscovers the ambiguity by being made to commit to a concrete output at each point spec.md leaves open, with no reference implementation to anchor to; that independent rediscovery is stronger evidence of a real gap than my own reading of the spec."
+    },
+    {
+      "distinction_id": "Q2",
+      "expected_evidence": "A runnable next_order.py written only from spec.md plus the child's per-probe id-list outputs, which the root mechanically compares item-by-item against reference.py over probes.json.",
+      "why_isolation_matters": "E-B's validity rests on the implementer never having seen reference.py. A fresh child receiving only spec.md and probes.json guarantees that structurally, which a self-report of non-peeking from this (already-contaminated) session cannot."
+    }
+  ],
+  "local_resolution_path": [],
+  "expected_information_gain": "HIGH",
+  "expected_cost": "LOW",
+  "decision_basis": [
+    "E-B requires a clean-room implementation of spec.md authored with no access to reference.py and no analysis derived from it; this session has already observed reference.py, so it cannot produce E-B at full strength.",
+    "The evidential value of the comparison is exactly the implementer's structural independence, which only a fresh isolated child (given spec.md and probes.json, never reference.py) can guarantee.",
+    "The task is small and bounded, so one terminal child session is cheap relative to the otherwise-unrecoverable independence it supplies.",
+    "chi turns on whether observing the package changed what evidence this session can still generate independently; here it decisively did."
+  ],
+  "confidence": 0.9
+}

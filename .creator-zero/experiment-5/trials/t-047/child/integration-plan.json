@@ -1,0 +1,10 @@
+{
+  "method": "clean_room_comparison",
+  "child_deliverable": "child-result.json",
+  "comparison": "Execute the child's next_order.py and reference.py (package/artifacts/reference.py) over each probe in probes.json, and compare the two returned id-lists item-by-item for every probe. The child's per_probe_outputs in child-result.json must equal the output of running its own next_order.py; if they disagree, the child's next_order.py is authoritative for the comparison.",
+  "verdict_rule": {
+    "if_any_divergence": "UNDERDETERMINED",
+    "if_none": "SUFFICIENT",
+    "findings": "underdetermined_behaviors := the child-reported undetermined_behaviors, plus, for each divergent probe, the behavior distinguishing the two orderings; divergent_probe_indices := the sorted list of zero-based probe indices where reference.py and the child's next_order.py return different id-lists; per_probe := for each divergent index, {probe_index, reference_output := reference.py's output, independent_output := the child's next_order.py output}. On no divergence, findings := {agreement: 'all probes'}."
+  }
+}

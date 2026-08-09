@@ -1,0 +1,65 @@
+{
+  "task_id": "e5-t-047-child",
+  "goal": "Clean-room worker: implement next_order(jobs) strictly from spec.md, compute its output on every probe in probes.json, and report any behavior spec.md left undetermined. Deliver a runnable next_order.py plus child-result.json. The worker has no reference implementation and must not assume one exists.",
+  "contract_ref": "child-contract.json",
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "nodes": [
+    {
+      "id": "observe-inputs",
+      "primitive": "observe",
+      "tools": ["Read"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Read spec.md and probes.json. These are the only inputs. spec.md is the complete and only description of next_order's required behavior; there is no reference implementation available to you and you must not assume one.",
+      "why_necessary": "The worker's evidence must derive solely from the specification and the probe inputs; acquiring them is the first causal step."
+    },
+    {
+      "id": "produce-evidence",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Author next_order.py exposing next_order(jobs: list[dict]) -> list[str], implementing exactly what spec.md states and nothing more. Wherever spec.md does not determine a unique output (any point where two conforming implementations could return different id orderings), make one concrete deterministic choice, and record that point as an undetermined behavior with a short description. Then compute next_order's output for every probe in probes.json. Write next_order.py and child-result.json.",
+      "why_necessary": "Producing the independent implementation and its per-probe outputs is the worker's substantive contribution and the empirical half of the comparison."
+    },
+    {
+      "id": "self-check",
+      "primitive": "verify",
+      "tools": ["Read"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Re-read next_order.py against spec.md and re-read child-result.json against the deliverable shape. Confirm next_order.py depends only on fields spec.md names (id, priority), that each recorded undetermined behavior is a real point where spec.md permits more than one output, and that per_probe_outputs matches what next_order.py returns. Record the structural check outcome. Non-authoritative.",
+      "why_necessary": "The contract requires the verify primitive in any Write-holding topology; a structural self-check before return is the minimal fulfilment."
+    },
+    {
+      "id": "return-result",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Finalize child-result.json and the child ledger, ending with a complete event. Do not attempt to launch or delegate anything.",
+      "why_necessary": "The worker's evidence must re-enter the boundary through a defined return locus."
+    }
+  ],
+  "edges": [
+    {"source": "observe-inputs", "target": "produce-evidence", "relation": "observe", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "produce-evidence", "target": "self-check", "relation": "verify", "requires_response": true, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "self-check", "target": "return-result", "relation": "authorize", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false}
+  ],
+  "ledger_contract": {
+    "path": "child-ledger.jsonl (child workspace root)",
+    "schema": "one JSON object per line with event_id, label, actor, timestamp, artifact_refs, metadata; node executions carry metadata.completes_node; the chain ends with a complete event",
+    "required_events": [
+      {"label": "observe", "actor": "node:observe-inputs", "metadata": {"completes_node": "observe-inputs"}},
+      {"label": "propose", "actor": "node:produce-evidence", "metadata": {"completes_node": "produce-evidence"}, "artifact_refs": ["next_order.py", "child-result.json"]},
+      {"label": "verify", "actor": "node:self-check", "metadata": {"completes_node": "self-check"}},
+      {"label": "return", "actor": "node:return-result", "metadata": {"completes_node": "return-result"}, "artifact_refs": ["child-result.json"]},
+      {"label": "complete", "actor": "child", "metadata": {"event_kind": "child_complete"}}
+    ]
+  }
+}
