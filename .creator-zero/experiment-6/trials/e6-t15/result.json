@@ -1,0 +1,9 @@
+{
+  "violations": [
+    {"rule": "R1", "key": "timeout_ms", "value": "8000"},
+    {"rule": "R2", "key": "retries", "value": "7"},
+    {"rule": "R6", "key": "backup_interval_hours", "value": "7"}
+  ],
+  "violation_count": 3,
+  "compliant_rules": ["R3", "R4", "R5", "R7"]
+}

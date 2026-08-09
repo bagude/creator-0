@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Governed inputs acquired: the eight literal key=value lines of config.txt (timeout_ms = 8000, retries = 7, tls_enabled = true, log_level = info, max_connections = 64, worker_threads = 16, backup_interval_hours = 7, admin_email = ops@corp.example) and the seven numbered rules R1-R7 of policy.md.",
+    "refs": ["package/artifacts/config.txt", "package/artifacts/policy.md"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "resolve-local",
+    "description": "Per-rule evaluation record (Q1 / E-C): R1 violated (timeout_ms=8000 not in [100,5000]); R2 violated (retries=7 > 5); R3 compliant (tls_enabled=true); R4 compliant (log_level=info in {info,warn,error}); R5 compliant (64 <= 4*16=64); R6 violated (24 mod 7 = 3, not an exact divisor); R7 compliant (ops@corp.example ends with @corp.example). Each verdict traces to the literal rule text and the literal config line.",
+    "refs": ["resolution.json", "package/artifacts/config.txt", "package/artifacts/policy.md"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "resolve-local",
+    "description": "Violation count (Q2 / E-A): 3, equal to the length of the violations list [R1, R2, R6].",
+    "refs": ["resolution.json", "result.json"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "resolve-local",
+    "description": "Compliant rules (Q3 / E-B): [R3, R4, R5, R7], sorted by rule id; disjoint from and jointly exhaustive with the violated set {R1, R2, R6} over the seven policy rule ids.",
+    "refs": ["resolution.json", "result.json"]
+  },
+  {
+    "id": "ev-5",
+    "source_node": "verify-resolution",
+    "description": "Deterministic self-check (non-authoritative) against the deliverable spec: violations list sorted by rule id (R1 < R2 < R6); each violation carries rule, key, and string value; violation_count 3 equals the list length; compliant_rules sorted and forming an exact partition of R1-R7 with the violated set; all values match the literal artifact lines. All checks passed.",
+    "refs": ["resolution.json", "result.json", "package/task.json"]
+  }
+]

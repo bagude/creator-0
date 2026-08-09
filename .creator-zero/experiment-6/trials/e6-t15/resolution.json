@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t15",
+  "topology_id": "local",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "Per-rule verdicts against package/artifacts/config.txt: R1 VIOLATED (timeout_ms = 8000 is outside the inclusive range 100-5000); R2 VIOLATED (retries = 7 exceeds the maximum of 5); R3 COMPLIANT (tls_enabled = true); R4 COMPLIANT (log_level = info is one of info, warn, error); R5 COMPLIANT (max_connections = 64 <= 4 * worker_threads = 4 * 16 = 64); R6 VIOLATED (backup_interval_hours = 7 does not divide 24 exactly, 24/7 is not an integer); R7 COMPLIANT (admin_email = ops@corp.example ends with @corp.example). Violations report the offending key and its value as a string: R1 -> {key: timeout_ms, value: \"8000\"}, R2 -> {key: retries, value: \"7\"}, R6 -> {key: backup_interval_hours, value: \"7\"}.",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-C"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "The total count of violated rules is 3 (R1, R2, R6), equal to the length of the violations list.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q3",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "The compliant rules, sorted by rule id, are [R3, R4, R5, R7]. Together with the violated set {R1, R2, R6} they partition exactly the seven rule ids R1-R7 appearing in package/artifacts/policy.md.",
+      "evidence_ids": ["ev-4"],
+      "evidence_requirement_refs": ["E-B"]
+    }
+  ]
+}
