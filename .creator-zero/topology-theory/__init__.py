@@ -39,6 +39,14 @@ from .falsify import falsify, principle_evidence_events
 from .revise import propose_revision
 from .replay import replay, load_replay_corpus
 from . import self_modify
+from . import admissibility
+from . import ingest
+from . import governance
+from . import theory_gate
+from .generate2 import generate_candidates_v2, family_of_v2, FAMILIES_V2
+from .predict2 import freeze_predictions_v2
+from .revise2 import (propose_revision_v2, context_stats, split_trigger,
+                      explanation_scores)
 
 __all__ = [
     "Principle", "PrincipleEvidence", "Prediction", "TopologyHypothesis",
@@ -53,6 +61,11 @@ __all__ = [
     "evaluate_topology", "PredictionIntegrityError",
     "falsify", "principle_evidence_events", "propose_revision",
     "replay", "load_replay_corpus", "self_modify",
+    "admissibility", "ingest", "governance", "theory_gate",
+    "generate_candidates_v2", "family_of_v2", "FAMILIES_V2",
+    "freeze_predictions_v2",
+    "propose_revision_v2", "context_stats", "split_trigger",
+    "explanation_scores",
 ]
 
 __version__ = "0.1"

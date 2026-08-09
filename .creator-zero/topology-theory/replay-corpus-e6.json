@@ -1,0 +1,48 @@
+{
+  "artifact": "topology-theory historical replay corpus \u2014 Experiment 6 frozen cases (E7 extension)",
+  "note": "Frozen E6 regression cases for candidate theta revisions. Replay semantics identical to the v0.1 corpus: a candidate that retires or contradicts a required principle is CONTRADICTED. REVISED is an active status, so a SPLIT that keeps the parent grounded stays compatible. These cases are regression checks, not held-out validation.",
+  "cases": [
+    {
+      "case_id": "E6-clean-room-authorship",
+      "summary": "E6 e6-t01 (ISOLATION): a clean-room child authored solely from the description resolved the admissibility-critical distinctions; the frozen record supports isolation-for-authorship under P-INDEPENDENCE with enforced freshness.",
+      "required_active_principles": [
+        "P-INDEPENDENCE",
+        "P-FRESHNESS"
+      ],
+      "historical_outcome": "clean_room_implementer child, fresh launch, verified integration",
+      "pinned_artifacts": {
+        "experiment-6/task-bank/e6-t01/private/label.json": "ec1171b3ac598c34f7eacd456e543df92110b713b6fede0d8bfec95646884eb9",
+        "experiment-6/trials/e6-t01/child/integration-plan.json": "ad12b4d1e0a52f1284a02153ea76ad9f5931e541d9821de646f755caec092f9b",
+        "experiment-6/trials/e6-t01/verification.json": "1d596c6423f75469ea916bed3dda72f14d56c9d2eadde30094d7e59a9acaa43e"
+      }
+    },
+    {
+      "case_id": "E6-examiner-cheaper-than-child",
+      "summary": "E6 e6-t08 (COUNTEREXAMPLE): the runner-up examiner shadow achieved strictly higher observed utility than the selected isolated child on the same search requirement \u2014 the calibration/regret evidence motivating the typed revision.",
+      "required_active_principles": [
+        "P-INDEPENDENCE",
+        "P-MINIMALITY"
+      ],
+      "historical_outcome": "shadow observed utility > selected observed utility; regret > 0",
+      "pinned_artifacts": {
+        "experiment-6/task-bank/e6-t08/private/label.json": "14c0080db21a0447e70fa015f850c50cf181052d85af5abfe950c078298fd3d2",
+        "experiment-6/trials/e6-t08/calibration.json": "a5f2b1311c7d094bca6d9ba41061c7786c930a6687c6455aba8137e638889efc",
+        "experiment-6/trials/e6-t08/shadow/calibration.json": "79c69bdbae42ae6a42c532ace2b37f9b4559602835611f41e2acb97fa3cb8e06"
+      }
+    },
+    {
+      "case_id": "E6-local-sufficiency",
+      "summary": "E6 e6-t02 (LOCAL): local resolution verified with zero descendants; forced extra structure would have duplicated local evidence.",
+      "required_active_principles": [
+        "P-LOCALITY",
+        "P-MINIMALITY"
+      ],
+      "historical_outcome": "TOPOLOGY_CORRECT local selection, zero child launches",
+      "pinned_artifacts": {
+        "experiment-6/task-bank/e6-t02/private/label.json": "ef7ccda1344bcaaf669b5958a380ba62675f9f80b7869d655c59f49c8d8ef46b",
+        "experiment-6/trials/e6-t02/trial-score.json": "25abcd7381c58e406dae2529755322b0a6be21c2690818890fa53de680cb74e4",
+        "experiment-6/trials/e6-t02/calibration.json": "9d9576a3c1f1a7c14f8e85a75ad58afafe36b058c0dc97dd23485b920e5b9c3f"
+      }
+    }
+  ]
+}

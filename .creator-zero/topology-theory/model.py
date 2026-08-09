@@ -73,6 +73,7 @@ class Principle:
     contradicting_evidence: list[dict[str, Any]] = field(default_factory=list)
     parent_principles: list[str] = field(default_factory=list)
     version: int = 1
+    falsifier: str = ""                 # explicit falsification condition
 
     def __post_init__(self):
         _require(bool(self.id) and self.id.startswith("P-"),
@@ -97,18 +98,34 @@ class Principle:
 
 @dataclass
 class PrincipleEvidence:
-    """Append-only evidence event linking a principle to an observed outcome."""
+    """Append-only evidence event linking a principle to an observed outcome.
+
+    Schema v2 (backward compatible): optional provenance/context fields
+    preserve WHERE a principle held or failed — source experiment/commit,
+    trial and run identity, and a deterministic context object (e.g. the
+    admissibility kind joined from frozen truth artifacts). Historical v1
+    events (a subset of the known fields) remain readable; unknown top-level
+    fields are a typed rejection, never a silent drop — a parser that strips
+    context cannot pass validation."""
     principle_id: str
     topology_id: str
     prediction_id: str
     effect: str
     evidence_refs: list[dict[str, Any]] = field(default_factory=list)
     event_id: str = ""
+    source_experiment: str = ""
+    source_commit: str = ""
+    trial_id: str = ""
+    run: str = ""
+    context: dict[str, Any] = field(default_factory=dict)
+    source_artifact_id: str = ""
 
     def __post_init__(self):
         _require(self.effect in EVIDENCE_EFFECTS,
                  f"invalid evidence effect {self.effect!r}")
         _require(bool(self.principle_id), "evidence missing principle_id")
+        _require(isinstance(self.context, dict),
+                 "evidence context must be an object")
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -117,6 +134,11 @@ class PrincipleEvidence:
     def from_dict(cls, d: dict[str, Any]) -> "PrincipleEvidence":
         _require_keys(d, ("principle_id", "topology_id", "prediction_id",
                           "effect"), "principle evidence")
+        unknown = sorted(set(d) - set(cls.__dataclass_fields__))
+        _require(not unknown,
+                 f"principle evidence carries unknown top-level fields "
+                 f"{unknown}: contextual fields must be modeled, not "
+                 "silently discarded")
         return cls(**{k: d[k] for k in cls.__dataclass_fields__ if k in d})
 
 
@@ -206,6 +228,7 @@ class Revision:
     motivating_evidence: list[str] = field(default_factory=list)
     historical_cases_affected: list[str] = field(default_factory=list)
     changed_predictions: list[str] = field(default_factory=list)
+    context_partition: dict[str, Any] = field(default_factory=dict)
     status: str = "CANDIDATE"
 
     def __post_init__(self):

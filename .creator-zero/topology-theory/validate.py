@@ -47,6 +47,7 @@ RELATION = "Candidate admissible under deterministic pre-execution checks"
 
 PROTECTED_PATH_PREFIXES = (
     "experiment-3", "experiment-4", "experiment-4c", "experiment-5",
+    "experiment-6",
     "state/experiment-", "state/formal-semantics-", "contracts/root_contract",
 )
 

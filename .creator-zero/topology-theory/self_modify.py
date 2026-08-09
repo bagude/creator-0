@@ -39,6 +39,7 @@ PROTECTED_PREFIXES = (
     ".creator-zero/experiment-4/",
     ".creator-zero/experiment-4c/",
     ".creator-zero/experiment-5/",
+    ".creator-zero/experiment-6/",
 )
 PROTECTED_FILES = (
     ".creator-zero/state/experiment-2.json",
@@ -46,6 +47,7 @@ PROTECTED_FILES = (
     ".creator-zero/state/experiment-4.json",
     ".creator-zero/state/experiment-4c.json",
     ".creator-zero/state/experiment-5.json",
+    ".creator-zero/state/experiment-6.json",
     ".creator-zero/state/formal-semantics-v0.1.json",
     ".creator-zero/contracts/root_contract.json",
 )
