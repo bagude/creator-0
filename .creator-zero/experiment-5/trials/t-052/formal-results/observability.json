@@ -1,0 +1,55 @@
+{
+  "check": "capability_proposal_observability_all",
+  "status": "PASS",
+  "formal_relation": "capability artifact in observable propose",
+  "counterexample": null,
+  "evidence": [
+    "trace origin: /home/user/creator-0/.creator-zero/experiment-5/trials/t-052/parent-execution-ledger.jsonl",
+    "artifacts checked: 1"
+  ],
+  "assumptions": [
+    "Causal order is ledger position; timestamps are evidentiary metadata only.",
+    "An artifact reference matches by exact string or by final path component (basename); the matching mode used is recorded in evidence.",
+    "propose is an observable label in the kernel alphabet (never tau); this check adds no new label and modifies no kernel semantics.",
+    "Instrumentation completeness of the runtime ledger is assumed, not proven: an unlogged construction cannot be detected here and is governed by the topology guard and session audit instead."
+  ],
+  "unmapped_events": [],
+  "detail": {
+    "per_artifact": {
+      "decision.json": {
+        "check": "capability_proposal_observability",
+        "status": "PASS",
+        "formal_relation": "capability artifact in observable propose",
+        "counterexample": null,
+        "evidence": [
+          "trace origin: /home/user/creator-0/.creator-zero/experiment-5/trials/t-052/parent-execution-ledger.jsonl",
+          "artifact_id: decision.json",
+          "reference hits: 1",
+          "first observable propose: event index 1 (e1, actor node:decide-topology, match exact)"
+        ],
+        "assumptions": [
+          "Causal order is ledger position; timestamps are evidentiary metadata only.",
+          "An artifact reference matches by exact string or by final path component (basename); the matching mode used is recorded in evidence.",
+          "propose is an observable label in the kernel alphabet (never tau); this check adds no new label and modifies no kernel semantics.",
+          "Instrumentation completeness of the runtime ledger is assumed, not proven: an unlogged construction cannot be detected here and is governed by the topology guard and session audit instead."
+        ],
+        "unmapped_events": [],
+        "detail": {
+          "artifact_id": "decision.json",
+          "first_propose_index": 1,
+          "propose_events": [
+            {
+              "index": 1,
+              "event_id": "e1",
+              "label": "propose",
+              "actor": "node:decide-topology",
+              "ref": "decision.json",
+              "match_mode": "exact"
+            }
+          ],
+          "return_events": []
+        }
+      }
+    }
+  }
+}

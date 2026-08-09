@@ -1,0 +1,23 @@
+{
+  "check": "topology_decision_validation",
+  "status": "PASS",
+  "formal_relation": "decision artifact conforms to typed chi schema",
+  "counterexample": null,
+  "evidence": [
+    "trial_id: t-052",
+    "decision: DO_NOT_CREATE",
+    "unresolved_distinctions: 0",
+    "expected_child_contribution: 0",
+    "local_resolution_path steps: 6",
+    "confidence: 0.98"
+  ],
+  "assumptions": [
+    "Only the externally inspectable artifact counts as decision evidence; hidden reasoning is not evidence.",
+    "Validation is deterministic and read-only; a failed validation rejects realization and no LLM may override it."
+  ],
+  "unmapped_events": [],
+  "detail": {
+    "decision": "DO_NOT_CREATE",
+    "distinction_ids": []
+  }
+}

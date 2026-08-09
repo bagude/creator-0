@@ -1,0 +1,32 @@
+{
+  "verdict": "MISORDERED",
+  "method": "explicit positional simulation of log.json executions against plan.json declared dependencies",
+  "declared_dependencies": {
+    "fetch": [],
+    "parse": ["fetch"],
+    "validate": ["parse"],
+    "enrich": ["parse"],
+    "merge": ["validate", "enrich"],
+    "export": ["merge"],
+    "notify": ["export"],
+    "archive": ["export"]
+  },
+  "execution_order": ["fetch", "parse", "validate", "merge", "enrich", "export", "notify", "archive"],
+  "simulation": [
+    {"index": 0, "task": "fetch", "already_executed": [], "declared_deps": [], "unmet_dependencies": [], "ok": true},
+    {"index": 1, "task": "parse", "already_executed": ["fetch"], "declared_deps": ["fetch"], "unmet_dependencies": [], "ok": true},
+    {"index": 2, "task": "validate", "already_executed": ["fetch", "parse"], "declared_deps": ["parse"], "unmet_dependencies": [], "ok": true},
+    {"index": 3, "task": "merge", "already_executed": ["fetch", "parse", "validate"], "declared_deps": ["validate", "enrich"], "unmet_dependencies": ["enrich"], "ok": false}
+  ],
+  "first_misordered_index": 3,
+  "findings": {
+    "first_misordered_index": 3,
+    "task": "merge",
+    "unmet_dependencies": ["enrich"]
+  },
+  "evidence_mapping": {
+    "E-A": "For each log entry the set of already-executed tasks is computed positionally (see simulation[].already_executed); the reported misordering is derived from that explicit walk, stopping at the first failing index (3).",
+    "E-B": "unmet_dependencies at the failing index is the sorted set of merge's declared deps {validate, enrich} minus already-executed {fetch, parse, validate} = {enrich} = [\"enrich\"], already a singleton and thus trivially sorted.",
+    "E-C": "The verdict follows mechanically: at least one index has a non-empty unmet-dependency set, so the log is MISORDERED; had every index been clean the verdict would have been WELL_ORDERED."
+  }
+}

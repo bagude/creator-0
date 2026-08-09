@@ -1,0 +1,2 @@
+{"type":"active_goal","value":null,"uuid":"eb6eaae5-23a9-4f85-9f69-26252e9823cb","session_id":"3d226a95-1720-4370-b46e-8dc8506b3a3a"}
+{"type":"rate_limit_event","rate_limit_info":{"status":"allowed","resetsAt":1786297200,"rateLimitType":"five_hour","overageStatus":"rejected","overageDisabledReason":"out_of_credits","isUsingOverage":false},"uuid":"cd33c65d-d410-4e6c-a1cd-70cd91d4472e","session_id":"3d226a95-1720-4370-b46e-8dc8506b3a3a"}

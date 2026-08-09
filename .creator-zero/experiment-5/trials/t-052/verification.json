@@ -1,0 +1,27 @@
+{
+  "artifact": "deterministic trial verification",
+  "trial_id": "t-052",
+  "branch": "local",
+  "task_verified": true,
+  "expected": {
+    "verdict": "MISORDERED",
+    "first_misordered_index": 3,
+    "task": "merge",
+    "unmet_dependencies": [
+      "enrich"
+    ]
+  },
+  "observed": {
+    "verdict": "MISORDERED",
+    "findings": {
+      "first_misordered_index": 3,
+      "task": "merge",
+      "unmet_dependencies": [
+        "enrich"
+      ]
+    }
+  },
+  "reasons": [
+    "verdict and misorder findings match the simulation"
+  ]
+}
