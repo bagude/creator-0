@@ -1,0 +1,42 @@
+--- tests/test_solver.py	2026-08-09 05:07:05.701270178 +0000
++++ .creator-zero/experiment-4/c1/candidate/test_solver.py	2026-08-09 05:39:42.647968610 +0000
+@@ -65,5 +65,39 @@
+         self.assertEqual(jobs, snapshot)
+ 
+ 
++    def test_r8_operation_growth_is_polynomial(self):
++        # R8: runtime must be polynomial in len(jobs); exhaustive subset
++        # enumeration is not acceptable. Wall-clock-free check: trace-event
++        # counts during solve() may grow at most 32x (degree 5) per doubling
++        # of n. Any per-element branching enumeration exceeds the bound by
++        # n=16, so a regression fails fast here instead of hanging at n=64.
++        def count_ops(n):
++            jobs = [(3 * i, 3 * i + 2, 1 + (i % 3)) for i in range(n)]
++            counter = [0]
++
++            def tracer(frame, event, arg):
++                counter[0] += 1
++                return tracer
++
++            previous = sys.gettrace()
++            sys.settrace(tracer)
++            try:
++                solve(jobs)
++            finally:
++                sys.settrace(previous)
++            return counter[0]
++
++        prev = count_ops(8)
++        for n in (16, 32, 64):
++            cur = count_ops(n)
++            self.assertLessEqual(
++                cur,
++                32 * prev,
++                "super-polynomial operation growth: %d -> %d events over a "
++                "doubling to n=%d (R8)" % (prev, cur, n),
++            )
++            prev = cur
++
++
+ if __name__ == "__main__":
+     unittest.main()

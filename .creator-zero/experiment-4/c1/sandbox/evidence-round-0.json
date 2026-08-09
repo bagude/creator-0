@@ -1,0 +1,324 @@
+{
+  "q1_reading": {
+    "r8_verbatim": "### R8 \u2014 Purity and determinism\n\n`solve` MUST NOT mutate its argument and MUST be deterministic: identical\ninput yields an identical result. Runtime MUST be polynomial in\n`len(jobs)` (exhaustive subset enumeration is not acceptable).",
+    "clauses": [
+      "no argument mutation",
+      "determinism (identical input -> identical result)",
+      "runtime polynomial in len(jobs), parenthetical: 'exhaustive subset enumeration is not acceptable'"
+    ],
+    "reading": "NARROW",
+    "basis": "The runtime sentence anchors itself to a concrete forbidden implementation class via the parenthetical: 'Runtime MUST be polynomial in len(jobs) (exhaustive subset enumeration is not acceptable).' The parenthetical names exhaustive subset enumeration as the canonical violation, giving the clause an operational target; nothing in R8 or elsewhere in the spec demands a proof of a particular polynomial degree, and no degree bound is stated. The clause is therefore read as: the implementation must be polynomial-time, with exhaustive-enumeration-style exponential blowup the named, concrete violation any verification must at minimum exclude. The sentence does not support two materially different readings: both the general clause and the parenthetical forbid the same class of behavior at different levels of abstraction, so reading=NARROW, not AMBIGUOUS.",
+    "classification": "model_judgment"
+  },
+  "q2_note": {
+    "note": "No finite set of timed or counted executions can certify 'runtime is polynomial in n' for all n: any finite observation table is consistent both with a polynomial and with a super-polynomial function that diverges beyond the tested range (e.g. K*1.02**n is exponential yet numerically tiny at every tested n<=400). Conversely a huge-constant polynomial can look explosive at small n. Therefore 'mechanically testable' for R8's runtime clause can only mean: deterministically discriminates concrete violation classes \u2014 first of all the class R8 itself names (exhaustive subset enumeration, per-element branching factor >= 2) \u2014 not: proves the asymptotic claim. The task-level conclusion must scope any coverage verdict to that named class.",
+    "classification": "deterministic",
+    "kind": "fixed logical argument (standard limit-of-testing result), independent of any execution"
+  },
+  "q3_enumeration": {
+    "test_methods": {
+      "test_empty": {
+        "assertions": [
+          "self.assertEqual"
+        ],
+        "n_assertions": 1
+      },
+      "test_single_job": {
+        "assertions": [
+          "self.assertEqual"
+        ],
+        "n_assertions": 1
+      },
+      "test_two_overlapping_picks_heavier": {
+        "assertions": [
+          "self.assertEqual"
+        ],
+        "n_assertions": 1
+      },
+      "test_touching_intervals_compatible": {
+        "assertions": [
+          "self.assertEqual"
+        ],
+        "n_assertions": 1
+      },
+      "test_classic_instance": {
+        "assertions": [
+          "self.assertEqual",
+          "self.assertEqual"
+        ],
+        "n_assertions": 2
+      },
+      "test_tie_break_prefers_lower_indices": {
+        "assertions": [
+          "self.assertEqual"
+        ],
+        "n_assertions": 1
+      },
+      "test_tie_break_lex_smallest_when_later_index_finishes_first": {
+        "assertions": [
+          "self.assertEqual"
+        ],
+        "n_assertions": 1
+      },
+      "test_negative_starts": {
+        "assertions": [
+          "self.assertEqual"
+        ],
+        "n_assertions": 1
+      },
+      "test_rejects_zero_length_interval": {
+        "assertions": [
+          "self.assertRaises"
+        ],
+        "n_assertions": 1
+      },
+      "test_rejects_nonpositive_weight": {
+        "assertions": [
+          "self.assertRaises"
+        ],
+        "n_assertions": 1
+      },
+      "test_rejects_bool_fields": {
+        "assertions": [
+          "self.assertRaises"
+        ],
+        "n_assertions": 1
+      },
+      "test_rejects_non_list_input": {
+        "assertions": [
+          "self.assertRaises"
+        ],
+        "n_assertions": 1
+      },
+      "test_does_not_mutate_input": {
+        "assertions": [
+          "self.assertEqual"
+        ],
+        "n_assertions": 1
+      }
+    },
+    "method_count": 13,
+    "timing_token_scan": {
+      "time": 0,
+      "perf_counter": 0,
+      "clock": 0,
+      "settrace": 0,
+      "setprofile": 0,
+      "timeit": 0,
+      "timeout": 0,
+      "duration": 0,
+      "elapsed": 0,
+      "range(2": 0,
+      "scaling": 0,
+      "cProfile": 0
+    },
+    "timing_token_hits_total": 0,
+    "largest_literal_instance_size": 8,
+    "negative_finding": "All 13 methods assert exact (weight, schedule) values or ValueError raising on fixed literal instances (largest: 8 jobs). Zero occurrences of any timing/instrumentation/scaling token; no test varies len(jobs) programmatically, counts operations, or measures growth.",
+    "classification": "deterministic"
+  },
+  "q4a_discovery": {
+    "command": "python -m unittest discover -s tests -v (cwd=repo root)",
+    "exit_code": 0,
+    "discovered_tests": [
+      "test_classic_instance",
+      "test_does_not_mutate_input",
+      "test_empty",
+      "test_negative_starts",
+      "test_rejects_bool_fields",
+      "test_rejects_non_list_input",
+      "test_rejects_nonpositive_weight",
+      "test_rejects_zero_length_interval",
+      "test_single_job",
+      "test_tie_break_lex_smallest_when_later_index_finishes_first",
+      "test_tie_break_prefers_lower_indices",
+      "test_touching_intervals_compatible",
+      "test_two_overlapping_picks_heavier"
+    ],
+    "count": 13,
+    "tail": "OK",
+    "probe_functions_collected": [],
+    "finding": "probes.py is outside tests/ and none of its probes are collected by unittest discovery; suite runtime protection cannot be credited to probes.py.",
+    "classification": "deterministic"
+  },
+  "q4b_probe_check": {
+    "surrogate": "surrogate_mild.py = canonical solve + busy-loop of int(3000 * 1.02**n) iterations (genuinely exponential, base 1.02; ~8.3e6 iterations at n=400)",
+    "shape_rationale": "chosen so the added cost is provably super-polynomial yet numerically small at the probe's largest n=400, keeping the whole check under a minute",
+    "r8_scaling_result": {
+      "name": "R8 empirical polynomial scaling n=100,200,400",
+      "ok": true,
+      "detail": "n=100:0.0066s n=200:0.0290s n=400:0.2439s ratio200/100=4.40 ratio400/200=8.41"
+    },
+    "full_probe_matrix_pass": true,
+    "probe_count": 24,
+    "finding": "r8_scaling reports ok=True for the mild exponential surrogate: the 30s wall-clock cap at n<=400 does not discriminate this super-polynomial regression. Even if probes.py were part of the suite (it is not, per q4a), its wall-clock threshold form would not protect R8's runtime clause against mild-base exponential regressions.",
+    "classification": "deterministic"
+  },
+  "q5_gap_demo": {
+    "surrogate": "surrogate_exp.py: unmemoized include/exclude recursion, Theta(2^n) nodes \u2014 the violation class R8 names",
+    "admissibility": {
+      "oracle_differential_instances": 1885,
+      "weight_or_sequence_mismatches": 0,
+      "r1_rejection_spot_checks_passed": "8/8"
+    },
+    "staged_suite_run": {
+      "command": "python -m unittest discover -s tests -v (cwd=c1/sandbox/staged, src/solver.py = exponential surrogate)",
+      "exit_code": 0,
+      "tests_run": 13,
+      "failures": [],
+      "tail": "OK"
+    },
+    "finding": "The exponential surrogate passes the entire canonical 13-test suite unmodified (13/13, exit 0): an implementation in exactly the violation class R8 names is indistinguishable from the canonical solver by tests/. Executable H1 witness.",
+    "classification": "deterministic"
+  },
+  "q6_discriminator": {
+    "form": "deterministic operation counting: sys.settrace event count (call+line+return+exception) of solve() on the disjoint instance family [(3i,3i+2,1+i%3)], compared per doubling of n",
+    "bound": {
+      "per_doubling_ratio": 32,
+      "rationale": "A degree-d polynomial's trace-event count grows by ~2^d per doubling of n; bound 32 = 2^5 admits every polynomial of degree <= 5 with wide margin over the canonical solver (measured <= 6.9) and the degree-3/4 control (measured <= 7.2), while any per-element branching enumeration grows by >= 2^n/2^(n/2) per doubling \u2014 measured >= 104 already at the capped schedule. The bound derives from asymptotic form, not from the current implementation's constants; it is scale-invariant: multiplying any implementation's work by a constant K leaves every ratio unchanged."
+    },
+    "schedules": {
+      "canonical_and_cubic": [
+        8,
+        16,
+        32,
+        64
+      ],
+      "exponential_surrogate": [
+        6,
+        8,
+        12,
+        16
+      ]
+    },
+    "exp_schedule_cap": "The exponential surrogate runs on its own capped schedule (max n=16) purely because Theta(2^n) work at n=64 (let alone 160) cannot execute in any realistic time. This does not weaken the discrimination claim: a polynomial implementation's per-doubling ratio is bounded by ~2^degree at EVERY n including small n, while an exhaustive enumerator's ratio is ~2^(n/2) per doubling at the capped points already (measured {'6->12': 103.6, '8->16': 442.67} vs bound 32) and diverges further with n.",
+    "measurements": {
+      "canonical": {
+        "counts": {
+          "8": 1499,
+          "16": 7459,
+          "32": 45107,
+          "64": 309331
+        },
+        "per_doubling_ratios": {
+          "8->16": 4.98,
+          "16->32": 6.05,
+          "32->64": 6.86
+        },
+        "reproducible": true
+      },
+      "cubic_control": {
+        "counts": {
+          "8": 1749,
+          "16": 9557,
+          "32": 61845,
+          "64": 442133
+        },
+        "per_doubling_ratios": {
+          "8->16": 5.46,
+          "16->32": 6.47,
+          "32->64": 7.15
+        },
+        "reproducible": true,
+        "oracle_differential": {
+          "instances": 1885,
+          "mismatches": 0
+        }
+      },
+      "exponential_surrogate": {
+        "counts": {
+          "6": 1741,
+          "8": 8291,
+          "12": 180367,
+          "16": 3670203
+        },
+        "per_doubling_ratios": {
+          "6->12": 103.6,
+          "8->16": 442.67
+        },
+        "reproducible": true
+      }
+    },
+    "false_positive_check": {
+      "pass": true,
+      "detail": "canonical and fresh degree-3/4 control both stay under the bound at every doubling"
+    },
+    "false_negative_check": {
+      "pass": true,
+      "detail": "exponential surrogate exceeds the bound at every doubling of its capped schedule"
+    },
+    "structural_check": {
+      "patterns": {
+        "canonical src/solver.py": {
+          "itertools.combinations": 0,
+          "itertools.permutations": 0,
+          "itertools.product": 0,
+          "range(2 **": 0,
+          "range(2**": 0,
+          "combinations(": 0,
+          "def rec": 0,
+          "lru_cache": 0,
+          "memo": 0
+        },
+        "surrogate_exp.py": {
+          "itertools.combinations": 0,
+          "itertools.permutations": 0,
+          "itertools.product": 0,
+          "range(2 **": 0,
+          "range(2**": 0,
+          "combinations(": 0,
+          "def rec": 1,
+          "lru_cache": 0,
+          "memo": 1
+        }
+      },
+      "finding": "canonical solver contains no combinatorial-enumeration pattern; the surrogate's marker is unmemoized recursion (def rec present, no cache/memo). Execution-free corroboration only; not the primary discriminator."
+    },
+    "constant_evasion_note": {
+      "note": "Growth-ratio methodology is immune to multiplicative-constant evasion (ratios are scale-invariant), so a 'large hidden constant' violation is caught iff its growth base shows at tested sizes. A super-polynomial with base close to 1 (e.g. the q4b 1.02**n surrogate) stays under any fixed ratio bound at finite n \u2014 by q2 this is unavoidable for EVERY finite test, wall-clock or counted. The discriminator therefore claims coverage of the violation class R8 names (per-element branching factor >= 2, ratio >= 2^(n/2) per doubling), not of all super-polynomial functions. Work executed entirely inside C extensions is a further recorded blind spot (no trace events); implausible for a hand-written scheduling regression.",
+      "classification": "model_judgment"
+    },
+    "wall_clock_comparison": "Versus timing thresholds: trace counts are exactly reproducible run-to-run (asserted above), machine-independent for fixed CPython semantics, and need no environment-tuned constant. Counts may differ across CPython versions, but the assertion is on RATIOS, which track asymptotic order, not absolute cost \u2014 so no implementation-specific or environment-specific threshold is encoded.",
+    "justified": true,
+    "classification": "deterministic"
+  },
+  "q7_mapping": {
+    "tests/test_solver.py": {
+      "test_does_not_mutate_input": "R8/no-mutation (shallow snapshot)",
+      "all_other_12_methods": "R1-R7 functional value/exception assertions; none touch any R8 sub-clause"
+    },
+    "probes.py (NOT in suite, per q4a)": {
+      "r8_no_mutation": "R8/no-mutation (deep snapshot)",
+      "r8_determinism": "R8/determinism (repeat calls)",
+      "r8_scaling": "R8/runtime (wall-clock, 30s cap; shown non-discriminating in q4b)"
+    },
+    "runtime_subclause_tests_in_suite": 0,
+    "determinism_subclause_tests_in_suite": 0,
+    "no_mutation_subclause_tests_in_suite": 1,
+    "supporting_greps": {
+      "tests_timing_tokens": 0,
+      "see": "q3_enumeration.timing_token_scan"
+    },
+    "finding": "R8 bundles three obligations; the suite covers no-mutation (1 test), leaves determinism to the out-of-suite probes, and has ZERO runtime coverage. The verdict below is scoped strictly to the runtime sub-clause; crediting the mutation test toward runtime protection would be a category error.",
+    "classification": "model_judgment supported by deterministic greps (q3) and discovery run (q4a)"
+  },
+  "verdict": "R8_COVERAGE_GAP_VERIFIED",
+  "verdict_derivation": "q1_reading=NARROW (not AMBIGUOUS) -> coverage verdict permitted. q5: exponential surrogate in the named violation class passes 13/13 canonical tests -> gap exists. q6: justified deterministic, non-wall-clock discriminator exists (FP and FN checks both pass) -> gap is meaningfully closable -> R8_COVERAGE_GAP_VERIFIED. Scope: the named violation class; general asymptotic polynomiality is not finitely testable (q2).",
+  "candidate_test_specification": {
+    "target_file": "tests/test_solver.py (candidate copy under .creator-zero/experiment-4/c1/candidate/)",
+    "method_name": "test_r8_operation_growth_is_polynomial",
+    "instance_family": "disjoint_instance(n) = [(3*i, 3*i+2, 1 + (i % 3)) for i in range(n)]",
+    "schedule": [
+      8,
+      16,
+      32,
+      64
+    ],
+    "bound_per_doubling": 32,
+    "mechanism": "sys.settrace counter of all trace events during solve(instance(n)); assert incrementally after each doubling that count(2n) <= 32 * count(n); save and restore any pre-existing tracer. Incremental per-doubling assertion makes an exponential regression fail fast at n=16 (~1e6 events, a few seconds) instead of hanging at n=64.",
+    "assertions": [
+      "for each consecutive pair (n, 2n) in [8,16,32,64]: assertLessEqual(count(2n), 32*count(n))"
+    ],
+    "must_not": "reference wall-clock time, sandbox files, or anything outside src/solver.py + stdlib"
+  }
+}
