@@ -1,0 +1,10 @@
+{
+  "role": "independent_verifier",
+  "child_deliverable": "enumeration.json",
+  "child_implementation_file": null,
+  "rule": "Let A = the 'items' array of worker-enumeration.json in the trial workspace (the E-A enumeration) and B = the 'items' array of the child's enumeration.json (the E-B enumeration). Both are lists of strings; comparison is exact string equality. Compute setA = set(A), setB = set(B), U = sorted(setA union setB) ascending by code point. Overwrite result.json fields deterministically: result.items := U; result.single_source_items := sorted list of every string in exactly one of setA, setB (empty array when none), each annotated as {\"item\": <string>, \"found_only_by\": \"worker\"|\"child\"}; result.complete := true if setA == setB, otherwise false (a completeness claim is admissible only when both enumerations support it; a symmetric-difference item means at least one enumeration missed it or invented it, so completeness is not corroborated). result.method := existing method string + ' | E-B: ' + child enumeration.json method string + ' | E-C: deterministic set union per child/integration-plan.json'. No judgment is exercised at any step.",
+  "expected_contribution": {
+    "Q2": "The child's enumeration.json is the second, causally independent enumeration of the parse space: the child receives only package/artifacts/grammar.md and package/artifacts/expression.txt per child-input-manifest.json, never the worker's enumeration or intermediate work, so its item set settles whether an independent derivation yields the same set.",
+    "Q3": "The deterministic union rule above consumes the child's item set to produce the final merged items, the single-source flags, and the corroborated (or refuted) completeness boolean that this session left PENDING-INTEGRATION."
+  }
+}

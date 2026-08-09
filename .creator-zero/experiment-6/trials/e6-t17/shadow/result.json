@@ -1,0 +1,11 @@
+{
+  "items": [
+    "(((8-2)^2)-1)",
+    "((8-(2^2))-1)",
+    "((8-2)^(2-1))",
+    "(8-((2^2)-1))",
+    "(8-(2^(2-1)))"
+  ],
+  "method": "E-A (this session): systematic binary-parse-tree enumeration. Under E -> E op E | number with no precedence and no associativity, each parse of '8 - 2 ^ 2 - 1' is a full binary tree over the 4 operands in fixed order with the 3 operators fixed at their positions; recursively choosing the top-level operator among the 3 positions yields Catalan(3) = 5 distinct trees (2 with top split at the first '-', 1 at '^', 2 at the last '-'), rendered fully parenthesized with no spaces and sorted ascending. E-B/E-C: a causally independent second enumeration is assigned to an isolated child (bundle under child/); the final items are the deterministic union of both enumerations with single-source items flagged, per child/integration-plan.json. The items above are the E-A candidate; the merged union and the completeness claim await root-executed integration.",
+  "complete": "PENDING-INTEGRATION"
+}

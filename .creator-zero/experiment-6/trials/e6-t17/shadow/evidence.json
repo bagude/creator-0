@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Observed the task package: the grammar (E -> E op E | number, ops '-' and '^', no precedence or associativity) and the expression '8 - 2 ^ 2 - 1' (4 operands, 3 operators), plus the deliverable spec and evidence requirements E-A/E-B/E-C. No conclusions drawn at this node.",
+    "refs": ["package/task.json", "package/artifacts/grammar.md", "package/artifacts/expression.txt"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "E-A candidate enumeration: all 5 (= Catalan(3)) fully parenthesized parses of '8 - 2 ^ 2 - 1', sorted, produced by systematic binary-parse-tree enumeration over the three top-level operator choices, with the per-split derivation recorded. Stored outside the child bundle so the child can never access it.",
+    "refs": ["worker-enumeration.json", "result.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Proposed child bundle for the causally independent E-B enumeration: attenuated terminal contract within K-E6-child-max, four-node harness, standalone prompt that names only the child's inputs and deliverable (no mention of this trial's other artifacts or of the first enumeration; the format example uses a different expression to avoid leaking any answer item), and an input manifest restricted to the two package artifacts.",
+    "refs": ["child/child-contract.json", "child/child-harness.json", "child/child-prompt.md", "child/child-input-manifest.json"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "propose-child",
+    "description": "Pre-committed deterministic integration rule (role independent_verifier): final items = sorted union of worker and child item sets, single-source items flagged with their origin, complete = true iff the two sets are equal, method concatenated from both enumerations. Executable without judgment by the root-executed integrate-evidence node.",
+    "refs": ["child/integration-plan.json"]
+  },
+  {
+    "id": "ev-5",
+    "source_node": "decide-topology",
+    "description": "Typed topology decision CREATE with reasons: Q2's E-B admissibility is an authorship/access condition this session already violates; the contract and workspace (max_children=1, child envelope, templates, create branch with fresh launcher) make an isolated child legal; DO_NOT_CREATE would leave Q2/Q3 permanently unresolvable.",
+    "refs": ["decision.json"]
+  }
+]

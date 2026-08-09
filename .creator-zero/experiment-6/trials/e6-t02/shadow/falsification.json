@@ -1,0 +1,161 @@
+{
+  "topology_id": "H-e6-t02-branching",
+  "status": "INDETERMINATE",
+  "prediction_statuses": [
+    {
+      "prediction_id": "H-e6-t02-branching-pr01",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "Q1 resolved by predicted node local-resolve"
+    },
+    {
+      "prediction_id": "H-e6-t02-branching-pr02",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "Q2 resolved by predicted node local-resolve"
+    },
+    {
+      "prediction_id": "H-e6-t02-branching-pr03",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "Q3 resolved by predicted node local-resolve"
+    },
+    {
+      "prediction_id": "H-e6-t02-branching-pr04",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "completion order consistent with declared causal order"
+    },
+    {
+      "prediction_id": "H-e6-t02-branching-pr05",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "1 <= 2"
+    },
+    {
+      "prediction_id": "H-e6-t02-branching-pr06",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "no authority violation observed"
+    },
+    {
+      "prediction_id": "H-e6-t02-branching-pr07",
+      "outcome": "INDETERMINATE",
+      "status": "INDETERMINATE",
+      "why": "no child evidence recorded"
+    },
+    {
+      "prediction_id": "H-e6-t02-branching-pr08",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "verification effect: none"
+    }
+  ],
+  "falsified_predictions": [],
+  "evidence_events": [
+    {
+      "principle_id": "P-LOCALITY",
+      "topology_id": "H-e6-t02-branching",
+      "prediction_id": "H-e6-t02-branching-pr01",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t02-branching",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t02-branching-ev001"
+    },
+    {
+      "principle_id": "P-LOCALITY",
+      "topology_id": "H-e6-t02-branching",
+      "prediction_id": "H-e6-t02-branching-pr02",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t02-branching",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t02-branching-ev002"
+    },
+    {
+      "principle_id": "P-LOCALITY",
+      "topology_id": "H-e6-t02-branching",
+      "prediction_id": "H-e6-t02-branching-pr03",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t02-branching",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t02-branching-ev003"
+    },
+    {
+      "principle_id": "P-AUTHORITY-SEPARATION",
+      "topology_id": "H-e6-t02-branching",
+      "prediction_id": "H-e6-t02-branching-pr04",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t02-branching",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t02-branching-ev004"
+    },
+    {
+      "principle_id": "P-MINIMALITY",
+      "topology_id": "H-e6-t02-branching",
+      "prediction_id": "H-e6-t02-branching-pr05",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t02-branching",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t02-branching-ev005"
+    },
+    {
+      "principle_id": "P-AUTHORITY-SEPARATION",
+      "topology_id": "H-e6-t02-branching",
+      "prediction_id": "H-e6-t02-branching-pr06",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t02-branching",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t02-branching-ev006"
+    },
+    {
+      "principle_id": "P-FRESHNESS",
+      "topology_id": "H-e6-t02-branching",
+      "prediction_id": "H-e6-t02-branching-pr08",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t02-branching",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t02-branching-ev007"
+    },
+    {
+      "principle_id": "P-ATTENUATION",
+      "topology_id": "H-e6-t02-branching",
+      "prediction_id": "H-e6-t02-branching-pr08",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-e6-t02-branching",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-e6-t02-branching-ev008"
+    }
+  ]
+}

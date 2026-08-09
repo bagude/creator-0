@@ -1,0 +1,5 @@
+{
+  "summary": "Branching topology, decision CREATE. The E-A enumeration (5 parses, Catalan(3), sorted, method stated) is complete in-session and recorded in worker-enumeration.json and result.json. The E-B enumeration is assigned to the proposed isolated child (bundle under child/), whose input manifest contains only the two package artifacts and none of this session's work. result.json ships with complete = PENDING-INTEGRATION; the final union, single-source flags, and completeness boolean are produced by the root-executed integrate-evidence node via the deterministic rule in child/integration-plan.json and verified at verify-child-result.",
+  "assigned_distinctions": ["Q2", "Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

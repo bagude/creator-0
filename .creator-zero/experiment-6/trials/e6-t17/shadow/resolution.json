@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t17",
+  "topology_id": "branching",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "The complete set of distinct fully parenthesized parses of '8 - 2 ^ 2 - 1' under E -> E op E | number has exactly Catalan(3) = 5 members, sorted: (((8-2)^2)-1), ((8-(2^2))-1), ((8-2)^(2-1)), (8-((2^2)-1)), (8-(2^(2-1))). Method: systematic binary-parse-tree enumeration over the fixed token sequence — each parse is a full binary tree over the 4 operands in order with the 3 operators fixed at their positions; recursion on the choice of top-level operator (2 trees with top split at the first '-', 1 at '^', 2 at the last '-') exhausts the space.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be settled in this session by construction: E-B is an authorship/access condition, and this session authored the first enumeration, so any enumeration it produces or influences is inadmissible. A child bundle (child/) has been proposed whose input manifest contains only package/artifacts/grammar.md and package/artifacts/expression.txt — none of this session's work — so the root-executed create-child/child-return nodes can supply admissible E-B evidence.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "The merge cannot exist before the child enumeration exists. result.json carries the E-A candidate items with complete = PENDING-INTEGRATION; the root-executed integrate-evidence node produces the final union, single-source flags, and completeness boolean via the deterministic, judgment-free rule pre-committed in child/integration-plan.json.",
+      "evidence_ids": ["ev-4"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}
