@@ -1,0 +1,18 @@
+{
+  "check": "topology_guard",
+  "status": "PASS",
+  "violations": [],
+  "launches": {
+    "exec": true,
+    "examiner": false,
+    "child": false
+  },
+  "audit_summaries": [
+    {
+      "tool_use_counts": {
+        "Read": 7,
+        "Write": 4
+      }
+    }
+  ]
+}

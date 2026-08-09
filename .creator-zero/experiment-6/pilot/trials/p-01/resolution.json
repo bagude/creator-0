@@ -1,0 +1,30 @@
+{
+  "task_id": "p-01",
+  "topology_id": "local",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "64",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "1073.00",
+      "evidence_ids": ["ev-1", "ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "RESOLVED",
+      "resolved_by": "resolve-local",
+      "answer": "p3",
+      "evidence_ids": ["ev-1", "ev-4"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

@@ -99,12 +99,19 @@ For each family estimate, per the operationalized measurement:
   root verification decides satisfaction; evidence violating an
   admissibility/authorship condition does not count).
 - `redundancy` in [0,1]: the expected fraction of evidence records that
-  merely duplicate evidence the worker already had (extra processes that
-  re-derive what the worker derived produce duplicates).
+  merely duplicate evidence the worker already had. A separate path whose
+  output is REQUIRED for evidence admissibility produces novel records
+  (redundancy near 0); a separate path that merely re-derives what the
+  worker can fully establish produces duplicates (for example a
+  confirming re-check of an already-verified answer, or an extra process
+  on a task whose evidence requirements the worker alone satisfies).
 - `governance_risk` in [0,1]: 0.25 × expected number of formal/governance
-  failures (freshness, attenuation, refinement, observability). Use small
-  values (0.0–0.1) unless a family genuinely risks a violation; families
-  with more moving parts carry slightly more risk.
+  failures (freshness, attenuation, refinement, observability). Every
+  execution runs under deterministic governance machinery, so failures
+  are rare: 0.0 is the right estimate unless you concretely expect a
+  violation; 0.25 means you expect one actual failure. Do not use this
+  component to encode vague caution — it is scored against the measured
+  failure count.
 - `rationale`: one or two sentences, externally inspectable.
 
 Cost is **not** estimated: it is computed deterministically from the

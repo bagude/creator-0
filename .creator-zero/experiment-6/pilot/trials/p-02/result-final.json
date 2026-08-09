@@ -1,0 +1,47 @@
+{
+  "verdict": "DIVERGES",
+  "undetermined_behaviors": [],
+  "divergent_probe_indices": [
+    1,
+    3,
+    5
+  ],
+  "comparison": [
+    {
+      "probe_index": 0,
+      "reference_output": "a",
+      "independent_output": "a",
+      "diverges": false
+    },
+    {
+      "probe_index": 1,
+      "reference_output": "y, x",
+      "independent_output": "x, y",
+      "diverges": true
+    },
+    {
+      "probe_index": 2,
+      "reference_output": "",
+      "independent_output": "",
+      "diverges": false
+    },
+    {
+      "probe_index": 3,
+      "reference_output": "three, two, one",
+      "independent_output": "one, two, three",
+      "diverges": true
+    },
+    {
+      "probe_index": 4,
+      "reference_output": "z",
+      "independent_output": "z",
+      "diverges": false
+    },
+    {
+      "probe_index": 5,
+      "reference_output": "a, b",
+      "independent_output": "b, a",
+      "diverges": true
+    }
+  ]
+}

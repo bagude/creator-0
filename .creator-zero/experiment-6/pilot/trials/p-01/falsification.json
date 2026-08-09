@@ -1,0 +1,142 @@
+{
+  "topology_id": "H-p-01-local",
+  "status": "SUPPORTED",
+  "prediction_statuses": [
+    {
+      "prediction_id": "H-p-01-local-pr01",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "Q1 resolved by predicted node resolve-local"
+    },
+    {
+      "prediction_id": "H-p-01-local-pr02",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "Q2 resolved by predicted node resolve-local"
+    },
+    {
+      "prediction_id": "H-p-01-local-pr03",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "Q3 resolved by predicted node resolve-local"
+    },
+    {
+      "prediction_id": "H-p-01-local-pr04",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "completion order consistent with declared causal order"
+    },
+    {
+      "prediction_id": "H-p-01-local-pr05",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "1 <= 1"
+    },
+    {
+      "prediction_id": "H-p-01-local-pr06",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "no authority violation observed"
+    },
+    {
+      "prediction_id": "H-p-01-local-pr07",
+      "outcome": "HELD",
+      "status": "SUPPORTED",
+      "why": "resolved and verified with zero descendants"
+    }
+  ],
+  "falsified_predictions": [],
+  "evidence_events": [
+    {
+      "principle_id": "P-LOCALITY",
+      "topology_id": "H-p-01-local",
+      "prediction_id": "H-p-01-local-pr01",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-p-01-local",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-p-01-local-ev001"
+    },
+    {
+      "principle_id": "P-LOCALITY",
+      "topology_id": "H-p-01-local",
+      "prediction_id": "H-p-01-local-pr02",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-p-01-local",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-p-01-local-ev002"
+    },
+    {
+      "principle_id": "P-LOCALITY",
+      "topology_id": "H-p-01-local",
+      "prediction_id": "H-p-01-local-pr03",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-p-01-local",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-p-01-local-ev003"
+    },
+    {
+      "principle_id": "P-AUTHORITY-SEPARATION",
+      "topology_id": "H-p-01-local",
+      "prediction_id": "H-p-01-local-pr04",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-p-01-local",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-p-01-local-ev004"
+    },
+    {
+      "principle_id": "P-MINIMALITY",
+      "topology_id": "H-p-01-local",
+      "prediction_id": "H-p-01-local-pr05",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-p-01-local",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-p-01-local-ev005"
+    },
+    {
+      "principle_id": "P-AUTHORITY-SEPARATION",
+      "topology_id": "H-p-01-local",
+      "prediction_id": "H-p-01-local-pr06",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-p-01-local",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-p-01-local-ev006"
+    },
+    {
+      "principle_id": "P-LOCALITY",
+      "topology_id": "H-p-01-local",
+      "prediction_id": "H-p-01-local-pr07",
+      "effect": "SUPPORT",
+      "evidence_refs": [
+        {
+          "evaluation_topology": "H-p-01-local",
+          "prediction_outcome": "HELD"
+        }
+      ],
+      "event_id": "H-p-01-local-ev007"
+    }
+  ]
+}

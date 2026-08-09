@@ -1,0 +1,10 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "result.json",
+  "child_implementation_file": "join_impl.py",
+  "rule": "Let P be the top-level list parsed from package/artifacts/probes.json (0-based indices). For each i in range(len(P)) compute a_i = join_items(P[i]) as defined by package/artifacts/joiner.py and b_i = join_items(P[i]) as defined by the child's join_impl.py, importing each module as-is. Let D = sorted([i for i in range(len(P)) if a_i != b_i]). Set result.json.divergent_probe_indices = D and result.json.verdict = 'DIVERGES' if D is non-empty else 'REPRODUCES'. result.json.undetermined_behaviors is fixed by the in-session E-A statement (ea-statement.md) and is not modified by this rule. If the child fails validation, fails to launch, or join_impl.py does not import or does not expose join_items, leave verdict and divergent_probe_indices as 'PENDING-INTEGRATION'. Record the six (probe, a_i, b_i) triples as the E-B item-level comparison.",
+  "expected_contribution": {
+    "Q3": "The child's join_impl.py is the E-B clean-room implementation (authored solely from joinspec.md, author never accessed joiner.py or derived analysis); the deterministic rule's item-level comparison of join_impl.py vs joiner.py over probes.json settles whether they agree on each probe.",
+    "Q4": "Applying the rule to the E-B comparison, jointly with the recorded E-A statement, mechanically yields the verdict and the sorted divergent_probe_indices, replacing the PENDING-INTEGRATION placeholders in result.json."
+  }
+}

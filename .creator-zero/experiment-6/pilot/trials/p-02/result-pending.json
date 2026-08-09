@@ -1,0 +1,5 @@
+{
+  "summary": "E-A is resolved in-session: joinspec.md determines every probe-exercised behavior (undetermined_behaviors = []), and the spec-determined output differs from joiner.py exactly on multi-item ordering, probes [1, 3, 5]. E-B requires a causally separated clean-room implementation, which this contaminated session cannot author; a child bundle is proposed whose input manifest contains only joinspec.md. The verdict and divergent_probe_indices of result.json are PENDING-INTEGRATION until the root-executed launch, comparison, and integration per the pre-committed deterministic rule.",
+  "assigned_distinctions": ["Q3", "Q4"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

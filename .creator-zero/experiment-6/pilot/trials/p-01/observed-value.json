@@ -1,0 +1,46 @@
+{
+  "topology_id": "H-p-01-local",
+  "gain": {
+    "resolved_distinctions": [
+      "Q1",
+      "Q2",
+      "Q3"
+    ],
+    "requirements_satisfied": [
+      "E-A",
+      "E-B",
+      "E-C"
+    ],
+    "requirements_total": [
+      "E-A",
+      "E-B",
+      "E-C"
+    ],
+    "novel_evidence": [
+      "ev-1",
+      "ev-2",
+      "ev-3",
+      "ev-4",
+      "ev-5"
+    ],
+    "verification_effect": "none",
+    "coverage_gain": 0.0,
+    "score": 1.0
+  },
+  "cost": {
+    "model_calls": 1,
+    "child_calls": 0,
+    "wall_clock_ms": 69000,
+    "score": 0.125
+  },
+  "redundancy": {
+    "duplicate_evidence": [],
+    "unused_outputs": [],
+    "score": 0.0
+  },
+  "governance": {
+    "violations": [],
+    "score": 0.0
+  },
+  "observed_utility": 0.875
+}

@@ -1,0 +1,15 @@
+{
+  "artifact": "child workspace manifest",
+  "trial_id": "p-02",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/p-02/primary/child-ws",
+  "files": [
+    ".claude/settings.json",
+    "child-contract.json",
+    "child-harness.json",
+    "child-prompt.md",
+    "inputs/joinspec.md"
+  ],
+  "input_manifest": [
+    "package/artifacts/joinspec.md"
+  ]
+}

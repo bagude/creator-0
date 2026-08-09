@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Governed observation of the task package: the three-clause specification text of joinspec.md, the one-line implementation joiner.py (', '.join(reversed(items))), and the six probes of probes.json (two singletons, one empty list, three multi-item lists). Identified Q3 as the isolation-requiring distinction: E-B's authorship condition is already violated by this session having read joiner.py.",
+    "refs": [
+      "package/task.json",
+      "package/artifacts/joinspec.md",
+      "package/artifacts/joiner.py",
+      "package/artifacts/probes.json",
+      "distinctions.json"
+    ]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "E-A statement: enumeration of every behavior exercised by the probe set (empty list, singleton, separator, multi-item ordering) with an explicit argument that joinspec.md determines a unique output for all six probes (no undetermined behaviors), and a per-probe table showing the spec-determined output differs from joiner.py exactly on the multi-item ordering behavior, sorted probe indices [1, 3, 5].",
+    "refs": ["ea-statement.md"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Proposed child bundle for the clean-room implementer: attenuated child contract within child-envelope.json, four-node child harness, standalone child prompt, input manifest restricted to package/artifacts/joinspec.md (excluding joiner.py, probes.json, and all in-session analysis, satisfying E-B's authorship-isolation condition), and a pre-committed deterministic integration rule mapping the child's join_impl.py to the final verdict and divergent_probe_indices.",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]

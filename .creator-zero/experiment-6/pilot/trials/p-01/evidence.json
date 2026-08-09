@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Read package/artifacts/stock.csv in full: header row (sku,units,price) plus 6 data rows (p1,10,16.50), (p2,15,2.50), (p3,17,23.50), (p4,5,22.50), (p5,15,22.50), (p6,2,10.50). This is the sole available artifact per task.json; no external source was consulted.",
+    "refs": ["package/artifacts/stock.csv"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "resolve-local",
+    "description": "Q1 / E-A: total_units = 10 + 15 + 17 + 5 + 15 + 2 = 64, an integer sum of the units column over every data row of stock.csv, recorded as total_units in result.json.",
+    "refs": ["package/artifacts/stock.csv", "result.json", "resolution.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "resolve-local",
+    "description": "Q2 / E-B: per-row units x price products: 10x16.50=165.00, 15x2.50=37.50, 17x23.50=399.50, 5x22.50=112.50, 15x22.50=337.50, 2x10.50=21.00; sum = 1073.00, expressed to 2 decimals and recorded as total_value in result.json.",
+    "refs": ["package/artifacts/stock.csv", "result.json", "resolution.json"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "resolve-local",
+    "description": "Q3 / E-C: units column values are 10, 15, 17, 5, 15, 2; the maximum is 17, attained uniquely by sku p3, so the lexicographic smallest-SKU tie-break is not triggered. Recorded as top_sku_by_units in result.json.",
+    "refs": ["package/artifacts/stock.csv", "result.json", "resolution.json"]
+  },
+  {
+    "id": "ev-5",
+    "source_node": "verify-resolution",
+    "description": "Non-authoritative self-check against package/task.json deliverable spec: result.json contains exactly the three required fields with conforming types (total_units integer 64; total_value number 1073.00 at 2 decimals; top_sku_by_units string 'p3'); sums re-derived independently row-by-row and re-confirmed (units: 10+15=25, +17=42, +5=47, +15=62, +2=64; value: 165.00+37.50=202.50, +399.50=602.00, +112.50=714.50, +337.50=1052.00, +21.00=1073.00); every resolution in resolution.json cites admissible evidence derived solely from stock.csv.",
+    "refs": ["package/task.json", "package/artifacts/stock.csv", "result.json", "resolution.json"]
+  }
+]

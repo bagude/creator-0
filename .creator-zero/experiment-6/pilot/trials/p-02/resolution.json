@@ -1,0 +1,38 @@
+{
+  "task_id": "p-02",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "None. joinspec.md determines a unique output for every behavior exercised by probes.json: the empty list is fixed verbatim to the empty string (probe 2); a singleton renders as the item itself, since the ', ' separator only occurs between items and the order clause fixes that the item is rendered (probes 0, 4); the separator clause fixes ', ' and the order clause fixes input order for multi-item lists (probes 1, 3, 5). The explicit no-undetermined-behavior argument covering all six probes is recorded in ea-statement.md; undetermined_behaviors is therefore the empty list.",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "Exactly one probe-exercised behavior differs: multi-item ordering. The spec fixes 'the order given' while joiner.py computes ', '.join(reversed(items)). Per-probe: indices 1 (['x','y']: spec 'x, y' vs 'y, x'), 3 (['one','two','three']: spec 'one, two, three' vs 'three, two, one'), and 5 (['b','a']: spec 'b, a' vs 'a, b') differ; indices 0, 2, 4 (singletons and the empty list) coincide because reversal is unobservable there. Separator and empty-list behaviors do not differ. Full table in ea-statement.md.",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be resolved in this session: E-B requires an implementation authored solely from joinspec.md by an author who has never accessed joiner.py nor any analysis derived from it, and this session has read joiner.py. A child bundle (child/) has been proposed assigning a clean-room implementer whose input manifest contains only package/artifacts/joinspec.md; the deterministic integration rule (child/integration-plan.json) performs the item-level comparison over probes.json after the root-executed launch.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "The verdict is a deterministic function of E-A and E-B jointly (DIVERGES iff the comparison shows a differing output on some probe) and may not be asserted from spec-reading alone; since the admissible E-B comparison does not yet exist, result.json carries verdict = PENDING-INTEGRATION and divergent_probe_indices = PENDING-INTEGRATION. The root-executed verify-integration node settles them by applying the pre-committed rule in child/integration-plan.json.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

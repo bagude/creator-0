@@ -1,0 +1,412 @@
+{
+  "formal_object": "lts",
+  "initial": "done={}|promoted=0|complete=0",
+  "labels": [
+    "authorize",
+    "complete",
+    "consult",
+    "observe",
+    "persist",
+    "propose",
+    "reconstruct",
+    "reject",
+    "return",
+    "tau",
+    "validate",
+    "verify"
+  ],
+  "metadata": {
+    "act_nodes": [],
+    "allow_create": false,
+    "allow_promote": false,
+    "branches": {},
+    "contract_id": "K-E6-child-p-02",
+    "nodes": [
+      "observe-inputs",
+      "produce-evidence",
+      "return-result",
+      "self-check"
+    ],
+    "shared_nodes": [
+      "observe-inputs",
+      "produce-evidence",
+      "return-result",
+      "self-check"
+    ],
+    "task_id": "e6-p-02-child",
+    "verify_nodes": [
+      "self-check"
+    ]
+  },
+  "states": [
+    "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+    "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=1",
+    "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+    "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+    "done={observe-inputs}|promoted=0|complete=0",
+    "done={}|promoted=0|complete=0"
+  ],
+  "transitions": [
+    {
+      "actor": "node:self-check",
+      "label": "authorize",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "complete",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=1"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-inputs",
+      "label": "observe",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:produce-evidence",
+      "label": "verify",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=1",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=1"
+    },
+    {
+      "actor": "node:self-check",
+      "label": "authorize",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-inputs",
+      "label": "observe",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:return-result",
+      "label": "return",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,return-result,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:produce-evidence",
+      "label": "verify",
+      "source": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-inputs",
+      "label": "observe",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:self-check",
+      "label": "verify",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence,self-check}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:produce-evidence",
+      "label": "verify",
+      "source": "done={observe-inputs,produce-evidence}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-inputs",
+      "label": "observe",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:produce-evidence",
+      "label": "propose",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs,produce-evidence}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={observe-inputs}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:observe-inputs",
+      "label": "observe",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={observe-inputs}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    }
+  ],
+  "version": "0.1"
+}

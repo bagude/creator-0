@@ -1,0 +1,33 @@
+{
+  "trial_id": "p-01",
+  "task_verified": true,
+  "result_correct": true,
+  "requirements": {
+    "E-A": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "fields exact"
+    },
+    "E-B": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "fields exact"
+    },
+    "E-C": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "fields exact"
+    }
+  },
+  "verification_effect": "none",
+  "duplicate_evidence_ids": [],
+  "extra_evidence_records": [],
+  "details": {
+    "ground_truth_fields": [
+      "top_sku_by_units",
+      "total_units",
+      "total_value"
+    ],
+    "mismatched_fields": []
+  }
+}
