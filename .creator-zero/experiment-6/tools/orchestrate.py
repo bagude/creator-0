@@ -78,27 +78,41 @@ def family_of(tid: str, shadow: bool) -> str:
 
 
 def do_infer(tid: str) -> tuple[str, bool]:
+    td = trial_dir(tid, False)
+    if (td / "candidate-ranking.json").exists():
+        print(f"== {tid}: already inferred, skipping", flush=True)
+        return tid, True
     if not ws(tid, False, "infer-ws").exists():
         if run([PY, "-m", "runtime.infer_driver", "prepare", tid]):
             return tid, False
-    if launch(tid, False, "infer"):
-        return tid, False
+    if not (td / "infer-launch-provenance.json").exists():
+        if launch(tid, False, "infer"):
+            return tid, False
     return tid, run([PY, "-m", "runtime.infer_driver", "after", tid]) == 0
 
 
 def do_exec(tid: str, shadow: bool) -> tuple[str, bool]:
     sh = ["--shadow"] if shadow else []
+    td = trial_dir(tid, shadow)
+    if (td / "resolution.json").exists():
+        print(f"== {tid}: exec already collected, skipping", flush=True)
+        return tid, True
     if not ws(tid, shadow, "exec-ws").exists():
         if run([PY, "-m", "runtime.exec_driver", "prepare-exec", tid, *sh]):
             return tid, False
-    if launch(tid, shadow, "exec"):
-        return tid, False
+    if not (td / "exec-launch-provenance.json").exists():
+        if launch(tid, shadow, "exec"):
+            return tid, False
     return tid, run([PY, "-m", "runtime.exec_driver", "after-exec", tid,
                      *sh]) == 0
 
 
 def do_post(tid: str, shadow: bool) -> tuple[str, bool]:
     sh = ["--shadow"] if shadow else []
+    td = trial_dir(tid, shadow)
+    if (td / "observed-value.json").exists():
+        print(f"== {tid}: already finalized, skipping", flush=True)
+        return tid, True
     fam = family_of(tid, shadow)
     branch = None
     if fam == "branching":
@@ -109,19 +123,23 @@ def do_post(tid: str, shadow: bool) -> tuple[str, bool]:
                                               branch == "CREATE")
     needs_examiner = fam == "local-independent-verify"
     if needs_child:
-        if run([PY, "-m", "runtime.exec_driver", "prepare-child", tid,
-                *sh]):
-            return tid, False
-        if launch(tid, shadow, "child"):
-            return tid, False
+        if not ws(tid, shadow, "child-ws").exists():
+            if run([PY, "-m", "runtime.exec_driver", "prepare-child", tid,
+                    *sh]):
+                return tid, False
+        if not (td / "child" / "launch-provenance.json").exists():
+            if launch(tid, shadow, "child"):
+                return tid, False
         if run([PY, "-m", "runtime.exec_driver", "after-child", tid, *sh]):
             return tid, False
     if needs_examiner:
-        if run([PY, "-m", "runtime.exec_driver", "prepare-examiner", tid,
-                *sh]):
-            return tid, False
-        if launch(tid, shadow, "examiner"):
-            return tid, False
+        if not ws(tid, shadow, "examiner-ws").exists():
+            if run([PY, "-m", "runtime.exec_driver", "prepare-examiner",
+                    tid, *sh]):
+                return tid, False
+        if not (td / "examiner" / "launch-provenance.json").exists():
+            if launch(tid, shadow, "examiner"):
+                return tid, False
         if run([PY, "-m", "runtime.exec_driver", "after-examiner", tid,
                 *sh]):
             return tid, False

@@ -1,0 +1,21 @@
+{
+  "task_id": "e6-t13",
+  "task": "Audit the claim below against the provided materials. Claim: for every list of 1 to 3 tokens, each token a string of 1 to 3 characters over the alphabet {a, b, double-quote, backslash}, tokenize(detokenize(tokens)) equals the original token list. Decide HOLDS or VIOLATED over the stated domain; on VIOLATED, provide one concrete violating input.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "HOLDS | VIOLATED",
+      "violating_input": "[\"tok1\", \"tok2\", ...] or null",
+      "input_classes_examined": "[descriptions]"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: an analysis identifying the input classes on which the claim's truth could turn",
+    "E-B: a systematic search for a violating input carried out by a party other than the author of the provisional answer, or such a party's argument that no violating input exists in the domain",
+    "E-C: the verdict, with a concrete violating input on VIOLATED that mechanically violates the claim"
+  ],
+  "available_artifacts": [
+    "package/artifacts/tok.py"
+  ],
+  "domain": "token lists as stated"
+}
