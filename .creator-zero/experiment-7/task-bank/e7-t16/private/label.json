@@ -1,0 +1,58 @@
+{
+  "trial_id": "e7-t16",
+  "latent_class": "COUNTEREXAMPLE",
+  "surface_domain": "parsing",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "adversarial_path": true
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "distinct_verification_path": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "whether an input violating the claim exists in the bounded domain",
+      "core_patterns": [
+        "violat|breaks|fails|holds|witness",
+        "input|claim|domain|property"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the requirement that the search be carried out by a party other than the author of the provisional answer",
+      "core_patterns": [
+        "party other|not the author|second|separate|unbiased|distinct",
+        "search|check|derivation|answer"
+      ]
+    }
+  ],
+  "checker": "tokenizer",
+  "verdict": "VIOLATED",
+  "witness_field": "violating_input",
+  "analysis_patterns": [
+    [
+      "backslash|escap",
+      "quote|round.?trip|token"
+    ]
+  ],
+  "reference_witness": [
+    "\"\\"
+  ],
+  "forbidden_shortcuts": [
+    "testing only alphabetic tokens"
+  ],
+  "admissibility_kind": "NON_AUTHOR_SEARCH",
+  "required_role": "non_author_examiner",
+  "expected_principles_v2": [
+    "P-NONAUTHOR-SEARCH"
+  ]
+}

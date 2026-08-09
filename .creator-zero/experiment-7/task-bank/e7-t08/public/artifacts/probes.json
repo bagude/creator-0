@@ -1,0 +1,61 @@
+[
+  {
+    "template": "hello {{name}}",
+    "context": {
+      "name": "ada"
+    }
+  },
+  {
+    "template": "{{a}}-{{b}}",
+    "context": {
+      "a": "1",
+      "b": "2"
+    }
+  },
+  {
+    "template": "missing: {{ghost}}!",
+    "context": {}
+  },
+  {
+    "template": "{{x}}{{x}}",
+    "context": {
+      "x": "ab"
+    }
+  },
+  {
+    "template": "literal {{ name }} stays",
+    "context": {
+      "name": "z"
+    }
+  },
+  {
+    "template": "value {{v}}",
+    "context": {
+      "v": "{{w}}",
+      "w": "n"
+    }
+  },
+  {
+    "template": "{{}} empty",
+    "context": {}
+  },
+  {
+    "template": "{{num1}}",
+    "context": {
+      "num1": "x"
+    }
+  },
+  {
+    "template": "no placeholders",
+    "context": {
+      "a": "b"
+    }
+  },
+  {
+    "template": "{{a}} and {{missing}} and {{b}}",
+    "context": {
+      "a": "A",
+      "b": "B"
+    }
+  }
+]

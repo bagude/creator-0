@@ -1,0 +1,40 @@
+{
+  "artifact": "Experiment 7 randomization",
+  "condition_order": {
+    "e7-t01": "AB",
+    "e7-t02": "AB",
+    "e7-t03": "BA",
+    "e7-t04": "BA",
+    "e7-t05": "BA",
+    "e7-t06": "AB",
+    "e7-t07": "BA",
+    "e7-t08": "BA",
+    "e7-t09": "AB",
+    "e7-t10": "AB",
+    "e7-t11": "AB",
+    "e7-t12": "BA",
+    "e7-t13": "BA",
+    "e7-t14": "AB",
+    "e7-t15": "AB",
+    "e7-t16": "BA",
+    "e7-t17": "BA",
+    "e7-t18": "BA",
+    "e7-t19": "BA",
+    "e7-t20": "BA"
+  },
+  "condition_order_seed": "creator-0-experiment-7-order-v1",
+  "shadow_rule": "2 per class, stratified seeded sample; shadows executed in BOTH conditions as that condition's runner-up, CONTROL_ONLY",
+  "shadow_seed": "creator-0-experiment-7-shadows-v1",
+  "shadow_trials": [
+    "e7-t01",
+    "e7-t02",
+    "e7-t03",
+    "e7-t05",
+    "e7-t06",
+    "e7-t07",
+    "e7-t10",
+    "e7-t13",
+    "e7-t19",
+    "e7-t20"
+  ]
+}

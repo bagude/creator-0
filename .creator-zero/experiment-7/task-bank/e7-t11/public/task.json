@@ -1,0 +1,21 @@
+{
+  "task_id": "e7-t11",
+  "task": "Trace the deterministic machine in artifacts/machine.json over each input string in artifacts/inputs.json, starting from the initial state for every string. Count a visit for the initial state and for every state entered on a step, across all strings. The most-visited state breaks ties by lexicographically smallest name.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "final_states": "[state per input string, in order]",
+      "error_reached": "boolean",
+      "most_visited_state": "string"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: the final state of every input string",
+    "E-B: whether the error state is ever entered",
+    "E-C: the most-visited state under the stated counting and tie-break"
+  ],
+  "available_artifacts": [
+    "package/artifacts/machine.json",
+    "package/artifacts/inputs.json"
+  ]
+}

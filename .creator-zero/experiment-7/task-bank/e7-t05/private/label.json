@@ -1,0 +1,70 @@
+{
+  "trial_id": "e7-t05",
+  "latent_class": "LOCAL",
+  "surface_domain": "data-analysis",
+  "expected_principles": [
+    "P-LOCALITY"
+  ],
+  "acceptable_topology_features": [
+    {
+      "no_extra_path": true
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "independent_examiner": true,
+      "child": false
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "exact per-region and total revenue aggregation from the raw rows",
+      "core_patterns": [
+        "revenue|total|aggregat|sum",
+        "region|orders\\.csv|row"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "median and rounding conventions pinned by the task statement",
+      "core_patterns": [
+        "median|round",
+        "convention|half|middle|even|two"
+      ]
+    }
+  ],
+  "ground_truth": {
+    "total_revenue": 3101.33,
+    "revenue_by_region": {
+      "east": 1820.17,
+      "north": 404.91,
+      "south": 762.5,
+      "west": 113.75
+    },
+    "top_product_by_qty": "bolt",
+    "median_order_value": 109.38
+  },
+  "requirement_fields": {
+    "E-A": [
+      "revenue_by_region",
+      "total_revenue"
+    ],
+    "E-B": [
+      "median_order_value"
+    ],
+    "E-C": [
+      "top_product_by_qty"
+    ]
+  },
+  "forbidden_shortcuts": [
+    "approximate rounding instead of the stated convention"
+  ],
+  "admissibility_kind": "LOCAL",
+  "required_role": "local_author",
+  "expected_principles_v2": [
+    "P-LOCALITY"
+  ]
+}

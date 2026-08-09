@@ -1,0 +1,40 @@
+{
+  "modules": [
+    "auth",
+    "core",
+    "db",
+    "net",
+    "ui",
+    "util"
+  ],
+  "dependencies": [
+    {
+      "from": "auth",
+      "to": "core"
+    },
+    {
+      "from": "auth",
+      "to": "db"
+    },
+    {
+      "from": "core",
+      "to": "util"
+    },
+    {
+      "from": "db",
+      "to": "util"
+    },
+    {
+      "from": "ui",
+      "to": "auth"
+    },
+    {
+      "from": "ui",
+      "to": "net"
+    },
+    {
+      "from": "net",
+      "to": "core"
+    }
+  ]
+}

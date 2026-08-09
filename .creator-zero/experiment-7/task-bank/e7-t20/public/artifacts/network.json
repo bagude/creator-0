@@ -1,0 +1,62 @@
+{
+  "nodes": [
+    "S",
+    "A",
+    "B",
+    "C",
+    "D",
+    "T"
+  ],
+  "links": [
+    {
+      "from": "A",
+      "to": "B",
+      "cost": 1
+    },
+    {
+      "from": "A",
+      "to": "C",
+      "cost": 3
+    },
+    {
+      "from": "A",
+      "to": "D",
+      "cost": 4
+    },
+    {
+      "from": "B",
+      "to": "C",
+      "cost": 2
+    },
+    {
+      "from": "B",
+      "to": "D",
+      "cost": 3
+    },
+    {
+      "from": "C",
+      "to": "D",
+      "cost": 1
+    },
+    {
+      "from": "C",
+      "to": "T",
+      "cost": 3
+    },
+    {
+      "from": "D",
+      "to": "T",
+      "cost": 2
+    },
+    {
+      "from": "S",
+      "to": "A",
+      "cost": 2
+    },
+    {
+      "from": "S",
+      "to": "B",
+      "cost": 3
+    }
+  ]
+}

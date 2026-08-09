@@ -1,0 +1,41 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "ValueEstimates v2 (Experiment 7, S1 output)",
+ "type": "object",
+ "required": [
+  "task_id",
+  "estimates"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "task_id": {
+   "type": "string"
+  },
+  "estimates": {
+   "type": "object",
+   "minProperties": 1,
+   "patternProperties": {
+    "^Q[0-9]+$": {
+     "type": "object",
+     "required": [
+      "value",
+      "rationale"
+     ],
+     "additionalProperties": false,
+     "properties": {
+      "value": {
+       "type": "number",
+       "minimum": 0,
+       "maximum": 1
+      },
+      "rationale": {
+       "type": "string",
+       "minLength": 10
+      }
+     }
+    }
+   },
+   "additionalProperties": false
+  }
+ }
+}

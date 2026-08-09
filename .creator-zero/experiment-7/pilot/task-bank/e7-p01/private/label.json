@@ -1,0 +1,61 @@
+{
+  "trial_id": "e7-p01",
+  "latent_class": "LOCAL",
+  "surface_domain": "data-analysis",
+  "expected_principles": [
+    "P-LOCALITY"
+  ],
+  "acceptable_topology_features": [
+    {
+      "no_extra_path": true
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "independent_examiner": true,
+      "child": false
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "exact aggregation",
+      "core_patterns": [
+        "total|units|value|aggregat",
+        "stock|csv|row"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "tie-break convention",
+      "core_patterns": [
+        "tie|top|most",
+        "sku|smallest"
+      ]
+    }
+  ],
+  "ground_truth": {
+    "total_units": 50,
+    "total_value": 874.0,
+    "top_sku_by_units": "p1"
+  },
+  "requirement_fields": {
+    "E-A": [
+      "total_units"
+    ],
+    "E-B": [
+      "total_value"
+    ],
+    "E-C": [
+      "top_sku_by_units"
+    ]
+  },
+  "forbidden_shortcuts": [],
+  "admissibility_kind": "LOCAL",
+  "required_role": "local_author",
+  "expected_principles_v2": [
+    "P-LOCALITY"
+  ]
+}

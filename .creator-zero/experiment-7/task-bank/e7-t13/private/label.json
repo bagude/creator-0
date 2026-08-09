@@ -1,0 +1,65 @@
+{
+  "trial_id": "e7-t13",
+  "latent_class": "LOCAL",
+  "surface_domain": "data-analysis",
+  "expected_principles": [
+    "P-LOCALITY"
+  ],
+  "acceptable_topology_features": [
+    {
+      "no_extra_path": true
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "independent_examiner": true,
+      "child": false
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "exact counting of statuses/hours/IPs over the full log",
+      "core_patterns": [
+        "count|5xx|status|hour|ip",
+        "log|line|request"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "gap definition between consecutive requests",
+      "core_patterns": [
+        "gap",
+        "consecutive|seconds|between"
+      ]
+    }
+  ],
+  "ground_truth": {
+    "count_5xx": 10,
+    "busiest_hour": "10",
+    "top_ip": "203.0.113.7",
+    "longest_gap_seconds": 420
+  },
+  "requirement_fields": {
+    "E-A": [
+      "count_5xx",
+      "busiest_hour"
+    ],
+    "E-B": [
+      "top_ip"
+    ],
+    "E-C": [
+      "longest_gap_seconds"
+    ]
+  },
+  "forbidden_shortcuts": [
+    "sampling instead of full scan"
+  ],
+  "admissibility_kind": "LOCAL",
+  "required_role": "local_author",
+  "expected_principles_v2": [
+    "P-LOCALITY"
+  ]
+}

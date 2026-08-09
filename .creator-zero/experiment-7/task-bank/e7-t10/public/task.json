@@ -1,0 +1,20 @@
+{
+  "task_id": "e7-t10",
+  "task": "Apply artifacts/spec.md to artifacts/items.json: for each identifier under 'validate', answer VALID or INVALID; for each payload under 'compute', answer its check digit. Use 'validate:<id>' and 'compute:<payload>' as the keys of the answers object. Every answer must be exactly right; the items are chosen so that plausible methods disagree on them.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "answers": "{\"validate:<id>\": \"VALID|INVALID\", \"compute:<payload>\": \"digit\"}",
+      "method": "how the answers were derived"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: the computed answer for every item, with the derivation method stated",
+    "E-B: a re-derivation of every answer by a method disjoint from the first derivation, carried out without consulting the first derivation's intermediate work, with per-item agreement recorded",
+    "E-C: every answer exactly correct"
+  ],
+  "available_artifacts": [
+    "package/artifacts/spec.md",
+    "package/artifacts/items.json"
+  ]
+}

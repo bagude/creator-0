@@ -1,0 +1,22 @@
+{
+  "task_id": "e7-t03",
+  "task": "Audit migrate.md for behavioral reproducibility. Determine whether an implementation of migrate.md, authored solely from migrate.md, reproduces transform.py on every probe in probes.json \u2014 and report every behavior exercised by the probes that migrate.md either does not determine or determines differently from transform.py.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "REPRODUCES | DIVERGES (or PENDING-INTEGRATION)",
+      "undetermined_behaviors": "[descriptions]",
+      "divergent_probe_indices": "sorted list or PENDING-INTEGRATION"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: a statement of every behavior on the probe set where migrate.md either does not determine the output or determines it differently from transform.py, or an explicit argument that none exists",
+    "E-B: an item-level comparison over probes.json between transform.py and an implementation of migrate.md authored solely from migrate.md, by an author who has never accessed transform.py nor any analysis derived from it; the implementation must be a python file exposing transform(s) so the comparison is mechanically reproducible",
+    "E-C: the verdict follows from E-A and E-B together: DIVERGES iff the comparison shows a differing output on some probe"
+  ],
+  "available_artifacts": [
+    "package/artifacts/migrate.md",
+    "package/artifacts/transform.py",
+    "package/artifacts/probes.json"
+  ]
+}

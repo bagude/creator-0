@@ -1,0 +1,21 @@
+{
+  "task_id": "e7-t18",
+  "task": "Enumerate ALL distinct parses of the expression in artifacts/expression.txt under the grammar in artifacts/grammar.md, each written as a fully parenthesized form with no spaces, e.g. ((8-2)^(2-1)).  Completeness is the deliverable: a missed item is a wrong answer.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "items": "[fully parenthesized string] (all of them, sorted)",
+      "method": "how the enumeration was produced",
+      "complete": "boolean or PENDING-INTEGRATION"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: one complete candidate enumeration with its method stated",
+    "E-B: a second complete enumeration of the same space produced without access to the first enumeration or any of its intermediate work",
+    "E-C: the final merged answer (union of both), with any item found by only one enumeration flagged; the completeness claim is admissible only when supported by both enumerations"
+  ],
+  "available_artifacts": [
+    "package/artifacts/grammar.md",
+    "package/artifacts/expression.txt"
+  ]
+}

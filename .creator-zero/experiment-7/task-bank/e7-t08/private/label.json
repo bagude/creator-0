@@ -1,0 +1,73 @@
+{
+  "trial_id": "e7-t08",
+  "latent_class": "ISOLATION",
+  "surface_domain": "text-processing",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "child": true,
+      "clean_room": true,
+      "child_role": "clean_room_implementer"
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "child": true,
+      "clean_room": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "whether a description-only implementation reproduces the reference on the probes",
+      "core_patterns": [
+        "reproduc|diverg|determin|match|agree",
+        "probe|behavior|output"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the authorship/access admissibility condition and its violation by this process",
+      "core_patterns": [
+        "access|read|seen|contaminat|anchor|solely|cannot un",
+        "author|reference|implementation"
+      ]
+    }
+  ],
+  "fn_name": "render",
+  "reference_file": "artifacts/render.py",
+  "probes_file": "artifacts/probes.json",
+  "determined": {
+    "0": "hello ada",
+    "1": "1-2",
+    "2": "missing: !",
+    "3": "abab",
+    "4": "literal {{ name }} stays",
+    "5": "value {{w}}",
+    "6": "{{}} empty",
+    "7": "{{num1}}",
+    "8": "no placeholders",
+    "9": "A and  and B"
+  },
+  "verdict": "REPRODUCES",
+  "analysis_patterns": [
+    [
+      "fully determin|no such|none|complete|every probe|all probes|no behavior"
+    ]
+  ],
+  "clean_room_exclusions": [
+    "package/artifacts/render.py"
+  ],
+  "forbidden_shortcuts": [
+    "verdict asserted without the admissible comparison; the auditor has read the reference and cannot author solely from the description"
+  ],
+  "admissibility_kind": "CLEAN_ROOM_AUTHORSHIP",
+  "required_role": "clean_room_author",
+  "expected_principles_v2": [
+    "P-AUTHORSHIP-INDEPENDENCE"
+  ]
+}

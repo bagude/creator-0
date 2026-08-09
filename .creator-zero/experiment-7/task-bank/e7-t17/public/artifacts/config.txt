@@ -1,0 +1,8 @@
+timeout_ms = 8000
+retries = 7
+tls_enabled = true
+log_level = info
+max_connections = 64
+worker_threads = 16
+backup_interval_hours = 7
+admin_email = ops@corp.example

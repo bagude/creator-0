@@ -1,0 +1,21 @@
+{
+  "task_id": "e7-t12",
+  "task": "Audit the claim below against the provided materials. Claim: for every ISO date d in the years 2023-2025 and every n with 0 <= n <= 60, add_days(d, n) equals the true Gregorian calendar date n days after d. Decide HOLDS or VIOLATED over the stated domain; on VIOLATED, provide one concrete violating input.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "HOLDS | VIOLATED",
+      "violating_input": "[\"YYYY-MM-DD\", n] or null",
+      "input_classes_examined": "[descriptions]"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: an analysis identifying the input classes on which the claim's truth could turn",
+    "E-B: a systematic search for a violating input carried out by a party other than the author of the provisional answer, or such a party's argument that no violating input exists in the domain",
+    "E-C: the verdict, with a concrete violating input on VIOLATED that mechanically violates the claim"
+  ],
+  "available_artifacts": [
+    "package/artifacts/dateadd.py"
+  ],
+  "domain": "ISO dates in 2023-2025, n in [0, 60]"
+}

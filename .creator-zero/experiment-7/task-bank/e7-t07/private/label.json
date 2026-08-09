@@ -1,0 +1,60 @@
+{
+  "trial_id": "e7-t07",
+  "latent_class": "COUNTEREXAMPLE",
+  "surface_domain": "business-rules",
+  "expected_principles": [
+    "P-INDEPENDENCE"
+  ],
+  "acceptable_topology_features": [
+    {
+      "adversarial_path": true
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "distinct_verification_path": true
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "whether an input violating the claim exists in the bounded domain",
+      "core_patterns": [
+        "violat|breaks|fails|holds|witness",
+        "input|claim|domain|property"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "the requirement that the search be carried out by a party other than the author of the provisional answer",
+      "core_patterns": [
+        "party other|not the author|second|separate|unbiased|distinct",
+        "search|check|derivation|answer"
+      ]
+    }
+  ],
+  "checker": "discount",
+  "verdict": "VIOLATED",
+  "witness_field": "violating_input",
+  "analysis_patterns": [
+    [
+      "stack|combin|multipl|all four|every rule|compound"
+    ]
+  ],
+  "reference_witness": {
+    "quantity": 5,
+    "loyalty_member": true,
+    "category": "outdoor",
+    "coupon_code_applied": true
+  },
+  "forbidden_shortcuts": [
+    "checking rules pairwise only"
+  ],
+  "admissibility_kind": "NON_AUTHOR_SEARCH",
+  "required_role": "non_author_examiner",
+  "expected_principles_v2": [
+    "P-NONAUTHOR-SEARCH"
+  ]
+}

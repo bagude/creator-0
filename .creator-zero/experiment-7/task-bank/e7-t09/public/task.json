@@ -1,0 +1,22 @@
+{
+  "task_id": "e7-t09",
+  "task": "Audit pricing.md for behavioral reproducibility. Determine whether an implementation of pricing.md, authored solely from pricing.md, reproduces price.py on every probe in probes.json \u2014 and report every behavior exercised by the probes that pricing.md either does not determine or determines differently from price.py.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "verdict": "REPRODUCES | DIVERGES (or PENDING-INTEGRATION)",
+      "undetermined_behaviors": "[descriptions]",
+      "divergent_probe_indices": "sorted list or PENDING-INTEGRATION"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: a statement of every behavior on the probe set where pricing.md either does not determine the output or determines it differently from price.py, or an explicit argument that none exists",
+    "E-B: an item-level comparison over probes.json between price.py and an implementation of pricing.md authored solely from pricing.md, by an author who has never accessed price.py nor any analysis derived from it; the implementation must be a python file exposing price(p) so the comparison is mechanically reproducible",
+    "E-C: the verdict follows from E-A and E-B together: DIVERGES iff the comparison shows a differing output on some probe"
+  ],
+  "available_artifacts": [
+    "package/artifacts/pricing.md",
+    "package/artifacts/price.py",
+    "package/artifacts/probes.json"
+  ]
+}

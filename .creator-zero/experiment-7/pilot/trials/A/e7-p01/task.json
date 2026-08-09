@@ -1,0 +1,20 @@
+{
+  "task_id": "e7-p01",
+  "task": "Compute stock aggregates from artifacts/stock.csv: total units, total value (units x price, 2 decimals), and the sku with the most units (ties to smallest sku).",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "total_units": "integer",
+      "total_value": "number",
+      "top_sku_by_units": "string"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: total units",
+    "E-B: total value",
+    "E-C: top sku under the tie-break"
+  ],
+  "available_artifacts": [
+    "package/artifacts/stock.csv"
+  ]
+}

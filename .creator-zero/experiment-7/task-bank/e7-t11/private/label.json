@@ -1,0 +1,67 @@
+{
+  "trial_id": "e7-t11",
+  "latent_class": "LOCAL",
+  "surface_domain": "systems-trace",
+  "expected_principles": [
+    "P-LOCALITY"
+  ],
+  "acceptable_topology_features": [
+    {
+      "no_extra_path": true
+    }
+  ],
+  "partial_topology_features": [
+    {
+      "independent_examiner": true,
+      "child": false
+    }
+  ],
+  "shadow_policy": "runner-up",
+  "verification_method": "deterministic class verifier, frozen at preregistration",
+  "critical_distinctions": [
+    {
+      "id": "CD1",
+      "description": "exact per-string trace outcomes",
+      "core_patterns": [
+        "final|trace|state",
+        "string|input|sequence"
+      ]
+    },
+    {
+      "id": "CD2",
+      "description": "visit-counting convention including the initial state",
+      "core_patterns": [
+        "visit|count",
+        "initial|convention|tie"
+      ]
+    }
+  ],
+  "ground_truth": {
+    "final_states": [
+      "E",
+      "S1",
+      "E"
+    ],
+    "error_reached": true,
+    "most_visited_state": "E"
+  },
+  "requirement_fields": {
+    "E-A": [
+      "final_states"
+    ],
+    "E-B": [
+      "error_reached"
+    ],
+    "E-C": [
+      "most_visited_state"
+    ]
+  },
+  "forbidden_shortcuts": [
+    "guessing counts without tracing"
+  ],
+  "admissibility_kind": "LOCAL",
+  "required_role": "local_author",
+  "expected_principles_v2": [
+    "P-LOCALITY"
+  ]
+}

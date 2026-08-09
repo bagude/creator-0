@@ -1,0 +1,23 @@
+{
+  "task_id": "e7-t19",
+  "task": "For each of candidate_a.py, candidate_b.py, candidate_c.py, decide whether run(program) matches artifacts/spec.md on every program in artifacts/programs.json (in order, 0-indexed). Answer 'conforms', or 'diverges:<index of the first program where the candidate's result differs from the spec's result>'. Keys are A, B, C. Every answer must be exactly right; the items are chosen so that plausible methods disagree on them.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "answers": "{\"A\": \"conforms|diverges:<i>\", \"B\": \"...\", \"C\": \"...\"}",
+      "method": "how the answers were derived"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: the computed answer for every item, with the derivation method stated",
+    "E-B: a re-derivation of every answer by a method disjoint from the first derivation, carried out without consulting the first derivation's intermediate work, with per-item agreement recorded",
+    "E-C: every answer exactly correct"
+  ],
+  "available_artifacts": [
+    "package/artifacts/spec.md",
+    "package/artifacts/candidate_a.py",
+    "package/artifacts/candidate_b.py",
+    "package/artifacts/candidate_c.py",
+    "package/artifacts/programs.json"
+  ]
+}
