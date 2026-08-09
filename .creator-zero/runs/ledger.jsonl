@@ -1,0 +1,7 @@
+{"ts":"2026-08-09","experiment":"experiment-2","event":"boundary_validate","spec":"experiment-2-proposal.json","verdict":"VALID","attempt":1}
+{"ts":"2026-08-09","experiment":"experiment-2","event":"materialized","agents":4,"execution_order":["audit-suite","fix-test","verify-fix","report"]}
+{"ts":"2026-08-09","experiment":"experiment-2","event":"node_complete","node":"audit-suite","result":"CONFLICT_LOCALIZED","detail":"11/12 tests MATCH spec; test_classic_instance asserts 10, spec-derived optimum 11 [2,6]; minimal correction = two literals lines 29-30"}
+{"ts":"2026-08-09","experiment":"experiment-2","event":"authorize_act","edge":"audit-suite->fix-test","basis":"current executable evidence (oracle attribution + suite failure), not inherited conclusion"}
+{"ts":"2026-08-09","experiment":"experiment-2","event":"node_complete","node":"fix-test","result":"CANDIDATE_CREATED","diff":"tests/test_solver.py test_classic_instance literals 10->11 (2 lines)"}
+{"ts":"2026-08-09","experiment":"experiment-2","event":"node_complete","node":"verify-fix","result":"PROMOTE","items":"suite 12/12; oracle==test==solver (11,[2,6]); diff scope 2 lines; no weakening; differential 20689/20689; probes 24/24"}
+{"ts":"2026-08-09","experiment":"experiment-2","event":"promotion","candidate":"X~_2","decision":"PROMOTED","defect_localization":"TEST_DEFECT_VERIFIED"}

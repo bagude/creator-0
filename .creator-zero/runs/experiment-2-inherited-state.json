@@ -1,0 +1,139 @@
+{
+  "experiment_id": "experiment-2-artifact-mediated-inheritance",
+  "session_fresh": true,
+  "resumed_prior_session": false,
+  "canonical_state": {
+    "repository": "bagude/creator-0",
+    "working_branch": "claude/verify-test-spec-alignment-56lixf",
+    "parent_experiment_branch": "claude/new-session-2b82v8",
+    "parent_commits": ["581fec8bb8ef99c5f8002afb0aa8ae9c93d3dfae", "8235c454fe8b61ca99719f00a4fa50694a6ac28a"],
+    "base_commit_X1": "8235c454fe8b61ca99719f00a4fa50694a6ac28a",
+    "secondary_evidence_lineage": "origin/claude/new-session-1vg22a (118ad02, root f060bdf) — disjoint root, committed run artifacts"
+  },
+  "artifact_inventory": {
+    "primary_lineage_2b82v8": [
+      "commit messages of 581fec8 and 8235c45 (evidence summaries)",
+      ".creator-zero/harness/oracle.py (executable oracle, n<=10, R2+R6 semantics)",
+      ".creator-zero/harness/differential.py (executable, seeded, deterministic)",
+      ".creator-zero/harness/probes.py (executable R1/R7/R8 probes)",
+      ".claude/agents/generated/cz-experiment-1-solver-audit-{tester,verifier}.md (node definitions)",
+      "docs/solver_spec.md, src/solver.py, tests/test_solver.py (governed artifacts)"
+    ],
+    "secondary_lineage_1vg22a": [
+      ".creator-zero/runs/experiment-1-report.md",
+      ".creator-zero/runs/experiment-1-verdict.json",
+      ".creator-zero/runs/experiment-1-evidence.json",
+      ".creator-zero/runs/experiment-1-proposal.json / experiment-1-authorized.json"
+    ],
+    "note": ".creator-zero/runs/ is gitignored on the primary lineage, so its run-time evidence files did not persist; commit messages and harness code are the persisted evidence there."
+  },
+  "inherited_state_table": [
+    {
+      "decision_id": "E1-D1",
+      "claim": "Touching intervals are compatible (half-open semantics; a.end <= b.start or b.end <= a.start).",
+      "artifact_source": "docs/solver_spec.md R2 (direct); restated in E1 commit messages and 1vg22a report",
+      "original_status": "asserted by spec",
+      "current_classification": "RELEVANT_AND_SUPPORTED",
+      "supporting_evidence": "Direct inspection of authoritative spec R2 in this session.",
+      "contradictory_evidence": null,
+      "reverification_required": false,
+      "relevance_to_T1": "Controls the classic-instance optimum: (0,6,6) and (6,10,5) touch at t=6."
+    },
+    {
+      "decision_id": "E1-D2",
+      "claim": "tests/test_solver.py::test_classic_instance asserts weight 10, but the spec-governed optimum for its instance is 11 with canonical schedule [2, 6]; the defect is in the test, not the solver.",
+      "artifact_source": "8235c45 commit message; 1vg22a experiment-1-verdict.json unit_failure_attribution; 1vg22a experiment-1-report.md",
+      "original_status": "verified by E1 (both lineages, independently)",
+      "current_classification": "RELEVANT_AND_SUPPORTED",
+      "supporting_evidence": "Two disjoint E1 lineages agree; this session hand-derived {2,6} -> 6+5=11 with all competing subsets <= 9 excluding job 2's chains; requires executable confirmation before authorizing mutation.",
+      "contradictory_evidence": null,
+      "reverification_required": true,
+      "reverification_result": "REVERIFIED 2026-08-09: suite fails only test_classic_instance with AssertionError 11 != 10; oracle_solve(classic) == (11, [2, 6]); solve(classic) == (11, [2, 6]); oracle spot-checked by hand on 4 independent instances (all agree).",
+      "relevance_to_T1": "This is the central claim controlling the Act transition of T1."
+    },
+    {
+      "decision_id": "E1-D3",
+      "claim": "Differential harness (2b82v8): 20,689 deterministic cases, 0 mismatches, 0 mutations.",
+      "artifact_source": "8235c45 commit message; .creator-zero/harness/differential.py (seeded, re-runnable)",
+      "original_status": "reported pass",
+      "current_classification": "RELEVANT_AND_SUPPORTED",
+      "supporting_evidence": "Harness is deterministic (fixed seeds 12345/987654321), so the exact run is reproducible.",
+      "contradictory_evidence": null,
+      "reverification_required": true,
+      "reverification_result": "REVERIFIED 2026-08-09: GRID 18189/18189 pass, RANDOM 2500/2500 pass, ALL 20689 pass, 0 fail, 0 mutated, 0 counterexamples — exact match to inherited count.",
+      "relevance_to_T1": "Establishes solver correctness, i.e. that the suite failure localizes to the test, not the implementation."
+    },
+    {
+      "decision_id": "E1-D4",
+      "claim": "24 R1/R7/R8 property probes all pass.",
+      "artifact_source": "8235c45 commit message; .creator-zero/harness/probes.py",
+      "original_status": "reported pass",
+      "current_classification": "RELEVANT_AND_SUPPORTED",
+      "supporting_evidence": "Probe script persisted and deterministic.",
+      "contradictory_evidence": null,
+      "reverification_required": true,
+      "reverification_result": "REVERIFIED 2026-08-09: PROBES total=24 pass=24 fail=0 — exact match to inherited count.",
+      "relevance_to_T1": "Rules out implementation defects in validation/purity that could instead explain suite behavior."
+    },
+    {
+      "decision_id": "E1-D5",
+      "claim": "Independent 1vg22a differential run: 3,008 cases, AGREEMENT, zero counterexamples; solver_defect_confirmed=false; mutation_authorized=false.",
+      "artifact_source": "1vg22a experiment-1-evidence.json and experiment-1-verdict.json",
+      "original_status": "reported",
+      "current_classification": "RELEVANT_AND_SUPPORTED",
+      "supporting_evidence": "Corroborating evidence from a disjoint lineage with an independently written oracle/differential; not controlling on its own, treated as corroboration only.",
+      "contradictory_evidence": null,
+      "reverification_required": false,
+      "relevance_to_T1": "Independent replication of E1-D3's conclusion."
+    },
+    {
+      "decision_id": "E1-D6",
+      "claim": "Canonical artifacts (src/solver.py, docs/solver_spec.md, tests/test_solver.py) were imported unchanged from 1vg22a and never mutated by E1.",
+      "artifact_source": "581fec8 commit message; git diffs",
+      "original_status": "asserted",
+      "current_classification": "RELEVANT_AND_SUPPORTED",
+      "supporting_evidence": "git diff origin/claude/new-session-1vg22a..8235c45 on all three files is empty; 8235c45 touches only .creator-zero/harness/.",
+      "contradictory_evidence": null,
+      "reverification_required": false,
+      "relevance_to_T1": "Confirms X_1 is the same audit subject E1 studied; inherited evidence applies to the current bytes."
+    },
+    {
+      "decision_id": "E1-D7",
+      "claim": "E1 (1vg22a) could not repair the test because its root contract listed tests/test_solver.py as protected_read_only; it recommended an explicitly authorized amendment to weight 11, schedule [2,6].",
+      "artifact_source": "1vg22a experiment-1-report.md; 1vg22a root_contract.json",
+      "original_status": "recommendation, not authorization",
+      "current_classification": "RELEVANT_AND_SUPPORTED",
+      "supporting_evidence": "1vg22a contract contains protected_read_only including tests/test_solver.py; current canonical contract (8235c45) has no protected_read_only clause, so a verify-gated mutation is boundary-permissible now.",
+      "contradictory_evidence": null,
+      "reverification_required": false,
+      "relevance_to_T1": "Explains why the defect persists; the recommendation itself is NOT inherited as authorization — current evidence must authorize any Act."
+    },
+    {
+      "decision_id": "E1-D8",
+      "claim": "The test defect originated as an arithmetic slip during artifact authoring (1vg22a provenance caveat: auditor authored the artifacts; run was process validation, not blind audit).",
+      "artifact_source": "1vg22a experiment-1-report.md provenance section",
+      "original_status": "self-reported context",
+      "current_classification": "IRRELEVANT",
+      "supporting_evidence": "Plausible from git history (f060bdf authored all artifacts in one commit) but immaterial: T1 depends on what the spec and test say now, not on how the defect arose.",
+      "contradictory_evidence": null,
+      "reverification_required": false,
+      "relevance_to_T1": "Provenance context only."
+    },
+    {
+      "decision_id": "E1-D9",
+      "claim": "No implementation defect demonstrated in src/solver.py (NO_DEFECT_DEMONSTRATED).",
+      "artifact_source": "118ad02 commit message; 1vg22a report; 8235c45 commit message",
+      "original_status": "E1 conclusion",
+      "current_classification": "RELEVANT_AND_SUPPORTED",
+      "supporting_evidence": "Follows from E1-D3/D4/D5 if those reverify; not promoted to truth until harness re-runs green in this session.",
+      "contradictory_evidence": null,
+      "reverification_required": true,
+      "reverification_result": "REVERIFIED 2026-08-09: differential and probes re-ran green in this session; 11/12 suite tests pass; the single failure is attributed to the test expectation by the oracle.",
+      "relevance_to_T1": "Required to keep src/solver.py out of mutation scope per the T1 rule."
+    }
+  ],
+  "discarded_state": [
+    "E1 topology internals (6-node graph of 1vg22a; tester/verifier node wiring of 2b82v8) — relevant to Experiment 1's process metrics, not to resolving T1; T1 gets its own decomposition.",
+    "E1 harness-tooling iteration note (verifier counterexample-extraction fix in 1vg22a) — process detail with no bearing on current artifacts."
+  ]
+}

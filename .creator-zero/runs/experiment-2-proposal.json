@@ -1,0 +1,62 @@
+{
+  "task_id": "experiment-2-test-spec-alignment",
+  "goal": "Determine whether tests/test_solver.py accurately encodes docs/solver_spec.md; if a test contradicts the spec, apply the smallest verified correction without weakening unrelated protections and without touching src/solver.py.",
+  "nodes": [
+    {
+      "id": "audit-suite",
+      "primitive": "test",
+      "tools": ["Read", "Grep", "Bash"],
+      "can_create": false,
+      "instructions": "Audit EVERY test in tests/test_solver.py against the literal text of docs/solver_spec.md. For each test with a computable expectation, recompute the spec-governed answer with the exhaustive oracle .creator-zero/harness/oracle.py (n<=10) and compare to the asserted value. Also re-run the suite and record the exact failures. Return, per test: asserted value, spec-derived value, match/conflict, and the spec clause(s) exercised. If exactly one test conflicts, state the precise minimal correction that would align it with the spec (evidence, not authorization). NEVER edit any file."
+    },
+    {
+      "id": "fix-test",
+      "primitive": "act",
+      "tools": ["Read", "Edit", "Bash"],
+      "can_create": false,
+      "instructions": "Precondition: audit-suite evidence demonstrates a specific assertion contradicts docs/solver_spec.md and names the spec-governed value. Apply ONLY the smallest correction to that single test in tests/test_solver.py. Do not modify any other test, src/solver.py, docs/solver_spec.md, or any Creator-0 governance file. Return the exact diff."
+    },
+    {
+      "id": "verify-fix",
+      "primitive": "verify",
+      "tools": ["Read", "Grep", "Bash"],
+      "can_create": false,
+      "instructions": "Independently verify, without editing anything: (1) full suite tests/test_solver.py passes 12/12; (2) the corrected expectation equals the exhaustive-oracle answer for that instance; (3) git diff against base commit 8235c45 touches ONLY the corrected test's expectation lines in tests/test_solver.py — src/solver.py, docs/solver_spec.md, and all other tests byte-identical; (4) no assertion anywhere in the suite became weaker (every original assertion still present or strictly spec-corrected); (5) .creator-zero/harness/differential.py and probes.py still pass (solver behavior unchanged). Return pass/fail per item with verbatim outputs."
+    },
+    {
+      "id": "report",
+      "primitive": "return",
+      "tools": [],
+      "can_create": false,
+      "instructions": "Terminal node: consolidated result returns to the Creator."
+    }
+  ],
+  "edges": [
+    {
+      "source": "audit-suite",
+      "target": "fix-test",
+      "relation": "authorize",
+      "requires_response": true,
+      "response_changes_parent_state": true,
+      "transfers_authority": false
+    },
+    {
+      "source": "fix-test",
+      "target": "verify-fix",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": true,
+      "transfers_authority": false
+    },
+    {
+      "source": "verify-fix",
+      "target": "report",
+      "relation": "return",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    }
+  ],
+  "max_depth": 0,
+  "max_model_calls": 6
+}

@@ -26,8 +26,8 @@ class TestSolve(unittest.TestCase):
         jobs = [(1, 4, 3), (3, 5, 2), (0, 6, 6), (4, 7, 3), (3, 8, 7),
                 (5, 9, 4), (6, 10, 5), (8, 11, 2)]
         weight, schedule = solve(jobs)
-        self.assertEqual(weight, 10)
-        self.assertEqual(sum(jobs[i][2] for i in schedule), 10)
+        self.assertEqual(weight, 11)
+        self.assertEqual(sum(jobs[i][2] for i in schedule), 11)
 
     def test_tie_break_prefers_lower_indices(self):
         # Both {0} and {1} achieve weight 5; schedule must be [0].
