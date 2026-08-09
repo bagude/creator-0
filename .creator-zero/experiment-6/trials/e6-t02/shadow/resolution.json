@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t02",
+  "topology_id": "branching",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "local-resolve",
+      "answer": "revenue_by_region = {east: 1260.11, west: 1203.55, north: 1199.50, south: 267.96}; total_revenue = 3931.12. Every per-order value qty*unit_price is exact to the cent (integer qty times 2-decimal price), all 18 rows included exactly once, and the four region totals sum to the grand total to the cent.",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "local-resolve",
+      "answer": "median_order_value = 198.34. The 18 per-order values sorted ascending have middle (9th, 10th) values 191.92 and 204.75; their mean 198.335 rounds to 198.34 at 2 places, half away from zero.",
+      "evidence_ids": ["ev-1", "ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "RESOLVED",
+      "resolved_by": "local-resolve",
+      "answer": "top_product_by_qty = \"anvil\". Per-product qty totals: bolt 35, anvil 39, crate 12, duct 10 (sum 96 matches the qty column sum). Anvil holds the unique maximum, so the lexicographic tie-break is not needed.",
+      "evidence_ids": ["ev-1", "ev-4"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

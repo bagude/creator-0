@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Observation of package/artifacts/orders.csv: header order_id,region,product,qty,unit_price plus 18 data rows (o001..o018), integer qty and 2-decimal unit_price throughout; regions east/west/north/south; products bolt/anvil/crate/duct. Even row count confirms the even-count median convention applies.",
+    "refs": ["package/artifacts/orders.csv"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "local-resolve",
+    "description": "Exact-decimal per-order value table (all 18 rows, each exactly once) and per-region revenue aggregation: east 1260.11, west 1203.55, north 1199.50, south 267.96; total_revenue 3931.12, cross-checked against a direct running sum over all 18 order values (E-A).",
+    "refs": ["local-computation.md", "package/artifacts/orders.csv"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "local-resolve",
+    "description": "Sorted list of the 18 per-order values with middle (9th, 10th) values 191.92 and 204.75; median = mean 198.335 rounded 2 places half away from zero = 198.34 (E-B).",
+    "refs": ["local-computation.md", "package/artifacts/orders.csv"]
+  },
+  {
+    "id": "ev-4",
+    "source_node": "local-resolve",
+    "description": "Per-product total-qty table (bolt 35, anvil 39, crate 12, duct 10; sum 96 equals the qty column sum) identifying anvil as the unique maximum, so the lexicographic tie-break is not invoked (E-C).",
+    "refs": ["local-computation.md", "package/artifacts/orders.csv"]
+  },
+  {
+    "id": "ev-5",
+    "source_node": "verify-local",
+    "description": "Non-authoritative self-check: result.json matches the deliverable shape in package/task.json exactly (four fields, correct types); region totals re-sum to total_revenue (1260.11+1203.55+1199.50+267.96 = 3931.12); qty totals re-sum to 96; median re-derived from the sorted list as 198.34; all values agree between local-computation.md, resolution.json, and result.json.",
+    "refs": ["result.json", "resolution.json", "local-computation.md", "package/task.json"]
+  }
+]

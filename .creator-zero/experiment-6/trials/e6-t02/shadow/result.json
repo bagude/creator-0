@@ -1,0 +1,11 @@
+{
+  "total_revenue": 3931.12,
+  "revenue_by_region": {
+    "east": 1260.11,
+    "west": 1203.55,
+    "north": 1199.50,
+    "south": 267.96
+  },
+  "top_product_by_qty": "anvil",
+  "median_order_value": 198.34
+}
