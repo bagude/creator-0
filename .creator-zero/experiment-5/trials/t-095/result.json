@@ -1,0 +1,14 @@
+{
+  "verdict": "UNDERDETERMINED",
+  "findings": {
+    "underdetermined_aspects": [],
+    "reproduction_diff": {
+      "matches_target": false,
+      "first_differing_line": 0,
+      "target_line": "EAST: 150.00",
+      "reproduced_line": "north: 120.50"
+    }
+  },
+  "child_invocations": 1,
+  "integration": "mechanical clean_room_comparison per parent plan"
+}

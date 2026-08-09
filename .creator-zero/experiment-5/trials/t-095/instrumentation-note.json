@@ -1,0 +1,6 @@
+{
+  "artifact": "root instrumentation correction record",
+  "corrections": [
+    "verification target: the parent's plan omitted the child_implementation_file field but its comparison clause and the child's reproduction.json both name produce_summary.py; the driver initially fed the JSON summary to the verifier (UNVERIFIABLE). Re-run against the plan-designated implementation via the mechanical unique-*.py rule now in root_driver. Original verification preserved as verification-before-correction.json."
+  ]
+}

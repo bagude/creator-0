@@ -1,0 +1,12 @@
+{
+  "produce_summary_file": "produce_summary.py",
+  "reproduced_output": "north: 120.50\nsouth: 95.25\nwest: 88.75\neast: 150.00",
+  "underdetermined_aspects": [
+    "Line ordering: the notes say 'write one line per region' but never state an order (no sort mentioned); chose order of first appearance of each region among the kept (active) rows of the CSV.",
+    "Region label case: the form 'REGION: TOTAL' uses uppercase, but this is most literally read as a placeholder name, not an instruction to uppercase; chose to emit the region exactly as it appears in the CSV (lowercase). Uppercasing is an equally consistent alternative reading.",
+    "Numeric/decimal formatting of TOTAL: the notes say only 'sum the amount field' with no rounding or formatting rule; chose exact decimal arithmetic (decimal.Decimal) rendered with str(), which preserves the input's two-decimal scale (e.g. '120.50'). Float arithmetic (e.g. '120.5') or an explicit fixed-decimal format would produce different bytes.",
+    "Trailing newline: the notes do not say whether the output ends with a newline after the last line; chose the minimal reading of no trailing newline (lines joined with '\\n').",
+    "Line terminator: the notes never specify LF vs CRLF; chose LF ('\\n'). (Separator spacing is NOT a free choice: the form 'REGION: TOTAL' literally pins it to a colon followed by a single space, and that reading was used.)"
+  ],
+  "notes_fully_determine_output": false
+}

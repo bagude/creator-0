@@ -334,9 +334,17 @@ def cmd_after_child(tid):
             print(f"[{tid}] WARNING: child did not produce {name}")
 
     # The capability-bearing child artifact is the implementation when the
-    # plan names one; the deliverable summary is transport.
-    impl_file = plan.get("child_implementation_file",
-                         plan["child_deliverable"])
+    # plan names one; the deliverable summary is transport. Fallback rule
+    # (mechanical): the unique *.py file the child authored in its
+    # workspace root.
+    impl_file = plan.get("child_implementation_file")
+    if not impl_file:
+        cand = plan["child_deliverable"]
+        if cand.endswith(".py"):
+            impl_file = cand
+        else:
+            pys = sorted(p.name for p in cws.glob("*.py"))
+            impl_file = pys[0] if len(pys) == 1 else cand
 
     # Child formal checks.
     child_contract = jload(td / "child" / "child-contract.json")

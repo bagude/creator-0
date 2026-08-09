@@ -1,0 +1,26 @@
+{
+  "artifact": "deterministic trial verification",
+  "trial_id": "t-095",
+  "branch": "child",
+  "task_verified": false,
+  "expected": {
+    "verdict": "UNDERDETERMINED"
+  },
+  "observed": {
+    "verdict": "UNVERIFIABLE"
+  },
+  "reasons": [
+    "child impl ran: False",
+    "child reproduction notes-conforming: False (impl not run)",
+    "byte-identical to target: False",
+    "integrated verdict 'UNVERIFIABLE' vs ground truth 'UNDERDETERMINED'"
+  ],
+  "child_evidence": {
+    "impl_ran": false,
+    "spec_conforming": false,
+    "matches_target": false,
+    "evidence_kind": "clean-room reproduction + byte diff vs target",
+    "tied_to_preregistered_distinction": true,
+    "duplicate_of_parent_evidence": false
+  }
+}
