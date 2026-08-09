@@ -1,0 +1,9 @@
+{
+  "role": "independent_verifier",
+  "child_deliverable": "verdicts.json",
+  "child_implementation_file": null,
+  "rule": "Parse answers from the child's verdicts.json and from the parent's derivation-first.json (workspace root). For each key k in [A, B, C], record agreement[k] = (string-equal(child.answers[k], parent.answers[k])). If agreement[A] and agreement[B] and agreement[C] are all true: E-B is satisfied with this per-item agreement record, Q4 resolves to 'agrees on every item', and final result.json.answers is set to parent.answers (identical to child.answers) with the method field noting both derivations. If any agreement[k] is false: verification fails, Q4 resolves to 'disagrees' listing each key k with agreement[k]=false and the two conflicting values, and result.json is not certified.",
+  "expected_contribution": {
+    "Q4": "A complete re-derivation of the A/B/C verdicts by static code-diff analysis (method disjoint from the parent's per-program trace simulation), produced by a fresh process causally separated from the first derivation and given only the five package artifacts, enabling the deterministic per-item agreement record E-B requires."
+  }
+}

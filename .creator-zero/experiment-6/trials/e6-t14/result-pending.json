@@ -1,0 +1,5 @@
+{
+  "summary": "First derivation complete: all 12 formatted answers computed in-session by exact scaled-integer arithmetic and recorded in result.json with the method stated (E-A / Q1). The E-B second derivation cannot be admissibly produced in this session (non-consultation is violated by construction), so a child bundle under child/ proposes an isolated fresh session that re-derives all answers by the disjoint digit-string tie-inspection method from the spec and amounts alone. Root-executed validate-child, create-child, child-return, and verify-integration will compare the two derivations item by item per the pre-committed deterministic rule; all-12 agreement settles Q2 and supplies the corroboration Q3 requires.",
+  "assigned_distinctions": ["Q2", "Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

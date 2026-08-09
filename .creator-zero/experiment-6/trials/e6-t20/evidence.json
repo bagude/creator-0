@@ -1,0 +1,33 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Governed acquisition of the task evidence: read spec.md (stack-machine semantics incl. POP-on-empty no-op and immediate-ERROR underflow halts), the three candidate sources (A: POP-on-empty ERROR; B: spec-identical; C: SWAP-underflow silent no-op), the six ordered programs, distinctions.json, contract, harness, child envelope, and child templates. Identified Q4 as the sole isolation-requiring distinction: E-B demands a re-derivation causally separated from the first derivation's author, which this session cannot supply once it has produced the first derivation.",
+    "refs": [
+      "package/artifacts/spec.md",
+      "package/artifacts/candidate_a.py",
+      "package/artifacts/candidate_b.py",
+      "package/artifacts/candidate_c.py",
+      "package/artifacts/programs.json",
+      "distinctions.json"
+    ]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "First derivation (E-A, E-C for Q1-Q3): per-program side-by-side trace simulation of spec semantics vs. each candidate over all six programs in order, with full traces and stated method. Verdicts: A diverges:1, B conforms, C diverges:3. Machine-readable answers in derivation-first.json for the deterministic integration rule.",
+    "refs": ["derivation-first.md", "derivation-first.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Complete child bundle proposing the isolated fresh child that supplies the E-B second derivation for Q4: attenuated terminal contract (Read+Write, 1 model call, no creation), four-node child harness from the template, standalone prompt mandating the disjoint static code-diff method and containing no trace of the first derivation, input manifest restricted to the five package artifacts (excluding derivation-first.* and all trial analysis to preserve E-B admissibility), and a deterministic integration plan (role independent_verifier) mapping the child's verdicts.json to per-item agreement and the final result.",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]

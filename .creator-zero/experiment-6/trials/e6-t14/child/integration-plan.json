@@ -1,0 +1,10 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "child-answers.json",
+  "child_implementation_file": null,
+  "rule": "Parse child-answers.json and the parent result.json. Let INPUTS be the 12 strings of package/artifacts/amounts.json in array order. Reject the child deliverable if child-answers.json.answers does not contain exactly the 12 INPUTS as keys or if its method field is empty or describes scaled-integer or floating-point arithmetic. Otherwise, for each input i in INPUTS compute agree[i] := (child-answers.json.answers[i] is string-identical to result.json.answers[i]) and record the full per-item table {input, first_derivation, second_derivation, agree} as agreement.json. If agree[i] is true for all 12: result.json.answers stands unchanged as the final answer set, Q2 resolves to 'yes — item-by-item agreement of two disjoint-method derivations, recorded in agreement.json', and Q3's corroboration condition is satisfied for root verification. If any agree[i] is false: leave result.json.answers unchanged but mark Q2 resolved to 'no — disagreement on the items listed in agreement.json' and Q3 UNRESOLVED (verification fails; the trial result is not certified).",
+  "expected_contribution": {
+    "Q2": "The child supplies the second derivation: causally separate origin (fresh isolated session), method disjoint from the first (digit-string tie inspection vs. scaled-integer arithmetic), no access to the first derivation's intermediate work (input manifest contains only the spec and the amounts). The deterministic comparison in the rule produces the recorded per-item agreement.",
+    "Q3": "All-12 agreement between the two admissible disjoint-method derivations provides the corroboration E-C requires alongside deterministic root verification of exact string equality."
+  }
+}

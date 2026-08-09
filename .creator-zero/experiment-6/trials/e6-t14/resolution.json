@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t14",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "format(x) for the 12 inputs, derived by exact scaled-integer arithmetic on the decimal strings (method stated in result.json, per-item work in first-derivation.md): 2.675 -> 2.68; -1234.5 -> (1,234.50); 0.005 -> 0.00; 1000 -> 1,000.00; -0.125 -> (0.12); 999999.995 -> 1,000,000.00; 0.045 -> 0.04; 12345.675 -> 12,345.68; -2.5 -> (2.50); 0 -> 0.00; 7.375 -> 7.38; -999.985 -> (999.98).",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Cannot be admissibly resolved in this session: the first derivation and its intermediate work sit in this session's context, so any second pass here would consult them by construction, violating E-B. A child bundle has been proposed (child/) whose isolated fresh session re-derives all 12 answers by the disjoint digit-string tie-inspection method from only the spec and the amounts; the root-executed integration per child/integration-plan.json records per-item agreement.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Exactness of all 12 answers is not self-certifying and its required corroboration depends on Q2's pending child derivation plus deterministic root verification; it remains open until root-executed verify-integration confirms string-exact agreement per child/integration-plan.json.",
+      "evidence_ids": [],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

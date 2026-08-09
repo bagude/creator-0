@@ -1,0 +1,8 @@
+{
+  "answers": {
+    "A": "diverges:1",
+    "B": "conforms",
+    "C": "diverges:3"
+  },
+  "method": "First derivation (in-session, node propose-child): per-program side-by-side trace simulation of spec.md's semantics and each candidate's code over all six programs in programs.json, in order, applying the spec's halting semantics exactly (ADD/DUP/SWAP underflow halts immediately with ERROR; POP on empty is a no-op); full traces in derivation-first.md. A diverges first at program 1 (spec 9 via POP-on-empty no-op, A returns ERROR); B agrees with the spec on all six programs; C diverges first at program 3 (spec halts with ERROR on SWAP underflow, C silently no-ops SWAP and returns 1). The E-B second derivation — an isolated fresh child re-deriving all three verdicts by the disjoint static code-diff method without access to this derivation's intermediate work, with per-item agreement recorded deterministically — is PENDING-INTEGRATION per child/integration-plan.json."
+}

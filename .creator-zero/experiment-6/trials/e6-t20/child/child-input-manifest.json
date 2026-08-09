@@ -1,0 +1,9 @@
+{
+  "files": [
+    "package/artifacts/spec.md",
+    "package/artifacts/candidate_a.py",
+    "package/artifacts/candidate_b.py",
+    "package/artifacts/candidate_c.py",
+    "package/artifacts/programs.json"
+  ]
+}

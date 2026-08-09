@@ -1,0 +1,5 @@
+{
+  "summary": "In-session work resolved Q1-Q3 by a first derivation (per-program trace simulation: A diverges:1, B conforms, C diverges:3) and proposed a full child bundle under child/. Q4 (E-B causal-separation re-derivation) cannot be admissibly resolved by this session, which is anchored on its own traces; it is assigned to the root-executed isolated fresh child, which will re-derive all three verdicts by a disjoint static code-diff method from the five package artifacts only. Root-executed validate-child, create-child, child-return, verify-integration, and return-result complete the harness; the deterministic integration rule compares the child's verdicts.json to derivation-first.json per item.",
+  "assigned_distinctions": ["Q4"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

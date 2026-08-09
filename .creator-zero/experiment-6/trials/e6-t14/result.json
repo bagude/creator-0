@@ -1,0 +1,17 @@
+{
+  "answers": {
+    "2.675": "2.68",
+    "-1234.5": "(1,234.50)",
+    "0.005": "0.00",
+    "1000": "1,000.00",
+    "-0.125": "(0.12)",
+    "999999.995": "1,000,000.00",
+    "0.045": "0.04",
+    "12345.675": "12,345.68",
+    "-2.5": "(2.50)",
+    "0": "0.00",
+    "7.375": "7.38",
+    "-999.985": "(999.98)"
+  },
+  "method": "Exact scaled-integer arithmetic on the decimal string (first derivation, method A; full per-item work in first-derivation.md): each input is parsed as sign + integer digits + fraction digits, never as a binary float. The unsigned value is scaled by 10^2 exactly into an integer quotient Q (integer digits followed by the first two fraction digits) and an exact decimal remainder r formed by the remaining fraction digits. Q is incremented iff r > 1/2, or r = 1/2 exactly and Q is odd (ties to the even neighbor); every '...5'-terminated input yields r = 1/2 exactly under this treatment. The rounded Q is rendered as <integer>.<two decimals>, the integer part comma-grouped every three digits, and negative inputs are wrapped in parentheses unsigned. A second, disjoint-method derivation (digit-string tie inspection) by an isolated child session and its per-item agreement record are PENDING-INTEGRATION per child/integration-plan.json; the answers above stand as final only if root integration confirms all-12 agreement."
+}

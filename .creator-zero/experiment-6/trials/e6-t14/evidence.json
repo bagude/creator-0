@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Governed observation of the task package: the formatting specification (half-even rounding to two decimals, comma grouping, parenthesized unsigned negatives) and the 12 amount strings; identification of Q2 as the isolation-requiring distinction (its E-B non-consultation condition is unmeetable by any process holding the first derivation in context).",
+    "refs": ["package/task.json", "package/artifacts/format-spec.md", "package/artifacts/amounts.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "First derivation (E-A): computed answers for all 12 inputs by exact scaled-integer arithmetic on the decimal strings, with the derivation method stated and full per-item working recorded (quotient, remainder, parity, carry).",
+    "refs": ["first-derivation.md", "result.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Proposed child bundle for the E-B second derivation: attenuated terminal-worker contract, four-node harness, standalone prompt mandating the disjoint digit-string tie-inspection method, input manifest restricted to the spec and amounts only (excluding first-derivation.md and result.json to preserve non-consultation), and a deterministic integration plan that records per-item agreement.",
+    "refs": ["child/child-contract.json", "child/child-harness.json", "child/child-prompt.md", "child/child-input-manifest.json", "child/integration-plan.json"]
+  }
+]

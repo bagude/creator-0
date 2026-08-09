@@ -1,0 +1,38 @@
+{
+  "task_id": "e6-t20",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "diverges:1 — candidate_a.py first differs from spec.md at program index 1 ([PUSH 1, POP, POP, PUSH 9]): the spec treats the second POP (empty stack) as a no-op and yields 9, while candidate A returns ERROR. Program 0 agrees (both 7). Derived by per-program trace simulation (derivation-first.md).",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A", "E-C"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "conforms — candidate_b.py matches spec.md on every one of the six programs, each checked individually by trace simulation (results 7, 9, 4, ERROR, 8, ERROR for both spec and B; derivation-first.md).",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A", "E-C"]
+    },
+    {
+      "id": "Q3",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "diverges:3 — candidate_c.py first differs from spec.md at program index 3 ([PUSH 5, SWAP, PUSH 1]): the spec halts with ERROR on SWAP underflow, while candidate C silently skips the SWAP and yields 1. C agrees with the spec on programs 0-2 (7, 9, 4), including the POP-on-empty programs where A diverges. Derived by per-program trace simulation (derivation-first.md).",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A", "E-C"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION — E-B's causal-separation condition cannot be met by this session, whose author is anchored on the first derivation's intermediate traces; a same-process second pass is inadmissible. The proposed isolated fresh child (child/) re-derives all three verdicts by the disjoint static code-diff method from the five package artifacts only, and the root-executed verify-integration node records per-item agreement deterministically per child/integration-plan.json.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    }
+  ]
+}
