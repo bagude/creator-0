@@ -1,0 +1,15 @@
+{
+  "authorized_by": "gate",
+  "gate_evidence": [
+    "attenuation: PASS",
+    "frozen_trees: PASS",
+    "historical_replay: PASS",
+    "independent_verifier: PASS",
+    "patch_manifest: PASS",
+    "protected_laws: PASS",
+    "refinement: PASS",
+    "tests_existing: PASS",
+    "tests_new: PASS"
+  ],
+  "promotion_authorized": true
+}

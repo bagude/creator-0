@@ -1,0 +1,15 @@
+{
+  "artifact": "E7 infrastructure self-modification proposal",
+  "candidate_base": "de82043",
+  "candidate_branch": "candidate/e7-infra",
+  "candidate_head": "9e4a754b87bfba9edcb3501dda83fbb568f5ba2b",
+  "canonical_write_before_gate": false,
+  "proposal_source": ".creator-zero/experiment-7/preregistration.md \u00a713 (frozen at Phase A, before the candidate worktree existed)",
+  "scope": [
+    "lineage/",
+    "topology-theory/{model,validate,self_modify,__init__}.py",
+    "topology-theory/{admissibility,ingest,governance,theory_gate,generate2,revise2,predict2}.py",
+    "topology-theory/replay-corpus-e6.json",
+    "tests/topology_theory/test_{lineage,evidence_v2,admissibility_grammar_v2,revision_governance_v2}.py"
+  ]
+}

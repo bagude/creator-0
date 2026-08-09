@@ -1,0 +1,35 @@
+{
+  "assumptions": [
+    "The gate decides only over the serialized verification inputs listed; it re-checks nothing and re-runs nothing.",
+    "Verification inputs were produced by the deterministic checks and the append-only evidence chain they document."
+  ],
+  "check": "gate",
+  "counterexample": null,
+  "detail": {
+    "clauses": {
+      "attenuation": "PASS",
+      "frozen_trees": "PASS",
+      "historical_replay": "PASS",
+      "independent_verifier": "PASS",
+      "patch_manifest": "PASS",
+      "protected_laws": "PASS",
+      "refinement": "PASS",
+      "tests_existing": "PASS",
+      "tests_new": "PASS"
+    },
+    "issued_by": "gate"
+  },
+  "evidence": [
+    "attenuation: PASS",
+    "frozen_trees: PASS",
+    "historical_replay: PASS",
+    "independent_verifier: PASS",
+    "patch_manifest: PASS",
+    "protected_laws: PASS",
+    "refinement: PASS",
+    "tests_existing: PASS",
+    "tests_new: PASS"
+  ],
+  "formal_relation": "conjunction of required verification inputs",
+  "status": "PASS"
+}

@@ -1,0 +1,141 @@
+{
+  "artifact": "candidate patch manifest",
+  "base_ref": "de82043",
+  "file_count": 22,
+  "files": [
+    {
+      "artifact_id": "sha256:a0feb2bf5b586981ae6bbeba1b2c2e5ff09583e052af8aadc605dc9750118629",
+      "change": "A",
+      "path": ".creator-zero/lineage/__init__.py",
+      "sha256": "c62230a4d01025f52e2b1a55dd628b760011cf4ce381dfa864d4a9a2619cb542"
+    },
+    {
+      "artifact_id": "sha256:14d09ab93dc2aa1c9910be33ee5ca089d86eae923715aafcaf8539a9734b2250",
+      "change": "A",
+      "path": ".creator-zero/lineage/_common.py",
+      "sha256": "4da4947072d7893a1266439b597a1dfa9a727376ecbc192db94f3a2a02caa69b"
+    },
+    {
+      "artifact_id": "sha256:6d98e262ec142f2e213b7b892291e46fbf8c31edcc0735485459cfbdf6f5d320",
+      "change": "A",
+      "path": ".creator-zero/lineage/checkpoint.py",
+      "sha256": "c80194d70758af7858503647785fd706a389338aa576c3f17f48fdd085f97612"
+    },
+    {
+      "artifact_id": "sha256:4188d34afcc9613316f09b7a7a37e1d244c92e9a250e544d0303639efb25fd97",
+      "change": "A",
+      "path": ".creator-zero/lineage/model.py",
+      "sha256": "c758838e4f402984011aabf7a046bb9ee9e518e3ac183f0c03ccfbad32619e96"
+    },
+    {
+      "artifact_id": "sha256:da9d84a4564dc4683669c8869c501ad694099e16c256c592900a220f649880c3",
+      "change": "A",
+      "path": ".creator-zero/lineage/resume.py",
+      "sha256": "a2cffa152304a8f59a437b2df791a475ed2720bbbab330a08d181e56d0edf39a"
+    },
+    {
+      "artifact_id": "sha256:3e1a43836712f3d72c6cd07709f708d01a5dafe96746d31a494ade6f23276710",
+      "change": "A",
+      "path": ".creator-zero/lineage/verify.py",
+      "sha256": "9350b8d3826fa19305f6f9c8f6f62ccd365bc9d994630da438ad8da44ed52630"
+    },
+    {
+      "artifact_id": "sha256:9c052b54c4c81c09b614c6febdd70b4c681e42569ef4db264cec8fde00b1e8eb",
+      "change": "A",
+      "path": ".creator-zero/tests/topology_theory/test_admissibility_grammar_v2.py",
+      "sha256": "abb7372a1192d7e9fd9b9ba5d0167738cbd3f5d12b832fbe3b2a7b69376055e8"
+    },
+    {
+      "artifact_id": "sha256:c89f1ebc217592fcbc1e571a379e8a4ac74f240ea2da63570b9e6c80a7fd397b",
+      "change": "A",
+      "path": ".creator-zero/tests/topology_theory/test_evidence_v2.py",
+      "sha256": "13b6cd91aeacdba8d6a1e45923be84341dabe24b929eacef0b4b4d38d8411df8"
+    },
+    {
+      "artifact_id": "sha256:fd5968d088eecc5c3d5c06e9adc551d37ed4ea3ee3d1b3390402d68167637625",
+      "change": "A",
+      "path": ".creator-zero/tests/topology_theory/test_lineage.py",
+      "sha256": "c07dc590f6c2ac2d44b3233bd3df7db25f5209c5f39ff7e7a22ae170916b6a9c"
+    },
+    {
+      "artifact_id": "sha256:e18eac7637c9b30718f302f90cc8fcba2c4c28bdbf85af01874ca5d5302f9449",
+      "change": "A",
+      "path": ".creator-zero/tests/topology_theory/test_revision_governance_v2.py",
+      "sha256": "67e6430443423b405a6d55875f9fa4a14854077c13c57cdded47e1f1b7b5e5f4"
+    },
+    {
+      "artifact_id": "sha256:efdaa6ee6872f096d3aa99d11bc19887f7affb2d30d69234e83eb3f207179460",
+      "change": "A",
+      "path": ".creator-zero/topology-theory/admissibility.py",
+      "sha256": "3a0ec050cfbfba5d2c551a67837a4b857578a5e28056c3ac83c95c746e252fb6"
+    },
+    {
+      "artifact_id": "sha256:cb43be893683425538de34f23b1e4be52e0124ec03fc0c4436ae0de6ab8e6492",
+      "change": "A",
+      "path": ".creator-zero/topology-theory/generate2.py",
+      "sha256": "e47c73cab5c1777ddf8451f4bb17a192c103a8e2be3ea1a671c81b420370ffcf"
+    },
+    {
+      "artifact_id": "sha256:5f9b4f726ede137b4253b496c86ce0642b50cfe61085634fc2e5a3df28d1c0c7",
+      "change": "A",
+      "path": ".creator-zero/topology-theory/governance.py",
+      "sha256": "c8fafed8dd452d32544f043c60865108cc915f8fd733c2101d6bd2b3ab3579e9"
+    },
+    {
+      "artifact_id": "sha256:ef253340808bac3c6e30fce4f3aed0b0d9d675b63708a2741de8b1099a0263bc",
+      "change": "A",
+      "path": ".creator-zero/topology-theory/ingest.py",
+      "sha256": "d1c2091aeb6e3e9c3cb9728213e4b75166954d354e1e6dafa13a09ead314e31e"
+    },
+    {
+      "artifact_id": "sha256:1c3aa7d7d3ce3ceb374fbffdc0cc664e343bc683130aed5b99929e81d7928ef1",
+      "change": "A",
+      "path": ".creator-zero/topology-theory/predict2.py",
+      "sha256": "9732b87ae333f619bc83e7a276b119ede0e47dace3be7e0c1336dcd910a18e3c"
+    },
+    {
+      "artifact_id": "sha256:87462cd7688757e4f6fb9d55d4719f80646ec32999924a9d683449960ee88b4b",
+      "change": "A",
+      "path": ".creator-zero/topology-theory/replay-corpus-e6.json",
+      "sha256": "4b0bb6ea92a13ef9853bd2f85c19030e08fc35ed9255c429111d51c782e0fff3"
+    },
+    {
+      "artifact_id": "sha256:334ff670be721c287df8a264d330f66f91a00f465a5f9a61783057cb3d5ebedc",
+      "change": "A",
+      "path": ".creator-zero/topology-theory/revise2.py",
+      "sha256": "4f8486244e7c9393ca2e964dfad7b1a6b1ee4460b18bfcca5c72bd0a29f43f68"
+    },
+    {
+      "artifact_id": "sha256:5ce90ada98c6e14d7c75149c5103d593613a441683dcb74fd6dc432cad7055ae",
+      "change": "A",
+      "path": ".creator-zero/topology-theory/theory_gate.py",
+      "sha256": "03a655a40a08a4c210a55bee7a6f907f5246fae3153c38ed3971c05a2f729b86"
+    },
+    {
+      "artifact_id": "sha256:82d782b6c3d50c0fbb0df469db31dde89966680a580d0099cf679eadd39233a7",
+      "change": "M",
+      "path": ".creator-zero/topology-theory/__init__.py",
+      "sha256": "6725f67a61888dfbfe46ee7edf65d1afbc685ae33a8a1877517bb46089eedc93"
+    },
+    {
+      "artifact_id": "sha256:f68ea4c344bb9b18b14b78363e67a7c95f260851f68a9d9d7bdc2b9924dd165b",
+      "change": "M",
+      "path": ".creator-zero/topology-theory/model.py",
+      "sha256": "e608ed0846c8072137f5d2b88de80abbbcfbdf4866fe41528795fe6b668e7025"
+    },
+    {
+      "artifact_id": "sha256:90d9b4e3313322a93468569ed53674337f188855d0f98ea5df74400a76c4dbbc",
+      "change": "M",
+      "path": ".creator-zero/topology-theory/self_modify.py",
+      "sha256": "7dd3835e27f656ce06815fcf813c8110ad9031be9b1bea5b4114b6844eea5ed5"
+    },
+    {
+      "artifact_id": "sha256:0000a19181e018650c0560bf66d9fa854e2975c0b57d365c995319a5034048c9",
+      "change": "M",
+      "path": ".creator-zero/topology-theory/validate.py",
+      "sha256": "47673aa36efe1ae10a87972a1354dbe0dd6068867082c549fc24582a9816e5d4"
+    }
+  ],
+  "head_ref": "HEAD",
+  "provenance_identity": "creator-0/e7-infra"
+}

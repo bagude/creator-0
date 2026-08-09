@@ -1,0 +1,127 @@
+{
+  "edges": [
+    {
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "source": "propose-patch",
+      "target": "implement-candidate",
+      "transfers_authority": false
+    },
+    {
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "source": "implement-candidate",
+      "target": "verify-tests",
+      "transfers_authority": false
+    },
+    {
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "source": "verify-tests",
+      "target": "verify-replay",
+      "transfers_authority": false
+    },
+    {
+      "relation": "authorize",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "source": "verify-replay",
+      "target": "launch-verifier",
+      "transfers_authority": false
+    },
+    {
+      "relation": "request_response",
+      "requires_response": true,
+      "response_changes_parent_state": true,
+      "source": "launch-verifier",
+      "target": "verifier-return",
+      "transfers_authority": false
+    },
+    {
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": false,
+      "source": "verifier-return",
+      "target": "gate-decision",
+      "transfers_authority": false
+    }
+  ],
+  "freshness": {
+    "fresh_launcher_required": true
+  },
+  "goal": "Implement and verify the E7 lineage/admissibility/revision infrastructure in an isolated candidate worktree; promote only under the deterministic gate.",
+  "max_depth": 1,
+  "max_model_calls": 4,
+  "nodes": [
+    {
+      "can_create": false,
+      "id": "propose-patch",
+      "instructions": "Observable proposal: preregistration \u00a713 + typed proposal document.",
+      "primitive": "hypothesize",
+      "tools": [
+        "Write"
+      ]
+    },
+    {
+      "can_create": false,
+      "id": "implement-candidate",
+      "instructions": "Mutate only inside the candidate worktree.",
+      "primitive": "act",
+      "tools": [
+        "Read",
+        "Write",
+        "Edit"
+      ]
+    },
+    {
+      "can_create": false,
+      "id": "verify-tests",
+      "instructions": "Full existing + new test suites.",
+      "primitive": "verify",
+      "tools": [
+        "Bash",
+        "Read"
+      ]
+    },
+    {
+      "can_create": false,
+      "id": "verify-replay",
+      "instructions": "Historical replay incl. frozen E6 cases.",
+      "primitive": "verify",
+      "tools": [
+        "Read"
+      ]
+    },
+    {
+      "can_create": true,
+      "id": "launch-verifier",
+      "instructions": "Fresh information-only verifier via the deterministic launcher.",
+      "primitive": "create",
+      "tools": [
+        "Bash"
+      ]
+    },
+    {
+      "can_create": false,
+      "id": "verifier-return",
+      "instructions": "Collect the verifier's serialized report.",
+      "primitive": "return",
+      "tools": [
+        "Read"
+      ]
+    },
+    {
+      "can_create": false,
+      "id": "gate-decision",
+      "instructions": "Deterministic gate over serialized inputs.",
+      "primitive": "verify",
+      "tools": [
+        "Read"
+      ]
+    }
+  ],
+  "task_id": "e7-infra"
+}

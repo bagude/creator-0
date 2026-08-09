@@ -1,0 +1,29 @@
+{
+  "attenuation": {
+    "status": "PASS"
+  },
+  "frozen_trees": {
+    "status": "PASS"
+  },
+  "historical_replay": {
+    "status": "PASS"
+  },
+  "independent_verifier": {
+    "status": "PASS"
+  },
+  "patch_manifest": {
+    "status": "PASS"
+  },
+  "protected_laws": {
+    "status": "PASS"
+  },
+  "refinement": {
+    "status": "PASS"
+  },
+  "tests_existing": {
+    "status": "PASS"
+  },
+  "tests_new": {
+    "status": "PASS"
+  }
+}

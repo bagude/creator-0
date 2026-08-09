@@ -1,0 +1,39 @@
+{
+  "allowed_primitives": [
+    "observe",
+    "hypothesize",
+    "act",
+    "verify",
+    "create",
+    "return"
+  ],
+  "allowed_relations": [
+    "observe",
+    "consult",
+    "request_response",
+    "verify",
+    "authorize",
+    "create",
+    "return"
+  ],
+  "allowed_tools": [
+    "Read",
+    "Write",
+    "Bash",
+    "Edit",
+    "Grep",
+    "Glob"
+  ],
+  "canonical_write_authority": "none (gate only)",
+  "contract_id": "K-E7-infra",
+  "description": "Envelope for the E7 infrastructure self-modification: candidate-only mutation, one information-only fresh verifier session, gate-only promotion.",
+  "max_children": 1,
+  "max_depth": 1,
+  "max_model_calls": 4,
+  "may_create_creator": true,
+  "may_realize_creation": true,
+  "required_primitives_for_mutation": [
+    "verify"
+  ],
+  "version": "0.1-e7"
+}

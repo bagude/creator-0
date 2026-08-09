@@ -1,0 +1,1280 @@
+{
+  "formal_object": "lts",
+  "initial": "done={}|promoted=0|complete=0",
+  "labels": [
+    "act_candidate",
+    "authorize",
+    "complete",
+    "consult",
+    "create",
+    "observe",
+    "persist",
+    "promote",
+    "propose",
+    "reconstruct",
+    "reject",
+    "return",
+    "tau",
+    "validate",
+    "verify"
+  ],
+  "metadata": {
+    "act_nodes": [
+      "implement-candidate"
+    ],
+    "allow_create": true,
+    "allow_promote": true,
+    "branches": {},
+    "contract_id": "K-E7-infra",
+    "nodes": [
+      "gate-decision",
+      "implement-candidate",
+      "launch-verifier",
+      "propose-patch",
+      "verifier-return",
+      "verify-replay",
+      "verify-tests"
+    ],
+    "shared_nodes": [
+      "gate-decision",
+      "implement-candidate",
+      "launch-verifier",
+      "propose-patch",
+      "verifier-return",
+      "verify-replay",
+      "verify-tests"
+    ],
+    "task_id": "e7-infra",
+    "verify_nodes": [
+      "gate-decision",
+      "verify-replay",
+      "verify-tests"
+    ]
+  },
+  "states": [
+    "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+    "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=1",
+    "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+    "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=1",
+    "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+    "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+    "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+    "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+    "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+    "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+    "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+    "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+    "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+    "done={propose-patch}|promoted=0|complete=0",
+    "done={}|promoted=0|complete=0"
+  ],
+  "transitions": [
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-replay",
+      "label": "authorize",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "complete",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=1"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:launch-verifier",
+      "label": "consult",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "gate",
+      "label": "promote",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verifier-return",
+      "label": "verify",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=1",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=1"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-replay",
+      "label": "authorize",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "complete",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=1"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:launch-verifier",
+      "label": "consult",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verifier-return",
+      "label": "verify",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=1",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=1"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-replay",
+      "label": "authorize",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:launch-verifier",
+      "label": "consult",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "gate",
+      "label": "promote",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:gate-decision",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verifier-return",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-replay",
+      "label": "authorize",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:launch-verifier",
+      "label": "consult",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:gate-decision",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={gate-decision,implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verifier-return",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-replay",
+      "label": "authorize",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:launch-verifier",
+      "label": "consult",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "gate",
+      "label": "promote",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verifier-return",
+      "label": "return",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-replay",
+      "label": "authorize",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:launch-verifier",
+      "label": "consult",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verifier-return",
+      "label": "return",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verifier-return,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-replay",
+      "label": "authorize",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:launch-verifier",
+      "label": "create",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "gate",
+      "label": "promote",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-replay",
+      "label": "authorize",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:launch-verifier",
+      "label": "create",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,launch-verifier,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "gate",
+      "label": "promote",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-replay",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-replay",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-replay,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=1|complete=0"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:verify-tests",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch,verify-tests}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "verify",
+      "source": "done={implement-candidate,propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:implement-candidate",
+      "label": "act_candidate",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={implement-candidate,propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "authorize",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={propose-patch}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "consult",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "creator",
+      "label": "create",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "observe",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "persist",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "node:propose-patch",
+      "label": "propose",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={propose-patch}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "propose",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reconstruct",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "reject",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "return",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "tau",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    },
+    {
+      "actor": "*",
+      "label": "validate",
+      "source": "done={}|promoted=0|complete=0",
+      "target": "done={}|promoted=0|complete=0"
+    }
+  ],
+  "version": "0.1"
+}

@@ -1,0 +1,50 @@
+{
+  "verifier": "IV-E7-INFRA",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "name": "manifest_diff_consistency",
+      "status": "PASS",
+      "detail": "The manifest lists 22 files (18 A, 4 M); the diff contains exactly 22 file headers whose paths and change types (new file vs. modified) match the manifest one-to-one, and the diff ends cleanly with no truncated hunk. Content sha256 values in the manifest could not be independently recomputed (Read/Write only, no hashing tool), so hash agreement rests on the deterministic checker; path/type agreement was verified directly."
+    },
+    {
+      "name": "protected_historical_paths",
+      "status": "PASS",
+      "detail": "Independent cross-check of all 22 manifest paths and all 22 diff file headers: every path is under .creator-zero/lineage/, .creator-zero/tests/topology_theory/, or .creator-zero/topology-theory/. None matches a protected prefix (.creator-zero/experiment-3/ through experiment-6/) or protected file (state/experiment-*.json, state/formal-semantics-v0.1.json, contracts/root_contract.json). The patch does not touch preregistration.md or any experiment-7 frozen input. It additionally EXTENDS protection: self_modify.py adds .creator-zero/experiment-6/ and .creator-zero/state/experiment-6.json to PROTECTED_PREFIXES/PROTECTED_FILES and validate.py adds experiment-6 to PROTECTED_PATH_PREFIXES, exactly as preregistration §0/§13 require. Agrees with protected-laws.json (PASS, no violations) and frozen-trees.json (no mutations)."
+    },
+    {
+      "name": "evidence_schema_v2",
+      "status": "PASS",
+      "detail": "model.py adds exactly the six preregistered optional fields (source_experiment, source_commit, trial_id, run, context dict, source_artifact_id) with backward-compatible defaults, so v1 events with subsets of known fields remain readable. to_dict() uses asdict over all dataclass fields, so trial/run/context round-trip exactly (test_v2_context_round_trips_exactly asserts byte-level dict equality). from_dict() computes set(d) - dataclass fields and raises ModelValidationError on any unknown top-level field — unknown fields are a typed rejection, never a silent drop (NC6 test present). enrich_e6_events sets context_status=UNKNOWN on join failure per §3, and ingest_evidence implements append / skip-identical / EVIDENCE_ID_CONFLICT idempotence with no rewrite of prior lines."
+    },
+    {
+      "name": "admissibility_semantics",
+      "status": "PASS",
+      "detail": "Adm(p,r) is a four-clause conjunction (vector_satisfies, role_compatible, source_compatible, method_compatible) matching §2. Roles are not aliases: ROLE_VECTOR gives each of the five canonical roles a distinct single-coordinate vector, KIND_REQUIREMENT allows exactly one role per kind, and role_compatible (p.role in r.allowed_roles) is evaluated independently of the vector. Vector coverage alone is insufficient: a provision carrying (1,1,1,1) with role clean_room_author fails NON_AUTHOR_SEARCH (test_vector_coverage_without_role_is_insufficient), and NC7 right-shape/wrong-role is tested. Method disjointness requires a nonempty provision method_family differing from the requirement's primary family. The examiner-vs-isolated-child regression is enforced structurally, not just asserted: FAMILY_CALLS_V2 fixes examiner cost 2/8=0.25 vs isolated-searcher 3/8=0.375, governance 0.05 vs 0.15 (matching §4 constants), delta_e saturates once admissible (b(H,q)=0), redundancy is equal for the two families, so U_e - U_c = 0.125 + 2*0.10 > 0 under the frozen weights; test_examiner_beats_isolated_child_on_same_search_requirement (NC8) pins it."
+    },
+    {
+      "name": "revision_engine_split_vs_prereg_s6",
+      "status": "PASS",
+      "detail": "FROZEN_RULES = {min_context_events: 4, min_spread: 0.3, min_context_coverage: 0.9, reproducibility_floor: 2, specialize_max_falsify_rate: 0.2} — all constants match §6 exactly. Trigger clauses: mixed evidence, >=90% resolved-context coverage, >=2 contexts with >=4 events (SUPPORT+CHALLENGE+FALSIFY), support-rate spread >= 0.3 across qualifying contexts. The mixed-evidence clause counts SUPPORT/FALSIFY over resolved contexts only; I verified this is logically implied by the spread clause (spread >= 0.3 forces a resolved SUPPORT and a resolved FALSIFY), so eligibility never diverges from the §6 wording. Explanation scores implement the frozen definitions verbatim (no-change: SUPPORT; DEPRECATE: FALSIFY; SPECIALIZE: SUPPORT-in-retained or FALSIFY-in-dropped with falsify_rate < 0.2; SPLIT: S_c>=2 / F_c>=2 reproducibility floor; unresolved-context events unexplained for all; denominator = total parent events). Selection key is (-score, fewer new candidate principles, fixed order [no-change, SPECIALIZE, SPLIT, DEPRECATE]) — matches §6. The split basis produces exactly the four preregistered children with the preregistered ids, feature preconditions, and roles; duplicate preconditions/effects invalidate the candidate; each child requires an explicit falsifier, parent linkage, and motivating context evidence. apply_revision leaves the parent REVISED-and-active (replay cases requiring P-INDEPENDENCE stay grounded, tested against the v0.1 + E6 corpora)."
+    },
+    {
+      "name": "two_stage_gate_shape_separation",
+      "status": "PASS",
+      "detail": "Stage 1 evaluation_authorization() returns check='evaluation_authorization' with detail.issued_by='evaluation_authorization' and requires exactly the seven §8 stage-1 inputs including independent_verifier. It cannot produce the store's promotion shape. theory_gate() is the only constructor in the patch of {check:'gate', status, detail:{issued_by:'gate'}} and requires all stage-1 inputs plus evaluation_authorization, heldout_thresholds, paired_improvement, governance, and historical_immutability (a strict superset of §8 stage 2). theory_store.py is NOT modified by the patch, so TheoryStore.promote and its gate-shape enforcement are unchanged; tests assert PromotionError when promoting with a revision dict, a verifier-issued PASS (NC13), or the stage-1 authorization itself (NC17)."
+    },
+    {
+      "name": "no_ungated_promotion_or_canonical_write",
+      "status": "PASS",
+      "detail": "Swept every module in the diff for promotion and canonical-state writes. No module calls TheoryStore.promote outside tests (which assert it raises). propose_revision_v2 and apply_revision produce only CANDIDATE revisions/theories. ingest_evidence only appends via the store's append-only evidence API with typed EVIDENCE_ID_CONFLICT on divergent duplicates — evidence import is the §3-sanctioned pre-gate write and never rewrites history. lineage/write_checkpoint refuses to overwrite existing files; resume_from_checkpoint refuses to run unless verify_checkpoint passes, creates only a new worktree, and asserts the source branch tip is unmoved. self_modify.py/validate.py changes only extend protected sets. The proposal declares canonical_write_before_gate=false, consistent with the patch content, and attenuation.json reports ATTENUATION_PASS."
+    },
+    {
+      "name": "deterministic_verification_results",
+      "status": "PASS",
+      "detail": "test-results.json: all four suites OK (8 + 33 + 82 + 127 tests, returncode 0). historical-replay.json: 8/8 COMPATIBLE including the three frozen E6 cases, 0 CONTRADICTED, 0 INDETERMINATE. protected-laws.json PASS with zero violations, frozen-trees.json zero mutations, attenuation.json PASS with no counterexample. These are consistent with my independent reading of the patch; nothing in the diff could bypass the checks they report on."
+    }
+  ],
+  "findings": [
+    "Non-blocking layering note: ingest_evidence() does not itself invoke verify_source_pin(); source-pin enforcement (§3 'source must hash-match the pin', NC4) is a separate function in the same import layer that the orchestrator must compose before ingestion. The pin check exists, returns the typed EVIDENCE_SOURCE_MISMATCH failure, and is covered by tests, and evidence append is by design a pre-gate operation, so no preregistered invariant is violated — but a future caller could technically ingest events from an unpinned source without the pin step. Recommend the E7 orchestration ledger always record a verify_source_pin PASS adjacent to each import manifest."
+  ],
+  "summary": "Independent adversarial review of the 22-file E7 infrastructure candidate patch against preregistration §§2-8 and §13. The patch touches no protected historical path and itself extends experiment-6 protection; evidence schema v2 preserves trial/run/context exactly and rejects unknown fields with a typed error; admissibility treats roles as non-aliased epistemic relations with vector coverage necessary but not sufficient, and the examiner-vs-isolated-child economics regression is structurally enforced by the frozen §4 constants; the revision engine's SPLIT trigger, explanation scoring, and selection rule reproduce §6 constants and semantics exactly; stage 1 cannot produce the store's promotion shape and only theory_gate() can, with TheoryStore.promote (unmodified by this patch) as the sole promotion API; no code path promotes a theory or writes canonical state without a Gate-issued PASS. All deterministic verification artifacts (tests, replay, protected laws, frozen trees, attenuation) are PASS and consistent with the patch content. One non-blocking layering observation recorded. Verdict: PASS. This report is evidence for the deterministic gate, not authorization."
+}
