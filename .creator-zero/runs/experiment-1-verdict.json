@@ -1,0 +1,68 @@
+{
+  "solver_dir": "/home/user/creator-0/src",
+  "unit_suite_green": false,
+  "unit_suite_failures": [
+    "FAIL: test_classic_instance (test_solver.TestSolve.test_classic_instance)"
+  ],
+  "differential": {
+    "outcome": "AGREEMENT",
+    "cases_executed": 3008,
+    "counterexamples": []
+  },
+  "unit_failure_attribution": [
+    {
+      "failing_test": "test_classic_instance",
+      "instance": [
+        [
+          1,
+          4,
+          3
+        ],
+        [
+          3,
+          5,
+          2
+        ],
+        [
+          0,
+          6,
+          6
+        ],
+        [
+          4,
+          7,
+          3
+        ],
+        [
+          3,
+          8,
+          7
+        ],
+        [
+          5,
+          9,
+          4
+        ],
+        [
+          6,
+          10,
+          5
+        ],
+        [
+          8,
+          11,
+          2
+        ]
+      ],
+      "spec_oracle_answer": [
+        11,
+        [
+          2,
+          6
+        ]
+      ]
+    }
+  ],
+  "solver_defect_confirmed": false,
+  "mutation_authorized": false
+}

@@ -1,0 +1,109 @@
+{
+  "contract_ref": "creator-zero-root",
+  "experiment": "experiment-1",
+  "creator_depth": 0,
+  "decomposition": {
+    "Q1": "What behavior does docs/solver_spec.md actually require? (R1-R8)",
+    "Q2": "What behavior does src/solver.py actually produce on inputs where R1-R8 could diverge?",
+    "Q3": "H0: implementation satisfies R1-R8; H1: some input violates at least one requirement",
+    "Q4": "A deterministic differential run against an exhaustive brute-force oracle on small instances discriminates H0 from H1 with executable evidence",
+    "Q5": "A confirmed counterexample localizes the defect to the code path it exercises",
+    "Q6": "Candidate promotion requires: counterexample fixed, protected suite green, differential sweep green"
+  },
+  "nodes": [
+    {
+      "id": "n_observe",
+      "primitive": "observe",
+      "purpose": "Read the governing spec, canonical implementation, and protected tests without editing anything; establish the observation surface for all downstream reasoning.",
+      "tools": [],
+      "writes": []
+    },
+    {
+      "id": "n_hypothesize",
+      "primitive": "hypothesize",
+      "purpose": "Maintain the competing hypotheses H0 (correct) and H1 (defective) and identify spec regions (tie-break R6, boundary compatibility R2, validation R1) where they make divergent predictions.",
+      "tools": [],
+      "writes": []
+    },
+    {
+      "id": "n_test",
+      "primitive": "test",
+      "purpose": "Discriminate H0 from H1 by executing the protected unit suite and a seeded deterministic differential sweep of src/solver.py against an independent exhaustive brute-force oracle derived only from the spec; emit any counterexample as executable evidence.",
+      "tools": [
+        ".creator-zero/harness/oracle.py",
+        ".creator-zero/harness/differential_test.py"
+      ],
+      "writes": [
+        ".creator-zero/runs/experiment-1-evidence.json"
+      ]
+    },
+    {
+      "id": "n_verify",
+      "primitive": "verify",
+      "purpose": "Independently confirm whether emitted evidence violates the governing spec (replay counterexamples against the oracle and requirement predicates), and after any candidate exists, re-run all protected and differential checks against the candidate; never repairs the artifact itself.",
+      "tools": [
+        ".creator-zero/harness/verify.py"
+      ],
+      "writes": [
+        ".creator-zero/runs/experiment-1-verdict.json"
+      ]
+    },
+    {
+      "id": "n_act",
+      "primitive": "act",
+      "purpose": "Only upon verifier authorization, produce the smallest candidate correction as .creator-zero/candidates/solver.py and, only after independent re-verification passes, promote it to the canonical artifact.",
+      "tools": [],
+      "writes": [
+        ".creator-zero/candidates/solver.py",
+        "src/solver.py"
+      ]
+    },
+    {
+      "id": "n_return",
+      "primitive": "return",
+      "purpose": "Assemble the final experimental record: hypotheses, evidence, verdicts, mutation status, and preservation or promotion of canonical state.",
+      "tools": [],
+      "writes": [
+        ".creator-zero/runs/experiment-1-report.md"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "n_observe",
+      "to": "n_hypothesize",
+      "type": "observe",
+      "semantics": "Observed spec/implementation/tests constrain the admissible hypothesis set; no hypothesis may reference unobserved behavior."
+    },
+    {
+      "from": "n_hypothesize",
+      "to": "n_test",
+      "type": "request_response",
+      "semantics": "Hypotheses predict divergent outputs on discriminating inputs; the test node executes those inputs deterministically and returns evidence, not opinion."
+    },
+    {
+      "from": "n_test",
+      "to": "n_verify",
+      "type": "verify",
+      "semantics": "Every candidate counterexample is submitted for independent confirmation that it actually contradicts the governing specification before it counts as a demonstrated defect."
+    },
+    {
+      "from": "n_verify",
+      "to": "n_act",
+      "type": "authorize",
+      "semantics": "Mutation authority flows only from a verifier-confirmed spec violation; absent authorization the act node never enters the realized execution path."
+    },
+    {
+      "from": "n_act",
+      "to": "n_verify",
+      "type": "request_response",
+      "semantics": "A candidate is only a candidate: it is submitted back for independent re-verification (counterexample fixed, protected suite green, differential sweep green) before promotion."
+    },
+    {
+      "from": "n_verify",
+      "to": "n_return",
+      "type": "return",
+      "semantics": "Only verifier-established facts (verdicts, preserved or promoted canonical state) enter the final experimental record."
+    }
+  ]
+}

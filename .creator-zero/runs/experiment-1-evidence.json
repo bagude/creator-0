@@ -1,0 +1,7 @@
+{
+  "tool": "differential_test",
+  "solver_dir": "/home/user/creator-0/src",
+  "cases_executed": 3008,
+  "counterexamples": [],
+  "outcome": "AGREEMENT"
+}

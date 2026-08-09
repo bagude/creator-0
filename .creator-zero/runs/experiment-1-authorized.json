@@ -1,0 +1,58 @@
+{
+  "status": "authorized",
+  "experiment": "experiment-1",
+  "proposal_sha256": "ea52a98b286aecefe9f1226c240374ec5677e32b0a64aff0b96814638f7648ca",
+  "authorized_nodes": [
+    "n_observe",
+    "n_hypothesize",
+    "n_test",
+    "n_verify",
+    "n_act",
+    "n_return"
+  ],
+  "authorized_edges": [
+    [
+      "n_observe",
+      "observe",
+      "n_hypothesize"
+    ],
+    [
+      "n_hypothesize",
+      "request_response",
+      "n_test"
+    ],
+    [
+      "n_test",
+      "verify",
+      "n_verify"
+    ],
+    [
+      "n_verify",
+      "authorize",
+      "n_act"
+    ],
+    [
+      "n_act",
+      "request_response",
+      "n_verify"
+    ],
+    [
+      "n_verify",
+      "return",
+      "n_return"
+    ]
+  ],
+  "constraints": {
+    "mutable_paths": [
+      "src/solver.py"
+    ],
+    "promotion_requires": [
+      "executable_counterexample",
+      "spec_violation_confirmed",
+      "candidate_fixes_counterexample",
+      "regression_suite_green",
+      "no_unrelated_behavior_change_detected"
+    ],
+    "default": "preserve"
+  }
+}
