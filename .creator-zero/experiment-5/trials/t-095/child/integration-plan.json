@@ -1,0 +1,12 @@
+{
+  "method": "clean_room_comparison",
+  "child_deliverable": "reproduction.json",
+  "comparison": "Deterministically load the child's produce_summary.py, call produce_summary(csv_text) on the exact bytes of package/artifacts/records.csv, and compare the returned string byte-for-byte against the exact bytes of package/artifacts/summary.txt. 'Divergence' is defined as EITHER (a) any byte difference between the child's produce_summary output and summary.txt, OR (b) reproduction.json.underdetermined_aspects being non-empty (equivalently notes_fully_determine_output == false). This dual definition realizes evidence requirement E-C: UNDERDETERMINED iff the notes leave a byte-affecting choice (E-A) or the clean reproduction differs (E-B).",
+  "verdict_rule": {
+    "if_any_divergence": "UNDERDETERMINED",
+    "if_none": "REPRODUCIBLE",
+    "findings": "On UNDERDETERMINED: set findings.underdetermined_aspects = reproduction.json.underdetermined_aspects, and set findings.reproduction_diff from the byte comparison as {matches_target: <bool>, first_differing_line: <1-indexed line number of first byte difference, or null if bytes match>, target_line: <that line of summary.txt, or null>, reproduced_line: <that line of the child output, or null>}. On REPRODUCIBLE: set findings = {matches_target: true}.",
+    "child_invocations": 1
+  },
+  "root_responsibilities": "The root executes only this pre-committed rule: run the child's deterministic function, do a byte comparison, and apply the verdict mapping. The root never authors the transformation or solves the reconstruction itself; all substantive reconstruction evidence originates from the independent child."
+}

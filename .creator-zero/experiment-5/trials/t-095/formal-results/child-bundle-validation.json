@@ -1,0 +1,19 @@
+{
+  "check": "child_bundle_validation",
+  "status": "PASS",
+  "formal_relation": "child bundle deterministically valid for realization",
+  "counterexample": null,
+  "evidence": [
+    "bundle: /home/user/creator-0/.creator-zero/experiment-5/trials/t-095/child",
+    "attenuation vs K-E5-trial: PASS",
+    "attenuation vs K-E5-child-max: PASS",
+    "child LTS: 6 states, 60 transitions",
+    "manifest files: ['package/artifacts/build-notes.md', 'package/artifacts/records.csv']",
+    "integration method: clean_room_comparison"
+  ],
+  "assumptions": [
+    "Only the externally inspectable artifact counts as decision evidence; hidden reasoning is not evidence.",
+    "Validation is deterministic and read-only; a failed validation rejects realization and no LLM may override it."
+  ],
+  "unmapped_events": []
+}

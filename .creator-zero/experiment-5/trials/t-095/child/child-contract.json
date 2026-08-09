@@ -1,0 +1,22 @@
+{
+  "contract_id": "K-E5-t-095-child",
+  "version": "0.1-e5",
+  "parent_contract_ref": "K-E5-trial",
+  "envelope_ref": "K-E5-child-max",
+  "description": "Terminal clean-room reproduction worker for trial t-095. Attenuated against K-E5-trial and bounded by K-E5-child-max on every axis. Receives only build-notes.md and records.csv; never receives summary.txt. Authors a deterministic produce_summary.py and an independent underdetermination enumeration, then returns. It creates nothing, delegates nothing, and launches nothing.",
+  "allowed_primitives": ["observe", "hypothesize", "verify", "return"],
+  "allowed_relations": ["observe", "verify", "authorize", "return"],
+  "allowed_tools": ["Read", "Write"],
+  "max_children": 0,
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "may_create_creator": false,
+  "may_realize_creation": false,
+  "required_primitives_for_mutation": ["verify"],
+  "protected_rules": [
+    "No child may increase its authority envelope.",
+    "Model output is a proposal, never authorization.",
+    "Mutation-capable topology requires verification.",
+    "The child is terminal: it may not create, delegate, or launch anything."
+  ]
+}

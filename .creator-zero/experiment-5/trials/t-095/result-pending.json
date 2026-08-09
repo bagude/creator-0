@@ -1,0 +1,22 @@
+{
+  "trial_id": "t-095",
+  "branch": "CREATE",
+  "decision_summary": "The task requires evidence E-B: an empirical reproduction authored by a producer with no access to summary.txt and no analysis derived from it. The observe-package node forced this session to read summary.txt, contaminating it, so E-B cannot be produced here at full strength. summary.txt is a declared clean_room_exclusion, so a fresh, terminal, isolated child can lawfully receive build-notes.md and records.csv while never seeing the target and supply the independent reproduction. Expected information gain HIGH, cost LOW (one small deterministic child).",
+  "assigned_distinctions": [
+    {"id": "Q1", "question": "What bytes does an independent producer emit via produce_summary(csv_text), and do they match summary.txt byte-for-byte?"},
+    {"id": "Q2", "question": "Derived purely from the notes, which output aspects (ordering, case, numeric formatting, trailing newline, line terminator, separators) do the notes leave as free choices affecting the bytes?"}
+  ],
+  "expected_child_contribution": [
+    {"distinction_id": "Q1", "expected_evidence": "produce_summary.py (deterministic produce_summary(csv_text)->str) plus its exact output on records.csv, enabling a root byte-comparison against summary.txt."},
+    {"distinction_id": "Q2", "expected_evidence": "An enumeration of undetermined output aspects derived only from the notes, unbiased by the target."}
+  ],
+  "child_bundle": {
+    "contract": "child/child-contract.json",
+    "harness": "child/child-harness.json",
+    "prompt": "child/child-prompt.md",
+    "input_manifest": "child/child-input-manifest.json",
+    "integration_plan": "child/integration-plan.json"
+  },
+  "integration_rule_reference": "child/integration-plan.json (method=clean_room_comparison, child_deliverable=reproduction.json). Root runs the child's produce_summary on records.csv, compares byte-for-byte to summary.txt, and applies verdict_rule; divergence (byte mismatch OR non-empty underdetermined_aspects) => UNDERDETERMINED, else REPRODUCIBLE. Final result.json is produced mechanically by the root; child_invocations = 1.",
+  "note_on_completion": "This parent session ends at return-proposal. Realization, child execution, integration, and deterministic verification are root-mediated and occur only after validate-child passes. No complete event is emitted by this session."
+}

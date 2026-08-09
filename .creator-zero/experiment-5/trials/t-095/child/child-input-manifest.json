@@ -1,0 +1,10 @@
+{
+  "files": [
+    "package/artifacts/build-notes.md",
+    "package/artifacts/records.csv"
+  ],
+  "excluded_clean_room": [
+    "package/artifacts/summary.txt"
+  ],
+  "note": "The child receives only the two available_artifacts required for reconstruction. summary.txt is a declared clean_room_exclusion and is deliberately withheld so the producer remains independent of the target."
+}

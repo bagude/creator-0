@@ -1,0 +1,58 @@
+{
+  "task_id": "e5-t-095-child",
+  "goal": "Independently reconstruct summary.txt from build-notes.md and records.csv alone, producing a deterministic produce_summary(csv_text) and an unbiased enumeration of what the notes leave undetermined.",
+  "contract_ref": "child-contract.json",
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "nodes": [
+    {
+      "id": "observe-inputs",
+      "primitive": "observe",
+      "tools": ["Read"],
+      "can_create": false,
+      "instructions": "Read build-notes.md and records.csv. These are your only inputs. Do not assume any file named summary.txt exists or has any particular contents; you have no access to the target output.",
+      "why_necessary": "The reproduction must be grounded strictly in the notes and the source data; the inputs must be acquired before any construction step."
+    },
+    {
+      "id": "produce-evidence",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Author produce_summary.py exposing produce_summary(csv_text: str) -> str, implementing ONLY the transformation described in build-notes.md, making no choice the notes do not state (do not invent an ordering, a letter case, a decimal format, or a trailing newline the notes do not require; where the notes are silent, pick the most literal reading of the notes and record that a choice was forced). Compute produce_summary applied to the exact text of records.csv. Then, derived purely from the notes, enumerate every aspect of the output (line ordering, region-name case, numeric/decimal formatting, trailing newline, line terminator, separators) that the notes leave as a free choice affecting the output bytes. Write reproduction.json per the deliverable shape.",
+      "why_necessary": "Addresses the two assigned distinctions Q1 (independent byte-level reproduction) and Q2 (independent underdetermination enumeration) with a mechanically reproducible artifact."
+    },
+    {
+      "id": "self-check",
+      "primitive": "verify",
+      "tools": ["Read"],
+      "can_create": false,
+      "instructions": "Re-read produce_summary.py and reproduction.json. Confirm produce_summary.py is self-contained, deterministic, defines produce_summary(csv_text: str) -> str, references no file other than its csv_text argument, and that reproduced_output equals produce_summary applied to records.csv. Confirm every listed underdetermined aspect is justified from the notes alone, not from any assumed target. Record the structural check outcome. This check is non-authoritative.",
+      "why_necessary": "The contract requires the verify primitive in any Write-holding topology; a structural self-check before return is the minimal fulfilment."
+    },
+    {
+      "id": "return-result",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Finalize reproduction.json as the deliverable and finalize the child ledger, ending with a complete event. Do not attempt any comparison against a target you do not possess.",
+      "why_necessary": "The child's evidence must re-enter the governed boundary as a returned, named deliverable."
+    }
+  ],
+  "edges": [
+    {"source": "observe-inputs", "target": "produce-evidence", "relation": "observe", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "produce-evidence", "target": "self-check", "relation": "verify", "requires_response": true, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "self-check", "target": "return-result", "relation": "authorize", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false}
+  ],
+  "ledger_contract": {
+    "path": "child-ledger.jsonl (child workspace root)",
+    "schema": "normalized formal event schema: one JSON object per line with event_id, label, actor, timestamp, artifact_refs, metadata; node executions carry metadata.completes_node",
+    "required_events": [
+      {"label": "observe", "actor": "node:observe-inputs", "metadata": {"completes_node": "observe-inputs"}},
+      {"label": "propose", "actor": "node:produce-evidence", "metadata": {"completes_node": "produce-evidence"}, "artifact_refs": ["produce_summary.py", "reproduction.json"]},
+      {"label": "verify", "actor": "node:self-check", "metadata": {"completes_node": "self-check"}},
+      {"label": "return", "actor": "node:return-result", "metadata": {"completes_node": "return-result"}, "artifact_refs": ["reproduction.json"]},
+      {"label": "complete", "actor": "child", "metadata": {"event_kind": "child_complete"}, "artifact_refs": ["reproduction.json"]}
+    ],
+    "required_terminal_event": "complete"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "trial_id": "t-095",
+  "decision": "CREATE",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Following only build-notes.md and records.csv, what bytes does an independent producer emit as summary.txt via produce_summary(csv_text), and do those bytes match the target byte-for-byte?",
+      "why_local_evidence_is_insufficient": "The observe-package node required this session to read summary.txt, so this session is contaminated: any produce_summary it authors would be biased toward the observed target, and E-B explicitly requires a producer with no access to summary.txt and no analysis derived from it. This session can no longer be that producer, so it cannot supply E-B at full evidential strength."
+    },
+    {
+      "id": "Q2",
+      "question": "Derived purely from the notes (not from the observed output), which aspects of summary.txt (line ordering, region-name case, numeric/decimal formatting, trailing newline, line terminator) do build-notes.md leave as free choices that affect the output bytes?",
+      "why_local_evidence_is_insufficient": "Having already seen summary.txt, this session cannot enumerate the notes' free choices without its list being anchored to the observed target rather than derived strictly from the notes; only a producer that never saw the target can give the unbiased enumeration E-A requires."
+    }
+  ],
+  "expected_child_contribution": [
+    {
+      "distinction_id": "Q1",
+      "expected_evidence": "A standalone produce_summary.py exposing produce_summary(csv_text: str) -> str, written strictly from the notes, plus the exact string it emits on records.csv, enabling a byte-for-byte comparison the root performs against summary.txt.",
+      "why_isolation_matters": "The evidential value of the reproduction comes entirely from producer independence; a fresh session that never observed summary.txt cannot copy the target's ordering, casing, or formatting choices, so a match or divergence is genuine evidence rather than an artifact of contamination."
+    },
+    {
+      "distinction_id": "Q2",
+      "expected_evidence": "An enumeration of the aspects the notes leave undetermined, derived only from build-notes.md and records.csv, reported alongside the reproduction.",
+      "why_isolation_matters": "An enumeration produced without sight of the target is not biased toward retrofitting or omitting aspects to match observed bytes, which is the only form of E-A that carries independent evidential weight."
+    }
+  ],
+  "local_resolution_path": [],
+  "expected_information_gain": "HIGH",
+  "expected_cost": "LOW",
+  "decision_basis": [
+    "E-B is a binding evidence requirement and mandates a clean-room producer with no access to summary.txt; observe-package forced this session to read summary.txt, so the required evidence cannot be generated here at full strength.",
+    "summary.txt is a declared clean_room_exclusion, so a fresh child can lawfully receive build-notes.md and records.csv while never seeing the target, exactly satisfying the independence E-B demands.",
+    "The cost is one small, terminal, deterministic child; the integration is a mechanical byte comparison the root performs, so expected value clearly exceeds bounded cost.",
+    "Local resolution would leave E-B unsatisfiable-at-strength, an unjustified evidential gap, whereas the child closes it without the root ever solving the task."
+  ],
+  "confidence": 0.82
+}
