@@ -1,0 +1,11 @@
+{
+  "summary": "Implemented encode(d) per inputs/format.md: each key/value pair is rendered as key=value with every ';' inside a key or value escaped as backslash-semicolon and every '=' escaped as backslash-equals; pairs are joined with ';' in mapping (dict insertion) order, and an empty mapping returns the empty string. The escaping is done character by character in a helper so escape sequences cannot interact. outputs.json contains the hand-traced result of this implementation for each of the ten probes in inputs/probes.json, in order, with JSON string escaping applied to the literal backslashes the encoding produces.",
+  "files_produced": ["encode.py", "outputs.json"],
+  "ambiguity_notes": [
+    "The spec escapes only ';' and '=' and says nothing about escaping the backslash character itself; literal reading chosen: a backslash in a key or value is written through unchanged (probe {\"k\": \"back\\\\slash\"} encodes to k=back\\slash). This makes the encoding non-injective (a literal '\\;' in a value is indistinguishable from an escaped ';'), but adding backslash-escaping would go beyond the spec's text.",
+    "'An empty mapping encodes as the empty line' is read as returning the empty string \"\" with no trailing newline; more generally, 'returns the encoded line as a string' is read as returning the line content without any newline character.",
+    "'The order in which they appear in the mapping' is read as the mapping's iteration order, i.e. Python dict insertion order for the dict passed to encode(d).",
+    "The spec does not restrict key/value characters or define behavior for non-string inputs; encode(d) assumes str keys and values as stated in the function contract and applies no other transformation (empty keys and empty values are allowed and encode as empty text on their side of '=')."
+  ],
+  "model_calls_spent": 0
+}

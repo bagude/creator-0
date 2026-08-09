@@ -1,0 +1,43 @@
+{
+  "topology_id": "H-e6-t01-isolated-child",
+  "predictions_hash": "sha256:79f22155ef8ab2adeb7c312a9918c573e77f49f56b096631d426a1596ecc4b47",
+  "resolved_distinctions": [
+    {
+      "id": "Q1",
+      "resolved_by": "observe-evidence"
+    },
+    {
+      "id": "Q2",
+      "resolved_by": "child-return"
+    },
+    {
+      "id": "Q3",
+      "resolved_by": "child-return"
+    },
+    {
+      "id": "Q4",
+      "resolved_by": "child-return"
+    }
+  ],
+  "unresolved_distinctions": [],
+  "node_completion_order": [
+    "observe-evidence",
+    "propose-child",
+    "validate-child",
+    "create-child",
+    "child-return",
+    "verify-integration",
+    "return-result"
+  ],
+  "resource_use": {
+    "model_calls": 2,
+    "child_calls": 1,
+    "model_call_budget": 2,
+    "wall_clock_ms": 402000
+  },
+  "formal_failures": [],
+  "authority_violations": [],
+  "verification_effect": "improved",
+  "task_result": "correct",
+  "child_launches": 1
+}

@@ -1,0 +1,5 @@
+{
+  "summary": "The round-trip claim is FALSE. A systematic sweep of the domain (tokens partitioned by presence and position of DQUOTE and BACKSLASH, plus multi-token adjacency patterns) found that detokenize in inputs/tok.py escapes double-quotes but never escapes backslashes inside quoted tokens, while tokenize treats any in-quote backslash as an escape consuming the next character. The concrete violating input is the single-token list [\"\\\"\"] (the 2-character token backslash+quote): detokenize serializes it as the 5-character string DQUOTE,BACKSLASH,BACKSLASH,DQUOTE,DQUOTE, which tokenize parses back as the 1-character token BACKSLASH — the quote character is lost. Classes with no backslash-inside-quotes (bare a/b tokens, bare backslash tokens, quote-only quoted tokens, and all their 2-3 token adjacency combinations) were traced and round-trip correctly; every token containing both a backslash and a quote violates the claim. Full mechanical traces are in search-record.json.",
+  "files_produced": ["search-record.json", "result.json", "execution-ledger.jsonl"],
+  "model_calls_spent": 0
+}

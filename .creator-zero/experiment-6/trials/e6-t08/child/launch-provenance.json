@@ -1,0 +1,50 @@
+{
+  "artifact": "fresh-child launch provenance",
+  "creator": "C-E6-child-e6-t08",
+  "purpose": "Experiment 6 child session for trial e6-t08",
+  "fresh": true,
+  "model": "claude-fable-5",
+  "session_id": "605d1cf5-231e-4560-b356-b16357fca4b0",
+  "allowed_tools": [
+    "Read",
+    "Write"
+  ],
+  "working_directory": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t08/primary/child-ws",
+  "prompt_path": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t08/primary/child-ws/prompt.md",
+  "prompt_sha256": "0fd622223ca2b4bbda78ba1d5399c25b4f07789f5a4f9df67c7226de047ca0d6",
+  "command_display": "claude -p <prompt text> --session-id 605d1cf5-231e-4560-b356-b16357fca4b0 --model claude-fable-5 --allowedTools 'Read Write' --output-format stream-json --verbose",
+  "environment_sanitization": {
+    "removed_variables": [
+      "CLAUDE_AFTER_LAST_COMPACT",
+      "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE",
+      "CLAUDE_CODE_CHILD_SESSION",
+      "CLAUDE_CODE_POST_FOR_SESSION_INGRESS_V2",
+      "CLAUDE_CODE_REMOTE_SESSION_ID",
+      "CLAUDE_CODE_SESSION_ID",
+      "CLAUDE_PID",
+      "CLAUDE_SESSION_INGRESS_TOKEN_FILE"
+    ],
+    "exact_denylist": [
+      "CLAUDE_CODE_SESSION_ID",
+      "CLAUDE_CODE_CHILD_SESSION",
+      "CLAUDE_CODE_REMOTE_SESSION_ID",
+      "CLAUDE_SESSION_ID",
+      "CLAUDE_CODE_SESSION_RESUME",
+      "CLAUDE_CODE_CONTINUE",
+      "CLAUDE_AFTER_LAST_COMPACT",
+      "CLAUDE_PID"
+    ],
+    "pattern_denylist": "^CLAUDE.*(SESSION|RESUME|CONTINUE|TRANSCRIPT|COMPACT)",
+    "residual_continuity_variables": [],
+    "inherited_session_id_present": true,
+    "session_id_reuse": false
+  },
+  "dry_run": false,
+  "started_at": "2026-08-09T17:24:14Z",
+  "executed": true,
+  "exit_status": 0,
+  "finished_at": "2026-08-09T17:26:05Z",
+  "log_path": "/home/user/creator-0/.creator-zero/experiment-6/trials/e6-t08/child/child-session.log",
+  "log_sha256": "2cd4e4ccdc05b60da12667147fc4917ddae23b79345578941f85f6f58f9cca09",
+  "session_id_confirmed": true
+}

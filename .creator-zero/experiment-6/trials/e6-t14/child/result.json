@@ -1,0 +1,5 @@
+{
+  "deliverable": "child-answers.json",
+  "files_produced": ["child-answers.json", "result.json", "execution-ledger.jsonl"],
+  "model_calls_spent": 0
+}

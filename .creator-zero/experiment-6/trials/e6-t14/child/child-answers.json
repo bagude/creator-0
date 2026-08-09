@@ -1,0 +1,17 @@
+{
+  "answers": {
+    "2.675": "2.68",
+    "-1234.5": "(1,234.50)",
+    "0.005": "0.00",
+    "1000": "1,000.00",
+    "-0.125": "(0.12)",
+    "999999.995": "1,000,000.00",
+    "0.045": "0.04",
+    "12345.675": "12,345.68",
+    "-2.5": "(2.50)",
+    "0": "0.00",
+    "7.375": "7.38",
+    "-999.985": "(999.98)"
+  },
+  "method": "Each input was processed purely as a character string; no value was ever parsed into binary floating point and no scaled-integer arithmetic was used. For each string I stripped a leading '-' (remembering it), split at the '.' into integer digits I and fraction digits F, and conceptually padded F with trailing zeros to at least 3 digits. The first two fraction digits d1 d2 are the candidate decimals. The rounding decision came solely from inspecting the third fraction digit d3 and the remaining tail T: d3 in 0-4 keeps d1 d2; d3 in 6-9, or d3=5 with any nonzero digit in T, rounds up; d3=5 with T empty or all zeros is an exact tie, rounding up only when d2 is odd (even d2 stays, per ties-to-even). Rounding up was performed as a string increment with carry: add 1 to d2, a 9 becomes 0 and the carry moves left through d1 and then digit by digit through I, prepending '1' if the carry runs off the left end (as in 999999.995 -> 1000000.00). Finally I grouped the (post-carry) integer digits with commas every three from the right, appended '.' and the two decimals, and wrapped originally negative amounts in parentheses without a sign."
+}

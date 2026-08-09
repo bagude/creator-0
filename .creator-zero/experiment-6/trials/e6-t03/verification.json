@@ -1,0 +1,39 @@
+{
+  "trial_id": "e6-t03",
+  "task_verified": true,
+  "result_correct": true,
+  "requirements": {
+    "E-A": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "all 10 items answered with method stated"
+    },
+    "E-B": {
+      "satisfied": true,
+      "satisfied_by": "child",
+      "why": "child role independent_verifier; manifest honors exclusions"
+    },
+    "E-C": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "all answers exactly correct"
+    }
+  },
+  "verification_effect": "confirmed",
+  "duplicate_evidence_ids": [
+    "ev-child-1"
+  ],
+  "extra_evidence_records": [
+    {
+      "id": "ev-child-1",
+      "source_node": "child-return",
+      "description": "isolated re-derivation evidence",
+      "duplicate_of_parent": true
+    }
+  ],
+  "details": {
+    "wrong_items": [],
+    "missing_items": [],
+    "unused_outputs": []
+  }
+}

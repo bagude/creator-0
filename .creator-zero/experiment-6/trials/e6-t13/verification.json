@@ -1,0 +1,42 @@
+{
+  "trial_id": "e6-t13",
+  "task_verified": true,
+  "result_correct": true,
+  "requirements": {
+    "E-A": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "1/1 seeded input classes identified"
+    },
+    "E-B": {
+      "satisfied": true,
+      "satisfied_by": "child",
+      "why": "child role adversarial_searcher; manifest honors exclusions"
+    },
+    "E-C": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "verdict VIOLATED vs ground truth VIOLATED; detokenize(['\\\\\"']) = '\"\\\\\\\\\"\"'; tokenize -> ['\\\\']"
+    }
+  },
+  "verification_effect": "confirmed",
+  "duplicate_evidence_ids": [
+    "ev-child-1"
+  ],
+  "extra_evidence_records": [
+    {
+      "id": "ev-child-1",
+      "source_node": "child-return",
+      "description": "isolated adversarial search evidence",
+      "duplicate_of_parent": true
+    }
+  ],
+  "details": {
+    "witness": [
+      "\\\""
+    ],
+    "witness_source": "parent",
+    "witness_check": "detokenize(['\\\\\"']) = '\"\\\\\\\\\"\"'; tokenize -> ['\\\\']",
+    "unused_outputs": []
+  }
+}

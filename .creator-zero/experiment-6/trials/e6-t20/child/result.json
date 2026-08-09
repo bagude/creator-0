@@ -1,0 +1,5 @@
+{
+  "deliverable": "verdicts.json",
+  "files_produced": ["verdicts.json", "result.json", "execution-ledger.jsonl"],
+  "model_calls_spent": 0
+}

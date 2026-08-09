@@ -1,0 +1,6 @@
+{
+  "deliverable": "search-record.json",
+  "summary": "The systematic search found a concrete in-domain input that violates the claim. Because line 8 of merge.py uses the strict comparison `s < out[-1][1]`, an interval whose start exactly equals the current merged block's end is appended rather than merged. For input [[0,1],[1,2]] the function returns [[0,1],[1,2]], and in the sorted output the pair i=[0,1], j=[1,2] satisfies i.end >= j.start (1 >= 1), which the claim forbids. Outcome: FOUND; the claim is violated on the stated domain. All other input classes (empty, single, disjoint, overlapping, nested, identical, equal-start ties, zero-width, and multi-interval chains) were also simulated and recorded; violations occur exactly in the touching classes where a start equals a preceding end.",
+  "files_produced": ["search-record.json", "result.json", "execution-ledger.jsonl"],
+  "model_calls_spent": 0
+}

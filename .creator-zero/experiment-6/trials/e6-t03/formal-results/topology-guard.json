@@ -1,0 +1,27 @@
+{
+  "check": "topology_guard",
+  "status": "FAIL",
+  "violations": [
+    "TOOL_ENVELOPE: disallowed tool uses [{'tool': 'ToolSearch', 'id': 'toolu_01NukJfdTqKEVbFY6Ko7P9kc'}, {'tool': 'ToolSearch', 'id': 'toolu_01Wj8b9PUGY6krGykLXdaTiN'}]"
+  ],
+  "launches": {
+    "exec": true,
+    "examiner": false,
+    "child": true
+  },
+  "audit_summaries": [
+    {
+      "tool_use_counts": {
+        "Read": 28,
+        "ToolSearch": 2,
+        "Write": 10
+      }
+    },
+    {
+      "tool_use_counts": {
+        "Read": 3,
+        "Write": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "trial_id": "e6-t14",
+  "task_verified": false,
+  "result_correct": true,
+  "requirements": {
+    "E-A": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "all 12 items answered with method stated"
+    },
+    "E-B": {
+      "satisfied": false,
+      "satisfied_by": "none",
+      "why": "child role 'clean_room_implementer' not in ('independent_verifier',)"
+    },
+    "E-C": {
+      "satisfied": true,
+      "satisfied_by": "parent",
+      "why": "all answers exactly correct"
+    }
+  },
+  "verification_effect": "confirmed",
+  "duplicate_evidence_ids": [
+    "ev-child-1"
+  ],
+  "extra_evidence_records": [
+    {
+      "id": "ev-child-1",
+      "source_node": "child-return",
+      "description": "isolated re-derivation evidence",
+      "duplicate_of_parent": true
+    }
+  ],
+  "details": {
+    "wrong_items": [],
+    "missing_items": [],
+    "unused_outputs": []
+  }
+}

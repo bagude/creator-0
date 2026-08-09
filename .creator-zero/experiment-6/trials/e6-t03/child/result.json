@@ -1,0 +1,5 @@
+{
+  "summary": "Derived the ISO-8601 week-date form for all 10 dates in inputs/dates.json using exclusively the ordinal-date (day-of-year) formula method: ordinal day computed with Gregorian leap rules, ISO weekday via Zeller's congruence, raw week = floor((ordinal - weekday + 10)/7), and the week-0 / week-53 boundary rules with the Jan-1-weekday lookup for weeks(y). All answers plus a full method statement with per-date intermediates (ordinal, weekday, raw week, boundary rule) are recorded in child-answers.json.",
+  "files_produced": ["child-answers.json"],
+  "model_calls_spent": 0
+}

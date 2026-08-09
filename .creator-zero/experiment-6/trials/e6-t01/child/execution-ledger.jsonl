@@ -1,0 +1,5 @@
+{"event_id": "c1", "label": "observe", "actor": "node:observe-inputs", "timestamp": "2026-08-09T00:00:01Z", "artifact_refs": ["inputs/format.md", "inputs/probes.json"], "metadata": {"completes_node": "observe-inputs"}}
+{"event_id": "c2", "label": "propose", "actor": "node:produce-evidence", "timestamp": "2026-08-09T00:00:02Z", "artifact_refs": ["encode.py", "outputs.json"], "metadata": {"completes_node": "produce-evidence"}}
+{"event_id": "c3", "label": "verify", "actor": "node:self-check", "timestamp": "2026-08-09T00:00:03Z", "artifact_refs": ["encode.py", "outputs.json"], "metadata": {"completes_node": "self-check", "outcome": "PASS"}}
+{"event_id": "c4", "label": "return", "actor": "node:return-result", "timestamp": "2026-08-09T00:00:04Z", "artifact_refs": ["result.json", "execution-ledger.jsonl"], "metadata": {"completes_node": "return-result"}}
+{"event_id": "c5", "label": "complete", "actor": "child", "timestamp": "2026-08-09T00:00:05Z", "artifact_refs": [], "metadata": {}}

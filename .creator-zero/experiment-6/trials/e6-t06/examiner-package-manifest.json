@@ -1,0 +1,18 @@
+{
+  "artifact": "blinded examiner workspace manifest",
+  "trial_id": "e6-t06",
+  "workspace": "/tmp/claude-0/-home-user-creator-0/113f7cc5-237e-5d6a-8867-a97fd89c58dd/scratchpad/e6/e6-t06/primary/examiner-ws",
+  "blinding_scan": "PASS (0 hits)",
+  "file_sha256": {
+    ".claude/settings.json": "057724aff3831a2ebe097f2877650adbea6b7347a2aeada0e6e3134f4f4e2554",
+    "distinctions.json": "275ee132e6add0222b44f71bafbf7419e563539c327a319edbe29a458423f280",
+    "examiner-charge.md": "89d926dddb2f4ee28b2ebdc96c10d749fd32ac0bdf70da33b79c813bbd7ee979",
+    "package/artifacts/items.json": "864c2c48e79ba8d9c123fdfed929515be5c4435b9356503478d7190b9e36b0c6",
+    "package/artifacts/spec.md": "d7ba1b5aff2af8d0348215633a42d02827f85474528a38e7a186527cbb60221e",
+    "package/task.json": "eeb70bc5c6748770e00c25e155bedc3c6a1c43b2d25edf76a23c5c59daf53bb5",
+    "prompt.md": "3d447a21a58ae3cac87454b273c8ef29b71fa350ecef96d46e2655ae01c44f0d",
+    "protocol.md": "61dc81b69f844c30781e7e869d75307df92ef4fe3ceab50128d21c711e523e61",
+    "resolution.json": "7f91ee116e5940b1113bd7e04e38bfe415f072cc34f597da73492239fd779e2e",
+    "result.json": "0ab757614c82043252657fa65e12bc3f3e49d02dc7027f2951bb717724fd0196"
+  }
+}
