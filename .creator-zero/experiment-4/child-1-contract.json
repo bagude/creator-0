@@ -1,0 +1,59 @@
+{
+  "version": "0.1-experiment-4-K1",
+  "contract_id": "K1",
+  "holder": "C1 (child Creator, generation 1)",
+  "generation": 1,
+  "derived_from": ".creator-zero/experiment-4/root-contract.json",
+  "allowed_primitives": ["observe", "hypothesize", "test", "act", "verify", "create", "return"],
+  "allowed_relations": ["observe", "consult", "request_response", "delegate", "verify", "authorize", "create", "return"],
+  "allowed_tools": ["Read", "Grep", "Glob", "Bash", "Edit", "Write"],
+  "max_children": 1,
+  "max_depth": 1,
+  "max_model_calls": 12,
+  "may_create_creator": true,
+  "creator_capability": true,
+  "may_realize_creation": true,
+  "max_realized_creator_children": 1,
+  "max_realized_creator_depth": 1,
+  "required_primitives_for_mutation": ["verify"],
+  "model_call_accounting": "C1's budget of 12 covers every fresh claude -p invocation initiated by C1 or by C2 (C2's sub-budget is 4 of these 12; C1 may itself initiate at most 8). The invocation that instantiated C1 itself is charged to K0.",
+  "filesystem_write_scope": [
+    ".creator-zero/experiment-4/c1/",
+    ".creator-zero/experiment-4/c2/task.json",
+    ".creator-zero/experiment-4/c2/prompt.md",
+    ".creator-zero/experiment-4/child-2-contract.json",
+    ".creator-zero/experiment-4/creation-ledger.jsonl (append only)"
+  ],
+  "candidate_write_authority": "any proposed mutation of canonical task artifacts exists ONLY under .creator-zero/experiment-4/c1/candidate/ — never applied directly.",
+  "canonical_write_authority": "none",
+  "network_authority": "model-invocation API via claude CLI only.",
+  "git_authority": "read-only (no commit, no push, no branch operations).",
+  "session_freshness": "no --continue, no --resume, no session-id reuse for any invocation.",
+  "protected_paths": [
+    "src/", "tests/", "docs/", "README.md", "install.py", "payload/",
+    ".claude/", ".creator-zero/cz.py", ".creator-zero/contracts/",
+    ".creator-zero/harness/", ".creator-zero/experiment-3/",
+    ".creator-zero/state/",
+    ".creator-zero/experiment-4/root-contract.json",
+    ".creator-zero/experiment-4/child-1-contract.json",
+    ".creator-zero/experiment-4/inherited-state.json",
+    ".creator-zero/experiment-4/gate.py",
+    ".creator-zero/experiment-4/gate-decision.json",
+    ".creator-zero/experiment-4/report.md",
+    ".creator-zero/experiment-4/c1/task.json",
+    ".creator-zero/experiment-4/c1/prompt.md"
+  ],
+  "child_contract_law": {
+    "attenuation": "Any child contract (K2) C1 authors MUST be machine-checkably <= K1: allowed_tools subset, max_model_calls <= 4, max_children = 0, max_depth = 0, max_realized_creator_children = 0, write scope limited to .creator-zero/experiment-4/c2/**, no candidate authority, no canonical authority, no git authority.",
+    "capability_preservation": "K2 MUST set creator_capability=true and may_create_creator=true while max_children=0 and may_realize_creation=false enforce the architectural depth stop: the child retains validated create-Creator capability but zero realization budget at experiment depth 2.",
+    "recording": "The creation event MUST be appended to .creator-zero/experiment-4/creation-ledger.jsonl before the child is launched: proposed contract, authorized contract, actual environment (command line, model, allowed tools, working directory, env vars), and resource limits."
+  },
+  "protected_rules": [
+    "No child may increase its authority envelope.",
+    "Model output is a proposal, never authorization.",
+    "Mutation-capable topology requires verification by a causally distinct locus.",
+    "C1 never runs promotion; only the root deterministic gate promotes.",
+    "Creation of C2 is protocol-mandated exactly once.",
+    "C1 remains unresolved while C2 executes and must incorporate C2's returned result before finalizing its own."
+  ]
+}

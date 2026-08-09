@@ -1,0 +1,54 @@
+{
+  "task_id": "experiment-4-T4-r8-coverage",
+  "assigned_by": "C0",
+  "assigned_to": "C1",
+  "contract": ".creator-zero/experiment-4/child-1-contract.json",
+  "task": "Determine whether the current repository test suite provides meaningful regression protection for the polynomial-runtime requirement R8 in docs/solver_spec.md.",
+  "authoritative_specification": "docs/solver_spec.md",
+  "implementation": "src/solver.py",
+  "tests": "tests/",
+  "hypotheses": {
+    "H0": "current verification sufficiently protects the relevant R8 requirement",
+    "H1": "a meaningful R8 verification gap exists"
+  },
+  "inherited_state": {
+    "manifest": ".creator-zero/state/experiment-3.json",
+    "warning": "M3's unresolved item about R8 unit-coverage is evidence of a possible next task, NOT evidence that H1 is true. Do not assume a coverage gap exists merely because Experiment 3 recommended investigating one.",
+    "reusable_deterministic_assets": [
+      ".creator-zero/harness/oracle.py",
+      ".creator-zero/harness/differential.py",
+      ".creator-zero/harness/probes.py (includes an empirical R8 scaling probe — assess whether it constitutes suite protection; note it is not part of tests/)"
+    ]
+  },
+  "analysis_requirements": [
+    "1. Determine exactly what R8 commits the implementation to.",
+    "2. Determine whether that requirement is mechanically testable.",
+    "3. Determine whether current tests exercise the relevant property.",
+    "4. Determine whether a plausible regression can violate R8 while passing the existing suite.",
+    "5. Determine whether a deterministic regression test can distinguish that behavior without encoding an unjustified implementation-specific timing threshold.",
+    "6. Determine whether static/structural evidence is more appropriate than runtime timing evidence.",
+    "Do not blindly create a wall-clock performance test: timing tests may be noisy and environment-dependent. Reason from the specification and construct discriminating evidence appropriate to the actual requirement."
+  ],
+  "conclusion_enum": [
+    "R8_COVERAGE_SUFFICIENT",
+    "R8_COVERAGE_GAP_VERIFIED",
+    "SPECIFICATION_NOT_MECHANICALLY_TESTABLE",
+    "SPECIFICATION_AMBIGUITY",
+    "INDETERMINATE"
+  ],
+  "mutation_rule": {
+    "no_gap": "If no real R8 coverage defect is demonstrated, mutation_performed=false is a valid successful result. Do not add ceremonial tests that merely exercise the current solver.",
+    "gap": "If a meaningful gap is demonstrated: create the smallest candidate verification improvement UNDER .creator-zero/experiment-4/c1/candidate/ ONLY (mirroring the canonical path it targets), demonstrate its discriminating value against concrete R8-violating surrogates, verify it via a causally distinct verification step, obtain C2's challenge result, and leave promotion entirely to the root deterministic gate."
+  },
+  "deliverables": [
+    ".creator-zero/experiment-4/c1/decomposition.json",
+    ".creator-zero/experiment-4/c1/final-harness.json (cz.py HarnessSpec schema, validated VALID against K1)",
+    ".creator-zero/experiment-4/c1/evidence.json",
+    ".creator-zero/experiment-4/c1/execution-ledger.jsonl",
+    ".creator-zero/experiment-4/c1/result.json",
+    ".creator-zero/experiment-4/child-2-contract.json (K2 authored by C1)",
+    ".creator-zero/experiment-4/c2/task.json + c2/prompt.md (C2 creation package)",
+    "creation-ledger.jsonl entry for C1->C2 (appended before C2 launch)",
+    ".creator-zero/experiment-4/c1/candidate/ (only if H1 verified)"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "version": "0.1-experiment-4-K0",
+  "contract_id": "K0",
+  "holder": "C0 (root Creator, this operator session)",
+  "generation": 0,
+  "derived_from": ".creator-zero/contracts/root_contract.json",
+  "allowed_primitives": ["observe", "hypothesize", "test", "act", "verify", "create", "return"],
+  "allowed_relations": ["observe", "consult", "request_response", "delegate", "verify", "authorize", "create", "return"],
+  "allowed_tools": ["Read", "Grep", "Glob", "Bash", "Edit", "Write", "Agent"],
+  "max_children": 3,
+  "max_depth": 2,
+  "max_model_calls": 16,
+  "may_create_creator": true,
+  "creator_capability": true,
+  "may_realize_creation": true,
+  "max_realized_creator_children": 1,
+  "max_realized_creator_depth": 2,
+  "required_primitives_for_mutation": ["verify"],
+  "model_call_accounting": "A model call is one fresh external model invocation (claude -p). Each Creator's budget covers invocations initiated by that Creator and its descendants, excluding the invocation that instantiated the Creator itself (charged to its parent).",
+  "filesystem_write_scope": [
+    ".creator-zero/experiment-4/",
+    ".creator-zero/state/experiment-4.json",
+    ".creator-zero/runs/"
+  ],
+  "canonical_write_authority": "none — C0 may not modify canonical task artifacts (src/, tests/, docs/). Only the deterministic gate (.creator-zero/experiment-4/gate.py) may promote a candidate into canonical state.",
+  "task_solving_authority": "C0 may NOT solve T4 itself; T4 analysis belongs exclusively to C1's harness and C2's challenge harness.",
+  "network_authority": "model-invocation API via claude CLI only; no other outbound use.",
+  "protected_paths": [
+    "src/", "tests/", "docs/", "README.md", "install.py", "payload/",
+    ".claude/", ".creator-zero/cz.py", ".creator-zero/contracts/",
+    ".creator-zero/harness/", ".creator-zero/experiment-3/",
+    ".creator-zero/state/experiment-2.json", ".creator-zero/state/experiment-3.json"
+  ],
+  "protected_rules": [
+    "No child may increase its authority envelope.",
+    "Model output is a proposal, never authorization.",
+    "Mutation-capable topology requires verification.",
+    "Root compiler, boundary, hook, and contract are immutable during normal runs.",
+    "Creation is bounded; for Experiment 4 creation of C1 (and C1's creation of C2) is protocol-mandated.",
+    "Maximum realized Creator generation is 2; C2 must not realize C3 (architectural stop, not a capability judgment).",
+    "Every creation event is recorded in creation-ledger.jsonl with proposed contract, authorized contract, actual environment, tools, and limits."
+  ]
+}

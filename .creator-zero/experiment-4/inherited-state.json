@@ -1,0 +1,34 @@
+{
+  "experiment_id": "experiment-4",
+  "reconstructed_from": ".creator-zero/state/experiment-3.json",
+  "reconstruction_session": {
+    "fresh_session": true,
+    "resumed_prior_session": false,
+    "continue_or_resume_flags_used": false,
+    "note": "Root operator (C0) reconstructed all prior state exclusively from .creator-zero/state/experiment-3.json plus the canonical repository at 9a87df41851785c79a9ead035bdc4d2b62b47bbb. No Experiment 1-3 transcripts or hidden reasoning were imported."
+  },
+  "canonical_start_commit": "9a87df41851785c79a9ead035bdc4d2b62b47bbb",
+  "m3_claims_inherited": [
+    "E3: R6_COVERAGE_GAP_VERIFIED; minimal discriminating regression test promoted by deterministic gate (suite now 13 tests).",
+    "E3-D5: src/solver.py held — no implementation defect demonstrated; solver agrees with oracle on all 20689 differential instances and 71904 gap-search instances.",
+    "oracle.py encodes R2/R5/R6 correctly (E2 audit, E3 re-verification).",
+    "M3 unresolved[0]: R8 polynomial-runtime still has no unit-suite coverage (only the empirical harness probe).",
+    "M3 unresolved[1]: R6 protection is witnessed against the constructed violation class only.",
+    "M3 unresolved[2]: gate.py is experiment-local; no reusable contract-governed promotion gate exists.",
+    "M3 recommended next task (alternative branch): close the R8 unit-coverage question under external D/C synthesis discipline — adopted as T4. NOTE: this recommendation is evidence of a possible next task, NOT evidence that an R8 gap exists."
+  ],
+  "m3_claims_reverified_by_c0": [
+    "suite 13/13 green at 9a87df4 (python3 -m unittest discover -s tests)",
+    "probes 24/24 including empirical R8 scaling probe (python3 .creator-zero/harness/probes.py)",
+    "all artifacts referenced by M3's reconstruction guide exist on disk (final-harness.json, execution-ledger.jsonl, evidence.json, sandbox/evidence-round-0.json, sandbox-verify/verify-verdict.json, gate-decision.json, gate.py, report.md, harness/{oracle,differential,probes}.py)"
+  ],
+  "m3_claims_not_reverified_at_c0_level": [
+    "differential ALL total=20689 (deterministic, re-runnable; deferred to descendant harnesses / gate as needed)"
+  ],
+  "inheritance_gaps": [],
+  "root_contract_validation": {
+    "file": ".creator-zero/contracts/root_contract.json",
+    "validated": true,
+    "method": "schema fields present per cz.py validate_contract; may_create_creator=true, max_depth=2, max_children=3, max_model_calls=16; protected by .claude/hooks/protect_creator_zero.py (verified active in .claude/settings.json)"
+  }
+}
