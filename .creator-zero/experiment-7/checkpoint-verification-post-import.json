@@ -1,0 +1,49 @@
+{
+  "checkpoint_id": "sha256:a6bcc504fe221720736c8b03a739f5125914092851f2b0c4f68a784fa90de097",
+  "checks": {
+    "commit": {
+      "detail": "commit present=True; ancestor_of_HEAD=True",
+      "failure_code": null,
+      "status": "PASS"
+    },
+    "evidence_head": {
+      "detail": "current head=(264,'9d98e1adce4a8f66'); pinned empty head; any intact chain extends it; chain_intact=True",
+      "failure_code": null,
+      "status": "PASS"
+    },
+    "experiment_state": {
+      "detail": "sha256=43033387696690e5\u2026; result='LATENT_TOPOLOGY_ECONOMICS_FAIL'",
+      "failure_code": null,
+      "status": "PASS"
+    },
+    "formal_kernel": {
+      "detail": "sha256=02a91afdb70b9faf\u2026",
+      "failure_code": null,
+      "status": "PASS"
+    },
+    "protected_manifest": {
+      "detail": "manifest_hash_ok=True; historical_mutations=[]",
+      "failure_code": null,
+      "status": "PASS"
+    },
+    "root_contract": {
+      "detail": "sha256=f7268b999e2b35df\u2026",
+      "failure_code": null,
+      "status": "PASS"
+    },
+    "theory": {
+      "detail": "theta-v1 status=PROMOTED hash=sha256:caa6f956f76fd968e\u2026",
+      "failure_code": null,
+      "status": "PASS"
+    },
+    "tree": {
+      "detail": "tree=3d067bdd3fac vs pinned 3d067bdd3fac",
+      "failure_code": null,
+      "status": "PASS"
+    }
+  },
+  "failed": [],
+  "failure_codes": [],
+  "result": null,
+  "status": "PASS"
+}
