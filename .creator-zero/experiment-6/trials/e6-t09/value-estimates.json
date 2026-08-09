@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t09",
+  "estimates": {
+    "local": {
+      "delta_e": 0.33,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "A single worker satisfies E-A admissibly (the graph is small enough for exhaustive enumeration), but any second enumeration it performs has access to the first, so E-B is inadmissible by its authorship/access condition and E-C's completeness claim fails with it; roughly one of three evidence requirements is met. All records are the worker's own primary evidence, so redundancy is near zero."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.33,
+      "redundancy": 0.45,
+      "governance_risk": 0.0,
+      "rationale": "The examiner sees the worker's answer by construction, so its re-derivation still violates E-B's 'without access to the first enumeration' condition; admissible coverage stays at E-A only. The examiner's records largely re-derive what the worker already established, so close to half of all evidence records are duplicates."
+    },
+    "isolated-child": {
+      "delta_e": 0.95,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The worker can seed the isolated child with graph.json and the task statement while excluding its own enumeration, which is exactly what E-B requires; the root merge then yields E-C with the completeness claim supported by both sides. The child's records are required for admissibility, hence novel. Small discount for the chance the child's enumeration diverges and weakens the mutually-supported completeness claim."
+    },
+    "branching": {
+      "delta_e": 0.9,
+      "redundancy": 0.08,
+      "governance_risk": 0.0,
+      "rationale": "The only branch that can satisfy E-B is the isolated-child shape, and the isolation need is legible from the task text, so the run-time choice should land there and match isolated-child's outcome; a small discount reflects the residual chance the worker realizes the local branch and forfeits E-B and E-C."
+    }
+  }
+}

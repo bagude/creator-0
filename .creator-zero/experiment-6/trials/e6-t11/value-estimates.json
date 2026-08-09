@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t11",
+  "estimates": {
+    "local": {
+      "delta_e": 0.75,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "A single worker can admissibly settle Q1 (class analysis) and Q2 (mechanically checkable verdict/witness), but E-B demands a search by a party other than the author of the provisional answer, so Q3 stays unresolved: roughly 2/3 of distinctions resolved, with the worker's own records novel by construction and essentially no duplication."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.9,
+      "redundancy": 0.15,
+      "governance_risk": 0.0,
+      "rationale": "The separately launched examiner is a party other than the author of the provisional answer, so its systematic search satisfies E-B's letter and all three distinctions resolve; its search records are required for admissibility and hence novel, but because it sees the answer, part of its output is an anchored re-check duplicating worker evidence."
+    },
+    "isolated-child": {
+      "delta_e": 0.95,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "A causally isolated child given the implementation but not the worker's conclusions performs an unanchored systematic search; the defect class here is shallow enough that a blind class-structured search will find any witness, so all three distinctions resolve and the child's required-for-admissibility records are almost entirely novel."
+    },
+    "branching": {
+      "delta_e": 0.9,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The run-time choice should land on the isolated-child branch once the worker sees E-B's authorship condition, giving isolated-child-like value, discounted slightly for the chance the branch decision realizes the local shape and forfeits E-B admissibility."
+    }
+  }
+}

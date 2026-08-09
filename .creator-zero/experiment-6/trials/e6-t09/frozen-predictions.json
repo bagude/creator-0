@@ -1,0 +1,474 @@
+{
+  "H-e6-t09-local-independent-verify": {
+    "predictions": [
+      {
+        "prediction_id": "H-e6-t09-local-independent-verify-pr01",
+        "topology_id": "H-e6-t09-local-independent-verify",
+        "claim": "distinction Q1 (What is the minimum vertex cover size k for the graph in package/artifacts/graph) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-local-independent-verify-pr02",
+        "topology_id": "H-e6-t09-local-independent-verify",
+        "claim": "distinction Q2 (What is the complete first enumeration (E-A) of ALL vertex covers of minimum siz) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-local-independent-verify-pr03",
+        "topology_id": "H-e6-t09-local-independent-verify",
+        "claim": "distinction Q3 (What does a second complete enumeration of the same space yield when produced wi) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-local-independent-verify-pr04",
+        "topology_id": "H-e6-t09-local-independent-verify",
+        "claim": "distinction Q4 (What is the final merged answer (E-C): the union of both enumerations, with any ) is resolved by node resolve-local",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q4 appears in resolved_distinctions with resolving evidence attributed to resolve-local",
+        "falsification_condition": "Q4 appears in unresolved_distinctions after execution, or its evidence is not attributable to resolve-local",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q4",
+          "node": "resolve-local"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-local-independent-verify-pr05",
+        "topology_id": "H-e6-t09-local-independent-verify",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'resolve-local', 'verify-resolution', 'verify-independent', 'return-result']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "resolve-local",
+            "verify-resolution",
+            "verify-independent",
+            "return-result"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-local-independent-verify-pr06",
+        "topology_id": "H-e6-t09-local-independent-verify",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-local-independent-verify-pr07",
+        "topology_id": "H-e6-t09-local-independent-verify",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-local-independent-verify-pr08",
+        "topology_id": "H-e6-t09-local-independent-verify",
+        "claim": "local evidence is sufficient: resolution and verification complete without any descendant",
+        "observable": "verification record + child launch count",
+        "success_condition": "verification completes with zero child launches",
+        "falsification_condition": "verification is impossible from local evidence, or a distinction requires an isolated source",
+        "weight": 1.0,
+        "kind": "local_sufficiency",
+        "subject": {},
+        "principles": [
+          "P-LOCALITY"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:ebf467e4b9a26d42599ef39483e78e3b955895e6cb7162e694483e9dbf095736"
+  },
+  "H-e6-t09-isolated-child": {
+    "predictions": [
+      {
+        "prediction_id": "H-e6-t09-isolated-child-pr01",
+        "topology_id": "H-e6-t09-isolated-child",
+        "claim": "distinction Q1 (What is the minimum vertex cover size k for the graph in package/artifacts/graph) is resolved by node observe-evidence",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "observe-evidence"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-isolated-child-pr02",
+        "topology_id": "H-e6-t09-isolated-child",
+        "claim": "distinction Q2 (What is the complete first enumeration (E-A) of ALL vertex covers of minimum siz) is resolved by node observe-evidence",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "observe-evidence"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-isolated-child-pr03",
+        "topology_id": "H-e6-t09-isolated-child",
+        "claim": "distinction Q3 (What does a second complete enumeration of the same space yield when produced wi) is resolved by node child-return",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to child-return",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to child-return",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "child-return"
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-isolated-child-pr04",
+        "topology_id": "H-e6-t09-isolated-child",
+        "claim": "distinction Q4 (What is the final merged answer (E-C): the union of both enumerations, with any ) is resolved by node observe-evidence",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q4 appears in resolved_distinctions with resolving evidence attributed to observe-evidence",
+        "falsification_condition": "Q4 appears in unresolved_distinctions after execution, or its evidence is not attributable to observe-evidence",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q4",
+          "node": "observe-evidence"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-isolated-child-pr05",
+        "topology_id": "H-e6-t09-isolated-child",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'propose-child', 'validate-child', 'create-child', 'child-return', 'verify-integration', 'return-result']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "propose-child",
+            "validate-child",
+            "create-child",
+            "child-return",
+            "verify-integration",
+            "return-result"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-isolated-child-pr06",
+        "topology_id": "H-e6-t09-isolated-child",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-isolated-child-pr07",
+        "topology_id": "H-e6-t09-isolated-child",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-isolated-child-pr08",
+        "topology_id": "H-e6-t09-isolated-child",
+        "claim": "the child contributes novel evidence not derivable from parent-local evidence",
+        "observable": "evidence records with duplicate_of_parent flags",
+        "success_condition": "at least one child evidence record with duplicate_of_parent=false, attributed to the child",
+        "falsification_condition": "every child evidence record duplicates parent evidence",
+        "weight": 1.0,
+        "kind": "novel_evidence",
+        "subject": {
+          "distinction_ids": [
+            "Q3"
+          ]
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-isolated-child-pr09",
+        "topology_id": "H-e6-t09-isolated-child",
+        "claim": "the realized child is fresh and attenuated",
+        "observable": "launch provenance + attenuation results",
+        "success_condition": "freshness PASS and attenuation PASS for the realized child",
+        "falsification_condition": "FRESHNESS_FAIL or ATTENUATION_FAIL on the realized child",
+        "weight": 1.0,
+        "kind": "verification_effect",
+        "subject": {
+          "checks": [
+            "freshness",
+            "attenuation"
+          ]
+        },
+        "principles": [
+          "P-FRESHNESS",
+          "P-ATTENUATION"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:a985b5750b1dc8a90bf6429c83cc0655fb24a00a7a9276251c01ed675082f0d1"
+  },
+  "H-e6-t09-branching": {
+    "predictions": [
+      {
+        "prediction_id": "H-e6-t09-branching-pr01",
+        "topology_id": "H-e6-t09-branching",
+        "claim": "distinction Q1 (What is the minimum vertex cover size k for the graph in package/artifacts/graph) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q1 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q1 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q1",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-branching-pr02",
+        "topology_id": "H-e6-t09-branching",
+        "claim": "distinction Q2 (What is the complete first enumeration (E-A) of ALL vertex covers of minimum siz) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q2 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q2 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q2",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-branching-pr03",
+        "topology_id": "H-e6-t09-branching",
+        "claim": "distinction Q3 (What does a second complete enumeration of the same space yield when produced wi) is resolved by node child-return",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q3 appears in resolved_distinctions with resolving evidence attributed to child-return",
+        "falsification_condition": "Q3 appears in unresolved_distinctions after execution, or its evidence is not attributable to child-return",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q3",
+          "node": "child-return"
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-branching-pr04",
+        "topology_id": "H-e6-t09-branching",
+        "claim": "distinction Q4 (What is the final merged answer (E-C): the union of both enumerations, with any ) is resolved by node local-resolve",
+        "observable": "post-execution resolved/unresolved distinction record and evidence provenance",
+        "success_condition": "Q4 appears in resolved_distinctions with resolving evidence attributed to local-resolve",
+        "falsification_condition": "Q4 appears in unresolved_distinctions after execution, or its evidence is not attributable to local-resolve",
+        "weight": 1.0,
+        "kind": "resolves",
+        "subject": {
+          "distinction_id": "Q4",
+          "node": "local-resolve"
+        },
+        "principles": [
+          "P-LOCALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-branching-pr05",
+        "topology_id": "H-e6-t09-branching",
+        "claim": "runtime realizes the declared causal order",
+        "observable": "execution ledger completes_node sequence",
+        "success_condition": "node completion order equals a legal linearization of ['observe-evidence', 'decide-topology', 'local-resolve', 'propose-child', 'validate-child', 'create-child', 'child-return', 'integrate-evidence', 'verify-child-result', 'verify-local']",
+        "falsification_condition": "any completion outside the compiled LTS (REFINEMENT_VIOLATION) or a node absent from the realized branch",
+        "weight": 1.0,
+        "kind": "runtime_path",
+        "subject": {
+          "expected_order": [
+            "observe-evidence",
+            "decide-topology",
+            "local-resolve",
+            "propose-child",
+            "validate-child",
+            "create-child",
+            "child-return",
+            "integrate-evidence",
+            "verify-child-result",
+            "verify-local"
+          ]
+        },
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-branching-pr06",
+        "topology_id": "H-e6-t09-branching",
+        "claim": "execution uses at most 2 model calls",
+        "observable": "resource_use.model_calls in the runtime record",
+        "success_condition": "model_calls <= 2",
+        "falsification_condition": "model_calls > 2",
+        "weight": 0.5,
+        "kind": "model_call_budget",
+        "subject": {
+          "max": 2
+        },
+        "principles": [
+          "P-MINIMALITY"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-branching-pr07",
+        "topology_id": "H-e6-t09-branching",
+        "claim": "no actor exceeds its authority envelope",
+        "observable": "formal check results over the execution ledger",
+        "success_condition": "zero authority/refinement/attenuation failures",
+        "falsification_condition": "any authority escalation, non-gate promotion, or attenuation failure",
+        "weight": 1.0,
+        "kind": "authority_envelope",
+        "subject": {},
+        "principles": [
+          "P-AUTHORITY-SEPARATION"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-branching-pr08",
+        "topology_id": "H-e6-t09-branching",
+        "claim": "the child contributes novel evidence not derivable from parent-local evidence",
+        "observable": "evidence records with duplicate_of_parent flags",
+        "success_condition": "at least one child evidence record with duplicate_of_parent=false, attributed to the child",
+        "falsification_condition": "every child evidence record duplicates parent evidence",
+        "weight": 1.0,
+        "kind": "novel_evidence",
+        "subject": {
+          "distinction_ids": [
+            "Q3"
+          ]
+        },
+        "principles": [
+          "P-INDEPENDENCE"
+        ]
+      },
+      {
+        "prediction_id": "H-e6-t09-branching-pr09",
+        "topology_id": "H-e6-t09-branching",
+        "claim": "the realized child is fresh and attenuated",
+        "observable": "launch provenance + attenuation results",
+        "success_condition": "freshness PASS and attenuation PASS for the realized child",
+        "falsification_condition": "FRESHNESS_FAIL or ATTENUATION_FAIL on the realized child",
+        "weight": 1.0,
+        "kind": "verification_effect",
+        "subject": {
+          "checks": [
+            "freshness",
+            "attenuation"
+          ]
+        },
+        "principles": [
+          "P-FRESHNESS",
+          "P-ATTENUATION"
+        ]
+      }
+    ],
+    "predictions_hash": "sha256:3d607d3e35c94a84bccc6ccf16a7a5dd715ebd7771ab84ef64103ae9928ce6da"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "task_id": "e6-t09",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What is the minimum vertex cover size k for the graph in package/artifacts/graph.json?",
+      "why_unresolved": "The package supplies only the raw graph (7 vertices, 9 edges); no cover size has been derived or recorded anywhere in the evidence state.",
+      "required_evidence": "A derivation establishing k: a cover of size k exhibited together with a demonstration (e.g. exhaustive search over subsets, or a lower-bound argument) that no cover of size k-1 exists.",
+      "admissibility_constraints": [
+        "Must be derived from package/artifacts/graph.json as given, covering all nine listed edges.",
+        "The method used must be stated, per the deliverable's 'method' field and E-A's 'with its method stated' condition."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What is the complete first enumeration (E-A) of ALL vertex covers of minimum size k, each reported as a sorted vertex list, with the enumeration method stated?",
+      "why_unresolved": "No enumeration exists yet; completeness is the deliverable, and the raw graph alone does not settle which size-k subsets are covers or whether a candidate list has missed one.",
+      "required_evidence": "One complete candidate enumeration of the minimum-size covers (an exhaustive procedure over the search space, e.g. checking all vertex subsets of size k) with the method recorded alongside the list.",
+      "admissibility_constraints": [
+        "E-A: 'one complete candidate enumeration with its method stated' — the enumeration must be complete over the whole space and its production method must be reported.",
+        "Each cover must be reported as its sorted vertex list, and the item list itself sorted, per the deliverable shape."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": ["Q1"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "What does a second complete enumeration of the same space yield when produced without access to the first enumeration or any of its intermediate work (E-B)?",
+      "why_unresolved": "No causally separated enumeration exists. The worker process that produces E-A cannot supply it: any enumeration it performs after (or while) forming the first one has access to the first enumeration by construction, which E-B's authorship/access condition explicitly forbids.",
+      "required_evidence": "A complete enumeration of the minimum-size vertex covers produced by a process whose inputs include the graph but exclude the first enumeration, its intermediate work, and the worker's conclusions — i.e. a separately launched, causally isolated process seeded only with package/artifacts/graph.json and the task statement.",
+      "admissibility_constraints": [
+        "E-B: 'produced without access to the first enumeration or any of its intermediate work' — the producing process must be causally separated from the E-A author's reasoning and outputs.",
+        "The isolated process may (and must) see the raw graph; the exclusion applies to the first enumeration and its intermediate work, not to the package artifact itself.",
+        "The second enumeration must cover the same space (all minimum-size covers) to be usable for E-C's mutual-support condition."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "What is the final merged answer (E-C): the union of both enumerations, with any item found by only one enumeration flagged, and is the completeness claim admissible?",
+      "why_unresolved": "The merge cannot exist before both enumerations exist, and the completeness claim is admissible only when supported by both; with zero or one enumeration in hand the claim is unsupported and 'complete' can at best be PENDING-INTEGRATION.",
+      "required_evidence": "A deterministic merge of the E-A and E-B enumerations: the union as sorted lists, per-item flags for anything found by only one side, and a completeness verdict set true only if both independent enumerations support it.",
+      "admissibility_constraints": [
+        "E-C: 'the completeness claim is admissible only when supported by both enumerations' — the claim inherits E-B's admissibility; if the second enumeration is not causally independent, the completeness claim fails regardless of correctness.",
+        "Any item found by only one enumeration must be flagged in the merged answer.",
+        "Deliverable shape: result.json with items (all covers, sorted), method, and complete as boolean or PENDING-INTEGRATION."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q2", "Q3"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

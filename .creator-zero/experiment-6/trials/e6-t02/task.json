@@ -1,0 +1,21 @@
+{
+  "task_id": "e6-t02",
+  "task": "Compute the order-book aggregates specified in the deliverable from artifacts/orders.csv. An order's value is qty times unit_price. Monetary amounts are exact decimals rounded to 2 places, half away from zero. The median of an even count is the mean of the two middle values. The top product is the one with the largest total qty; break ties by lexicographically smallest product name.",
+  "deliverable": {
+    "file": "result.json",
+    "shape": {
+      "total_revenue": "number",
+      "revenue_by_region": "{region: number}",
+      "top_product_by_qty": "string",
+      "median_order_value": "number"
+    }
+  },
+  "evidence_requirements": [
+    "E-A: the per-region revenue aggregation and the overall total, exact to the cent",
+    "E-B: the median order value under the stated convention",
+    "E-C: the top product under the stated tie-break"
+  ],
+  "available_artifacts": [
+    "package/artifacts/orders.csv"
+  ]
+}

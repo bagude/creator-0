@@ -1,0 +1,213 @@
+{
+  "task_id": "e6-t11",
+  "applicable": [
+    {
+      "principle_id": "P-ATTENUATION",
+      "distinction_ids": [],
+      "structural_preconditions": [
+        "creates_child"
+      ],
+      "predicted_topology_effects": [
+        "child contract passes check_attenuation against its parent"
+      ]
+    },
+    {
+      "principle_id": "P-AUTHORITY-SEPARATION",
+      "distinction_ids": [
+        "Q1",
+        "Q2",
+        "Q3"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "promote transitions exist only for the gate actor",
+        "act nodes write candidate state only"
+      ]
+    },
+    {
+      "principle_id": "P-FRESHNESS",
+      "distinction_ids": [],
+      "structural_preconditions": [
+        "creates_child"
+      ],
+      "predicted_topology_effects": [
+        "child creation routes through the deterministic fresh launcher",
+        "launch provenance persists sanitization and identity evidence"
+      ]
+    },
+    {
+      "principle_id": "P-INDEPENDENCE",
+      "distinction_ids": [
+        "Q3"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "adds an isolated fresh child (or independent verifier) node",
+        "child evidence is novel, not a duplicate of parent evidence",
+        "child resolves the assigned distinctions"
+      ]
+    },
+    {
+      "principle_id": "P-LOCALITY",
+      "distinction_ids": [
+        "Q1",
+        "Q2"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "no child creation",
+        "local resolve/verify chain resolves all distinctions",
+        "a counterfactual forced child would duplicate parent evidence"
+      ]
+    },
+    {
+      "principle_id": "P-MINIMALITY",
+      "distinction_ids": [
+        "Q1",
+        "Q2",
+        "Q3"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "candidate ranking penalizes node count and redundancy",
+        "no recursion added merely to demonstrate recursion"
+      ]
+    },
+    {
+      "principle_id": "P-PROPOSAL-OBSERVABILITY",
+      "distinction_ids": [],
+      "structural_preconditions": [
+        "creates_child",
+        "mutation"
+      ],
+      "predicted_topology_effects": [
+        "a hypothesize/propose node precedes every create or act node"
+      ]
+    },
+    {
+      "principle_id": "P-STATE-MEDIATED-CONTINUITY",
+      "distinction_ids": [
+        "Q3"
+      ],
+      "structural_preconditions": [],
+      "predicted_topology_effects": [
+        "persist/reconstruct transitions around session boundaries",
+        "continuation trace weakly bisimilar to in-process trace"
+      ]
+    },
+    {
+      "principle_id": "P-VERIFY",
+      "distinction_ids": [],
+      "structural_preconditions": [
+        "mutation"
+      ],
+      "predicted_topology_effects": [
+        "verify node downstream of every act node",
+        "verification can observe the candidate artifact"
+      ]
+    }
+  ],
+  "inapplicable_principles": [],
+  "theory_version": 1,
+  "sources": {
+    "P-ATTENUATION": "deterministic",
+    "P-AUTHORITY-SEPARATION": "deterministic",
+    "P-FRESHNESS": "deterministic",
+    "P-INDEPENDENCE": "deterministic",
+    "P-LOCALITY": "deterministic",
+    "P-MINIMALITY": "deterministic",
+    "P-PROPOSAL-OBSERVABILITY": "deterministic",
+    "P-STATE-MEDIATED-CONTINUITY": "deterministic",
+    "P-VERIFY": "deterministic"
+  },
+  "ordered_applicability": [
+    {
+      "principle_id": "P-LOCALITY",
+      "feature_matched_distinctions": [
+        "Q1",
+        "Q2"
+      ],
+      "feature_match_count": 2,
+      "structural_preconditions": [],
+      "always": false,
+      "rank": 1
+    },
+    {
+      "principle_id": "P-INDEPENDENCE",
+      "feature_matched_distinctions": [
+        "Q3"
+      ],
+      "feature_match_count": 1,
+      "structural_preconditions": [],
+      "always": false,
+      "rank": 2
+    },
+    {
+      "principle_id": "P-STATE-MEDIATED-CONTINUITY",
+      "feature_matched_distinctions": [
+        "Q3"
+      ],
+      "feature_match_count": 1,
+      "structural_preconditions": [],
+      "always": false,
+      "rank": 3
+    },
+    {
+      "principle_id": "P-ATTENUATION",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [
+        "topology:creates_child"
+      ],
+      "always": false,
+      "rank": 4
+    },
+    {
+      "principle_id": "P-AUTHORITY-SEPARATION",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [],
+      "always": true,
+      "rank": 5
+    },
+    {
+      "principle_id": "P-FRESHNESS",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [
+        "topology:creates_child"
+      ],
+      "always": false,
+      "rank": 6
+    },
+    {
+      "principle_id": "P-MINIMALITY",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [],
+      "always": true,
+      "rank": 7
+    },
+    {
+      "principle_id": "P-PROPOSAL-OBSERVABILITY",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [
+        "topology:creates_child",
+        "topology:mutation"
+      ],
+      "always": false,
+      "rank": 8
+    },
+    {
+      "principle_id": "P-VERIFY",
+      "feature_matched_distinctions": [],
+      "feature_match_count": 0,
+      "structural_preconditions": [
+        "topology:mutation"
+      ],
+      "always": false,
+      "rank": 9
+    }
+  ]
+}

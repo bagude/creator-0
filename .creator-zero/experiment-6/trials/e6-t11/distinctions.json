@@ -1,0 +1,65 @@
+{
+  "task_id": "e6-t11",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What is the partition of the domain (ISO dates in 2023-2025, n in [0,60]) into input classes on which the truth of the claim could turn — i.e., which calendar behaviors must add_days reproduce (each month-length table entry actually exercised, February in the leap year 2024 vs. non-leap 2023/2025, month rollover at each month boundary, year rollover Dec 31 -> Jan 1, the n=0 identity case, and multi-month spans up to n=60)?",
+      "why_unresolved": "The package contains only the implementation source and the claim; no analysis artifact identifying the truth-relevant input classes exists yet, and the claim's quantifier ranges over roughly 67,000 (date, n) pairs that cannot be assessed without a class decomposition.",
+      "required_evidence": "A written analysis enumerating the input classes, showing that together they exercise every month-length constant, the leap-year branch for 2024, every month-boundary rollover reachable within n <= 60, and the year-boundary rollover within the 2023-2025 domain.",
+      "admissibility_constraints": [
+        "Per E-A the analysis must identify the classes on which the claim's truth could turn, not merely sample inputs.",
+        "The analysis must be recorded as an inspectable artifact so the deterministic root check can confirm coverage of the domain's structural cases.",
+        "No authorship or access restriction applies to E-A; any party with the package may produce it."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "Over the stated domain, does add_days(d, n) equal the true Gregorian date n days after d for every input (HOLDS), or does some concrete input (d, n) in the domain witness a mismatch (VIOLATED), and if so which one?",
+      "why_unresolved": "The claim is asserted, not established: no comparison of add_days output against the true Gregorian calendar has been performed, and no verdict or witness input exists in the package.",
+      "required_evidence": "A verdict grounded in comparison against the true Gregorian calendar over the identified input classes; on VIOLATED, one concrete pair [\"YYYY-MM-DD\", n] inside the domain whose add_days output mechanically differs from the true date n days later.",
+      "admissibility_constraints": [
+        "Per E-C the verdict must come with a concrete violating input on VIOLATED, and the violation must be mechanical: re-running add_days on the cited input and comparing with an independent Gregorian reference must exhibit the mismatch under deterministic root verification.",
+        "The cited input must lie inside the stated domain (date in 2023-2025, 0 <= n <= 60).",
+        "No authorship restriction applies to E-C; the worker that read the package may produce it."
+      ],
+      "dependencies": ["Q1"],
+      "evidence_requirement_refs": ["E-C"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "Has a systematic search for a violating input over the domain been carried out by a party other than the author of the provisional answer (or has such a party argued that no violating input exists in the domain)?",
+      "why_unresolved": "No second party has examined the package: the only search that could exist so far would be authored by the same process that formed the provisional verdict, which the task's E-B admissibility condition explicitly excludes.",
+      "required_evidence": "A record of a systematic search over the input classes (or a no-violation argument covering the domain), produced by a separately launched process that is not the author of the provisional answer, integrated into the deliverable's evidence.",
+      "admissibility_constraints": [
+        "Per E-B the search or no-violation argument must be 'carried out by a party other than the author of the provisional answer'; a self-audit by the worker that formed the provisional verdict is inadmissible regardless of its quality.",
+        "The search must be systematic over the domain (structured by the input classes), not a spot check.",
+        "The other party's output must be attributable to a distinct process origin so the authorship separation is verifiable."
+      ],
+      "dependencies": ["Q1", "Q2"],
+      "evidence_requirement_refs": ["E-B"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": false,
+        "spans_sessions": true
+      }
+    }
+  ]
+}
