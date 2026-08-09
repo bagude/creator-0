@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t07",
+  "estimates": {
+    "local": {
+      "delta_e": 0.3,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "A lone worker that has read the package satisfies E-A admissibly but is permanently disqualified from E-B (it has accessed render.py), so no admissible comparison exists and E-C's verdict cannot follow; roughly one of three requirements (one of four distinctions) is met. Its evidence is all first-derivation, so nothing duplicates prior worker-local evidence."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.3,
+      "redundancy": 0.55,
+      "governance_risk": 0.0,
+      "rationale": "The examiner reads the package and the worker's answer, so it is just as disqualified from E-B authorship as the worker; admissible coverage stays at the local level. Its records mostly re-derive the E-A analysis the worker already fully established, so a majority of added records are duplicates."
+    },
+    "isolated-child": {
+      "delta_e": 0.9,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "The worker can hand the isolated child render.md alone, satisfying E-B's never-accessed-render.py authorship condition exactly; with the child's render(p) file, root integration yields the mechanical comparison and the E-C verdict, and the worker supplies E-A. The child's implementation is required for admissibility, so its records are novel; residual shortfall covers launch/integration failure, not child quality (even a buggy clean-room implementation yields an admissible comparison)."
+    },
+    "branching": {
+      "delta_e": 0.85,
+      "redundancy": 0.08,
+      "governance_risk": 0.0,
+      "rationale": "The contamination structure is explicit in the task text, so a run-time worker should choose the isolated-child branch and match its value; a small discount reflects the chance it wrongly realizes the local branch and forfeits E-B, at unchanged isolated-child cost."
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t16",
+  "estimates": {
+    "local": {
+      "delta_e": 0.62,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "A single worker resolves Q1 admissibly (the space is small: dependency-closed subsets of a 6-module DAG) but cannot satisfy E-B — any second enumeration it produces has access to the first and its intermediate work — so Q2 and the E-C completeness claim fail admissibility (1/3 distinctions). Its single-path records are nearly all novel, so delta_e ≈ 0.5*0.33 + 0.5*0.9; redundancy stays low because an honest worker will not re-derive its own answer."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.45,
+      "redundancy": 0.45,
+      "governance_risk": 0.0,
+      "rationale": "The examiner sees the worker's answer, so its re-derivation violates E-B's no-access condition: still only Q1 resolved admissibly (1/3). Roughly half the evidence records are the examiner's confirming re-check of an answer the worker fully established — duplicates by definition — so redundancy is high and the novelty term drops (delta_e ≈ 0.5*0.33 + 0.5*0.55)."
+    },
+    "isolated-child": {
+      "delta_e": 0.93,
+      "redundancy": 0.07,
+      "governance_risk": 0.0,
+      "rationale": "The worker gives the isolated child modules.json but withholds its own enumeration and working, exactly matching E-B's admissibility condition; the deterministic root merge then licenses E-C. All three distinctions resolve admissibly and the child's records are REQUIRED for admissibility, hence novel (redundancy near 0); the small discount covers the chance the child's enumeration is incomplete on this easy space."
+    },
+    "branching": {
+      "delta_e": 0.88,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "The correct run-time choice is clearly the isolated-child branch (E-B is unsatisfiable locally), so the expected outcome tracks isolated-child, discounted for the residual chance the deferred chooser realizes the local branch and forfeits Q2/Q3; costed at the isolated-child rate it strictly trails committing to isolated-child up front."
+    }
+  }
+}

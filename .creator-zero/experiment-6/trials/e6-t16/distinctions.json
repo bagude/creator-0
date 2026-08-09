@@ -1,0 +1,65 @@
+{
+  "task_id": "e6-t16",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "What is the complete set of valid foundation/application splits of the modules in package/artifacts/modules.json — every assignment of all six modules to non-empty layer1/layer2 such that no layer1 module depends (per the dependency list) on a layer2 module — together with the method that produced it?",
+      "why_unresolved": "The package supplies only the module list and dependency edges; no enumeration of valid splits exists anywhere in the evidence state, and completeness of any enumeration is exactly what the task demands.",
+      "required_evidence": "A first complete candidate enumeration: an explicit list of all valid {layer1, layer2} splits (sorted module lists, sorted items) plus a stated method (e.g. systematic enumeration of dependency-closed subsets of the DAG), derived from modules.json.",
+      "admissibility_constraints": [
+        "Must cover the full space: 'Completeness is the deliverable: a missed item is a wrong answer.'",
+        "Every split must assign each module to exactly one layer, both layers non-empty, and satisfy 'no module in layer1 depends on a module in layer2' where {from: a, to: b} means a depends on b.",
+        "Per E-A, the enumeration must be accompanied by its method."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-A"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What does a second complete enumeration of the same split space contain, when produced by a process that has no access to the first enumeration or to any of its intermediate work?",
+      "why_unresolved": "No such independently originated enumeration exists yet, and by E-B's authorship/access condition it cannot be supplied by the process that produced (or has seen) the first enumeration.",
+      "required_evidence": "A complete enumeration of all valid splits produced from modules.json alone by a causally separated process whose inputs demonstrably exclude the first enumeration and all of its intermediate work.",
+      "admissibility_constraints": [
+        "Per E-B, the second enumeration must be 'produced without access to the first enumeration or any of its intermediate work'.",
+        "The producing process may (and must) see the raw task space — modules.json — but nothing derived from the first enumeration path.",
+        "It must be a complete enumeration of the same space, not a spot-check of the first answer."
+      ],
+      "dependencies": [],
+      "evidence_requirement_refs": ["E-B"],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "What is the final merged answer — the union of both enumerations with every item found by only one of them flagged — and is the completeness claim supported by both enumerations?",
+      "why_unresolved": "The merge cannot exist until both enumerations exist; per E-C the completeness claim is admissible only when supported by both, so no completeness verdict is currently possible.",
+      "required_evidence": "A merged result.json listing the union of the two enumerations (sorted), with any single-source item flagged, and a complete field justified by agreement of both enumerations (or PENDING-INTEGRATION / false otherwise).",
+      "admissibility_constraints": [
+        "Per E-C, 'the completeness claim is admissible only when supported by both enumerations'.",
+        "Items found by only one enumeration must be flagged in the merged answer.",
+        "The merge presupposes that the second enumeration satisfies E-B's independence condition; a merge over two same-origin enumerations does not license the completeness claim."
+      ],
+      "dependencies": ["Q1", "Q2"],
+      "evidence_requirement_refs": ["E-C"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

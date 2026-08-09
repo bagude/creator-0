@@ -1,0 +1,85 @@
+{
+  "task_id": "e6-t07",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "For each behavior exercised by the ten probes in probes.json, does render.md determine the output, and where it does, does that determination agree with render.py (e.g. non-placeholder brace forms like '{{ name }}', '{{}}', '{{num1}}'; missing names replaced by empty string; single-pass non-rescanning of inserted values)?",
+      "why_unresolved": "No per-probe semantic analysis of render.md against render.py exists in the package; the spec's determinations (and any silences) on the probe set have not been enumerated, and E-A demands either the full list of undetermined/divergent behaviors or an explicit argument that none exists.",
+      "required_evidence": "A written per-probe (or per-behavior-class) analysis mapping each probe to the behavior render.md prescribes, flagging every probe behavior render.md leaves undetermined or determines differently from render.py, or an explicit argument that no such behavior exists on this probe set.",
+      "admissibility_constraints": [
+        "Must cover every behavior exercised by the probe set ('every behavior on the probe set'), not a sample.",
+        "If claiming no undetermined/divergent behavior exists, an explicit argument is required, not a bare assertion.",
+        "No authorship restriction: this analysis may consult render.py, render.md, and probes.json freely."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What implementation does an author working solely from render.md produce — concretely, a python file exposing render(p) written by an author who has never accessed render.py nor any analysis derived from it?",
+      "why_unresolved": "No such implementation exists in the package, and no process that has read the package can author it: E-B's authorship condition (never accessed render.py nor derived analysis) is violated by having observed the package itself.",
+      "required_evidence": "A python file exposing render(p), authored solely from render.md, together with provenance showing its author's inputs excluded render.py and all analysis derived from it.",
+      "admissibility_constraints": [
+        "Authored solely from render.md (E-B).",
+        "Author must have never accessed render.py nor any analysis derived from it (E-B); a process that has read this package is disqualified.",
+        "Must be a python file exposing render(p) so the downstream comparison is mechanically reproducible."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "On which probe indices of probes.json, if any, does the clean-room implementation's output differ from render.py's output, under an item-level mechanical comparison?",
+      "why_unresolved": "The comparison cannot exist before the clean-room implementation of Q2 exists; no comparison record is in the package.",
+      "required_evidence": "An item-level comparison record over all ten probes pairing render.py's output with the clean-room implementation's output per probe, yielding the sorted list of divergent probe indices (possibly empty).",
+      "admissibility_constraints": [
+        "The compared implementation must be the Q2 clean-room artifact; comparing against a worker-authored implementation is inadmissible under E-B.",
+        "Comparison must be item-level over probes.json and mechanically reproducible from the two python files.",
+        "The comparison itself carries no authorship restriction and may be performed by any process or by deterministic root integration."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": ["Q2"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "What verdict (REPRODUCES, DIVERGES, or PENDING-INTEGRATION) does the conjunction of the E-A behavior statement and the E-B comparison entail for result.json?",
+      "why_unresolved": "The verdict is defined as a function of Q1 and Q3 (DIVERGES iff the comparison shows a differing output on some probe), and neither input is settled yet.",
+      "required_evidence": "A result.json whose verdict is derived from the Q1 statement and the Q3 comparison by the E-C rule, with undetermined_behaviors carried from Q1 and divergent_probe_indices carried from Q3 (or PENDING-INTEGRATION where the comparison has not yet been integrated).",
+      "admissibility_constraints": [
+        "Verdict must follow from E-A and E-B together (E-C): DIVERGES iff the comparison shows a differing output on some probe.",
+        "divergent_probe_indices must be sorted or explicitly PENDING-INTEGRATION.",
+        "A verdict asserted without an admissible E-B comparison behind it does not satisfy E-C."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1", "Q3"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}
