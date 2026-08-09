@@ -20,6 +20,19 @@ Authority partition of the alphabet (see SEMANTICS.md):
     and only when the contract does not deny gate promotion;
   - complete exists only when every node has completed;
   - tau is permitted everywhere as a silent self-loop.
+
+Branching semantics (topology-theory v0.1 repair of the Experiment 5
+limitation): nodes may carry an optional `branch` annotation. Nodes without
+a branch are shared; nodes with one belong to that mutually exclusive
+branch. The compiler then
+  - prunes configurations whose completed set touches more than one branch
+    (branch exclusivity is encoded in the state space, not merely guarded at
+    runtime), and
+  - enables `complete` when every shared node and every node of ONE branch
+    has completed — so both legal branches reach `complete` and
+    require_completion=True is checkable on branching trials.
+Specs without branch annotations compile exactly as before (complete iff
+all nodes done).
 """
 from __future__ import annotations
 from itertools import combinations
@@ -107,6 +120,25 @@ def compile_harness_spec(spec: dict[str, Any], contract: dict[str, Any]) -> LTS:
     allow_promote = (bool(act_nodes) and bool(verify_nodes)
                      and _contract_allows_gate_promotion(contract))
 
+    # optional branch annotations: shared nodes have none; branch nodes are
+    # mutually exclusive per configuration (see module docstring)
+    branch_of = {nid: str(n.get("branch", "") or "") for nid, n in nodes.items()}
+    branch_nodes: dict[str, frozenset[str]] = {}
+    for nid, b in branch_of.items():
+        if b:
+            branch_nodes[b] = branch_nodes.get(b, frozenset()) | {nid}
+    shared_nodes = frozenset(nid for nid, b in branch_of.items() if not b)
+
+    def branches_touched(done: frozenset[str]) -> set[str]:
+        return {branch_of[nid] for nid in done if branch_of[nid]}
+
+    def is_complete_config(done: frozenset[str]) -> bool:
+        if not branch_nodes:
+            return len(done) == len(nodes)
+        if not shared_nodes <= done:
+            return False
+        return any(bn <= done for bn in branch_nodes.values())
+
     node_ids = sorted(nodes)
     transitions: set[Transition] = set()
     states: set[str] = set()
@@ -126,6 +158,9 @@ def compile_harness_spec(spec: dict[str, Any], contract: dict[str, Any]) -> LTS:
             # only configurations closed under dependencies are reachable
             if any(not deps[nid] <= done for nid in done):
                 continue
+            # branch exclusivity: a configuration may touch at most one branch
+            if len(branches_touched(done)) > 1:
+                continue
             for promoted in ((False, True) if allow_promote else (False,)):
                 if promoted and not (verify_nodes & done):
                     continue
@@ -136,6 +171,10 @@ def compile_harness_spec(spec: dict[str, Any], contract: dict[str, Any]) -> LTS:
                 # node execution moves
                 for nid in node_ids:
                     if nid in done or not deps[nid] <= done:
+                        continue
+                    # cross-branch execution is illegal by construction
+                    if branch_of[nid] and (branches_touched(done)
+                                           - {branch_of[nid]}):
                         continue
                     tgt = state_id(done | {nid}, promoted, False)
                     transitions.add(Transition(
@@ -152,8 +191,9 @@ def compile_harness_spec(spec: dict[str, Any], contract: dict[str, Any]) -> LTS:
                         sid, Label.PROMOTE.value,
                         state_id(done, True, False), GATE_ACTOR))
 
-                # completion
-                if len(done) == len(node_ids):
+                # completion: all nodes for linear specs; shared + one full
+                # branch for branching specs
+                if is_complete_config(done):
                     fin = state_id(done, promoted, True)
                     states.add(fin)
                     transitions.add(Transition(sid, Label.COMPLETE.value, fin, ANY_ACTOR))
@@ -172,4 +212,6 @@ def compile_harness_spec(spec: dict[str, Any], contract: dict[str, Any]) -> LTS:
             "act_nodes": sorted(act_nodes),
             "allow_create": allow_create,
             "allow_promote": allow_promote,
+            "shared_nodes": sorted(shared_nodes) if branch_nodes else node_ids,
+            "branches": {b: sorted(ns) for b, ns in sorted(branch_nodes.items())},
         })

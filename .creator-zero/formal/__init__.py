@@ -17,6 +17,7 @@ from .refinement import check_refinement
 from .bisimulation import strong_bisimilar, weak_bisimilar
 from .attenuation import check_attenuation
 from .creator_closure import check_creator_closure
+from .freshness import check_freshness
 from .synthesis_fixedpoint import classify_synthesis
 from .serialization import lts_to_json, lts_from_json, result_to_json
 
@@ -26,7 +27,8 @@ __all__ = [
     "compile_harness_spec", "SemanticsError",
     "parse_runtime_ledger", "TraceParseError",
     "check_refinement", "strong_bisimilar", "weak_bisimilar",
-    "check_attenuation", "check_creator_closure", "classify_synthesis",
+    "check_attenuation", "check_creator_closure", "check_freshness",
+    "classify_synthesis",
     "lts_to_json", "lts_from_json", "result_to_json",
 ]
 

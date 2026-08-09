@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "child_contract": {
+      "type": "object"
+    },
+    "falsifiers": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "harness_spec": {
+      "type": "object"
+    },
+    "harness_spec_ref": {
+      "type": "string"
+    },
+    "predicted_value": {
+      "type": "object"
+    },
+    "predictions": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "predictions_hash": {
+      "type": "string"
+    },
+    "principles_invoked": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "resolution_map": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "CANDIDATE",
+        "VALIDATED",
+        "REJECTED",
+        "EXECUTED",
+        "EVALUATED"
+      ]
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "topology_id": {
+      "type": "string"
+    },
+    "unresolved_distinctions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "topology_id",
+    "task_id",
+    "status"
+  ],
+  "title": "TopologyHypothesis",
+  "type": "object"
+}

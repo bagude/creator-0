@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "effect": {
+      "enum": [
+        "SUPPORT",
+        "CHALLENGE",
+        "FALSIFY"
+      ]
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "evidence_refs": {
+      "type": "array"
+    },
+    "prediction_id": {
+      "type": "string"
+    },
+    "principle_id": {
+      "type": "string"
+    },
+    "topology_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "principle_id",
+    "topology_id",
+    "prediction_id",
+    "effect"
+  ],
+  "title": "PrincipleEvidence (append-only)",
+  "type": "object"
+}

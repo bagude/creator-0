@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "claim": {
+      "type": "string"
+    },
+    "falsification_condition": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "observable": {
+      "type": "string"
+    },
+    "prediction_id": {
+      "type": "string"
+    },
+    "principles": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "subject": {
+      "type": "object"
+    },
+    "success_condition": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "topology_id": {
+      "type": "string"
+    },
+    "weight": {
+      "minimum": 0,
+      "type": "number"
+    }
+  },
+  "required": [
+    "prediction_id",
+    "topology_id",
+    "claim",
+    "observable",
+    "success_condition",
+    "falsification_condition"
+  ],
+  "title": "Prediction",
+  "type": "object"
+}

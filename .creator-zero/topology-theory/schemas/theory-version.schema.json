@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "evidence_log_length": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "predecessor_hash": {
+      "type": "string"
+    },
+    "principles": {
+      "items": {
+        "$ref": "principle.schema.json"
+      },
+      "type": "array"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "revision_graph": {
+      "items": {
+        "$ref": "revision.schema.json"
+      },
+      "type": "array"
+    },
+    "status": {
+      "enum": [
+        "CANDIDATE",
+        "PROMOTED"
+      ]
+    },
+    "version": {
+      "minimum": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "version",
+    "principles",
+    "status"
+  ],
+  "title": "TheoryVersion Theta_H",
+  "type": "object"
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "contradicting_evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "id": {
+      "pattern": "^P-",
+      "type": "string"
+    },
+    "parent_principles": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "preconditions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "predicted_topology_effects": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "scope": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "statement": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "CANDIDATE",
+        "SUPPORTED",
+        "CHALLENGED",
+        "FALSIFIED",
+        "REVISED",
+        "PROMOTED",
+        "RETIRED"
+      ]
+    },
+    "supporting_evidence": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "version": {
+      "minimum": 1,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "id",
+    "statement",
+    "status",
+    "version"
+  ],
+  "title": "Principle",
+  "type": "object"
+}

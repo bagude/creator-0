@@ -193,6 +193,162 @@ def cmd_synthesis_status(a):
     print(res.detail["classification"])
     return code
 
+# ---------------------------------------------------------------------------
+# Topology Theory v0.1 commands. The package directory is hyphenated
+# (topology-theory/) so it is loaded via importlib under the module name
+# `topology_theory`. All outputs are canonical machine-readable JSON.
+
+THEORY_STORE_DIR = ROOT/"state/topology-theory"
+
+def _theory_mod():
+    import importlib.util
+    if "topology_theory" in sys.modules:
+        return sys.modules["topology_theory"]
+    sys.path.insert(0, str(ROOT))
+    pkg_dir = ROOT/"topology-theory"
+    spec = importlib.util.spec_from_file_location(
+        "topology_theory", pkg_dir/"__init__.py",
+        submodule_search_locations=[str(pkg_dir)])
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules["topology_theory"] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+def _emit_json(obj, json_out=None):
+    tt=_theory_mod()
+    text=tt.canonical_dumps(obj)
+    if json_out:
+        Path(json_out).write_text(text); print(json_out)
+    else:
+        print(text, end="")
+
+def _load_theory(tt, a):
+    store=tt.TheoryStore(getattr(a, "store", None) or THEORY_STORE_DIR)
+    if getattr(a, "theory", None):
+        return tt.TheoryVersion.from_dict(load_json(a.theory)), store
+    return store.load(getattr(a, "version", None)), store
+
+def cmd_theory_show(a):
+    tt=_theory_mod()
+    theory, store=_load_theory(tt, a)
+    doc=theory.to_dict()
+    doc["_hash"]=tt.principles.theory_hash(theory) if hasattr(tt, "principles") else ""
+    _emit_json(doc, a.json_out)
+    return 0
+
+def cmd_theory_abduce(a):
+    tt=_theory_mod()
+    theory,_=_load_theory(tt, a)
+    model_app=load_json(a.model_applicability) if a.model_applicability else None
+    res=tt.abduce(load_json(a.task), load_json(a.distinctions),
+                  contract=load_json(a.contract), theory=theory,
+                  model_applicability=model_app)
+    _emit_json(res.to_dict(), a.json_out)
+    return 0
+
+def cmd_topology_generate(a):
+    tt=_theory_mod()
+    theory,_=_load_theory(tt, a)
+    task=load_json(a.task); distinctions=load_json(a.distinctions)
+    contract=load_json(a.contract)
+    app=tt.abduce(task, distinctions, contract=contract, theory=theory)
+    cands=tt.generate_candidates(task, distinctions, app, contract,
+                                 max_candidates=a.max_candidates)
+    _emit_json([c.to_dict() for c in cands], a.json_out)
+    return 0
+
+def cmd_topology_predict(a):
+    tt=_theory_mod()
+    topo=tt.TopologyHypothesis.from_dict(load_json(a.topology))
+    preds=tt.freeze_predictions(topo, load_json(a.distinctions))
+    _emit_json({"topology_id": topo.topology_id,
+                "predictions_hash": topo.predictions_hash,
+                "predictions": [p.to_dict() for p in preds]}, a.json_out)
+    return 0
+
+def cmd_topology_score(a):
+    tt=_theory_mod()
+    contract=load_json(a.contract)
+    docs=load_json(a.candidates)
+    if isinstance(docs, dict): docs=[docs]
+    cfg=tt.load_utility_config(a.config)
+    admissible=[]; rejected=[]
+    for d in docs:
+        topo=tt.TopologyHypothesis.from_dict(d)
+        res=tt.validate_topology(topo, contract)
+        if res.status=="PASS":
+            admissible.append(topo)
+        else:
+            rejected.append({"topology_id": topo.topology_id,
+                             "validation": res.to_dict()})
+    ranking=tt.rank_candidates(admissible, cfg)
+    _emit_json({"config": cfg, "ranking": ranking,
+                "rejected": rejected}, a.json_out)
+    return 0 if admissible else 2
+
+def cmd_topology_evaluate(a):
+    tt=_theory_mod()
+    preds=[tt.Prediction.from_dict(p) for p in load_json(a.predictions)]
+    runtime=load_json(a.runtime)
+    evidence=load_json(a.evidence) if a.evidence else []
+    pv=load_json(a.predicted_value) if a.predicted_value else None
+    ev=tt.evaluate_topology(preds, runtime, evidence, predicted_value=pv)
+    fr=tt.falsify(preds, ev)
+    _emit_json({"evaluation": ev.to_dict(),
+                "falsification": fr.to_dict()}, a.json_out)
+    return 0
+
+def cmd_theory_revise(a):
+    tt=_theory_mod()
+    theory, store=_load_theory(tt, a)
+    events=load_json(a.evidence_events)
+    rev=tt.propose_revision(theory, events)
+    if rev is None:
+        _emit_json({"revision": None,
+                    "note": "evidence motivates no revision"}, a.json_out)
+        return 0
+    _emit_json(rev.to_dict(), a.json_out)
+    return 0
+
+def cmd_theory_replay(a):
+    tt=_theory_mod()
+    if a.candidate_theory:
+        theory=tt.TheoryVersion.from_dict(load_json(a.candidate_theory))
+    else:
+        theory,_=_load_theory(tt, a)
+    corpus=tt.load_replay_corpus(a.corpus) if a.corpus else None
+    res=tt.replay(theory, corpus, repo_root=ROOT)
+    _emit_json(res.to_dict(), a.json_out)
+    return 0 if res.acceptable else 2
+
+def cmd_self_modify(a):
+    tt=_theory_mod()
+    sm=tt.self_modify
+    if a.action=="protected-laws":
+        res=sm.check_protected_laws(load_json(a.input))
+        _emit_json(res, a.json_out)
+        return 0 if res["status"]=="PASS" else 2
+    if a.action=="patch-manifest":
+        res=sm.build_patch_manifest(a.candidate_root, a.base_ref,
+                                    a.head_ref or "HEAD")
+        _emit_json(res, a.json_out)
+        return 0
+    if a.action=="gate":
+        inputs=load_json(a.input)
+        # inputs maps required names -> file paths or inline documents
+        resolved={}
+        for k,v in inputs.items():
+            resolved[k]=load_json(v) if isinstance(v,str) else v
+        res=sm.gate(resolved)
+        _emit_json(res, a.json_out)
+        return 0 if res["status"]=="PASS" else 2
+    if a.action=="authorize-promotion":
+        res=sm.authorize_promotion(load_json(a.input), actor=a.actor)
+        _emit_json(res, a.json_out)
+        return 0
+    print(f"unknown self-modify action: {a.action}", file=sys.stderr)
+    return 4
+
 def main():
     p=argparse.ArgumentParser(); sub=p.add_subparsers(dest="cmd",required=True)
     v=sub.add_parser("validate"); v.add_argument("spec"); v.add_argument("--contract",default=str(DEFAULT_CONTRACT))
@@ -216,14 +372,67 @@ def main():
     ss=sub.add_parser("synthesis-status", help="finite fixed-point synthesis classification")
     ss.add_argument("q_before"); ss.add_argument("q_after"); ss.add_argument("--json-out",default=None)
 
+    def _theory_common(sp):
+        sp.add_argument("--theory",default=None,help="explicit theory JSON file")
+        sp.add_argument("--store",default=None,help="theory store directory")
+        sp.add_argument("--version",type=int,default=None)
+        sp.add_argument("--json-out",default=None)
+
+    ts_=sub.add_parser("theory-show", help="show a stored/explicit theory version")
+    _theory_common(ts_)
+    ta=sub.add_parser("theory-abduce", help="Q -> applicable principles")
+    ta.add_argument("task"); ta.add_argument("distinctions")
+    ta.add_argument("--contract",default=str(DEFAULT_CONTRACT))
+    ta.add_argument("--model-applicability",default=None,
+                    help="serialized model-mediated applicability JSON")
+    _theory_common(ta)
+    tg=sub.add_parser("topology-generate", help="abduce + generate candidate topologies")
+    tg.add_argument("task"); tg.add_argument("distinctions")
+    tg.add_argument("--contract",default=str(DEFAULT_CONTRACT))
+    tg.add_argument("--max-candidates",type=int,default=4)
+    _theory_common(tg)
+    tp=sub.add_parser("topology-predict", help="freeze falsifiable predictions")
+    tp.add_argument("topology"); tp.add_argument("distinctions")
+    tp.add_argument("--json-out",default=None)
+    tsc=sub.add_parser("topology-score", help="validate + deterministically rank candidates")
+    tsc.add_argument("candidates"); tsc.add_argument("--contract",default=str(DEFAULT_CONTRACT))
+    tsc.add_argument("--config",default=None); tsc.add_argument("--json-out",default=None)
+    te=sub.add_parser("topology-evaluate", help="mechanical prediction comparison + falsification")
+    te.add_argument("predictions"); te.add_argument("runtime")
+    te.add_argument("--evidence",default=None)
+    te.add_argument("--predicted-value",default=None)
+    te.add_argument("--json-out",default=None)
+    tr=sub.add_parser("theory-revise", help="propose (never promote) a revision")
+    tr.add_argument("evidence_events")
+    _theory_common(tr)
+    trp=sub.add_parser("theory-replay", help="candidate theory vs frozen corpus")
+    trp.add_argument("--candidate-theory",default=None)
+    trp.add_argument("--corpus",default=None)
+    _theory_common(trp)
+    smp=sub.add_parser("self-modify", help="governed self-modification machinery")
+    smp.add_argument("action",choices=["protected-laws","patch-manifest","gate",
+                                       "authorize-promotion"])
+    smp.add_argument("--input",default=None)
+    smp.add_argument("--candidate-root",default=None)
+    smp.add_argument("--base-ref",default=None)
+    smp.add_argument("--head-ref",default=None)
+    smp.add_argument("--actor",default="gate")
+    smp.add_argument("--json-out",default=None)
+
     a=p.parse_args()
     formal_cmds={"semantics":cmd_semantics,"check-runtime":cmd_check_runtime,"bisim":cmd_bisim,
-                 "attenuation":cmd_attenuation,"closure":cmd_closure,"synthesis-status":cmd_synthesis_status}
+                 "attenuation":cmd_attenuation,"closure":cmd_closure,"synthesis-status":cmd_synthesis_status,
+                 "theory-show":cmd_theory_show,"theory-abduce":cmd_theory_abduce,
+                 "topology-generate":cmd_topology_generate,"topology-predict":cmd_topology_predict,
+                 "topology-score":cmd_topology_score,"topology-evaluate":cmd_topology_evaluate,
+                 "theory-revise":cmd_theory_revise,"theory-replay":cmd_theory_replay,
+                 "self-modify":cmd_self_modify}
     try:
         if a.cmd in formal_cmds:
             try:
                 return formal_cmds[a.cmd](a)
-            except (json.JSONDecodeError, FileNotFoundError, ValueError, KeyError) as e:
+            except (json.JSONDecodeError, FileNotFoundError, ValueError, KeyError,
+                    RuntimeError) as e:
                 print(f"FORMAL_PARSE_ERROR: {e}",file=sys.stderr); return 4
         if a.cmd=="validate":
             validate_spec(load_json(a.spec),load_json(a.contract)); print("VALID")

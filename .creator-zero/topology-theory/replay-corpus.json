@@ -1,0 +1,63 @@
+{
+  "artifact": "topology-theory historical replay corpus v0.1",
+  "note": "Frozen regression cases from Experiments 3-5. Each case pins the exact sha256 of the historical artifacts it relies on; replay is evidence, not universal proof. A candidate theory revision that retires or contradicts a principle required by a case is CONTRADICTED by that case.",
+  "cases": [
+    {
+      "case_id": "E3-independent-verifier",
+      "summary": "Experiment 3: candidate-only mutation with an independent verifier; runtime refined the declared semantics and mutation was verified before any promotion.",
+      "required_active_principles": ["P-VERIFY", "P-AUTHORITY-SEPARATION", "P-PROPOSAL-OBSERVABILITY"],
+      "historical_outcome": "refinement PASS; verify causally after act; no non-gate promotion",
+      "pinned_artifacts": {
+        "experiment-3/final-harness.json": "6a8eec1bb5bc999d57e93c6d2f37c2ee53c2d90f58e940e713f12f9772a73fd0",
+        "experiment-3/execution-ledger.jsonl": "bb561f728cc7e991266c9a33865894cfa528051dd825f4bcce40ceff415f3446"
+      }
+    },
+    {
+      "case_id": "E4-lineage-continuation",
+      "summary": "Experiment 4: attenuated Creator lineage (K0>=K1>=K2) and state-mediated continuation weakly bisimilar to in-process execution.",
+      "required_active_principles": ["P-ATTENUATION", "P-STATE-MEDIATED-CONTINUITY"],
+      "historical_outcome": "attenuation chain PASS; weak bisimulation PASS; strong bisimulation FAIL (process identity distinguished)",
+      "pinned_artifacts": {
+        "experiment-4/root-contract.json": "17bb0c888c1366d2ef49f884743027afec179c6fbed8b67cbf4e701fc1f4f382",
+        "experiment-4/child-1-contract.json": "4a0d935115089ff5d77abdb225f25e1d11ed32a3fdc26dc9aa0bf153c905f90c",
+        "experiment-4/child-2-contract.json": "4f6865fec22eada3eb73ed537ca23a0a1461abdb095501230fc75d7a883d04d9",
+        "experiment-4/c1/execution-ledger.jsonl": "53657a2c59c4efa7e477c1aa751218225f419f5e22fc1e248e022e5eb206edec",
+        "tests/formal/fixtures/e4-c1-inprocess-lts.json": "3ca6ae43222873e91b708e03f96c4d616e1c2b7da11b6783b40f88fcfee53d83",
+        "tests/formal/fixtures/e4-c1-continuation-lts.json": "a861d89bd87c167faf406340ab307f5e481b2ac9bb07c74d0e42936853ea02ad"
+      }
+    },
+    {
+      "case_id": "E4C-freshness-observability",
+      "summary": "Experiment 4C: the freshness incident (inherited session id) and its correction; capability-bearing artifacts must cross observable propose transitions.",
+      "required_active_principles": ["P-FRESHNESS", "P-PROPOSAL-OBSERVABILITY"],
+      "historical_outcome": "fresh relaunch with confirmed new session id; negative controls reproduce FRESHNESS_FAIL and CAPABILITY_OBSERVABILITY_FAIL",
+      "pinned_artifacts": {
+        "experiment-4c/witness-provenance.json": "0b75cf88949525a825dcc624b070a48cb2258bda022c00ec9f333eb29c830b38",
+        "experiment-4c/formal/negative-controls.json": "20dd7c581d7fa3f2947bac9276ab19462f1f5b22786c84dd1e8158a03bf21ea9",
+        "experiment-4c/formal/weak-bisimulation-result.json": "137786bb22eeb93933a7fe0a1d1375555912480c7832aaba5f421edffdcd42ca"
+      }
+    },
+    {
+      "case_id": "E5-local-sufficiency",
+      "summary": "Experiment 5 condition A (t-074) + shadow control A: with locally sufficient evidence the correct decision was DO_NOT_CREATE; the forced child duplicated the local audit byte-for-byte.",
+      "required_active_principles": ["P-LOCALITY", "P-MINIMALITY"],
+      "historical_outcome": "DO_NOT_CREATE verified correct; counterfactual forced CREATE produced duplicate evidence and no verification change",
+      "pinned_artifacts": {
+        "experiment-5/trials/t-074/decision.json": "f7f77ce2c827adba4afc50d1f2f7cb935ecfaad94b6540fe650a44a1b494a928",
+        "experiment-5/trials/t-074/result.json": "3ed63b5ddc27e61d884b0f22a5f6c136361924c1637e31437db03c4e9d361571",
+        "experiment-5/controls/shadow-a/launch-provenance.json": "32ab5c3ed5287d7b5daa5460560a14802b82e43912dccaa702780e1064480513"
+      }
+    },
+    {
+      "case_id": "E5-contamination",
+      "summary": "Experiment 5 condition B (t-031): a clean-room evidence requirement made local evidence structurally insufficient; an isolated fresh child produced novel, verifiable evidence.",
+      "required_active_principles": ["P-INDEPENDENCE", "P-FRESHNESS", "P-ATTENUATION"],
+      "historical_outcome": "CREATE verified correct; child useful under the preregistered predicate; freshness and attenuation PASS",
+      "pinned_artifacts": {
+        "experiment-5/trials/t-031/decision.json": "36611ccc00073203ca5430e5cd52481b79ecbe9d58f48f56b1ff3f677b90aaa5",
+        "experiment-5/trials/t-031/child/launch-provenance.json": "9cb765b6b2c970188b2fa86e71cc5564d773c3dbc72a721b4d5caf489e4cbf05",
+        "experiment-5/aggregate-results.json": "635621885c398b308228dc9bafabb39c5ab65a2f7b928cab663f57a6a60af185"
+      }
+    }
+  ]
+}

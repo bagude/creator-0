@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "candidate_principles": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "changed_predictions": {
+      "type": "array"
+    },
+    "historical_cases_affected": {
+      "type": "array"
+    },
+    "motivating_evidence": {
+      "type": "array"
+    },
+    "parents": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "revision_id": {
+      "type": "string"
+    },
+    "status": {
+      "const": "CANDIDATE"
+    },
+    "type": {
+      "enum": [
+        "ADD",
+        "SPECIALIZE",
+        "GENERALIZE",
+        "MERGE",
+        "SPLIT",
+        "DEPRECATE",
+        "REINSTATE"
+      ]
+    }
+  },
+  "required": [
+    "revision_id",
+    "type",
+    "status"
+  ],
+  "title": "Revision (proposal-only)",
+  "type": "object"
+}

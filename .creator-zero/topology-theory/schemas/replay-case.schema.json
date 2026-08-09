@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "historical_outcome": {
+      "type": "string"
+    },
+    "pinned_artifacts": {
+      "additionalProperties": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      },
+      "minProperties": 1,
+      "type": "object"
+    },
+    "required_active_principles": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "summary": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "case_id",
+    "required_active_principles",
+    "pinned_artifacts"
+  ],
+  "title": "Frozen replay case",
+  "type": "object"
+}
