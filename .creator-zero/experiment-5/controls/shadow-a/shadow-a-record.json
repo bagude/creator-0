@@ -1,0 +1,12 @@
+{
+  "artifact": "CONTROL_ONLY shadow run \u2014 forced CREATE on Condition A trial t-074",
+  "marking": "CONTROL_ONLY; does not alter any primary score",
+  "shadow_session": "a640c2fa-24f1-4328-8fe5-a3d91d18eec4 (fresh, sanitized, launcher-invoked)",
+  "comparison": {
+    "verdict_identical": true,
+    "findings_identical": true,
+    "changed_verified_result": false,
+    "marginal_evidence": "none: the forced child reproduced the primary local audit byte-for-byte on verdict and findings"
+  },
+  "interpretation": "H4 (first half) supported: on a local-sufficient task a descendant duplicates locally derivable evidence and adds no verified value; its cost (1 session) is pure overhead."
+}
