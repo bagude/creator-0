@@ -1,0 +1,65 @@
+{
+  "task_id": "e5-t-031-child",
+  "goal": "Author, strictly from the supplied format specification, a python encoder encode(d: dict) -> str, and independently report any behavior the specification leaves undetermined over the supplied probe inputs. Terminal worker; no delegation.",
+  "contract_ref": "child-contract.json",
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "nodes": [
+    {
+      "id": "observe-inputs",
+      "primitive": "observe",
+      "tools": ["Read"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Read format.md (the specification) and probes.json (the input maps to be encoded). Acquire the specification and the inputs only; decide nothing about correctness yet. These two files are the ONLY inputs; no reference implementation exists in your workspace and none may be assumed.",
+      "why_necessary": "The encoder and the undetermined-behavior report are both functions of the specification text and the probe inputs; that evidence must be acquired as a distinct step first."
+    },
+    {
+      "id": "produce-evidence",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Write clean_impl.py exposing encode(d: dict) -> str that implements exactly and only what format.md states. Where format.md does not fully determine the output for some input the probes exercise (e.g. a rule the text does not give), make one good-faith reading, implement it, and record that behavior verbatim in an undetermined_behaviors list. Do not invent rules to match any imagined reference; implement the spec as written and flag its gaps honestly.",
+      "why_necessary": "This node produces E-B (the mechanically runnable encoder) and the child's independent E-A (behaviors the spec leaves undetermined) from the specification alone."
+    },
+    {
+      "id": "self-check",
+      "primitive": "verify",
+      "tools": ["Read"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Re-read clean_impl.py against format.md: confirm encode(d: dict) -> str exists, that every rule implemented is traceable to a sentence in format.md, and that no undocumented behavior was added beyond the flagged good-faith readings. Record the structural check outcome. Non-authoritative.",
+      "why_necessary": "The child contract requires the verify primitive in any Write-holding topology; a structural self-check before return is the minimal fulfilment."
+    },
+    {
+      "id": "return-result",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "execution_mode": "in_session",
+      "executor": "child",
+      "instructions": "Write child-result.json referencing the encoder file and listing the undetermined behaviors, and finalize the child ledger with a terminating complete event. Return clean_impl.py and child-result.json as the deliverables.",
+      "why_necessary": "The child's evidence must re-enter the boundary through a defined return locus; without it the encoder never becomes available for integration."
+    }
+  ],
+  "edges": [
+    {"source": "observe-inputs", "target": "produce-evidence", "relation": "observe", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "produce-evidence", "target": "self-check", "relation": "verify", "requires_response": true, "response_changes_parent_state": false, "transfers_authority": false},
+    {"source": "self-check", "target": "return-result", "relation": "authorize", "requires_response": false, "response_changes_parent_state": false, "transfers_authority": false}
+  ],
+  "ledger_contract": {
+    "path": "child-ledger.jsonl (child workspace root)",
+    "schema": "normalized formal event schema: one JSON object per line with event_id, label, actor, timestamp, artifact_refs, metadata; node executions carry metadata.completes_node; closed kernel alphabet with metadata.event_kind refinements",
+    "required_child_events": [
+      {"label": "observe", "actor": "node:observe-inputs", "metadata": {"completes_node": "observe-inputs"}},
+      {"label": "propose", "actor": "node:produce-evidence", "metadata": {"completes_node": "produce-evidence"}, "artifact_refs": ["clean_impl.py"]},
+      {"label": "verify", "actor": "node:self-check", "metadata": {"completes_node": "self-check"}},
+      {"label": "return", "actor": "node:return-result", "metadata": {"completes_node": "return-result"}, "artifact_refs": ["child-result.json", "clean_impl.py"]},
+      {"label": "complete", "actor": "child", "metadata": {"event_kind": "child_complete"}}
+    ]
+  }
+}

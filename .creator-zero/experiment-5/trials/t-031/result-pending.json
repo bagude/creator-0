@@ -1,0 +1,28 @@
+{
+  "trial_id": "t-031",
+  "status": "PENDING_CHILD_REALIZATION",
+  "decision": "CREATE",
+  "decision_ref": "decision.json",
+  "child_invocations_planned": 1,
+  "assigned_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Does an encoder authored strictly from format.md reproduce reference.py's output on every probe, or does some probe depend on behavior format.md never states?"
+    },
+    {
+      "id": "Q2",
+      "question": "Does format.md determine entry ordering for the multi-key probes?"
+    },
+    {
+      "id": "Q3",
+      "question": "Does format.md determine how a literal backslash in a value is rendered?"
+    }
+  ],
+  "expected_child_contribution_summary": "A fresh, isolated session that receives only format.md and probes.json (never reference.py) authors clean_impl.py exposing encode(d: dict) -> str strictly from format.md, and independently lists the behaviors the probes exercise that format.md leaves undetermined (its own E-A). This supplies the constitutively independent E-B evidence the parent cannot produce, because observe-package required reading and reasoning about reference.py.",
+  "integration_rule_reference": "child/integration-plan.json",
+  "integration_summary": "Root imports encode from clean_impl.py and from reference.py, runs both over every probe in probes.json, and applies verdict_rule: any per-probe string divergence -> UNDERDETERMINED; no divergence and empty child undetermined_behaviors -> SUFFICIENT; no divergence but non-empty child list -> UNDERDETERMINED. findings.underdetermined_behaviors is the child's list verbatim; divergent_probe_indices and per_probe are computed mechanically from the comparison. The root performs no substantive spec analysis.",
+  "final_deliverable_shape_ref": "package/task.json -> deliverable",
+  "child_deliverable_expected": ["clean_impl.py", "child-result.json"],
+  "self_check_outcome": "PASS (non-authoritative): child-contract attenuates against both K-E5-trial and K-E5-child-max on every axis; child-harness is the required linear observe->hypothesize->verify->return chain and compiles under the child contract; input manifest contains only available_artifacts and honors the reference.py clean-room exclusion; integration-plan is deterministic and executable; every assigned distinction_id references a listed unresolved distinction; child-prompt leaks no reference-derived analysis. Kernel validation governs.",
+  "notes": "Parent session ends after this return node. Realization of the validated child is performed by the deterministic root harness; no complete event is emitted by this session."
+}

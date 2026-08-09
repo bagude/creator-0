@@ -1,0 +1,12 @@
+{
+  "method": "clean_room_comparison",
+  "child_deliverable": "clean_impl.py",
+  "auxiliary_child_deliverable": "child-result.json",
+  "comparison": "Import encode from the child's clean_impl.py and encode from package/artifacts/reference.py. For each probe map at index i in package/artifacts/probes.json['probes'], compute reference_output = reference.encode(probe) and independent_output = clean_impl.encode(probe), and compare the two strings for exact equality. Let D = the set of indices i where they differ, and let U = child-result.json['undetermined_behaviors'].",
+  "verdict_rule": {
+    "if_any_divergence": "UNDERDETERMINED",
+    "if_none": "SUFFICIENT if U is empty, otherwise UNDERDETERMINED",
+    "findings": "On UNDERDETERMINED: underdetermined_behaviors = U (the child's independently reported list, verbatim); divergent_probe_indices = sorted(D); per_probe = [{probe_index: i, reference_output: reference.encode(probes[i]), independent_output: clean_impl.encode(probes[i])} for i in sorted(D)]. On SUFFICIENT: findings = {agreement: 'all probes'}. child_invocations = 1 in every case."
+  },
+  "root_solves_nothing": "The root only imports and runs the two encode functions, compares output strings, and copies the child's undetermined_behaviors list; it performs no substantive spec analysis of its own."
+}

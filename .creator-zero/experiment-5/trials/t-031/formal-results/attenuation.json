@@ -1,0 +1,27 @@
+{
+  "check": "contract_attenuation",
+  "status": "PASS",
+  "formal_relation": "K_child <= K_parent",
+  "counterexample": null,
+  "evidence": [
+    "allowed_tools: ['Read', 'Write'] subset of ['Bash', 'Read', 'Write']",
+    "allowed_primitives: ['hypothesize', 'observe', 'return', 'verify'] subset of ['create', 'hypothesize', 'observe', 'return', 'verify']",
+    "allowed_relations: ['authorize', 'observe', 'return', 'verify'] subset of ['authorize', 'consult', 'create', 'observe', 'request_response', 'return', 'verify']",
+    "max_model_calls: 1 <= 4",
+    "max_children: 0 <= 1",
+    "max_depth: 0 <= 1",
+    "may_create_creator: False <= True",
+    "may_realize_creation: False <= True"
+  ],
+  "assumptions": [
+    "Axis absent on parent = unrestricted (most permissive) at that axis.",
+    "Axis absent on child = inherited from parent (no escalation).",
+    "Filesystem scope: child paths accepted by parent-scope containment or by sibling delegation inside the parent scope's workspace envelope with no overlap of parent protected paths; paths compared as normalized repo-relative strings, parenthetical annotations (e.g. '(append only)') stripped.",
+    "Authority strings mapped to deterministic ordinals: none=0 < scoped/read-only/model-invocation=1 < unrestricted=2.",
+    "Local check only; 'no finite descendant escalates' follows inductively only if every creation transition is checked."
+  ],
+  "unmapped_events": [],
+  "detail": {
+    "verdict": "ATTENUATION_PASS"
+  }
+}

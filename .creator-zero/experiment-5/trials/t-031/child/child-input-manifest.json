@@ -1,0 +1,10 @@
+{
+  "files": [
+    "package/artifacts/format.md",
+    "package/artifacts/probes.json"
+  ],
+  "excluded_and_why": {
+    "package/artifacts/reference.py": "clean_room_exclusion for trial t-031: the child's E-B evidence is admissible only if authored with no access to the reference implementation."
+  },
+  "delivery_note": "The two files above are delivered into the child's fresh workspace root as format.md and probes.json respectively. No other file — including this parent's decision.json, analysis, or ledger — is delivered."
+}

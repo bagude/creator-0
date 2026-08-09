@@ -1,0 +1,13 @@
+{
+  "files": [
+    ".claude/settings.json",
+    "child-contract.json",
+    "child-harness.json",
+    "child-prompt.md",
+    "inputs/format.md",
+    "inputs/probes.json"
+  ],
+  "clean_room_exclusions": [
+    "package/artifacts/reference.py"
+  ]
+}

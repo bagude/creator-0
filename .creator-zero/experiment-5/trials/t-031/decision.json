@@ -1,0 +1,49 @@
+{
+  "trial_id": "t-031",
+  "decision": "CREATE",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Does an encoder authored strictly from format.md reproduce reference.py's exact output on every probe in probes.json, or does some probe's reference output depend on behavior format.md never states?",
+      "why_local_evidence_is_insufficient": "E-B requires the comparison implementation to be authored with no access to reference.py and no access to analysis derived from it. This session was required by observe-package to read reference.py and had to reason about it to perform the audit, so any encoder it now writes is derived-from-reference and inadmissible as E-B evidence. Independence, once lost, cannot be recovered inside this session."
+    },
+    {
+      "id": "Q2",
+      "question": "Does format.md determine the ordering of entries in the encoded line for probes whose key insertion order is not already canonical (the multi-key probes)?",
+      "why_local_evidence_is_insufficient": "Admissible evidence is an ordering fixed using only format.md's text; format.md is silent on ordering, so the choice must come from an implementer who has not seen reference.py's ordering. A contaminated session cannot supply an ordering decision untainted by the observed reference behavior."
+    },
+    {
+      "id": "Q3",
+      "question": "Does format.md determine how a literal backslash occurring in a value is rendered, given that its escaping clause names only the characters ';' and '='?",
+      "why_local_evidence_is_insufficient": "Whether the spec pins this down is testable only via a rendering chosen from the spec text alone. Having already read reference.py's escaping logic, this session cannot produce that independent rendering; its judgment is analysis-derived-from-reference and therefore inadmissible."
+    }
+  ],
+  "expected_child_contribution": [
+    {
+      "distinction_id": "Q1",
+      "expected_evidence": "A python file clean_impl.py exposing encode(d: dict) -> str, implemented strictly from format.md, so the root can mechanically run it and reference.py over all eight probes and record per-probe agreement or divergence.",
+      "why_isolation_matters": "E-B's admissibility hinges on the implementer never having seen reference.py or reference-derived analysis; only a fresh session receiving format.md and probes.json alone satisfies this, which the contaminated parent structurally cannot."
+    },
+    {
+      "distinction_id": "Q2",
+      "expected_evidence": "The child's independent entry-ordering decision realized inside clean_impl.py, surfaced as any ordering divergence from reference.py on the multi-key probes when the root runs the comparison.",
+      "why_isolation_matters": "An ordering choice is evidence of (non-)determination only if made without sight of reference.py's ordering; the parent has seen it."
+    },
+    {
+      "distinction_id": "Q3",
+      "expected_evidence": "The child's independent rendering of literal backslashes in values inside clean_impl.py, together with the child's own list of behaviors it found format.md leaves undetermined (E-A).",
+      "why_isolation_matters": "Backslash handling counts as (un)determined only when rendered from the spec text alone; a fresh implementer's choice is the sole admissible witness."
+    }
+  ],
+  "local_resolution_path": [],
+  "expected_information_gain": "HIGH",
+  "expected_cost": "LOW",
+  "decision_basis": [
+    "The deliverable's required evidence E-B is constitutively independent: it must be an encoder authored with no access to reference.py and no reference-derived analysis. This is a property of the evidence, not a matter of task difficulty.",
+    "observe-package required reading reference.py (it is an available_artifact) and auditing it required reasoning about it; this session is therefore contaminated and cannot author admissible clean-room evidence, no matter how capable it is.",
+    "A parent hypothesis about underdetermination, even if correct, is inadmissible by construction under E-B/E-A; the only way to obtain the required evidence at full strength is a fresh, isolated descendant that receives format.md and probes.json but never reference.py.",
+    "The cost is one bounded, terminal, single-model-call child; the empirical comparison and verdict are then executed deterministically by the root per a pre-committed integration rule, so the child adds exactly the missing independence and nothing redundant.",
+    "reference.py is listed in clean_room_exclusions precisely to force this delegation; realizing E-B locally would violate the clean-room requirement the task is built around."
+  ],
+  "confidence": 0.9
+}

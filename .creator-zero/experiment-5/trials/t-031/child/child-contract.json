@@ -1,0 +1,22 @@
+{
+  "contract_id": "K-E5-child-t031",
+  "version": "0.1-e5",
+  "parent_contract_ref": "K-E5-trial",
+  "envelope_ref": "K-E5-child-max",
+  "description": "Terminal worker contract for trial t-031. Attenuated from K-E5-trial and bounded by K-E5-child-max on every axis. The child implements a wire-format encoder strictly from a supplied specification and returns it; it has no creation, delegation, or realization authority and no descendants.",
+  "allowed_primitives": ["observe", "hypothesize", "verify", "return"],
+  "allowed_relations": ["observe", "verify", "authorize", "return"],
+  "allowed_tools": ["Read", "Write"],
+  "max_children": 0,
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "may_create_creator": false,
+  "may_realize_creation": false,
+  "required_primitives_for_mutation": ["verify"],
+  "protected_rules": [
+    "No child may increase its authority envelope.",
+    "Model output is a proposal, never authorization.",
+    "Mutation-capable topology requires verification.",
+    "The child is terminal: it may not create, delegate, or launch anything."
+  ]
+}
