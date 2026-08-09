@@ -1,0 +1,84 @@
+{
+  "task_id": "e6-t01",
+  "unresolved_distinctions": [
+    {
+      "id": "Q1",
+      "question": "Which behaviors exercised by the probes in probes.json does format.md either leave undetermined or determine differently from reference.py (e.g. pair ordering, escaping of characters other than ';' and '=', empty-mapping and empty-string handling)?",
+      "why_unresolved": "No behavior-by-behavior confrontation of format.md's prose with reference.py's code over the probe set exists in the package; candidate discrepancy classes (ordering of pairs, treatment of backslashes, edge cases with empty keys/values) have been neither enumerated nor ruled out by an explicit argument.",
+      "required_evidence": "A written statement enumerating every probe-exercised behavior where format.md does not determine the output or determines it differently from reference.py, each grounded in a quoted clause of format.md and the corresponding reference.py behavior, or an explicit argument that no such behavior exists.",
+      "admissibility_constraints": [
+        "Must cover every behavior actually exercised by the probe set, not a sample (task E-A: 'every behavior on the probe set').",
+        "Each claimed non-determination or difference must be traceable to specific format.md text and specific reference.py behavior on a concrete probe.",
+        "A claim of 'none exists' must be an explicit argument, not an omission."
+      ],
+      "evidence_requirement_refs": ["E-A"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q2",
+      "question": "What does an implementation of format.md, authored solely from format.md by an author who has never accessed reference.py nor any analysis derived from it, actually compute on each probe in probes.json?",
+      "why_unresolved": "No such implementation exists in the package, and no process that has read the package can author one admissibly: this session has read reference.py, so any encode(d) it writes is authored with access to the reference and violates E-B's authorship condition.",
+      "required_evidence": "A python file exposing encode(d), authored in a process whose inputs were limited to format.md (and optionally probes.json) and demonstrably excluded reference.py and all analysis derived from it, together with that implementation's output on each probe.",
+      "admissibility_constraints": [
+        "The author must have never accessed reference.py nor any analysis derived from it (task E-B authorship condition).",
+        "The materials given to the author must themselves not be derived from reference.py (e.g. format.md passed verbatim), or the causal separation is void.",
+        "The implementation must be a python file exposing encode(d) so the comparison is mechanically reproducible."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": [],
+      "features": {
+        "locally_resolvable": false,
+        "requires_isolation": true,
+        "contamination": true,
+        "capability_bearing_artifact": true,
+        "spans_sessions": true
+      }
+    },
+    {
+      "id": "Q3",
+      "question": "On which probe indices, if any, does the admissibly authored implementation of format.md produce output differing from reference.py's output?",
+      "why_unresolved": "The item-level comparison cannot exist until the admissible implementation of Q2 exists; no per-probe output pairs have been produced or compared.",
+      "required_evidence": "An item-level table over probes.json pairing reference.py's output with the admissible implementation's output per probe, with the sorted list of differing indices, mechanically reproducible from the two python files.",
+      "admissibility_constraints": [
+        "The compared implementation must be the admissible artifact from Q2; a comparison against an implementation authored with access to reference.py does not count.",
+        "The comparison must cover every probe in probes.json at item level.",
+        "The comparison must be mechanically reproducible from the two encode(d) files."
+      ],
+      "evidence_requirement_refs": ["E-B"],
+      "dependencies": ["Q2"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    },
+    {
+      "id": "Q4",
+      "question": "Is the verdict REPRODUCES or DIVERGES (or must it remain PENDING-INTEGRATION), as entailed jointly by the behavior statement (E-A) and the item-level comparison (E-B)?",
+      "why_unresolved": "The verdict is defined as a function of E-A and E-B together (DIVERGES iff some probe output differs), and neither input evidence record exists yet.",
+      "required_evidence": "A result.json whose verdict field is derived from the Q1 statement and the Q3 comparison by the stated rule: DIVERGES iff the comparison shows a differing output on some probe, REPRODUCES iff none, PENDING-INTEGRATION only if admissible E-B evidence is absent.",
+      "admissibility_constraints": [
+        "The verdict must follow from E-A and E-B together (task E-C); it may not be asserted from either alone.",
+        "divergent_probe_indices must be the sorted list from the admissible comparison, or PENDING-INTEGRATION when no admissible comparison exists."
+      ],
+      "evidence_requirement_refs": ["E-C"],
+      "dependencies": ["Q1", "Q2", "Q3"],
+      "features": {
+        "locally_resolvable": true,
+        "requires_isolation": false,
+        "contamination": false,
+        "capability_bearing_artifact": false,
+        "spans_sessions": false
+      }
+    }
+  ]
+}

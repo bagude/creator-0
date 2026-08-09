@@ -1,0 +1,29 @@
+{
+  "task_id": "e6-t01",
+  "estimates": {
+    "local": {
+      "delta_e": 0.6,
+      "redundancy": 0.0,
+      "governance_risk": 0.0,
+      "rationale": "The lone worker resolves Q1 (E-A analysis has no authorship constraint) but cannot satisfy E-B: having read reference.py, any encode(d) it authors is inadmissible, so Q2-Q4 stay at PENDING-INTEGRATION (about 1/4 of distinctions resolved; the records it does produce are all first-time, hence novel)."
+    },
+    "local-independent-verify": {
+      "delta_e": 0.45,
+      "redundancy": 0.4,
+      "governance_risk": 0.0,
+      "rationale": "The examiner also reads the package including reference.py, so it is equally barred from admissible E-B authorship; it only re-derives the worker's E-A analysis, adding duplicate records without resolving any additional distinction."
+    },
+    "isolated-child": {
+      "delta_e": 0.9,
+      "redundancy": 0.05,
+      "governance_risk": 0.0,
+      "rationale": "A child launched with only format.md (verbatim) and probes.json satisfies E-B's never-accessed-reference authorship condition exactly; its encode(d) plus the deterministic root comparison resolves Q2-Q4 and its records are required for admissibility, hence novel. Residual uncertainty is only whether the child's bundle discipline is clean."
+    },
+    "branching": {
+      "delta_e": 0.85,
+      "redundancy": 0.1,
+      "governance_risk": 0.0,
+      "rationale": "E-B's authorship condition is explicit in the package, so the runtime choice should collapse to the isolated-child branch and yield nearly its value; the deferral adds only a small chance of choosing the inadmissible local branch, at isolated-child cost."
+    }
+  }
+}
