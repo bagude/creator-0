@@ -1,0 +1,83 @@
+{
+  "task_id": "example-audit",
+  "goal": "Determine whether a demonstrated defect exists before proposing a candidate fix.",
+  "nodes": [
+    {
+      "id": "observer",
+      "primitive": "observe",
+      "tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "can_create": false,
+      "instructions": "Inspect only; return evidence and uncertainty."
+    },
+    {
+      "id": "tester",
+      "primitive": "test",
+      "tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
+      "can_create": false,
+      "instructions": "Construct a discriminating test or counterexample."
+    },
+    {
+      "id": "verifier",
+      "primitive": "verify",
+      "tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
+      "can_create": false,
+      "instructions": "Verify independently; do not edit."
+    },
+    {
+      "id": "child-creator",
+      "primitive": "create",
+      "tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash",
+        "Write",
+        "Agent"
+      ],
+      "can_create": true,
+      "instructions": "Create only if new composition is epistemically justified."
+    }
+  ],
+  "edges": [
+    {
+      "source": "observer",
+      "target": "tester",
+      "relation": "request_response",
+      "requires_response": true,
+      "response_changes_parent_state": true,
+      "transfers_authority": false
+    },
+    {
+      "source": "tester",
+      "target": "verifier",
+      "relation": "verify",
+      "requires_response": true,
+      "response_changes_parent_state": true,
+      "transfers_authority": false
+    },
+    {
+      "source": "verifier",
+      "target": "child-creator",
+      "relation": "consult",
+      "requires_response": false,
+      "response_changes_parent_state": false,
+      "transfers_authority": false
+    }
+  ],
+  "max_depth": 1,
+  "max_model_calls": 8
+}

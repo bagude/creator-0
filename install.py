@@ -6,8 +6,7 @@ HOOK = {
     "matcher": "Write|Edit",
     "hooks": [{
         "type": "command",
-        "command": "python",
-        "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/protect_creator_zero.py"],
+        "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/protect_creator_zero.py\"",
     }],
 }
 
