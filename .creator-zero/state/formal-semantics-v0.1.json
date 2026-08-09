@@ -1,0 +1,64 @@
+{
+  "artifact": "Formal Semantics Kernel v0.1 state manifest",
+  "base_commit": "90536efc4a7f (Experiment 4B: correct Creator-Closure predicate/gate mismatch (post-hoc); branch lineage claude/new-session-w8ycrp)",
+  "implementation_commit": "b3b8ae0 (Formal Semantics Kernel v0.1, branch claude/new-session-7kneoz)",
+  "formal_modules": [
+    ".creator-zero/formal/__init__.py",
+    ".creator-zero/formal/labels.py",
+    ".creator-zero/formal/model.py",
+    ".creator-zero/formal/semantics.py",
+    ".creator-zero/formal/trace.py",
+    ".creator-zero/formal/adapters.py",
+    ".creator-zero/formal/refinement.py",
+    ".creator-zero/formal/bisimulation.py",
+    ".creator-zero/formal/attenuation.py",
+    ".creator-zero/formal/creator_closure.py",
+    ".creator-zero/formal/synthesis_fixedpoint.py",
+    ".creator-zero/formal/serialization.py",
+    ".creator-zero/formal/schemas/lts.schema.json",
+    ".creator-zero/formal/schemas/transition.schema.json",
+    ".creator-zero/formal/schemas/formal-result.schema.json"
+  ],
+  "new_cli_commands": {
+    "semantics": "HarnessSpec -> deterministic LTS (canonical JSON)",
+    "check-runtime": "runtime ledger refines declared semantics; --adapter experiment3|experiment4-c1 for historical ledgers; --require-completion exposes premature termination",
+    "bisim": "strong/weak bisimulation of two LTS JSON files",
+    "attenuation": "K_child <= K_parent over all governed authority axes",
+    "closure": "bounded hat_kappa Creator-Closure witness",
+    "synthesis-status": "finite Q_before/Q_after fixed-point classification",
+    "exit_codes": {"0": "PASS", "2": "formal relation FAIL", "3": "INDETERMINATE / insufficient evidence", "4": "malformed input / parse failure"}
+  },
+  "tests": {
+    "pre_existing_suite": {"command": "python3 -m unittest discover -s .creator-zero/tests", "count": 8, "result": "OK"},
+    "formal_suite": {"command": "python3 -m unittest discover -s .creator-zero/tests/formal", "count": 82, "result": "OK"}
+  },
+  "historical_fixture_results": {
+    "experiment3_runtime_refinement": "PASS (adapter-normalized ledger refines compiled final-harness LTS; gate-only promotion after verify completion)",
+    "experiment4_c1_process_execution": "deviation exposed: process-level trace truncated at c1_pending_on_c2 is INDETERMINATE under require_completion (premature session exit; no governed complete transition)",
+    "experiment4_c1_state_mediated_continuation": "PASS: full trace (process + externalized-state continuation) refines K1 semantics to complete=1; session equivalence E_n ~= E_hat weak-bisimulation PASS with persist/exit/reconstruct hidden as tau (recorded in e4-c1-session-equivalence-mapping.json); strong bisimulation FAIL separates process identity from governed behavioral equivalence",
+    "experiment4_original_k3_closure": "FAIL, failed clause exactly [CreatorCapable] (terminal child; Experiment 4B finding reproduced mechanically)",
+    "experiment4b_corrected_k3_closure": "PASS (all hat_kappa clauses)",
+    "historical_attenuation_chain": "K1<=K0 PASS, K2<=K1 PASS (sibling-sandbox scope delegation encoded as governed lineage law)",
+    "synthetic_authority_escalating_child": "ATTENUATION_FAIL with exact escalating dimensions (tools, model calls, children, scope, canonical/git/network authority)",
+    "synthetic_actor_canonical_write": "REFINEMENT_VIOLATION (promote by node:act-candidate-test unmatched; only gate actor holds promote)",
+    "experiment3_synthesis": "Q1-Q7 -> empty classified SYNTHESIS_CLOSED",
+    "immutability": "sha256 pins on 9 historical artifacts verified by test_historical_fixtures.py; original C2 attestation digest matches the hash recorded in creation-ledger.jsonl"
+  },
+  "known_limitations": [
+    "Formal state covers only externally reconstructible governed configuration (completed nodes, promotion, completion); artifact-level and budget-level state are not yet folded into refinement.",
+    "Historical ledger adapters encode a deterministic but interpretive mapping; mapping records are committed, and semantic fidelity of the mapping is an assumption.",
+    "Non-authority labels (observe/propose/validate/reject/consult/return/persist/reconstruct) are wildcard self-loops: refinement does not restrict which actor emits them.",
+    "Filesystem-scope attenuation accepts protected-path-disjoint sibling delegation inside the parent workspace envelope (the lineage's governed law); a stricter pure-containment semantics would fail the historical K1->K2 and K2->K3 grants.",
+    "Bisimulation is implemented for finite explicitly-modeled LTSs with naive fixpoint iteration; adequate for fixture scale, not optimized.",
+    "Model-call budget consumption is not tracked by the runtime trace semantics (budgets are checked only as contract attenuation axes)."
+  ],
+  "unproven_claims": [
+    "Arbitrary infinite Creator Closure (only bounded hat_kappa witnesses are checked).",
+    "Semantic equivalence of hidden model/epistemic states across sessions.",
+    "Formal correctness of Claude Code itself, or that its implementation globally refines this model.",
+    "Completeness of runtime event instrumentation.",
+    "Universal decidability of bisimulation for unrestricted future models.",
+    "Full Tarski convergence of arbitrary Decomposer/Composer synthesis."
+  ],
+  "recommended_next_experiment": "Experiment 5: endogenous creation judgment under formal governance — remove the protocol mandate and test whether a Creator correctly decides (and abstains) on descendant creation, with the formal kernel in the loop: compile the proposed HarnessSpec to an LTS before execution, check the live ledger's refinement online, gate promotion on a machine-checked ATTENUATION_PASS + hat_kappa witness, and classify each Decomposer/Composer round's synthesis status; this also addresses the carried-forward unresolved items (contract-governed reusable gate; process-level pending-dependence law, whose weak-bisimulation acceptance criterion is now formal)."
+}
