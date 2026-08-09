@@ -1,0 +1,18 @@
+{
+  "files": [
+    "package/artifacts/pricing.md",
+    "package/artifacts/probes.json"
+  ],
+  "delivered_as": {
+    "package/artifacts/pricing.md": "pricing.md",
+    "package/artifacts/probes.json": "probes.json"
+  },
+  "excluded": [
+    "package/artifacts/price.py",
+    "distinctions.json",
+    "resolution.json",
+    "evidence.json",
+    "result.json"
+  ],
+  "exclusion_rationale": "E-B admissibility requires that the author of the implementation has never accessed price.py nor any analysis derived from it. price.py and every analysis product of this session (distinctions, resolution, evidence, result) are therefore withheld so the child authors impl.py blind, solely from pricing.md."
+}

@@ -1,0 +1,5 @@
+{
+  "summary": "Q1 is resolved in-session: ea-analysis.md shows render.md determines every behavior exercised by the ten probes and agrees with render.py on all of them (undetermined_behaviors = []). Q2 requires an author who has never accessed render.py, so a clean-room child bundle (input: render.md only) is proposed under child/; Q3 is the deterministic item-level comparison of the child's render_clean.py against render.py over probes.json, and Q4's verdict follows by the E-C rule (DIVERGES iff some probe differs, else REPRODUCES). result.json carries PENDING-INTEGRATION for verdict and divergent_probe_indices until root-executed validate-child, create-child, child-return, and verify-integration complete.",
+  "assigned_distinctions": ["Q2", "Q3", "Q4"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

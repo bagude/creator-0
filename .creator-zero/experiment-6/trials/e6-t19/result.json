@@ -1,0 +1,7 @@
+{
+  "verdict": "PENDING-INTEGRATION",
+  "undetermined_behaviors": [
+    "Rounding tie-breaking discipline: pricing.md specifies 'rounded to the cent, half away from zero' at all three steps (subtotal, discount, tax), while price.py rounds with decimal.ROUND_HALF_EVEN (banker's rounding). This is the only behavior on the probe set where pricing.md determines an output differently from price.py; the two agree on every non-tie value and differ only on an exact half-cent tie whose half-even result differs from the half-away result. No behavior exercised by the probes is left undetermined by pricing.md; only the tie rule diverges."
+  ],
+  "divergent_probe_indices": "PENDING-INTEGRATION"
+}

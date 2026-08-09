@@ -1,0 +1,38 @@
+{
+  "task_id": "e6-t07",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "On the ten-probe set, render.md determines every exercised behavior and every determination agrees with render.py; undetermined_behaviors = []. The per-probe analysis in ea-analysis.md maps each probe to the governing spec clause (well-formed substitution incl. adjacency/repeats; missing name -> empty string; malformed brace forms '{{ name }}', '{{}}', '{{num1}}' literal; single-pass non-rescanning of inserted '{{w}}'; no other transformation) and gives an explicit exhaustiveness argument that no undetermined or divergent behavior exists on this probe set.",
+      "evidence_ids": ["ev-1"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "Not resolvable in this session: E-B's authorship condition (never accessed render.py nor any derived analysis) is already violated by this worker having read the package. A clean-room child bundle is proposed under child/ whose input manifest contains only package/artifacts/render.md; the root-executed create-child and child-return nodes will produce render_clean.py with admissible provenance.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "The item-level comparison cannot exist before the Q2 clean-room artifact exists. A deterministic, judgment-free comparison rule over all ten probes is pre-committed in child/integration-plan.json for the root-executed verify-integration node; it yields the sorted list of divergent probe indices.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q4",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "The verdict is a function of Q1 and Q3 under the E-C rule (DIVERGES iff the comparison shows a differing output on some probe, else REPRODUCES). Q1 is settled (undetermined_behaviors = []) but Q3 awaits integration, so result.json carries verdict = PENDING-INTEGRATION and divergent_probe_indices = PENDING-INTEGRATION; the E-C derivation is pre-committed in child/integration-plan.json.",
+      "evidence_ids": ["ev-1", "ev-2"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

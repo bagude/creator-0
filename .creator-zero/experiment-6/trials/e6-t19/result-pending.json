@@ -1,0 +1,5 @@
+{
+  "summary": "E-A (Q2) resolved in-session: the only spec-versus-code behavioral gap over the probe set is the rounding tie discipline (pricing.md 'half away from zero' vs price.py ROUND_HALF_EVEN). E-B (Q1) requires a blind implementation authored solely from pricing.md by an author who never accessed price.py; this contaminated session cannot supply it, so it is charged to a fresh isolated child (child/ bundle). E-C (Q3) verdict and divergent_probe_indices are PENDING-INTEGRATION until the child returns and root verify-integration runs the mechanical comparison per child/integration-plan.json.",
+  "assigned_distinctions": ["Q1", "Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

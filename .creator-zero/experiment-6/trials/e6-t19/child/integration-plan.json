@@ -1,0 +1,13 @@
+{
+  "role": "clean_room_implementer",
+  "child_deliverable": "result.json",
+  "child_implementation_file": "impl.py",
+  "rule": "Deterministic, judgment-free integration. (1) Import price as child_price from the child's impl.py, and import price as ref_price from package/artifacts/price.py. (2) Load probes from package/artifacts/probes.json as an ordered list. (3) For each index i and probe in that list, compute a_i = child_price(probe) and b_i = ref_price(probe); also cross-check a_i equals the child's result.json outputs[i] and reject on mismatch (impl/outputs inconsistency). (4) divergent_probe_indices = sorted list of every i where str(a_i) != str(b_i). (5) verdict = 'DIVERGES' if divergent_probe_indices is non-empty else 'REPRODUCES'. (6) Set result.json.divergent_probe_indices = divergent_probe_indices and result.json.verdict = verdict; leave undetermined_behaviors as the E-A statement carried from evidence record ev-A (unchanged by integration). This maps Q1 (E-B, the mechanical item-level comparison) and, together with the already-admissible E-A statement, Q3 (E-C, the final verdict) to their resolved values.",
+  "child_implementation_file_path": "child_workspace/impl.py",
+  "reference_implementation_path": "package/artifacts/price.py",
+  "probes_path": "package/artifacts/probes.json",
+  "expected_contribution": {
+    "Q1": "Supplies the blind-authored implementation exposing price(p) plus its per-probe outputs, enabling the mechanically reproducible item-level comparison against price.py over probes.json.",
+    "Q3": "Combined with the admissible E-A statement, the integrated comparison yields the final verdict (DIVERGES iff some probe differs) and the sorted divergent_probe_indices."
+  }
+}

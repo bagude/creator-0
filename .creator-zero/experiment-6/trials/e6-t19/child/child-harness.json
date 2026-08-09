@@ -1,0 +1,42 @@
+{
+  "task_id": "e6-t19-child",
+  "goal": "Author, from pricing.md alone, a python implementation exposing price(p) and its per-probe outputs over probes.json.",
+  "contract": "K-E6-t19-child",
+  "max_depth": 0,
+  "max_model_calls": 1,
+  "nodes": [
+    {
+      "id": "observe-inputs",
+      "primitive": "observe",
+      "tools": ["Read"],
+      "can_create": false,
+      "instructions": "Read pricing.md and probes.json. These are the only inputs; no other files exist in this environment."
+    },
+    {
+      "id": "produce-evidence",
+      "primitive": "hypothesize",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Author impl.py exposing price(p), implementing pricing.md's stated rules exactly and only. Run it over probes.json in order and record the per-probe output strings."
+    },
+    {
+      "id": "self-check",
+      "primitive": "verify",
+      "tools": ["Read"],
+      "can_create": false,
+      "instructions": "Non-authoritative self-check: confirm impl.py exposes a callable price(p), that it was derived solely from pricing.md, and that outputs has exactly one entry per probe in probes.json order."
+    },
+    {
+      "id": "return-result",
+      "primitive": "return",
+      "tools": ["Read", "Write"],
+      "can_create": false,
+      "instructions": "Write result.json with the implementation file name and the per-probe outputs."
+    }
+  ],
+  "edges": [
+    {"source": "observe-inputs", "target": "produce-evidence", "relation": "observe", "requires_response": false},
+    {"source": "produce-evidence", "target": "self-check", "relation": "verify", "requires_response": true},
+    {"source": "self-check", "target": "return-result", "relation": "authorize", "requires_response": false}
+  ]
+}

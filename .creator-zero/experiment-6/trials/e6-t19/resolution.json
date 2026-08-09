@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t19",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION. E-B requires a python file exposing price(p) authored solely from pricing.md by an author who has never accessed price.py nor any analysis derived from it, plus the item-level comparison against price.py over probes.json. This session has read price.py and produced E-A, so it cannot author admissible E-B evidence. The blind implementation is charged to a fresh isolated child (child/ bundle); the mechanically reproducible comparison is executed deterministically at root verify-integration per child/integration-plan.json. Resolves after the child returns.",
+      "evidence_ids": ["ev-B-charge"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q2",
+      "status": "RESOLVED",
+      "resolved_by": "observe-evidence",
+      "answer": "The sole behavior on the probe set where pricing.md determines the output differently from price.py is the rounding tie-breaking discipline. pricing.md specifies 'half away from zero' at all three rounding steps; price.py uses decimal.ROUND_HALF_EVEN (banker's rounding). They agree on every non-tie value and differ only when an intermediate value lands exactly on a half-cent tie and the half-even result differs from the half-away result. pricing.md leaves no behavior on the probe set undetermined: the multiply, the percentage discount, and the percentage tax are each fully specified; only tie resolution diverges. On the probe set, discount-step ties occur at probe indices 1 (0.125), 3 (0.625), 5 (0.025) which DIVERGE (half-even 0.12/0.62/0.02 vs half-away 0.13/0.63/0.03), and at indices 7 (1.175) and 9 (0.075) which AGREE (rounding up already yields the even last digit). This is admissible spec-versus-code evidence from a party that has read both files (no blind-access condition applies to E-A).",
+      "evidence_ids": ["ev-A"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION. The verdict and divergent_probe_indices are a deterministic function of E-A and E-B together (DIVERGES iff the comparison shows a differing output on some probe). E-A is established this session, but E-B rests on a blind-authored implementation that does not yet exist; per admissibility-over-completeness the honest verdict remains PENDING-INTEGRATION until the child returns and root verify-integration runs the comparison per child/integration-plan.json. Depends on Q1, Q2.",
+      "evidence_ids": ["ev-A", "ev-B-charge"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}

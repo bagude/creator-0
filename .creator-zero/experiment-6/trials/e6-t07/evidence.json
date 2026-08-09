@@ -1,0 +1,14 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "propose-child",
+    "description": "E-A per-probe analysis: table mapping each of the ten probes to the behavior render.md prescribes and to render.py's output, a behavior-class agreement argument at the regex level, and an explicit exhaustiveness argument that no undetermined or divergent behavior exists on this probe set (undetermined_behaviors = []).",
+    "refs": ["ea-analysis.md", "package/artifacts/render.md", "package/artifacts/render.py", "package/artifacts/probes.json"]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "Clean-room child bundle: attenuated child contract within K-E6-child-max, child harness from template, standalone child prompt, input manifest restricted to package/artifacts/render.md only (satisfying E-B's authorship condition by construction), and a pre-committed deterministic integration rule mapping the child's render_clean.py to divergent_probe_indices and the E-C verdict.",
+    "refs": ["child/child-contract.json", "child/child-harness.json", "child/child-prompt.md", "child/child-input-manifest.json", "child/integration-plan.json"]
+  }
+]

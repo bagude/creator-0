@@ -77,13 +77,17 @@ def _scan_text(text: str, patterns: list[str], flags: int
 
 
 def scan_workspace(root: str | Path,
-                   package_subdir: str = "package") -> dict[str, Any]:
+                   package_subdir: str = "package",
+                   skip_names: frozenset[str] = frozenset()) -> dict[str, Any]:
     """Full blinding scan. Returns {'verdict': 'PASS'|'BLINDING_FAIL',
-    'hits': [...]}. Deterministic; text files only."""
+    'hits': [...]}. Deterministic; text files only. `skip_names` exempts
+    files authored by already-blinded sessions (their vocabulary cannot
+    leak labels they never saw; scanning them yields false positives on
+    ordinary phrases)."""
     root = Path(root)
     hits: list[dict[str, Any]] = []
     for f in sorted(root.rglob("*")):
-        if not f.is_file():
+        if not f.is_file() or f.name in skip_names:
             continue
         try:
             text = f.read_text(encoding="utf-8")

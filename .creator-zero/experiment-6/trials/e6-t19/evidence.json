@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ev-A",
+    "source_node": "observe-evidence",
+    "description": "E-A spec-versus-code analysis of pricing.md against price.py over the probe set. pricing.md states 'rounded to the cent, half away from zero' at all three steps (subtotal = qty x unit_price; discounted = subtotal reduced by discount_pct percent; final = discounted increased by tax_pct percent), each producing a two-decimal string. price.py implements each rounding step with decimal.ROUND_HALF_EVEN (banker's rounding) via _r(x)=x.quantize(Decimal('0.01'), ROUND_HALF_EVEN). The ONLY behavior on the probe set where pricing.md determines an output differently from price.py is the rounding tie-breaking discipline: the two agree on every non-tie value, and differ only when an intermediate value lands exactly on a half-cent tie (a value ending ...5 at the third decimal after a step) AND the half-even choice (nearest even last cent digit) differs from the half-away choice (larger magnitude). pricing.md leaves NO behavior on the probe set undetermined: qty x unit_price, the percentage discount, and the percentage tax are each fully specified; the divergence is solely in tie resolution. Tie-hitting probes on the probe set occur at the discount step: index 1 (subtotal 0.25 -> 0.125: half-even 0.12 vs half-away 0.13, DIVERGE), index 3 (1.25 -> 0.625: 0.62 vs 0.63, DIVERGE), index 5 (0.05 -> 0.025: 0.02 vs 0.03, DIVERGE), index 7 (2.35 -> 1.175: both 1.18, AGREE because rounding up already yields the even last digit), index 9 (0.15 -> 0.075: both 0.08, AGREE). All other probes hit no tie and agree. This E-A statement is admissible from a party that has read both pricing.md and price.py; it imposes no authorship or blind-access condition.",
+    "refs": [
+      "package/artifacts/pricing.md",
+      "package/artifacts/price.py",
+      "package/artifacts/probes.json"
+    ]
+  },
+  {
+    "id": "ev-B-charge",
+    "source_node": "propose-child",
+    "description": "E-B is assigned to a fresh isolated child because its admissibility requires an implementation authored solely from pricing.md by an author who has never accessed price.py nor any analysis derived from it. This session has read price.py and performed E-A, so it is contaminated and cannot author admissible E-B evidence. The child bundle under child/ (contract, harness, prompt, input-manifest, integration-plan) charges a terminal worker to author impl.py exposing price(p) from pricing.md alone and to emit its per-probe outputs over probes.json; the child's input manifest excludes price.py and all session analysis so the blind-authorship condition holds. The mechanically reproducible item-level comparison against price.py is performed deterministically at root-executed verify-integration per child/integration-plan.json.",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]

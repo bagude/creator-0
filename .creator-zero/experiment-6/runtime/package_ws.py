@@ -84,13 +84,18 @@ def _no_private_files(bank: Path, ws: Path) -> None:
             raise RuntimeError(f"private bank files leaked: {leaked}")
 
 
-def _scan_or_die(ws: Path, kind: str) -> dict[str, Any]:
-    scan = blinding.scan_workspace(ws)
+def _scan_or_die(ws: Path, kind: str,
+                 skip: frozenset[str] = frozenset()) -> dict[str, Any]:
+    scan = blinding.scan_workspace(ws, skip_names=skip)
     if scan["verdict"] != "PASS":
         shutil.rmtree(ws)
         raise RuntimeError(f"BLINDING_FAIL in {kind} workspace: "
                            f"{scan['hits']}")
     return scan
+
+
+# outputs of already-blinded sessions: exempt from the label-leak scan
+BLIND_SESSION_OUTPUTS = frozenset({"distinctions.json"})
 
 
 def build_infer_workspace(*, trial_id: str, bank: Path,
@@ -141,7 +146,7 @@ def build_exec_workspace(*, trial_id: str, bank: Path, ws: Path,
         json.dumps(DENY_SETTINGS, indent=2) + "\n", encoding="utf-8")
     (ws / "prompt.md").write_text(EXEC_PROMPT, encoding="utf-8")
     _no_private_files(bank, ws)
-    scan = _scan_or_die(ws, "exec")
+    scan = _scan_or_die(ws, "exec", skip=BLIND_SESSION_OUTPUTS)
     return _manifest(ws, "exec", trial_id, scan)
 
 
