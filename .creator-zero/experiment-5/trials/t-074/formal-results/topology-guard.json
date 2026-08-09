@@ -1,0 +1,74 @@
+{
+  "check": "topology_guard",
+  "status": "PASS",
+  "formal_relation": "Realized(topology) consistent with decision(chi)",
+  "counterexample": null,
+  "evidence": [
+    "lifecycle: PASS",
+    "trace_conditionality: PASS",
+    "hidden_children: PASS"
+  ],
+  "assumptions": [
+    "The fresh launcher is the sole legal child-invocation path; launcher provenance records plus the parent session audit (no Bash/Task/Agent capability) jointly witness the absence of hidden launches.",
+    "Causal order is record position; timestamps are evidentiary metadata.",
+    "This guard supplies the decision-conditional legality that the branching LTS deliberately leaves open (both branches are legal in the declared semantics until decision time)."
+  ],
+  "unmapped_events": [],
+  "detail": {
+    "parts": {
+      "lifecycle": {
+        "check": "topology_guard_lifecycle",
+        "status": "PASS",
+        "formal_relation": "Realized(topology) consistent with decision(chi)",
+        "counterexample": null,
+        "evidence": [
+          "lifecycle: PREPARED -> DECISION_PROPOSED -> DECISION_VALIDATED -> LOCAL_EXECUTION -> RESULT_VERIFIED -> FORMALLY_CHECKED",
+          "decision: DO_NOT_CREATE"
+        ],
+        "assumptions": [
+          "The fresh launcher is the sole legal child-invocation path; launcher provenance records plus the parent session audit (no Bash/Task/Agent capability) jointly witness the absence of hidden launches.",
+          "Causal order is record position; timestamps are evidentiary metadata.",
+          "This guard supplies the decision-conditional legality that the branching LTS deliberately leaves open (both branches are legal in the declared semantics until decision time)."
+        ],
+        "unmapped_events": []
+      },
+      "trace_conditionality": {
+        "check": "topology_guard_trace",
+        "status": "PASS",
+        "formal_relation": "Realized(topology) consistent with decision(chi)",
+        "counterexample": null,
+        "evidence": [
+          "decision: DO_NOT_CREATE",
+          "realized nodes: ['decide-topology', 'local-resolve', 'observe-package', 'return-local', 'self-check-local', 'verify-trial-local']",
+          "branch exclusivity holds; decision precedes realization"
+        ],
+        "assumptions": [
+          "The fresh launcher is the sole legal child-invocation path; launcher provenance records plus the parent session audit (no Bash/Task/Agent capability) jointly witness the absence of hidden launches.",
+          "Causal order is record position; timestamps are evidentiary metadata.",
+          "This guard supplies the decision-conditional legality that the branching LTS deliberately leaves open (both branches are legal in the declared semantics until decision time)."
+        ],
+        "unmapped_events": []
+      },
+      "hidden_children": {
+        "check": "topology_guard_hidden_children",
+        "status": "PASS",
+        "formal_relation": "Realized(topology) consistent with decision(chi)",
+        "counterexample": null,
+        "evidence": [
+          "decision: DO_NOT_CREATE",
+          "executed launcher records: 0",
+          "parent session audit: no spawn-capable or disallowed tool use"
+        ],
+        "assumptions": [
+          "The fresh launcher is the sole legal child-invocation path; launcher provenance records plus the parent session audit (no Bash/Task/Agent capability) jointly witness the absence of hidden launches.",
+          "Causal order is record position; timestamps are evidentiary metadata.",
+          "This guard supplies the decision-conditional legality that the branching LTS deliberately leaves open (both branches are legal in the declared semantics until decision time)."
+        ],
+        "unmapped_events": [],
+        "detail": {
+          "child_invocations": 0
+        }
+      }
+    }
+  }
+}

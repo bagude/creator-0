@@ -1,0 +1,10 @@
+{
+  "verdict": "VIOLATES",
+  "findings": {
+    "first_violation_index": 8,
+    "state_at_violation": "C",
+    "offending_label": "load",
+    "allowed_labels": ["process", "reset", "save"]
+  },
+  "child_invocations": 0
+}

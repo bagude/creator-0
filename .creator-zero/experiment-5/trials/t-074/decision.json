@@ -1,0 +1,23 @@
+{
+  "trial_id": "t-074",
+  "decision": "DO_NOT_CREATE",
+  "unresolved_distinctions": [],
+  "expected_child_contribution": [],
+  "local_resolution_path": [
+    "Parse machine.json: initial state and the state->{label->next} transition table.",
+    "Parse trace.json: the ordered event label sequence.",
+    "Simulate deterministically from the initial state, tracking the state before each event and testing membership of the event label in the current state's enabled label set.",
+    "On the first event whose label is not enabled, record first_violation_index, state_at_violation, offending_label, and the sorted enabled label set as allowed_labels; if no event violates, record CONFORMS with the final state.",
+    "Emit result.json with the verdict, findings, and child_invocations=0."
+  ],
+  "expected_information_gain": "LOW",
+  "expected_cost": "MEDIUM",
+  "decision_basis": [
+    "The task is a total deterministic function of two fully readable artifacts (machine.json, trace.json); no evidence is hidden from this session.",
+    "clean_room_exclusions is empty, so no artifact is withheld that a fresh child could see and this session could not.",
+    "The deliverable requires explicit step-by-step simulation, not an independent oracle to cross-check a possibly-contaminated parent answer; the verdict follows mechanically from the simulation itself.",
+    "Observing the package did not consume or degrade any evidence needed for the deliverable; the same simulation is reproducible at full strength locally.",
+    "A child would only repeat a computation this session can perform exactly, adding a bounded session cost with negligible expected information gain."
+  ],
+  "confidence": 0.98
+}

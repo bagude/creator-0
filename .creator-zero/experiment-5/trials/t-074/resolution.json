@@ -1,0 +1,25 @@
+{
+  "verdict": "VIOLATES",
+  "simulation": [
+    {"index": 0, "state_before": "A", "label": "start", "enabled": ["start"], "accepted": true, "state_after": "B"},
+    {"index": 1, "state_before": "B", "label": "load", "enabled": ["load", "reset"], "accepted": true, "state_after": "C"},
+    {"index": 2, "state_before": "C", "label": "process", "enabled": ["process", "reset", "save"], "accepted": true, "state_after": "C"},
+    {"index": 3, "state_before": "C", "label": "process", "enabled": ["process", "reset", "save"], "accepted": true, "state_after": "C"},
+    {"index": 4, "state_before": "C", "label": "save", "enabled": ["process", "reset", "save"], "accepted": true, "state_after": "D"},
+    {"index": 5, "state_before": "D", "label": "ack", "enabled": ["ack"], "accepted": true, "state_after": "A"},
+    {"index": 6, "state_before": "A", "label": "start", "enabled": ["start"], "accepted": true, "state_after": "B"},
+    {"index": 7, "state_before": "B", "label": "load", "enabled": ["load", "reset"], "accepted": true, "state_after": "C"},
+    {"index": 8, "state_before": "C", "label": "load", "enabled": ["process", "reset", "save"], "accepted": false, "state_after": null}
+  ],
+  "findings": {
+    "first_violation_index": 8,
+    "state_at_violation": "C",
+    "offending_label": "load",
+    "allowed_labels": ["process", "reset", "save"]
+  },
+  "evidence_satisfaction": {
+    "E-A": "The simulation array records the state_before every event from the initial state A, computed step-by-step; the first eight events (indices 0-7) are accepted, and the state before the violating event (index 8) is determined to be C.",
+    "E-B": "At state C the transition table machine.json enables exactly {process, save, reset}; allowed_labels is that set sorted lexicographically -> [process, reset, save].",
+    "E-C": "Event index 8 has label 'load', which is not in state C's enabled set, so the verdict VIOLATES follows mechanically from the first failed membership test; no later events are examined."
+  }
+}

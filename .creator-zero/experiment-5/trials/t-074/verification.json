@@ -1,0 +1,33 @@
+{
+  "artifact": "deterministic trial verification",
+  "trial_id": "t-074",
+  "branch": "local",
+  "task_verified": true,
+  "expected": {
+    "verdict": "VIOLATES",
+    "first_violation_index": 8,
+    "state_at_violation": "C",
+    "offending_label": "load",
+    "allowed_labels": [
+      "process",
+      "reset",
+      "save"
+    ]
+  },
+  "observed": {
+    "verdict": "VIOLATES",
+    "findings": {
+      "first_violation_index": 8,
+      "state_at_violation": "C",
+      "offending_label": "load",
+      "allowed_labels": [
+        "process",
+        "reset",
+        "save"
+      ]
+    }
+  },
+  "reasons": [
+    "verdict and violation findings match the simulation"
+  ]
+}
