@@ -1,0 +1,5 @@
+{
+  "summary": "First derivation of all 10 ISO week-dates is complete and delivered in result.json (E-A satisfied in-session). The disjoint, causally isolated second derivation (E-B) is assigned to the proposed child; the per-item agreement record and final correctness verdict (E-C) are produced by root-executed validate-child, create-child, child-return, verify-integration, and return-result per the pre-committed deterministic rule.",
+  "assigned_distinctions": ["Q2", "Q3"],
+  "integration_rule_ref": "child/integration-plan.json"
+}

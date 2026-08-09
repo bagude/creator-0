@@ -1,0 +1,31 @@
+[
+  {
+    "id": "ev-1",
+    "source_node": "observe-evidence",
+    "description": "Governed observation of the task package: package/task.json (deliverable shape and evidence requirements E-A/E-B/E-C), package/artifacts/dates.json (the 10 year-boundary dates), distinctions.json, contract.json, harness.json, child-envelope.json, and child templates. Identified Q2 as the isolation-requiring distinction: its evidence must originate from a process without access to the first derivation's intermediate work, which mandates the isolated child.",
+    "refs": [
+      "package/task.json",
+      "package/artifacts/dates.json",
+      "distinctions.json",
+      "child-envelope.json"
+    ]
+  },
+  {
+    "id": "ev-2",
+    "source_node": "propose-child",
+    "description": "First derivation (E-A): ISO week-date answers for all 10 dates via the nearest-Thursday / first-Thursday rule, with the method and per-item Thursday anchors stated alongside the answers in result.json.",
+    "refs": ["result.json"]
+  },
+  {
+    "id": "ev-3",
+    "source_node": "propose-child",
+    "description": "Complete child bundle for the isolated second derivation (toward E-B): attenuated child contract within child-envelope.json, four-node child harness, standalone prompt mandating the disjoint ordinal-date formula method and forbidding nearest-Thursday reasoning, input manifest restricted to package/artifacts/dates.json (excluding this session's derivation and all other trial artifacts to preserve the causal origin condition), and a pre-committed deterministic integration plan mapping the child answer set to a per-item agreement record without judgment.",
+    "refs": [
+      "child/child-contract.json",
+      "child/child-harness.json",
+      "child/child-prompt.md",
+      "child/child-input-manifest.json",
+      "child/integration-plan.json"
+    ]
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "answers": {
+    "2021-01-01": "2020-W53-5",
+    "2016-01-03": "2015-W53-7",
+    "2015-12-28": "2015-W53-1",
+    "2020-12-31": "2020-W53-4",
+    "2019-12-30": "2020-W01-1",
+    "2022-01-02": "2021-W52-7",
+    "2024-12-30": "2025-W01-1",
+    "2025-01-05": "2025-W01-7",
+    "2017-01-01": "2016-W52-7",
+    "2018-12-31": "2019-W01-1"
+  },
+  "method": "Nearest-Thursday (first-Thursday rule) method. For each date: (1) compute its Gregorian weekday (1=Mon..7=Sun) by anchoring on known Jan-1 weekdays and stepping by 365/366 mod 7 per year (Jan 1 of 2015=Thu, 2016=Fri, 2017=Sun, 2018=Mon, 2019=Tue, 2020=Wed, 2021=Fri, 2022=Sat, 2024=Mon, 2025=Wed); (2) take the Monday-based week containing the date and locate that week's Thursday; (3) the ISO week-numbering year is the calendar year of that Thursday — this is what moves boundary dates into the neighboring year's numbering; (4) the week number is the count of Thursdays in that ISO year up to and including the week's Thursday, i.e. week = (ordinal(week's Thursday) - ordinal(ISO year's first Thursday))/7 + 1; (5) the trailing digit is the date's ISO weekday 1=Mon..7=Sun. Per-item Thursdays: 2021-01-01 (Fri) -> Thu 2020-12-31, 53rd Thursday of 2020 -> 2020-W53-5; 2016-01-03 (Sun) -> Thu 2015-12-31, 53rd Thursday of 2015 -> 2015-W53-7; 2015-12-28 (Mon) -> same week -> 2015-W53-1; 2020-12-31 (Thu) -> itself, 53rd Thursday of 2020 -> 2020-W53-4; 2019-12-30 (Mon) -> Thu 2020-01-02, first Thursday of 2020 -> 2020-W01-1; 2022-01-02 (Sun) -> Thu 2021-12-30, 52nd Thursday of 2021 -> 2021-W52-7; 2024-12-30 (Mon) -> Thu 2025-01-02, first Thursday of 2025 -> 2025-W01-1; 2025-01-05 (Sun) -> same week -> 2025-W01-7; 2017-01-01 (Sun) -> Thu 2016-12-29, 52nd Thursday of 2016 -> 2016-W52-7; 2018-12-31 (Mon) -> Thu 2019-01-03, first Thursday of 2019 -> 2019-W01-1. A second, disjoint-method derivation and the per-item agreement record (evidence requirement E-B) are assigned to an isolated child process and deterministic integration per child/integration-plan.json; the answers above are the first derivation and are final unless integration or root verification flags disagreement."
+}

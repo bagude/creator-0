@@ -1,0 +1,10 @@
+{
+  "role": "independent_verifier",
+  "child_deliverable": "child-answers.json",
+  "child_implementation_file": null,
+  "rule": "Parse answers_A = result.json (parent workspace) field 'answers' and answers_B = child-answers.json field 'answers'. Check that answers_B has exactly the 10 keys of package/artifacts/dates.json. For each date d in package/artifacts/dates.json, record agreement[d] = (answers_A[d] === answers_B[d], string equality). If all 10 agreement values are true: the final result.json 'answers' and 'method' fields are answers_A unchanged, Q2 is settled RESOLVED with the child answer set and the per-item agreement record as evidence (E-B), and the agreement record is attached as evidence toward Q3 (E-C, pending root correctness check). If any agreement value is false, or answers_B is missing any key, or child-answers.json 'method' is empty or describes nearest-Thursday reasoning: Q2 is settled UNRESOLVED-FAILED, the disagreeing items are listed verbatim, and the task result is flagged NOT VERIFIED without modifying answers_A. No field of the final result is ever copied from answers_B; the child contributes agreement evidence only.",
+  "expected_contribution": {
+    "Q2": "The complete disjoint-method second answer set for all 10 dates, produced without access to the first derivation's intermediate work, plus the per-item agreement record comparing it to the first answer set.",
+    "Q3": "Item-by-item agreement of two causally independent, methodologically disjoint derivations — the strongest pre-verification evidence of exactness available inside the run; final correctness is still judged deterministically at root."
+  }
+}

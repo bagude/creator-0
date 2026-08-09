@@ -1,0 +1,122 @@
+{
+  "topology_id": "H-e6-t15-local",
+  "resolved_distinctions": [
+    "Q1",
+    "Q2",
+    "Q3"
+  ],
+  "unresolved_distinctions": [],
+  "novel_evidence": [
+    "ev-1",
+    "ev-2",
+    "ev-3",
+    "ev-4",
+    "ev-5"
+  ],
+  "duplicate_evidence": [],
+  "verification_effect": "none",
+  "task_result": "correct",
+  "resource_use": {
+    "model_calls": 1,
+    "child_calls": 0,
+    "model_call_budget": 1,
+    "wall_clock_ms": 66000
+  },
+  "formal_failures": [],
+  "prediction_outcomes": [
+    {
+      "prediction_id": "H-e6-t15-local-pr01",
+      "kind": "resolves",
+      "outcome": "HELD",
+      "why": "Q1 resolved by predicted node resolve-local",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t15-local-pr02",
+      "kind": "resolves",
+      "outcome": "HELD",
+      "why": "Q2 resolved by predicted node resolve-local",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t15-local-pr03",
+      "kind": "resolves",
+      "outcome": "HELD",
+      "why": "Q3 resolved by predicted node resolve-local",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t15-local-pr04",
+      "kind": "runtime_path",
+      "outcome": "HELD",
+      "why": "completion order consistent with declared causal order",
+      "weight": 1.0,
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t15-local-pr05",
+      "kind": "model_call_budget",
+      "outcome": "HELD",
+      "why": "1 <= 1",
+      "weight": 0.5,
+      "principles": [
+        "P-MINIMALITY"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t15-local-pr06",
+      "kind": "authority_envelope",
+      "outcome": "HELD",
+      "why": "no authority violation observed",
+      "weight": 1.0,
+      "principles": [
+        "P-AUTHORITY-SEPARATION"
+      ]
+    },
+    {
+      "prediction_id": "H-e6-t15-local-pr07",
+      "kind": "local_sufficiency",
+      "outcome": "HELD",
+      "why": "resolved and verified with zero descendants",
+      "weight": 1.0,
+      "principles": [
+        "P-LOCALITY"
+      ]
+    }
+  ],
+  "observed_value": {
+    "delta_e": 1.0,
+    "cost": 0.5,
+    "redundancy": 0.0,
+    "governance_risk": 0.0
+  },
+  "observed_utility": 0.5,
+  "calibration_error": {
+    "component_absolute_error": {
+      "delta_e": 0.0,
+      "cost": 0.375,
+      "redundancy": 0.0,
+      "governance_risk": 0.0
+    },
+    "mean_component_error": 0.09375,
+    "utility_error": 0.375
+  },
+  "observed_value_operationalized": {
+    "delta_e": 1.0,
+    "cost": 0.125,
+    "redundancy": 0.0,
+    "governance_risk": 0.0
+  },
+  "observed_utility_operationalized": 0.875
+}

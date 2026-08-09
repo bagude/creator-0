@@ -1,0 +1,30 @@
+{
+  "task_id": "e6-t03",
+  "topology_id": "isolated-child",
+  "resolutions": [
+    {
+      "id": "Q1",
+      "status": "RESOLVED",
+      "resolved_by": "propose-child",
+      "answer": "First derivation complete for all 10 items by the nearest-Thursday (first-Thursday rule) method, stated in result.json: 2021-01-01=2020-W53-5; 2016-01-03=2015-W53-7; 2015-12-28=2015-W53-1; 2020-12-31=2020-W53-4; 2019-12-30=2020-W01-1; 2022-01-02=2021-W52-7; 2024-12-30=2025-W01-1; 2025-01-05=2025-W01-7; 2017-01-01=2016-W52-7; 2018-12-31=2019-W01-1.",
+      "evidence_ids": ["ev-2"],
+      "evidence_requirement_refs": ["E-A"]
+    },
+    {
+      "id": "Q2",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION. The admissibility condition is causal: the second derivation must be produced without access to the first derivation's intermediate work, which this session (author of the first derivation) cannot satisfy. Assigned to the isolated child (ordinal-date formula method, disjoint from nearest-Thursday) and to root-executed verify-integration per child/integration-plan.json.",
+      "evidence_ids": ["ev-3"],
+      "evidence_requirement_refs": ["E-B"]
+    },
+    {
+      "id": "Q3",
+      "status": "UNRESOLVED",
+      "resolved_by": "",
+      "answer": "PENDING-INTEGRATION. Exact correctness is judged deterministically at root against ISO-8601 week-date semantics and additionally depends on Q2's agreement record; this session's confidence claims carry no weight. The delivered answer set (Q1) is the object to be verified.",
+      "evidence_ids": ["ev-2", "ev-3"],
+      "evidence_requirement_refs": ["E-C"]
+    }
+  ]
+}
